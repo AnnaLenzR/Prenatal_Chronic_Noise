@@ -8,14 +8,14 @@ pacman::p_load(tidyverse,
                plyr)
 
 # My directory
-fig_dir <- "/Users/annalenz/Desktop/ChronicNoise_Rodents/Prenatal_Chronic_Noise/Metadigitise_Figs"
+fig_dir <- "/Users/annalenz/Desktop/ChronicNoise_Rodents/Prenatal_Chronic_Noise/Metadigitise_figs"
 
 
 ## Call data
-data <- metaDigitise(dir = "/Users/annalenz/Desktop/ChronicNoise_Rodents/Figs")
+data <- metaDigitise(dir = "/Users/annalenz/Desktop/ChronicNoise_Rodents/Prenatal_Chronic_Noise/Metadigitise_figs")
 
 ## Extract the data we collected from the images
-dat <- getExtracted("/Users/annalenz/Desktop/ChronicNoise_Rodents/Prenatal_Chronic_Noise/Metadigitise_Figs", summary = TRUE)
+dat <- getExtracted("/Users/annalenz/Desktop/ChronicNoise_Rodents/Prenatal_Chronic_Noise/Metadigitise_figs", summary = TRUE)
 
 
 ## Save as CSV

@@ -1,169 +1,169 @@
-"filename","variable","group_id","mean","sd","n","r","se","error_type","plot_type"
-"abramova_2021_front_f2a.png","Total squared crossed","C_f_sq",37.4105865522175,19.606241891506,29,NA,3.64078771842428,"sd","boxplot"
-"abramova_2021_front_f2a.png","Total squared crossed","C_m_sq",32.6716738197425,16.3920647999267,30,NA,2.99276788500208,"sd","boxplot"
-"abramova_2021_front_f2a.png","Total squared crossed","PS_f_sq",24.8390557939914,10.1377735942805,29,NA,1.8825372959523,"sd","boxplot"
-"abramova_2021_front_f2a.png","Total squared crossed","PS_m_sq",21.4234620886981,11.3640798164841,24,NA,2.31968307888726,"sd","boxplot"
-"abramova_2021_front_f2b.png","Rearing freq","C_f_re",9.87554904831626,6.4030508884518,29,NA,1.18901670009593,"sd","boxplot"
-"abramova_2021_front_f2b.png","Rearing freq","C_m_re",7.94289897510981,4.62599426784109,30,NA,0.84458713712872,"sd","boxplot"
-"abramova_2021_front_f2b.png","Rearing freq","PS_f_re",7.2181551976574,4.8111005178119,29,NA,0.893398937658871,"sd","boxplot"
-"abramova_2021_front_f2b.png","Rearing freq","PS_m_re",3.9311859443631,2.48409115825845,24,NA,0.507062984357705,"sd","boxplot"
-"abramova_2021_front_f2c.png","Total freezing time","C_f_fr",38.588110403397,40.5243291535094,29,NA,7.5251790065591,"sd","boxplot"
-"abramova_2021_front_f2c.png","Total freezing time","C_m_fr",33.8110403397027,26.9729101463194,30,NA,4.92455710956637,"sd","boxplot"
-"abramova_2021_front_f2c.png","Total freezing time","PS_f_fr",64.5966029723991,45.8680972087514,29,NA,8.51749182271697,"sd","boxplot"
-"abramova_2021_front_f2c.png","Total freezing time","PS_m_fr",76.9108280254777,51.4425131289957,24,NA,10.5006590210387,"sd","boxplot"
-"abramova_2024_devneur_fig2a.png","Open arm duration (s)","Con_f_oa",45.5573476419708,30.6992929903619,37,NA,5.04693267860595,"sd","boxplot"
-"abramova_2024_devneur_fig2a.png","Open arm duration (s)","Con_m_oa",53.8238066210611,29.5068712029075,35,NA,4.98757154817272,"sd","boxplot"
-"abramova_2024_devneur_fig2a.png","Open arm duration (s)","PS_f_oa",27.879843055916,17.522211743292,49,NA,2.50317310618457,"sd","boxplot"
-"abramova_2024_devneur_fig2a.png","Open arm duration (s)","PS_m_oa",38.3506910960971,24.9853805554608,44,NA,3.76668784303206,"sd","boxplot"
-"abramova_2024_devneur_fig2b.png","Head-dippingfreq","Con_f_hd",10.1974896325871,5.75503919415122,37,NA,0.9461226154211,"sd","boxplot"
-"abramova_2024_devneur_fig2b.png","Head-dippingfreq","Con_m_hd",11.5543563319156,6.92412951052496,35,NA,1.17039150322229,"sd","boxplot"
-"abramova_2024_devneur_fig2b.png","Head-dippingfreq","PS_f_hd",4.45819632673162,3.08774208338917,49,NA,0.441106011912738,"sd","boxplot"
-"abramova_2024_devneur_fig2b.png","Head-dippingfreq","PS_m_hd",8.5456519116654,5.25714980394688,44,NA,0.792545153017375,"sd","boxplot"
-"abramova_2024_devneur_fig2c.png","Freezing time (s)","Con_f_fr",2.58777239709442,3.44894631567267,37,NA,0.56700328156713,"sd","boxplot"
-"abramova_2024_devneur_fig2c.png","Freezing time (s)","PS_f_fr",20.8383777239709,19.5529626925749,49,NA,2.79328038465355,"sd","boxplot"
-"abramova_2024_devneur_fig2c.png","Freezing time (s)","Con_m_fr",1.22578692493946,2.01901042019941,35,NA,0.341275049394548,"sd","boxplot"
-"abramova_2024_devneur_fig2c.png","Freezing time (s)","PS_m_fr",3.26876513317191,3.7203470810537,44,NA,0.56086342535223,"sd","boxplot"
-"abramova_2024_devneur_fig2d.png","Grooming","Con_f_gd",22.5717439293598,14.1152742115958,37,NA,2.32053678592378,"sd","boxplot"
-"abramova_2024_devneur_fig2d.png","Grooming","Con_m_gd",28.3112582781457,19.541129962555,35,NA,3.30305382601125,"sd","boxplot"
-"abramova_2024_devneur_fig2d.png","Grooming","PS_f_gd",30.5739514348786,22.6304012506357,49,NA,3.23291446437653,"sd","boxplot"
-"abramova_2024_devneur_fig2d.png","Grooming","PS_m_gd",48.3995584988963,27.7623265185743,44,NA,4.18532819861111,"sd","boxplot"
-"abramova_2024_devneur_fig2e.png","Mean grooming","Con_f_mg",6.97243346007605,3.61037383871784,37,NA,0.593541802878968,"sd","boxplot"
-"abramova_2024_devneur_fig2e.png","Mean grooming","Con_m_mg",7.12927756653993,4.67234119275678,35,NA,0.789769807720342,"sd","boxplot"
-"abramova_2024_devneur_fig2e.png","Mean grooming","PS_f_mg",7.61406844106465,4.63222515846963,49,NA,0.661746451209948,"sd","boxplot"
-"abramova_2024_devneur_fig2e.png","Mean grooming","PS_m_mg",12.148288973384,7.16696267265418,44,NA,1.0804602759853,"sd","boxplot"
-"abramova_2024_devneur_fig3a.png","Center entries","Con_f_ce",2.45575221238938,1.20759198157348,37,NA,0.19852689884875,"sd","boxplot"
-"abramova_2024_devneur_fig3a.png","Center entries","Con_m_ce",2.8733407079646,1.49482253855315,35,NA,0.252671125704456,"sd","boxplot"
-"abramova_2024_devneur_fig3a.png","Center entries","PS_f_ce",2.20132743362832,1.90548876138967,49,NA,0.272212680198525,"sd","boxplot"
-"abramova_2024_devneur_fig3a.png","Center entries","PS_m_ce",1.48230088495575,1.35475618799708,44,NA,0.204237179909022,"sd","boxplot"
-"abramova_2024_devneur_fig3b.png","Number of crossing squares","Con_f_cs",50.7046332046332,14.3782926429063,37,NA,2.36377674967387,"sd","boxplot"
-"abramova_2024_devneur_fig3b.png","Number of crossing squares","Con_m_cs",45.5212355212355,13.1455260835849,35,NA,2.22199946003729,"sd","boxplot"
-"abramova_2024_devneur_fig3b.png","Number of crossing squares","PS_f_cs",44.2181467181467,17.6137414668047,49,NA,2.5162487809721,"sd","boxplot"
-"abramova_2024_devneur_fig3b.png","Number of crossing squares","PS_m_cs",32.5482625482625,13.6722409094502,44,NA,2.06116786999972,"sd","boxplot"
-"abramova_2024_devneur_fig3c.png","Number of rearing","Con_m_re",21.461038961039,9.72809673058534,35,NA,1.64434846845295,"sd","boxplot"
-"abramova_2024_devneur_fig3c.png","Number of rearing","PS_f_re",23.4415584415584,10.9920323168558,49,NA,1.57029033097941,"sd","boxplot"
-"abramova_2024_devneur_fig3c.png","Number of rearing","Con_f_re",21.4772727272727,5.56693906436899,37,NA,0.915199144572895,"sd","boxplot"
-"abramova_2024_devneur_fig3c.png","Number of rearing","PS_m_re",15.3733766233766,8.00772420317998,44,NA,1.20720984575435,"sd","boxplot"
-"abramova_2024_devneur_fig3d.png","Freezing time","Con_f_fr",10.50796812749,10.7353970004845,37,NA,1.76488839520062,"sd","boxplot"
-"abramova_2024_devneur_fig3d.png","Freezing time","Con_m_fr",17.0318725099601,15.7745388640987,35,NA,2.66638372747467,"sd","boxplot"
-"abramova_2024_devneur_fig3d.png","Freezing time","PS_f_fr",31.1254980079681,30.8137121446706,49,NA,4.40195887781009,"sd","boxplot"
-"abramova_2024_devneur_fig3d.png","Freezing time","PS_m_fr",51.6932270916335,49.0192681378603,44,NA,7.38993272323209,"sd","boxplot"
-"abramova_2024_devneur_fig3e.png","Grooming duration","Con_f_grd",25.0686813186813,13.3203207704177,37,NA,2.18984724523919,"sd","boxplot"
-"abramova_2024_devneur_fig3e.png","Grooming duration","Con_m_grd",17.342032967033,8.3293755367872,35,NA,1.40792143482946,"sd","boxplot"
-"abramova_2024_devneur_fig3e.png","Grooming duration","PS_f_grd",29.1208791208791,17.1991404037892,49,NA,2.45702005768417,"sd","boxplot"
-"abramova_2024_devneur_fig3e.png","Grooming duration","PS_m_grd",40.3846153846154,25.2968084729021,44,NA,3.81363736809544,"sd","boxplot"
-"abramova_2024_devneur_fig3f.png","grooming frequency","Con_f_gf",3.61502918287938,2.12558931248297,37,NA,0.349444730399291,"sd","boxplot"
-"abramova_2024_devneur_fig3f.png","grooming frequency","Con_m_gf",3.16999027237354,1.49552778903488,35,NA,0.252790334793512,"sd","boxplot"
-"abramova_2024_devneur_fig3f.png","grooming frequency","PS_f_gf",4.49051556420234,2.17857850641537,49,NA,0.311225500916481,"sd","boxplot"
-"abramova_2024_devneur_fig3f.png","grooming frequency","PS_m_gf",4.46498054474708,2.77575580633987,44,NA,0.418460932694534,"sd","boxplot"
-"abramova_2024_devneur_fig4a.png","Immobility time","Con_f_ti",49.7557726465364,27.3728627905133,14,NA,7.31570530409098,"sd","boxplot"
-"abramova_2024_devneur_fig4a.png","Immobility time","Con_m_ti",103.974245115453,44.6493811419305,12,NA,12.8891661107219,"sd","boxplot"
-"abramova_2024_devneur_fig4a.png","Immobility time","PS_f_ti",86.1234458259325,19.4253246426584,13,NA,5.38761569551069,"sd","boxplot"
-"abramova_2024_devneur_fig4a.png","Immobility time","PS_m_ti",128.285968028419,46.0646831138378,14,NA,12.3113044173066,"sd","boxplot"
-"arjunan_2023_stress_fig3B_cen.png","Duration (Sec)","Con_cen",251.335877862596,26.3358778625955,6,NA,10.7515771152697,"sd","mean_error"
-"arjunan_2023_stress_fig3B_cen.png","Duration (Sec)","Egs_cen",178.625954198473,16.6030534351145,6,NA,6.77816818136565,"sd","mean_error"
-"arjunan_2023_stress_fig3B_cen.png","Duration (Sec)","Lgs_cen",134.541984732824,9.73282442748092,6,NA,3.97340893390401,"sd","mean_error"
-"arjunan_2023_stress_fig3B_cen.png","Duration (Sec)","Fgs_cen",103.053435114504,10.8778625954199,6,NA,4.44086880848097,"sd","mean_error"
-"arjunan_2023_stress_fig3B_peri.png","Duration (sec)","Con_per",98.2490272373541,25.7782101167315,6,NA,10.5239102113739,"sd","mean_error"
-"arjunan_2023_stress_fig3B_peri.png","Duration (sec)","Egs_per",151.750972762646,17.5097276264592,6,NA,7.14831636998982,"sd","mean_error"
-"arjunan_2023_stress_fig3B_peri.png","Duration (sec)","Lgs_per",180.447470817121,8.75486381322958,6,NA,3.57415818499491,"sd","mean_error"
-"arjunan_2023_stress_fig3B_peri.png","Duration (sec)","Fgs_per",214.007782101167,10.2140077821011,6,NA,4.16985121582738,"sd","mean_error"
-"badache_2017_stress_5a.png","Time in corners","Cn_cor",216.891891891892,47.0270270270271,16,NA,11.7567567567568,"se","mean_error"
-"badache_2017_stress_5a.png","Time in corners","Ns_cor",253.783783783784,51.8918918918921,16,NA,12.972972972973,"se","mean_error"
-"badache_2017_stress_5b.png","Crossed squares","Cn_sq",70.4382470119522,16.1487383798141,16,NA,4.03718459495352,"se","mean_error"
-"badache_2017_stress_5b.png","Crossed squares","Ns_sq",45.2589641434263,8.92430278884467,16,NA,2.23107569721117,"se","mean_error"
-"badache_2017_stress_5c.png","Time in center","Cn_cen",4.13359788359788,0.925925925925927,16,NA,0.231481481481482,"se","mean_error"
-"badache_2017_stress_5c.png","Time in center","Ns_cen",0.178571428571428,0.264550264550265,16,NA,0.0661375661375662,"se","mean_error"
-"badache_2017_stress_5d.png","Rearing time","Cn_re",22.0038659793814,5.02577319587627,16,NA,1.25644329896907,"se","mean_error"
-"badache_2017_stress_5d.png","Rearing time","Ns_re",8.53737113402062,1.93298969072165,16,NA,0.483247422680412,"se","mean_error"
-"badache_2017_stress_6a.png","Time in open arms","Cn_oat",135.510204081633,31.8367346938776,16,NA,7.9591836734694,"se","mean_error"
-"badache_2017_stress_6a.png","Time in open arms","Ns_oat",67.9591836734694,14.6938775510204,16,NA,3.6734693877551,"se","mean_error"
-"badache_2017_stress_6b.png","Rearing time","Cn_rt",18.1164383561644,4.52054794520548,16,NA,1.13013698630137,"se","mean_error"
-"badache_2017_stress_6b.png","Rearing time","Ns_rt",7.77397260273973,2.05479452054794,16,NA,0.513698630136986,"se","mean_error"
-"barzegar_2014_figure2a.png","Number of entries to the open arms (%)","CON",32.0666666666667,10.9625625552504,10,NA,3.46666666666668,"se","mean_error"
-"barzegar_2014_figure2a.png","Number of entries to the open arms (%)","N1",33.9333333333333,19.6061214930439,10,NA,6.19999999999999,"se","mean_error"
-"barzegar_2014_figure2a.png","Number of entries to the open arms (%)","N2",14.2666666666667,8.43274042711568,10,NA,2.66666666666667,"se","mean_error"
-"barzegar_2014_figure2a.png","Number of entries to the open arms (%)","N4",15.3333333333333,8.85437744847148,10,NA,2.8,"se","mean_error"
-"barzegar_2014_figure2b.png","Duration in open arms (%)","CON",30.0156494522692,6.40868477295467,10,NA,2.02660406885758,"se","mean_error"
-"barzegar_2014_figure2b.png","Duration in open arms (%)","N1",30.7824726134585,4.33019241415858,10,NA,1.36932707355243,"se","mean_error"
-"barzegar_2014_figure2b.png","Duration in open arms (%)","N2",21.5258215962441,5.71585398668932,10,NA,1.8075117370892,"se","mean_error"
-"barzegar_2014_figure2b.png","Duration in open arms (%)","N4",16.924882629108,8.31396943518447,10,NA,2.62910798122066,"se","mean_error"
-"hadizadeh_2018_irjbamedsci_fig2A.png","Open arm entries (%)","CON_en",57.8237864213882,6.43803810471973,6,NA,2.62831805019304,"se","mean_error"
-"hadizadeh_2018_irjbamedsci_fig2A.png","Open arm entries (%)","ST_en",20.8251318170799,2.8391287642555,6,NA,1.15906946441409,"se","mean_error"
-"hadizadeh_2018_irjbamedsci_fig2B.png","Open arm time (%)","CON_ti",42.4766355140187,2.47238217028584,6,NA,1.00934579439253,"se","mean_error"
-"hadizadeh_2018_irjbamedsci_fig2B.png","Open arm time (%)","ST_ti",19.0093457943925,4.12063695047637,6,NA,1.6822429906542,"se","mean_error"
-"hassanvand_2012_phyphar_Figure2.png","Number of Behaviour (Count/10min)","Exp_rear",23.0569948186528,1.98618307426597,6,NA,0.810855844617344,"sd","mean_error"
-"hassanvand_2012_phyphar_Figure2.png","Number of Behaviour (Count/10min)","Control_loco",28.9291882556131,4.0587219343696,6,NA,1.65696629117457,"sd","mean_error"
-"hassanvand_2012_phyphar_Figure2.png","Number of Behaviour (Count/10min)","Exp_loco",30.8290155440415,2.07253886010363,6,NA,0.846110446557232,"sd","mean_error"
-"hassanvand_2012_phyphar_Figure2.png","Number of Behaviour (Count/10min)","Control_sniff",44.0038840535291,2.18311857863304,6,NA,0.891254427606838,"sd","mean_error"
-"hassanvand_2012_phyphar_Figure2.png","Number of Behaviour (Count/10min)","Control_rear",15.4576856649396,1.20898100172711,6,NA,0.493564427158383,"sd","mean_error"
-"hassanvand_2012_phyphar_Figure2.png","Number of Behaviour (Count/10min)","Exp_sniff",38.3419689119171,2.76338514680482,6,NA,1.1281472620763,"sd","mean_error"
-"nishio_2006_intjdevlneur_fig2a.png","Time in open arms %","pre_n_m_oat",27.1584699453552,13.8074142872938,5,NA,6.17486338797814,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2a.png","Time in open arms %","pre_so_m_oat",24.1530054644809,7.94231795286808,5,NA,3.551912568306,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2a.png","Time in open arms %","pre_N_f_oat",18.6885245901639,6.84261239016331,5,NA,3.06010928961749,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2a.png","Time in open arms %","pre_so_f_oat",29.2349726775956,13.8074142872938,5,NA,6.17486338797814,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2b.png","Entries open arms %","pre_n_m_oae",39.6132596685083,9.63609404668419,5,NA,4.30939226519337,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2b.png","Entries open arms %","pre_so_m_oae",46.6574585635359,7.78299903770646,5,NA,3.48066298342542,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2b.png","Entries open arms %","pre_n_f_oae",33.0662983425414,7.59768953680868,5,NA,3.39779005524862,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2b.png","Entries open arms %","pre_so_f_oae",42.0994475138121,14.8247600718218,5,NA,6.62983425414364,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2c.png","Closed Arm Entries","pre_n_m_cae",3.97368421052632,1.70647293019721,5,NA,0.763157894736842,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2c.png","Closed Arm Entries","pre_so_m_cae",3.57894736842105,1.17687788289463,5,NA,0.526315789473685,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2c.png","Closed Arm Entries","pre_n_f_cae",6.68421052631579,2.41259965993398,5,NA,1.07894736842105,"se","mean_error"
-"nishio_2006_intjdevlneur_fig2c.png","Closed Arm Entries","pre_so_f_cae",4.55263157894737,1.14745593582226,5,NA,0.513157894736842,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig2b.png","Avoidance latency","C_A1",56.4766839378239,118.461506009892,12,NA,34.1968911917099,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig2b.png","Avoidance latency","C_A2",103.108808290155,129.230733828973,12,NA,37.3056994818653,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig2b.png","Avoidance latency","C_BL",9.32642487046635,25.1281982445226,12,NA,7.25388601036269,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig2b.png","Avoidance latency","IE_BL",6.21761658031091,14.3589704254415,12,NA,4.14507772020725,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig2b.png","Avoidance latency","IE_A1",86.5284974093265,131.025605132153,12,NA,37.8238341968911,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig2b.png","Avoidance latency","IE_A2",136.269430051814,147.179446860775,12,NA,42.4870466321244,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig3b.png","Escape latency (time in open arms)","C_F1",5.34285714285714,3.85999894258206,12,NA,1.11428571428571,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig3b.png","Escape latency (time in open arms)","C_F2",6.8,8.01692088074738,12,NA,2.31428571428571,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig3b.png","Escape latency (time in open arms)","C_F3",6.45714285714286,7.71999788516414,12,NA,2.22857142857143,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig3b.png","Escape latency (time in open arms)","IE_F1",6.54285714285714,8.21486954446953,12,NA,2.37142857142857,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig3b.png","Escape latency (time in open arms)","IE_F2",6.6,4.05794760630423,12,NA,1.17142857142857,"se","mean_error"
-"oliveira_2015_jbehavbraisci_fig3b.png","Escape latency (time in open arms)","IE_F3",13.2,15.4399957703283,12,NA,4.45714285714286,"se","mean_error"
-"pavlov_2023_molsci_Fig4A.png","Sucrose preference %","NonSt_su",71.5988779803647,9.72023378841253,10,NA,3.07380781607108,"sd","boxplot"
-"pavlov_2023_molsci_Fig4A.png","Sucrose preference %","US_su",40.4803646563815,13.4935810781756,14,NA,3.60631123679919,"sd","boxplot"
-"pavlov_2023_molsci_Fig4C.png","Squared crossed","NonSt_sq",10.5544488711819,6.17178892630989,10,NA,1.95169102449443,"sd","boxplot"
-"pavlov_2023_molsci_Fig4C.png","Squared crossed","Us_sq",6.39774236387782,3.17018860346563,14,NA,0.847268543258839,"sd","boxplot"
-"pavlov_2023_molsci_Fig4D.png","Time in center","NonSt_csq",71.6567852437418,17.5003458616861,10,NA,5.53409527636302,"sd","boxplot"
-"pavlov_2023_molsci_Fig4D.png","Time in center","US_csq",25.9881422924901,11.1451085147916,14,NA,2.97865554291195,"sd","boxplot"
-"pavlov_2023_molsci_Fig4E.png","Time in open arms","NonSt_oat",69.1699604743083,20.8393841760105,10,NA,6.58999190314643,"sd","boxplot"
-"pavlov_2023_molsci_Fig4E.png","Time in open arms","US_oat",25.4199604743083,9.55500380838871,14,NA,2.55368218430791,"sd","boxplot"
-"pavlov_2023_molsci_Fig4F.png","Open arms entries","NonSt_oae",13.2716575716235,5.43772611489116,10,NA,1.71955998152345,"sd","boxplot"
-"pavlov_2023_molsci_Fig4F.png","Open arms entries","US_oae",8.6843451568895,4.22505255292764,14,NA,1.1291927924407,"sd","boxplot"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","HN_1",71.2285336856011,3.30831721902216,20,NA,0.739762219286661,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","HNoN_1",65.6274768824307,2.36308372787299,20,NA,0.528401585204762,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","HLN_1",60.8718626155878,3.30831721902216,20,NA,0.739762219286661,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","HN_2",42.8005284015852,3.30831721902216,20,NA,0.739762219286661,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","HNoN_2",39.7357992073976,3.78093396459668,20,NA,0.845442536327596,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","HLN_2",36.882430647292,2.36308372787299,20,NA,0.528401585204762,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","HN_3",26.7371202113607,3.78093396459674,20,NA,0.84544253632761,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","HNoN_3",17.331571994716,2.83570047344756,20,NA,0.634081902245708,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","HLN_3",15.7463672391017,3.30831721902216,20,NA,0.739762219286661,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","C_1_sq",45.7671080673081,3.40483547432575,20,NA,0.761344357279512,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","C_2_sq",31.736619197443,2.91843040656487,20,NA,0.652580877668139,"se","mean_error"
-"whitlow_1978_thesis_fig2.png","Amount of ambulation","C_3_sq",19.1200555625255,2.91843040656487,20,NA,0.652580877668139,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","HN_1_gr",3.68087855297158,0.323565392092995,20,NA,0.0723514211886309,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","HNoN_1_gr",4.47674418604651,0.323565392092987,20,NA,0.0723514211886291,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","HLN_1_gr",3.70801033591731,0.323565392092999,20,NA,0.0723514211886318,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","HN_2_gr",5.67054263565892,0.323565392092995,20,NA,0.0723514211886309,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","HNoN_2_gr",6.39405684754522,0.364011066104614,20,NA,0.0813953488372086,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","HLN_2_gr",4.80232558139535,0.283119718081368,20,NA,0.0633074935400515,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","HN_3_gr",3.68992248062016,0.242674044069741,20,NA,0.0542635658914721,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","HNoN_3_gr",3.843669250646,0.283119718081368,20,NA,0.0633074935400515,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","HLN_3_gr",3.0749354005168,0.364011066104622,20,NA,0.0813953488372103,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","C_1_gr",4.05258790902981,0.33300522662333,20,NA,0.0744622323592488,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","C_2_gr",3.51273672442526,0.208128266639579,20,NA,0.04653889522453,"se","mean_error"
-"whitlow_1978_thesis_fig4.png","Grooming frequency","C_3_gr",3.84781677004188,0.249753919967497,20,NA,0.0558466742694366,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","HN_1_def",2.37765957446809,0.142727743244667,20,NA,0.0319148936170213,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","HNoN_1_de",1.73537234042553,0.178409679055834,20,NA,0.0398936170212765,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","HLN_1_de",2.02260638297872,0.160568711150251,20,NA,0.0359042553191489,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","HN_2_de",1.98271276595745,0.142727743244669,20,NA,0.0319148936170217,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","HNoN_2_de",2.21808510638298,0.160568711150249,20,NA,0.0359042553191484,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","HLN_2_de",1.8311170212766,0.124886775339082,20,NA,0.0279255319148932,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","HN_3_de",2.57313829787234,0.160568711150253,20,NA,0.0359042553191493,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","HNoN_3_de",1.14095744680851,0.178409679055833,20,NA,0.0398936170212763,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","HLN_3_de",2.86037234042553,0.124886775339084,20,NA,0.0279255319148937,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","C_1_de",2.38494690756369,0.110168807402075,20,NA,0.0246344942351122,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","C_2_de",1.52684535837395,0.110168807402073,20,NA,0.0246344942351118,"se","mean_error"
-"whitlow_1978_thesis_fig5.png","Amount of defecation","C_3_de",2.7749930662863,0.110168807402075,20,NA,0.0246344942351122,"se","mean_error"
+filename,variable,group_id,mean,sd,n,r,se,error_type,plot_type
+abramova_2021_front_f2a.png,Total squared crossed,C_f_sq,37.41058655,19.99068194,25,NA,3.998136388,sd,boxplot
+abramova_2021_front_f2a.png,Total squared crossed,PS_f_sq,24.83905579,10.75155429,19,NA,2.466575719,sd,boxplot
+abramova_2021_front_f2a.png,Total squared crossed,C_m_sq,32.67167382,16.9878891,23,NA,3.542219741,sd,boxplot
+abramova_2021_front_f2a.png,Total squared crossed,PS_m_sq,21.42346209,11.84514551,18,NA,2.791927572,sd,boxplot
+abramova_2021_front_f2b.png,Rearing freq,C_f_re,9.875549048,6.403050888,29,NA,1.1890167,sd,boxplot
+abramova_2021_front_f2b.png,Rearing freq,C_m_re,7.942898975,4.625994268,30,NA,0.844587137,sd,boxplot
+abramova_2021_front_f2b.png,Rearing freq,PS_f_re,7.218155198,4.811100518,29,NA,0.893398938,sd,boxplot
+abramova_2021_front_f2b.png,Rearing freq,PS_m_re,3.931185944,2.484091158,24,NA,0.507062984,sd,boxplot
+abramova_2021_front_f2c.png,Total freezing time,C_f_fr,38.5881104,40.52432915,29,NA,7.525179007,sd,boxplot
+abramova_2021_front_f2c.png,Total freezing time,C_m_fr,33.81104034,26.97291015,30,NA,4.92455711,sd,boxplot
+abramova_2021_front_f2c.png,Total freezing time,PS_f_fr,64.59660297,45.86809721,29,NA,8.517491823,sd,boxplot
+abramova_2021_front_f2c.png,Total freezing time,PS_m_fr,76.91082803,51.44251313,24,NA,10.50065902,sd,boxplot
+abramova_2024_devneur_fig2a.png,Open arm duration (s),Con_f_oa,45.55734764,30.69929299,37,NA,5.046932679,sd,boxplot
+abramova_2024_devneur_fig2a.png,Open arm duration (s),Con_m_oa,53.82380662,29.5068712,35,NA,4.987571548,sd,boxplot
+abramova_2024_devneur_fig2a.png,Open arm duration (s),PS_f_oa,27.87984306,17.52221174,49,NA,2.503173106,sd,boxplot
+abramova_2024_devneur_fig2a.png,Open arm duration (s),PS_m_oa,38.3506911,24.98538056,44,NA,3.766687843,sd,boxplot
+abramova_2024_devneur_fig2b.png,Head-dippingfreq,Con_f_hd,10.19748963,5.755039194,37,NA,0.946122615,sd,boxplot
+abramova_2024_devneur_fig2b.png,Head-dippingfreq,Con_m_hd,11.55435633,6.924129511,35,NA,1.170391503,sd,boxplot
+abramova_2024_devneur_fig2b.png,Head-dippingfreq,PS_f_hd,4.458196327,3.087742083,49,NA,0.441106012,sd,boxplot
+abramova_2024_devneur_fig2b.png,Head-dippingfreq,PS_m_hd,8.545651912,5.257149804,44,NA,0.792545153,sd,boxplot
+abramova_2024_devneur_fig2c.png,Freezing time (s),Con_f_fr,2.587772397,3.448946316,37,NA,0.567003282,sd,boxplot
+abramova_2024_devneur_fig2c.png,Freezing time (s),PS_f_fr,20.83837772,19.55296269,49,NA,2.793280385,sd,boxplot
+abramova_2024_devneur_fig2c.png,Freezing time (s),Con_m_fr,1.225786925,2.01901042,35,NA,0.341275049,sd,boxplot
+abramova_2024_devneur_fig2c.png,Freezing time (s),PS_m_fr,3.268765133,3.720347081,44,NA,0.560863425,sd,boxplot
+abramova_2024_devneur_fig2d.png,Grooming,Con_f_gd,22.57174393,14.11527421,37,NA,2.320536786,sd,boxplot
+abramova_2024_devneur_fig2d.png,Grooming,Con_m_gd,28.31125828,19.54112996,35,NA,3.303053826,sd,boxplot
+abramova_2024_devneur_fig2d.png,Grooming,PS_f_gd,30.57395143,22.63040125,49,NA,3.232914464,sd,boxplot
+abramova_2024_devneur_fig2d.png,Grooming,PS_m_gd,48.3995585,27.76232652,44,NA,4.185328199,sd,boxplot
+abramova_2024_devneur_fig2e.png,Mean grooming,Con_f_mg,6.97243346,3.610373839,37,NA,0.593541803,sd,boxplot
+abramova_2024_devneur_fig2e.png,Mean grooming,Con_m_mg,7.129277567,4.672341193,35,NA,0.789769808,sd,boxplot
+abramova_2024_devneur_fig2e.png,Mean grooming,PS_f_mg,7.614068441,4.632225158,49,NA,0.661746451,sd,boxplot
+abramova_2024_devneur_fig2e.png,Mean grooming,PS_m_mg,12.14828897,7.166962673,44,NA,1.080460276,sd,boxplot
+abramova_2024_devneur_fig3a.png,Center entries,Con_f_ce,2.455752212,1.207591982,37,NA,0.198526899,sd,boxplot
+abramova_2024_devneur_fig3a.png,Center entries,Con_m_ce,2.873340708,1.494822539,35,NA,0.252671126,sd,boxplot
+abramova_2024_devneur_fig3a.png,Center entries,PS_f_ce,2.201327434,1.905488761,49,NA,0.27221268,sd,boxplot
+abramova_2024_devneur_fig3a.png,Center entries,PS_m_ce,1.482300885,1.354756188,44,NA,0.20423718,sd,boxplot
+abramova_2024_devneur_fig3b.png,Number of crossing squares,Con_f_cs,50.7046332,14.37829264,37,NA,2.36377675,sd,boxplot
+abramova_2024_devneur_fig3b.png,Number of crossing squares,Con_m_cs,45.52123552,13.14552608,35,NA,2.22199946,sd,boxplot
+abramova_2024_devneur_fig3b.png,Number of crossing squares,PS_f_cs,44.21814672,17.61374147,49,NA,2.516248781,sd,boxplot
+abramova_2024_devneur_fig3b.png,Number of crossing squares,PS_m_cs,32.54826255,13.67224091,44,NA,2.06116787,sd,boxplot
+abramova_2024_devneur_fig3c.png,Number of rearing,Con_m_re,21.46103896,9.728096731,35,NA,1.644348468,sd,boxplot
+abramova_2024_devneur_fig3c.png,Number of rearing,PS_f_re,23.44155844,10.99203232,49,NA,1.570290331,sd,boxplot
+abramova_2024_devneur_fig3c.png,Number of rearing,Con_f_re,21.47727273,5.566939064,37,NA,0.915199145,sd,boxplot
+abramova_2024_devneur_fig3c.png,Number of rearing,PS_m_re,15.37337662,8.007724203,44,NA,1.207209846,sd,boxplot
+abramova_2024_devneur_fig3d.png,Freezing time,Con_f_fr,10.50796813,10.735397,37,NA,1.764888395,sd,boxplot
+abramova_2024_devneur_fig3d.png,Freezing time,Con_m_fr,17.03187251,15.77453886,35,NA,2.666383727,sd,boxplot
+abramova_2024_devneur_fig3d.png,Freezing time,PS_f_fr,31.12549801,30.81371214,49,NA,4.401958878,sd,boxplot
+abramova_2024_devneur_fig3d.png,Freezing time,PS_m_fr,51.69322709,49.01926814,44,NA,7.389932723,sd,boxplot
+abramova_2024_devneur_fig3e.png,Grooming duration,Con_f_grd,25.06868132,13.32032077,37,NA,2.189847245,sd,boxplot
+abramova_2024_devneur_fig3e.png,Grooming duration,Con_m_grd,17.34203297,8.329375537,35,NA,1.407921435,sd,boxplot
+abramova_2024_devneur_fig3e.png,Grooming duration,PS_f_grd,29.12087912,17.1991404,49,NA,2.457020058,sd,boxplot
+abramova_2024_devneur_fig3e.png,Grooming duration,PS_m_grd,40.38461538,25.29680847,44,NA,3.813637368,sd,boxplot
+abramova_2024_devneur_fig3f.png,grooming frequency,Con_f_gf,3.615029183,2.125589312,37,NA,0.34944473,sd,boxplot
+abramova_2024_devneur_fig3f.png,grooming frequency,Con_m_gf,3.169990272,1.495527789,35,NA,0.252790335,sd,boxplot
+abramova_2024_devneur_fig3f.png,grooming frequency,PS_f_gf,4.490515564,2.178578506,49,NA,0.311225501,sd,boxplot
+abramova_2024_devneur_fig3f.png,grooming frequency,PS_m_gf,4.464980545,2.775755806,44,NA,0.418460933,sd,boxplot
+abramova_2024_devneur_fig4a.png,Immobility time,Con_f_ti,49.75577265,27.37286279,14,NA,7.315705304,sd,boxplot
+abramova_2024_devneur_fig4a.png,Immobility time,Con_m_ti,103.9742451,44.64938114,12,NA,12.88916611,sd,boxplot
+abramova_2024_devneur_fig4a.png,Immobility time,PS_f_ti,86.12344583,19.42532464,13,NA,5.387615696,sd,boxplot
+abramova_2024_devneur_fig4a.png,Immobility time,PS_m_ti,128.285968,46.06468311,14,NA,12.31130442,sd,boxplot
+arjunan_2023_stress_fig3B_cen.png,Duration (Sec),Con_cen,251.3358779,26.33587786,6,NA,10.75157712,sd,mean_error
+arjunan_2023_stress_fig3B_cen.png,Duration (Sec),Egs_cen,178.6259542,16.60305344,6,NA,6.778168181,sd,mean_error
+arjunan_2023_stress_fig3B_cen.png,Duration (Sec),Lgs_cen,134.5419847,9.732824427,6,NA,3.973408934,sd,mean_error
+arjunan_2023_stress_fig3B_cen.png,Duration (Sec),Fgs_cen,103.0534351,10.8778626,6,NA,4.440868808,sd,mean_error
+arjunan_2023_stress_fig3B_peri.png,Duration (sec),Con_per,98.24902724,25.77821012,6,NA,10.52391021,sd,mean_error
+arjunan_2023_stress_fig3B_peri.png,Duration (sec),Egs_per,151.7509728,17.50972763,6,NA,7.14831637,sd,mean_error
+arjunan_2023_stress_fig3B_peri.png,Duration (sec),Lgs_per,180.4474708,8.754863813,6,NA,3.574158185,sd,mean_error
+arjunan_2023_stress_fig3B_peri.png,Duration (sec),Fgs_per,214.0077821,10.21400778,6,NA,4.169851216,sd,mean_error
+badache_2017_stress_5a.png,Time in corners,Cn_cor,216.8918919,47.02702703,16,NA,11.75675676,se,mean_error
+badache_2017_stress_5a.png,Time in corners,Ns_cor,253.7837838,51.89189189,16,NA,12.97297297,se,mean_error
+badache_2017_stress_5b.png,Crossed squares,Cn_sq,70.43824701,16.14873838,16,NA,4.037184595,se,mean_error
+badache_2017_stress_5b.png,Crossed squares,Ns_sq,45.25896414,8.924302789,16,NA,2.231075697,se,mean_error
+badache_2017_stress_5c.png,Time in center,Cn_cen,4.133597884,0.925925926,16,NA,0.231481481,se,mean_error
+badache_2017_stress_5c.png,Time in center,Ns_cen,0.178571429,0.264550265,16,NA,0.066137566,se,mean_error
+badache_2017_stress_5d.png,Rearing time,Cn_re,22.00386598,5.025773196,16,NA,1.256443299,se,mean_error
+badache_2017_stress_5d.png,Rearing time,Ns_re,8.537371134,1.932989691,16,NA,0.483247423,se,mean_error
+badache_2017_stress_6a.png,Time in open arms,Cn_oat,135.5102041,31.83673469,16,NA,7.959183673,se,mean_error
+badache_2017_stress_6a.png,Time in open arms,Ns_oat,67.95918367,14.69387755,16,NA,3.673469388,se,mean_error
+badache_2017_stress_6b.png,Rearing time,Cn_rt,18.11643836,4.520547945,16,NA,1.130136986,se,mean_error
+badache_2017_stress_6b.png,Rearing time,Ns_rt,7.773972603,2.054794521,16,NA,0.51369863,se,mean_error
+barzegar_2014_figure2a.png,Number of entries to the open arms (%),CON,32.06666667,10.96256256,10,NA,3.466666667,se,mean_error
+barzegar_2014_figure2a.png,Number of entries to the open arms (%),N1,33.93333333,19.60612149,10,NA,6.2,se,mean_error
+barzegar_2014_figure2a.png,Number of entries to the open arms (%),N2,14.26666667,8.432740427,10,NA,2.666666667,se,mean_error
+barzegar_2014_figure2a.png,Number of entries to the open arms (%),N4,15.33333333,8.854377448,10,NA,2.8,se,mean_error
+barzegar_2014_figure2b.png,Duration in open arms (%),CON,30.01564945,6.408684773,10,NA,2.026604069,se,mean_error
+barzegar_2014_figure2b.png,Duration in open arms (%),N1,30.78247261,4.330192414,10,NA,1.369327074,se,mean_error
+barzegar_2014_figure2b.png,Duration in open arms (%),N2,21.5258216,5.715853987,10,NA,1.807511737,se,mean_error
+barzegar_2014_figure2b.png,Duration in open arms (%),N4,16.92488263,8.313969435,10,NA,2.629107981,se,mean_error
+hadizadeh_2018_irjbamedsci_fig2A.png,Open arm entries (%),CON_en,57.82378642,6.438038105,6,NA,2.62831805,se,mean_error
+hadizadeh_2018_irjbamedsci_fig2A.png,Open arm entries (%),ST_en,20.82513182,2.839128764,6,NA,1.159069464,se,mean_error
+hadizadeh_2018_irjbamedsci_fig2B.png,Open arm time (%),CON_ti,42.47663551,2.47238217,6,NA,1.009345794,se,mean_error
+hadizadeh_2018_irjbamedsci_fig2B.png,Open arm time (%),ST_ti,19.00934579,4.12063695,6,NA,1.682242991,se,mean_error
+hassanvand_2012_phyphar_Figure2.png,Number of Behaviour (Count/10min),Exp_rear,23.05699482,1.986183074,6,NA,0.810855845,sd,mean_error
+hassanvand_2012_phyphar_Figure2.png,Number of Behaviour (Count/10min),Control_loco,28.92918826,4.058721934,6,NA,1.656966291,sd,mean_error
+hassanvand_2012_phyphar_Figure2.png,Number of Behaviour (Count/10min),Exp_loco,30.82901554,2.07253886,6,NA,0.846110447,sd,mean_error
+hassanvand_2012_phyphar_Figure2.png,Number of Behaviour (Count/10min),Control_sniff,44.00388405,2.183118579,6,NA,0.891254428,sd,mean_error
+hassanvand_2012_phyphar_Figure2.png,Number of Behaviour (Count/10min),Control_rear,15.45768566,1.208981002,6,NA,0.493564427,sd,mean_error
+hassanvand_2012_phyphar_Figure2.png,Number of Behaviour (Count/10min),Exp_sniff,38.34196891,2.763385147,6,NA,1.128147262,sd,mean_error
+nishio_2006_intjdevlneur_fig2a.png,Time in open arms %,pre_n_m_oat,27.15846995,13.80741429,5,NA,6.174863388,se,mean_error
+nishio_2006_intjdevlneur_fig2a.png,Time in open arms %,pre_so_m_oat,24.15300546,7.942317953,5,NA,3.551912568,se,mean_error
+nishio_2006_intjdevlneur_fig2a.png,Time in open arms %,pre_N_f_oat,18.68852459,6.84261239,5,NA,3.06010929,se,mean_error
+nishio_2006_intjdevlneur_fig2a.png,Time in open arms %,pre_so_f_oat,29.23497268,13.80741429,5,NA,6.174863388,se,mean_error
+nishio_2006_intjdevlneur_fig2b.png,Entries open arms %,pre_n_m_oae,39.61325967,9.636094047,5,NA,4.309392265,se,mean_error
+nishio_2006_intjdevlneur_fig2b.png,Entries open arms %,pre_so_m_oae,46.65745856,7.782999038,5,NA,3.480662983,se,mean_error
+nishio_2006_intjdevlneur_fig2b.png,Entries open arms %,pre_n_f_oae,33.06629834,7.597689537,5,NA,3.397790055,se,mean_error
+nishio_2006_intjdevlneur_fig2b.png,Entries open arms %,pre_so_f_oae,42.09944751,14.82476007,5,NA,6.629834254,se,mean_error
+nishio_2006_intjdevlneur_fig2c.png,Closed Arm Entries,pre_n_m_cae,3.973684211,1.70647293,5,NA,0.763157895,se,mean_error
+nishio_2006_intjdevlneur_fig2c.png,Closed Arm Entries,pre_so_m_cae,3.578947368,1.176877883,5,NA,0.526315789,se,mean_error
+nishio_2006_intjdevlneur_fig2c.png,Closed Arm Entries,pre_n_f_cae,6.684210526,2.41259966,5,NA,1.078947368,se,mean_error
+nishio_2006_intjdevlneur_fig2c.png,Closed Arm Entries,pre_so_f_cae,4.552631579,1.147455936,5,NA,0.513157895,se,mean_error
+oliveira_2015_jbehavbraisci_fig2b.png,Avoidance latency,C_A1,56.47668394,118.461506,12,NA,34.19689119,se,mean_error
+oliveira_2015_jbehavbraisci_fig2b.png,Avoidance latency,C_A2,103.1088083,129.2307338,12,NA,37.30569948,se,mean_error
+oliveira_2015_jbehavbraisci_fig2b.png,Avoidance latency,C_BL,9.32642487,25.12819824,12,NA,7.25388601,se,mean_error
+oliveira_2015_jbehavbraisci_fig2b.png,Avoidance latency,IE_BL,6.21761658,14.35897043,12,NA,4.14507772,se,mean_error
+oliveira_2015_jbehavbraisci_fig2b.png,Avoidance latency,IE_A1,86.52849741,131.0256051,12,NA,37.8238342,se,mean_error
+oliveira_2015_jbehavbraisci_fig2b.png,Avoidance latency,IE_A2,136.2694301,147.1794469,12,NA,42.48704663,se,mean_error
+oliveira_2015_jbehavbraisci_fig3b.png,Escape latency (time in open arms),C_F1,5.342857143,3.859998943,12,NA,1.114285714,se,mean_error
+oliveira_2015_jbehavbraisci_fig3b.png,Escape latency (time in open arms),C_F2,6.8,8.016920881,12,NA,2.314285714,se,mean_error
+oliveira_2015_jbehavbraisci_fig3b.png,Escape latency (time in open arms),C_F3,6.457142857,7.719997885,12,NA,2.228571429,se,mean_error
+oliveira_2015_jbehavbraisci_fig3b.png,Escape latency (time in open arms),IE_F1,6.542857143,8.214869544,12,NA,2.371428571,se,mean_error
+oliveira_2015_jbehavbraisci_fig3b.png,Escape latency (time in open arms),IE_F2,6.6,4.057947606,12,NA,1.171428571,se,mean_error
+oliveira_2015_jbehavbraisci_fig3b.png,Escape latency (time in open arms),IE_F3,13.2,15.43999577,12,NA,4.457142857,se,mean_error
+pavlov_2023_molsci_Fig4A.png,Sucrose preference %,NonSt_su,71.59887798,9.720233788,10,NA,3.073807816,sd,boxplot
+pavlov_2023_molsci_Fig4A.png,Sucrose preference %,US_su,40.48036466,13.49358108,14,NA,3.606311237,sd,boxplot
+pavlov_2023_molsci_Fig4C.png,Squared crossed,NonSt_sq,10.55444887,6.171788926,10,NA,1.951691024,sd,boxplot
+pavlov_2023_molsci_Fig4C.png,Squared crossed,Us_sq,6.397742364,3.170188603,14,NA,0.847268543,sd,boxplot
+pavlov_2023_molsci_Fig4D.png,Time in center,NonSt_csq,71.65678524,17.50034586,10,NA,5.534095276,sd,boxplot
+pavlov_2023_molsci_Fig4D.png,Time in center,US_csq,25.98814229,11.14510851,14,NA,2.978655543,sd,boxplot
+pavlov_2023_molsci_Fig4E.png,Time in open arms,NonSt_oat,69.16996047,20.83938418,10,NA,6.589991903,sd,boxplot
+pavlov_2023_molsci_Fig4E.png,Time in open arms,US_oat,25.41996047,9.555003808,14,NA,2.553682184,sd,boxplot
+pavlov_2023_molsci_Fig4F.png,Open arms entries,NonSt_oae,13.27165757,5.437726115,10,NA,1.719559982,sd,boxplot
+pavlov_2023_molsci_Fig4F.png,Open arms entries,US_oae,8.684345157,4.225052553,14,NA,1.129192792,sd,boxplot
+whitlow_1978_thesis_fig2.png,Amount of ambulation,HN_1,71.22853369,3.308317219,20,NA,0.739762219,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,HNoN_1,65.62747688,2.363083728,20,NA,0.528401585,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,HLN_1,60.87186262,3.308317219,20,NA,0.739762219,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,HN_2,42.8005284,3.308317219,20,NA,0.739762219,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,HNoN_2,39.73579921,3.780933965,20,NA,0.845442536,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,HLN_2,36.88243065,2.363083728,20,NA,0.528401585,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,HN_3,26.73712021,3.780933965,20,NA,0.845442536,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,HNoN_3,17.33157199,2.835700473,20,NA,0.634081902,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,HLN_3,15.74636724,3.308317219,20,NA,0.739762219,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,C_1_sq,45.76710807,3.404835474,20,NA,0.761344357,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,C_2_sq,31.7366192,2.918430407,20,NA,0.652580878,se,mean_error
+whitlow_1978_thesis_fig2.png,Amount of ambulation,C_3_sq,19.12005556,2.918430407,20,NA,0.652580878,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,HN_1_gr,3.680878553,0.323565392,20,NA,0.072351421,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,HNoN_1_gr,4.476744186,0.323565392,20,NA,0.072351421,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,HLN_1_gr,3.708010336,0.323565392,20,NA,0.072351421,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,HN_2_gr,5.670542636,0.323565392,20,NA,0.072351421,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,HNoN_2_gr,6.394056848,0.364011066,20,NA,0.081395349,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,HLN_2_gr,4.802325581,0.283119718,20,NA,0.063307494,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,HN_3_gr,3.689922481,0.242674044,20,NA,0.054263566,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,HNoN_3_gr,3.843669251,0.283119718,20,NA,0.063307494,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,HLN_3_gr,3.074935401,0.364011066,20,NA,0.081395349,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,C_1_gr,4.052587909,0.333005227,20,NA,0.074462232,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,C_2_gr,3.512736724,0.208128267,20,NA,0.046538895,se,mean_error
+whitlow_1978_thesis_fig4.png,Grooming frequency,C_3_gr,3.84781677,0.24975392,20,NA,0.055846674,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,HN_1_def,2.377659574,0.142727743,20,NA,0.031914894,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,HNoN_1_de,1.73537234,0.178409679,20,NA,0.039893617,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,HLN_1_de,2.022606383,0.160568711,20,NA,0.035904255,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,HN_2_de,1.982712766,0.142727743,20,NA,0.031914894,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,HNoN_2_de,2.218085106,0.160568711,20,NA,0.035904255,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,HLN_2_de,1.831117021,0.124886775,20,NA,0.027925532,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,HN_3_de,2.573138298,0.160568711,20,NA,0.035904255,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,HNoN_3_de,1.140957447,0.178409679,20,NA,0.039893617,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,HLN_3_de,2.86037234,0.124886775,20,NA,0.027925532,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,C_1_de,2.384946908,0.110168807,20,NA,0.024634494,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,C_2_de,1.526845358,0.110168807,20,NA,0.024634494,se,mean_error
+whitlow_1978_thesis_fig5.png,Amount of defecation,C_3_de,2.774993066,0.110168807,20,NA,0.024634494,se,mean_error
