@@ -1,0 +1,370 @@
+---
+title: "Figure_overall_types"
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+pacman::p_load(
+  DT, dtplyr, here, knitr, tidyverse, patchwork, metafor
+)
+
+if (!requireNamespace("orchaRd", quietly = TRUE)) {
+  stop("Package 'orchaRd' is not installed. Install once with remotes::install_github('daniel1noble/orchaRd', upgrade = 'never').")
+}
+
+library(orchaRd)
+
+
+```
+
+```{r}
+#| label: load_and_clean_data lnRR
+dblnRR <- readr::read_csv(here("..","Data","db_lnRR.csv")) %>%
+mutate(across(c(C_n, Ex_n, C_mean, Ex_mean, C_SE, Ex_SE, C_SD, Ex_SD,lnRR,lnRR_var), as.numeric))%>%
+  mutate(across(where(is.character), as.factor))
+```
+
+```{r}
+#| label: vcv_matrix
+
+VCV1 <- metafor::vcalc(
+  vi = lnRR_var,
+  cluster = Cohort_ID, # The clustering variable (Study_ID + Ex_ID)
+  obs = ES_ID,         # The unique observation/effect size ID
+  rho = 0.5,           # Assumed correlation between outcomes from the same cohort
+  data = dblnRR  
+)
+```
+
+```{r}
+#| label: refit_model
+
+ma_all <- rma.mv(yi = lnRR,
+                  V = VCV1, 
+                  random = list(~1 | Study_ID,
+                                ~1 | ES_ID,
+                                ~1 | Strain),
+                  test = "t",
+                  method = "REML", 
+                  sparse = TRUE,
+                  data = dblnRR )
+summary(ma_all)
+```
+
+```{r}
+#| label: orchard_plot
+#| fig-width: 6
+#| fig-height: 4
+#| warning: false
+overall_lnRR<-orchard_plot(ma_all,
+              group = "Study_ID",
+              xlab = "lnRR", 
+              flip=T,trunk.size = 0.3,     
+              branch.size = 2,alpha = 0.3) +
+              scale_x_discrete(labels = c("Overall effect")) +
+            scale_colour_brewer(palette = "Paired") +
+            scale_fill_brewer(palette = "Dark2")+
+                scale_y_continuous(breaks = seq(-8, 10, by = 2),
+                                   minor_breaks = seq(-8, 10, by = 1 ))
+overall_lnRR
+```
+
+```{r}
+#| label: filter_outcome_type
+#| fold: TRUE
+
+k_counts <- dblnRR  %>%
+  group_by(outcome_type) %>%
+  summarise(k_es = n())
+
+
+levels_to_keep <- k_counts %>%
+  filter(k_es >= 5) %>%
+  pull(outcome_type)
+
+
+db_filtered <- dblnRR  %>%
+  filter(outcome_type %in% levels_to_keep)
+
+indices_to_keep <- which(dblnRR $outcome_type %in% levels_to_keep)
+VCV_filtered <- VCV1[indices_to_keep, indices_to_keep]
+```
+
+```{r}
+#| label: model_outcome_type
+
+mOT <- rma.mv(yi = lnRR,
+                  V = VCV_filtered, 
+              mods = ~ outcome_type,
+                  random = list(~1 | Study_ID,
+                                ~1 | ES_ID,
+                                ~1 | Strain),
+                  test = "t",
+                  method = "REML", 
+                  sparse = TRUE,
+                  data = db_filtered)
+
+
+
+```
+
+```{r}
+summary(mOT)
+```
+
+```{r}
+#| label: orchard_outcome_type_lnRR
+#| fig-width: 6
+#| fig-height: 4
+#| warning: false
+orchard_outcome<-orchard_plot(mOT,
+             mod = "Outcome_type",
+              group = "Study_ID",
+              xlab = "lnRR", 
+             flip = T,trunk.size = 0.3,     
+              branch.size = 2, alpha = 0.3) +
+            scale_colour_brewer(palette = "Set1") +
+            scale_fill_brewer(palette = "Dark2")+scale_y_continuous(breaks = seq(-8, 10, by = 2),
+                                                                    minor_breaks = seq(-8, 10, by = 1 ))
+orchard_outcome
+```
+
+```{r}
+#| label: setup
+#| include: true
+
+
+#| label: load_and_clean_data
+# LOAD THE lnVR DATASET HERE
+dblnVR <- readr::read_csv(here("..","data","db_lnVR.csv")) %>%
+  mutate(across(c(C_n, Ex_n, C_mean, Ex_mean, C_SE, Ex_SE, C_SD, Ex_SD, lnVR, lnVR_var), as.numeric)) %>%
+  mutate(across(where(is.character), as.factor)) 
+
+
+# CALCULATE VCV USING lnVR VARIANCE
+VCV2 <- metafor::vcalc(
+  vi = lnVR_var,       
+  cluster = Cohort_ID, # The clustering variable (Study_ID + Ex_ID)
+  obs = ES_ID,         # The unique observation/effect size ID
+  rho = 0.5,           # Assumed correlation between outcomes from the same cohort
+  data = dblnVR 
+)
+
+```
+
+```{r}
+#| label: model_outcome_type
+
+mOV <- rma.mv(yi = lnVR, 
+                  V = VCV2, 
+              mods = ~ 1,
+                  random = list(~1 | Study_ID,
+                                ~1 | ES_ID,
+                                ~1 | Strain),
+                  test = "t",
+                  method = "REML", 
+                  sparse = TRUE,
+                  data = dblnVR)
+
+
+```
+
+```{r}
+summary(mOV)
+```
+
+```{r}
+#| label: orchard_overall_lnVR
+#| fig-width: 6
+#| fig-height: 4
+#| warning: false
+orchard_overall_lnVR<-orchard_plot(mOV,
+               group = "Study_ID",
+               xlab = "lnVR", 
+              flip = T,trunk.size = 0.3,     
+              branch.size = 2, alpha = 0.3) + 
+              scale_x_discrete(labels = c("Overall effect"))+
+            scale_colour_brewer(palette = "Dark2") +
+            scale_fill_brewer(palette = "Paired")+scale_y_continuous(limits = c(-6,11),breaks = seq(-6, 10, by = 2),
+                                                                    minor_breaks = seq(-6, 11, by = 1 ))
+orchard_overall_lnVR
+```
+
+```{r}
+#| label: filter_outcome_type_lnVR
+#| fold: TRUE
+
+k_counts <- dblnVR %>%
+  group_by(Outcome_type) %>%
+  summarise(k_es = n())
+
+
+levels_to_keep <- k_counts %>%
+  filter(k_es >= 5) %>%
+  pull(Outcome_type)
+
+
+db_filtered2 <- dblnVR  %>%
+  filter(Outcome_type %in% levels_to_keep)
+
+indices_to_keep <- which(dblnVR $Outcome_type %in% levels_to_keep)
+VCV_filtered2 <- VCV2[indices_to_keep, indices_to_keep]
+```
+
+```{r}
+#| label: model_outcome_type_lnVR
+
+mOT2 <- rma.mv(yi = lnVR, 
+                  V = VCV_filtered2, 
+              mods = ~ Outcome_type,
+                  random = list(~1 | Study_ID,
+                                ~1 | ES_ID,
+                                ~1 | Strain),
+                  test = "t",
+                  method = "REML", 
+                  sparse = TRUE,
+                  data = db_filtered2)
+
+
+```
+
+```{r}
+summary(mOT2)
+```
+
+```{r}
+#| label: orchard_outcome_type
+#| fig-width: 6
+#| fig-height: 4
+#| warning: false
+orchard_outcome_lnVR<-orchard_plot(mOT2,
+              mod = "Outcome_type",
+               group = "Study_ID",
+               xlab = "lnVR", 
+              flip = T,trunk.size = 0.3,alpha = 0.3,     
+              branch.size = 2) +
+            scale_colour_brewer(palette = "Dark2") +
+            scale_fill_brewer(palette = "Set1")+scale_y_continuous(limits = c(-6,11),breaks = seq(-6, 10, by = 2),
+                                                                    minor_breaks = seq(-6, 11, by = 1 ))
+orchard_outcome_lnVR
+```
+
+```{r}
+#| label: patched_figures_same_limits
+#| fig-width: 14
+#| fig-height: 10
+#| warning: false
+
+# 1. Define Common Limits
+# We pick a range that covers the min of lnRR and max of lnVR
+common_limits <- c(-7, 11) 
+common_breaks <- seq(-7, 11, by = 2)
+
+# 2. Update Left Column Plots (lnRR) -----------------------------
+
+# Update Overall lnRR
+p_RR_all <- overall_lnRR + 
+  scale_y_continuous(name = "lnRR", 
+                     limits = common_limits, 
+                     breaks = common_breaks) +
+  ggtitle("") 
+#+theme(legend.position = "none") # Remove legend for cleaner top plot
+
+# Update Outcome lnRR
+p_RR_mod <- orchard_outcome + 
+  scale_y_continuous(name = "lnRR", 
+                     limits = common_limits, 
+                     breaks = common_breaks) +
+  ggtitle("")
+
+
+# 3. Update Right Column Plots (lnVR) ----------------------------
+
+# Update Overall lnVR
+p_VR_all <- orchard_overall_lnVR + 
+  scale_y_continuous(name = "lnVR", 
+                     limits = common_limits, 
+                     breaks = common_breaks) +
+  ggtitle("") 
+# +theme(legend.position = "none") 
+
+# Update Outcome lnVR
+p_VR_mod <- orchard_outcome_lnVR + 
+  scale_y_continuous(name = "lnVR", 
+                     limits = common_limits, 
+                     breaks = common_breaks) +
+  ggtitle("")
+
+
+
+```
+
+# 4. Patch Together ---------------------------------------------
+
+# Construct columns: Overall on top of Moderator
+
+left_col \<- (p_RR_all / p_RR_mod) + plot_layout(heights = c(1, 6)) right_col \<- (p_VR_all / p_VR_mod) + plot_layout(heights = c(1, 6))
+
+# Combine columns side-by-side
+
+final_patch \<- left_col \| right_col
+
+# Render
+
+comparison\<-final_patch + plot_annotation( title = '', tag_levels = 'A' ) comparison
+
+```{r}
+fig2<-(p_RR_all/p_VR_all)
+
+fig2<-fig2+ 
+  plot_annotation(
+    title = '',
+    tag_levels = 'A'
+  )
+fig2
+```
+
+```{r}
+#| label: save-figure
+#| eval: false
+
+ggsave(filename = here("..","Plots", "overall_effects.pdf"),
+       plot = fig2,
+       dpi = 300, device = cairo_pdf)
+
+ggsave(filename = here("..","Plots", "overall_effects.jpg"),
+       plot = fig2,
+       width = 7,  
+       height = 9,  
+       dpi = 300)
+
+```
+
+```{r}
+fig<-(p_RR_mod/p_VR_mod)
+
+fig3<-fig+ 
+  plot_annotation(
+    title = '',
+    tag_levels = 'A'
+  )
+fig3
+```
+
+```{r}
+#| label: save-figure
+#| eval: false
+
+ggsave(filename = here("..","Plots", "outcome_effects.pdf"),
+       plot = fig3,
+       dpi = 300, device = cairo_pdf)
+
+ggsave(filename = here("..","Plots", "outcome_effects.jpg"),
+       plot = fig3,
+       width = 7,  
+       height = 9,  
+       dpi = 300)
+
+```

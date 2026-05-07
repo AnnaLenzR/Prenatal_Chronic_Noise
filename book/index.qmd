@@ -1,0 +1,56 @@
+---
+title: "Online supplementary"
+subtitle: "Reproducible workflow, full outputs, and extended methods"
+toc: false
+---
+
+::: {.card}
+# What this site contains
+
+This online supplement provides the complete computational workflow for the systematic review and multilevel meta-analysis of music exposure effects on anxiety- and depression-like behaviour in laboratory rodents.
+
+It includes:
+
+- Full data processing and effect-size derivations (lnRR, lnVR, and lnCVR), including safeguards for boundary values and audit checks
+
+- Multilevel model specifications (VCV construction, random-effects structure) and overall-effect models for each effect size
+
+- Uni-moderator meta-regressions across study and design characteristics, with post-hoc contrasts where applicable
+
+- Publication-bias diagnostics and leave-one-out sensitivity analyses
+
+- Figures and downloadable tables generated directly from the analysis pipeline
+:::
+
+::: {.card}
+## How to navigate
+
+Use the left sidebar to browse the workflow chapters:
+
+- **Home** (index.qmd)
+
+- **Effect size calculation** (`effect_size_calculation.qmd`) — data cleaning, continuity corrections, and computation of lnRR, lnVR, and lnCVR
+
+- **Overall effects** (`overall_effect.qmd`) — intercept-only multilevel models for each effect size
+
+- **Uni-moderators** (`uni_moderators.qmd`) — uni-moderator meta-regressions and post-hoc contrasts
+
+- **Publication bias** (`publication_bias.qmd`) — small-study effects / bias diagnostics
+
+- **Leave-one-out** (`leave_one_out.qmd`) — sensitivity analyses excluding one study at a time
+
+- **Main figures** (`main_figures.qmd`) — reproduction of figures from the manuscript
+
+- **Alluvial** (`Alluvial.qmd`) — alluvial visualization of study characteristics and outcome structure
+:::
+
+::: {.card}
+## Reproducibility
+
+All code is executed in Quarto and frozen for stable rendering.
+Where relevant, we provide intermediate outputs (effect-size tables, continuity-correction audits, VCV matrices, model summaries, and contrasts) alongside the exact R code used to generate them.
+:::
+
+
+
+

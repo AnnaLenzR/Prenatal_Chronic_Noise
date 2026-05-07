@@ -1,0 +1,281 @@
+---
+title: "Overall effects"
+---
+
+```{r}
+#| label: setup
+#| include: false
+pacman::p_load(
+               DT,
+               dtplyr,
+               here, 
+               knitr,
+               tidyverse,
+               patchwork,
+               metafor,
+               orchaRd,
+               devtools
+               )
+
+# Install orchaRd from its official GitHub repository
+devtools::install_github("daniel1noble/orchaRd", force = TRUE)
+```
+
+
+```{r}
+#| label: load_effectsize_db
+#| message: false
+#| warning: false
+
+db <- readr::read_csv(here('/Users/annalenz/Desktop/ChronicNoise_Rodents/Prenatal_Chronic_Noise/Data/db_lnRR.csv')) %>%
+  mutate(across(where(is.character), as.factor)) %>%
+  mutate(across(c(lnRR, lnRR_var), as.numeric))
+```
+
+```{r}
+# ---- 1) Check missingness in raw stats vs effect sizes ----
+db %>%
+  summarise(
+    n_rows = n(),
+    miss_c_mean = sum(is.na(c_mean)),
+    miss_c_sd   = sum(is.na(c_sd)),
+    miss_c_n    = sum(is.na(c_n)),
+    miss_c_se   = sum(is.na(c_se)),
+    miss_c_ci   = sum(is.na(c_ci)),
+    miss_ex_mean = sum(is.na(ex_mean)),
+    miss_ex_sd   = sum(is.na(ex_sd)),
+    miss_ex_n    = sum(is.na(ex_n)),
+    miss_ex_se   = sum(is.na(ex_se)),
+    miss_ex_ci   = sum(is.na(ex_ci)),
+    miss_lnRR    = sum(is.na(lnRR)),
+    miss_lnRR_var = sum(is.na(lnRR_var))
+  )
+
+```
+
+
+After estimating effect sizes, we fit one multilevel, intercept-only meta-analytic models to estimate the overall mean effect of music exposure on:
+
+- the mean outcome (lnRR),
+
+- the absolute variability (lnVR),
+
+- the relative variability (lnCVR).
+
+Because many studies contribute multiple, non-independent outcomes (sometimes measured on the same cohort), we use `rma.mv()` in `metafor` with a cohort-level variance–covariance (VCV) matrix built using `vcalc()`.
+
+
+
+
+
+::: callout-note
+Variable definitions:
+
+| Variable Name | Definition |
+|:-----------------------------------|:-----------------------------------|
+| **`es_id`** | Unique row identifier for each effect size. |
+| **`study_id`** | Identifier for the primary research paper. |
+| **`cohort_id`** | Identifier for specific experimental groups within a study (combination of Study_ID and Experiment_ID). |
+|**`lnRR`**, **`lnRR_var`** | Log response ratio and its sample variance.|
+|**`lnVR`**, **`lnVR_var`** | Log variability ratio and its sample variance.|
+|**`lnCVR`**, **`lnCVR_var`** | Log coefficient of variation ratio and its sample variance.|
+
+
+
+:::
+
+## Variance–covariance matrices (within-cohort dependence)
+
+We assume that multiple outcomes measured on the same cohort have correlated sampling errors. We therefore construct a VCV matrix with an assumed within-cohort correlation of r = 0.5 when correlations are not reported.
+
+
+## Multilevel intercept-only meta-analytic models
+
+
+
+The code below fits the three models using the same specification:
+
+- Random intercepts for Study (`study_id`)
+
+- Random intercepts for Effect size (`es_id`)
+
+- Random intercepts for Strain (`strain`)
+
+- REML estimation and `test = "t"`
+
+
+
+```{r}
+#| label: overall_models_all_three
+#| message: false
+#| warning: false
+
+fit_overall_mv <- function(dat, yi, vi, rho = 0.5) {
+  
+  dat2 <- dat %>%
+    filter(!is.na(.data[[yi]]), !is.na(.data[[vi]]))
+  
+  VCV <- metafor::vcalc(
+    vi = dat2[[vi]],
+    cluster = dat2$cohort_id,
+    obs = dat2$es_id,
+    rho = rho,
+    data = dat2
+  )
+  
+  mod <- metafor::rma.mv(
+    yi = dat2[[yi]],
+    V  = VCV,
+    random = list(
+      ~1 | study_id,
+      ~1 | es_id,
+      ~1 | strain
+    ),
+    test = "t",
+    method = "REML",
+    sparse = TRUE,
+    data = dat2
+  )
+  
+  list(data = dat2, VCV = VCV, model = mod)
+}
+
+res_lnRR  <- fit_overall_mv(db, yi = "lnRR",  vi = "lnRR_var",  rho = 0.5)
+
+
+
+
+
+```
+
+
+
+:::::::: columns
+:::: {.column width="49%"}
+::: panel-text
+## lnRR
+:::
+```{r}
+#| label: summary_lnRR
+summary(res_lnRR$model)
+```
+```{r}
+#| label: i2_lnRR
+orchaRd::i2_ml(res_lnRR$model)
+```
+::: card
+```{r}
+#| label: orchard_lnRR
+# 1. Use the explicit package prefix 'orchaRd::' to prevent "function not found"
+p_lnRR <- orchaRd::orchard_plot(
+  res_lnRR$model,
+  group = "study_id",
+  xlab = "lnRR",
+  flip = TRUE
+) 
+
+# 2. Adjust the labels on the y-axis (since orchard_plot maps the categorical axis to Y)
+p_lnRR <- p_lnRR + 
+  scale_y_discrete(labels = c("1" = "Overall effect", "All" = "Overall effect"))
+
+# 3. Print the plot
+p_lnRR
+```
+:::
+
+::::
+
+::: {.column width="2%"}
+:::
+
+
+
+
+
+
+
+# I am not doing this part (confirm with Shinichi and Losia):
+
+:::: {.column width="49%"}
+::: panel-text
+## lnVR
+:::
+```{r}
+#| label: summary_lnVR
+summary(res_lnVR$model)
+```
+```{r}
+#| label: i2_lnVR
+orchaRd::i2_ml(res_lnVR$model)
+```
+::: card
+```{r}
+#| label: orchard_lnVR
+p_lnVR <- orchard_plot(
+  res_lnVR$model,
+  group = "Study_ID",
+  xlab = "lnVR",
+  flip = TRUE
+) +
+  scale_x_discrete(labels = "Overall effect")
+p_lnVR
+```
+:::
+
+:::
+
+::::
+
+
+
+:::::::: columns
+:::: {.column width="25%"}
+::::
+:::: {.column width="50%"}
+
+::: panel-text
+## lnCVR
+:::
+```{r}
+#| label: summary_lnCVR
+summary(res_lnCVR$model)
+```
+
+```{r}
+#| label: i2_lnCVR
+orchaRd::i2_ml(res_lnCVR$model)
+```
+::: card
+```{r}
+#| label: orchard_lnCVR
+p_lnCVR <- orchard_plot(
+  res_lnCVR$model,
+  group = "Study_ID",
+  xlab = "lnCVR",
+  flip = TRUE
+) +
+  scale_x_discrete(labels = "Overall effect")
+p_lnCVR
+```
+:::
+
+:::
+:::: {.column width="25%"}
+::::
+
+::::::::
+
+
+
+
+
+
+
+::: callout-note
+
+```{r}
+sessionInfo()
+```
+
+:::
+

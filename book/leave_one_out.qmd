@@ -1,0 +1,125 @@
+---
+title: "Leave-one-out"
+---
+To evaluate whether the overall meta-analytic estimate is driven by any single study, we perform a leave-one-out analysis at the **study level**. 
+
+For each iteration, we refit the full multilevel model after removing all effect sizes from one study and record the resulting overall lnRR estimate. If the pooled effect remains stable across iterations, this indicates that the main result is not unduly influenced by any single study.
+
+```{r}
+#| label: setup
+#| include: false
+pacman::p_load(
+               DT,
+               dtplyr,
+               here, 
+               knitr,
+               tidyverse,
+               patchwork,
+               metafor,
+               orchaRd
+               )
+```
+
+```{r}
+#| label: load_and_clean_data
+db <- readr::read_csv(here("..","data","db_effect_sizes.csv")) %>%
+mutate(across(c(C_n, Ex_n, C_mean, Ex_mean, C_SE, Ex_SE, C_SD, Ex_SD, lnRR, lnRR_var), as.numeric))%>%
+  mutate(across(where(is.character), as.factor))
+
+
+
+
+db <- db %>%
+  mutate(Study = str_extract(Study_ID, ".*_\\d{4}"))
+```
+
+
+```{r}
+VCV <- metafor::vcalc(
+  vi = lnRR_var,
+  cluster = Cohort_ID, # The clustering variable (Study_ID + Ex_ID)
+  obs = ES_ID,         # The unique observation/effect size ID
+  rho = 0.5,           # Assumed correlation between outcomes from the same cohort
+  data = db 
+)
+```
+
+
+
+Because our model uses a variance–covariance matrix (VCV) to account for within-cohort dependence, we must recompute that matrix each time a study is removed. The `vcalc_args` object ensures that the same covariance structure (cluster variable and assumed correlation) is applied during each refitting step.
+
+```{r}
+vcalc_args <- list(vi = "lnRR_var",
+                   cluster = "Cohort_ID",
+                   obs = "ES_ID",
+                   rho = 0.5)
+```
+
+```{r}
+#| label: refit_model
+
+ma_all <- rma.mv(yi = lnRR,
+                  V = VCV, 
+                  random = list(~1 | Study_ID,
+                                ~1 | ES_ID,
+                                ~1 | Strain),
+                  test = "t",
+                  method = "REML", 
+                  data = db)
+
+summary(ma_all)
+```
+
+
+
+```{r}
+loo_t<-leave_one_out(ma_all, group = "Study", vcalc_args =vcalc_args)
+```
+
+```{r}
+loo_t
+```
+
+```{r}
+#| label: loo_plot
+loo_plot<-orchard_leave1out(leave1out = loo_t,
+                  xlab = "lnRR",
+                  ylab = "Studies left out",
+                  trunk.size = 0.3,
+                  branch.size = 2,
+                  alpha = 0.3,
+                  legend.pos = "top.out")
+
+
+loo_plot
+```
+Across iterations, the pooled lnRR estimate remained within a narrow range and consistently below zero. No single study reversed the direction or substantially altered the magnitude of the overall effect. This indicates that the observed reduction in anxiety- and depression-like behaviors under music exposure is not driven by any individual dataset and is robust to study-level exclusion.
+
+```{r}
+#| label: save-figure_behaviour
+#| eval: false
+
+ggsave(filename = here("..","Plots", "loo_studies.pdf"),
+       plot = loo_plot,
+       dpi = 300, device = cairo_pdf,width = 12,  
+       height = 10)
+
+ggsave(filename = here("..","Plots", "loo_studies.jpg"),
+       plot = loo_plot,
+       width = 12,  
+       height = 10,  
+       dpi = 300)
+
+```
+
+
+
+::: callout-note
+```{r}
+sessionInfo()
+```
+:::
+
+
+
+

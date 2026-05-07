@@ -1,0 +1,171 @@
+---
+title: "lnCVR"
+---
+
+```{r}
+#| label: setup
+#| include: false
+pacman::p_load(
+               DT,
+               dtplyr,
+               here, 
+               knitr,
+               tidyverse,
+               patchwork,
+               metafor,
+               orchaRd
+               )
+```
+
+```{r}
+#| label: load_and_clean_data
+db <- readr::read_csv(here("data","db_effect_sizes.csv")) %>%
+mutate(across(c(C_n, Ex_n, C_mean, Ex_mean, C_SE, Ex_SE, C_SD, Ex_SD), as.numeric))%>%
+  mutate(across(where(is.character), as.factor))
+```
+
+
+
+
+```{r}
+#| label: calculate_lnCVR_secondary
+calculate_lnCVR <- function(dt) {
+
+  # 1. Filter out Proportional Data
+  # lnCVR is not appropriate for percentage/proportional data, which are handled 
+  # by the arcsine-transformed ratio in the primary analysis.
+  dt_filtered <- dt %>%
+    mutate(Data_type = tolower(Data_type)) %>% # Ensure lowercase for filtering
+    filter(!Data_type %in% c("percentage")) 
+  
+  # Check if there is data left to calculate
+  if (nrow(dt_filtered) == 0) {
+    message("No non-percentage data remaining for lnCVR calculation.")
+    return(dt_filtered)
+  }
+  
+  # 2. Calculate lnCVR and its Variance (lnCVR_var)
+  # The input 'dt' is already imputed and cleaned by the earlier process 
+  # (though for best practice, we'll re-extract key variables)
+  
+  # Since metafor::escalc is vectorised, we can calculate for all rows at once, 
+  # which is much faster than using a 'for' loop.
+  effect_cvr <- metafor::escalc(
+    measure = "CVR", 
+    m1i = dt_filtered$Ex_mean, m2i = dt_filtered$C_mean, 
+    sd1i = dt_filtered$Ex_SD, sd2i = dt_filtered$C_SD, 
+    n1i = dt_filtered$Ex_n, n2i = dt_filtered$C_n, 
+    var.names = c("lnCVR", "lnCVR_var")
+  )
+  
+  # 3. Combine results and Standardize Outcome Direction
+  dt_cvr <- dt_filtered %>%
+    bind_cols(effect_cvr) %>% # Append the new lnCVR and lnCVR_var columns
+    mutate(
+      # Apply sign flip: If lower variability is better ("No" for Higher_better), 
+      # a positive lnCVR should indicate a beneficial (decreased variability) outcome.
+      # lnCVR = log(CV_Ex/CV_C). If Ex < C, lnCVR is negative. If 'No' is better, 
+      # we flip the sign to make negative lnCVR (Ex < C) positive.
+      lnCVR_std = ifelse(
+        Higher_better == "No", 
+        lnCVR * -1, 
+        lnCVR
+      )
+    ) %>%
+    # Select and rename columns for clarity in the final output
+    rename(
+      lnCVR_unstd = lnCVR,
+      lnCVR = lnCVR_std
+    ) %>%
+    # Select only the original data plus the new effect size columns
+    select(
+      all_of(names(dt)), # Keep original columns
+      lnCVR, lnCVR_var, lnCVR_unstd
+    )
+
+
+  return(dt_cvr)
+}
+```
+
+
+
+
+
+
+```{r}
+#| label: apply_lnCVR_calculation
+#| eval: false
+
+
+db_lnCVR <- calculate_lnCVR(db)
+
+readr::write_csv(
+  db_lnCVR, 
+  file = here("data", "db_lnCVR.csv"),
+  na = "" 
+)
+```
+
+
+
+
+::: panel-tabset
+## Effect Size Table
+
+```{r}
+#| label: effect_size_table
+#| echo: false
+
+db_lnCVR <- readr::read_csv(here("data","db_lnCVR.csv")) %>%
+mutate(across(c(C_n, Ex_n, C_mean, Ex_mean, C_SE, Ex_SE, C_SD, Ex_SD), as.numeric))%>%
+  mutate(across(where(is.character), as.factor))
+
+# Define all columns to display (IDs first, then numerical data)
+display_cols <- c("ES_ID", "Study_ID",  
+                  "C_n", "C_mean", "C_SE", "C_SD", 
+                  "Ex_n", "Ex_mean", "Ex_SE", "Ex_SD", 
+                  "lnCVR", "lnCVR_var", "Cohort_ID")
+
+# Define columns that require numerical rounding (excluding the ID columns)
+round_cols <- c("C_n", "C_mean", "C_SE", "C_SD", 
+                "Ex_n", "Ex_mean", "Ex_SE", "Ex_SD", 
+                "lnCVR", "lnCVR_var")
+
+DT::datatable(
+ db_lnCVR %>% 
+    # Select only the desired columns for display
+    dplyr::select(all_of(display_cols)),
+  options = list(
+    pageLength = 10,
+    scrollX = TRUE,
+    dom = 'Bfrtip',
+    buttons = c('copy', 'csv')
+  ),
+  extensions = 'Buttons',
+  rownames = FALSE
+) %>%
+  # Apply rounding ONLY to the numerical statistical columns
+  formatRound(columns = round_cols, digits = 3) %>%
+  # Apply general styling to all displayed columns
+  formatStyle(columns = display_cols, `text-align` = 'center')
+```
+
+## Effect Size Distributions
+
+```{r}
+#| label: lnRR_histogram
+
+hist(db_lnCVR$lnCVR,xlim=c(-6.5,9),breaks = seq(-6.5,9,0.5))
+
+
+hist(db_lnCVR$lnCVR_var, xlim=c(0,13),breaks = seq(0,13,0.1))
+```
+:::
+
+
+
+
+
+
+
