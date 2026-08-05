@@ -222,50 +222,7 @@ res_rr$plot
 
 :::: {.column width="49%"}
 
-### lnVR
 
-```{r}
-#| label: outcome_type_lnVR_summary
-summary(res_vr$model)
-```
-
-
-```{r}
-#| label: outcome_type_lnVR_r2
-res_vr$r2
-```
-
-::: card
-```{r}
-#| label: outcome_type_lnVR_plot
-res_vr$plot
-```
-:::
-
-:::
-
-:::
-
-
-:::: {.column width="25%"} 
-::::
-:::: {.column width="50%"}
-### lnCVR
-```{r}
-#| label: outcome_type_lnCVR_summary
-summary(res_cvr$model)
-```
-
-```{r}
-#| label: outcome_type_lnCVR_r2
-res_cvr$r2
-```
-
-::: card
-```{r}
-#| label: outcome_type_lnCVR_plot
-res_cvr$plot
-```
 :::
 :::
 :::: {.column width="25%"}
@@ -281,39 +238,36 @@ res_cvr$plot
 
 ```{r}
 #| label: run_Assay_type
-MOD  <- "Assay_type"
-MODS <- "~ Assay_type - 1"
+MOD  <- "assay_type"
+MODS <- "~ assay_type - 1"
 
+table(db_rr$assay_type)
 
 assay_labels <- c(
-  "Elevated Plus Maze" = "EPM",
-  "Open Field Test" = "OFT",
-  "Light-Dark Box" = "LDB",
-  "Forced Swim Test (FST)" = "FST",
-  "Tail Suspension Test (TST)" = "TST",
-  "Sucrose Preference Test (SPT)" = "SPT"
+  "Elevated Plus Maze (EPM)" = "EPM",
+  "Open Field Test (OFT)" = "OFT",
+  "Forced Swimming Test (FST)" = "FST",
+  "Sucrose Preference Test (SPT)" = "SPT",
+  "Defensive withdrawal test (DWT)" = "DWT",
+  "Elevated T Maze (ETM)" = "ETM"
 )
 
 
 # 1) Filter each effect-size dataset (and subset the VCV accordingly)
-f_rr  <- filter_low_k_single(db_rr,  VCV_rr,  MOD, min_k = 5)
-f_vr  <- filter_low_k_single(db_vr,  VCV_vr,  MOD, min_k = 5)
-f_cvr <- filter_low_k_single(db_cvr, VCV_cvr, MOD, min_k = 5)
+f_rr  <- filter_low_k_single(db_rr,  VCV_rr,  MOD, min_k = 6)
+
 # 2) Fit the three unimoderator models (same moderator, different yi/vi)
 res_rr  <- fit_unimod(f_rr$data,  f_rr$V,  "lnRR",  MODS, MOD, expression(lnRR))
-res_vr  <- fit_unimod(f_vr$data,  f_vr$V,  "lnVR",  MODS, MOD, expression(lnVR))
-res_cvr <- fit_unimod(f_cvr$data, f_cvr$V, "lnCVR", MODS, MOD, expression(lnCVR))
+
 
 # 2b) Relabel x-axis in the orchard plots (so EPM/OFT/etc. show)
 res_rr$plot  <- res_rr$plot  + scale_x_discrete(labels = assay_labels)
-res_vr$plot  <- res_vr$plot  + scale_x_discrete(labels = assay_labels)
-res_cvr$plot <- res_cvr$plot + scale_x_discrete(labels = assay_labels)
+
 
 # 3) Tukey contrasts (use the filtered data + matched VCV for each dataset)
 
 tuk_rr  <- maybe_tukey(dat = f_rr$data,  V = f_rr$V,  yi = "lnRR",  moderator = MOD)
-tuk_vr  <- maybe_tukey(dat = f_vr$data,  V = f_vr$V,  yi = "lnVR",  moderator = MOD)
-tuk_cvr <- maybe_tukey(dat = f_cvr$data, V = f_cvr$V, yi = "lnCVR", moderator = MOD)
+
 
 ```
 
@@ -353,61 +307,6 @@ tuk_rr
 
 :::: {.column width="49%"}
 
-### lnVR
-
-```{r}
-#| label: assay_lnVR_summary
-summary(res_vr$model)
-```
-
-
-```{r}
-#| label: assay_lnVR_r2
-res_vr$r2
-```
-
-::: card
-```{r}
-#| label: assay_lnVR_plot
-res_vr$plot
-```
-:::
-```{r}
-#| label: assay_lnVR_tukey
-tuk_vr
-```
-:::
-
-:::
-
-
-:::: {.column width="25%"} 
-::::
-:::: {.column width="50%"}
-### lnCVR
-```{r}
-#| label: assay_lnCVR_summary
-summary(res_cvr$model)
-```
-
-```{r}
-#| label: assay_lnCVR_r2
-res_cvr$r2
-```
-
-::: card
-```{r}
-#| label: assay_lnCVR_plot
-res_cvr$plot
-```
-:::
-
-```{r}
-#| label: assay_lnCVR_tukey
-tuk_cvr
-
-```
-
 :::
 :::: {.column width="25%"}
 :::
@@ -419,16 +318,15 @@ tuk_cvr
 
 ```{r}
 #| label: run_mechanism
-MOD  <- "Induced behaviour"
-MODS <- "~ `Induced behaviour`"
+MOD  <- "measurement_variable"
+MODS <- "~ `measurement_variable`"
 
 f_rr  <- filter_low_k_single(db_rr,  VCV_rr,  MOD, min_k = 5)
-f_vr  <- filter_low_k_single(db_vr,  VCV_vr,  MOD, min_k = 5)
-f_cvr <- filter_low_k_single(db_cvr, VCV_cvr, MOD, min_k = 5)
+
+
 
 res_rr  <- fit_unimod(f_rr$data,  f_rr$V,  "lnRR",  MODS, MOD, expression(lnRR))
-res_vr  <- fit_unimod(f_vr$data,  f_vr$V,  "lnVR",  MODS, MOD, expression(lnVR))
-res_cvr <- fit_unimod(f_cvr$data, f_cvr$V, "lnCVR", MODS, MOD, expression(lnCVR))
+
 
 
 ```
@@ -461,52 +359,7 @@ res_rr$plot
 :::
 
 
-:::: {.column width="49%"}
 
-### lnVR
-
-```{r}
-#| label: mechanism_lnVR_summary
-summary(res_vr$model)
-```
-
-
-```{r}
-#| label: mechanism_lnVR_r2
-res_vr$r2
-```
-
-::: card
-```{r}
-#| label: mechanism_lnVR_plot
-res_vr$plot
-```
-:::
-
-:::
-
-:::
-
-
-:::: {.column width="25%"} 
-::::
-:::: {.column width="50%"}
-### lnCVR
-```{r}
-#| label: mechanism_lnCVR_summary
-summary(res_cvr$model)
-```
-
-```{r}
-#| label: mechanism_lnCVR_r2
-res_cvr$r2
-```
-
-::: card
-```{r}
-#| label: mechanism_lnCVR_plot
-res_cvr$plot
-```
 :::
 :::
 :::: {.column width="25%"}
@@ -521,8 +374,8 @@ res_cvr$plot
 
 ```{r}
 #| label: run_Lifestage
-MOD  <- "Lifestage_exposure"
-MODS <- "~ Lifestage_exposure -1"
+MOD  <- "gest_stage_ex"
+MODS <- "~ gest_stage_ex -1"
 
 
 lifestage_labels <- c(

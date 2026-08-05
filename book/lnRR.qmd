@@ -231,7 +231,7 @@ ci_halfwidth_to_se <- function(ci_halfwidth) ci_halfwidth / 1.96
 ```{r}
 #| label: load_and_clean_data
 
-db <- readr::read_csv(here("Data", "PCN_data_ext_checking_v.3.csv")) %>%
+db <- readr::read_csv(here("..","Data","PCN_data_ext_checking_v.3.csv")) %>%
   
   # 0) Make sure numeric fields are numeric
   mutate(across(
@@ -353,7 +353,7 @@ db %>%
 
 # =========================
 
-## Calculate lnRR Effect Sizes
+## Calculate InRR Effect Sizes
 
 Now, we apply the `calculate_lnRR()` function to the cleaned dataset to compute the effect sizes and their variances.
 
@@ -376,7 +376,7 @@ db_effect_sizes %>%
 
 db_effect_sizes %>%
   filter(is.na(lnRR) | is.na(lnRR_var)) %>%
-  dplyr::select(
+  select(
     es_id, study_id, data_type, comparison_structure, higher_better,
     c_n, ex_n, c_mean, ex_mean, c_sd, ex_sd
   ) %>%
@@ -384,7 +384,7 @@ db_effect_sizes %>%
 
 readr::write_csv(
   db_effect_sizes,
-  file = here("Data", "db_lnRR.csv"),
+  file = here("..","Data", "db_lnRR.csv"),
   na = ""
 )
 
@@ -392,7 +392,7 @@ readr::write_csv(
 
 # =========================
 
-## Calculate lnRR Effect Sizes
+## Calculate InRR Effect Sizes
 
 We apply the `calculate_lnRR()` function to the cleaned dataset to generate effect sizes and sampling variances. The resulting dataset is saved for reproducibility and downstream modeling.
 
@@ -403,7 +403,7 @@ We apply the `calculate_lnRR()` function to the cleaned dataset to generate effe
 db_effect_sizes<-calculate_lnRR(db)
 readr::write_csv(
   db_effect_sizes, 
-  file = here("Data", "db_lnRR.csv"),
+  file = here("..","Data", "db_lnRR.csv"),
   na = "" 
 )
 
@@ -416,7 +416,7 @@ readr::write_csv(
 #| label: effect_size_table
 #| echo: false
 
-db_effect_sizes <- readr::read_csv(here("Data","db_lnRR.csv")) %>%
+db_effect_sizes <- readr::read_csv(here("..","Data","db_lnRR.csv")) %>%
 mutate(across(c(c_n, ex_n, c_mean, ex_mean, c_se, ex_se, c_sd, ex_sd), as.numeric))%>%
   mutate(across(where(is.character), as.factor))
 
@@ -553,7 +553,7 @@ text(
 # Purpose: inspect whether huge variances come from tiny n, huge SD, near-zero means, % transforms, etc.
 db_effect_sizes %>%
   arrange(desc(lnRR_var)) %>%
-  dplyr::select(
+  select(
     es_id, study_id, data_type, comparison_structure, higher_better,
     lnRR, lnRR_var, SE_lnRR,
     c_n, ex_n, c_mean, ex_mean, c_sd, ex_sd
