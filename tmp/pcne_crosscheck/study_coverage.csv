@@ -1,0 +1,17 @@
+study_id,extracted_rows,source_pdf,author_data_files,metadigitise_effect_sizes,confirmed_issues,review_items,audit_scope
+uygur_2010_aphyhun,3,included_studies/uygur_2010_aphyhun.pdf,,0,12,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+barzegar_2014_hippo,6,included_studies/barzegar_2014_hippo.pdf,,6,19,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+hassanvand_2012_phyphar,3,included_studies/hassanvand_2012_phyphar.pdf,,3,9,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+arjunan_2023_stress,6,included_studies/arjunan_2023_stress.pdf,,6,27,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+hadizadeh_2018_irjbamedsci,2,included_studies/hadizadeh_2018_irjbamedsci.pdf,,2,4,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+abramova_2024_devneur,26,included_studies/abramova_2024_devneur.pdf,,24,56,2,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+oliveira_2015_jbehavbraisci,6,included_studies/oliveira_2015_jbehavbraisci.pdf,,6,12,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+pavlov_2023_molsci,5,included_studies/pavlov_2023_supp/ijms-2385329-supplementary.pdf; included_studies/pavlov_2023_supp/pavlov_2023_molsci.pdf,,5,10,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+nishio_2006_intjdevlneur,6,included_studies/nishio_2006_intjdevlneur.pdf,,6,12,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+uygur_2011_ankarauniv,8,included_studies/uygur_2011_ankarauniv.pdf,,0,20,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+morra_1965_physiolrec,2,included_studies/morra_1965_physiolrec.pdf,,0,6,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+abramova_2021_front,14,included_studies/abramova_2021_front/abramova_2021_front.pdf,included_studies/abramova_2021_front/abramova_2021_front.xlsx,6,76,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+badache_2017_stress,6,included_studies/badache_2017_stress.pdf,,6,13,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+whitlow_1978_thesis,36,included_studies/whitlow_1978_thesis.pdf,,36,108,36,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+abramova_2020_genpath,34,included_studies/abramova_2020_genpath/abramova_2020_genpath.pdf,included_studies/abramova_2020_genpath/abramova2020_descriptives.xlsx; included_studies/abramova_2020_genpath/abramova_2020_genpath.xlsx,0,113,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation
+abramova_2023_biopsy,44,included_studies/abramova_2023_biopsy/abramova_2023_biopsy.pdf,included_studies/abramova_2023_biopsy/abramova_2023_biopsy_data_calculations.xlsx,0,301,0,protocol/schema + internal statistics + PDF methods + available figure/raw-data reconciliation

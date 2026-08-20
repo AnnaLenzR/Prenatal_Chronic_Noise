@@ -1,0 +1,86 @@
+{
+  "source_file": "Data/PCN_data_ext_checking_v.3.csv",
+  "source_sha256": "0bd770a4f117ead932c53b282c823a312a1526170c49f83623c8a7bb9b59a0fc",
+  "output_file": "Data/PCN_data_ext_checking_v.4_crosschecked.csv",
+  "rows": 207,
+  "columns": 84,
+  "correction_log_entries": 424,
+  "rows_with_logged_corrections": 149,
+  "decision_register_entries": 18,
+  "wrangling_plan_entries": 4,
+  "status_counts": {
+    "Verified – no change": 58,
+    "Corrected transcription": 62,
+    "Corrected derived value": 69,
+    "Analysis decision required": 18,
+    "Source needed": 0
+  },
+  "package_summary": [
+    {
+      "package": "1 – Uygur 2011 outcome units",
+      "status": "Corrected transcription",
+      "cells": 8,
+      "rows": 4
+    },
+    {
+      "package": "2 – Uygur 2010 exposure and sample sizes",
+      "status": "Corrected transcription",
+      "cells": 9,
+      "rows": 3
+    },
+    {
+      "package": "3 – Arjunan 2023 acoustic exposure",
+      "status": "Corrected transcription",
+      "cells": 21,
+      "rows": 6
+    },
+    {
+      "package": "4 – Barzegar 2014 title and SEM",
+      "status": "Corrected transcription",
+      "cells": 8,
+      "rows": 6
+    },
+    {
+      "package": "5 – Abramova 2020 derived SEs",
+      "status": "Corrected derived value",
+      "cells": 44,
+      "rows": 34
+    },
+    {
+      "package": "5 – Abramova 2020 derived SEs",
+      "status": "Corrected transcription",
+      "cells": 1,
+      "rows": 1
+    },
+    {
+      "package": "6 – Abramova 2021 same-sex controls",
+      "status": "Corrected derived value",
+      "cells": 14,
+      "rows": 14
+    },
+    {
+      "package": "6 – Abramova 2021 same-sex controls",
+      "status": "Corrected transcription",
+      "cells": 74,
+      "rows": 14
+    },
+    {
+      "package": "7 – Abramova 2023 identifiers and units",
+      "status": "Corrected transcription",
+      "cells": 169,
+      "rows": 44
+    },
+    {
+      "package": "Source follow-up – Abramova 2024",
+      "status": "Corrected transcription",
+      "cells": 4,
+      "rows": 2
+    },
+    {
+      "package": "Variance decision – Whitlow 1978",
+      "status": "Corrected derived value",
+      "cells": 72,
+      "rows": 36
+    }
+  ]
+}

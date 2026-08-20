@@ -1,0 +1,12 @@
+step,scope,n_affected,action
+1,column names,7,Standardized names and resolved duplicate headers
+2,empty source columns,1,Dropped only after confirming the column was entirely empty
+3,categorical cells,2288,Applied the explicit category crosswalk
+4,mean cells,36,"Estimated missing means from Q1, median, Q3, and n"
+5,SD cells,36,"Estimated missing SDs from Q1, Q3, and n"
+6,SD cells,26,Calculated missing SD as SE * sqrt(n)
+7,SE cells,112,Calculated missing SE as SD / sqrt(n)
+8,SE cells,45,Replaced an inconsistent analysis SE while preserving its raw value
+9,primary mean cells,2,Replaced exact zero with 0.9 times the shared outcome-specific minimum positive mean
+10,gestational-window cells,207,"Created the approved late, early_mid, mid_late, and full_gestation categories"
+11,frequency cells,177,"Parsed frequency text into min, max, midpoint, format, and acoustic band"

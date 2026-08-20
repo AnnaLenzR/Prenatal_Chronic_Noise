@@ -1,0 +1,725 @@
+
+===== PAGE 1 =====
+HIPPOCAMPUS 00:1–10 (2014)
+Prenatal Exposure to Noise Stress: Anxiety, Impaired Spatial Memory,
+and Deteriorated Hippocampal Plasticity in Postnatal Life
+Marzieh Barzegar, Fatemeh Sadat Sajjadi, Sayyed Alireza Talaei,
+Gholamali Hamidi, and Mahmoud Salami*
+ABSTRACT: Sound pollution is known as an annoying phenomenon in on the offspring (Weinstock, 2001). Although sound
+modern life. Especially, development of organisms during fetal life is
+is invaluable in communication of most creatures
+more sensitive to environmental tensions. To address a link between the
+including human beings, however, undesirable,
+behavioral and electrophysiological aspects of brain function with
+action of hypothalamus-pituitary-adrenal (HPA) axis in stressed animals, unpleasant, or hurtful sounds are known as noise.
+this study was carried out on the male Wistar rats prenatally exposed to Noise is one of the most widespread sources of envi-
+sound stress. Groups of pregnant rats were exposed to noise stress for ronmental stress in the world (Wallenius, 2004). It
+1, 2, and 4 hour(s). The degree of anxiety and the spatial memory were
+is reported that prenatal exposure to noises nega-
+evaluated by elevated plus maze and Morris water maze, respectively.
+Basic synaptic activity and long-term potentiation (LTP) induction were tively influenced the development of fetus as well as
+assessed in the CA3-CA1 pathway of hippocampus. The serum level of neonate (Kjellberg, 1990). Increased ante partum
+corticosterone was measured in the pregnant mothers and the offspring. fetal death, congenital anomaly in the central nerv-
+The behavioral experiments appeared that the stressed animals per-
+ous system, impaired social behavior in juvenile
+formed considerably weaker than the control rats. The prenatal stress
+negatively affected the basic synaptic responses and led to a lower level stage, and the long-term alteration in the immune
+of LTP. The pregnant animals showed an increased serum corticosterone function have been attributed to prenatal exposure
+in comparison with the nonpregnant females. Also the offspring exposed to noise (Sobrian et al., 1997; Kay et al., 1998).
+to the noise stress had a more elevated level of corticosterone than the
+Increased response in hypothalamic–pituitary–adrenal
+control rats. Our findings indicate that the corticosterone concentration
+(HPA) axis is also reported in stressful situations
+changes markedly coincides the results of behavioral and electrophysio-
+logical experiments. We conclude that, similar to other environmental (Henry et al., 1994). It is demonstrated that stress-
+stresses, the sound stress during fetal life efficiently disturbs both cogni- induced secretion of glucocorticoid hormones by
+tive abilities and synaptic activities. The changes in action of HPA axis
+adrenal cortex influence cognitive performance (Roo-
+may contribute to problems of the brain function in the prenatally stress
+zendaal, 2002). Physiological and behavioral modifi-
+exposed animals. VC 2014 Wiley Periodicals, Inc.
+cations under stress are supposed to be depend on
+KEY WORDS: anxiety; fetal life; learning and memory; sound stress; developmental actions of glucocorticoids; lipid solu-
+synaptic plasticity ble hormones that may pass from maternal into fetal
+circulation (Takahashi et al., 1988). Two receptor
+systems for corticosterone are found in rat brain:
+mineralocorticoid receptors and glucocorticoid recep-
+tors known as Type I and Type II receptors, respec-
+INTRODUCTION tively. As the prenatal brain development is highly
+sensitive phase of developing brain, the excessive
+Experimental researches confirm that during prenatal period the amount of glucocorticoids at critical periods of fetal
+development of an organism is subjected to complex environmental life can modify neuroendocrine functions and the
+influence (Lordi et al., 1997). Copious animal studies have indicated morphology of several brain structures, including
+that maternal stress during pregnancy leave a range of long-term effect hippocampus in the limbic system (Matthews,
+2000).
+Hippocampal formation that begins in the prena-
+tal life and continues to the postnatal period
+M.B. and F.S.S. contributed equally to this work. (Gould and Tanapat, 1999) is crucial for animals to
+Physiology Research Center, Kashan University of Medical Sciences,
+use spatial information to guide and organize their
+Kashan, Islamic Republic of Iran
+behavior (Silvers et al., 2003). Evidence indicates
+Grant sponsor: Kashan University of Medical Sciences; Grant numbers:
+8907 and 9157. that prenatal stresses effectively affect spatial mem-
+*Correspondence to: Mahmoud Salami; Physiology Research Center, ory (Yaka et al., 2007) as well as synaptic plasticity
+Kashan University of Medical Sciences, Kashan, Islamic Republic of Iran. (Yang et al., 2006) in offspring. The present study
+E-mail: salami-m@kaums.ac.ir
+was designed to evaluate the effect of prenatal noise
+Accepted for publication 5 September 2014.
+stress on the experimental form of synaptic plastic-
+DOI 10.1002/hipo.22363
+Published online 00 Month 2014 in Wiley Online Library ity, spatial representations and anxiety in postnatal
+(wileyonlinelibrary.com). period of life.
+VC 2014 WILEY PERIODICALS, INC.
+
+===== PAGE 2 =====
+2 BARZEGAR ET AL.
+Pups born from the pregnant control rats were assigned as con-
+MATERIALS AND METHODS
+trol (CON). The litters at 42–50 days of postnatal age were
+entered the experiments. Generally, one to two pups were taken
+Animals Breeding and Ethics from each mother. The N1, N2, N4, and CON rats (one
+group of each, n510 in each group) were introduced to the
+Virgin female Wistar rats on the night of proestrus were
+behavioral (elevated plus maze and Morris water maze) testing.
+mated with male Wistar rats. The next day, the cage was
+Groups of N1, N2, N4, and CON animals were also entered
+explored for a vaginal plug, and if found, this day was consid-
+the electrophysiological experiments.
+ered as the first day of pregnancy. Pregnant rats were randomly
+allocated to one of four (see below) experimental conditions
+(one animal per cage). Free access to food and water and con- Behavioral Experiments
+trolled room conditions (12-h light/dark cycle, light on at 6:00
+Spatial memory performance
+a.m., temperature 22(cid:2)C, and air humidity 55–60%) were
+maintained throughout the experiments. Efforts were made to The spatial memory tests were performed using a Morris
+minimize the number of animals used and their suffering. water maze (a tank made of galvanized metal, 150 cm diame-
+Adequate measures were taken to minimize animal’s pain or ter, 70 cm depth) filled with water (22(cid:2)C) up to 20 cm below
+discomfort. The experiments were approved by Kashan Univer- the rim with visual cues on the surrounding room wall. The
+sity of Medical Sciences’ Ethical Committee and were carried pool was divided into four equal quadrants named northeast,
+out in accordance with the Directive 2010/63/EU on the pro- southeast, northwest and southwest. A circular platform
+tection of animals used for scientific purposes. (10 cm diameter) was submerged 1.5 cm below the water sur-
+face and located in the center of one quadrant in constant
+Noise Induction position throughout the experiment. In the training sessions
+the rats were given four spatial trials/day for four consecutive
+Broad band traffic noise was recorded in a high-traffic square
+days. On each trial, the rat had 90 s to find the hidden plat-
+in capital of Iran (Tehran) by a standard recorder (Panasonic
+form. If it failed, the animal was guided to the platform and
+RQ-L11) and amplified by a loud speaker (Power 56W). As
+allowed to rest on it for 20 s before being gently dried and
+level of 95 dB (A) is comparable with the noise level detected
+moved to a holding cage for the about 10 min intertrial inter-
+in some industrial workplaces the intensity of the sound was
+val. The releasing locations were changed from trial to trial.
+set at this intensity by a software (Sonar, Cakewalk). A preci-
+The probe trials were conducted on day 5, 24 h after the final
+sion sound level meter (Extech Instruments, MA) was used to
+training session in which the platform was removed, and the
+monitor the intensity of sound to 95 dB (A) uniformly in the
+rats were released from a fixed starting position and allowed to
+cage. Stress group animals were exposed to the noise (1, 2, and
+swim freely for 90 s before being removed. Performance on the
+4 h per day for 7 days) during 08:00–14:00 daily.
+training and probe trial phases was measured by escape latency
+(the time from release of animal in the maze until it located
+Noise Exposure
+the hidden platform) and percent time (the time spent by the
+The rat home cages were placed in a reflective Plexiglas rat in target quadrant where the platform was formerly placed),
+chamber with these dimensions: 60 cm (w) 3 60 cm (d) 3 respectively. All experiments were carried out at night time.
+90 cm (h). The loud speaker was installed upper left at a dis- During testing, the rat was videotaped from a fixed overhead
+tance of 30 cm above the cage. camera, and custom software (Radiab 7) was used to score
+performance.
+Pregnant and Nonpregnant Animals
+Anxiety evaluation
+All pregnant rats (except controls) at the third trimester of
+The elevated plus maze evaluates spatial anxiety in rats (Car-
+gestation were exposed daily to the noise stress. Three groups
+obrez and Bertoglio, 2005; Haller and Alicki, 2005). Briefly,
+of pregnant animals were received the white noise for 1 (PN1),
+the apparatus was elevated 60 cm from the floor and contained
+2 (PN2), or 4 (PN4) h (s). During this period of time the
+four 50 cm 3 10 cm arms and a 10 cm 3 10 cm center plat-
+serum level of corticosterone is the lowest (Dallman et al.,
+form. Two opposite arms were enclosed by 40 cm walls, and
+2000). Another pregnant group as control pregnant animals
+the other two arms were open. The testing room was moder-
+was kept in the noise chamber for the same period of time
+ately illuminated. Each rat was placed in the central platform,
+without noise exposure. The values from the latter group were
+facing an open arm and was left to explore the maze for 5
+also compared with a group of nonpregnant female rats.
+min, while the behavior of animal being observed by the exper-
+imenter. As a convention, an entry was defined as having all
+Offspring
+four paws in the arm. The parameters measured for the plus
+After weaning only the male offspring rats were kept and maze navigation were the number of entries into open arms
+raised till adulthood. The offspring prenatally exposed to 1, 2, (OAE) and the time spent in open arms (OAT). The percent
+and 4 h noise were assigned to N1, N2, and N4, respectively. of OAE and OAT were calculated as follows:
+Hippocampus
+
+===== PAGE 3 =====
+PRENATAL SOUND STRESS AND COGNITION 3
+OAE%5number of entries into open arms experiments and mothers either exposed or unexposed to the
+=total number of entries3100 sound stress. The blood samples were taken from: all pregnant
+groups, the nonpregnant female group, the offspring entered
+OAT%5duration spent in open arms ðsÞ=300 ðsÞ3100 behavioral experiments before and after the testing, and the off-
+spring used in electrophysiological experiments after recordings
+In vivo electrophysiology finished. Animals were deeply anesthetized and blood was col-
+lected from heart. The pooled blood was then collected into a
+The animals were anesthetized with urethane (1.5 g/kg, i.p.)
+sterile tube (Kisker, Germany). The blood samples were centri-
+and placed in a head holder in a stereotaxic frame. Two small
+fuged at 2,500 rpm for 10 min. The serum was collected and
+holes (1 mm diameter) were drilled with a sterile drill bit in the
+frozen at 220(cid:2)C until assayed. The serum corticosterone con-
+skull to allow the insertion of electrodes in the brain. Electrodes
+centration was measured using a commercially available radioim-
+were made from Teflon-coated stainless steel wire (0.008 inch
+munoassay (RIA) kit (DRG, Germany) according to the
+outside diameter) exposed only at the tip (tip separation
+manufacturer’s instruction. The manufacturer supplied protocol
+(cid:3)0.10 mm). A bipolar stimulating electrode (twisted Teflon-
+was implemented. In brief, corticosterone level in serum samples
+insulated stainless steel) was lowered to the Schaffer collaterals (at
+was single-determined via interpolation from a standard curve
+the coordinates anteroposterior (AP), 4.2; mediolateral (ML),
+derived from six calibrators (ranging from 25 to 1,500 ng/ml).
+3.8 mm from Bregma; dorsoventral (DV), 2.8 mm from the
+dural surface). A monopolar recording electrode was advanced
+Data Analysis
+through the CA1 stratum radiatum (at the coordinates anteropos-
+terior (AP), 3.4; mediolateral (ML), 2.5 mm from Bregma; dor- One-way analysis of variance (ANOVA) with corticosterone
+soventral (DV), 2.5 mm from the dural surface). All coordinates as between-subjects factor and noise exposure as within-subjects
+were based on Paxinos and Watson (Paxinos and Watson, 2007) factor was performed on the corticosterone level of serum. Also
+and adapted to the animals according to bregma-lambda distance one-way ANOVA with learning the water maze task, remem-
+as previously described (Talaei and Salami, 2013). Extracellular bering the learned task and the anxiety evaluation as between-
+recordings were referenced to an indifferent site on the skull. subjects factors and noise exposure as within-subjects factor
+Constant current stimulation was programmed by a computer was carried out on the behavioral procedures. Two-way
+software (Neurotrace, WSI, I.R. Iran) and delivered to a stimula- ANOVA with change in the slope of fEPSPs as between-
+tor/isolator unit (WPI-A365). Single-pathway recordings of the subjects factor and noise exposure as within-subjects factor was
+evoked field extracellular postsynaptic potentials (fEPSPs) were applied to the electrophysiological experiments; however, the
+made from the stratum radiatum in the CA1 area of the potentiation was interpreted as LTP if the slope of fEPSP was
+hippocampus in response to stimulation (two sweeps/min at 30 s increased at least 20% post-tetanus. LSD was applied as post
+intervals) of the ipsilateral Schaffer collateral-commissural path- hoc test. Data are expressed as mean6SEM. The basis of sta-
+way. Once the response was stable, an input-output series was tistical decision was a significance Alpha level of P<0.05.
+recorded using a range of stimulus currents. Then, stimulation
+intensity was adjusted to elicit a fEPSP slope of 60% of maxi-
+mum. The baseline fEPSPs were recorded for a 30-min period
+and averaged for comparison to post-tetanus recordings. Then,
+RESULTS
+long-term potentiation (LTP) was induced by high-frequency
+stimulation (HFS) of 100 Hz (10 bursts of 10 stimuli, 0.2 ms
+The Effect of Prenatal Sound Stress on Learning
+stimulus duration, and 10 s interburst intervals). Following the
+the Spatial Maze Task
+tetanic stimulation, recordings continued for at least 2 h. The
+fEPSPs were amplified on a preamplifier (Electromadule, WSI, I.R. The spatial learning and memory of the animals prenatally
+Iran), filtered at 1–3,000 Hz, digitized (10 points/ms) and stored exposed to noise stress were evaluated via two strategies of
+for offline analysis using a software (Potentalize, WSI, I.R. Iran) maze navigation; training and probe trial.
+running on a computer. The data were considered for the changes
+in slope of the pre- and post-tetanic responses. Data are presented Training
+as mean6SEM and normalized by taking the pre-tetanus slope of
+Analysis of variance indicated that the four groups of ani-
+fEPSPs as 100% and comparing the post-tetanus fEPSPs with it.
+mals introduced to the training phase displayed a different per-
+Induction of LTP was defined if mean slope of the fEPSP increased
+formance in learning the maze task (F 56.542; P <
+by more than 20% after the HFS train. Blood samples were pooled (3,156)
+0.0001). All groups improved their maze steering over 4 days
+from the animals when the experiment ended.
+of experiment, however, the post hoc test appeared that the N2
+(P 5 0.028) and N4 (P < 0.0001) groups behaved signifi-
+Measurement of serum corticosterone
+cantly lower compared with their control counterparts. One
+concentration
+hour exposure to the noise not considerably affected the maze
+The blood samples for measuring the serum corticosterone performance. Figure 1A demonstrates how the different groups
+concentration were collected from the animal groups entered the of animals learned the maze task.
+Hippocampus
+
+===== PAGE 4 =====
+4 BARZEGAR ET AL.
+was measured. ANOVA indicated a variation between the
+performance of the different groups of animals (F 57.368;
+(3,36)
+P < 0.0001). The offspring born from mothers exposed to 2
+(P 5 0.005) and 4 (P 5 0.004) h noise stress displayed a sig-
+nificant decrease in entering the open arms in comparison to
+their control counterparts (Fig. 2A). In addition, the animals
+in the N2 (P 5 0.002) and N4 (P 5 0.0001) groups passed a
+shorter time in the open arms. The N1 group had an almost
+similar function as the CON animals in both entering the
+open arms and the duration of stay (Fig. 2B).
+The Serum Concentration of Corticosterone in
+the Offspring Under the Behavioral Testing
+The corticosterone concentration in serum of the animals
+performing the Morris water maze tasks was assessed as the
+function of HPA axis. ANOVA indicated a general statistical
+difference between the serum level of corticosterone in the four
+groups of rats before (Fig. 3A) and after (Fig. 3B) the behav-
+ioral testing (F 550.877; P < 0.0001). The results of cor-
+(7,72)
+ticosterone measurement before performing the maze testing
+FIGURE 1. Performance of the different groups of animals in
+the Morris water maze. A) The time required to locate the hidden
+platform in the water maze during the learning stage. The animals
+exposed to the noise stress for 2 (P 5 0.028) and 4 h (P <
+0.0001) during the fetal life performed significantly lower than
+the controls. B) The time elapsed in the correct quarter of the
+water maze during the retrieval test. The groups receiving the
+noise stress for 2 (**P 5 0.002) and 4 h (***P < 0.0001) during
+the prenatal life displayed a weaker performance than the control
+animals. Data are shown as mean6SEM.
+Probe trial
+Remembering the learned task was assessed by removing the
+platform and measuring elapsing time in the correct quadrant
+of maze. Statistical analysis appeared a general variation
+between testing groups in performing the retrieval task
+(F 515.491; P < 0.0001). Consistent to the findings in
+(3,36)
+the learning phase, the N2 (P 5 0.002) and N4 (P < 0.0001)
+groups had a shorter navigation in the correct quadrant when
+compared with the CON rats. The values are 16.461.83 s
+and 20.460.83 s for the N2 and N4 groups, respectively.
+Behavior of the animals in N1 group resembled that in the
+CON one so that a marked difference was evident between the
+FIGURE 2. The elevated plus maze navigation by the different
+N1 rats with the N2 (P < 0.011) and N4 (P < 0.0001)
+groups of animals. A) Percentage of the entered open arms by the
+groups (Fig. 1B). different groups of rats during the plus maze searching. While the
+noise stress led a marked decrease in entering the open arms in
+the N2 (**P 5 0.005) and N4 (*P 5 0.004) groups it had no
+The Effect of Prenatal Sound Stress on Anxiety
+effect on behavior of the animals in the N1 rats. B) Percentage of
+the duration of stay in the entered open arms during the plus
+To evaluate the degree of anxiety in the animals prenatally
+maze navigation. The N2 (**P < 0.002) and N4 (***P < 0.0001)
+exposed to noise stress they were introduced to a plus maze
+animals displayed a considerable decrease in the time of the open
+task. Entry to the open arms and the elapsing time in the arm steering. The N1 animals performed the same as the CON
+entered arms were two factors by which the level of anxiety rats. Data are shown as mean6SEM.
+Hippocampus
+
+===== PAGE 5 =====
+PRENATAL SOUND STRESS AND COGNITION 5
+increased in the CON (565.69639.33 ng/ml, P < 0.0001),
+N1 (649.51658.27 ng/ml, P < 0.0001), N2 (961.97648.79
+ng/ml, P < 0.0001), and N4 (1,215.12692.37 ng/ml, P <
+0.0001) groups. Measurement of the corticosterone level after
+the behavioral experiments indicated a substantial variation
+between the N2 and N4 groups with the CON animals (P <
+0.0001). Figure 3B compares the serum level of corticosterone
+after the morris water maze performance.
+The Serum Concentration of Corticosterone in
+the Offspring Under the Electrophysiological
+Recordings
+The serum level of corticosterone was also concerned when
+the electrophysiological experiments finished. The data analysis
+appeared that the concentration of the hormone was signifi-
+cantly different between the four groups (F 512.724; P <
+(3,36)
+0.0001). The post hoc test indicated that the variation
+observed between the CON rats (167.06614.16 ng/ml) and
+the animals prenatally exposed to the noise stress for 1
+(192.84617.17 ng/ml) and 2 (324.75642.88 ng/ml) h was
+not statistically significant. Exposure to the sound stress for 4 h
+abruptly increased the serum corticosterone to 452.51655.86
+ng/ml which was considerably different compared with the
+CON group (P < 0.0001). We found no noticeable difference
+between the corticosterone level of serum in the N1, N2, and
+N4 groups. Figure 3C shows how the noise exposure affected
+secretion of the noise-induced hormone in the rats under the
+electrophysiological experiments.
+The Serum Concentration of Corticosterone in
+FIGURE 3. The serum level of corticosterone in the pregnant the Male, Pregnant, and Nonpregnant Animals
+and nonpregnant mothers and, offspring. A) The corticosterone
+concentration in the offspring before the behavioral trials. The To assess if exposure to the noise stress also underlies the
+prenatal noise stress led to a surge of corticosterone in the serum pregnant rats themselves the concentration of corticosterone
+of both the N2 (***P < 0.0001) and N4 (***P < 0.0001) groups.
+was measured in the four pregnant groups and the nonpreg-
+The concentration of serum corticosterone in the N1 rats
+nant group (as control). Data analysis indicated that the differ-
+resembled the CON animals. B) The maze performance itself led
+to a significant increase in the serum level of corticosterone in all ences between the five groups of animals were significant
+testing groups (***P < 0.0001). Also a substantial variation was (F 529.493; P < 0.0001). Comparison between the con-
+(4,45)
+evident between the N2 and N4 groups compared with the CON trol pregnant (451.18638.84 ng/ml) and nonpregnant female
+animals (***P < 0.0001). C) The concentration of corticosterone
+(270.28621.38 ng/ml) groups showed that the pregnancy
+in the offspring after the electrophysiological recording session.
+itself elevates the serum level of corticosterone (P 5 0.003).
+While comparison of the values between the CON animals with
+the N1 and N2 groups appeared no noticeable variation the Substantial variations were also evident between the control
+abrupt surge of corticosterone in the N4 rats display a substantial pregnant with the PN2 (659.40619.21 ng/ml; P < 0.0001)
+difference with their CON counterparts (***P < 0.0001). Data are and PN4 (720.62626.54 ng/ml; P < 0.0001) groups. The
+shown as mean6SEM.
+serum level of corticosterone in the PN1 animals
+(497.53648.53 ng/ml) resembled that in the control pregnant
+indicated that the prenatal exposure to the sound stress itself
+group. The variations between the PN1 with the PN2 (P <
+causes an abrupt rise in the serum corticosterone. The values
+0.011) and PN4 (P < 0.0001) rats were statistically significant.
+for the N2 (428.68636.18 ng/ml) and N4 (539.77642.41
+Figure 4 demonstrates measurement of corticosterone in serum
+ng/ml) groups are highly different (P < 0.0001) than the
+of the different female groups.
+CON rats (183.71614.65 ng/ml). The serum level of corti-
+costerone in the N1 (213.93618.01 ng/ml) animals showed
+Electrophysiological Recordings in the CA1 Area
+no significant change compared with the control group (Figure
+of Hippocampus
+3A). The maze navigation further increased the corticosterone
+hormone where, compared with the premaze testing values, the In the electrophysiological experiments the effect of noise on
+serum concentration of corticosterone was enormously the pre- and post-tetanus fEPSPs in the hippocampus of the
+Hippocampus
+
+===== PAGE 6 =====
+6 BARZEGAR ET AL.
+FIGURE 4. The effect of pregnancy on the serum concentra-
+tion of corticosterone. The control pregnant (CP) rats showed an
+elevated level of serum corticosterone compared with the nonpreg-
+nant control female (CF) group (**P = 0.003). Also the serum
+level of corticosterone was significantly higher in the PN2 and
+PN4 groups when compared with the CP animals (***P <
+0.0001). Data are shown as mean6SEM.
+four groups of offspring was evaluated. ANOVA assessment
+appeared that the difference between slope of the field record-
+ings was statistically significant (F 571.288, P < 0.0001).
+(7,2492)
+The effect of noise stress on the baseline responses
+The basic synaptic activity showed to be prominently
+affected by exposing to prenatal sound stress. Mean slope of FIGURE 6. Induction of LTP in the fEPSPs recorded in the
+the evoked fEPSPs recorded in the CA1 area of hippocampus CA1 area after tetanization of the CA3–CA1 pathway. A) Repre-
+sentative traces illustrating changes in the slope of field potentials
+of the CON rats was 480.53617.31 mV/ms. The slope of
+recorded in the CA1 area 30 min before and 30, 60, 90, and 120
+the pre-HFS responses displayed a significant decrease in the
+min after application of the tetanic stimulation. B) Time course of
+N1 (377.0269.99 mV/ms), N2 (382.0566.74 mV/ms), and change in the slope of pre- and post-tetanus fEPSPs. The first 30
+min of experiment shows the baseline recordings. Tetanization
+induced a substantial LTP in the fEPSPs recorded in the CON
+rats (P < 0.0001). The potentiation observed in the noise stress
+exposed groups was less than the criteria determined for LTP in
+this study and significantly smaller compared with the CON group
+(P < 0.0001). Arrow indicates the time of high frequency stimula-
+tion (HFS). Each point shows average data obtained during
+3 min.
+N4 (398.69615.54 mV/ms) animals compared with their
+CON counterparts (P < 0.0001). There was a negligible dif-
+ference between the slope of the baseline recordings in the N1,
+N2, and N4. Figure 5 demonstrates the slope values of the
+basic synaptic transmission.
+The effect of noise stress on induction of LTP
+FIGURE 5. Histograms show the slope of the baseline fEPSPs
+taken from CA1 field of the hippocampi of the control and prena- Tetanizing the Schaffer collateral-CA1 pathway elicited a
+tally noise exposed animals. The comparisons between the N1, noticeable LTP in the fEPSPs recorded in the hippocampus of
+N2, and N4 groups with the CON rats indicates that the noise CON animals (from 480.53617.31 mV/ms to 584.6768.14
+exposure during the fetal life pronouncedly affect the basic synap- mV/ms, P < 0.0001); more than 21% increase in the slope of
+tic transmission in the hippocampal neuronal circuits (***P <
+the fEPSPs. Although the tetanized fEPSPs in the N1
+0.0001). No difference was evident between the basic responses
+recorded in the N1, N2, and N4 groups. Data are shown as (14.18%), N2 (18.24%), and N4 (2.33%) appeared a poten-
+mean6SEM. tiation, however, the post-tetanus enhancements did not fulfill
+Hippocampus
+
+===== PAGE 7 =====
+PRENATAL SOUND STRESS AND COGNITION 7
+the criterion of LTP occurrence in this study. The level of stress application and some characteristics of the animals used
+potentiation in the CON group was statistically higher than in different studies such as sex and age (Joels, 2006).
+the stressed groups (P < 0.0001). Figure 6 illustrates the time
+course of the slope changes of fEPSPs over electrophysiological Electrophysiological Considerations
+recordings.
+Our results indicated that the sound pollution profoundly
+affects the basic synaptic transmission. The noise stress
+decreased the slope of pre-tetanus fEPSPs. Also, in contrast to
+the control animals, the post-HFS responses recorded in all
+DISCUSSION groups prenatally exposed to the noise stress could not fulfill
+the criterion of LTP induction in this study. Several reports
+have demonstrated an impaired LTP and facilitated LTD in
+Copious reports have indicated an altered behavioral per-
+hippocampal CA1 area in the prenatal stress exposed offspring
+formance in offspring born from mothers under stress during a
+(Son et al., 2006; Yang et al., 2006). Yaka et al. reported a
+critical period of gestation. The cognitive changes are proved
+diminished LTP as well as impaired spatial learning in the ani-
+to be associated with electrophysiological modifications in
+mals introduced to a series of prenatal stresses (Yaka et al.,
+some parts of brain. This study evaluates the effect of sound
+2007). Contrary to the studies just mentioned Fujioka et al.
+stress in fetal life on spatial memory, HPA axis function, and
+reported that short-lasting and mild prenatal stress (30 min
+characteristics of synaptic transmission in the postnatal period
+daily restraining) promotes learning and, improves LTP and
+of life.
+neurogenesis in hippocampus of adult offspring. On the other
+hand, they found that long-lasting and severe prenatal stress
+Behavioral Considerations lead to reverse results (Fujioka et al., 2006).
+Our results demonstrated that the prenatal noise exposure
+Hypothalamus-Pituitary-Adrenal Axis Function
+effectively weaken the behavioral performances during the post-
+natal life. The negative effect of the sound stress was more pro- Measurement of serum concentration of corticosterone
+nounced in the N2 and N4 groups. The animals in the N2 appeared that pregnancy itself highly increases secretion of the
+and N4 groups showed to perform reasonably lower than the hormone. Also the mothers under the noise stress and the off-
+CON group in either plus maze navigation or Morris water spring at the N2 and N4 groups had a higher serum level of
+maze tasks. Anxiety of the animals was reflected in decreased the glucocorticoid. These findings indicate that the noise pollu-
+entering the open arms of plus maze and passing a shorter tion efficiently increases activity of the HPA axis in both moth-
+time in these arms. Also we found that the stressed animals ers and pups. On the other hand, the maze navigations
+swim a longer path for locating the hidden platform in the elevated the serum corticosterone in all groups of rats whether
+water maze and spend a shorter navigation time in the target exposed or unexposed to the stress. However, the hormone
+quadrant; indicating an impaired spatial learning and memory. surge was significantly higher in the stressed rats compared
+Animal studies have demonstrated that maternal stress during with the CON animals. The augmentation in the serum level
+pregnancy give rise to a variety of long-term effect in offspring of the glucocorticoid was also observed in the animals entered
+including anxiety, learning impairments and reduced attention the electrophysiological experiments; however, the changes were
+(Igosheva et al., 2007). Some kinds of stress are reported to much less than in the behavioral testing and were statistically
+efficiently impair spatial learning and memory abilities of the significant only in the N4 group. This could be rational as the
+offspring (Yaka et al., 2007). Acute stress disrupts both spatial awaked animals under behavioral testing are much more stress-
+and recognition memory as assessed by a number of behavioral ful than the anesthetized ones during the electrophysiological
+tasks including radial arm maze, water maze, radial arm water recordings. Taken together, the behavioral performances and
+maze, and spontaneous recognition memory tests (Cazakoff the invasive in vivo experiments strengthen activity of the HPA
+et al., 2010). Nishio et al. demonstrated that prenatal stress axis. From these considerations it can be concluded that the
+exposure obviously influences the learning abilities in the off- anxiety and memory behavioral results from the maze perform-
+spring (Nishio et al., 2001). Prenatally stressed rats spend a ances coincides the synaptic transmission findings from the
+shorter time in the open arms of plus maze; demonstrating a electrophysiological recordings in that the higher the level of
+higher degree of anxiety (Murmu et al., 2006). Emotional and corticosterone the lower the capability of cognitive function
+cognitive deficits are reported in the offspring born from moth- and, basic and tetanized synaptic activity.
+ers exposed to stress during gestation (Talge et al., 2007). Concurrently, some human studies prove the glucocorticoid
+Beside the studies confirming our results some findings disagree hormone alterations during both pregnancy and fetal period. It
+with the present work are also reported. Several researchers is demonstrated that maternal stress increases level of corticoster-
+found that prenatal stress either did not influence or decreased one either in mother or fetuses (Takahashi et al., 1998). How-
+learning performance in the adult offspring (Lordi et al., ever, cortisol levels rise in fetal serum remain about 13-fold
+1997). This discrepancy in results could be due to some factors lower than in the mother (Gitau et al., 2001), because about
+including the task used, the stressor, the time and duration of 80% is metabolized by 11b-hydroxysteroid dehydrogenase
+Hippocampus
+
+===== PAGE 8 =====
+8 BARZEGAR ET AL.
+(11b-HSD) to inactive cortisone in the placenta (Weinstock, phic factor (BDNF) in the hippocampus (Van den Hove et al.,
+2008). Stress possibly reduces activity of 11b-HSD as well as 2006). BDNF is necessary for formation of the synapses and
+cortisol binding globulin (Weinstock, 2008) resulting in expo- synaptic plasticity as well (Cohen-Cory et al., 2010). From
+sure of the fetus to excessive amounts of the steroid (Van den these considerations it can be concluded that, through affecting
+Bergh et al., 2005). Both types of the glucocorticoid receptors the expression or activation of some key molecular agents, the
+are expressed in hippocampus (Zhang et al., 2013). It is prenatal stress might has a negative impact on the hippocampal
+reported that stress hormones like glucocorticoid could inter- LTP and spatial memory.
+act with their receptors in the fetal brain and influence the
+neuronal differentiation and function at different stages of The Stress-Induced Changes in Structure of
+development (Weinstock, 2008). Henry et al. demonstrated Hippocampus
+that both type of glucocorticoid receptors are down regulated
+The structural characteristics of the pathways involved in syn-
+in hippocampus of the animals exposed to stress during prena-
+aptic plasticity and learning and memory phenomena are also
+tal life (Henry et al., 1994). Down regulation of the hippo-
+subjected to stress induced alterations. As hippocampus is rich
+campal corticosteroid receptors (Weinstock, 2005), increased
+in glucocorticoid receptors (Zhang et al., 2013) the adrenal hor-
+HPA responsiveness, and stress-induced increases in glucocor-
+mones produced by stress could affect structure of hippocampus.
+ticoids during gestation might be reasons of changes in behav-
+Accordingly, chronic exposure to either stress or stress-induced
+ior of the stressed offspring (Takahashi et al., 1998). Some
+glucocorticoids change structure of hippocampus in different
+studies Alfarez et al. showed that, similar to stress conditions,
+aspects including neurochemistry, excitability, neurogenesis, neu-
+corticosterone itself impairs hippocampal LTP (Alfarez et al.,
+ronal morphology and cell death (for review see (Conrad,
+2002). In contrast, Diamond et al. demonstrated that low to
+2010)). Coe et al. reported a reduced volume of hippocampus
+moderate levels of corticosterone enhance LTP. Moreover, they
+in nonhuman offspring prenatally exposed to unpredictable
+found that lack of the hormone diminishes LTP occurrence
+noise (Coe et al., 2003). Concomitantly, Morales-Medina et al.
+(Diamond et al., 1992). If corticosterone dose dependently
+showed that 3 weeks administration of corticosterone in rats
+affect production of hippocampal LTP (Joels, 2006), needs
+causes dendritic remodeling and spine density reorganization in
+further investigation.
+pyramidal neurons of the CA1 area of the hippocampus
+(Morales-Medina et al., 2009). Also in a histological study Bock
+Probable Mechanisms Influencing Parts of Brain et al. showed that prenatal stress exposure give rise to shrinkage
+Involved in Learning and Memory and LTP of dendrites in either CA3 or CA1 areas of the hippocampus
+(Bock et al., 2011). Therefore, stress or stress-induced hormone
+It has been shown that stress exerts an intense impression on
+corticosterone may affect LTP and, learning and memory
+molecular mechanisms underlying synaptic plasticity (Howland
+through some alterations in organization of the hippocampus.
+and Wang, 2008). Both the hippocampal LTP and the hippo-
+campal related spatial memory are known to be subject to plas-
+ticity of synaptic transmission. The protocol of tetanization The Inhibitory Role of Amygdala
+and the recruited hippocampal circuit in the present study
+Amygdala as a part of limbic system anatomically projects to
+expect a NMDA receptor dependent LTP. Positive, particularly
+several hippocampal regions including the CA1 area (Yilmazer-
+calcium, ions influx through the NMDA receptors channel
+Hanke, 2008) and involve in stress behaviors and memory mod-
+founds cellular and molecular changes in the pre and postsy-
+ulation. Stress is activating molecular plasticity in amygdala (Ilin
+naptic neurons that leads to long lasting alterations in capabil-
+and Richter-Levin, 2009) and, amygdalo-hippocampal projec-
+ities of the synapse (Molnar, 2011). Changes in structure of
+tions exert an inhibitory impact on synaptic plasticity in hippo-
+NMDA receptors including the combination of subunits might
+campus (Akirav and Richter-Levin, 2006). Lesion to the
+affect their key function in the synaptic plasticity (Paoletti and
+amygdala inhibits stress-induced deficits of hippocampal LTP
+Neyton, 2007). Son et al. found that offspring of mice bearing
+and hippocampus mediated spatial memory in rats (Kim et al.,
+chronic immobilization stress during pregnancy efficiently
+2001). Moreover, application of GABA receptor agonist into
+A
+reduce the expression of NR1 and NR2B subunits of NMDA
+amygdala prevents stress-induced physiological and behavioral
+receptor at the hippocampal synapses. Evidence indicates that
+results (Kim et al., 2005). In line, hippocampus of stressed ani-
+reduced expression of the NR2B subunits decreases ionic cur-
+mals receiving intra-amygdalar infusion of musimol displays a
+rents through NMDA receptor channel (Son et al., 2006). The
+substantial LTP comparable with control animals (Kim et al.,
+change in conductance of the receptor channel may affect the
+2005). Thus, a declined LTP and cognitive function in the
+NMDA receptor dependent LTP and, thus, hippocampus
+stressed animals might be due to a stress activated inhibitory
+dependent spatial memory (Son et al., 2006). Gerges et al
+impact of the amygdala on the hippocampus.
+showed that stress diminishes expression of phosphorylated
+calcium/calmodulin-dependent protein kinase II in hippocam-
+The Role of Oxidative Stressor
+pus (Gerges et al., 2004). These proteins are known to invol-
+vein synaptic plasticity. There are evidences demonstrating that Oxidative stressors may contribute to stress-induced learning
+prenatal stress perturbs biosynthesis of brain-derived neurotro- and memory impairments (Sharma et al., 2009). Oxidative
+Hippocampus
+
+===== PAGE 9 =====
+PRENATAL SOUND STRESS AND COGNITION 9
+stress is shown to induce oxidative damage of the hippocampus A review of recent behavioural and pharmacological findings. Prog
+which is associated with a pronounced decrease in glucocorti- Neuropsychopharmacol Biol Psychiatry 34:733–741.
+Coe CL, Kramer M, Czeh B, Gould E, Reeves AJ, Kirschbaum C,
+coid receptors in the CA1 area of hippocampus (Kobayashi
+Fuchs E. 2003. Prenatal stress diminishes neurogenesis in the den-
+et al., 2009). It is suggested that, through damage in the HPA
+tate gyrus of juvenile rhesus monkeys. Biol Psychiatry 54:1025–
+axis, oxidative stressors increase glucocorticoids levels and, thus, 1034.
+impairs cognitive functions (Ghadrdoost et al., 2011). As dem- Cohen-Cory S, Kidane AH, Shirkey NJ, Marshak S. 2010. Brain-
+onstrated by several researchers glucocorticoids or chronic stress derived neurotrophic factor and the development of structural neu-
+ronal connectivity. Dev Neurobiol 70:271–288.
+exposure may lead to oxidative injury of hippocampus; resulting
+Conrad CD. 2010. A critical review of chronic stress effects on spatial
+in impairments of learning and memory (Sato et al., 2010).
+learning and memory. Prog Neuropsychopharmacol Biol Psychiatry
+34:742–755.
+Dallman MF, Akana SF, Bhatnagar S, Bell ME, Strack AM. 2000.
+Bottomed out: Metabolic significance of the circadian trough in
+CONCLUSIONS glucocorticoid concentrations. Int J Obes Relat Metab Disord
+24(Suppl 2):S40–S46.
+Diamond DM, Bennett MC, Fleshner M, Rose GM. 1992. Inverted-
+Taken together, the prenatal noise stress endorses anxiety U relationship between the level of peripheral corticosterone and
+and deeply undergoes the hippocampus linked learning and the magnitude of hippocampal primed burst potentiation. Hippo-
+memory processes at postnatal age. Also the sound pollution campus 2:421–430.
+Fujioka A, Fujioka T, Ishida Y, Maekawa T, Nakamura S. 2006. Dif-
+during the fetal life pronouncedly influences the basic synaptic
+ferential effects of prenatal stress on the morphological maturation
+activity as well as synaptic plasticity in the hippocampal circuits
+of hippocampal neurons. Neuroscience 141:907–915.
+of the offspring. Our findings are agreed to previous studies Gerges NZ, Aleisa AM, Schwarz LA, Alkadhi KA. 2004. Reduced
+assessing the effects of other stress protocols on cognitive func- basal CaMKII levels in hippocampal CA1 region: Possible cause of
+tions and synaptic specificities. Contribution of glucocorticoids stress-induced impairment of LTP in chronically stressed rats. Hip-
+pocampus 14:402–410.
+to various possible mechanisms involved in stress-induced
+Ghadrdoost B, Vafaei AA, Rashidy-Pour A, Hajisoltani R, Bandegi
+problems suggests that the prenatal sound stress may affect the
+AR, Motamedi F, Haghighi S, Sameni HR, Pahlvan S. 2011. Pro-
+brain function more pronouncedly through reregulation of the tective effects of saffron extract and its active constituent crocin
+HPA axis action. Hence, considering a link between the sound against oxidative stress and spatial learning and memory deficits
+pollution and the HPA axis, future research could be focused induced by chronic stress in rats. Eur J Pharmacol 667:222–229.
+Gitau R, Fisk NM, Teixeira JM, Cameron A, Glover V. 2001. Fetal
+on the cognitive functions and its electrophysiological mecha-
+hypothalamic-pituitary-adrenal stress responses to invasive proce-
+nisms. However, impact of the other contributions, including
+dures are independent of maternal responses. J Clin Endocrinol
+some neurotransmitter projections to the hippocampus, to del- Metab 86:104–109.
+eterious effect of sound stress on fetal neurodevelopment need Gould E, Tanapat P. 1999. Stress and hippocampal neurogenesis. Biol
+to be considered. Psychiatry 46:1472–1479.
+Haller J, Alicki M. 2005. Current animal models of anxiety, anxiety
+disorders, and anxiolytic drugs. Curr Opin Psychiatry 25:59–64.
+Acknowledgments
+Henry C, Kabbaj M, Simon H, Le Moal M, Maccari S. 1994. Prena-
+tal stress increases the hypothalamo-pituitary-adrenal axis response
+The authors are thankful to the Center of Animal Breeding
+in young and adult rats. J Neuroendocrinol 6:341–345.
+of Kashan University of Medical Sciences for providing the
+Howland JG, Wang YT. 2008. Synaptic plasticity in learning and
+animals. memory: Stress effects in the hippocampus. Prog Brain Res 169:
+145–158.
+Igosheva N, Taylor PD, Poston L, Glover V. 2007. Prenatal stress in
+the rat results in increased blood pressure responsiveness to stress
+and enhanced arterial reactivity to neuropeptide Y in adulthood.
+REFERENCES
+J Physiol 582:665–674.
+Ilin Y, Richter-Levin G. 2009. ERK2 and CREB activation in the
+amygdala when an event is remembered as "Fearful" and not when
+Akirav I, Richter-Levin G. 2006. Factors that determine the non- it is remembered as "Instructive". J Neurosci Res 87:1823–1831.
+linear amygdala influence on hippocampus-dependent memory. Joels M. 2006. Corticosteroid effects in the brain: U-shape it. Trends
+Dose Response 4:22–37. Pharmacol Sci 27:244–250.
+Alfarez DN, Wiegert O, Joels M, Krugers HJ 2002. Corticosterone Kay G, Tarcic N, Poltyrev T, Weinstock M. 1998. Prenatal stress
+and stress reduce synaptic potentiation in mouse hippocampal sli- depresses immune function in rats. Physiol Behav 63:397–402.
+ces with mild stimulation. Neuroscience 115:1119–1126. Kim JJ, Koo JW, Lee HJ, Han JS. 2005. Amygdalar inactivation
+Bock J, Murmu MS, Biala Y, Weinstock M, Braun K. 2011. Prenatal blocks stress-induced impairments in hippocampal long-term
+stress and neonatal handling induce sex-specific changes in dendri- potentiation and spatial memory. J Neurosci 25:1532–1539.
+tic complexity and dendritic spine density in hippocampal subre- Kim JJ, Lee HJ, Han JS, Packard MG. 2001. Amygdala is critical for
+gions of prepubertal rats. Neuroscience 193:34–43. stress-induced modulation of hippocampal long-term potentiation
+Carobrez AP, Bertoglio LJ. 2005. Ethological and temporal analyses of and learning. J Neurosci 21:5222–5228.
+anxiety-like behavior: The elevated plus-maze model 20 years on. Kjellberg A. 1990. Subjective, behavioral and psychophysiological
+Neurosci Biobehav Rev 29:1193–1205. effects of noise. Scand J Work Environ Health 16(Suppl 1):29–38.
+Cazakoff BN, Johnson KJ, Howland JG. 2010. Converging effects of Kobayashi N, Machida T, Takahashi T, Takatsu H, Shinkai T, Abe K,
+acute stress on spatial and recognition memory in rodents: Urano S. 2009. Elevation by oxidative stress and aging of
+Hippocampus
+
+===== PAGE 10 =====
+10 BARZEGAR ET AL.
+hypothalamic-pituitary-adrenal activity in rats and its prevention produces learning deficits associated with impairment of NMDA
+by vitamin e. J Clin Biochem Nutr 45:207–213. receptor-mediated synaptic plasticity. J Neurosci 26:3309–3318.
+Lordi B, Protais P, Mellier D, Caston J. 1997. Acute stress in pregnant Takahashi L, Kalin N, Barksdale C, Vanden Burgt J, Brownfield M.
+rats: Effects on growth rate, learning, and memory capabilities of 1988. Stressor controllability during pregnancy influences
+the offspring. Physiol Behav 62:1087–1092. pituitary-adrenal hormone concentrations and analgesic responsive-
+Matthews S. 2000. Antenatal glucocorticoids and programming of the ness in offspring. Physiol Behav 42:323–329.
+developing CNS. Pediatr Res 47:291–300. Takahashi LK, Turner JG, Kalin NH. 1998. Prolonged stress-induced
+Molnar E. 2011. Long-term potentiation in cultured hippocampal elevation in plasma corticosterone during pregnancy in the rat:
+neurons. Semin Cell Dev Biol 22:506–513. Implications for prenatal stress studies. Psychoneuroendocrinology
+Morales-Medina JC, Sanchez F, Flores G, Dumont Y, Quirion R. 23:571–581.
+2009. Morphological reorganization after repeated corticosterone Talaei SA, Salami M. 2013. Sensory experience differentially underlies
+administration in the hippocampus, nucleus accumbens and amyg- developmental alterations of LTP in CA1 area and dentate gyrus.
+dala in the rat. J Chem Neuroanat 38:266–272. Brain Res 1537:1–8.
+Murmu M, Salomon S, Biala Y, Weinstock M, Braun K, Bock J. Talge NM, Neal C, Glover V. 2007. Antenatal maternal stress and
+2006. Changes of spine density and dendritic complexity in the long-term effects on child neurodevelopment: How and why?
+prefrontal cortex in offspring of mothers exposed to stress during J Child Psychol Psychiatry 48:245–261.
+pregnancy. Eur J Neurosci 24:1477–1487. Van den Bergh BR, Mulder EJ, Mennes M, Glover V. 2005. Antenatal
+Nishio H, Kasuga S, Ushijima M, Harada Y. 2001. Prenatal stress and maternal anxiety and stress and the neurobehavioural development
+postnatal development of neonatal rats sex-dependent effects on of the fetus and child: Links and possible mechanisms. A review.
+emotional behavior and learning ability of neonatal rats. Int J Dev Neurosci Biobehav Rev 29:237–258.
+Neurosci 19:37–45. Van den Hove DL, Steinbusch HW, Scheepens A, Van de Berg WD,
+Paoletti P, Neyton J. 2007. NMDA receptor subunits: Function and KooimanLA,BoostenBJ,PrickaertsJ,BlancoCE.2006.Prenatalstress
+pharmacology. Curr Opin Pharmacol 7:39–47. andneonatalratbraindevelopment.Neuroscience137:145–155.
+Paxinos G, Watson C. 2007. The Rat Brain in Stereotaxic Coordi- Wallenius MAMA. 2004. The interaction of noise stress and personal
+nates. Academic Press, San Diego, California, USA. project stress on subjective health. J Environ Psychol 24:167–177.
+Roozendaal B. 2002. Stress and memory: Opposing effects of gluco- Weinstock M. 2001. Alterations induced by gestational stress in brain
+corticoids on memory consolidation and memory retrieval. Neuro- morphology and behaviour of the offspring. Prog Neurobiol 65:
+biol Learn Memory 78:578–595. 427–451.
+Sato H, Takahashi T, Sumitani K, Takatsu H, Urano S. 2010. Gluco- Weinstock M. 2005. The potential influence of maternal stress hor-
+corticoid generates ROS to induce oxidative injury in the hippo- mones on development and mental health of the offspring. Brain
+campus, leading to impairment of cognitive function of rats. Behav Immun 19:296–308.
+J Clin Biochem Nutr 47:224–232. Weinstock M. 2008. The long-term behavioural consequences of pre-
+Sharma DR, Sunkaria A, Bal A, Bhutia YD, Vijayaraghavan R, Flora natal stress. Neurosci Biobehav Rev 32:1073–1086.
+SJ, Gill KD. 2009. Neurobehavioral impairments, generation of Yaka R, Salomon S, Matzner H, Weinstock M. 2007. Effect of varied
+oxidative stress and release of pro-apoptotic factors after chronic gestational stress on acquisition of spatial memory, hippocampal
+exposure to sulphur mustard in mouse brain. Toxicol Appl Phar- LTP and synaptic proteins in juvenile male rats. Behav Brain Res
+macol, 240:208–218. 179:126–132.
+Silvers J, Tokunaga S, Berry R, White A, Matthews D. 2003. Impair- Yang J, Han H, Cao J, Li L, Xu L. 2006. Prenatal stress modifies hip-
+ments in spatial learning and memory: Ethanol, allopregnanolone, pocampal synaptic plasticity and spatial learning in young rat off-
+and the hippocampus. Brain Res Brain Res Rev 43:275–284. spring. Hippocampus 16:431–436.
+Sobrian S, Vaughn V, Ashe W, Markovic B, Djuric V, Jankovic B. Yilmazer-Hanke DM. 2008. Morphological correlates of emotional
+1997. Gestational exposure to loud noise alters the development and cognitive behaviour: Insights from studies on inbred and out-
+and postnatal responsiveness of humoral and cellular compo- bred rodent strains and their crosses. Behav Pharmacol 19:403–34.
+nents of the immune system in offspring. Environ Res 73:227– Zhang TY, Labonte B, Wen XL, Turecki G, Meaney MJ. 2013. Epige-
+241. netic mechanisms for the early environmental regulation of hippo-
+Son GH, Geum D, Chung S, Kim EJ, Jo JH, Kim CM, Lee KH, campal glucocorticoid receptor gene expression in rodents and
+Kim H, Choi S, Kim HT, Lee CJ, Kim K. 2006. Maternal stress humans. Neuropsychopharmacology 38:111–123.
+Hippocampus

@@ -1,0 +1,772 @@
+::: {.callout-warning}
+## Superseded analysis file
+
+This exploratory file is retained for provenance but is no longer part of the active workflow. The reviewed implementation is being migrated to `pcne_book/02_effect_size_lnRR.qmd`, which reads the audited output from `pcne_book/01_data_wrangling.qmd`.
+
+Do not use this file to regenerate the analysis dataset.
+:::
+
+# Estimating effect sizes (legacy)
+
+```{r}
+#| label: setup
+#| include: true
+pacman::p_load(
+               DT,
+               dtplyr,
+               here, 
+               knitr,
+               tidyverse,
+               patchwork,
+               metafor
+               )
+```
+
+## lnRR Effect Size Calculation Function
+
+This function, `calculate_lnRR()`, is designed to calculate the Log Response Ratio ($\text{lnRR}$) and its variance ($\text{lnRR_var}$) for both continuous and percentage data, accounting for dependent (correlated) and independent comparison structures.
+
+::: callout-note
+## Variable definitions
+
+| Variable | Definition |
+|------------------------------------|------------------------------------|
+| `es_id` | Unique identifier for each effect size |
+| `study_id` | Identifier for the study from which the data is drawn |
+| `c_n`, `ex_n` | Sample sizes for control and experimental groups |
+| `c_mean`, `ex_mean` | Group means for control and experimental groups |
+| `c_se`, `ex_se` | Group standard errors for control and experimental groups |
+| `c_sd`, `ex_sd` | Group standard deviations for control and experimental groups |
+| `data_type` | Outcome type (e.g., time, count, latency, percentage, index) |
+| `comparison_structure` | "Independent" (different animals) vs "Dependent" (same animals) |
+| `higher_better` | Whether higher values indicate a better outcome (Yes/No) |
+:::
+
+```{r}
+
+#| label: calculate_lnRR_final
+
+# =========================
+# (1) Robust calculate_lnRR() with dependent-n audit + safer guards
+# (2) Safe re-load from CSV without lnRR/lnRR_var becoming character/factor
+# =========================
+
+calculate_lnRR <- function(dt) {
+
+  # ---- 1) Guards / cleaning (ONLY where relevant) ----
+  dt <- dt %>%
+    mutate(
+      data_type = trimws(tolower(as.character(data_type))),
+
+      # Guard against log(0) for ALL data types (applies only if mean==0)
+      c_mean  = ifelse(!is.na(c_mean)  & c_mean  == 0, 0.005, c_mean),
+      ex_mean = ifelse(!is.na(ex_mean) & ex_mean == 0, 0.005, ex_mean),
+
+      # Guard 100% ONLY for percentage outcomes
+      c_mean  = ifelse(data_type == "percentage" & !is.na(c_mean)  & c_mean  == 100, 99.5, c_mean),
+      ex_mean = ifelse(data_type == "percentage" & !is.na(ex_mean) & ex_mean == 100, 99.5, ex_mean),
+
+      # Symmetric zero-SD guard
+      c_sd  = ifelse(!is.na(c_sd)  & c_sd  == 0, 0.01, c_sd),
+      ex_sd = ifelse(!is.na(ex_sd) & ex_sd == 0, 0.01, ex_sd)
+    )
+
+  # ---- 2) Setup ----
+  dt1 <- dt %>%
+    mutate(
+      lnRR = NA_real_,
+      lnRR_var = NA_real_
+    )
+
+  asin_trans <- function(p) asin(sqrt(p))
+
+  # ---- 3) Loop ----
+  for (i in seq_len(nrow(dt1))) {
+
+    ex_n  <- dt1$ex_n[i]
+    c_n   <- dt1$c_n[i]
+    ex_m  <- dt1$ex_mean[i]
+    c_m   <- dt1$c_mean[i]
+    ex_sd <- dt1$ex_sd[i]
+    c_sd  <- dt1$c_sd[i]
+
+    data_type <- trimws(tolower(as.character(dt1$data_type[i])))
+    Comp      <- trimws(tolower(as.character(dt1$comparison_structure[i])))
+    HB        <- trimws(tolower(as.character(dt1$higher_better[i])))
+
+    # ---- A) Continuous data ----
+    if (data_type %in% c("time", "count", "latency", "index")) {
+
+      if (Comp == "independent") {
+
+        effect <- metafor::escalc(
+          measure = "ROM",
+          n1i = ex_n, n2i = c_n,
+          m1i = ex_m, m2i = c_m,
+          sd1i = ex_sd, sd2i = c_sd,
+          var.names = c("lnRR", "lnRR_var")
+        )
+
+      } else if (Comp == "dependent") {
+
+        # Audit: dependent design but unequal n
+        if (!is.na(ex_n) && !is.na(c_n) && ex_n != c_n) {
+          warning(
+            "Dependent design but ex_n != c_n for es_id = ", dt1$es_id[i],
+            " (ex_n=", ex_n, ", c_n=", c_n, "). Using ni=(ex_n+c_n)/2."
+          )
+        }
+
+        effect <- metafor::escalc(
+          measure = "ROMC",
+          ni  = (ex_n + c_n) / 2,
+          m1i = ex_m, m2i = c_m,
+          sd1i = ex_sd, sd2i = c_sd,
+          ri  = 0.5,
+          var.names = c("lnRR", "lnRR_var")
+        )
+
+      } else {
+        warning("Unhandled comparison_structure for es_id = ", dt1$es_id[i], ": ", Comp)
+        next
+      }
+
+      dt1$lnRR[i]     <- effect$lnRR
+      dt1$lnRR_var[i] <- effect$lnRR_var
+
+      # Direction standardization: flip sign only
+      if (HB == "yes") dt1$lnRR[i] <- -dt1$lnRR[i]
+    }
+
+    # ---- B) Percentage data ----
+    else if (data_type == "percentage") {
+
+      # Rescale if values look like 0–100
+      if (!is.na(ex_m) && !is.na(c_m) && (ex_m > 1 || c_m > 1)) {
+        ex_m  <- ex_m / 100
+        c_m   <- c_m  / 100
+        ex_sd <- ex_sd / 100
+        c_sd  <- c_sd  / 100
+      }
+
+      # Clamp proportions away from 0/1
+      ex_m <- pmin(pmax(ex_m, 0.005), 0.995)
+      c_m  <- pmin(pmax(c_m,  0.005), 0.995)
+
+      # Delta-method approx for SD on arcsin-sqrt scale (as you used)
+      ex_sd_t <- sqrt(ex_sd^2 / (4 * ex_m * (1 - ex_m)))
+      c_sd_t  <- sqrt(c_sd^2  / (4 * c_m  * (1 - c_m)))
+
+      ex_m_t <- asin_trans(ex_m)
+      c_m_t  <- asin_trans(c_m)
+
+      lnRR_calc <- log(ex_m_t / c_m_t)
+
+      v_ex <- (ex_sd_t)^2 * (1 / (ex_m_t^2 * ex_n))
+      v_c  <- (c_sd_t )^2 * (1 / (c_m_t^2  * c_n))
+
+      if (Comp == "independent") {
+        lnRR_var_calc <- v_ex + v_c
+      } else if (Comp == "dependent") {
+        lnRR_var_calc <- v_ex + v_c - 2 * 0.5 * sqrt(v_ex) * sqrt(v_c)
+      } else {
+        warning("Unhandled comparison_structure for es_id = ", dt1$es_id[i], ": ", Comp)
+        next
+      }
+
+      dt1$lnRR[i]     <- lnRR_calc
+      dt1$lnRR_var[i] <- lnRR_var_calc
+
+      # Direction standardization: flip sign only
+      if (HB == "yes") dt1$lnRR[i] <- -dt1$lnRR[i]
+    }
+
+    # ---- C) Anything else ----
+    else {
+      warning("Unhandled data_type for es_id = ", dt1$es_id[i], ": ", data_type)
+      next
+    }
+  }
+
+  dt1
+}
+
+
+```
+
+# =========================
+
+::: callout-note
+## Minimum-mean rule for small-unit outcomes (seconds, counts)
+
+For outcomes recorded in **seconds** or **counts**, some extracted means were \< 1. This can generate extreme lnRR values and inflated sampling variances because ratio-of-means estimators use (\log(\bar{x}*{Ex}/*\bar{x}{C})) and the sampling variance scales approximately with (1/\bar{x}\^2).
+
+To stabilise computation and reflect plausible measurement resolution, we set a **minimum mean of 1 (in original units)** for these outcomes prior to lnRR calculation.
+
+Standard deviations were **not** floored; we applied only a **zero-SD guard** (replacing SD = 0 with a small positive value) to prevent undefined variances.
+:::
+
+::: callout-note
+## Converting median and IQR to mean and SD (Wan et al. 2014)
+
+A small subset of studies reported outcomes as the **median** and **interquartile range** ((q_1)–(q_3)) rather than mean ± SD (e.g., Abramova). To harmonize summary statistics for effect-size computation, we approximated the **mean** and **standard deviation** from (n), (q_1), (m), and (q_3) using the quantile-based estimators of **Wan et al. (2014)**.
+
+**Given:** sample size (n), first quartile (q_1), median (m), third quartile (q_3)
+
+\[ \hat{\mu} = \frac{q_1 + m + q_3}{3} \]
+
+\[ \hat{\sigma} = \frac{q_3 - q_1}{2\,\Phi^{-1}\!\left(\frac{0.75n - 0.125}{n + 0.25}\right)} \]
+
+where (\Phi\^{-1}(\cdot)) is the standard normal quantile function (R: `qnorm()`).
+:::
+
+```{r}
+#| label: wan_helpers
+#| echo: false
+
+# Wan et al. (2014) Scenario C3: estimate mean/sd from n, q1, median, q3
+wan_c3_mean <- function(q1, med, q3) (q1 + med + q3) / 3
+
+wan_c3_sd <- function(q1, q3, n) {
+  p <- (0.75 * n - 0.125) / (n + 0.25)
+  (q3 - q1) / (2 * stats::qnorm(p))
+}
+
+# Optional: CI half-width -> SE (assumes 95% CI half-width)
+ci_halfwidth_to_se <- function(ci_halfwidth) ci_halfwidth / 1.96
+```
+
+```{r}
+#| label: load_and_clean_data
+
+db <- readr::read_csv(here("Data", "PCN_data_ext_checking_v.3.csv")) %>%
+  
+  # 0) Make sure numeric fields are numeric
+  mutate(across(
+    c(c_n, ex_n, c_mean, ex_mean, c_se, ex_se, c_sd, ex_sd,
+      c_ci, ex_ci, c_median, c_q1, c_q3, ex_median, ex_q1, ex_q3),
+    as.numeric
+  )) %>%
+  
+  # 1) Audit what was missing BEFORE imputation
+  mutate(
+    miss_c_mean_raw  = is.na(c_mean),
+    miss_ex_mean_raw = is.na(ex_mean),
+    miss_c_sd_raw    = is.na(c_sd),
+    miss_ex_sd_raw   = is.na(ex_sd),
+    miss_c_se_raw    = is.na(c_se),
+    miss_ex_se_raw   = is.na(ex_se)
+  ) %>%
+  
+  # 2) Wan et al. (2014): median+IQR -> mean/SD where mean/SD are missing
+  mutate(
+    c_mean = ifelse(
+      is.na(c_mean) & !is.na(c_q1) & !is.na(c_median) & !is.na(c_q3),
+      wan_c3_mean(c_q1, c_median, c_q3),
+      c_mean
+    ),
+    ex_mean = ifelse(
+      is.na(ex_mean) & !is.na(ex_q1) & !is.na(ex_median) & !is.na(ex_q3),
+      wan_c3_mean(ex_q1, ex_median, ex_q3),
+      ex_mean
+    ),
+    c_sd = ifelse(
+      is.na(c_sd) & !is.na(c_q1) & !is.na(c_q3) & !is.na(c_n) & c_n > 1,
+      wan_c3_sd(c_q1, c_q3, c_n),
+      c_sd
+    ),
+    ex_sd = ifelse(
+      is.na(ex_sd) & !is.na(ex_q1) & !is.na(ex_q3) & !is.na(ex_n) & ex_n > 1,
+      wan_c3_sd(ex_q1, ex_q3, ex_n),
+      ex_sd
+    )
+  ) %>%
+  
+  # 3) CI -> SE (ONLY if se is missing and you have ci columns)
+  # IMPORTANT: assumes c_ci/ex_ci are 95% CI *half-widths*.
+  mutate(
+    c_se  = ifelse(is.na(c_se)  & !is.na(c_ci),  ci_halfwidth_to_se(c_ci),  c_se),
+    ex_se = ifelse(is.na(ex_se) & !is.na(ex_ci), ci_halfwidth_to_se(ex_ci), ex_se)
+  ) %>%
+  
+  # 4) SE -> SD (ONLY where SD is still missing and n exists)
+  mutate(
+    c_sd  = ifelse(is.na(c_sd)  & !is.na(c_se)  & !is.na(c_n)  & c_n  > 0, c_se  * sqrt(c_n),  c_sd),
+    ex_sd = ifelse(is.na(ex_sd) & !is.na(ex_se) & !is.na(ex_n) & ex_n > 0, ex_se * sqrt(ex_n), ex_sd)
+  ) %>%
+  
+  # 4b) SD -> SE (AFTER SD imputation; fills SE where still missing)
+  mutate(
+    c_se  = ifelse(is.na(c_se)  & !is.na(c_sd)  & !is.na(c_n)  & c_n  > 0, c_sd  / sqrt(c_n),  c_se),
+    ex_se = ifelse(is.na(ex_se) & !is.na(ex_sd) & !is.na(ex_n) & ex_n > 0, ex_sd / sqrt(ex_n), ex_se)
+  ) %>%
+  
+  # 5) Minimum-mean rule for seconds/counts (means only; SDs not floored)
+  mutate(
+    data_units_clean = trimws(tolower(as.character(data_units))),
+    mean_floored_to1 = data_units_clean %in% c("s","sec","second","seconds","count","counts") &
+      (
+        (!is.na(c_mean)  & c_mean  < 1) |
+        (!is.na(ex_mean) & ex_mean < 1)
+      ),
+    c_mean  = ifelse(data_units_clean %in% c("s","sec","second","seconds","count","counts") &
+                       !is.na(c_mean)  & c_mean  < 1, 1, c_mean),
+    ex_mean = ifelse(data_units_clean %in% c("s","sec","second","seconds","count","counts") &
+                       !is.na(ex_mean) & ex_mean < 1, 1, ex_mean)
+  ) %>%
+  select(-data_units_clean) %>%
+  
+  # 6) cohort_id
+  mutate(
+    cohort_id = paste(study_id, ex_id, sep = "_")
+  ) %>%
+  
+  # 7) Post-imputation audit flags
+  mutate(
+    c_mean_imputed  = miss_c_mean_raw  & !is.na(c_mean),
+    ex_mean_imputed = miss_ex_mean_raw & !is.na(ex_mean),
+    c_sd_imputed    = miss_c_sd_raw    & !is.na(c_sd),
+    ex_sd_imputed   = miss_ex_sd_raw   & !is.na(ex_sd),
+    c_se_imputed    = miss_c_se_raw    & !is.na(c_se),
+    ex_se_imputed   = miss_ex_se_raw   & !is.na(ex_se)
+  ) %>%
+  
+  # 8) Factors last
+  mutate(across(where(is.character), as.factor))
+
+
+# ---- audits ----
+db %>%
+  summarise(
+    n_rows = n(),
+    miss_c_mean = sum(is.na(c_mean)),
+    miss_ex_mean = sum(is.na(ex_mean)),
+    miss_c_sd = sum(is.na(c_sd)),
+    miss_ex_sd = sum(is.na(ex_sd)),
+    miss_c_se = sum(is.na(c_se)),
+    miss_ex_se = sum(is.na(ex_se)),
+    miss_c_n = sum(is.na(c_n)),
+    miss_ex_n = sum(is.na(ex_n)),
+    n_c_mean_imputed = sum(c_mean_imputed, na.rm = TRUE),
+    n_ex_mean_imputed = sum(ex_mean_imputed, na.rm = TRUE),
+    n_c_sd_imputed = sum(c_sd_imputed, na.rm = TRUE),
+    n_ex_sd_imputed = sum(ex_sd_imputed, na.rm = TRUE),
+    n_c_se_imputed = sum(c_se_imputed, na.rm = TRUE),
+    n_ex_se_imputed = sum(ex_se_imputed, na.rm = TRUE)
+  )
+```
+
+
+
+
+# =========================
+
+## Calculate lnRR Effect Sizes
+
+Now, we apply the `calculate_lnRR()` function to the cleaned dataset to compute the effect sizes and their variances.
+
+The resulting dataset, `db_effect_sizes`, is then saved as a CSV file for further analysis.
+
+```{r}
+#| label: calculate_effect_sizes
+#| eval: true
+db_effect_sizes <- calculate_lnRR(db)
+
+db_effect_sizes %>%
+  summarise(
+    n_total = n(),
+    n_lnRR_missing = sum(is.na(lnRR)),
+    n_var_missing  = sum(is.na(lnRR_var))
+  )
+
+db_effect_sizes %>%
+  count(data_type, comparison_structure, higher_better)
+
+db_effect_sizes %>%
+  filter(is.na(lnRR) | is.na(lnRR_var)) %>%
+  dplyr::select(
+    es_id, study_id, data_type, comparison_structure, higher_better,
+    c_n, ex_n, c_mean, ex_mean, c_sd, ex_sd
+  ) %>%
+  head(20)
+
+readr::write_csv(
+  db_effect_sizes,
+  file = here("Data", "db_lnRR.csv"),
+  na = ""
+)
+
+```
+
+# =========================
+
+## Calculate lnRR Effect Sizes
+
+We apply the `calculate_lnRR()` function to the cleaned dataset to generate effect sizes and sampling variances. The resulting dataset is saved for reproducibility and downstream modeling.
+
+
+```{r}
+#| label: calculate_effect_sizes
+#| eval: false
+db_effect_sizes<-calculate_lnRR(db)
+readr::write_csv(
+  db_effect_sizes, 
+  file = here("Data", "db_lnRR.csv"),
+  na = "" 
+)
+
+```
+
+::: panel-tabset
+## Effect Size Table
+
+```{r}
+#| label: effect_size_table
+#| echo: false
+
+db_effect_sizes <- readr::read_csv(here("Data","db_lnRR.csv")) %>%
+mutate(across(c(c_n, ex_n, c_mean, ex_mean, c_se, ex_se, c_sd, ex_sd), as.numeric))%>%
+  mutate(across(where(is.character), as.factor))
+
+# Define all columns to display (IDs first, then numerical data)
+display_cols <- c("es_id", "study_id",  
+                  "c_n", "c_mean", "c_se", "c_sd", 
+                  "ex_n", "ex_mean", "ex_se", "ex_sd", 
+                  "lnRR", "lnRR_var", "cohort_id")
+
+# Define columns that require numerical rounding (excluding the ID columns)
+round_cols <- c("c_n", "c_mean", "c_se", "c_sd", 
+                "ex_n", "ex_mean", "ex_se", "ex_sd", 
+                "lnRR", "lnRR_var")
+
+DT::datatable(
+  db_effect_sizes %>% 
+    # Select only the desired columns for display
+    dplyr::select(all_of(display_cols)),
+  options = list(
+    pageLength = 10,
+    scrollX = TRUE,
+    dom = 'Bfrtip',
+    buttons = c('copy', 'csv')
+  ),
+  extensions = 'Buttons',
+  rownames = FALSE
+) %>%
+  # Apply rounding ONLY to the numerical statistical columns
+  formatRound(columns = round_cols, digits = 3) %>%
+  # Apply general styling to all displayed columns
+  formatStyle(columns = display_cols, `text-align` = 'center')
+```
+
+## Effect Size Distributions
+
+The histograms below show the distribution of calculated lnRR values and their sampling variances. These plots allow visual inspection of:
+
+- Directional bias (skew toward negative values)
+- Extreme outliers
+- Variance heterogeneity across studies
+
+
+```{r}
+#| label: lnRR_histogram
+
+hist(db_effect_sizes$lnRR,
+     xlim=c(-9,6.5),
+     breaks = seq(-9,6.5,0.5),
+     main = "Distribution of lnRR",
+     xlab = "lnRR")
+
+hist(db_effect_sizes$lnRR_var,
+     xlim=c(0,13),
+     breaks = seq(0,13,0.1),
+     main = "Distribution of lnRR Variance",
+     xlab = "Sampling Variance")
+```
+:::
+
+
+The full dataset of computed effect sizes is available in the project repository to facilitate independent replication of all meta-analytic results.
+
+
+
+# =========================
+
+# Diagnostics: lnRR & variance plots 
+
+# =========================
+
+```{r}
+
+
+# 0) (Optional but useful) Create SE from variance for standard diagnostics
+db_effect_sizes <- db_effect_sizes %>%
+  mutate(
+    SE_lnRR = sqrt(lnRR_var)  # standard error of lnRR
+  )
+
+# 1) Scatter: lnRR vs variance (raw scale)
+# Purpose: check if extreme effect sizes coincide with huge uncertainty
+plot(
+  x = db_effect_sizes$lnRR,
+  y = db_effect_sizes$lnRR_var,
+  xlab = "lnRR (log response ratio)",
+  ylab = "Variance of lnRR",
+  pch  = 16
+)
+abline(h = 0, lty = 2)
+
+# 2) Scatter: lnRR vs variance (log y-scale)  <-- recommended given your right-skewed variance histogram
+# Purpose: makes the low-variance cloud visible when a few points have very large variances
+plot(
+  x = db_effect_sizes$lnRR,
+  y = db_effect_sizes$lnRR_var,
+  xlab = "lnRR (log response ratio)",
+  ylab = "Variance of lnRR (log scale)",
+  pch  = 16,
+  log  = "y"
+)
+abline(h = min(db_effect_sizes$lnRR_var[db_effect_sizes$lnRR_var > 0], na.rm = TRUE), lty = 2)
+
+# 3) Scatter: lnRR vs SE (often easier to interpret than variance)
+# Purpose: identifies imprecise effects (high SE) and helps spot influential points
+plot(
+  x = db_effect_sizes$lnRR,
+  y = db_effect_sizes$SE_lnRR,
+  xlab = "lnRR (log response ratio)",
+  ylab = "SE of lnRR",
+  pch  = 16
+)
+abline(h = 0, lty = 2)
+
+# 4) Optional: label the highest-variance points (top N) on the log-variance plot
+# Purpose: quickly identify which es_ids are driving the far-right tail
+N <- 10
+top_idx <- order(db_effect_sizes$lnRR_var, decreasing = TRUE)[seq_len(min(N, nrow(db_effect_sizes)))]
+plot(
+  x = db_effect_sizes$lnRR,
+  y = db_effect_sizes$lnRR_var,
+  xlab = "lnRR (log response ratio)",
+  ylab = "Variance of lnRR (log scale)",
+  pch  = 16,
+  log  = "y"
+)
+text(
+  x = db_effect_sizes$lnRR[top_idx],
+  y = db_effect_sizes$lnRR_var[top_idx],
+  labels = db_effect_sizes$es_id[top_idx],
+  pos = 3, cex = 0.7
+)
+
+# 5) Optional: print a quick table of the worst offenders (highest variance)
+# Purpose: inspect whether huge variances come from tiny n, huge SD, near-zero means, % transforms, etc.
+db_effect_sizes %>%
+  arrange(desc(lnRR_var)) %>%
+  dplyr::select(
+    es_id, study_id, data_type, comparison_structure, higher_better,
+    lnRR, lnRR_var, SE_lnRR,
+    c_n, ex_n, c_mean, ex_mean, c_sd, ex_sd
+  ) %>%
+  head(15)
+```
+
+# =========================================
+
+# SANITY CHECKS + MODERATOR OVERLAP TABLES
+
+# =========================================
+
+```{r}
+
+dat <- db_effect_sizes
+
+# ---- 0) Define moderator sets (edit if you add/remove columns) ----
+mods_exposure_cat <- c("gest_stage_ex", "exposure_type", "noise_type", "control_conditions")
+mods_exposure_num <- c("exposure_span_d", "exposure_session_duration_h", "loudness_dB", "frequency_Hz", "control_loudness_dB")
+
+mods_bio_cat      <- c("sp_latin", "sp_common", "strain", "offspring_sex")
+mods_bio_num      <- c("offspring_age_d")
+
+mods_outcome_cat  <- c("experimental_procedures", "assay_type", "measurement_variable")
+
+# Keep only moderators that actually exist in the dataset (prevents errors)
+mods_exposure_cat <- intersect(mods_exposure_cat, names(dat))
+mods_exposure_num <- intersect(mods_exposure_num, names(dat))
+mods_bio_cat      <- intersect(mods_bio_cat, names(dat))
+mods_bio_num      <- intersect(mods_bio_num, names(dat))
+mods_outcome_cat  <- intersect(mods_outcome_cat, names(dat))
+
+mods_cat <- c(mods_exposure_cat, mods_bio_cat, mods_outcome_cat)
+mods_num <- c(mods_exposure_num, mods_bio_num)
+
+# ---- 1) Type hygiene (important if some fields became factor/character) ----
+as_num_safe <- function(x) {
+  if (is.factor(x)) x <- as.character(x)
+  suppressWarnings(as.numeric(x))
+}
+
+dat <- dat %>%
+  mutate(across(all_of(mods_cat), ~ {
+    # normalize categorical
+    x <- .
+    if (is.factor(x)) x <- as.character(x)
+    x <- trimws(tolower(x))
+    na_if(x, "")
+  })) %>%
+  mutate(across(all_of(mods_num), as_num_safe))
+
+# ---- 2) Coverage table: missingness + spread ----
+coverage_table <- function(d, v) {
+  x <- d[[v]]
+  tibble(
+    moderator   = v,
+    n_total     = nrow(d),
+    n_missing   = sum(is.na(x)),
+    n_present   = sum(!is.na(x)),
+    n_unique    = n_distinct(x, na.rm = TRUE),
+    # For categorical: number of levels observed (same as unique); for numeric still useful
+    type        = ifelse(is.numeric(x), "numeric", "categorical")
+  )
+}
+
+mod_coverage <- map_dfr(c(mods_cat, mods_num), ~coverage_table(dat, .x)) %>%
+  arrange(desc(n_missing))
+
+mod_coverage
+
+# ---- 3) Top levels table for categorical moderators (spot weird labels / rare levels) ----
+top_levels <- function(d, v, top_n = 12) {
+  d %>%
+    count(.data[[v]], sort = TRUE, name = "n") %>%
+    mutate(
+      moderator = v,
+      prop = n / sum(n)
+    ) %>%
+    slice_head(n = top_n) %>%
+    rename(level = 1) %>%
+    select(moderator, level, n, prop)
+}
+
+mod_top_levels <- map_dfr(mods_cat, ~top_levels(dat, .x, top_n = 12))
+mod_top_levels
+
+# ---- 4) Numeric spread summaries (outliers, clumping, impossible values) ----
+num_spread <- function(d, v) {
+  x <- d[[v]]
+  tibble(
+    moderator = v,
+    n_present = sum(!is.na(x)),
+    min = suppressWarnings(min(x, na.rm = TRUE)),
+    q25 = suppressWarnings(quantile(x, 0.25, na.rm = TRUE)),
+    median = suppressWarnings(median(x, na.rm = TRUE)),
+    mean = suppressWarnings(mean(x, na.rm = TRUE)),
+    q75 = suppressWarnings(quantile(x, 0.75, na.rm = TRUE)),
+    max = suppressWarnings(max(x, na.rm = TRUE))
+  )
+}
+
+mod_num_spread <- map_dfr(mods_num, ~num_spread(dat, .x))
+mod_num_spread
+
+# ---- 5) Study / cohort clustering (non-independence sanity check) ----
+# If you have cohort_id already, this will work; otherwise create it like you did:
+if (!"cohort_id" %in% names(dat) && all(c("study_id","ex_id") %in% names(dat))) {
+  dat <- dat %>% mutate(cohort_id = paste(study_id, ex_id, sep = "_"))
+}
+
+cluster_by_study <- dat %>% count(study_id, sort = TRUE, name = "n_ES")
+cluster_by_cohort <- if ("cohort_id" %in% names(dat)) dat %>% count(cohort_id, sort = TRUE, name = "n_ES") else NULL
+
+cluster_by_study
+cluster_by_cohort
+
+# ---- 6) “Moderator profile” clusters (are the same moderator combos repeating?) ----
+# Use a subset of key moderators to define a profile (edit as needed)
+profile_vars <- intersect(
+  c("sp_latin","strain","gest_stage_ex","exposure_type","noise_type","offspring_sex","assay_type"),
+  names(dat)
+)
+
+profiles <- dat %>%
+  mutate(across(all_of(profile_vars), ~replace_na(as.character(.), "NA"))) %>%
+  unite("profile", all_of(profile_vars), sep = " | ", remove = FALSE)
+
+profile_counts <- profiles %>% count(profile, sort = TRUE, name = "n_ES")
+profile_counts %>% slice_head(n = 30)
+
+# ---- 7) Pairwise overlap tables (exposure vs bio vs outcome) ----
+# Helper: crosstab as a count table (wide)
+crosstab_wide <- function(d, a, b, top_b = NULL) {
+  dd <- d %>% filter(!is.na(.data[[a]]), !is.na(.data[[b]]))
+
+  # Optional: restrict b to top levels if it’s huge (e.g., measurement_variable)
+  if (!is.null(top_b)) {
+    keep_b <- dd %>% count(.data[[b]], sort = TRUE) %>% slice_head(n = top_b) %>% pull(1)
+    dd <- dd %>% filter(.data[[b]] %in% keep_b)
+  }
+
+  dd %>%
+    count(.data[[a]], .data[[b]], name = "n") %>%
+    pivot_wider(names_from = all_of(b), values_from = n, values_fill = 0) %>%
+    arrange(desc(rowSums(across(-all_of(a)))))
+}
+
+# Selected high-value overlap checks (edit/add)
+# Exposure vs outcome
+overlap_exposure_assay <- crosstab_wide(dat, "noise_type", "assay_type")
+overlap_exposure_measure <- crosstab_wide(dat, "noise_type", "measurement_variable", top_b = 15)
+
+# Bio vs exposure (confounding checks)
+overlap_strain_noise <- crosstab_wide(dat, "strain", "noise_type")
+overlap_species_noise <- crosstab_wide(dat, "sp_latin", "noise_type")
+
+# Outcome structure checks
+overlap_assay_measure <- crosstab_wide(dat, "assay_type", "measurement_variable", top_b = 20)
+
+overlap_exposure_assay
+overlap_exposure_measure
+overlap_strain_noise
+overlap_species_noise
+overlap_assay_measure
+
+# ---- 8) “Exclusivity” summary: are levels of A only observed with 1 level of B? ----
+# This flags overlap/collinearity problems (e.g., one strain only ever gets one noise type)
+exclusivity_summary <- function(d, a, b) {
+  dd <- d %>% filter(!is.na(.data[[a]]), !is.na(.data[[b]]))
+  by_a <- dd %>% distinct(.data[[a]], .data[[b]]) %>% count(.data[[a]], name = "n_levels_of_B")
+  tibble(
+    A = a,
+    B = b,
+    prop_A_exclusive_to_one_B = mean(by_a$n_levels_of_B == 1),
+    median_B_per_A = median(by_a$n_levels_of_B),
+    max_B_per_A = max(by_a$n_levels_of_B)
+  )
+}
+
+pairs_to_check <- tribble(
+  ~a, ~b,
+  "strain", "noise_type",
+  "sp_latin", "noise_type",
+  "noise_type", "assay_type",
+  "exposure_type", "noise_type",
+  "gest_stage_ex", "exposure_type",
+  "offspring_sex", "assay_type"
+) %>%
+  filter(a %in% names(dat), b %in% names(dat))
+
+exclusivity <- pmap_dfr(pairs_to_check, ~exclusivity_summary(dat, ..1, ..2))
+exclusivity
+
+```
+
+```{r}
+# =========================
+# Simple moderator overlap tables
+# =========================
+
+
+
+```
+
+
+
+:::

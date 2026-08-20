@@ -1,0 +1,739 @@
+
+===== PAGE 1 =====
+Stress
+The International Journal on the Biology of Stress
+ISSN: 1025-3890 (Print) 1607-8888 (Online) Journal homepage: www.tandfonline.com/journals/ists20
+Prenatal noise and restraint stress interact to
+alter exploratory behavior and balance in juvenile
+rats, and mixed stress reverses these effects
+Soumeya Badache, Slim Bouslama, Oualid Brahmia, Abdel Madjid Baïri,
+Abdel Krim Tahraoui & Ali Ladjama
+To cite this article: Soumeya Badache, Slim Bouslama, Oualid Brahmia, Abdel Madjid Baïri,
+Abdel Krim Tahraoui & Ali Ladjama (2017) Prenatal noise and restraint stress interact to alter
+exploratory behavior and balance in juvenile rats, and mixed stress reverses these effects,
+Stress, 20:3, 320-328, DOI: 10.1080/10253890.2017.1307962
+To link to this article: https://doi.org/10.1080/10253890.2017.1307962
+Published online: 21 Apr 2017.
+Submit your article to this journal
+Article views: 807
+View related articles
+View Crossmark data
+Citing articles: 5 View citing articles
+Full Terms & Conditions of access and use can be found at
+https://www.tandfonline.com/action/journalInformation?journalCode=ists20
+
+===== PAGE 2 =====
+STRESS, 2017
+VOL. 20, NO. 3, 320–328
+http://dx.doi.org/10.1080/10253890.2017.1307962
+ORIGINAL RESEARCH REPORT
+Prenatal noise and restraint stress interact to alter exploratory behavior and
+balance in juvenile rats, and mixed stress reverses these effects
+Soumeya Badachea , Slim Bouslamab , Oualid Brahmiac , Abdel Madjid Baïrid , Abdel Krim Tahraouid
+and Ali Ladjamaa
+aLaboratory of Biochemistry and Applied Microbiology, Department of Biochemistry, Faculty of Science, University Badji Mokhtar-Annaba,
+Algeria; bDepartment of Biochemistry, Faculty of Science, University Badji Mokhtar-Annaba, Algeria; cDepartment of Medicine, Faculty of
+Medical Sciences, University Badji Mokhtar-Annaba, Algeria; dLaboratory of Applied Neuroendocrinology, Department of Biology, Faculty of
+Science, University Badji Mokhtar-Annaba, Algeria
+ABSTRACT ARTICLE HISTORY
+We aimed to investigate in adolescent rats the individual and combined effects of prenatal noise Received 22 October 2016
+and restraint stress on balance control, exploration, locomotion and anxiety behavior. Three groups of Accepted 14 March 2017
+pregnant rats were exposed to daily repeated stress from day 11 to day 19 of pregnancy: 3min noise
+(Noise Stress, NS); 10min restraint (restraint stress, RS); or 3min noise followed by 10min restraint
+KEYWORDS
+(mixed stress, MS). On postnatal days (PND) 44, 45 and 46, four groups of male rats (Control, NS, RS:,
+Anxiety; balance; beam
+MS; 16 rats each), were tested as follows: (1) beam walking (BW), (2) open field (OF) and (3) elevated
+walking; locomotion; noise;
+plus maze (EPM). Our results show that the NS group had significantly impaired balance control, loco-
+prenatal stress
+motion and both horizontal and vertical exploration (p<.01 for all measures). The RS group showed
+only a decrease in vertical exploration (p<.05). In contrast, locomotion and balance were not affected
+in the MS group (OF: crossed squares: p¼.34, missteps: p¼.18). However, MS rats exhibited signifi-
+cantly higher anxiety levels (less time in EPM open arms: p<.05), and took more time to complete BW:
+p<.05). Hence, combined prenatal stressors exert non-additive effects on locomotion, exploration and
+balance control, but induce greater anxiety through additive effects. Terminal plasma ACTH concentra-
+tion was increased by prenatal stress, especially noise, which group had the largest adrenal glands.
+Overall, contrary to expectation, combined prenatal stressors can interact to increase anxiety level, but
+diminish alteration of exploration, locomotion and impaired balance control, which were strongly
+induced by noise stress.
+Lay summary: Experience of stress in pregnancy can have negative effects on the offspring that are
+long-lasting. Here, we used laboratory rats to see whether repeated episodes of exposure to loud noise
+or preventing free movement, alone or together, during pregnancy had different effects on behaviors
+of the adolescent offspring. Using standard tests, we found the prenatal stresses caused the offspring
+to be anxious, and not to balance when moving around as well as normal offspring; the degree of
+impairment depended on the type of stress – loud noise exposure had the greatest effects, but if the
+stresses were combined the effects were not worse. The results point to the need to aim to avoid stress
+in pregnant women.
+Introduction armed conflict (Appart et al., 2016), has been associated with
+post-traumatic stress disorder (PTSD) (Yehuda et al., 2005)
+Over the past few decades, many studies have focused on
+and increased incidence of schizophrenia in the offspring of
+the short-term effects of prenatal stress on fetal development
+pregnant women, particularly those traumatized in the first
+in both animal and human models (Cao-Lei et al., 2015; Zeng
+trimester of pregnancy (van Os & Selten, 1998). Indeed, sev-
+et al., 2015). Indeed, it has been reported that prenatal expos-
+eral studies on rats have concluded that prenatal stress alters
+ure to stress causes neurophysiological (Caspi et al., 2010),
+memory, learning and exploration, with development of anx-
+cognitive and behavioral disorders (Cabrera et al., 1999) in
+offspring, such as spatial memory disorders (Benoit et al., iety- or depression-like behavior (Babri et al., 2014; Cabrera
+2015) development of anxiety-or depression-like behavior et al., 1999). However, results of studies on prenatal stress in
+(Basner et al., 2014; Weinstock, 2008). animals are sometimes contradictory, with Meek et al. (2000)
+It has been hypothesized that epigenetic mechanisms rep- showing that 12-day-old mice born to mothers stressed dur-
+resent the interface through which the environment acts to ing the last week of gestation exhibited more intense
+modify the expression of genes and, at the same time, indu- exploratory capacity than the control.
+ces behavioral changes (Zheng et al., 2016). Thus, major trau- Several important questions arise from these studies, such
+matic events in life such as loss of a spouse or experiencing as how does exposure to events that occur during the
+CONTACT Soumeya Badache badachesoumeya@yahoo.fr Department of Biochemistry, University of Annaba, Annaba, Algeria
+(cid:1) 2017 Informa UK Limited, trading as Taylor & Francis Group
+
+===== PAGE 3 =====
+STRESS 321
+perinatal period affect behavior (exploration, locomotion and Experimental protocols
+anxiety-like behavior) later in life?; When various different
+In order to synchronize estrous cycles in the female rats, two
+stressors are applied simultaneously, is the effect similar to a
+males of the same strain and four female rats were put into a
+sum-of-effects of the individually-applied stressors? and can
+partitioned cage with no physical contact for 7days, allowing
+these stressors act synergistically or antagonistically to modify
+exposure to male pheromones. Males and females were then
+behavior in juvenile rats? In order to answer these questions,
+separated for 7days before pairs of females were caged with
+we investigated the impact of prenatal exposure to two types
+one of the males for copulation. Vaginal smears were ana-
+of stressor, namely sound stress and restraint stress, alone
+lyzed daily and observation of sperm was considered day 0
+and as a combination of both. Environmental noise (vehicles,
+of pregnancy. Males were then removed and pregnant
+work environment) is usually not threatening, but it may rep-
+females were separated into experimental groups with two
+resent a considerable subjective annoyance and act as a
+stressor, leading to psychosomatic disturbances (Hau€sler rats per cage: noise stress (NS), n¼6; restraint stress (RS)
+2004). For this reason, we aimed to investigate the effects of n¼6; mixed stress (MS) n¼6; and control (C) n¼8. Pregnant
+chronic short exposure to high decibel noise of the mother females were separated into individual cages on day 17 as
+during pregnancy to mimic natural exposure to a high level the end of pregnancy approached
+environmental noise (e.g. vehicle horns, aircraft noise). Here, Seventy-two hours after delivery, prenatally stressed and
+restraint stress was selected as a model of emotional prenatal control offspring were sexed and weighed (data not shown),
+stress on the basis of previous studies reporting that gesta- before being returned to their own dams to nurse undis-
+tional restraint stress induces long-lasting neurobiological and turbed under the standard laboratory conditions described
+behavioral alterations (Maccari & Morley-Fletcher, 2007). above. After day 30 post-partum, female rats in the progeny
+We evaluated anxiety like-behavior, exploratory behavior, were excluded from our experiments (because the aim of this
+locomotor performance and balance control in adolescent study was not investigation of sex-biased responses to stres-
+rats. Balance control appears to have received little attention sors) and 16 males were selected randomly from each group
+in the field of stress, yet prenatal stress exposure is likely to of surviving rats (Control: n¼16, NS: n¼16, RS: n¼16, and
+significantly influence balance control. Nazeri et al. (2015) MS: n¼16). All 16 rats of each group were subjected to
+reported that balance and motor function were impaired in behavioral tests to assess anxiety levels, locomotor and
+prenatally stressed juvenile female rats. A study on non- exploratory behavior and balance ability. It is important to
+human primates found that strong exposure to prenatal note that all rats were kept undisturbed until post-natal day
+stress resulted in reduced motor activity and poorer balance (PND) 30 before being divided into four groups of 16 rats (C,
+in the exposed offspring (Schneider & Coe, 1993). In particu- NS, RS and MS groups; eight rats per cage). Behavioral test
+lar, the effect of simultaneous exposure to different stressors sessions were performed with 24-h intervals between each
+during intrauterine life on balance control has not been test to avoid acute stress-induced interference with the out-
+studied. come of the subsequent test. Blood sampling was performed
+Thus, a novel aspect of the present study is the testing of to measure plasma adrenocorticotropic hormone (ACTH) con-
+locomotor functions in the form of balance control. We also centrations after 48h of behavioral assessment to assess
+investigated whether prenatal noise and restraint stress inter- whether hormonal responses had returned to baseline levels.
+act and how this interaction impacts exploration and locomo- All experimental procedures described in this work are in
+tion, as well as on balance control of juvenile rats. Overall, accordance with the Guide of Care and Use of Laboratory
+the goal of the present study was to determine the extent to Animals of the University of Badji Mokhtar Annaba, Algeria.
+which prenatal noise and restraint stress, applied individually,
+impacted exploratory behavior, locomotor performance and
+Maternal treatments
+balance control functioning in juvenile male rats, and how
+these prenatal stressors interact to modify behavior when
+Experimental groups were exposed to a daily, short stress
+applied together. session (NS, RS, MS) between 08h00–10h00 from day 11 to
+day 19 of pregnancy. Glucocorticoid and mineralocorticoid
+receptors are expressed in the developing rat brain on days
+Methods
+13–16 (Diaz et al., 1998). All maternal treatments, from the
+Animals adaptation period until the end of pregnancy, are described
+in the protocol timeline (Figure 1).
+Test subjects were 24 90-day-old virgin female rats (Wistar
+albino strain provided by Pasteur Institute-Algiers, Algeria),
+weighing 200±20g at the beginning of the study. Rats were Noise stress
+housed in PVC cages in a colony room (Department of Auditory stimulation was provided for 3min per day, between
+Biology, University of Annaba, Algeria) and kept under stand- 08h00 and 10h00 over a period of 9days. Noise was gener-
+ard laboratory conditions of 25±2(cid:2)C, 50% relative humidity ated by a HELLA twintone Horn, Japan, (110dB output at
+and artificial lighting, 12h light/12h dark starting at 07h00. 500Hz, 12V), fixed to the middle of the roof of the box. The
+Food (standard rat chow from ONAB-El Kseur, B(cid:2)ejaïa, Algeria), sound pressure of 110±3dB (A) inside the box was con-
+and water were provided ad libitum. Unnecessary manipula- firmed with a sound level meter (Trotec B S06, France, meas-
+tions (i.e. apart from cage cleaning) were avoided. uring range: 40 to 130dB and 31.5Hz to 8kHz). In order to
+
+===== PAGE 4 =====
+Day 1 Day 11 Day 19
+Adapta(cid:2)on Estrus s(cid:2)mula(cid:2)on Pregnancy Birth
+Beginning of daily End of maternal
+maternal stress stress
+C NS RS MS
+assess the effects of prenatal exposure of high decibel noise Neurobehavioral tests
+on rats, it is a prerequisite that the frequency range of the
+Behavioral tests were performed in the following order: beam
+stimulus should be within the range that the test species nat-
+walking (BW) on PND44, open field test (OF) on PND 45 and
+urally communicates and hears. Here, the horn emitted a
+elevated plus maze (EPM) on PND 46. All tests were con-
+pure tone of 500Hz. Noise was applied individually to rats
+placed in a box (20cm(cid:3)30cm(cid:3)30cm) made of thick glass ducted in a quiet room, following 20min of habituation to
+(1cm) fitted with a ventilated top. Noise induction was the test room, during the light period (between 10h00 and
+applied in a room separate from the colony room where rats 12h00). After behavior assessment, rats were returned to the
+were housed. colony room. All protocols of progeny manipulation are
+described in Figure 2.
+Restraint stress
+To induce chronic restraint stress, rats were restrained in indi- Balance test: beam-walking (BW)
+vidual opaque plastic cylinders (14.5cm in length, 5.5cm in
+The runway used in the locomotor task was a wooden beam,
+diameter). The cylinder was fenestrated to allow equilibration
+150cm long and 4cm wide on the running surface, elevated
+of temperature and gases with the ambient air. Rats were
+60cm above a table by a wooden support structure (Pisa,
+restrained daily for 10min, over a period of 9days, between
+1988a). Video recordings of beam running were recorded and
+08h00 and 10h00. During stress sessions, rats had no access
+analyzed in slow-motion playback. Two parameters were
+to water or food.
+recorded: (1) time to cross the beam; and (2) number of mis-
+steps in each trial (either footfalls outside the beam or when
+Mixed stress combining noise and restraint stress a rat’s paw extended over the narrow beam). The analysis
+Rats were subjected to noise stress (as described) for 3min, was conducted blind to the group identity of the rats.
+followed by restraint for 10min (as described above) after a Measures were also taken of the mean beam running time
+5min interval. (in seconds) within each group. The beam walking test was
+debrutsidnU )nim3(
+SN
+)nim01(
+SR
+)nim3(
+SN
+)nim01(
+SR
+322 S. BADACHE ET AL.
+Figure 1. Timeline of the maternal treatment protocol. C (control group); rats of this group were left undisturbed. NS (noise stress group); females were exposed to
+daily sessions of noise stress for 3min. RS (restraint stress group); females were restrained daily for 10min. MS (mixed stress group); females were exposed to noise
+for 3min, followed by 10min of restraint. Stress sessions were administered daily from day 11 of pregnancy until day 19 between 08h00 and 10h00.
+Birth PND44 PND45 PND46 PND48
+10h00 Pups with mothers Behavioral tasks Blood sampling
+Elevated
+ACTH
+plus maze
+Open field Adrenal
+weighing
+Beam walking
+Figure 2. Timeline of the progeny treatment protocol. All male rats were kept undisturbed until postnatal day (PND) 44 when they began performing the following
+behavioral tasks between 08h00 and 10h00: the Beam Walking (BW) test on PND44, Open Field (OF) test on PND45, and Elevated Plus Maze test (EPM) on PND46.
+Blood samples were taken and adrenal glands were weighed on PND48 at 08h00.
+
+===== PAGE 5 =====
+STRESS 323
+conducted on PND 44, before OF and EPM tests, because of Enzyme-linked Immunosorbent Assay according to the man-
+its sensitivity to stress. ufacturer’s protocol (ACTH ELISA Kit, Sigma-Aldrich, USA).
+ACTH plasma concentrations were measured using a COBAS
+e 411 analyzer; assay detection limit was <1pg/ml, intra-
+Open field (OF)
+assay coefficient of variation was 6.7%.
+Following the model of Hall (1934), we used a device com-
+prising a square-shaped floor (100cm(cid:3)100cm), divided by
+black lines into 16 squares of equal size (25cm(cid:3)25cm); 12 Relative weight of adrenal glands
+peripheral squares and 4 in the center. The floor was pro-
+After blood collection, 16 rats in each group were euthanized
+tected by 30cm high transparent Plexiglas walls.
+and their adrenal glands were removed, trimmed of fat and
+This test evaluates both locomotor activity (number of
+weighed. Relative weight of adrenal glands was calculated as
+squares crossed, i.e. whenever a rat entered a new square with
+follows: actual adrenal weight/actual body weight
+all four legs) and exploratory behavior (time spent in a corner
+(Pankakoski & T€ahk€a, 1982). Relative weight of adrenal glands
+versus time spent in the center for horizontal exploration, and
+was determined to investigate the chronic effects of our
+time spent rearing on hind legs for vertical exploration).
+stress model on adrenal hypertrophy.
+20min prior to test exposure, rats were moved to the test
+room for habituation, but remained in their home cages. After
+habituation, individual rats were placed into the center of the Statistical analysis
+open field and their behavior was recorded for 5min by video
+camera (Sony Steady Shot, Carl Zeiss, 14.1MP, 26mm). The Data were analyzed using the statistical package MinitabVR
+apparatus was cleaned with 10% ethanol after each test. (version 16.0) to compare between-groups differences in
+ACTH concentrations and behaviors. Preliminary one-way
+ANOVA was performed to assess differential effects of pre-
+Elevated plus maze (EPM)
+natal stress. When a main effect of prenatal stress on ACTH,
+The EPM test, which is a well-known paradigm for testing relative adrenal weights and behavioral variables was
+anxiety levels in laboratory rodents, consisted of two open detected (p<.05), appropriate post hoc analysis was per-
+arms (50cm(cid:3)10cm) crossed at right angles with two closed formed to evaluate significant differences. Dunnett’s post hoc
+arms (50cm(cid:3)10cm, surrounded by 40-cm high Plexiglas test was performed for comparison with the control group,
+walls). The apparatus was raised 50cm above the floor. Rats and Tukey’s test for multiple comparisons. All results are pre-
+were placed at the center of the maze, facing one of the sented as the arithmetic mean (X)±standard error of the
+closed arms and their behavior was video-recorded for 5min. mean (X±SEM). For all statistical analyses, a p value of less
+Rearing time and the time spent in both the open and closed
+than .05 was considered as the significance level.
+arms were recorded. The percentage time in open arms [OAT
+%¼(time spent in open arms(cid:3)100)/(closed arms time-
+þopen arms time)] and percentage time in closed arms [CAT Results
+%¼(time spent in open arms(cid:3)100)/(closed arms time-
+Plasma ACTH concentrations
+þopen arms time)] were calculated. Rats spend less time in
+the open arms of the maze when they are afraid or anxious ACTH concentrations (Figure 3) were assayed on PND 48 in
+(Pellow & File, 1986). To minimize olfactory stimuli, the maze all groups. Preliminary one-way ANOVA revealed a significant
+was cleaned with a 10% ethanol solution between sessions. between-group difference in plasma ACTH concentration
+(p¼.001, F (3,63)¼8.91). Figure 3 shows that ACTH concen-
+trations were highest in NS rats and significantly different
+Blood sampling
+from control (Dunnett’s test: p¼.002, F(1,31)¼17.32), and
+On PND48, blood sampling was conducted in the early morn- also high in RS rats and also significantly different from con-
+ing at 08h00. Terminal blood collection was performed from trol (p¼.004, F(1,31)¼12.80). In the MS group, plasma ACTH
+the venous sinus by penetrating the retro-orbital plexus with concentrations were significantly lower than for the NS group
+a capillary tube (Diehl et al., 2001), after ensuring that each (Tukey’s test: p¼.016, F(1,31)¼8.32), but significantly higher
+rat was under deep general anesthesia with chloroform as than the control (Dunnett’s test: p¼.034, F(1,31)¼2.79).
+inhaled anesthetic. A clean cotton ball was soaked in chloro-
+form and kept under a desiccator with a tightly-closed lid
+Relative weights of adrenal glands
+into which each rat was placed. Depth of anesthesia was
+assessed by testing withdrawal reflexes after approximately Statistical analysis revealed significant effect of prenatal stress
+40s following exposure. Blood collected in EDTA containers on relative weights the adrenal glands (p¼.048,
+was used for analysis of ACTH plasma concentrations. F(3,63)¼3.29). Pairwise comparison using one-way ANOVA
+indicated that relative weights of adrenal glands only differed
+between NS and control rats (Dunnett’s test: p¼.049,
+Plasma ACTH assay
+F(1,31)¼5.36). Relative adrenal gland weights were not sig-
+Blood was centrifuged at 1730g for 15min and circulating nificantly different between either RS or MS versus control
+concentrations of ACTH were evaluated using the Sandwich (Dunnett’s test: RS vs Control, p¼.16, F(1,31)¼2.35; MS vs
+
+===== PAGE 6 =====
+Control, p¼.132, F(1,31)¼2.82). Hypertrophy of adrenal Interestingly, number of missteps in the MS group was signifi-
+glands was only detected in the NS group. Actual body cantly lower than in the NS group (Tukey’s test: p¼.001,
+weights and actual and relative adrenal gland weights are F(1,29)¼14.79),
+given in Table 1.
+Open field test
+35
+There were significant difference among groups in all
+30
+considered parameters (Time spent in corner: p¼.028,
+25 F(3,63)¼3.30; Time spent in center: p¼.0001, F(3,63)¼7.93;
+Number of crossed squares: p¼.014, F(3,63)¼3.85; Rearing
+20 time: p¼.001, F(3,63)¼9.78). Figure 5 illustrates the explora-
+15 tory and locomotor performances of rats during the open
+field test. Panels A, C and D of Figure 5 reveal greatly
+10
+decreased exploratory behavior in NS rats. Indeed, compared
+5 to the control group, NS rats revealed highly significant dif-
+ferences with (a) increased time spent in corners (Dunnett’s
+0 test: p¼.0001, F(1,31)¼16.45); (b) decreased time spent in
+the center (Dunnett’s test: p¼.0001, F(1,31)¼19.55 and (c)
+decreased rearing time (Dunnett’s test: p¼.001,
+F(1,31)¼21.68). For the RS group, only vertical exploration
+was significantly diminished compared to control (Dunnett’s
+test: p¼.004, F(1,31)¼9.89), with no significant differences
+for time spent in corners and/or in the center (Dunnett’s test:
+p>.05). Compared to the control group, MS rats exhibited a
+Beam walking test
+significant decrease for both time spent in the center
+(Dunnett’s test: p¼.018, F(1,31)¼6.20) and rearing time
+This test was performed on PND44. Between-group differen-
+ces were observed in time spent to cross the beam (p¼.005, (Dunnett’s test: p¼.012, F(1,31)¼7.10), and an increase in
+F(3,63)¼4.78) and in the number of missteps (p¼.0001, time spent in corners (Dunnett’s test: p¼.037, F(1,31)¼4.83).
+F(3,63)¼15.74). Results of the beam-walking task are sum- Panel B of Figure 5 shows that locomotor activity was sig-
+nificantly lower in NS rats compared to the control group
+marized in Figure 4 and indicate that the NS group took a
+(Dunnett’s test: p¼.006, F(1,31)¼8.65). There were no signifi-
+significantly greater amount of time to cross the beam than
+control (Dunnett’s test: p¼.001, F(1,31)¼11.59). ANOVA also cant differences in locomotor activity of RS and MS rats com-
+indicated that the number of missteps was significantly pared with the control group (Dunnett’s test: RS vs Control:
+higher for the NS group compared to control (Dunnett’s test: p¼.42, F(1,31)¼0.67; MS vs Control: p¼.34, F(1,31)¼0.91).
+p¼.0001, F(1.31)¼19.02) (Figure 4(B)). No significant differen-
+ces were observed in terms of time to cross the beam
+Elevated plus maze (EPM)
+(Dunnett’s test: p¼.79, F(1,31)¼0.07) or for the number of
+missteps (Dunnett’s test: p¼.56, F(1,31)¼0.32) for the RS Preliminary ANOVA revealed significant changes in time spent
+group compared to control. However, MS rats took longer to in open arms (p¼.0001, F(3,63)¼14.15), and time of rearing
+cross the beam than controls (Dunnett’s test: p¼.021, among groups (p¼.002, F(3,63)¼5.76) (Table 2). In EPM
+F(1,31)¼6.22), but did not differ from control in relation to tasks, anxiety levels are inversely related to the time spent in
+the number of missteps (Dunnett’s test: p¼.18, F(1,31)¼1.9). open arms (Estanislau & Morato, 2006). Figure 6(A) shows
+)lm/gp(
+no(cid:2)artnecnocHTCA
+amsalP
+324 S. BADACHE ET AL.
+**
+**
+*
+C NS RS MS
+Figure 3. Effect of prenatal stress on ACTH concentrations (pg/ml) in control
+(C), noise stress (NS), restraint stress (RS) and mixed stress (MS) groups
+(expressed as Mean±SEM) and compared by one-way ANOVA followed by
+Dunnett’s post hoc test (Number of rats per group¼16). (cid:4) Indicates p value is
+<.05 vs control. (cid:4)(cid:4) Indicates p value is<.01 compared to control group.
+Table 1. Body weight, adrenal gland weight and adrenal gland weight relative to body weight of the control and prenatally
+stressed groups.
+C NS RS MS
+Actual body weight (g) 206.8±6.85 231.2±9.47 226.8±3.06 216.6±8.63
+Actual adrenal weight (mg) 45±4 76±4 69±7 68±8
+(cid:4)
+Relative adrenal weight (mg/100g) 22±4 33±1 30±2.7 31±2.8
+Weights are presented as Mean±SEM (Number of rats per group ¼16) and were compared by one-way ANOVA followed by
+Dunnett’s post hoc test. C: control; NS: noise stress; RS: restraint stress; MS: mixed stress. (cid:4) Indicates p value is<.05 compared to
+control group.
+Table 2. Proportions of time spent in open and closed arms during the elevated plus maze (EPM) task, expressed as mean
+(%)±SEM and compared by one-way ANOVA followed by Dunnett’s post hoc test (n¼16 rats per group).
+C NS RS MS
+(cid:4) (cid:4)(cid:4)(cid:4)
+% of time spent in open arms 39.2±4.65 28.6±5.28 34.6±5.02 18.3±4.14
+% of time spent in closed arms 60.5±4.78 74.6±5.28 65.3±5.02 81.2±5.82
+C: control; NS: noise stress; RS: restraint stress; MS: mixed stress. (cid:4) Indicates p value is<.05, and (cid:4)(cid:4)(cid:4) indicates p value is
+<.001 compared to control group.
+
+===== PAGE 7 =====
+90
+80
+70
+60
+50
+40
+30
+20
+10
+0
+that MS rats spent significantly less time in open arms than p¼.0016, F(1,31)¼11.92), restraint (Dunnett’s test: p¼.022,
+the control group (p¼.0001, F(1,31)¼16.15), indicating that F(1,31)¼5.74) and mixed (Dunnett’s test: p¼.045,
+MS rats expressed high levels of anxiety. Although less pro- F(1,31)¼4.36) stresses all affected vertical exploration in ado-
+nounced, the NS group also exhibited higher anxiety com- lescent rats.
+pared to control (Dunnett’s test: p¼.014, F(1,31)¼6.77).
+However, time spent in open arms was not significantly dif-
+Discussion
+ferent between the RS and control groups (Dunnett’s test:
+p¼.12, F(1,31)¼1.97). As shown in Figure 6(B), rearing time The goal of the present study was to determine the extent to
+was significantly reduced in all stress groups compared to which prenatal noise and restraint stress, applied individually,
+control, suggesting that prenatal noise (Dunnett’s test: alter exploratory behavior, locomotor performance and
+)sdnoces(
+WB
+eht
+ssorc
+ot
+emiT
+***
+*
+C NS RS MS
+spetssim
+fo
+rebmuN
+(A) (B)
+4
+3.5 ***
+3
+2.5
+2
+1.5
+1
+0.5
+0
+C NS RS MS
+Figure 4. Effect of prenatal stress on time to cross (A) the beam and (B) number of missteps in beam walking test. Values are expressed as Mean±SEM and com-
+pared by one-way ANOVA followed by Dunnett’s post hoc test (Number of rats per group¼16). C: control; NS: noise stress; RS: restraint stress; MS: mixed stress.
+(cid:4) Indicates p value is<.05 vs control. (cid:4)(cid:4) Indicates p value is<.01 compared to control group.
+(A)
+)sdnoces(
+retnec
+ni
+tneps
+emiT
+300
+250
+200
+150
+100
+50
+0
+(C)
+)sdnoces(
+srenroc
+ni
+tneps
+emiT
+C NS RS MS
+5
+4.5
+4
+3.5
+3
+2.5
+* 2
+1.5
+1
+0.5
+0
+C NS RS MS
+serauqs
+dessorc
+fo
+rebmuN
+(B)
+2
+2
+1
+1
+)sdnoces(em(cid:2)
+gniraeR
+STRESS 325
+80
+*** *
+70
+60
+*
+50
+40
+30
+20
+10
+0
+C NS RS MS
+(D) 5
+0
+**
+5 **
+0 ***
+*** 5
+0
+C NS RS MS
+Figure 5. (A) Effect of prenatal stress on time spent in the corners, (C) time spent in the center, (B) number of crossed squares and (D) rearing time for the Open
+Field trials. Values are expressed as Mean±SEM and compared by one-way ANOVA followed by Dunnett’s post hoc test (Number of rats per group¼16). C: control,
+NS: noise stress, RS: restraint stress, MS: mixed stress. (cid:4) Indicates p value is <.05. (cid:4)(cid:4) Indicates p value is <.01 vs control. (cid:4)(cid:4)(cid:4) Indicates p value is <.001 vs control
+group.
+
+===== PAGE 8 =====
+(A) 160 (B)
+140
+120
+100
+80
+60
+40
+20
+0
+balance control functioning in juvenile male rats, and how striatum or other, by a specific stressor during intrauterine
+these stressors interact to modify behavior when applied life. Further investigations are needed to determine which
+together. brain regions are involved in impaired balance control arising
+Our results report alterations of locomotor and exploratory from prenatal noise stress. Previous studies (Jensen Pen~a
+behaviors, as well as endocrine disruptions, induced by indi- et al., 2012) suggest that this impairment might be mediated
+vidually and prenatally applied stress. We found that a com- by maternal glucocorticoids (GC), which can have free access
+bination of noise and restraint stress reduced these effects in to the entire fetal nervous system if stress exposure downre-
+rats, but did amplify anxiety levels. Balance control was highly gulates restrictions to the transfer of maternal GC to the
+affected by repeated prenatal exposure to noise, which was fetus.
+not the case for restraint alone or combined stress. Previous We also noted that prenatal restraint stress had no effect
+data have shown that exposure to loud noise might affect on balance compared to control. This result supports the idea
+not only hearing regions of the brain (Kraus & Canlon, 2012), that the nature of a stressor selectively and differently affects
+but also the amygdala and hippocampus that receive direct brain regions, with consequent differential effects on behav-
+and indirect neuronal inputs from the central auditory system ior and other functions potentially linked to higher reactivity
+(Munoz-Lopez et al., 2010; Winer & Lee, 2007). of the hypothalamic–pituitary–adrenal axis (Weinstock, 2008).
+It is generally assumed that the vestibular system, which Interestingly, the combined stress rats took a statistically
+plays a key role in posture control, sends signals through the equivalent amount of time to cross the beam in the BW test
+vestibular nerve fibers to the vestibular nuclei (Cullen, 2014) as control rats. Thus, perhaps exposure to prenatal noise fol-
+to maintain body posture. Disruption of normal vestibular lowed by prenatal restraint reverses the balance impairment
+functioning can result in direct oscillopsia (during walking or observed in rats that only experience prenatal noise stress. To
+standing) or alterations of balanced gait (Curthoys & our knowledge, this is the first time that the impact of such a
+Halmagyi, 1995; Etienne & Jeffery, 2004). Additionally, it combination of stressors on balance control has been
+appears that vestibular dysfunction involves a more complex described.
+syndrome characterized not only by balance deficits, but also Reduced crossing events in OF trials suggest that loco-
+by anxiety disorders (Smith et al., 2010). We found that anx- motor activity was most impaired in noise-stressed rats.
+iety level (assessed according to EPM performance) was mark- Similarly, exploratory behavior (measured as rearing time for
+edly increased in prenatally noise-stressed and mixed stress vertical exploration and time spent in the center/corners for
+rats compared to restraint-stressed and control rats. The ves- horizontal exploration) was greatly reduced in the noise-
+tibular information provided in the ascending pathways to stressed group compared to the restraint-stressed and mixed
+the limbic system and neocortex is required for normal spa- stress groups. The reduced locomotory and exploratory
+tial orientation (Chen et al., 2013; Smith & Zheng, 2013) and, behavior of stressed rats confirms previous reports showing
+in the absence of this information, internal representations that stressful environmental factors occurring during perinatal
+become inaccurate and ambiguous, and cognitive perform- life affect brain plasticity, as well as physiological and neuro-
+ance is affected. logical functions (Maccari & Morley-Fletcher, 2007), such as
+Furthermore, the striatum has been shown to be involved down-regulation of the dopaminergic activity that is involved
+in sensori-motor activity. Pisa and colleagues (Pisa, 1988a, in motivational behaviors (Keck et al., 2013; Powell et al.,
+1988b) reported that localized lesions in the lateral 2003). Curiously, combined prenatal application of noise and
+striatum decreased walking speed and balance gait during restraint stress did not result in the significant alterations of
+beam-walking. Based on these and our results, we suggest locomotor and exploratory parameters observed when noise
+that disturbed balance may be caused by local alterations to and restraint were applied separately. This result suggests
+specific brain regions, such as the vestibular system or that neurobehavioral responses to multiple stressors do not
+)sdnoces(
+smra
+nepo
+ni
+tneps
+emiT
+25
+20
+15
+*
+10
+5
+0
+C NS RS MS C NS
+)sdnoces(
+emit
+gniraeR
+326 S. BADACHE ET AL.
+* *
+*
+***
+RS MS
+Figure 6. Effect of prenatal stress on (A) time in seconds spent in open arms and (B) time in seconds spent rearing in Elevated Plus Maze trials. Values are expressed
+as Mean±SEM and compared by one-way ANOVA followed by Dunnett’s post hoc test (Number of rats per group¼16). C: control; NS: noise stress; RS: restraint
+stress; MS: mixed stress. (cid:4) Indicates p value is <.05. (cid:4)(cid:4) Indicates p value is <.01 vs control. (cid:4)(cid:4)(cid:4) Indicates p value is <.001 vs control group.
+
+===== PAGE 9 =====
+STRESS 327
+necessarily imply additive effects. Evans (1984) suggested enhancement of anxiety like behavior. The main findings of
+that some environmental stressors applied in combination this work are (a) The impact of the nature of stressor in yield-
+can have a lesser impact on subjects than expected from ing different biological and neurobehavioral effects. Here,
+their individual application. Attenuation of the negative prenatal noise stress was the stressor that generated the
+effects (on locomotion and exploration) did not apply when stronger alterations of locomotion, exploration and reactivity
+anxiety levels were examined, which were amplified in com- of the HPA axis (high plasma concentration of ACTH and
+bined stress rats (revealed by EPM trials). Indeed, our EPM tri- adrenal hypertrophy); (b) the exposure to combined stressors
+als revealed that anxiety levels were increased in all can generate at the same time, additive and non-additive
+prenatally stressed rats compared to controls, notably except-
+effects comparable to those observed with separate applica-
+ing those subjected to restraint stress. This result is consistent
+tion. Locomotion, horizontal exploration and balance impair-
+with many previous studies reporting that prenatal stress
+ments were attenuated, and anxiety level was enhanced by
+enhanced the anxiety or depression-like behavior in rats
+mixed stress; (c) finally, locomotor activity was highly affected
+(Maccari & Morley-Fletcher, 2007; Weinstock, 2008)
+only by noise and not restraint stress suggesting that the two
+Though there are many pathways through which maternal
+stressors interact differently with brains regions related to
+stress during pregnancy can shape offspring neurodevelop-
+balance control. However, the mechanisms involved in this
+ment, stress-induced elevations in maternal GC levels have
+alteration remain unknown and data obtained by a behavior
+emerged as a primary mechanism (Jensen Pen~a et al., 2012),
+assessment battery have a limited relevance for understand-
+supported by studies in rats in which the effects of
+ing the origin of neurobiological abnormalities observed, and
+prenatal stress are attenuated in adrenalectomized females
+further research is needed to clarify how multiple stressors
+(Barbazanges et al., 1996). In our study, the low anxiety in the
+interact to induce at the same time an increase of some alter-
+restraint stress group might be explained if 10min of mater-
+ations and decrease of some others.
+nal restraint per day was insufficient to induce an effect.
+However, we found mixed stress rats to be highly anxious
+compared to both the noise and restraint stress groups. It Acknowledgements
+seems that a combination of prenatal noise and restraint
+stress induced additive effects, but only for anxiety levels. We thank Asma Lekouaghet for her valuable help in blood sampling. We
+are also grateful to John O'brien, Deepanwita Bose and Masmoudi
+Taken together, we can deduce that prenatal exposure to
+Moatassim Bilah for correction of the use of English in the manuscript.
+combined noise and restraint stress simultaneously had a
+reduced impact (non-additive effect) on locomotor and
+exploratory activities compared to individually applied Disclosure statement
+stresses, but had an enhanced impact (additive effect) on
+The authors of this paper declare no conflict of interest.
+anxiety levels. Thus, our findings suggest that stressors
+(monotypic or multiple) induce differential effects when they
+are applied together or separately, abrogating some behav- ORCID
+ioral disruptions or enhancing others. We propose further
+Soumeya Badache http://orcid.org/0000-0002-0361-5735
+studies to clarify how multiple stressors can combine to
+Slim Bouslama http://orcid.org/0000-0002-4765-1463
+attenuate or potentiate their effects. Oualid Brahmia http://orcid.org/0000-0002-7457-6569
+ACTH concentrations and relative adrenal weight data sup- Abdel Madjid Baïri http://orcid.org/0000-0003-1935-5648
+port our findings. ACTH concentrations were not significantly Abdel Krim Tahraoui http://orcid.org/0000-0001-7114-9556
+Ali Ladjama http://orcid.org/0000-0002-7540-366X
+higher in rats that underwent mixed prenatal stress, but
+noise-stressed rats exhibited significantly increased ACTH con-
+centrations. Similarly, hypertrophy of adrenal glands was only
+registered for the noise-stressed group, suggesting that References
+repeated loud noise, even applied just for 3min/day, elicits
+Appart A, Lange A-K, Sievert I, Bihain F, Tordeurs D. (2016). Le trouble de
+the strongest effect as hyperactivity in the HPA axis. The
+l’adaptation et le DSM-5: une revue de la. Available at: litt(cid:2)erature./
+mechanisms involved in interactions between stressors are
+data/revues/00137006/unassign/S001370061630063X/.
+still unknown. To elucidate the relationships between pre-
+Babri S, Doosti M-H, Salari A-A. (2014). Strain-dependent effects of pre-
+natal stress and the different effects observed here, further natal maternal immune activation on anxiety- and depression-like
+study of maternal behavior under the same experimental behaviors in offspring. Brain Behav Immun 37:164–76.
+conditions will be necessary. Such studies should examine Barbazanges A, Piazza PV, Moal ML, Maccari S. (1996). Maternal gluco-
+corticoid secretion mediates long-term effects of prenatal stress.
+maternal GC levels and the impact of giving anxiolytic drugs
+J Neurosci 16:3943–9.
+to pregnant rats to determine if diminished anxiety can influ-
+Basner M, Babisch W, Davis A, Brink M, Clark C, Janssen S, Stansfeld S.
+ence the subsequent behavioral alterations in offspring.
+(2014). Auditory and non-auditory effects of noise on health. Lancet
+383:1325–32.
+Benoit JD, Rakic P, Frick KM. (2015). Prenatal stress induces spatial mem-
+Conclusions
+ory deficits and epigenetic changes in the hippocampus indicative of
+heterochromatin formation and reduced gene expression. Behav Brain
+In summary, results presented here provide additional eviden-
+Res 281:1–8.
+ces on deleterious effects of prenatal exposure to stress Cabrera RJ, Rodr(cid:2)ıguez-Echand(cid:2)ıa EL, Jatuff ASG, Fo(cid:2)scolo M. (1999). Effects
+on locomotion and exploratory behavior as well as the of prenatal exposure to a mild chronic variable stress on body weight,
+
+===== PAGE 10 =====
+328 S. BADACHE ET AL.
+preweaning mortality and rat behavior. Braz J Med Biol Res neurobiological alterations. Psychoneuroendocrinology 32(Suppl 1):
+32:1229–37. S10–S5.
+Cao-Lei L, Dancause KN, Elgbeili G, Massart R, Szyf M, Liu A, Laplante DP, Meek LR, Burda KM, Paster E. (2000). Effects of prenatal stress on devel-
+King S. (2015). DNA methylation mediates the impact of exposure to opment in mice: maturation and learning. Physiol Behav 71:543–9.
+prenatal maternal stress on BMI and central adiposity in children at Munoz-Lopez MM, Mohedano-Moriano A, Insausti R. (2010). Anatomical
+age 13½ years: Project Ice Storm. Epigenetics 10:749–61. pathways for auditory memory in primates. Front Neuroanat
+Caspi A, Hariri AR, Holmes A, Uher R, Moffitt TE. (2010). Genetic sensitivity 4:129–142.
+to the environment: the case of the serotonin transporter gene and its Nazeri M, Shabani M, Ghotbi Ravandi S, Aghaei I, Nozari M, Mazhari S.
+implications for studying complex diseases and traits. Am J Psychiatry (2015). Psychological or physical prenatal stress differentially affects
+167:509–27. cognition behaviors. Physiol Behav 142:155–60.
+Chen A, Deangelis GC, Angelaki DE. (2013). Functional specializations of Pankakoski E, T€ahk€a KM. (1982). Relation of adrenal weight to sex, matur-
+the ventral intraparietal area for multisensory heading discrimination. ity and season in five species of small mammals. Ann Zool Fenn
+J Neurosci Off J Soc Neurosci 33:3567–81. 19:225–32.
+Cullen KE. (2014). The neural encoding of self-generated and externally Pellow S, File SE. (1986). Anxiolytic and anxiogenic drug effects on
+exploratory activity in an elevated plus-maze: a novel test of anxiety
+applied movement: implications for the perception of self-motion and
+in the rat. Pharmacol Biochem Behav 24:525–9.
+spatial memory. Front Integr Neurosci 7:108.
+Pisa M. (1988a). Motor somatotopy in the striatum of rat: manipulation,
+Curthoys IS, Halmagyi GM. (1995). Vestibular compensation: a review of
+biting and gait. Behav Brain Res 27:21–35.
+the oculomotor, neural, and clinical consequences of unilateral ves-
+tibular loss. J Vestib Res Equilib Orientat 5:67–107. Pisa M. (1988b). Motor functions of the striatum in the rat: critical role of
+the lateral region in tongue and forelimb reaching. Neuroscience
+Diaz R, Brown RW, Seckl JR. (1998). Distinct ontogeny of glucocorticoid
+and mineralocorticoid receptor and 11b-hydroxysteroid dehydrogen-
+24:453–63.
+Powell SB, Paulus MP, Hartman DS, Godel T, Geyer MA. (2003). RO-10-
+ase types I and II mRNAs in the fetal rat brain suggest a complex con-
+5824 is a selective dopamine D4 receptor agonist that increases novel
+trol of glucocorticoid actions. J Neurosci 18:2570–80.
+object exploration in C57 mice. Neuropharmacology 44:473–81.
+Diehl K-H, Hull R, Morton D, Pfister R, Rabemampianina Y, Smith D, Vidal
+Schneider ML, Coe CL. (1993). Repeated social stress during pregnancy
+J-M, et al. (2001). A good practice guide to the administration of sub-
+impairs neuromotor development of the primate infant. J Dev Behav
+stances and removal of blood, including routes and volumes. J Appl Pediatr 14:81–87.
+Toxicol 21:15–23.
+Smith PF, Zheng Y. (2013). From ear to uncertainty: vestibular contribu-
+Estanislau C, Morato S. (2006). Behavior ontogeny in the elevated plus- tions to cognitive function. Front Integr Neurosci 7:84–97.
+maze: prenatal stress effects. Int J Dev Neurosci 24:255–62.
+Smith PF, Darlington CL, Zheng Y. (2010). Move it or lose it-is stimulation
+Etienne AS, Jeffery KJ. (2004). Path integration in mammals.
+of the vestibular system necessary for normal spatial memory?
+Hippocampus 14:180–92. Hippocampus 20:36–43.
+Evans GW. (1984). Environmental Stress (CUP Archive).
+van Os J, Selten JP. (1998). Prenatal exposure to maternal stress and sub-
+Hall CS. (1934). Emotional behavior in the rat. I. Defecation and urination
+sequent schizophrenia. The May 1940 invasion of The Netherlands. Br
+as measures of individual differences in emotionality. J Comp Psychol J Psychiatry 172:324–6.
+18:385–403.
+Weinstock M. (2008). The long-term behavioural consequences of pre-
+H€ausler R. (2004). The effects of acoustic overstimulation. Ther Umsch natal stress. Neurosci Biobehav Rev 32:1073–86.
+Rev Ther 61:21–9. Winer JA, Lee CC. (2007). The distributed auditory cortex. Hear Res
+Jensen Pen~a C, Monk C, Champagne FA. (2012). Epigenetic effects of pre- 229:3–13.
+natal stress on 11b-hydroxysteroid dehydrogenase-2 in the placenta Yehuda R, Engel SM, Brand SR, Seckl J, Marcus SM, Berkowitz GS. (2005).
+and fetal brain. PLoS ONe 7:e39791 Transgenerational effects of posttraumatic stress disorder in babies of
+Keck TM, Suchland KL, Jimenez CC, Grandy DK. (2013). Dopamine D4 mothers exposed to the world trade center attacks during pregnancy.
+receptor deficiency in mice alters behavioral responses to anxiogenic J Clin Endocrinol Metab 90:4115–18.
+stimuli and the psychostimulant methylphenidate. Pharmacol Biochem Zeng Y, Brydges NM, Wood ER, Drake AJ, Hall J. (2015). Prenatal gluco-
+Behav 103:831–41. corticoid exposure in rats: programming effects on stress reactivity
+Kraus KS, Canlon B. (2012). Neuronal connectivity and interactions and cognition in adult offspring. Stress 18:353–61.
+between the auditory and limbic systems. Effects of noise and tinnitus. Zheng Y, Fan W, Zhang X, Dong E. (2016). Gestational stress induces
+Hear Res 288:34–46. depressive-like and anxiety-like phenotypes through epigenetic regula-
+Maccari S, Morley-Fletcher S. (2007). Effects of prenatal restraint stress on tion of BDNF expression in offspring hippocampus. Epigenetics
+the hypothalamus–pituitary–adrenal axis and related behavioural and 11:150–62.

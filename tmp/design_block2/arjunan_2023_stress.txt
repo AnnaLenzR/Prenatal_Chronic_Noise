@@ -1,0 +1,562 @@
+--- PAGE 1 ---
+Citation: Arjunan, A.; Sah, D.K.;
+Rajan, R. Impacts of Maternal Noise
+Exposure on Risk of Stillbirth and
+Oxidative Stress-Induced
+Neurobehavioral Changes in
+Offspring. Stresses 2023, 3, 529–540.
+https://doi.org/10.3390/
+stresses3030037
+Academic Editors: Soisungwan
+Satarug, Aleksandra Buha Djordjevic
+and Elisa Bona
+Received: 30 April 2023
+Revised: 29 June 2023
+Accepted: 10 July 2023
+Published: 12 July 2023
+Copyright: © 2023 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+Article
+Impacts of Maternal Noise Exposure on Risk of Stillbirth
+and Oxidative Stress-Induced Neurobehavioral Changes
+in Offspring
+Archana Arjunan 1,†
+ , Dhiraj Kumar Sah 2,† and Ravindran Rajan 1,*
+1 Department of Physiology, Dr. Arcot Lakshmanaswamy Mudhaliar Postgraduate Institute of Basic Medical
+Sciences, University of Madras, Taramani, Chennai 600113, Tamilnadu, India; archanaibms@gmail.com
+2 Department of Biochemistry, Chonnam National University Medical School,
+Hwasun 58128, Republic of Korea; 197784@chonnam.edu
+* Correspondence: ravindran89@gmail.com
+† These authors contributed equally to this work.
+Abstract: Life does not start at birth but at conception. Embryonic development is a particularly
+difﬁcult period in which genetic and environmental factors can interact to contribute to risk. In
+utero and early neonatal exposure to maternal stress are linked with psychiatric disorders, and the
+underlying mechanisms are currently being elucidated. This study examined novel relationships
+between maternal noise exposure causing oxidative-stress-induced neurobehavioral changes in
+cognition and autism spectrum disorder (ASD) in offspring. Pregnant Wistar albino rats were exposed
+to noise (100 dBA/4 h). There were three groups of pregnant rats exposed to noise during gestation,
+as well as a control group: early gestational stress (EGS), which occurs between the 1st and 10th days
+of pregnancy; late gestational stress (LGS), which occurs between the 11th day and the delivery day;
+and full-term gestational stress (FGS), which occurs during the entire pregnancy period. Maternal
+stress effects on the offspring were analyzed. This study observed that noise exposure becomes a
+psychosocial stressor in the prenatal period of motherhood. In the EGS and LGS groups, female
+rats showed continuous midterm abortion and stillbirth during noise exposure. The noise-exposed
+group exhibited signiﬁcant changes in cognition, obsessive–compulsive behavior, fear, and anxiety.
+Corticosterone and oxidative stress markers increased, and the antioxidant level was signiﬁcantly
+decreased in the noise-exposed group. Therefore, maternal noise exposure causes recurrent abortions
+and stillbirths, increases oxidative stress, and impairs the offspring’s neurodevelopment.
+Keywords: cognition; offspring; noise; maternal; oxidative stress; stillbirth
+1. Introduction
+A fetus’s early experiences signiﬁcantly impact its health later in life. An individual’s
+pregnancy and motherhood are critical periods because they involve many neurobehavioral
+changes, including neuroendocrine, molecular, and physiological changes. These changes
+affect the mother’s mood, cognition, and stress regulation during gestation, parturition,
+and postpartum [1]. In line with scientiﬁc evidence, maternal stress, anxiety, and depres-
+sion during pregnancy are associated with adverse mental health outcomes in offspring
+throughout their lives [2,3]. Recent research suggests that environmental pollutants are
+critical in fetal health [4–7].
+Noise is a common environmental pollutant that is more than just a nuisance. Noise
+is deﬁned as an unwanted sound; if the noise level exceeds 90decibel (dBA), it becomes
+a source of stress and impacts physical and psychological health [ 8]. The World Health
+Organization (WHO) has reported that at least 1 million healthy life years are lost annually
+due to environmental noise in high-income Western European nations [9].
+Stresses 2023, 3, 529–540. https://doi.org/10.3390/stresses3030037 https://www.mdpi.com/journal/stresses
+
+--- PAGE 2 ---
+Stresses 2023, 3 530
+Continuous noise exposure impairs hearing. Besides these auditory consequences,
+noise also triggers non-classical auditory-responsive brain areas, e.g., the lateral amygdala
+and striatum. It activates the hypothalamic–pituitary–adrenal (HPA) axis via the amygdala
+and other circuits, leading to the release of stress-related hormones, corticosterone, and
+adrenocorticotropic hormone (ACTH) [ 1]. During pregnancy, noise-exposure-induced
+production of corticosterone enters the placenta. Indeed, placental 11β-HSD2 inactivates
+the majority of maternal glucocorticoids passed to the fetus, and 11- β-hydroxysteroid
+dehydrogenase-type 1 (11β-HSD1) generates cortisol from inactive cortisone, which in-
+creases the stress hormones in fetal circulation [ 10]. From this view, this study aimed
+to evaluate the association of maternal noise stress with aberrant corticosterone-induced
+stillbirth, preterm birth, redox balance, and neurobehavioral alterations in offspring.
+2. Results
+2.1. Maternal Noise Exposure Altered the Gestational Length in Offspring
+Maternal noise exposure altered the gestational period of the offspring (Figure 1).
+Recurrent abortions were shown in EGS and FGS groups. Stillbirths were observed in the
+progeny of LGS (12.6%) and FGS groups (27.6%). No stillbirths and abortions occurred
+in the control group. Figure 1A depicts the stillbirths of the pups, showing that the FGS
+group showed signiﬁcantly higher stillbirths than LGS. Neonatal mortality was observed
+in EGS, LGS, and FGS groups. The FGS group had a higher mortality rate (28.6%) than
+the EGS (2%) and LGS (14.3%). No neonatal mortality was observed in the control group.
+Figure 1B illustrates the neonatal mortality rate. No congenital disabilities occurred in the
+offspring of the control or EGS groups. The percentage of congenital disabilities in the LGS
+and FGS groups was 23.3% and 10.3%, respectively. The data conﬁrm that the FGS group
+has signiﬁcantly higher congenital disabilities than the LGS group. Figure 1C depicts the
+congenital disabilities observed in the offspring of LGS and FGS groups.
+Figure 1. Maternal noise exposure altered the gestational length in offspring. Maternal noise exposure
+signiﬁcantly increased the stillbirth (A), neonatal mortality rate (B), and congenital disabilities (C) in
+LGS and FGS groups. The data represent the mean ± SD (p < 0.05—signiﬁcance) (*—versus control,
+#—versus EGS, @—versus LGS).
+2.2. Maternal Noise Exposure Decreased the Body Weight and Discrete Regions of the Brain in
+Offspring
+The body weight of the newborn pups on the 1st and 45th postnatal days signiﬁcantly
+differed between the experimental groups (Figure 2). The body weight of the newborn pups
+of the FGS group (4.16 ± 0.25) was substantially lower than either the control (6.6 ± 1.15)
+or EGS groups (5.66 ± 0.50) and the LGS group (4.7 ± 0.25) (Figure 2A). Compared to
+LGS, FGS had signiﬁcantly lower body weight, and EGS had signiﬁcantly higher body
+weight. The body weight of the offspring on the 45th day of postnatal life in the FGS group
+(42 ± 2 g) was signiﬁcantly lower than in the control (76.09 g ± 2.5 g) and EGS groups
+(59.6 ± 0.56 g) and LGS group (51 ± 2.64 g) group (Figure 2B). Compared to EGS, LGS
+
+--- PAGE 3 ---
+Stresses 2023, 3 531
+had signiﬁcantly lower body weight, and the control group had signiﬁcantly higher body
+weight. In discrete regions of brain weight, prefrontal cortex, and hippocampus, the weight
+was signiﬁcantly reduced in the FGS group compared to the control, EGS, and LGS animals.
+The EGS group showed a signiﬁcantly decreased brain weight, prefrontal cortex, and
+hippocampus weight compared to the control and LGS groups (Table 1). All experimental
+groups had no signiﬁcant change in the cerebellum and hypothalamus weight.
+Figure 2. Maternal noise exposure decreased the body weight and discrete regions of the brain in
+offspring. On postnatal day 1 ( A) and 45th day (B), the weight of the EGS-, LGS-, and FGS-group
+animals was signiﬁcantly reduced compared to the control group. The data represent the mean ± SD.
+The signiﬁcance level was p < 005, * versus control, # versus EGS, and @ versus LGS.
+Table 1. Maternal noise exposure decreased weight of the discrete regions of the offspring’s brain.
+Discrete
+Regions mPFC HI HY CB
+CON 0.225 ± 0.353 0.189 ± 0.007 0.091 ± 0.002 0.461 ± 0.038
+EGS 0.189 ± 0.007 * 0.179 ± 0.001 * 0.090 ± 0.001 * 0.439 ± 0.142 *
+LGS 0.183 ± 0.002 *# 0.168 ± 0.002 *# 0.092 ± 0.002 *# 0.436 ± 0.013 *#
+FGS 0.173 ± 0.002 *#@ 0.159 ± 0.002 *#@ 0.091 ± 0.012 *#@ 0.439 ± 0.023 *#@
+Data are expressed as mean ± S.D. for six rats in each group. The values are expressed in weight in grams (gm).
+* Signiﬁcant p < 0.05 comparing with control, #—versus EGS, @—versus LGS. mPFC: medial prefrontal cortex, HI:
+hippocampus, HY: hypothalamus, CB: cerebellum.
+2.3. Maternal Noise Exposure Altered the Offspring’s Cognitive and Emotional Functioning
+Maternal noise exposure alterd the offspring’s neurobehavior, including impaired
+spatial learning and memory, increased fear, anxiety, and repetitive behavior (Figure 3). In
+this study, the results of the T-maze showed increased latency and number of days taken
+to make the correct choice in EGS- and FGS-group animals compared to the control and
+LGS animals (Figure 3A). The EGS group’s (11.6 ± 1.15) latency signiﬁcantly increased
+compared to the control (7.3 ± 0.57) and LGS (14 ± 1), and the FGS group’s (18.4 ± 0.48)
+latency was signiﬁcantly higher than the EGS group. Similarly, the number of days the
+EGS (11.3 ± 1.5) group took increased compared to the control (8 ± 1) and was lesser than
+the LGS group (13 ± 1) and FGS group (16.6 ± 1.52). In the open-ﬁeld test, the EGS group
+(16.3 ± 15.2) showed decreased time spent in the central square when compared to the
+control (226.6 ± 25.1), and increased time compared to the LGS (126.6 ± 7.63) and FGS
+group (94.3 ± 9.29). The LGS- (173.6 ± 7.6) and FGS-exposed animals (205± 9.2) showed an
+increased time spent in peripheral squares compared to the control (73.3 ± 25.12) and EGS
+animals (136.6 ± 15.2), which increased the fear and anxiety of the animals (Figure 3B). In
+the marble burying test, the number of marbles buried was higher in the LGS (11 ± 1) and
+FGS (15 ± 1) groups compared to the control (5 ± 1) and EGS (9 ± 1) groups. Compared
+to the control, the number of marbles buried by the EGS group was signiﬁcantly higher,
+while the number buried by the LGS and FGS groups was lower (Figure 3C). In the NST,
+
+--- PAGE 4 ---
+Stresses 2023, 3 532
+the amount of cotton shredding was signiﬁcantly increased in the LGS (0.59± 0.02) and
+FGS groups (0.83 ± 0.05) compared to the control (0.06 ± 0.05) and EGS (0.20 ± 0.007)
+groups (D).
+Figure 3. Maternal noise exposure altered the offspring’s cognitive and emotional functioning. (A) T-
+maze results conﬁrmed that maternal noise impairs spatial memory and learning in EGS, LGS, and
+FGS groups. (B) The open-ﬁeld test showed the reduced time spent in the central square indicated
+the fear and anxiety-like behavior of the EGS, LGS, and FGS animals compared to the control. MBT
+(C) and NSB (D) behaviors showed autistic and repetitive obsessive–compulsive behavior in stress
+groups compared to the control animals. The data represent the mean ± SD. The signiﬁcance level
+was p < 0.05, * versus control, # versus EGS, and @ versus LGS.
+2.4. Maternal Noise Exposure Impairs Corticosterone and the Redox Balance in the
+Offspring’s Brain
+The CORT level (Figure 4) in plasma was significantly increased in the LGS (56.92 ± 0.7)
+and FGS (60.41 ± 1.3) groups compared to the control (42.94± 0.5) and EGS (51.34 ± 1.5)
+group animals. The CORT level in the mPFC was signiﬁcantly increased in EGS (179 ± 1.4),
+LGS (188 ± 2.8), and FGS (212 ± 2.7) compared to control (157 ± 3.5). Similarly, the CORT
+level in the CB was signiﬁcantly higher in the EGS (83.6 ± 4.3), LGS (91.2 ± 0.9), and FGS
+(108.2 ± 3.6) groups when compared to the control (76.8 ± 1.4). The CORT level in the HI
+was signiﬁcantly increased in the LGS (122.7 ± 1.7) and FGS (157 ± 4.2) groups compared
+to the control- (94.2 ± 3.1) and EGS (107.8 ± 3.7)-group animals. Additionally, the CORT
+level in the HY was signiﬁcantly increased in the EGS (58 ± 2.8), LGS (66.5 ± 2.1), and FGS
+(77 ± 1.4) compared to the control (48.5 ± 3.5). The LPO level (Table 2A) was signiﬁcantly
+increased in the FGS group compared to the control-, EGS-, and LGS-group animals. The
+mPFC and hippocampus LPO levels were increased compared to the control-, EGS-, and
+LGS-group animals. There was no signiﬁcant change in LPO level in the hypothalamus
+and cerebellum. The SOD level (Table 2B) in the hypothalamus was shown to be increased
+signiﬁcantly in the control group when compared to the EGS, LGS, and FGS groups.
+In comparison, the prefrontal cortex, cerebellum, and hippocampus were insigniﬁcant.
+The catalase level (Table 2C) was signiﬁcantly altered in the mPFC and hippocampus
+and no signiﬁcant change in the hypothalamus or the cerebellum was observed in all
+experimental groups.
+
+--- PAGE 5 ---
+Stresses 2023, 3 533
+Figure 4. Maternal noise exposure altered corticosterone levels in the offspring’s brain: (A) shows
+the plasma corticosterone of all experimental groups; (B–E) shows the corticosterone level in discrete
+brain regions of EFS, LGS, FGS, and control animals. The data represent the mean ± SD. The
+signiﬁcance level was p < 0.05, * versus control, # versus EGS, and @ versus LGS.
+Table 2. Maternal noise exposure decreased antioxidant levels and increased oxidative stress in the
+discrete regions of the offspring’s brain.
+A: LPO
+Discrete regions mPFC HI HY CB
+CON 6.05 ± 0.353 5.90 ± 0.785 5.84 ± 0.552 5.16 ± 0.101
+EGS 7.40 ± 0.141 * 7.34 ± 0.152 * 7.12 ± 0.314 * 6.70 ± 0.364 *
+LGS 7.62 ± 0.247 *# 7.99 ± 0.135 *# 8.34 ± 0.146 *# 7.27 ± 0.254 *#
+FGS 8.78 ± 0.632 *#@ 9.31 ± 0.300 *#@ 10.4 ± 0.707 *#@ 9.49 ± 0.236 *#@
+B: SOD
+Discrete regions mPFC HI HY CB
+CON 20.05 ± 0.098 17.56 ± 0.470 24.92 ± 0.671 19.83 ± 0.651
+EGS 19.62 ± 0.558 * 16.11 ± 0.141 * 24.60 ± 0.527 19.18 ± 0.219 *
+LGS 18.78 ± 0.629 *# 15.46 ± 0.247 *# 24.27 ± 2.870 18.87 ± 0.749 *#
+FGS 16.76 ± 0.664 *#@ 14.51 ± 0.579 *#@ 23.67 ± 3.152 *#@ 19.56 ± 0.374 *#@
+C: Catalase
+Discrete regions mPFC HI HY CB
+CON 1.452 ± 0.025 0.941 ± 0.064 0.839 ± 0.010 1.492 ± 0.028
+EGS 1.358 ± 0.043 * 0.840 ± 0.019 * 0.830 ± 0.017 * 1.450 ± 0.025 *
+LGS 1.169 ± 0.057 *# 0.752 ± 0.059 *# 0.810 ± 0.018 *# 1.451 ± 0.042 *#
+FGS 0.896 ± 0.062 *#@ 0.661 ± 0.002 *#@ 0.834 ± 0.024 *#@ 1.465 ± 0.021 *#@
+(A) The values are expressed in mol of MDA-formed mg protein−1. (B) The values are expressed in U min−1 mg
+protein−1. (C) The values are expressed in mol of H2O2 consumed min−1 mg protein−1. Data are expressed
+as mean ± S.D. for six rats in each group. * Signiﬁcant p < 0.05 comparing with control, #—versus EGS,
+@—versus LGS.
+
+--- PAGE 6 ---
+Stresses 2023, 3 534
+3. Discussion
+The mother’s body provides the resources and humoral factors essential for the fetus’s
+intrauterine development [11]. Several factors have been associated with the stunting of
+children and poor neurodevelopment outcomes, including perinatal malnutrition, inﬂam-
+mation, environmental factors, and maternal illiteracy [12]. Noise exposure may adversely
+affect health, including birth outcomes. Studies have examined effects such as preterm
+birth, low birth weight, small size for gestational age, and congenital malformations. In
+addition to causing biological reactions to stress, noise exposure can increase the risk of
+adverse prenatal outcomes, including adverse pregnancy outcomes [13].
+Our study results show that exposure to noise during early and full-term gesta-
+tion causes recurrent abortion, and late gestational periods cause stillbirth, preterm birth,
+and congenital disabilities in newborn pups. Various studies conﬁrmed that maternal
+stress causes recurrent abortion, stillbirth, preterm birth, and congenital disabilities in
+offspring [14–18]. A meta-analysis study has mentioned that high noise exposure during
+pregnancy increases the risk of early gestational age, gestational hypertension, and con-
+genital disabilities in newborns [ 19]. Research has shown that activating the HPA axis
+increases blood levels of glucocorticoids [20]. It has also been demonstrated that high levels
+of glucocorticoids adversely affect the uterus and fetus and inhibit the secretion of pituitary
+luteinizing hormone, estrogen, and progesterone by the ovary. A lack of progesterone dur-
+ing pregnancy can also be attributed to stress hormone-induced inhibitory effects on female
+reproductive organs, resulting in the symptoms known as “hypothalamic” amenorrhea
+and fetal loss [21]. Studies have previously shown that noise exposure stimulates HPA axis
+activity and increased corticosterone production [22]. Thus, exposure to noise results in
+increased glucocorticoid levels, which impair uteroplacental function, resulting in recurrent
+abortions and stillbirths among mothers exposed to noise.
+Several mediators of the maternal stress response impact the embryonic environment’s
+redox balance, such as inﬂammation and cortisol production. This study also demonstrated
+that maternal noise exposure increased the corticosterone and oxidative stress markers and
+decreased antioxidant level in plasma and discrete regions of the offspring’s brain. As a
+result of gestational noise stress, Zahra Jafari et al. found that offspring of dams exposed to
+gestational noise stress exhibited increased corticosterone levels, altered cognitive function,
+and amyloid beta development as they aged [23]. Hanaﬁ et al. reported that prenatal noise
+exposure (90 dBA) to embryonic chicks and newly hatched chicks caused elevated serum
+corticosterone and ceruloplasmin (CPN) levels [24]. Elevated corticosterone suppresses
+LTP , synaptic plasticity, and GABAergic modulation, which impairs spatial learning and
+memory and increases anxiety-like behavior and neurogenesis in the CA3-CA1 pathway
+of the hippocampus [ 24–27]. The young rats born from dams exposed to noise stress
+during the third trimester of pregnancy showed increased corticosterone, impaired spatial
+memory, and increased anxiety-like behaviors [28]. Another study showed that prenatal
+noise stress signiﬁcantly increased terminal plasma ACTH concentration, impaired balance
+control, locomotion, horizontal and vertical exploration, and increased anxiety levels in
+offspring [29]. Therefore, increased CORT levels in the brain and circulation modulates
+the release of the neurotransmitter, further suppressing the synaptic functions in the
+hippocampus and impairing cognition and emotional behaviors in noise-exposed rats. The
+embryonic brain has an exceptionally high risk of oxidative stress, as antioxidant enzymes
+are expressed at relatively low levels. High concentrations of catalytic metals, including
+Fe2+ and Cu+, promote hydroxyl radical production from hydrogen peroxide in the cell
+environment. There is also evidence that maternal stress during pregnancy increases lipid
+peroxidation (LPO) in the offspring’s postnatal brain, suggesting that redox balance in
+the brain may be altered for a long time after the baby is born [ 30]. Liegelin Kavitha
+Bernhardt et al. reported that prenatal stress increased oxidative stress, including increased
+malondialdehyde (MDA) levels, reduced glutathione (GSH), superoxide dismutase (SOD),
+and total antioxidant activity (TAO), while glutathione reductase (GSS-Rd) levels remained
+low in offspring’s brain [31].
+
+--- PAGE 7 ---
+Stresses 2023, 3 535
+Furthermore, this study conﬁrmed that maternal noise exposure altered spatial learn-
+ing and memory, increased fear, and anxiety-like behavior, and increased repetitive behav-
+iors in offspring. Scott et al. demonstrated that placental oxidative stress is the critical
+mediator in transmitting maternal social stress impacts on the offspring’s brain and behav-
+ior, precisely due to the reduction in hippocampal dendrite length, GABA receptor subunits,
+and the number of parvalbumin-positive neurons and basolateral amygdala in male off-
+spring [32]. A calcium-binding protein, PARValbumin (PV), is expressed by inhibitory
+fast-spiking interneurons in the cerebral cortex. It has also been found that changes in the
+morphology or function of PV+ interneurons are associated with schizophrenia, epilepsy,
+bipolar disorder, autism, and many other psychiatric disorders [33]. Our previous studies
+have demonstrated that excessive noise exposure altered hippocampal morphology, which
+impaired cognition and caused autistic-like repetitive behavior in rats [8]. From the above-
+mentioned, excessive CORT-induced oxidative stress and decreased antioxidant levels
+in discrete brain regions alter neurons’ structural and functional processing causing neu-
+ropsychiatric behaviors in noise-exposed male progeny. A recent study has conﬁrmed that
+prenatal and postnatal noise exposure increased plasma corticosterone levels, decreased the
+number of neurons, and increased the number of apoptotic cells; a decrease in the volume
+of mPFC and non-neuron cells was observed in noise-exposed Wistar albino offspring [34].
+Sajjadi et al. mentioned that pregnant rats being exposed to urban trafﬁc noise exposure
+during the last trimester of pregnancy led to impaired spatial learning and memory in
+their offspring, elevated corticosterone concentration, and reduced GRs and MRs gene
+expression in the hippocampus [ 35]. It was also found that mild prenatal stress (noise,
+restraint, strobe lights) changes the structure of the bed nucleus of stria terminals (BNST)
+and the hippocampus, decreases norepinephrine and dopamine levels in the BNST, and
+lowers serotonin levels in the hippocampus [36]. The research above shows that excessive
+CORT-induced oxidative stress and decreased antioxidant levels in discrete brain regions
+alter brain function. A new ﬁnding in our study was that noise increased CORT, which
+further affected redox homeostasis, the main factor limiting brain structural and functional
+roles. Therefore, these ﬁndings show that noise exposure during pregnancy can lead to
+long-lasting structural and neurochemical effects in offspring, affecting adult behavior.
+4. Materials and Methods
+4.1. Animal Maintenance
+Adult Wistar albino rats (Rattus norvegicus) of both sexes, male (180–220 gm) and female
+(160–180 gm), were used for this study. The present experimental study was approved by
+the institutional animal ethics committee (IAEC No.: 03/03/2019). The Wistar albino rats
+were obtained and maintained in clean polypropylene cages at the Central Animal House
+Facility, University of Madras (Taramani campus), under a 16 h light/8 h dark cycle at 230 C
+with 60% humidity and given ad libitum access to food and water when the experimental
+procedures were conducted. Each cage housed ﬁve animals.
+4.2. Experimental Design
+Three female rats were allowed to mate with one fertile, sexually active male rat for
+one night. The following day, the vaginal plug was collected from the females. A vaginal
+smear was prepared and examined under a microscope for the presence of sperm. The
+presence of sperm conﬁrmed pregnancy; that day was recorded as “day zero” of pregnancy.
+The pregnant rats were then housed individually in separate cages. Animals were randomly
+divided into four groups (n = 6) and used for the experimental studies. The pregnant rats
+were exposed to noise stress using a noise-induction chamber for four hours daily. Male
+progeny (n = 6) were used for this experimental study. There were three groups of pregnant
+rats exposed to noise during gestation, as well as a control group: early gestational stress
+(EGS), which occurs between the 1st and 10th days of pregnancy; late gestational stress
+(LGS), which occurs between the 11th day and the delivery day, and full-term gestational
+stress (FGS), which occurs during the entire pregnancy period. After the 45th postnatal day,
+
+--- PAGE 8 ---
+Stresses 2023, 3 536
+infant pups were tested using the T-maze test, marble-burying test (MBT), open-ﬁeld test,
+and nestlet-shredding-behavior test (NST), and sacriﬁced (Figure 5).
+Figure 5. Experimental design for the maternal-noise-induced neurobehavioral changes in offspring.
+4.3. Noise Exposure
+The noise was produced by a loudspeaker (15 W) installed 30 cm above the cage and
+driven by a white-noise generator emitting all the frequencies in the 0–20 kHz range. A
+precision sound level meter was used to uniformly set the sound intensity to 100 dB in
+the cage. During the experiment, the noise level peaked at 100 dB immediately after the
+generator was switched on and lasted 4 h/day [37,38].
+4.4. Gestational Length
+Gestational length is the number of days taken for parturition from the day of preg-
+nancy. Each group’s gestational length was noted and compared.
+4.4.1. Stillbirth
+Newborn pups were carefully examined after parturition and dead pups were consid-
+ered stillbirths. The percentage of stillbirths was calculated as follows:
+The percentage o f the stillbirths = Nubmer o f stillbirths
+Number o f total births in group × 100
+4.4.2. Congenital Disabilities
+Congenital disabilities are any structural or physiological abnormality present at
+birth that develops before or during birth. The newborn pups were carefully inspected
+for congenital disabilities, and the percentage of congenital disabilities was calculated
+as follows:
+The percentage o f the congenital de f ects = Nubmer o f congenital de f ects
+Number o f total births in group × 100
+4.4.3. Neonatal Mortality Rate
+Death of newborn pups (stillborn animals excluded) within three days following
+parturition is called neonatal mortality. The percentage of neonatal mortality was calculated
+as follows:
+The percentage o f the neonatal mortality = Nubmer o f neonatal mortality
+Number o f total births in group × 100
+4.5. Measurement of Bodyweight
+During delivery and after 45 days of postnatal life, the body weight of newborn pups
+in all experimental groups was measured. The body weights of infant pups were compared
+
+--- PAGE 9 ---
+Stresses 2023, 3 537
+among all experimental groups on the day of delivery. Additionally, newborn pups’ body
+weights were compared among all experimental groups on the 45th postnatal day.
+4.6. Behavioral Analysis
+4.6.1. T-Maze
+T-mazes are used to study how rodents function with memory and spatial learning
+by applying various stimuli. The T-maze consists of a start box (16.5 cm × 16.5 cm), stem
+(arm 1) length is 71.1 cm, goal area (arms 2 and 3) lengths are 45.7 cm and arm width is
+10.2 cm. A sliding door separates the stem and start box, and T-maze is kept in a dimly
+lit, sound-attenuated room. After the 1st day of orientation, the rats were trained for the
+rewarded alternation task. The learning performance test followed the same procedure as
+the orientation session, except that one arm was baited. The rat must alternate the arms
+for the reward. The placement of the reward in the subsequent trial will be opposite to
+the rats’ previous arm entry. Each rat underwent 10 trials per day. The intertrial interval
+was 30 s, during which the maze was cleaned with 70% alcohol to remove odor cues. The
+number of days each rat took to achieve 80% correct choices (8 correct entries to the baited
+arm out of 10 trials) and the time taken to reach the goal area were noted. Then, a memory-
+retention test was carried out two days after the last training session. Rats underwent
+10 trials continuously, with an intertrial interval of 30 s. The number of errors, i.e., entry
+into the non-rewarded arm recorded in ten trials, was noted. The movement of each rat was
+recorded using a digital camera. Each record was converted to image sequences to track
+rat movement using the Image J (V1.53c) plugin, Animal Tracker 14. The latency, correct
+choices, and the number of days taken for the correct choice, retention memory, latency
+and the correct choice of each rat were measured [39].
+4.6.2. Open-Field Behavior
+Open-ﬁeld behavior is a simple test to evaluate the locomotion and emotional status
+of the animals. The apparatus used was a large rectangular box (100 cm × l00 cm) with
+40-cm-high plywood walls. The ﬂoor consisted of a clean, dark plastic material with a grid
+painted in white, dividing the ﬁeld into 25 (5× 5) equal squares. A 60 W bulb placed 100 cm
+above the center of the area provided illumination. A weak cider vinegar solution (10%)
+was used to clean the apparatus before the introduction of each animal. The rat was placed
+in one corner of the apparatus, and its behavior was observed for 5 min, estimating the time
+spent in the central square and time spent in the peripheral square of the offspring [40].
+4.6.3. Marble-Burying Behavior Test
+The marble-burying behavior test assessed the obsessive–compulsive behavior of
+infant rats. The polycarbonate cage (26 cm × 48 cm × 20 cm) was ﬁlled with bedding
+material to the depth of 5 cm, and in it were kept 20 standard glass marbles (15 mm DM,
+5.2 g in weight), in 5 rows of 4 marbles. Then, rats were allowed in that cage for 30 min.
+Water and food were withheld during the experiment. Scoring was given when the rat
+buried two-thirds of a marbles surface into the bedding material [41].
+4.6.4. Nestlet-Shredding Behavior Test
+The polycarbonate cage (26 cm × 48 cm × 20 cm) was ﬁlled with bedding material,
+and 1 g of nestlet (cotton bed) was placed on the bed material. Then, the rat was allowed
+in that cage for 30 min. Water and food were withheld during the experiment. Scoring
+was given by weighing the remaining unshredded nestlet and dividing this weight by the
+starting weight to calculate the percentage of the nestlet shredded [42].
+4.7. Biochemical Assay
+After the completion of behavioral analysis, rats were killed via cervical dislocation. A
+sample collection was conducted between 09:00 and 10:00 AM to avoid variations caused by
+circadian rhythms. Plasma and serum were separated via centrifugation at 3000 rpm at 4◦C
+
+--- PAGE 10 ---
+Stresses 2023, 3 538
+for 15 min. The brain was immediately removed and washed with ice-cold saline. Various
+brain parts—like the cerebral cortex, cerebellum, hippocampus, and hypothalamus—were
+dissected in ice-cold (4 ◦C) conditions. A motor-driven Teﬂon-glass tissue homogenizer
+was used to prepare 10% homogenate using ice-cold Tris–HCl (100 mM, pH 7.4) buffer.
+The homogenate was centrifuged at 2000 rev min−1, 4 ◦C for 15 min, and the supernatant
+was used for the biochemical analysis. For all experimental groups, previously described
+methods were used to estimate the corticosterone (CORT) [43], lipid peroxidation (LPO),
+superoxide dismutase (SOD), and catalase levels [37].
+4.8. Statistical Analysis
+Data are presented as a bar diagram with mean± standard deviation. The results were
+analyzed using Graph Pad Prism software (Version 8.0). For the multivariable analyses, we
+used ANOVA with Tukey’s multiple comparison test;p < 0.05 was considered statistically
+signiﬁcant; “*” refers to “compared to control”, “#” to “compared to EGS group”, and “@”
+to “compared to LGS”.
+5. Conclusions
+This study has demonstrated that maternal noise exposure dysregulated the HPA axis,
+increased oxidative stress, and decreased antioxidant levels. This impaired cognition, in-
+creased fear, anxiety, repetitive behavior, accelerated oxidative stress, and caused recurrent
+abortions, stillbirths, and neurobehavioral changes in offspring. Future studies should
+investigate concurrent alternations in levels of oxidative and antioxidant markers, identify-
+ing the molecular mechanism behind maternal-noise-exposure-induced neurobehavioral
+changes in offspring.
+Author Contributions: Conceptualization: A.A. and R.R.; data curation: A.A. and D.K.S.; investi-
+gation: A.A. and R.R.; methodology: A.A. and R.R.; project administration: R.R.; software: D.K.S.;
+supervision: R.R.; writing—original draft: A.A. and D.K.S.; writing—review and editing: D.K.S. and
+R.R. All authors have read and agreed to the published version of the manuscript.
+Funding: The Research Fellowship and Associateships (SRF) grant funded this study through the
+Government of India, funded by the Indian Council of Medical Research (ICMR), New Delhi, India
+(No. RBMH/FW/2020/31).
+Institutional Review Board Statement: Not applicable.
+Informed Consent Statement: Not applicable.
+Data Availability Statement: Data are contained within the article.
+Acknowledgments: All authors acknowledged Biorender.com in creating the ﬁgures.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1. Jafari, Z.; Kolb, B.E.; Mohajerani, M.H. Noise exposure accelerates the risk of cognitive impairment and Alzheimer’s disease:
+Adulthood, gestational, and prenatal mechanistic evidence from animal studies. Neurosci. Biobehav. Rev. 2020, 117, 110–128.
+[CrossRef] [PubMed]
+2. Lipschutz, R.; Kulesz, P .A.; Elgbeili, G.; Biekman, B.; Laplante, D.P .; Olson, D.M.; King, S.; Bick, J. Maternal mental health mediates
+the effect of prenatal stress on infant temperament: The Harvey Mom Study. Dev. Psychopathol. 2023, 1–15. [CrossRef] [PubMed]
+3. Bergh, B.R.V .D.; Heuvel, M.I.V .D.; Lahti, M.; Braeken, M.; de Rooij, S.R.; Entringer, S.; Hoyer, D.; Roseboom, T.; Räikkönen, K.;
+King, S.; et al. Prenatal developmental origins of behavior and mental health: The inﬂuence of maternal stress in pregnancy.
+Neurosci. Biobehav. Rev. 2020, 117, 26–64. [CrossRef]
+4. Zhang, H.; Wang, Q.; He, S.; Wu, K.; Ren, M.; Dong, H.; Di, J.; Yu, Z.; Huang, C. Ambient air pollution and gestational diabetes
+mellitus: A review of evidence from biological mechanisms to population epidemiology. Sci. T otal Environ. 2020, 719, 137349.
+[CrossRef] [PubMed]
+5. Ju, L.; Hua, L.; Xu, H.; Li, C.; Sun, S.; Zhang, Q.; Cao, J.; Ding, R. Maternal atmospheric particulate matter exposure and risk of
+adverse pregnancy outcomes: A meta-analysis of cohort studies. Environ. Pollut. 2023, 317, 120704. [CrossRef]
+
+--- PAGE 11 ---
+Stresses 2023, 3 539
+6. Hung, T.H.; Chen, P .H.; Tung, T.H.; Hsu, J.; Hsu, T.Y.; Wan, G.H. Risks of preterm birth and low birth weight and maternal
+exposure to NO2/PM2. 5 acquired by dichotomous evaluation: A systematic review and meta-analysis. Environ. Sci. Pollut. Res.
+2022, 30, 9331–9349. [CrossRef]
+7. Thomson, E.M. Air Pollution, Stress, and Allostatic Load: Linking Systemic and Central Nervous System Impacts. J. Alzheimer’s
+Dis. 2019, 69, 597–614. [CrossRef]
+8. Arjunan, A.; Rajan, R. Noise and brain. Physiol. Behav. 2020, 227, 113136. [CrossRef]
+9. Basner, M.; Babisch, W.; Davis, A.; Brink, M.; Clark, C.; Janssen, S.; Stansfeld, S. Auditory and non-auditory effects of noise on
+health. Lancet 2014, 383, 1325–1332. [CrossRef]
+10. I Stirrat, L.; Sengers, B.G.; E Norman, J.; Homer, N.Z.M.; Andrew, R.; Lewis, R.M.; Reynolds, R.M. Transfer and Metabolism of
+Cortisol by the Isolated Perfused Human Placenta. J. Clin. Endocrinol. Metab. 2018, 103, 640–648. [CrossRef]
+11. Manikandan, S.; Devi, R.S. Antioxidant property of α-asarone against noise-stress-induced changes in different regions of rat
+brain. Pharmacol. Res. 2005, 52, 467–474. [CrossRef] [PubMed]
+12. Samson, J.; Devi, R.S.; Ravindran, R.; Senthilvelan, M. Effect of noise stress on free radical scavenging enzymes in brain. Environ.
+T oxicol. Pharmacol.2005, 20, 142–148. [CrossRef] [PubMed]
+13. Deacon, R.M.J.; Rawlins, J.N.P . T-maze alternation in the rodent. Nat. Protoc. 2006, 1, 7–12. [CrossRef]
+14. Seibenhener, M.L.; Wooten, M.C. Use of the open ﬁeld maze to measure locomotor and anxiety-like behavior in mice.J. Vis. Exp.
+2015, 96, e52434.
+15. Deacon, R.M.J. Digging and marble burying in mice: Simple methods for in vivo identiﬁcation of biological impacts. Nat. Protoc.
+2006, 1, 122–124. [CrossRef]
+16. Thompson, S.L.; Welch, A.C.; Ho, E.V .; Bessa, J.M.; Portugal-Nunes, C.; Morais, M.; Young, J.W.; Knowles, J.A.; Dulawa, S.C.
+Btbd3 expression regulates compulsive-like and exploratory behaviors in mice. T ransl. Psychiatry2019, 9, 222. [CrossRef]
+17. Sundareswaran, L.; Srinivasan, S.; Wankhar, W.; Sheeladevi, R. Effect of Scoparia dulcis on noise stress induced adaptive immunity
+and cytokine response in immunized Wistar rats. J. Ayurveda Integr. Med. 2017, 8, 13–19. [CrossRef]
+18. Gedzun, V .R.; Khukhareva, D.D.; Sarycheva, N.Y.; Kotova, M.M.; Kabiolsky, I.A.; Dubynin, V .A. Perinatal Stressors as a Factor in
+Impairments to Nervous System Development and Functions: Review of In Vivo Models. Neurosci. Behav. Physiol. 2023, 53, 61–69.
+[CrossRef] [PubMed]
+19. Sarkar, T.; Patro, N.; Patro, I.K. Cumulative multiple early life hits- a potent threat leading to neurological disorders.Brain Res.
+Bull. 2019, 147, 58–68. [CrossRef]
+20. Sivakumaran, K.; Ritonja, J.A.; Waseem, H.; AlShenaibar, L.; Morgan, E.; Ahmadi, S.A.; Denning, A.; Michaud, D.; Morgan, R.L.
+Impact of Noise Exposure on Risk of Developing Stress-Related Obstetric Health Effects: A Systematic Review and Meta-Analysis.
+Noise Health 2022, 24, 137.
+21. Liu, Y.; Zhang, C.; Liu, Y.; Zhu, J.; Qu, H.; Zhou, S.; Chen, M.; Xu, D.; Chen, L.; Wang, H. Paternal Nicotine/Ethanol/Caffeine
+Mixed Exposure Induces Offspring Rat Dysplasia and Its Potential “GC-IGF1” Programming Mechanism. Int. J. Mol. Sci. 2022,
+23, 15081. [CrossRef]
+22. Nyadanu, S.D.; Tessema, G.A.; Mullins, B.; Kumi-Boateng, B.; Ofosu, A.A.; Pereira, G. Prenatal exposure to long-term heat stress
+and stillbirth in Ghana: A within-space time-series analysis. Environ. Res. 2023, 222, 115385. [CrossRef]
+23. Garcia-Flores, V .; Romero, R.; Furcron, A.-E.; Levenson, D.; Galaz, J.; Zou, C.; Hassan, S.S.; Hsu, C.-D.; Olson, D.;Metz, G.A.S.; et al.
+Prenatal Maternal Stress Causes Preterm Birth and Affects Neonatal Adaptive Immunity in Mice. Front. Immunol. 2020, 11, 254.
+[CrossRef]
+24. Yu, F.; Xu, X.; Ren, Z.; Yang, J.; Kong, F. Maternal high-decibel acoustic exposure elevates prenatal stress, impairing postnatal
+hearing thresholds associated with decreasing ribbon synapses in young rats. Reprod. T oxicol.2019, 89, 21–27. [CrossRef]
+25. Oinam, B.; Anand, V .; Kajal, R.K. A geospatial based hotspot and regression analysis of abortion and stillbirth prevalence in
+Manipur, India. Women Health 2021, 61, 599–608. [CrossRef]
+26. Dzhambov, A.M.; Dimitrova, D.D.; Dimitrakova, E.D. Noise Exposure During Pregnancy, Birth Outcomes And Fetal Development:
+Meta-Analyses Using Quality Effects Model. Folia Med. 2014, 56, 204–214. [CrossRef] [PubMed]
+27. Gjerstad, J.K.; Lightman, S.L.; Spiga, F. Role of glucocorticoid negative feedback in the regulation of HPA axis pulsatility.Stress
+2018, 21, 403–416. [CrossRef] [PubMed]
+28. Nepomnaschy, P .A.; Sheiner, E.; Mastorakos, G.; Arck, P .C. Stress, immune function and reproduction.Ann. NY Acad. Sci. 2007,
+1113, 350–364. [CrossRef] [PubMed]
+29. Fe’Li, S.N.; Esmaielpour, M.R.M.; Hokmabadi, R.; Rezaei-Hachesu, V . Effect of occupational noise exposure on cortisol hormone
+level: A systematic review. Noise Vib. Worldw. 2022, 53, 579–588. [CrossRef]
+30. Jafari, Z.; Okuma, M.; Karem, H.; Mehla, J.; Kolb, B.E.; Mohajerani, M.H. Prenatal noise stress aggravates cognitive decline and
+the onset and progression of beta amyloid pathology in a mouse model of Alzheimer’s disease. Neurobiol. Aging 2019, 77, 66–86.
+[CrossRef]
+31. Hanaﬁ, S.; Zulkiﬂi, I.; Ramiah, S.; Chung, E.; Kamil, R.; Awad, E. Prenatal auditory stimulation induces physiological stress
+responses in developing embryos and newly hatched chicks. Poult. Sci. 2023, 102, 102390. [CrossRef]
+32. Jafari, Z.; Mehla, J.; Kolb, B.E.; Mohajerani, M.H. Prenatal noise stress impairs HPA axis and cognitive performance in mice. Sci.
+Rep. 2017, 7, 10560. [CrossRef] [PubMed]
+
+--- PAGE 12 ---
+Stresses 2023, 3 540
+33. Barzegar, M.; Sajjadi, F.S.; Talaei, S.A.; Hamidi, G.; Salami, M. Prenatal exposure to noise stress: Anxiety, impaired spatial memory,
+and deteriorated hippocampal plasticity in postnatal life. Hippocampus 2015, 25, 187–196. [CrossRef] [PubMed]
+34. Kim, T.-W.; Shin, M.-S.; Park, J.-K.; Shin, M.-A.; Lee, H.-H.; Lee, S.-J. Treadmill exercise alleviates prenatal noise stress-induced
+impairment of spatial learning ability through enhancing hippocampal neurogenesis in rat pups.J. Exerc. Rehabil. 2013, 9, 451–456.
+[CrossRef] [PubMed]
+35. Hadizadeh, M.; Hamidi, G.; Salamim, M. Probiotic supplementation improves the cognitive function and the anxiety-like
+behaviors in the stressed rats. Iran. J. Basic Med. Sci. 2019, 22, 506–514. [CrossRef]
+36. Badache, S.; Bouslama, S.; Brahmia, O.; Baïri, A.M.; Tahraoui, A.K.; Ladjama, A. Prenatal noise and restraint stress interact to alter
+exploratory behavior and balance in juvenile rats, and mixed stress reverses these effects. Stress 2017, 20, 320–328. [CrossRef]
+[PubMed]
+37. Dowell, J.; Elser, B.A.; Schroeder, R.E.; Stevens, H.E. Cellular stress mechanisms of prenatal maternal stress: Heat shock factors
+and oxidative stress. Neurosci. Lett. 2019, 709, 134368. [CrossRef]
+38. Bernhardt, L.K.; Madhyastha, S.; Bairy, L.; Kishore, A. Status of the brain antioxidant system at different growing periods after
+prenatal stress and N -acetyl cysteine administration. Folia Neuropathol. 2017, 1, 38–48. [CrossRef] [PubMed]
+39. Scott, H.; Phillips, T.J.; Sze, Y.; Alﬁeri, A.; Rogers, M.F.; Volpato, V .; Case, C.P .; Brunton, P .J. Maternal antioxidant treatment
+prevents the adverse effects of prenatal stress on the offspring’s brain and behavior. Neurobiol. Stress 2020, 13, 100281. [CrossRef]
+40. Juarez, P .; Cerdeño, V .M. Parvalbumin and parvalbumin chandelier interneurons in autism and other psychiatric disorders.Front.
+Psychiatry 2022, 13, 913550. [CrossRef]
+41. Teimouri, M.; Heidari, M.H.; Amini, A.; Sadeghi, Y.; Abdollahifar, M.-A.; Aliaghaei, A.; Khavanin, A.; Nadri, F.; Danyali, S.;
+Sanchooli, T. Neuroanatomical changes of the medial prefrontal cortex of male pups of Wistar rat after prenatal and postnatal
+noise stress. Acta Histochem. 2020, 122, 151589. [CrossRef] [PubMed]
+42. Sajjadi, F.; Aghighi, F.; Vahidinia, Z.; Azami-Tameh, A.; Salami, M.; Talaei, S. Prenatal urban trafﬁc noise exposure impairs spatial
+learning and memory and reduces glucocorticoid receptor expression in the hippocampus of male rat offspring. Physiol. Int. 2020,
+107, 209–219. [CrossRef] [PubMed]
+43. Soares-Cunha, C.; Coimbra, B.; Borges, S.; Domingues, A.V .; Silva, D.; Sousa, N.; Rodrigues, A.J. Mild Prenatal Stress Causes
+Emotional and Brain Structural Modiﬁcations in Rats of Both Sexes. Front. Behav. Neurosci. 2018, 12, 129. [CrossRef] [PubMed]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.

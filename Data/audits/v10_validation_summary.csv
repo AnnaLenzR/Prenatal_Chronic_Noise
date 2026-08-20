@@ -1,0 +1,13 @@
+check,severity,status,n_failed,interpretation
+es_id is present and unique,error,pass,0,Each effect size must have one row
+study_id is present,error,pass,0,Every effect size must link to a study
+sample sizes are positive,error,pass,0,lnRR variance requires valid n
+analysis means are complete,error,pass,0,All arms require a mean for lnRR
+analysis SDs are complete,error,pass,0,All arms require an SD for lnRR variance
+analysis SEs are complete,error,pass,0,Every arm should now have a directly reported or SD-derived SE
+analysis means are positive,error,pass,0,lnRR requires positive means after the zero correction
+con_id / ex_id present,error,pass,0,Needed to model dependence among effect sizes
+recalculated SE matches extraction team's *_se_analysis,review,pass,0,This chapter's SD-derived SE should reproduce the pre-computed *_se_analysis columns to within rounding
+zero SD alongside zero-mean correction,review,review,2,es184 / es190: control arm has no reported spread
+frequency values failed to parse,review,pass,0,Check the frequency text for an unexpected format
+dam_age missing,review,review,118,Expected: dam_age was only reported for a subset of studies
