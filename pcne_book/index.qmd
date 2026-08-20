@@ -2,7 +2,7 @@
 title: "Project workflow"
 ---
 
-This Quarto book is the reproducible analysis record for the prenatal chronic noise exposure meta-analysis. It is intentionally separate from the older `book/` directory, which contains material adapted from a colleague's music-and-rodent meta-analysis and is kept only as a style reference.
+This Quarto book is the reproducible analysis record for the prenatal chronic noise exposure meta-analysis.
 
 The workflow follows the protocol (`protocol/PCNE_protocol_v.4_111425.docx`, with the deviation addendum of 18 August 2026):
 
@@ -13,7 +13,7 @@ The workflow follows the protocol (`protocol/PCNE_protocol_v.4_111425.docx`, wit
 5. assess publication bias (Chapter 5);
 6. report the CRIME-Q critical appraisal of the included studies (Chapter 6).
 
-This analysis is scoped to lnRR and to uni-moderator models, matching the plan agreed for this project. Reproducible outputs are written to `Data/derived/` and `Data/audits/`; the reviewed extraction file in `outputs/019ff719-4f39-7b31-8dee-189f2b3ff628/` is never overwritten.
+This analysis is scoped to lnRR only - no lnVR or lnCVR - and to uni-moderator models, matching the plan agreed for this project. Reproducible outputs are written to `Data/derived/` and `Data/audits/`; the reviewed extraction file in `outputs/019ff719-4f39-7b31-8dee-189f2b3ff628/` is never overwritten.
 
 ## How to render this book
 
