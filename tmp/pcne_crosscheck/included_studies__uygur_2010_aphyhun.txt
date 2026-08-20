@@ -1,0 +1,442 @@
+
+===== PAGE 1 =====
+Acta Physiologica Hungarica, Volume 97 (3), pp. 297–306 (2010)
+DOI: 10.1556/APhysiol.97.2010.3.6
+Effects of chronic stress on cognitive functions
+and anxiety related behaviors in rats
+E Eraslan Uygur, M Arslan
+Department of Physiology, Faculty of Veterinary Medicine, Istanbul University, Istanbul, Turkey
+Received: January 7, 2010
+Accepted after revision: April 1, 2010
+The effects of 100 dB prenatal and chronic postnatal white noise stress (WNS) on some cognitive functions and
+behaviors in rats were investigated. For this purpose, 60 female Sprague-Dawley rats and their 90 male offspring
+were used. Pregnant rats were divided into Prenatal Stress (PS) and Prenatal Control (PC) groups. WNS was applied
+to PS group between the 14th and 21st days of their pregnancy, while PC rats were left undisturbed. After weaning,
+40 male pups of PS dams were assigned to prenatal + chronic postnatal stress (PSCS) and prenatal stress + non-stress
+(PSN) groups. Pups of PC dams were divided into Control (CON) and Corticosterone (CORT) groups. During the
+postnatal 30th and 51st days, WNS was applied to PSCS and CORT rats everyday for 45 minutes, while PSN and
+CON groups were left undisturbed. The effects of stress on adult male offspring were investigated using Morris
+water maze and defensive withdrawal tests. Blood samples were collected after each test for serum corticosterone
+measurements. Blood samples of CORT rats were collected before the stress application and at the 1st, 7th, 14th, and
+21st days of the stress period, immediately after cessation of the stress application. There were no significant
+differences among groups for learning and behavior tests. Corticosterone levels of CORT rats were significantly
+higher after the stress period than before stress application. These results indicate that although chronic 100 dB WNS
+induces a stress response by increasing corticosterone levels, it does not affect cognitive functions and anxiety
+related behaviors of adult male offspring.
+Keywords: anxiety, learning, memory, rats, stress, white noise Corticosterone, Morris water maze test, defensive
+withdrawal tests, cognitive functions
+Effects of stressful experiences on physiology and behaviors of animals and humans are
+quite complicated. Variation in intensity, duration, type of stressors and the age of the animal
+during stress exposure may produce important differences in patterns of stress responses (5,
+14, 27, 30). Many studies investigated the effects of exposure to different stressors during the
+prenatal and postnatal periods of life. In these studies it was reported that stress increased or
+decreased or did not affect memory, learning, anxiety or fear related behaviors of rats (2, 7,
+31, 35, 38, 39). For example, it has been demonstrated that prenatal unpredictable restraint
+stress induced spatial learning impairment in 1-month-old male rats but did not show any
+effect in 3-month-old male rats (40). On the other hand, has increased spatial learning
+performance been shown in male rats that were prenatally exposed to mild restraint stress
+(16). Furthermore, effects of chronic stress and the impact of stressful events on the adaptive
+capacities of adult subjects were investigated in some studies. However, obtained results are
+conflicting, both negative and positive effects of chronic stress in rats were reported and also
+persistency of the effects of stress varies in different studies (3, 20, 22, 28, 33). It has been
+Corresponding author: Evren Eraslan Uygur
+Department of Physiology, Faculty of Veterinary Medicine, Istanbul University
+34320 Avcilar, Istanbul, Turkey
+Phone: +90 212 473 70 70 (ext.17110); Fax: +90 212 473 72 41;
+E-mail: erarslan@istanbul.edu.tr
+0231–424X/$ 20.00 © 2010 Akadémiai Kiadó, Budapest
+
+===== PAGE 2 =====
+298 Eraslan Uygur E and Arslan M
+reported that early-life chronic isolation stress increases anxiety-like and fear behaviors in
+adulthood (23). In another study, no alterations has been shown in anxiety-like behaviors in
+adult male rats that were prenatally exposed to restraint stress (6, 32). Taken together, results
+of these studies support the idea that adaptation to chronic stress, and its effects on behaviors,
+and persistency of effects of stressful events in later life depends on the stress regime and
+nature of the stressor (1, 13, 25).
+It has been shown that postnatal environment and conditions modify the effects of prenatal
+stress (8, 16, 21, 38). For example, it has been suggested that anxious behavior developed as
+a consequence of a chronic prenatal restraint stress experience can be counteracted by early
+adoption (cross fostering) in rats (4). However, most of the studies investigating the influence
+of stress on rats have focused on the effects of either prenatal or postnatal stress. If we
+consider that environmental conditions are not changed, it is most likely that animals and
+people would still be exposed to the same stressor that they experienced during the prenatal
+period. In the present study, long-term effects of prenatal and chronic postnatal audiogenic
+stress were examined in adult male rats at the behavioral levels. The Morris water maze was
+used to measure spatial learning and memory performance and a defensive withdrawal test
+was used to assess anxiety like behaviors in rats. Serum corticosterone levels were measured
+to assess stress induced changes in HPA axis response.
+Materials and Methods
+Animals and housing
+Sixty naive adult female (205±3 g body weight) and 12 naive adult male Sprague-Dawley
+rats (305±9 g body weight) obtained from the Institute for Experimental Medicine of Istanbul
+University were bred in our laboratory. They were housed with free access to food and water
+in a temperature controlled room (21±1 °C) under a 12:12 h light-dark cycle (lights on at 7:00
+a.m.). Female rats were grouped (4–5 rats per cage) in clear plastic cages (46×32×14 cm) with
+wood chip bedding in the presence of a male for 5–6 days until pregnancy. Vaginal smears
+were examined every morning daily and the day when the smear was sperm positive was
+determined as gestational day 0. Thereafter, pregnant animals were housed individually.
+All efforts were made to minimize the suffering and the number of animals used. The
+Ethic Committee of Istanbul University Veterinary Faculty approved the experimental
+protocol of the study.
+Stress procedures
+Pregnant rats were randomly divided into Prenatal Stress (PS, n=30) and Prenatal Control
+(PC, n=30) groups. PS rats were exposed to 45 min long white noise stress at the intensity of
+100 dB (decibel-A scale) SPL (sound pressure level) from day 14 to 21 of pregnancy. During
+this period, stress was applied once a day at random times of the day. Stress application was
+performed in another room and animals were carried away and back during this period. The
+rat cages were arranged to ensure a similar distribution of noise to all the animals. Noise
+intensity was measured by placing a sound level meter (CEM DT–8820) in the cages at
+varied locations and calculating the mean value of different readings. Rats in the PC group
+were treated in the same way without audiogenic stimulation.
+The offspring were weaned 21 days after birth and only litters consisting of five to ten
+pups with approximately half of them females and half of them males were kept for the study.
+To minimize litter effects, no more than 2 male offspring from each litter were assigned to
+Acta Physiologica Hungarica 97, 2010
+
+===== PAGE 3 =====
+Effects of chronic stress on cognitive functions in rats 299
+each experimental group. Forty male offspring of the PS group were randomly divided into
+Prenatal Stress + Chronic Stress (PSCS, n=20) and Prenatal Stress + Non-Stress (PSN, n=20)
+groups. Fifty offspring of the PC group were randomly divided into Control (CON, n=20)
+and Corticosterone (CORT, n=30) groups. While the same stress procedure was applied to
+PSCS and CORT rats from day 30 to 51 of postnatal period, PSN and CON rats were not
+exposed to noise stress.
+Corticosterone assay
+Corticosterone levels were determined in blood samples of CORT (n=30) rats before stress
+application and at the 1st, 7th, 14th, 21st days of the stress period immediately after cessation
+of stress. Blood samples of 6 animals were collected at each sampling time point; sampled
+animals were not included in ongoing stress application process. Corticosterone levels of
+PSCS, PSN and CON rats were determined at the end of the behavioral tests.
+Animals were anesthetized with xylazine (0.5 mg/100 g) and ketamine (4 mg/100 g). Blood
+samples were obtained by transcardially withdrawing 0.5 ml of blood into plain tubes. The blood
+was allowed to clot at room temperature. After that, it was centrifuged at 3500 rpm for 15 min
+and the serum was collected into eppendorf tubes and stored at −20 °C until assayed. The serum
+corticosterone level was determined using a commercial [25I] corticosterone radioimmunoassay
+kit (MP Biomedicals), according to kit protocol. The sensitivity of corticosterone assay was 7.7
+ng/ml. Corticosterone levels are expressed as ng/ml.
+Behavioral testing
+The testing period was started when the animals were young adults, at 70 days of age. Ten
+animals from each PSCS, PSN and CON groups were tested in the Morris water maze (MWM)
+and in the Defensive withdrawal test (DWT). All tests were conducted at the same time of
+the day beginning at 10:00 a.m. Experimental and control groups were tested simultaneously.
+The behavior of the rats was videotaped and then analyzed by experienced observers.
+Morris water maze
+The water maze was a black plexiglas circular pool (60 cm high, 132 cm diameter) that was
+filled with water (23±1 °C) to a level of 45 cm. A black escape platform (8 cm diameter) was
+used. The pool was divided by imaginary lines, into four quadrants and four different starting
+points were equally spaced around the perimeter of the pool. In the testing room, there were
+numerous constant visual cues outside the tank such as different shaped posters, a table, a
+door and the experimenter.
+The rats were adapted to the experimental conditions a day before the testing period.
+They were launched into the water and allowed to swim freely for 1 min (no platform). For
+the spatial learning acquisition test, the escape platform was placed 2 cm below the surface
+in a fixed location in one of the four quadrants. It was equidistant from the sidewall and
+the middle of the pool. A block of four trials for each animal was performed per day, for
+5 consecutive days. For each trial block, a rat was placed in the water facing the pool wall
+at one of the four randomly assigned starting points. Each starting point was used once a
+day and their sequence remained the same for all animals. The rat was allowed to swim for
+a maximum of 60 seconds to find the platform. Once the platform was located, the rat was
+allowed to remain there for 15 seconds. If an animal could not find the platform in this time,
+it was guided to the platform by the experimenter and allowed to stay there 15 seconds. The
+Acta Physiologica Hungarica 97, 2010
+
+===== PAGE 4 =====
+300 Eraslan Uygur E and Arslan M
+inter-trial interval for each rat was 30 seconds. Both the latency to find the platform and
+the amount of time spent in the quadrant where the platform was located were measured.
+One day after the acquisition period, the first probe trial was conducted. The platform was
+removed from the water and the rats were given one swim for 60 seconds. The time spent
+in the quadrant where the removed platform had been was recorded. The reversal test was
+carried out for three consecutive days beginning with the day after the first probe trial. The
+platform was hidden and placed in the opposite side from the place where it had been in the
+acquisition test. All the other experimental procedures were the same as during acquisition.
+The next day the second probe trial was performed. The cued test was carried out on the last
+day to evaluate the sensorimotor abilities of the animals. The escape platform was visible
+above the surface and had a coloured flag pole. Each animal had four trials starting from
+randomly selected starting points. The rat was required to locate the visible platform in 60
+seconds. The latency to find the platform was recorded.
+Results from blocks of 4 trials for each day of acquisition and reversal tests were
+averaged for every rat for the statistical analyses.
+Defensive withdrawal test
+The method of Ward et al (139) was used for the test. The test apparatus was a transparent
+plexiglas open arena (60×60×35 cm high) with black bottom and adjacent side compartment
+(15×20×15 cm high). Light intensity in the centre of the open field was 100 lx and was
+less than 1 lx in the dark box. The first day rats were introduced into the unfamiliar test
+environment by placing them into the open field and allowing them to explore freely for
+15 min., although the animals’ access to dark box was prevented. The following day, at the
+beginning of the test, the rats were placed in the dark box via the upper side lid and allowed
+free exploration in the open field. The test was conducted for ten minutes and was videotaped.
+After behavioral testing of each animal, the rats were returned to their home cage and the test
+apparatus was cleaned with 1% glacial acetic acid to prevent olfactory cues.
+Latency to exit the dark box with all four paws for the first time, number of exits from
+the dark box, and time spent in the open field were determined.
+Statistical analyses
+Repeated measures analyses of variance (ANOVA) was applied to the data derived from
+MWM acquisition and reversal tests. Results of the probe and cued tests of MWM, defensive
+withdrawal tests and corticosterone levels were analyzed using one-way ANOVA. Differences
+were considered to be significant if p<0.05.
+Results
+Water maze performance
+Spatial learning capacities are represented by the latencies to find the platform. Table I shows
+the mean latencies to find the platform across days for the three experimental groups. The
+repeated-measures ANOVA showed that rats in all groups progressively improved their
+ability to locate the platform over the days of acquisition (F = 32.38, p<0.001) and
+4, 104
+reversal tests (F = 12.30, p<0.001). While the effect of treatment was not significant, the
+2, 52
+interaction between group and days was not significant either. For the probe tests, there was
+no significant difference between the groups with respect to the percentage of time spent
+Acta Physiologica Hungarica 97, 2010
+
+===== PAGE 5 =====
+Effects of chronic stress on cognitive functions in rats 301
+in the quadrant where the removed platform had been located (Fig. 1). On the cued test,
+there was no significant difference between groups, indicating that all groups had comparable
+levels of performance in the visible platform task (Fig. 2).
+Table I. Latency to locate the platform in an acquisition and reversal tasks
+Acquisition trial Escape latencies (sec)
+days PSCS PSN CON
+1 47.06 ± 3.43 51.80 ± 3.61 39.55 ± 3.43
+2 31.23 ± 4.44 37.18 ± 4.69 40.36 ± 4.44
+3 21.86 ± 3.63 30.51 ± 3.83 23.60 ± 3.63
+4 15.09 ± 4.41 26.94 ± 4.65 27.33 ± 4.41
+5 16.94 ± 3.87 22.54 ± 4.08 16.22 ± 3.87
+Reversal trial days
+1 23.80 ± 4.48 22.75 ± 4.72 16.89 ± 4.48
+2 12.92 ± 2.65 14.43 ± 2.80 12.95 ± 2.65
+3 10.93 ± 1.97 11.02 ± 2.08 10.93 ± 1.97
+Data are the means ± SEM (sec) for the days of testing for PSCS, PSN and CON groups. Latency to find the platform
+decreases across acquisition trials (F = 32.38, p<0.001) and reversal trials (F = 12.30, p<0.001). The effect of
+4, 104 2, 52
+treatment and group × trial interactions were not significant
+Fig. 1. Probe tests I and II. The percentage time (means ± SEM) spent in the quadrant where the platform
+had been located for PSCS, PSN and CON groups in the probe trials
+Fig. 2. Time (means ± SEM) taken to locate the platform for PSCS, PSN and CON groups in the cued trial
+Acta Physiologica Hungarica 97, 2010
+
+===== PAGE 6 =====
+302 Eraslan Uygur E and Arslan M
+Defensive withdrawal test
+There were no significant differences between groups in terms of measured parameters of
+defensive withdrawal test (p>0.05) (Table II). The variance between animals was high.
+Table II. Parameters measured during the defensive withdrawal test
+Parameters Treatment groups
+PSCS (n=9) PSN (n=9) CON (n=10)
+Latency to exit the dark box (sec) 96.67 ± 63.80 137.00 ± 66.90 90.90 ± 58.69
+Number of exits from the dark box 3.33 ± 1.21 3.67 ± 0.73 4.30 ± 0.82
+Time spent in the open field (sec) 95.72 ± 55.32 66.67 ± 16.87 101.74 ± 25.25
+Data are the means ± SEM. No significant differences were found between groups by one-way ANOVA
+Corticosterone levels
+Corticosterone levels of CORT group animals were significantly higher on days 1st, 7th, 14th
+and 21st of the stress period compared to the day before stress application and corticosterone
+levels of animals on day 14 were higher than on day 1 (p<0.001) (Table III). There was
+no significant difference in corticosterone levels between the experimental groups after
+behavioral tests (data not shown).
+Table III. Corticosterone levels of CORT group animals (n=30)
+Before stress After stress
+day 1 day 1 day 7 day 14 day 21
+(n=6) (n=6) (n=6) (n=6) (n=6)
+Serum corticosterone levels 148 ± 57* 303 ± 67 343 ± 31 491 ± 57** 365 ± 41
+(ng/ml)
+Data are the means ± SEM.
+* Corticosterone levels were significantly higher on 1st, 7th, 14th, 21st days of the stress period than before stress
+application and **corticosterone levels on day 14 were higher than on day 1 after stress application (p<0.001)
+Discussion
+In the present work, effects of chronic white noise stress on spatial learning and memory,
+defensive withdrawal behaviors and corticosterone levels in rats were investigated.
+Noise is one of the most widespread sources of environmental stress and white noise
+is an audiogenic stressor that produces stress response in the organism (11, 14, 17, 34).
+However, to our knowledge, there are only few studies investigating the effects of white
+noise stress on spatial learning and memory. Our results show that all animals were able to
+acquire and remember the spatial task, and that spatial learning and memory of animals in
+the Morris water maze were not affected by prenatal and postnatal chronic white noise stress
+treatment (Table I). It was reported that chronic (4 hours/day × 30 days) white noise (100 dB)
+exposure in adult rats significantly decreased the escape latency in the acquisition trial at days
+1 and 3 also decreased the time spent in the target quadrant in the probe test in MWM (13). It
+was also suggested that chronic white noise stress (100 dB/4 hours per day/30 days) impaired
+Acta Physiologica Hungarica 97, 2010
+
+===== PAGE 7 =====
+Effects of chronic stress on cognitive functions in rats 303
+spatial learning performance in radial arm maze in adult rats when measured an hour after
+noise stress exposure (25). Our results are contradictory to those two studies. They measured
+spatial abilities of animals immediately after the stress exposure. The lack of effects of white
+noise stress on spatial learning and memory in our study can be accounted for by evaluating
+the learning performance of animals at adulthood, not immediately after the cessation of
+stress period. In addition, stress regimes are different, i.e. the duration of stress application
+per day was shorter in our study. There are various studies that have investigated the effects
+of different types of stressors on learning and memory of rats and they have documented a
+variety of different results (2, 22, 28, 35). Discrepancies in results of the studies support the
+idea that effects of stress on cognition vary depending on the type and intensity of stress,
+application period and stress procedure, as well as on the time of determination of stress
+effects.
+There were no statistically significant differences between the groups in the defensive
+withdrawal test (Table II). That is to say, our stress treatment did not show long-term effects
+on the behaviors of rats in the defensive withdrawal model of anxiety. Different types of
+stressors with varied intensities activate distinct neural pathways in the brain (14, 19, 29).
+It was reported that CRF and CRF receptors may be the mediators of anxiety (15, 36) and
+defensive withdrawal behaviors of rats are related with content and release of CRF in certain
+areas of the brain such as amygdala (37, 39, 41). It was determined that although CRF
+neurons in the hypothalamic paraventricular nucleus and medullary catecholaminergic cells
+participated in the organization of responses to short duration auditory stimulation (105 dB
+white noise), CRF neurons in the central nucleus of the amygdala were not activated by
+the stimulus (17). Similarly, it was reported that neuronal activation of the CRF containing
+neurons that contain CRF in the central nucleus of the amygdala was not observed as a
+result of 100 dB white noise exposure (14). Neuro-hormonal basis of formation of defensive
+withdrawal behaviors are quite complicated and our stress treatment might not have affected
+CRF containing neurons in the amygdala, which plays an important role in the formation of
+defensive withdrawal behaviors. Brain regions related to formation of defensive withdrawal
+behaviors may not be involved in stress responsiveness to auditory stimulation. However,
+involvement of the other neuroendocrine pathways such as central noradrenergic systems
+in the formation of defensive withdrawal behaviors (41) should be also considered. Further
+research is needed to investigate the relation between neuroendocrine responses to audiogenic
+stress and anxiety-like behaviors.
+It has been suggested that white noise application with 90 dB and higher intensities
+evokes the plasma corticosterone levels (11). In the present study it was determined that
+corticosterone levels of animals were significantly higher on the 1st, 7th, 14th, 21st days of the
+stress period compared to the day before stress application (Table III.). Therefore, it may
+be suggested that chronic white noise stress with 100 dB intensity is sufficient to evoke
+stress responses of animals, i.e. the given noise was a definite stressor, and adaptation of
+HPA axis did not develop during the stress application period. This can be attributed the
+accumulative effect of repeated noise exposure and to the changes in the glucocorticoid
+negative feedback sensitivity in rats (26). However, results of the studies are conflicting,
+for example it was reported that rats exposed to chronic white noise (105 dB)/30 min per
+day for 15 days displayed strong habituation. Initially elevated corticosterone levels during
+the initial day of noise exposure significantly decreased with additional noise exposure in
+the chronically stressed group (10). On the other hand, it was shown that after white noise
+stress exposure, 100 dB/ 4 h per day for 30 days, plasma corticosterone levels significantly
+Acta Physiologica Hungarica 97, 2010
+
+===== PAGE 8 =====
+304 Eraslan Uygur E and Arslan M
+increased in chronically stressed rats (24, 33). Supporting our results, this sustained increase
+in corticosterone observed in the chronic group suggests that no adaptation of the HPA axis
+to the 30-days chronic noise exposure develops. Although inconsistent results have been
+reported in the literature regarding habituation to chronic stress, it seems that other factors
+are involved, such as the type of the stressor, intensity of the stressors and stress modalities
+(1, 13, 25). Following behavioral testing there were no significant differences between the
+treatment groups considering corticosterone levels. It was reported that corticosterone levels
+of stressed animals were higher during the stress period but returned to baseline 15 days after
+the stress period (7). These results are somewhat comparable to ours. The function of the
+HPA axis in stressed rats may not be permanently changed and may be completely recovered
+until the time of testing, as only some stressors are able to cause long-lasting changes in HPA
+responsiveness (13) and this may account for the lack of elevations in the corticosterone
+levels of our stressed animals after behavioral tests.
+Conclusions
+A growing body of literature demonstrates that effects of prenatal and postnatal stresses vary
+depending on many factors such as type, duration, severity of the stress regime, and age of
+the animals at the time of stress exposure (5, 13, 14, 21, 22, 25, 31). Moreover, behavioral,
+cognitive and hormonal responses of animals to stress are quite complex and do not have to
+always occur in concert with each other (11, 16, 20, 25). As a conclusion it is suggested that
+although chronic white noise (100 dB) stress causes an increase in corticosterone levels during
+the stress application, it does not affect spatial learning, memory and defensive withdrawal
+behaviors of adult rats. To understand the consequences of stress exposure and response
+mechanisms to stressors, further research is needed to investigate the effects of stressors on
+behaviors, cognition and physiology of organism.
+Acknowledgements
+This work was supported by Research Fund of Istanbul University (Project number: 207/29042004 and UDP-
+2008/23012008). The authors sincerely thank Dr. Bülent Ekiz for his valuable contributions to statistical analyses.
+REFERENCES
+1. Aguilera G: Corticotrophin Releasing Hormone, receptor regulation and the stress response. Trends Endocrinol.
+Metab. 9, 329–336 (1998)
+2. Aleksandrov AA, Polyakova ON, Batuev AS: The effects of prenatal stress on learning in rats in a Morris maze.
+Neurosci. Behav. Physiol. 31, 71–74 (2001)
+3. Araujo APN, DeLucia R, Scavone C, Planeta CS: Repeated predictable or unpredictable stress: effects on cocaine-
+induced locomotion and cyclic AMP-dependent protein kinase activity. Behav. Brain Res. 139, 75–81 (2003)
+4. Barros VG, Rodríguez P, Martijena ID, Pérez A, Molina VA, Antonelli MC: Prenatal stress and early adoption
+effects on benzodiazepine receptors and anxiogenic behavior in the adult rat brain. Synapse 60, 609–618 (2006)
+5. Bowman RE: Stress induced changes in spatial memory are sexually differentiated and vary across the lifespan.
+J. Neuroendocrinol. 17, 526–535 (2005)
+6. Bowman RE, MacLusky NJ, Sarmiento Y, Frankfurt M, Gordon M, Luine VN: Sexually dimorphic effects of
+prenatal stress on cognition, hormonal responses, and central neurotransmitters. Endocrinology 145(8), 3778–
+3787 (2004)
+Acta Physiologica Hungarica 97, 2010
+
+===== PAGE 9 =====
+Effects of chronic stress on cognitive functions in rats 305
+7. Bowman RE, Zrull MC, Luine VN: Chronic restraint stress enhances radial arm maze performance in female
+rats. Brain Res. 904, 279–289 (2001)
+8. Brabham T, Phelka A, Zimmer C, Nash A, Lopez JF, Vazquez DM: Effects of prenatal dexamethasone on spatial
+learning and response to stress is influenced by maternal factors. Am. J. Physiol. Regulatory Integrative Comp.
+Physiol. 279, R1899–1909 (2000)
+9. Bullitt E: Expression of c-fos-like protein as a marker for neuronal activity following noxious stimulation in the
+rat. J. Comp. Neurol. 296, 517–530 (1990)
+10. Campeau S, Dolan D, Akil H, Watson SJ: c-fos mRNA induction in acute and chronic audiogenic stress: possible
+role of the orbitofrontal cortex in habituation. Stress 5(2), 121–130 (2002)
+11. Campeau S, Watson SJ: Neuroendocrine and behavioral responses and brain pattern of c-fos induction associated
+with audiogenic stress. J. Neuroendocrinol. 9, 577–588 (1997)
+12. Cui B, Wu M, She X: Effects of chronic noise exposure on spatial learning and memory of rats in relation to
+neurotransmitters and NMDAR2B alteration in the hippocampus. J. Occup. Health. 51(2), 152–158 (2009)
+13. Dal-Zotto S, Martí O, Armario A: Influence of single or repeated experience of rats with forced swimming on
+behavioural and physiological responses to the stressor. Behav. Brain Res. 114, 175–181 (2000)
+14. Dayas CV, Buller KM, Crane JW, Xu Y, Day TA: Stressor categorization: acute physical and psychological
+stressors elicit distinctive recruitment patterns in the amygdala and in medullary noradrenergic cell groups. Eur.
+J. Neurosci. 14, 1143–1152 (2001)
+15. Dunn AJ, Berridge CW: Physiological and behavioral responses to corticotropin-releasing factor administration:
+is CRF a mediator of anxiety or stress responses? Brain Res. Rev. 15, 71–100 (1990)
+16. Fujioka T, Fujioka A, Tan N, Chowdhury GM, Mouri H, Sakata Y, Nakamura S: Mild prenatal stress enhances
+learning performance in the non-adopted rat offspring. Neuroscience 103, 301–307 (2001)
+17. Helfferich F, Palkovits M: Acute audiogenic stress-induced activation of CRH neurons in the hypothalamic
+paraventricular nucleus and catecholaminergic neurons in the medulla oblongata. Brain Res. 975, 1–9 (2003)
+18. Herdegen T, Leah JD: Inducible and constitutive transcription factors in the mammalian nervous system: control
+of gene expression by Jun, Fos and Krox, and CREB/ATF proteins. Brain Res. Brain Res. Rev. 28, 370–490
+(1998)
+19. Herman JP, Cullinan WE: Neurocircuitry of stress: central control of the hypothalamo-pituitary-adrenocortical
+axis. Trends Neurosci. 20, 78–84 (1997)
+20. Knuth ED, Etgen AM: Long-term behavioral consequences of brief, repeated neonatal isolation. Brain Res.
+1128, 139–147 (2007)
+21. Lemaire V, Lamarque S, Le Moal M, Piazza PV, Abrous DN: Postnatal stimulation of the pups counteracts
+prenatal stress-induced deficits in hippocampal neurogenesis. Biol. Psychiatry 59, 786–792 (2006)
+22. Luine V, Martinez C, Villegas M, Magarinos AM, McEwen BS: Restraint stress reversibly enhances spatial
+memory performance. Physiol. Behav. 59, 27–32 (1996)
+23. Lukkes JL, Mokin MV, Scholl JL, Forster GL: Adult rats exposed to early-life social isolation exhibit increased
+anxiety and conditioned fear behavior, and altered hormonal stress responses. Horm. Behav. 55(1), 248–256
+(2009)
+24. Manikandan S, Padma MK, Srikumar R, Jeya Parthasarathy N, Muthuvel A, Sheela Devi R: Effects of chronic
+noise stress on spatial memory of rats in relation to neuronal dendritic alteration and free radical-imbalance in
+hippocampus and medial prefrontal cortex. Neurosci. Lett. 399(1–2), 17–22 (2006)
+25. Marin MT, Cruz FC, Planeta CS: Chronic restraint or variable stresses differently affect the behavior,
+corticosterone secretion and body weight in rats. Physiol. Behav. 90, 29–35 (2007)
+26. Meaney MJ, Diorio J, Francis D, Widdowson J, LaPlante P, Caldji C, Sharma S, Seckl JR, Plotsky PM: Early
+environmental regulation of forebrain glucocorticoid receptor gene expression: implications for adrenocortical
+responses to stress. Dev. Neurosci. 18(1–2), 49–72 (1996)
+27. Mello AAF, Mello MF, Carpenter LL, Price LH: Update on stress and depression: the role of the hypothalamic-
+pituitary-adrenal (HPA) axis. Rev. Bras. Psiquiatr. 25, 231–238 (2003)
+28. Nishimura J, Endo Y, Kimura F: A long-term stress exposure impairs maze learning performance in rats.
+Neurosci. Lett. 273, 125–128 (1999)
+29. Pacak K, Palkovits M, Yadid G, Kvetnansky R, Kopin IJ, Goldstein DS: Heterogeneous neurochemical responses
+to different stressors: a test of Selye's doctrine of nonspecificity. Am. J. Physiol. 275, R1247–R1255 (1998)
+30. Pijlman FT, Wolterink G, Van Ree JM: Physical and emotional stress have differential effects on preference for
+saccharine and open field behaviour in rats. Behav. Brain Res. 139, 131–138 (2003)
+31. Pijlman FT, van Ree JM: Physical but not emotional stress induces a delay in behavioural coping responses in
+rats. Behav. Brain Res. 136, 365–373 (2002)
+Acta Physiologica Hungarica 97, 2010
+
+===== PAGE 10 =====
+306 Eraslan Uygur E and Arslan M
+32. Richardson HN, Zorrilla EP, Mandyam CD, Rivier CL: Exposure to repetitive versus varied stress during prenatal
+development generates two distinct anxiogenic and neuroendocrine profiles in adulthood. Endocrinology
+147(5), 2506–2517 (2006)
+33. Roskoden T, Linke R, Schwegler H: Transient early postnatal corticosterone treatment of rats leads to accelerated
+aquisition of a spatial radial maze task and morphological changes in the septohippocampal region. Behav.
+Brain Res. 157, 45–53 (2005)
+34. Samson J, Sheeladevi R, Ravindran R, Senthilvelan M: Stress response in rat brain after different durations of
+noise exposure. Neurosci. Res. 7(1), 143–147 (2007)
+35. Sousa N, Lukoyanov NV, Madeira MD, Almeida OF, Paula-Barbosa MM: Reorganization of the morphology
+of hippocampal neurites and synapses after stress-induced damage correlates with behavioral improvement.
+Neuroscience 97, 253–266 (2000)
+36. Takahashi LK, Ho SP, Livanov V, Graciani N, Arneric SP: Antagonism of CRF(2) receptors produces anxiolytic
+behavior in animal models of anxiety. Brain Res. 902, 135–142 (2001)
+37. Takahashi LK, Kalin NH, Vanden Burgt JA, Sherman JE: Corticotropin-releasing factor modulates defensive-
+withdrawal and exploratory behavior in rats. Behav. Neurosci. 103, 648–654 (1989)
+38. Vallee M, MacCari S, Dellu F, Simon H, Le Moal M, Mayo W: Long-term effects of prenatal stress and postnatal
+handling on age-related glucocorticoid secretion and cognitive performance: a longitudinal study in the rat. Eur.
+J. Neurosci. 11, 2906–2916 (1999)
+39. Ward HE, Johnson EA, Salm AK, Birkle DL: Effects of prenatal stress on defensive withdrawal behavior and
+corticotrophin releasing factor systems in rat brain. Physiol. Behav. 70, 359–366 (2000)
+40. Wu J, Song TB, Li YJ, He KS, Ge L, Wang LR: Prenatal restraint stress impairs learning and memory and
+hippocampal PKCbeta1 expression and translocation in offspring rats. Brain Res. 1141, 205–213 (2007)
+41. Yang XM, Gorman AL, Dunn AJ: The involment of central noradrenergic systems and corticotropin-releasing
+factor in defensive withdrawal behavior in rats. J. Pharmacol. Exp. Ther. 255, 1067–1070 (1990)
+Acta Physiologica Hungarica 97, 2010

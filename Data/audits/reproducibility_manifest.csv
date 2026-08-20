@@ -1,0 +1,11 @@
+item,value
+raw_file,Data/PCN_data_ext_checking_v.3.csv
+raw_file_sha256,25b6a6602ce5b9e6103b006bbe7d952b0615096d44a2d5df9b4e65bc94a1d3f6
+raw_rows,207
+raw_columns,72
+r_version,R version 4.5.1 (2025-06-13)
+package_pacman,0.5.1
+package_dplyr,1.2.1
+package_readr,2.2.0
+package_knitr,1.51
+package_digest,0.6.39

@@ -1,0 +1,766 @@
+
+===== PAGE 1 =====
+Journal of Behavioral and Brain Science, 2015, 5, 25-39
+Published Online February 2015 in SciRes. http://www.scirp.org/journal/jbbs
+http://dx.doi.org/10.4236/jbbs.2015.52003
+Intrauterine Exposure to Chronic 22 kHz
+Sound Affects Inhibitory Avoidance and
+Serotonergic Parameters in Forebrain
+Areas of Dams and Rat Offspring
+Patrícia da Silva Oliveira1, Ariomester Nascimento Daniel1, Polliana Toledo Nunes1,
+Karina Abdo Costa1, Hani Camille Yehia1,2, Angela Maria Ribeiro1,3*
+1Programa de Pós-Graduação em Neurociências, Laboratório de Neurociências Comportamental e Molecular,
+LaNeC, Universidade Federal de Minas Gerais, Belo Horizonte, Brazil
+2Departamento de Engenharia Eletrônica, Escola de Engenharia, Universidade Federal de Minas Gerais, Belo
+Horizonte, Brazil
+3Departamento de Bioquímica e Imunologia, ICB and Departamento de Psicologia, FaFiCH, Laboratório de
+Neurociências Comportamental e Molecular, LaNeC, Universidade Federal de Minas Gerais, Belo Horizonte,
+Brazil
+Email: *angelamr@icb.ufmg.br
+Received 4 January 2015; accepted 11 February 2015; published 13 February 2015
+Academic Editor: Ana Adan, University of Barcelona, Spain
+Copyright © 2015 by authors and Scientific Research Publishing Inc.
+This work is licensed under the Creative Commons Attribution International License (CC BY).
+http://creativecommons.org/licenses/by/4.0/
+Abstract
+In the present study we evaluated the effects of chronic exposure to sounds at 22 kHz during
+pregnancy on the central serotonergic and behavioral parameters in Wistar rat dams after the
+suckling period and on their male rat offspring. In addition, we also assessed the effects of an
+acute 22 kHz sound, associated with the chronic intrauterine exposure, on the emotional res-
+ponses of adult offspring. The primary hypothesis was that experiencing 22 kHz stimuli during an
+early stage of development would interfere with brain serotonergic parameters and, later, with
+the adult rat’s defensive responses. The corollary question was whether a 22 kHz sound exposure
+would differentially affect inhibitory avoidance and escape responses and central serotonergic
+parameters. Female rats were divided into four groups: non-pregnant control; non-pregnant chronic
+exposure; pregnant control; and pregnant chronic exposure. Male offspring were divided into four
+groups: chronic intrauterine sound exposure; acute sound exposure in adulthood; chronic intra-
+uterine exposure with acute exposure in adulthood; and no exposure. Chronic sound exposure af-
+*Corresponding author.
+How to cite this paper: da Silva Oliveira, P., et al. (2015) Intrauterine Exposure to Chronic 22 kHz Sound Affects Inhibitory
+Avoidance and Serotonergic Parameters in Forebrain Areas of Dams and Rat Offspring. Journal of Behavioral and Brain
+Science, 5, 25-39. http://dx.doi.org/10.4236/jbbs.2015.52003
+
+===== PAGE 2 =====
+et al.
+P. da Silva Oliveira
+fected inhibitory avoidance and serotonergic parameters in female rats. For offspring, there was
+an interaction between chronic and acute sound exposure effects on inhibitory avoidance re-
+sponse but not on escape response. There were significant effects of chronic intrauterine ex-
+posure on serotonin turnover in the hippocampus and PFC of females. For offspring, the turn-
+over was increased by chronic exposure only in PFC, and in amygdala it was increased by
+acute exposure. These results illuminate the potential of an early acoustic sound exposure for
+causing central serotonergic and emotional behavioral changes that can persist into later pe-
+riods of life.
+Keywords
+Intrauterine, 22 kHz Sound Exposure, Defensive Responses, Serotonergic Parameters, Adult
+Offspring
+1. Introduction
+Rats can vocalize in the sonic and ultrasonic wide range. Their ultrasonic vocalizations (USV) range from 20 to
+about 100 kHz [1]. They are also able to detect such ultrasonic signals. Within this wide range, the 22 kHz call
+seems to be related to aversion occurring in response to immediate and potential environmental threats [2]-[4].
+These vocalizations are carried out in many situations in which an evident aversive component is present, for
+example, exposure to a predator [5] or a social fight between males [6]. Some authors [7] [8] demonstrated that
+22 kHz USVs induce activation in brain areas related to motivation and emotion (e.g., amygdala). Freezing be-
+havior in response to 22 kHz USV is paralleled by increased neuronal activity in brain areas regulating fear and
+anxiety, such as the amygdale and periaqueductal gray [4]. Although the terms anxiety and fear are often used
+interchangeably; there is evidence that they can be differentiated. For instance, there are data that suggest that
+USV was found useful for differentiating fear and anxiety in rats [9]. Using behavioral and pharmacological ap-
+proaches the authors showed evidence that rat 22 kHz USV can be considered to be a correlate of anxiety rather
+than of fear. Accordingly, 22 kHz exposure might be an interesting tool for studying behavioral and neurobio-
+logical aspects of emotion, such as the defensive responses related to anxiety and fear.
+The primary hypothesis was that experiencing 22 kHz stimuli during an early stage of development would in-
+terfere with brain serotonergic parameters and, later, with the adult rat’s defensive responses. The corollary
+question was whether a 22 kHz sound exposure would differentially affect inhibitory avoidance and escape res-
+ponses and central serotonergic parameters. The rationale of this idea is that a biological phenomenon known as
+programming can be triggered when an animal, e.g., a human [10] or a rodent [11], is exposed to a stimulus in a
+critical period of development. This promotes anatomical, physiological, metabolic and neuropsychological
+adaptive changes that can persist into later periods of life [11] [12].
+Certain environmental conditions experienced during an early period of animal development induce pro-
+gramming. Maternal stress [13]-[17] is one such condition. In addition, it is known that exposure to noise during
+pregnancy influences neurogenesis and thickness in the brain cortex of rat pups [18]. However, to date there is
+no study on the effects of intrauterine 22 kHz sound exposure on dam and on adult offspring emotional and
+brain neurochemical aspects, when the individuals are confronted with a situation of threat which might induce
+defensive behaviors, such as inhibitory avoidance and escape.
+Some authors [19] developed an animal model that allowed the same rat to perform an inhibitory avoidance
+task followed by a one-way escape task in one experimental session. The apparatus was named the Elevated
+T-maze (ETM), which is derived from the elevated plus-maze, a widely used animal model for studying anxiety
+[20]. Depending on the task, the ETM generates one of the two kinds of defensive reactions, inhibitory avoid-
+ance or escape, which address two different emotions, anxiety and panic, respectively [19] [21]-[23]. Therefore,
+the ETM has been an important tool for the understanding of brain mechanisms underlying these two defensive
+responses [21] [24].
+For instance, there is evidence that distinct brain structures and serotonin (5-HT) nerve fibers coming from the
+dorsal raphe nucleus (DRN) are involved in inhibitory avoidance and escape [25]-[27]. Specifically, these au-
+thors showed that, while serotonin released in the amygdala facilitates inhibitory avoidance, the same neuro-
+26
+
+===== PAGE 3 =====
+et al.
+P. da Silva Oliveira
+transmitter inhibits escape in dorsal periaqueductal gray (dPAG). These data indicate that the neurobiological
+substrates, including serotonergic circuit activity, involved in these two defensive behaviors seem to be distinct.
+In the present study, the effects of a chronic intrauterine 22 kHz sound associated with an acute 22 kHz sound in
+adult offspring on serotonergic parameters were assessed in brain areas considered to have a potential role in in-
+hibitory avoidance and escape response. These neurochemical measurements were carried out after the rats—
+dams and adult offspring—were submitted to the ETM paradigms used to assess anxiety and fear.
+2. Material and Methods
+2.1. Animals
+Figure 1 shows a schematic of the experimental groups (Panel a) and experimental design (Panel b). During
+experiments, all rats, dams and offspring, received chow and water ad libitum and were housed in an ae-
+rated room with controlled 12 h diurnal daylight/night cycles and temperature of 26˚C ± 2˚C. All experi-
+mental procedures were approved by the Ethics Committee for Animal Experimentation (CETEA/UFMG
+203/2012).
+(a)
+(b)
+Figure 1. Schematic showing the experimental groups (Panel a) and experimental design (Panel b).
+27
+
+===== PAGE 4 =====
+et al.
+P. da Silva Oliveira
+Forty-eight 3-month-old female Wistar rats were acquired from the vivarium of the Institute of Biological
+Sciences, Universidade Federal de Minas Gerais. Sixteen of them were separated into two groups (n = 8, each):
+Non-Pregnant Control (NPC) and Non-Pregnant chronic Exposure to 22 kHz sound (NPE). According to data
+obtained in previous experiments performed in our laboratory [28], about 50% of females became pregnant. The
+remaining 32 female rats were mated, as described below, with the purpose of obtaining at least 16 pregnant rats,
+which were randomly assigned into two groups (n = 8, for each), Pregnant Control (PC) and Pregnant Exposure
+to a chronic 22 kHz sound (PE). The other sixteen female rats were removed from the experiment. The estrous
+cycle of females from the four groups was determined by daily vaginal smears [29], and in the proestrus stage dams
+from groups PC and PE were co-housed with a male. Those rats whose smears tested sperm-positive were as-
+sumed to have conceived and the developing embryos were designated to be at Day 0 of gestation.
+The female pregnant rats were placed in an acoustical isolation box and exposed to a 22 kHz sound 1hour/day
+from the 1st to the 19th day of gestation (PE group). The rats from NPE group received the same treatment as
+rats from PE group, that is, they were also exposed to a 22 kHz sound during the same period. All rats from the
+control groups (NPC and PC) were also placed in the acoustical box, as the same period as the treated rats, ex-
+cept that they were not exposed to the chronic 22 kHz sound. Upon removal from the acoustical isolation box,
+the female rats from each of the four groups were placed in individual cages. All rats from the PC and PE groups
+gave birth on the 21st day.
+Offspring were inspected and only male pups remained with their mothers in the proportion of 6 - 8 per dam.
+After the 21-day lactation period, forty-eight offspring male rats (three from each litter) were randomly divided
+into four groups (n = 12, each): Control pups (C), Intrauterine Chronic Exposure pups (IE), Adult Acute Expo-
+sure pups (AE), Chronic Intrauterine and Acute Adult Exposure pups (IAE). The remaining rat offspring were
+removed from the present experiments. The rats from the four subgroups (total n = 48) were maintained in the
+animal house vivarium receiving water and food ad libitum for two months. AE and IAE groups were placed in-
+side the acoustical isolation box and exposed to a 22 kHz sound for 1 hour. Rats from C and IE groups were
+placed into the acoustical isolation box for the same period of time as rats from AE and IAE groups but were not
+exposed to the acute 22 kHz sound. After the acute 22 kHz treatment the rats were submitted to the ETM tasks
+as described below. The dams were also submitted to this behavioral test two days after the lactation period.
+2.2. Exposure to 22 kHz Sounds
+Artificial tones of 22 kHz frequency were produced using the Matlab® software [30]. A continuous 22 kHz tone
+[10 ms rise time, 12 s duration, 65 db sound pressure level] was emitted in sequence during one hour. Auditory
+stimuli were presented in an acoustical isolation box (58 × 42 × 46 cm) with a speaker taken from an electronic
+repellent RepemaxREP1000®, capable of emitting sounds up to 80 kHz. Each tweeter was coupled to a computer
+with an Asus XonarD1® model sound card. The output of sound was detected and measured using a microphone
+Binary Acoustic Technology model AR 125. The sounds were produced at a sampling rate of 96,000 Hz and
+emitted at 65 dB (adjusted using a decibel meter Polimed AM-1900).
+2.3. Behavioral Studies
+Defensive responses, inhibitory avoidance and escape related with anxiety and fear, were evaluated using the
+ETM behavioral model [19]. The ETM apparatus consists of three arms of equal dimension (50 × 12 cm) elevated
+50 cm from the floor. One of these arms is enclosed by lateral walls (40 cm high) and stands perpendicular to the
+two opposite open arms. Procedure: before starting the behavioral tests an acclimation session was conducted, in
+which the rats were placed in and allowed to explore the open arm for 30 minutes. After 24 hours, inhibitory
+avoidance and escape tasks were started. Each training session included three trials. Inhibitory avoidance train-
+ing session: in each of the three trials the rat was placed at the distal end of the enclosed arm facing the intersec-
+tion of the arms and was allowed to explore the enclosed arm. The trial ended when the rat entered one of the
+open arms by placing all four paws into the open arm or remained in the enclosed arm for a maximum of 300 s.
+The time in which the animal remained in the enclosed arm was recorded for each trial and expressed in seconds
+as avoidance latency. A 30 s inter-trial interval was adopted. Escape session: Following the inhibitory avoidance
+task, each rat was placed at the distal end of the open arm facing the intersection of the arms. The trial ended
+when the rat entered inside the closed arms or remained in the open arm for a maximum of 300 s. The time in
+which the animal remained in the open arm was recorded for each trial and expressed in seconds as escape latency.
+28
+
+===== PAGE 5 =====
+et al.
+P. da Silva Oliveira
+Memory test: after 72 hours of the training sessions, the rats were submitted to one more trial of inhibitory
+avoidance and one more trial of escape. For both tests, the ratio between the rat’s performances on the last ses-
+sion of training and the test 72 hours later was used as an index of memory performance.
+All behavioral experiments were performed in a dimly lit and quiet room between 1 pm and 5 pm. The appa-
+ratus was cleaned with 20% ethanol solution between sessions.
+2.4. Biochemical Studies
+The rats were decapitated 1 day after the end of behavioral tests. The brain was quickly removed and kept on ice.
+The thalamus, PFC, amygdala, PAG and hippocampus from hemispheres were immediately dissected according
+to the stereotaxic atlas [31]. These areas are limbic system components and play important role in modulation of
+emotion [32]. 5-HT and 5-HIAA contents were analyzed by high performance liquid chromatography (HPLC)
+[33], and the concentrations of each component were calculated by interpolation of their respective standard
+curves. Obtained values are expressed as ng/g of tissue. The [5-HIAA]/[5-HT] ratio was used as an index of se-
+rotonergic system activity [34].
+2.5. Statistical Analysis
+The Kolmogorov-Smirnov test was used to verify the Gaussian assumption for the variables under study at a
+0.05 significance level. The distribution for all variables was normal.
+For both female and offspring rats, the performance on inhibitory avoidance and escape training tasks data
+were analyzed using ANOVA with repeated measures in the last element (2 × 2 × 3 factorial method). For fe-
+males, the factors were pregnancy, chronic exposure to 22 kHz sound and trials (time), while for rat offspring
+the factors were chronic intrauterine 22 kHz exposure, acute adult 22 kHz exposure and trials (time). For both
+female and offspring, memory performance and biochemical data were analyzed using two-way ANOVA. All
+values are expressed as mean ± standard error (S.E.M.). Significance level was established at 5% for all tests.
+3. Results
+3.1. Inhibitory Avoidance Task
+3.1.1. Female Performance Data
+Acquisition: Figure 2, Panel a, shows the performance of female rats in the inhibitory avoidance training ses-
+sions. For female performance in the inhibitory avoidance task there was a significant latency decrease effect of
+chronic exposure to 22 kHz sound [F = 7.13; P = 0.01] and also a trial effect [F = 13.63, P < 0.01].
+(1,24) (1,24)
+There were neither effects of pregnancy nor interactions between factors.
+Memory performance: There were no significant effects of chronic 22 kHz exposure or pregnancy on female
+memory performance, tested in the inhibitory avoidance task, 72 hours after the training session (data not shown).
+There also was no interaction between these factors.
+3.1.2. Offspring Performance Data
+Acquisition: Figure 2, Panel b, shows the performance of rat offspring in the inhibitory avoidance training ses-
+sion. Although there were no significant effects of chronic intrauterine and acute adult 22 kHz exposures, a sig-
+nificant effect of trials [F = 19.36, P < 0.01] and interaction between intrauterine and acute adult 22 kHz
+(1,45)
+exposures [F = 6.73, P = 0.01] were observed. There were no significant interactions between the other fac-
+(1,45)
+tors (trials × chronic exposure or trials × acute exposure). The Bonferroni post hoc test showed significant dif-
+ference between AE and IAE groups [P = 0.02] in inhibitory avoidance acquisition.
+Memory performance (data not shown): There were no significant effects for chronic intrauterine or for acute
+adult 22 kHz exposure on offspring memory performance, tested in the inhibitory avoidance task, 72 hours after
+the training session. There also was no interaction between these factors.
+3.2. Escape Task
+3.2.1. Female Performance Data
+Acquisition: Figure 3, Panel a, shows the performance of female rats in the escape task during the training session.
+29
+
+===== PAGE 6 =====
+et al.
+P. da Silva Oliveira
+300
+250
+200
+150
+100
+50
+0
+BL A1 A2 BL A1 A2 BL A1 A2 BL A1 A2
+NPC NPE PC PE
+30
+)c(
+ycnetaL
+(a)
+300
+250
+200
+150
+100
+50
+0
+BL A1 A2 BL A1 A2 BL A1 A2 BL A1 A2
+C IE AE IAE
+)c(
+ycnetaL
+(b)
+Figure 2. Rats performance in ETM inhibitory avoidance task expressed as latency (s). BL—Baseline; A1—Avoidance 1;
+A2—Avoidance 2. Panel a: Mean ± S.E.M. of female rat’s performance. NPC—Non-Pregnant Control; NPE—Non-Preg-
+nant Exposure to 22 kHz sound; PC—Pregnant Control; PE—Pregnant Exposure to 22 kHz sound. There were effects of tri-
+als [F = 35.31, P < 0.01] and 22 kHz exposure [F = 7.45; P = 0.01]. There was no significant effect of pregnancy or
+(1,23) (1,23)
+interaction between the factors. Panel b: Mean ± S.E.M. of adult offspring performance. C—Control; IE—Intrauterine Ex-
+posure; AE—Adult Acute Exposure; IAE—Intrauterine and Acute Adult Exposure. There were significant effects of trials
+[F = 39.41, P < 0.01]. There were no significant effects of intrauterine and adult exposures. There was a significant inte-
+(3,46)
+raction between the factors [F = 6.73, P = 0.01].
+(3,46)
+
+===== PAGE 7 =====
+et al.
+P. da Silva Oliveira
+20
+15
+10
+5
+0
+F1 F2 F3 F1 F2 F3 F1 F2 F3 F1 F2 F3
+NPC NPE PC PE
+31
+)c(
+ycnetaL
+(a)
+20
+15
+10
+5
+0
+F1 F2 F3 F1 F2 F3 F1 F2 F3 F1 F2 F3
+C IE AE IAE
+)c(
+ycnetaL
+(b)
+Figure 3. Rat’s performance in ETM escape task, expressed as latency (s). T1, T2 and T3: first, second and third trials, re-
+spectively. Panel a: Mean ± S.E.M. of female rat’s performance. NPC: Non-Pregnant Control; NPE: Non-Pregnant Exposure
+to 22 kHz sound; PC: Pregnant Control; PE: Pregnant Exposure to 22 kHz sound. There were no effects of trials, pregnancy,
+22 kHz sound exposure and also no significant interaction between the factors. Panel b: Mean ± S.E.M. offspring perfor-
+mance. There were no effects of trials, intrauterine exposure, and adult acute exposure and also no significant interaction
+between the factors.
+
+===== PAGE 8 =====
+et al.
+P. da Silva Oliveira
+There were no significant effects of any of the treatments, chronic 22 kHz exposure, pregnancy or trials. There
+also were no significant interactions between the factors.
+Memory performance (data not shown): There were no significant effects of factors (chronic 22 kHz exposure,
+pregnancy and trials) or interactions between) them.
+3.2.2. Offspring Performance Data
+Acquisition: Figure 3, Panel b, shows the performance of rat offspring in the escape task during the training
+session. There was a significant effect of trials [F = 3.22, P = 0.05] and interaction between trials (time) and
+(1,45)
+chronic 22 kHz exposure [F = 5.01, P = 0.01]. There were no significant effects of the other treatments
+(1,45)
+(chronic or acute exposures) or interactions between them (chronic × acute exposures or trials × acute exposure).
+Memory performance (data not shown): There were no significant effects of treatments either chronic intra-
+uterine treatments or adult 22 kHz sound exposures on offspring memory performance tested in the escape task,
+72 hours after the training session. There also was no interaction between these factors.
+3.3. Serotonergic Parameters
+Table 1 shows biochemical data concerning 5-HT and 5-HIAA levels and serotonergic system activity ([5-
+HIAA]/[5-HT]) evaluated in the following rat brain areas: hippocampus, thalamus, amygdala, PAG and
+PFC.
+3.3.1. Female
+Although there were no significant effects of chronic 22 kHz exposure and pregnancy on 5-HT levels in any of
+the five brain areas evaluated, there was a significant interaction between them in the amygdala (F = 5.81, P
+(3,10)
+= 0.04). There were no significant interactions between factors on 5-HT levels in the other four regions eva-
+luated (hippocampus, thalamus, PFC and PAG).
+Neither chronic 22 kHz exposure nor pregnancy showed significant effects on 5-HIAA concentrations in any
+of the female brain areas analyzed. There also was no interaction between these factors.
+Pregnancy had no effect on the 5-HT turnover ([5-HIAA]/[5-HT]) in any of the studied brain areas. There also
+was no effect of chronic 22 kHz exposure on 5-HT turnover in thalamus, amygdala and PAG. However, there
+were significant effects on 5-HT turnover in two areas, hippocampus [F = 8.55, P = 0.01] and PFC [F =
+(3,11) (3,10)
+6.32, P = 0.03]. In addition, there were no interactions between the treatments on 5-HT turnover in any of the
+brain areas.
+3.3.2. Offspring
+There were no significant effects of intrauterine exposure or acute adult exposure on 5-HT concentrations in any
+of the brain regions (hippocampus, thalamus, amygdala, PFC and PAD). In addition, there was no interaction
+between the two treatments.
+Chronic intrauterine decrease and acute adult exposures increased the 5-HIAA concentrations in hippocampus.
+In this brain area there were significant effects of intrauterine 22 kHz exposure [F(3,40) = 7.17, P = 0.01] and
+acute adult exposure [F = 5.25, P = 0.03] on 5-HIAA levels.
+(3,40)
+There also were significant interactions between treatments (chronic and acute exposure) on 5-HIAA concen-
+tration in hippocampus [F = 8.05, P = 0.01] and amygdala [F = 10.75, P < 0.01]. There were no effects
+(3,40) (3,43)
+of factors or interactions between them in the other evaluated regions.
+Chronic exposure to 22 kHz sound increase 5-HT turnover in offspring PFC [F = 11.28, P < 0.01], but
+(3,42)
+there were no effects on any of the other brain areas. Acute adult exposure increase 5-HT turnover in amygdala
+[F = 6.41, P = 0.01]. However, there was no effect of this treatment on 5-HT turnover in any the other stu-
+(3,43)
+died brain regions. There also was no interaction between the factors for 5-HT turnover in any of the assessed
+brain areas.
+4. Discussion
+The data of the present study show for the first time that the inhibitory avoidance response of female Wistar rats
+is affected by chronic exposure to a 22 kHz sound. Such results were not found in the escape response. In addi-
+tion, this study demonstrates that chronic intrauterine exposure can also interfere with the inhibitory avoidance
+32
+
+===== PAGE 9 =====
+et al.
+P. da Silva Oliveira
+Table 1. Serotonergic parameters.
+[5-HT]
+Female Offspring
+NPC NPE PC PE C IE AE IAE
+171.23 ± 166.96 ± 98.25 ± 202.75 ± 81.85 ± 81.85 ± 59.76 ± 57.05 ±
+Hippocampus
+18.82 9.51 14.18 30.60 23.65 23.65 26.94 16.13
+180.59 ± 151.35 ± 73.28 ± 151.57 ± 293.14 ± 182.35 ± 166.14 ± 154.07 ±
+Amygdala
+13.41 19.67 9.84 28.60 75.56 29.09 54.12 17.17
+180.59 ± 311.31 ± 101.19 ± 275.65 ± 124.08 ± 90.40 ± 103.29 ± 82.66 ±
+PFC
+13.41 64.60 30.42 59.55 20.40 15.57 22.86 7.12
+944.77 ± 159.69 ± 319.88 ± 353.58 ± 617.09 ± 434.57 ± 463.38 ± 544.91 ±
+PAG
+37.60 83.12 55.13 73.42 14.46 54.33 59.63 62.37
+729.68 ± 224.54 ± 887.63 ± 1443.02 ± 186.25 ± 237.96 ± 238.21 ± 284.09 ±
+Thalamus
+32.15 0.28 74.82 42.16 26.40 33.19 35.06 39.82
+[5-HIAA]
+Female Offspring
+NPC NPE PC PE C IE AE IAE
+248.26 ± 182.26 ± 214.39 ± 207.68 ± 301.79 ± 293.44 ± 273.28 ± 532.13 ±
+Hippocampus
+30.61 11.64 7.05 10.59 27.23 30.99 28.92 10.25
+228.31 ± 128.83 ± 152.05 ± 179.95 ± 303.50 ± 194.53 ± 203.95 ± 423.68 ±
+Amygdala
+51.53 18.01 14.79 40.37 41.38 43.38 15.46 87.92
+657.39 ± 598.35 ± 496.4 ± 976.31 ± 519.99 ± 561.14 ± 471.71 ± 618.97 ±
+PFC
+62.29 36.96 65.18 31.93 43.09 54.78 42.57 46.64
+502.80 ± 658.38 ± 980.51 ± 842.13 ± 1403.81 ± 1785.30 ± 1311.33 ± 1392.11 ±
+PAG
+15.85 58.49 23.96 273.94 31.95 43.67 27.98 34.93
+975.57 ± 1264.79 ± 745.03 ± 762.88 ± 706.06 ± 744.10 ± 746.06 ± 789.42 ±
+Thalamus
+15.41 22.27 10.85 36.53 56.32 54.43 29.19 31.54
+[5-HIAA]/[5-HT]
+Female Offspring
+NPC NPE PC PE C IE AE IAE
+Hippocampus 1.54 ± 0.25 1.09 ± 0.07 2.24 ± 0.40 1.14 ± 0.21 7.36 ± 1.78 9.00 ± 1.93 10.13 ± 2.48 11.12 ± 1.37
+Amygdala 1.34 ± 0.36 5.24 ± 0.20 2.14 ± 0.49 1.34 ± 0.18 1.49 ± 0.24 1.25 ± 0.24 1.89 ± 0.38 3.13 ± 1.33
+PFC 4.13 ± 0.66 2.07 ± 0.40 5.18 ± 0.91 3.46 ± 0.64 4.98 ± 0.51 7.24 ± 0.80 5.64 ± 0.90 7.70 ± 0.46
+PAG 0.48 ± 0.14 3.01 ± 1.42 2.39 ± 0.22 2.17 ± 0.39 2.80 ± 0.63 3.27 ± 0.72 3.73 ± 1.31 2.55 ± 0.53
+Thalamus 4.26 ± 1.32 2.07 ± 0.40 2.54 ± 0.02 1.17 ± 0.67 4.60 ± 0.64 3.67 ± 0.43 3.67 ± 0.51 3.28 ± 0.56
+Mean ± S.E.M. (ng/g of tissue) of serotonergic parameter levels in the brain areas; PFC: Prefrontal Cortex; PAG: Periaqueductal Gray; NPC:
+Non-Pregnant Control; NPE: Non-Pregnant Sound Exposure; PC: Pregnant Control; PE: Pregnant Sound Exposure; C: Control; IE: Intrauterine
+Sound Exposure; AE: Adult Sound Exposure; IAE: Intrauterine Adult Exposure; Females: There was a significant interaction between pregnancy and
+chronic 22 kHz sound exposure on 5-HT concentration in amygdale [F(3.10) = 5.81, P = 0.05]. There were also significant effects on 5-HT turnover in
+hippocampus [F(3.11) = 8.55, P = 0.01] and PFC [F(3.10) = 6.32, P = 0.03]. Offspring: There were significant effects of intrauterine 22 kHz exposure
+[F(3.40) = 7.17, P < 0.01] and acute adult exposure [F(3.40) = 5.25, P = 0.03] on 5-HIAA levels. There were also significant interactions between treat-
+ments on 5-HIAA concentrations in hippocampus [F(3.40) = 8.05, P < 0.01] and amygdale [F(3.43) = 10.75, P < 0.01]. There was a significant effect of
+chronic intrauterine exposure on 5-HT turnover in PFC [F(3.42) = 11.28, P < 0.01]. The other factors did not have significant effects.
+(but not with escape) response of offspring rats confronted with an acute 22 kHz sound when they are adults. So,
+the previous chronic intrauterine experience interferes with the behavioral response to an acute 22 kHz exposure
+later in life. There is evidence that sounds in the range of 22 kHz frequency induce rat defensive behavior [35].
+However, the behavioral method used by these authors did not discriminate the two kinds of defensive responses,
+inhibitory avoidance and escape. These two reactions were assessed in the present study using the ETM para-
+digm, where they are related to inhibitory avoidance and escape, respectively [19].
+33
+
+===== PAGE 10 =====
+et al.
+P. da Silva Oliveira
+The pregnant and non-pregnant female rats that were previously exposed to the chronic 22 kHz sound exhi-
+bited decreased anxious behavior when tested in the ETM apparatus (decreased inhibitory avoidance latency).
+On the other hand, offspring submitted to a chronic 22 kHz sound during the intrauterine period did not show
+any defensive response change when assessed in the ETM. However, previous chronic intrauterine 22 kHz ex-
+posures followed by an acute 22 kHz exposure during adulthood also decrease inhibitory avoidance latency in
+ETM task. Similarly to dam performance, offspring escape response was not changed by 22 kHz sound applied
+in any of the experimental conditions used in the present study. These results agree with those obtained by other
+authors who, using pharmacological approaches, showed that 22 kHz USV in rats is an index of anxiety but not
+fear [9]. These authors showed that in situations that induce anxiety, the rats sustain the 22 kHz vocalization,
+while fear situations produce immediate inhibition of 22 kHz vocalization. On the other hand, it appears not to
+agree with others, who found an anxiogenic effect of acoustic sound exposure. It is important to mention, how-
+ever, that the effects of acoustic stimuli on the state of anxiety depend on different variables, such as the charac-
+teristics of the sound and the experimental animal model used. Absence of effect and both increase and decrease
+of state of anxiety are described in the literature. For instance, in non-pregnant females, a 65 dB white noise in-
+crease the state of anxiety [36] and no effect was shown in pregnant females subjected to a 77 dB noise of 800
+Hz [37]. In addition, white noise exposure increased anxiety behavior in adult male rats [38] and decreased it in
+fifteen-day-old male pups [39]. Also, 20 - 45 kHz sound exposure decreased anxiety in adult male rats [40], a
+result that agrees with the present findings.
+As the sound exposure used here was chronic, another hypothesis to be considered to explain the 22 kHz an-
+xiolytic effects is that the dams and offspring could have learned, as a result of the repetitive exposures that the
+22 kHz was not a sign of threat. This would explain the observation that over time their ETM inhibitory avoid-
+ance responses were lower compared with control rats. This hypothesis is supported by other authors who showed
+that repetitive sound exposure can induce habituation [41] [42]. The data obtained with offspring also agree with
+this hypothesis, considering that there is an interaction of effects when subjects are faced twice with a 22 kHz
+sound in the intrauterine and adulthood periods of development. This significant interaction could possibly be
+explained by the occurrence of adjustment in the neuronal net after intrauterine exposure. These potential
+changes induced by chronic 22 kHz sound exposure could interfere with the effects of later exposure to a similar
+stimulus. This hypothesis is supported by the programming neuronal plasticity theory, which states that a stimu-
+lus or an insult received in a critical period of animal development can promote anatomical, physiological, me-
+tabolic and neuropsychological adaptive changes that persist into later periods of life [12]. It is known that
+chronic exposure to a stressor can decrease the adjustment ability or increase the susceptibility to a subsequent
+stressor [43]. So, it is reasonable to consider that individuals previously exposed to 22 kHz sound in an early pe-
+riod of life, compared to a non-exposed individual, would be distinctly affected in terms of central nervous sys-
+tem and/or behavioral aspects.
+Three alternative hypotheses could be proposed for explaining the neurobiological and behavioral changes
+caused by two sequential 22 kHz stimuli applied in different periods of offspring development: 1) a direct effect
+of the first exposure on the offspring neuronal net, depending on the fact that the fetus would be able to “hear”
+or “perceive” the environmental sound. Compared to the effects on individuals not previously exposed, a second
+stimulus could produce a distinct response; 2) an indirect effect of the first exposure on the offspring neuronal
+net, as a result of a primary effect on the dams; or 3) both effects, direct and indirect, occurring simultaneously.
+Thus, a distinct response to a second 22 kHz sound exposure could take place because it changes specific com-
+ponents of the neuronal net, which would make part of the neurobiological mechanism responsible for the beha-
+vioral response to a specific kind of environmental stimulus. In other words, a specific change caused by pre-
+ceding experiences—chronic intrauterine 22 kHz sound exposure—would affect the inhibitory avoidance to a
+subsequent similar stimulus—acute 22 kHz—faced by the individuals in later periods of life.
+With regard to the first hypothesis about a direct effect of sound on offspring, some authors stated that fetuses
+of sheep are able to hear environmental sounds [44] [45]. Sound is one of the first stimuli from the external en-
+vironment to reach and be perceived by a nineteen-week-old human fetus [46]. However, there is evidence that
+rats cannot hear until two weeks after birth [47] [48]. Nevertheless, it is important to considerer the possibility of
+other kinds of ultrasound mechanism acting on the nervous system, which could be independent of the hearing
+process. Data obtained from studies using individuals of different species, including laboratory mammals, indi-
+cated that, depending on frequency and intensity, an ultrasound could cross the dam’s tissue barriers causing
+functional changes in fetal neural tissues [49]. Some literature supports the second hypothesis about the possibil-
+34
+
+===== PAGE 11 =====
+et al.
+P. da Silva Oliveira
+ity of an indirect effect of sound, through mother, on the fetus. For instance, aversive sound caused chronic stress in
+pregnant women and pregnant rats [50] [51], activating the hypothalamic-pituitary-adrenal axis (HPA), increas-
+ing glucocorticoid levels in both maternal and fetal blood. It is also known that white noise increases corticoste-
+roid levels in blood and induces hippocampal serotonergic system changes [52]. Both corticosteroids and the
+serotonergic system participate in cognitive and emotional outcomes [53]. Thus, it is reasonable to consider the
+possibility that the mechanism of action of chronic 22 kHz sound effects on offspring is direct and indirect. But
+as the rat offspring are not able to hear before the second week of birth, the indirect mechanism might be more
+probable. Further studies need to be conducted to resolve this question.
+The observed effects of 22 kHz sound on ETM inhibitory avoidance and the absence of effect on escape be-
+havior suggest that the neurobiological mechanisms related to anxiety and fear states, respectively, might be dis-
+tinct. Some author shows that panic attack does not activate HPA axis [54], while the anxiety behavior involves
+the activation of this axis [24] [55]. As mentioned before, if an aversive sound causes chronic stress in pregnant
+rats [50] [51], activating the HPA axis and increasing glucocorticoid levels in both maternal and fetal blood, one
+can hypothesize that it could be one of the mechanisms involved in the effect of 22 kHz sound exposure on inhi-
+bitory avoidance. Further studies (e.g., glucocorticoid level determinations) need to be done to clarify this ques-
+tion. These data suggest that there might be a relation between 22 kHz sound and the neurobiological substrate
+of inhibitory avoidance but no association with escape. Likewise, the fear and anxiety behavior have different ef-
+fects on the serotonergic system [56] [57].
+In spite of the fact that there is evidence that serotonin uptake inhibitors decrease the number of 22 kHz ul-
+trasonic rat vocalizations [58], we are unaware of any study about the effects of 22 kHz sound on serotonergic
+system activity in different brain areas. This system has an important role in modulation of anxiety state. In ad-
+dition, the serotonergic activity can facilitate or attenuate the anxious behavior, depending on the brain region
+and the subtype of receptors involved [59]-[61].
+In the present study, the following serotonergic parameter results were obtained after a chronic exposure to a
+22 kHz sound during pregnancy: 1) the female and the adult offspring 5-HT concentrations were not affected in
+any of the assessed brain areas (PFC, PAG, amygdala, thalamus and hippocampus), 2) the adult offspring 5-
+HIAA concentrations were decreased in hippocampus by chronic 22 kHz sound exposure and increased when
+both chronic and acute stimuli were associated, 3) the serotonergic turnover rate was decreased in the female
+PFC and hippocampus, and increased in the offspring PFC. Regarding acute exposure (adult offspring), similar
+effects were observed as follows: 1) there was no effect on 5-HT levels in any of the assessed brain areas, 2)
+5-HIAA concentrations were decreased in the hippocampus, 3) the serotonergic turnover rate was increased in
+the amygdala, an effect that was not detectable when the previous chronic and acute stimuli were associated. In
+short, in terms of serotonergic activity assessed by the turnover rate, these findings suggest that chronic expo-
+sure to 22 kHz sound causes a serotonergic activity decrease in the hippocampus and in the PFC of females. On
+the other hand, acute exposure during adulthood increases serotonergic turnover rate in the amygdala. These data
+indicate the involvement of limbic brain system regions in the neurobiological processes (emotional learning)
+affected by 22 kHz sound.
+The absence of significant effects of 22 kHz sound applied during pregnancy on 5-HT levels observed in the
+present study accords with reports from other authors, who also did not find effects of white noise exposure on
+offspring hippocampal 5-HT release [62]. On the other hand, other authors showed that acute sound, including
+sound in the ultrasonic range, produces rapid activation of the 5-HT system in the frontal cortex, the thalamus
+and the hypothalamus [63]. Another hypothesis to be considered is that chronically exposed females could habi-
+tuate to the stimulus. As mentioned before, this hypothesis is supported by other authors who showed that repe-
+titive sound exposure can induce functional inactivation [42]. In addition, serotonergic parameter changes are an
+essential part of the adaptive process to aversive environmental stimuli [64]. This adaptive phenomenon also
+occurs in the amygdala, considered to be a key brain structure involved in the emotional circuit in various species
+[65]. Both acute and chronic stress modulate amygdala reactivity, interfering with cognitive (attention, memory)
+and physiological (neuroendocrine and neurochemistry) responses [66]-[68]. The plasticity in the amygdala is
+observed after acute and chronic stressor exposure [69]-[75].
+In the present work the chronic intrauterine 22 kHz sound exposure affects female and offspring serotonergic
+turnover, increasing activity in the hippocampus. For female, this effect was also observed in PFC. For offspring,
+acute exposure increased serotonergic turnover in amygdala. The significant effects of chronic and acute treat-
+ments on 5-HIAA were observed in the hippocampus and an interaction of these treatments was found in the
+35
+
+===== PAGE 12 =====
+et al.
+P. da Silva Oliveira
+hippocampus and amygdala. It is important to emphasize that there were no significant effects on serotonergic
+parameters in the PAG and thalamus in any of the experimental conditions used in the present study. The obser-
+vation that chronic and acute 22 kHz sound exposure affect inhibitory avoidance but not escape response agrees
+with the findings that these acoustic sounds affect serotonergic parameters of specific brain areas, such as the
+hippocampus and amygdala, but not the PAG. It is known that the defensive responses, inhibitory avoidance and
+escape, involve distinct serotonergic pathways that originate from the raphe nucleus and continue to the fore-
+brain and midbrain areas. The inhibitory avoidance is structured in the forebrain (e.g., amygdala, PFC), while
+the latter is largely integrated in the midbrain (mainly PAG) (review in [26]).
+5. Conclusion
+The present results are in agreement with the assumption that anxiety and panic are qualitatively different emo-
+tions with distinct modulator mechanisms that are related to two defensive strategies, respectively: reaction to
+potential threat and to proximal menace. Besides illuminating the potential of an early acoustic sound exposure
+for causing central serotonergic and emotional behavioral changes that can persist into later periods of life, the
+present data also show that the 22 kHz sound exposure represents a useful tool for understanding the mechanism
+of a specific defensive behavior. That is, as the 22 kHz sound exposure affects inhibitory avoidance but not escape
+behavior, it might be relevant for clarifying physiological and molecular aspects of emotion.
+Conflict of Interest
+The authors declare no conflicts of interest.
+Acknowledgements
+This work was supported by CAPES (Coordenação de Aperfeiçoamento de Pessoal de Nível Superior) and Fa-
+pemig (Fundação de Amparo à Pesquisa do Estado de Minas Gerais). The authors thank Aparecida Guerra de
+Jesus for technical assistance. Patrícia de Oliveira receiveds cholarship from CAPES (Coordenação de Aper-
+feiçoamento do Pessoal de Nível Superior).
+References
+[1] Anderson, J.W. (1954) The Production of Ultrasonic Sounds by Laboratory Rats and Other Mammals. Science, 119,
+808-809. http://dx.doi.org/10.1126/science.119.3101.808
+[2] Brudzynski, S.M., et al. (1993) Analysis of 22 kHz Ultrasonic Vocalization in Laboratory Rats: Long and Short Calls.
+Physiology & Behavior, 54, 215-221. http://dx.doi.org/10.1016/0031-9384(93)90102-L
+[3] Wohr, M., Borta, A. and Schwarting, R.K. (2005) Overt Behavior and Ultrasonic Vocalization in a Fear Conditioning
+Paradigm: A Dose-Response Study in the Rat. Neurobiology of Learning and Memory, 84, 228-240.
+http://dx.doi.org/10.1016/j.nlm.2005.07.004
+[4] Wohr, M. and Schwarting, R.K. (2013) Affective Communication in Rodents: Ultrasonic Vocalizations as a Tool for
+Research on Emotion and Motivation. Cell and Tissue Research, 354, 81-97.
+http://dx.doi.org/10.1007/s00441-013-1607-9
+[5] Blanchard, R.J., et al. (1992) Sex Differences in the Incidence and Sonographic Characteristics of Antipredator Ultra-
+sonic Cries in the Laboratory Rat (Rattusnorvegicus). Journal of Comparative Psychology, 106, 270-277.
+http://dx.doi.org/10.1037/0735-7036.106.3.270
+[6] Thomas, D.A., Takahashi, L.K. and Barfield, R.J. (1983) Analysis of Ultrasonic Vocalizations Emitted by Intruders
+during Aggressive Encounters among Rats (Rattusnorvegicus). Journal of Comparative Psychology, 97, 201-206.
+http://dx.doi.org/10.1037/0735-7036.97.3.201
+[7] Parsana, A.J., Li, N. and Brown, T.H. (2012) Positive and Negative Ultrasonic Social Signals Elicit Opposing Firing
+Patterns in Rat Amygdala. Behavioural Brain Research, 226, 77-86. http://dx.doi.org/10.1016/j.bbr.2011.08.040
+[8] Sadananda, M., Wohr, M. and Schwarting, R.K. (2008) Playback of 22-kHz and 50-kHz Ultrasonic Vocalizations In-
+duces Differential c-fos Expression in Rat Brain. Neuroscience Letters, 435, 17-23.
+http://dx.doi.org/10.1016/j.neulet.2008.02.002
+[9] Jelen, P., Soltysik, S. and Zagrodzka, J. (2003) 22-kHz Ultrasonic Vocalization in Rats as an Index of Anxiety but Not
+Fear: Behavioral and Pharmacological Modulation of Affective State. Behavioural Brain Research, 141, 63-72.
+http://dx.doi.org/10.1016/S0166-4328(02)00321-2
+36
+
+===== PAGE 13 =====
+et al.
+P. da Silva Oliveira
+[10] Lucas, A. (1994) Role of Nutritional Programming in Determining Adult Morbidity. Archives of Disease in Childhood,
+71, 288-290. http://dx.doi.org/10.1136/adc.71.4.288
+[11] Whimbey, A.E. and Denenberg, V.H. (1967) Experimental Programming of Life Histories: The Factor Structure Un-
+derlying Experimentally Created Individual Differences. Behaviour, 29, 296-314.
+http://dx.doi.org/10.1163/156853967X00163
+[12] Lucas, A. (1991) Programming by Early Nutrition in Man. Ciba Foundation Symposium, 156, 38-50 (Discussion 50-
+55).
+[13] Lesage, J., Del-Favero, F., Leonhardt, M., Louvart, H., Maccari, S., Vieau, D. and Darnaudery, M. (2004) Prenatal Stress
+Induces Intrauterine Growth Restriction and Programmes Glucose Intolerance and Feeding Behaviour Disturbances in
+the Aged Rat. Journal of Endocrinology, 181, 291-296. http://dx.doi.org/10.1677/joe.0.1810291
+[14] Matsumoto, M., Yoshioka, M. and Togashi, H. (2009) Early Postnatal Stress and Neural Circuit Underlying Emotional
+Regulation. International Review of Neurobiology, 85, 95-107. http://dx.doi.org/10.1016/S0074-7742(09)85007-1
+[15] Anacker, C., O’Donnell, K.J. and Meaney, M.J. (2014) Early Life Adversity and the Epigenetic Programming of Hy-
+pothalamic-Pituitary-Adrenal Function. Dialogues in Clinical Neuroscience, 16, 321-333.
+[16] Levine, S. (2002) Regulation of the Hypothalamic-Pituitary-Adrenal Axis in the Neonatal Rat: The Role of Maternal
+Behavior. Neurotoxicity Research, 4, 557-564. http://dx.doi.org/10.1080/10298420290030569
+[17] Vazquez, D.M., Bailey, C., Dent, G.W., Okimoto, D.K., Steffek, A., López, J.F. and Levine, S. (2006) Brain Cortico-
+tropin-Releasing Hormone (CRH) Circuits in the Developing Rat: Effect of Maternal Deprivation. Brain Research,
+1121, 83-94. http://dx.doi.org/10.1016/j.brainres.2006.08.104
+[18] Kim, C.H., Lee, S.-C., Shin, J.W., Chung, K.-J., Lee, S.-H., Shin, M.-S., et al. (2013) Exposure to Music and Noise
+during Pregnancy Influences Neurogenesis and Thickness in Motor and Somatosensory Cortex of Rat Pups. Interna-
+tional Neurourology Journal, 17, 107-113. http://dx.doi.org/10.5213/inj.2013.17.3.107
+[19] Graeff, F.G., Viana, M.B. and Tomaz, C. (1993) The Elevated T Maze, a New Experimental Model of Anxiety and
+Memory: Effect of Diazepam. Brazilian Journal of Medical and Biological Research, 26, 67-70.
+[20] Pellow, S., Chopin, P., File, S.E. and Briley, M. (1985) Validation of Open: Closed Arm Entries in an Elevated Plus-
+Maze as a Measure of Anxiety in the Rat. Journal of Neuroscience Methods, 14, 149-167.
+http://dx.doi.org/10.1016/0165-0270(85)90031-7
+[21] Graeff, F.G., Netto, C.F. and Zangrossi Jr., H. (1998) The Elevated T-Maze as an Experimental Model of Anxiety.
+Neuroscience & Biobehavioral Reviews, 23, 237-246. http://dx.doi.org/10.1016/S0149-7634(98)00024-4
+[22] Viana, M.B., Tomaz, C. and Graeff, F.G. (1994) The Elevated T-Maze: A New Animal Model of Anxiety and Memory.
+Pharmacology Biochemistry and Behavior, 49, 549-554. http://dx.doi.org/10.1016/0091-3057(94)90067-1
+[23] Zangrossi Jr., H. and Graeff, F.G. (1997) Behavioral Validation of the Elevated T-Maze: A New Animal Model of An-
+xiety. Brain Research Bulletin, 44, 1-5. http://dx.doi.org/10.1016/S0361-9230(96)00381-4
+[24] Graeff, F.G. (2007) Anxiety, Panic and the Hypothalamic-Pituitary-Adrenal Axis. The Revista Brasileira de Psiquia-
+tria, 29, S3-S6. http://dx.doi.org/10.1590/S1516-44462007000500002
+[25] Graeff, F.G., Viana, M.B. and Mora, P.O. (1996) Opposed Regulation by Dorsal Raphe Nucleus 5-HT Pathways of
+Two Types of Fear in the Elevated T-Maze. Pharmacology Biochemistry and Behavior, 53, 171-177.
+http://dx.doi.org/10.1016/0091-3057(95)02012-8
+[26] Zangrossi Jr., H. and Graeff, F.G. (2014) Serotonin in Anxiety and Panic: Contributions of the Elevated T-Maze. Neu-
+roscience Biobehavioral Reviews, 46, 397-406.
+[27] Escribano, B., Quero, I., Feijóo, M., Tasset, I., Montilla, P. and Túnez, I. (2013) Role of Noise and Music as Anxiety
+Modulators: Relationship with Ovarian Hormones in the Rat. Applied Animal Behaviour Science, 152, 73-82.
+[28] de Freitas-Silva, D.M., de Souza Resende, L., Pereira, S.R.C., Franco, G.C. and Ribeiro, A.M. (2010) Maternal Thia-
+mine Restriction during Lactation Induces Cognitive Impairments and Changes in Glutamate and GABA Concentra-
+tions in Brain of Rat Offspring. Behavioural Brain Research, 211, 33-40. http://dx.doi.org/10.1016/j.bbr.2010.03.002
+[29] Goldman, J.M., Murr, A.S. and Cooper, R.L. (2007) The Rodent Estrous Cycle: Characterization of Vaginal Cytology
+and Its Utility in Toxicological Studies. Birth Defects Research Part B: Developmental and Reproductive Toxicology,
+80, 84-97. http://dx.doi.org/10.1002/bdrb.20106
+[30] Furtak, S.C., Allen, T.A. and Brown, T.H. (2007) Single-Unit Firing in Rat Perirhinal Cortex Caused by Fear Condi-
+tioning to Arbitrary and Ecological Stimuli. Journal of Neuroscience, 27, 12277-12291.
+http://dx.doi.org/10.1523/JNEUROSCI.1653-07.2007
+[31] Paxinos, G., et al. (1985) Bregma, Lambda and the Interaural Midpoint in Stereotaxic Surgery with Rats of Different
+Sex, Strain and Weight. Journal of Neuroscience Methods, 13, 139-143.
+http://dx.doi.org/10.1016/0165-0270(85)90026-3
+37
+
+===== PAGE 14 =====
+et al.
+P. da Silva Oliveira
+[32] Paul, E.D. and Lowry, C.A. (2013) Functional Topography of Serotonergic Systems Supports the Deakin/Graeff Hy-
+pothesis of Anxiety and Affective Disorders. Journal of Psychopharmacology, 27, 1090-1106.
+http://dx.doi.org/10.1177/0269881113490328
+[33] Oliveira-Silva, I.F., Pintoa, L., Pereirab, S.R.C., Ferrazc, V.P., Barbosad, A.J.A., Coelho, V.A.A., et al. (2007) Age-
+Related Deficit in Behavioural Extinction Is Counteracted by Long-Term Ethanol Consumption: Correlation between
+5-HIAA/5HT Ratio in Dorsal Raphe Nucleus and Cognitive Parameters. Behavioural Brain Research, 180, 226-234.
+http://dx.doi.org/10.1016/j.bbr.2007.03.012
+[34] Shannon, N.J., Gunnet, J.W. and Moore, K.E. (1986) A Comparison of Biochemical Indices of 5-Hydroxytryptaminergic
+Neuronal Activity Following Electrical Stimulation of the Dorsal Raphe Nucleus. Journal of Neurochemistry, 47, 958-
+965. http://dx.doi.org/10.1111/j.1471-4159.1986.tb00704.x
+[35] Beckett, S.R.G., Aspley, S., Graham, M. and Marsden, C.A. (1996) Pharmacological Manipulation of Ultrasound In-
+duced Defense Behaviour in the Rat. Psychopharmacology, 127, 384-390. http://dx.doi.org/10.1007/s002130050102
+[36] Escribano, B., Quero, I., Feijóo, M., Tasset, I., Montilla, P. and Túnez, I. (2014) Role of Noise and Music as Anxiety
+Modulators: Relationship with Ovarian Hormones in the Rat. Applied Animal Behaviour Science, 152, 73-82.
+[37] Nishio, H., Kasuga, S., Ushijima, M. and Harada, Y. (2001) Prenatal Stress and Postnatal Development of Neonatal
+Rats—Sex-Dependent Effects on Emotional Behavior and Learning Ability of Neonatal Rats. International Journal of
+Developmental Neuroscience, 19, 37-45. http://dx.doi.org/10.1016/S0736-5748(00)00070-8
+[38] Naqvi, F., Haider, S., Perveen, T. and Haleem, D.J. (2012) Sub-Chronic Exposure to Noise Affects Locomotor Activity
+and Produces Anxiogenic and Depressive like Behavior in Rats. Pharmacological Reports, 64, 64-69.
+http://dx.doi.org/10.1016/S1734-1140(12)70731-4
+[39] Uran, S.L., Caceres, L.G. and Guelman, L.R. (2010) Effects of Loud Noise on Hippocampal and Cerebellar-Related
+Behaviors. Brain Research, 1361, 102-114. http://dx.doi.org/10.1016/j.brainres.2010.09.022
+[40] Morozova, A.Y., Zubkov, E.A., Storozheva, Z.I., Kekelidze, Z.I. and Chekhonin, V.P. (2013) Effect of Ultrasonic Ir-
+radiation on the Development of Symptoms of Depression and Anxiety in Rats. Bulletin of Experimental Biology and
+Medicine, 154, 740-743. http://dx.doi.org/10.1007/s10517-013-2044-1
+[41] Grissom, N. and Bhatnagar, S. (2009) Habituation to Repeated Stress: Get Used to It. Neurobiology of Learning and
+Memory, 92, 215-224. http://dx.doi.org/10.1016/j.nlm.2008.07.001
+[42] Masini, C.V., Babb, J.A., Nyhuis, T.J., Day, H.E.W. and Campeau, S. (2012) Auditory Cortex Lesions Do Not Disrupt
+Habituation of HPA Axis Responses to Repeated Noise Stress. Brain Research, 1443, 18-26.
+http://dx.doi.org/10.1016/j.brainres.2012.01.002
+[43] Wallenius, M.A. (2004) The Interaction of Noise Stress and Personal Project Stress on Subjective Health. Journal of
+Environmental Psychology, 24, 167-177. http://dx.doi.org/10.1016/j.jenvp.2003.12.002
+[44] Abrams, R., Gerhardt, K. and Antonelli, P. (1998) Fetal Hearing. Developmental Psychobiology, 33, 1-3.
+http://dx.doi.org/10.1002/(SICI)1098-2302(199807)33:1<1::AID-DEV1>3.0.CO;2-P
+[45] Antonelli, P.J., Gerhardt, K., Abrams, R. and Huang, X. (2002) Fetal Central Auditory System Metabolic Response to
+Cochlear Implant Stimulation. Otolaryngology—Head and Neck Surgery, 127, 131-137.
+http://dx.doi.org/10.1067/mhn.2002.126899
+[46] Hepper, P.G. and Shahidullah, B.S. (1994) Development of Fetal Hearing. Archives of Disease in Childhood, 71, F81-
+F87. http://dx.doi.org/10.1136/fn.71.2.F81
+[47] Geal-Dor, M., Freeman, S., Li, G. and Sohmer, H. (1993) Development of Hearing in Neonatal Rats: Air and Bone
+Conducted ABR Thresholds. Hearing Research, 69, 236-242. http://dx.doi.org/10.1016/0378-5955(93)90113-F
+[48] Saliu, A. (2011) The Development of Hearing in Rats: Reliability of Wave 1 as a Determinant of Auditory Maturation
+and Contributions of Peripheral Structure Progression. City College of New York, New York, 33.
+[49] Barnett, S.B., Rott, H.-D., ter Haar, G.R., Ziskin, M.C. and Maeda, K. (1997) The Sensitivity of Biological Tissue to
+Ultrasound. Ultrasound in Medicine & Biology, 23, 805-812. http://dx.doi.org/10.1016/S0301-5629(97)00027-6
+[50] Weinstock, M. (1997) Does Prenatal Stress Impair Coping and Regulation of Hypothalamic-Pituitary-Adrenal Axis?
+Neuroscience & Biobehavioral Reviews, 21, 1-10. http://dx.doi.org/10.1016/S0149-7634(96)00014-0
+[51] Weinstock, M. (2008) The Long-Term Behavioural Consequences of Prenatal Stress. Neuroscience & Biobehavioral
+Reviews, 32, 1073-1086. http://dx.doi.org/10.1016/j.neubiorev.2008.03.002
+[52] Hu, L., Yang, J., Song, T.S., Hou, N., Liu, Y., Zhao, X.G., et al. (2014) A New Stress Model, a Scream Sound, Alters
+Learning and Monoamine Levels in Rat Brain. Physiology & Behavior, 123, 105-113.
+http://dx.doi.org/10.1016/j.physbeh.2013.09.010
+[53] Lanfumey, L., Mongeau, R., Cohen-Salmon, C. and Hamon, M. (2008) Corticosteroid-Serotonin Interactions in the
+Neurobiological Mechanisms of Stress-Related Disorders. Neuroscience & Biobehavioral Reviews, 32, 1174-1184.
+38
+
+===== PAGE 15 =====
+et al.
+P. da Silva Oliveira
+http://dx.doi.org/10.1016/j.neubiorev.2008.04.006
+[54] Graeff, F.G., Garcia-Leal, C., Del-Ben, C.M. and Guimarães, F.S. (2005) Does the Panic Attack Activate the Hypotha-
+lamic-Pituitary-Adrenal Axis? Anais da Academia Brasileira de Ciências, 77, 477-491.
+http://dx.doi.org/10.1590/S0001-37652005000300009
+[55] Graeff, F.G. (2011) Defense-Related Emotions in Humans. Psychology and Neuroscience, 4, 183-189.
+http://dx.doi.org/10.3922/j.psns.2011.2.003
+[56] Graeff, F.G. and Zangrossi Jr., H. (2010) The Dual Role of Serotonin in Defense and the Mode of Action of Antide-
+pressants on Generalized Anxiety and Panic Disorders. Central Nervous System Agents in Medicinal Chemistry, 10,
+207-217. http://dx.doi.org/10.2174/1871524911006030207
+[57] Graeff, F.G. (2003) Serotonin, Periaqueductal Gray Matter and Panic Disorder. Revista Brasileira de Psiquiatria, 25,
+42-45. http://dx.doi.org/10.1590/S1516-44462003000600010
+[58] Sanchez, C., Gruca, P. and Papp, M. (2003) R-Citalopram Counteracts the Antidepressant-Like Effect of Escitalopram
+in a Rat Chronic Mild Stress Model. Behavioural Pharmacology, 14, 465-470.
+[59] Curran, K.P. and Chalasani, S.H. (2012) Serotonin Circuits and Anxiety: What Can Invertebrates Teach Us? Inverte-
+brate Neuroscience, 12, 81-92.
+[60] Maron, E., Nutt, D. and Shlik, J. (2012) Neuroimaging of Serotonin System in Anxiety Disorders. Current Pharma-
+ceutical Design, 18, 5699-5708. http://dx.doi.org/10.2174/138161212803530844
+[61] Graeff, F.G. (2002) On Serotonin and Experimental Anxiety. Psychopharmacology, 163, 467-476.
+http://dx.doi.org/10.1007/s00213-002-1112-4
+[62] Rex, A., Voigt, J.P. and Fink, H. (2005) Anxiety but Not Arousal Increases 5-Hydroxytryptamine Release in the Rat
+Ventral Hippocampus in Vivo. European Journal of Neuroscience, 22, 1185-1189.
+http://dx.doi.org/10.1111/j.1460-9568.2005.04251.x
+[63] Midzyanovskaya, I.S., Kuznetsova, G.D., van Luijtelaar, E.L.J.M., van Rijn, C.M., Tuomisto, L. and MacDonald, E.
+(2006) The Brain 5HTergic Response to an Acute Sound Stress in Rats with Generalized (Absence and Audiogenic)
+Epilepsy. Brain Research Bulletin, 69, 631-638. http://dx.doi.org/10.1016/j.brainresbull.2006.03.008
+[64] Compan, V. (2007) Do Limits of Neuronal Plasticity Represent an Opportunity for Mental Diseases, Such as Addiction
+to Food and Illegal Drugs? Use and Utilities of Serotonin Receptor Knock-Out Mice. In: Chattopadhyay, A., Ed., Se-
+rotonin Receptors in Neurobiology, CRC Press, Boca Raton.
+[65] LeDoux, J. (2007) The Amygdala. Current Biology, 17, R868-R874. http://dx.doi.org/10.1016/j.cub.2007.08.005
+[66] Berretta, S. (2005) Cortico-Amygdala Circuits: Role in the Conditioned Stress Response. Stress, 8, 221-232.
+http://dx.doi.org/10.1080/10253890500489395
+[67] Shin, L.M. and Liberzon, I. (2010) The Neurocircuitry of Fear, Stress, and Anxiety Disorders. Neuropsychopharma-
+cology, 35, 169-191. http://dx.doi.org/10.1038/npp.2009.83
+[68] van Marle, H.J.F., Hermans, E.J., Qin, S.Z. and Fernández, G. (2009) From Specificity to Sensitivity: How Acute
+Stress Affects Amygdala Processing of Biologically Salient Stimuli. Biological Psychiatry, 66, 649-655.
+http://dx.doi.org/10.1016/j.biopsych.2009.05.014
+[69] Leuner, B. and Shors, T.J. (2012) Stress, Anxiety, and Dendritic Spines: What Are the Connections? Neuroscience,
+251, 108-119. http://dx.doi.org/10.1016/j.neuroscience.2012.04.021
+[70] Mahan, A.L. and Ressler, K.J. (2012) Fear Conditioning, Synaptic Plasticity and the Amygdala: Implications for Post-
+traumatic Stress Disorder. Trends in Neurosciences, 35, 24-35. http://dx.doi.org/10.1016/j.tins.2011.06.007
+[71] McEwen, B.S., Eiland, L., Hunter, R.G. and Miller, M.M. (2012) Stress and Anxiety: Structural Plasticity and Epige-
+netic Regulation as a Consequence of Stress. Neuropharmacology, 62, 3-12.
+http://dx.doi.org/10.1016/j.neuropharm.2011.07.014
+[72] Mitra, R., Jadhav, S., McEwen, B.S., Vyas, A. and Chattarji, S. (2005) Stress Duration Modulates the Spatiotemporal
+Patterns of Spine Formation in the Basolateral Amygdala. Proceedings of the National Academy of Sciences of the
+United States of America, 102, 9371-9376. http://dx.doi.org/10.1073/pnas.0504011102
+[73] Mitra, R., Ferguson, D. and Sapolsky, R.M. (2009) SK2 Potassium Channel Overexpression in Basolateral Amygdala
+Reduces Anxiety, Stress-Induced Corticosterone Secretion and Dendritic Arborization. Molecular Psychiatry, 14, 847-855.
+[74] Roozendaal, B., McReynolds, J.R., Van der Zee, E.A., Lee, S., McGaugh, J.L. and McIntyre, C.K. (2009) Glucocorti-
+coid Effects on Memory Consolidation Depend on Functional Interactions between the Medial Prefrontal Cortex and
+Basolateral Amygdala. Journal of Neuroscience, 29, 14299-14308.
+http://dx.doi.org/10.1523/JNEUROSCI.3626-09.2009
+[75] Vyas, A., Jadhav, S. and Chattarji, S. (2006) Prolonged Behavioral Stress Enhances Synaptic Connectivity in the Ba-
+solateral Amygdala. Neuroscience, 143, 387-393. http://dx.doi.org/10.1016/j.neuroscience.2006.08.003
+39
+
+===== PAGE 16 =====

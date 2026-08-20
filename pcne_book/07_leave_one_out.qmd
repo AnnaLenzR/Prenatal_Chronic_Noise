@@ -1,0 +1,252 @@
+---
+title: "Leave-one-out sensitivity analysis"
+---
+
+## Approach
+
+The protocol commits to sensitivity analyses when a diagnostic (publication bias, or variation in CRIME-Q quality ratings) flags a concern. Chapter 5's funnel plot and Egger-type regression noted that "excluding one study at a time" would be the appropriate follow-up, so this chapter carries that out.
+
+There is a second, more specific reason to run this here: four of the 16 included studies - `abramova_2020_genpath`, `abramova_2021_front`, `abramova_2023_biopsy`, and `abramova_2024_devneur` - are from the same author and lab, and together they contribute 118 of the 207 effect sizes (57%), far more than their 25% share of studies. A standard one-study-at-a-time leave-one-out would not, by itself, reveal a pattern shared across all four of that lab's papers, since removing any single one still leaves the other three in the model. There is also a third, narrower question left open from Chapter 1: two effect sizes (`es184`, `es190`) had their control-arm mean and SD corrected to a non-zero floor value because the study reported an exact `Q1 = median = Q3 = 0`, and that correction was flagged there for review rather than acted on. This chapter runs three checks:
+
+1. **Study-level leave-one-out** (all 16 studies, one at a time) - the standard check for whether any single study is driving the pooled estimate.
+2. **A combined check that removes all four Abramova-lab studies at once** and compares the resulting estimate directly against the full model, which is the test that actually speaks to the concern above.
+3. **A combined check that removes the two exact-zero-corrected effect sizes** flagged in Chapter 1, resolving that open review item.
+
+All three are exploratory/diagnostic, same as Chapter 5: they describe how sensitive the pooled estimate is to these exclusions, not a hypothesis test with its own pass/fail criterion.
+
+```{r}
+#| label: setup
+
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  stop(
+    'Package "pacman" is required. Install it once with ',
+    'install.packages("pacman").'
+  )
+}
+
+analysis_packages <- c("dplyr", "readr", "stringr", "metafor", "knitr", "ggplot2")
+pacman::p_load(char = analysis_packages)
+
+if (!requireNamespace("orchaRd", quietly = TRUE)) {
+  if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
+  remotes::install_github("daniel1noble/orchaRd", force = FALSE)
+}
+library(orchaRd)
+
+options(dplyr.summarise.inform = FALSE)
+knitr::opts_chunk$set(comment = "#>")
+
+project_root <- normalizePath("..", mustWork = TRUE)
+derived_dir <- file.path(project_root, "Data", "derived")
+audit_dir <- file.path(project_root, "Data", "audits")
+
+es <- readr::read_csv(file.path(derived_dir, "db_effect_sizes.csv"), show_col_types = FALSE) %>%
+  mutate(across(where(is.character), as.factor)) %>%
+  mutate(across(c(lnrr_harm, lnrr_var), as.numeric))
+
+VCV <- metafor::vcalc(
+  vi = lnrr_var,
+  cluster = dependency_cluster_id,
+  obs = es_id,
+  rho = 0.5,
+  data = es
+)
+
+overall_model <- metafor::rma.mv(
+  yi = lnrr_harm,
+  V = VCV,
+  random = list(~1 | study_id, ~1 | es_id, ~1 | strain),
+  test = "t",
+  method = "REML",
+  sparse = TRUE,
+  data = es
+)
+
+summary(overall_model)
+```
+
+## Study-level leave-one-out
+
+`orchaRd::leave_one_out()` refits `overall_model` once per study, dropping that study's effect sizes and rebuilding the variance-covariance matrix each time (`vcalc_args` below tells it how, using the same clustering variable and `rho = 0.5` as everywhere else in this book), then reports the resulting pooled estimate.
+
+```{r}
+#| label: leave-one-out-studies
+
+vcalc_args <- list(
+  vi = "lnrr_var",
+  cluster = "dependency_cluster_id",
+  obs = "es_id",
+  rho = 0.5
+)
+
+loo_studies <- orchaRd::leave_one_out(overall_model, group = "study_id", vcalc_args = vcalc_args)
+
+# leave_one_out() returns a list (mod_table = one row per omitted study with
+# its refitted estimate/CI, data = the effect sizes used in each iteration,
+# orig_mod_results = the original model), not a plain data frame - printing
+# or exporting the whole object directly confuses functions that expect an
+# ordinary table (knitr::kable(), write_csv()). loo_studies$mod_table is the
+# clean, one-row-per-study piece those functions need.
+loo_table <- loo_studies$mod_table %>%
+  rename(study_left_out = name) %>%
+  select(study_left_out, estimate, lowerCL, upperCL, lowerPR, upperPR)
+
+loo_table %>% knitr::kable(digits = 3, caption = "Pooled lnRR estimate with each study removed in turn.")
+```
+
+```{r}
+#| label: leave-one-out-plot
+#| fig-width: 7
+#| fig-height: 7
+
+loo_plot <- orchaRd::orchard_leave1out(
+  leave1out = loo_studies,
+  xlab = "lnRR (harmonized)",
+  ylab = "Study left out",
+  trunk.size = 0.3,
+  branch.size = 2,
+  alpha = 0.3,
+  legend.pos = "top.out"
+)
+
+loo_plot
+```
+
+Read this as: does the pooled estimate's confidence interval stay on the same side of zero, and roughly the same magnitude, regardless of which single study is dropped? A study whose removal visibly shifts the estimate or flips its sign is worth a closer look at that study's data and methods; consistent estimates across every row indicate the overall result is not an artefact of any one study.
+
+## Combined check: excluding the Abramova-lab studies
+
+```{r}
+#| label: leave-out-abramova
+
+es_no_abramova <- es %>% filter(!str_detect(as.character(study_id), "^abramova_"))
+
+VCV_no_abramova <- metafor::vcalc(
+  vi = lnrr_var,
+  cluster = dependency_cluster_id,
+  obs = es_id,
+  rho = 0.5,
+  data = es_no_abramova
+)
+
+model_no_abramova <- metafor::rma.mv(
+  yi = lnrr_harm,
+  V = VCV_no_abramova,
+  random = list(~1 | study_id, ~1 | es_id, ~1 | strain),
+  test = "t",
+  method = "REML",
+  sparse = TRUE,
+  data = es_no_abramova
+)
+
+summary(model_no_abramova)
+```
+
+```{r}
+#| label: leave-out-abramova-comparison
+
+abramova_comparison <- tibble(
+  model = c("All studies", "Excluding the Abramova-lab studies"),
+  k = c(nrow(es), nrow(es_no_abramova)),
+  n_studies = c(n_distinct(es$study_id), n_distinct(es_no_abramova$study_id)),
+  estimate = c(coef(overall_model), coef(model_no_abramova)),
+  ci_lb = c(overall_model$ci.lb, model_no_abramova$ci.lb),
+  ci_ub = c(overall_model$ci.ub, model_no_abramova$ci.ub)
+)
+
+abramova_comparison %>%
+  knitr::kable(digits = 3, caption = "Overall model with vs. without the four Abramova-lab studies (118/207 effect sizes, 57% of the dataset, from 4/16 studies).")
+
+readr::write_csv(abramova_comparison, file.path(audit_dir, "leave_one_out_abramova_comparison.csv"), na = "")
+readr::write_csv(loo_table, file.path(audit_dir, "leave_one_out_studies.csv"), na = "")
+```
+
+Heterogeneity ($I^2$) with and without the Abramova-lab studies, for reference (printed as returned, since the exact row labels depend on the installed `orchaRd` version):
+
+```{r}
+#| label: leave-out-abramova-i2
+
+tibble(model = "All studies") %>%
+  bind_cols(as.data.frame(t(orchaRd::i2_ml(overall_model)))) %>%
+  bind_rows(
+    tibble(model = "Excluding the Abramova-lab studies") %>%
+      bind_cols(as.data.frame(t(orchaRd::i2_ml(model_no_abramova))))
+  ) %>%
+  knitr::kable(digits = 1)
+```
+
+If the estimate and its confidence interval stay similar with the Abramova-lab studies removed - same direction, overlapping intervals - the overall result does not depend on that lab's contribution. If the estimate moves substantially, or crosses from excluding zero to including it (or vice versa), that is a genuine limitation to report: more than half of this dataset's effect sizes come from one author/lab, and the pooled result is at least partly a reflection of their specific methods and animals rather than the broader literature. Either way, report both numbers together rather than only the "all studies" or only the "excluding Abramova" figure on its own - if the significance conclusion depends on this one inclusion/exclusion decision, that dependency is itself part of the result.
+
+::: {.callout-note}
+## Reading the `I2_strain` column here
+
+If `I2_strain` drops sharply once the Abramova-lab studies are excluded, that is a modelling side-effect, not a new finding about strain: Abramova's four studies span two strains (Sprague-Dawley and Wistar), so they are the main source of within-strain replication across independent studies. Without them, most remaining strains appear in only one study each, so `strain` and `study_id` become almost indistinguishable to the model, and REML can assign that shared variance entirely to `study_id` instead of splitting it. It would not be evidence that strain stopped mattering biologically.
+:::
+
+## Combined check: excluding the exact-zero-corrected effect sizes
+
+Two effect sizes, `es184` and `es190` (`abramova_2023_biopsy`), had `Q1 = median = Q3 = 0` reported for their control arm. Chapter 1's Luo/Wan estimators return an exact-zero mean and SD for a row like that, which `log(0)` cannot handle, so the mean was replaced with 0.9 times the smallest positive mean in the same outcome stratum before lnRR was calculated (Chapter 1's exact-zero continuity correction). That correction was flagged there as needing review rather than acted on; this is that review.
+
+```{r}
+#| label: leave-out-exact-zero
+
+exact_zero_es <- c("es184", "es190")
+
+es_no_exact_zero <- es %>% filter(!as.character(es_id) %in% exact_zero_es)
+
+if (nrow(es) - nrow(es_no_exact_zero) != length(exact_zero_es)) {
+  stop(
+    "Expected to remove exactly ", length(exact_zero_es), " effect size(s) (",
+    paste(exact_zero_es, collapse = ", "), "), but removed ", nrow(es) - nrow(es_no_exact_zero),
+    ". Check that these es_id values still exist in db_effect_sizes.csv."
+  )
+}
+
+VCV_no_exact_zero <- metafor::vcalc(
+  vi = lnrr_var,
+  cluster = dependency_cluster_id,
+  obs = es_id,
+  rho = 0.5,
+  data = es_no_exact_zero
+)
+
+model_no_exact_zero <- metafor::rma.mv(
+  yi = lnrr_harm,
+  V = VCV_no_exact_zero,
+  random = list(~1 | study_id, ~1 | es_id, ~1 | strain),
+  test = "t",
+  method = "REML",
+  sparse = TRUE,
+  data = es_no_exact_zero
+)
+
+summary(model_no_exact_zero)
+```
+
+```{r}
+#| label: leave-out-exact-zero-comparison
+
+exact_zero_comparison <- tibble(
+  model = c("All studies", "Excluding the two exact-zero-corrected effect sizes"),
+  k = c(nrow(es), nrow(es_no_exact_zero)),
+  n_studies = c(n_distinct(es$study_id), n_distinct(es_no_exact_zero$study_id)),
+  estimate = c(coef(overall_model), coef(model_no_exact_zero)),
+  ci_lb = c(overall_model$ci.lb, model_no_exact_zero$ci.lb),
+  ci_ub = c(overall_model$ci.ub, model_no_exact_zero$ci.ub)
+)
+
+exact_zero_comparison %>%
+  knitr::kable(digits = 3, caption = "Overall model with vs. without es184 and es190 (the two exact-zero-corrected effect sizes).")
+
+readr::write_csv(exact_zero_comparison, file.path(audit_dir, "leave_one_out_exact_zero_comparison.csv"), na = "")
+```
+
+Only 2 of 207 effect sizes are affected, so a large shift here would be a stronger signal than the same shift would be in the Abramova check above - two rows should not be able to move a 207-row pooled estimate much unless their corrected values are doing a lot of work. If the estimate and CI are essentially unchanged, that resolves Chapter 1's open review item: the correction is not consequential enough to need a different fix. If they shift noticeably, that is worth a closer look at whether 0.9 times the smallest positive stratum mean is the right choice for these two rows specifically, rather than a rule to apply everywhere.
+
+## Session information
+
+```{r}
+#| label: session-information
+
+sessionInfo()
+```

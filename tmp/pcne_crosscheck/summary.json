@@ -1,0 +1,31 @@
+{
+  "source_csv": "Data/PCN_data_ext_checking_v.3.csv",
+  "source_rows": 207,
+  "source_columns": 72,
+  "issues_total": 838,
+  "confirmed": 800,
+  "review": 38,
+  "by_severity": {
+    "Low": 459,
+    "High": 220,
+    "Medium": 159
+  },
+  "by_category": {
+    "Coding": 351,
+    "Protocol conformity": 160,
+    "Identifier integrity": 117,
+    "Source traceability": 76,
+    "Summary statistics": 45,
+    "Statistical assumption": 36,
+    "Author raw-data reconciliation": 15,
+    "Exposure metadata": 15,
+    "Outcome metadata": 12,
+    "Study metadata": 4,
+    "Sample size": 3,
+    "Schema": 2,
+    "Source availability": 2
+  },
+  "studies": 16,
+  "metadigitise_rows_checked": 106,
+  "raw_data_rows_checked": 92
+}

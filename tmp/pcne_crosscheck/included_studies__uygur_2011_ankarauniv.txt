@@ -1,0 +1,352 @@
+
+===== PAGE 1 =====
+Ankara Üniv Vet Fak Derg, 58, 233-238, 2011
+Investigation of the long term effects of chronic white noise stress on
+learning in radial arm maze and behaviors in forced swim test
+Evren ERASLAN-UYGUR, Elif ERGÜL-EKİZ, İbrahim AKYAZI, Güldal İNAL-GÜLTEKİN,
+Murat ARSLAN
+Department of Physiology, Faculty of Veterinary Medicine, Istanbul University Istanbul / Turkey.
+Summary: The long-term effects of 100 dB chronic white noise stress (WNS), exposed during prenatal and adolescent
+periods, on some cognitive functions and behaviors in rats were investigated. For this purpose, 40 female Sprague Dawley rats and
+their 60 male offspring were used. Pregnant rats were divided into Prenatal Stress (PS) and Prenatal Control (PC) groups. Noise
+stress was applied to PS group between the 14th and 21st days of their pregnancy, while PC rats were left undisturbed. After
+weaning, 60 male pups of PS dams were assigned to prenatal + chronic postnatal stress (PSCS), prenatal stress + non stress (PSN)
+and Control (CON) groups. During the postnatal 30th and 51st days, WNS was applied to PSCS rats, while PSN and CON groups
+were left undisturbed. The effects of stress on adult male offspring were investigated using 8-arm radial maze and forced swimming
+tests. There were no significant differences among groups for cognition and behavior tests. These results indicate that chronic 100 dB
+WNS does not have log-term effects on cognitive functions and depression related behaviors of adult male offspring.
+Key words: cognition, forced swim, rats, stress, white noise.
+Kronik beyaz gürültü stresinin radyal labirentte öğrenme ve zorunlu yüzme testinde davranışlar
+üzerine olan uzun dönem etkilerinin araştırılması
+Özet: Çalışmada sıçanlarda prenatal ve adolesan dönemlerde uygulanan kronik, 100 dB şiddetindeki beyaz gürültü stresinin
+bazı davranışlar ve kognitif fonksiyonlar üzerine olan uzun dönem etkileri araştırılmıştır. Bu amaçla 40 adet dişi Sprague Dawley
+sıçan ve bunlardan elde edilen 60 erkek sıçan kullanıldı. Gebe dişiler Prenatal Stres (PS) ve Prenatal Kontrol (PK) grubu olmak üzere
+iki gruba ayrıldılar. Gebeliğin 14. ve 21. günleri arasında PS grubuna ses stresi uygulanırken, kontrol grubuna herhangi bir uygulama
+yapılmadı. Yavrular sütten kesildikten sonra PS grubu dişilerden elde edilen 60 adet erkek yavru prenatal stres + kronik postnatal
+stres (PSKS), prenatal stres + stres uygulanmayan (PSSU) ve Kontrol (KON) gruplarına ayrıldılar. PSKS grubu ratlara postnatal
+dönemin 30. ve 51. günleri arasında stres uygulaması yapılırken, PS ve KON grubundaki ratlara herhangi bir uygulama yapılmadı.
+Stresin etkileri erişkin erkek sıçanlarda sekiz kollu radyal labirent testi ve zorlamalı yüzme testi kullanılarak ölçüldü. Kognitif ve
+davranışsal testler açısından gruplar arasında önemli bir farklılık bulunmadı. Elde edilen sonuçlar kronik, 100 dB beyaz ses stresinin
+erişkin erkek sıçanlarda kognitif fonksiyonlar ve depresyonla ilişkili davranışlar üzerinde uzun dönem etkisinin olmadığını
+göstermektedir.
+Anahtar sözcükler: beyaz gürültü, kognisyon, rat, stres,zorunlu yüzme.
+Introduction research on the effects of noise stress. It was reported
+All human beings and animals are exposed to short that acute, subacute and chronic white noise stress
+or long term stressfull events during their life span. (WNS) at the intensity of 100 dB induced plasma
+Effects of these stressful experiences on brain, cognition corticosterone increasement in rats (14, 23). Moreover
+and behaviors and also persistency of these effects in effects of chronic noise stress on cognition was
+later life depends on the stress regime and nature of the investigated in a few studies and negative effects of
+stressor (2, 8, 15). WNS exposure, 100 dB/ 4 h per day for 30 days, on
+Noise is one of the most widespread sources of learning and memory in rats were reported (7, 14).
+enviromental stress. With rapid industrialization in However, to our knowledge, effects of noise stress during
+modern society, noise has become an important stressor prenatal and adolescent periods on cognition in adult rats
+that threatens health of humans and welfare of animals have not been investigated.
+(6, 7, 16). Although many studies investigated the effects A large body of research indicates that stressfull
+of exposure to different stressors during the prenatal and events may contribute to the development of depression
+postnatal periods of life (3, 10, 21), there are only limited related behaviors (12, 17, 24). Although, noise is one of
+
+===== PAGE 2 =====
+234 Evren Eraslan-Uygur - Elif Ergül-Ekiz - İbrahim Akyazı - Güldal İnal-Gültekin - Murat Arslan
+the most commenly encountered stressors in nowadays, Stress (PSCS, n=20) and Prenatal Stress + Non Stress
+there is only limited research on the effects of noise (PSN, n=20) groups. Twenty male offspring of the PC
+stress on emotional state and behavioral response of group were assigned to Control (CON, n=20) group.
+animals. It was reported that acute exposure to While the same stress procedure was applied to PSCS
+inescapable loud tones induced depressogenic effect in rats from day 30 to 51 of postnatal period, PSN and CON
+rats (4). However, there is a lack of knowledge on the rats were left undisturbed.
+long term effects of noise stressor on behaviors during Behavioral testing: The testing period was started
+the different periods of life. when the animals were young adults, at 70 days of age.
+In the present study, long term effects of chronic Ten animals from each PSCS, PSN and CON groups
+audiogenic stress exposed during prenatal and adolescent were tested in the 8-arm Radial Arm Maze (RAM) and in
+periods were examined in adult male rats at the the Porsolt Forced Swim Test (FST). All tests were
+behavioral levels. Radial arm maze was used to measure conducted at the same time of the day beginning at 10:00
+cognitive performance and Porsolt swim test was used to a.m. The behavior of the rats was videotaped and then
+assess depression-like behaviors in rats. analyzed by experienced observers.
+Radial Arm Maze (RAM): The apparatus was a
+Materials and Methods custom-made black plexiglas radial arm maze. It
+Animals and housing: Forty naive adult female consisted of eight identical arms (60 l x 12 w x 20 h cm)
+(205±3 g body weight) and 8 naive adult male Sprague radiating from a circular platform (30 cm in diameter).
+Dawley rats (305±9 g body weight) obtained from the Small plastic food cups were located near the end of each
+Institute for Experimental Medicine of Istanbul arm. The maze was located in a testing room containing
+University were bred in our laboratory. They were many fixed extra-maze visual cues and it was elevated 60
+housed with free access to food and water in a cm above the floor level.
+temperature controlled room (21±1°C) under a 12:12 h Rats were food restricted to achieve approximately
+light-dark cycle (lights on at 7:00 a.m.). Female rats were 85% of their ad libitum weights, before radial maze
+grouped (4-5 rats per cage) in clear plastic cages training began. Chocolate flavored crisp rice cereal was
+(46x32x14 cm) with wood chip bedding in the presence used as the food reinforcement. Animals were subjected
+of a male for 5-6 days until pregnancy. Vaginal smears to 3 days of acclimation trials in which they were
+were examined every morning daily and the day in which allowed to explore the maze for a 10 minutes period each
+the smear was sperm positive was determined as day. Food pellets were scattered throughout the maze on
+gestational day 0. Thereafter, pregnant animals were the first day and they were confined closer to the food
+housed individually. cups on successive days. Following the acclimation
+All efforts were made to minimize the number of sessions, the animals were given one session per day
+animals used and their suffering. The Ethic Committee of with all arms accessible over a 15 days period. Before
+Istanbul University Veterinary Faculty approved the each session, all the arms of the maze were baited a 1/3
+experimental protocol of the study. to 1/2 peace of cereal. The reinforcements were not
+Stress procedures: Pregnant rats were randomly replaced during the session. An animal was placed in a
+divided into Prenatal Stress (PS, n=20) and Prenatal circular plastic restraining ring (30 cm in diameter and 20
+Control (PC, n=20) groups. PS rats were exposed to 45 cm high) in the center of the RAM; the ring was lifted
+min long WNS at the intensity of 100 dB (decibel-A after 30 sec allowing the rat to move freely about the
+scale) SPL (sound pressure level) from day 14 to 21 of maze. A trial ended when one of the following conditions
+pregnancy. During this period, stress was applied once a was reached: (1) the animal has visited all eight arms, (2)
+day at random times of the day. The rat cages were the animal has made 16 visits, or (3) 10 min. has passed.
+arranged to ensure a similar distribution of noise to all The rats’ performances were evaluated by the total
+the animals. Noise intensity was measured by placing a number of errors, the rank of the first error, and the total
+sound level meter (CEM DT–8820) in the cages at varied number of choices to complete the task. Re-entry into an
+locations and calculating the mean value of different arm previously visited was scored as an error. A choice
+readings. Rats in the PC group remained undisturbed. was defined as the rat traversed two-thirds of the arm
+The offspring were weaned 21 days after birth and length. For the statistical analyses of data, Day 1 was
+only litters consisting of five to ten pups with defined as the first day on which at least eight choices
+approximately half females and half males were kept for were made.
+the study. To minimize litter effects, no more than 2 male Porsolt Forced Swim Test (FST): A 2 days Porsolt
+offspring from each litter were assigned to each swim test was conducted for assessment of behavioral
+experimental group. Forty male offspring of the PS group despair (22). A test was conducted in a plexiglas
+were randomly divided into Prenatal Stress + Chronic transparent cylinder (40 cm deep, 30 cm diameter)
+
+===== PAGE 3 =====
+Ankara Üniv Vet Fak Derg, 58, 2011 235
+containing water (25 ±1 °C and 15 cm in depth). Animals
+were placed individually into the cylinder and allowed to
+swim for 15 minutes on the first day and for 5 minutes on
+the second day of the test. Behavior of the rat was scored
+as immobile, swimming, jumping and diving. Total time
+spent in these behaviors was calculated for the 5 min test
+period on each day. Water was cleaned or changed, when
+necessary, before the next animal was tested. The
+behavior of the rats was recorded on videotape and Fig. 1. Total number of errors decreases across testing days (F=
+further scored by an investigator. 5.64, p〈0.001) in RAM test. Data are the means for the days of
+testing for PSCS, PSN and CON groups.
+Immobility was defined as floating in the water
+Şekil 1. RAM testinde toplam hata sayısı zamanla azalmaktadır.
+without struggling and using only small movements to
+Veriler PSCS, PSN ve CON gruplarının test günleri
+keep the head above water. Swimming was defined as ortalamalarını göstermektedir.
+moving limbs in an active manner, more than necessary
+to keep the head above water. Jumping was defined as
+lifting up and revealing at least two-thirds of the body
+length. Diving was defined as totally immersing in water.
+Statistical analyses: Performance on the RAM and
+FST were analyzed with repeated-measures ANOVA,
+with the groups as the between-subjects factor and the
+testing days as the within-subjects factor. Data are
+expressed as mean ± sem. Differences were considered to
+be significant if P 〈 0.05.
+Fig. 2. Rank of the first error increases across testing days (F=
+6.87, p〈0.001) in RAM test. Data are the means for the days of
+Results
+testing for PSCS, PSN and CON groups.
+Radial Arm Maze Performance: There were no Şekil 2. RAM testinde ilk hatanın kademesi zamanla
+statistically significant differences between the groups on artmaktadır. Veriler PSCS, PSN ve CON gruplarının test
+any measure of their performance. However, there was a günleri ortalamalarını göstermektedir.
+significant effect of test day for investigated parameters,
+indicating that learning took place across the 15 days of
+testing. The main effect of day was significant for total
+number of errors, (F = 5.64, P < 0.01) (Fig 1), for rank of
+the first error (F = 6.87, P < 0.01) (Fig 2) and for total
+number of choices (F = 4.58, P < 0.01) (Fig 3). But there
+were no significant effect of treatment group (P > 0.05)
+(Table 1), nor were there any group by day interactions
+(P > 0.05).
+Porsolt Forced Swim Test: The repeated measures
+ANOVA indicated that the main effect of day was
+Fig. 3. Total number of choices decreases across testing days
+significant for immobility (F= 14.89, P < 0.01), jumping (F= 4.58, p〈0.001) in RAM test. Data are the means for the days
+(F= 5.88, P < 0.05) and diving (F= 13.49, P < 0.01). of testing for PSCS, PSN and CON groups.
+However the effect of treatment was not significant and Şekil 3. RAM testinde toplam seçim sayısı zamanla
+azalmaktadır. Veriler PSCS, PSN ve CON gruplarının test
+the interaction between group and testing days was not
+günleri ortalamalarını göstermektedir.
+significant either (Table 2).
+Table 1. Parameters measured during RAM test
+Tablo 1. RAM testinde ölçülen parametreler
+Treatment Groups
+PSCS PSN CON
+Parameters (n=10) (n=8) (n=9)
+Total number of errors 2.06 ± 0.4 6 2.37 ± 0.51 1.93 ± 0.48
+Rank of the first error 7.66 ± 0.2 1 7.22 ± 0.23 7.30 ± 0.22
+Total number of choices 9.17 ± 0.5 6 10.19 ± 0.63 8.93 ± 0.59
+Data are the means ± SEM. No significant differen ces were found between groups by repeated
+measures two-way ANOVA.
+
+===== PAGE 4 =====
+236 Evren Eraslan-Uygur - Elif Ergül-Ekiz - İbrahim Akyazı - Güldal İnal-Gültekin - Murat Arslan
+Table 2. Parameters measured during FST
+Tablo 2. FST testinde ölçülen parametreler
+Treatment Groups
+Behaviors Testing Days
+PSCS (n=10) PSN (n=10) CON (n=9)
+1st day 30.26 ± 7.86 26.79 ± 7.86 45.87 ± 8.29
+Immobility (sec)
+2nd day 40.96 ± 12.83* 48.87 ± 12.83* 79.05 ± 13.52*
+1st day 42.13 ± 5.96 39.08 ± 5.96 29.09 ± 6.28
+Swimming (sec)
+2nd day 41.88 ± 12.48 33.44 ± 12.48 31.89 ± 13.15
+1st day 6.50 ± 1.42 6.20 ± 1.42 5.44 ± 1.49
+Diving
+2nd day 3.70 ± 0.90* 1.70 ± 0.90* 2.56 ± 0.95*
+1st day 18.10 ± 4.64 23.00 ± 4.64 26.78 ± 4.89
+Jumping
+2nd day 10.60 ± 3.73* 18.40 ± 3.73* 16.00 ± 3.93*
+Data are the means ± SEM for the days of testing for PSCS, PSN and CON groups. *Immobility (F= 14.89, P < 0.01), jumping
+(F= 5.88, P < 0.05) and diving (F= 13.49, P < 0.01) behaviors were significantly different on the 2nd day compared to the 1st day of
+testing. The effect of treatment and group x trial interactions were not significant.
+Discussion variety of different results. It was reported that chronic
+In the present work, long-term effects of chronic restraint stress, 6 h/ day for 21 days, caused small but
+WNS on learning, memory and depressive- like behaviors significant decrement in performance in RAM, but this
+were investigated. cognitive impairment was not permanent. Stressed rats’
+The white noise has been reported to be an performance in radial maze returned to normal 18 days
+audiogenic stressor that produces stress response in the after the stress (13). Our results are somewhat
+organism by increasing corticosterone levels and comparable to this study. Long-term, persistent effects of
+activating different brain areas that are related to chronic stress on cognition were not found in this study
+formation of stress response (5, 10, 23). However, to our either.
+knowledge, there are only few studies investigating the In accordance with our results Mello et al (19) did
+effects of WNS on learning and memory. Our results not found any effects of, daily exposure to 5 min mild
+show that learning took place across the 15 days of RAM foot shock stress for both 2 and 8 weeks on memory
+testing (Fig 1, 2 and 3), and that learning and memory of acquisition and retention. Moreover, it was also reported
+animals in the maze were not affected by prenatal and that only rats exposed to 6h/ 21d restraint paradigm
+postnatal chronic WNS treatment (Table 1). It was showed consistent spatial memory deficits, but the same
+reported that chronic (4 hours/day x 30 days) white noise stress application for 2h/10d, 2h/21d and 6h/10 d did not
+(100 dB) exposure in adult rats impaired spatial learning have any effect on cognition (18). On the other hand,
+and memory in Morris water maze when measured from cognitive impairments after chronic stress exposure (1,
+stress application day 26 to 30, 2 hours after noise 20) and also negative consequences of stress on learning
+exposure (7). It was also suggested that chronic WNS and memory later in life have been determined (11, 25).
+(100 dB/4 hours per day/30 days) impaired reference and Discrepancies in results of the studies support the idea
+working memories in RAM in adult rats when measured that effects of stress on cognition vary depending on the
+an hour after noise stress exposure during the stress type and intensity of stressors, application period and
+application period (14). Our results are contradictory to stress procedure, as well as on the duration from the end
+these two studies. They measured spatial abilities of of the stress to the start of behavioral assessment.
+animals during the stress application period immediately Therefore, we suggest that 100 dB WNS, which was
+after the stress exposure. Thus they have focused on the applied chronically during prenatal and adolescent
+immediate effects of stress exposure on cognition. periods, does not have long term effects on spatial
+However our aim was to investigate the lasting learning and memory performance in adult rats.
+consequences of the noise stress exposure. Therefore the There were no statistically significant differences
+lack of effects of WNS on cognition in our study can be between the groups in the Porsolt forced swim test (Table
+accounted for by evaluating the learning performance of 2). That is to say, our stress treatment did not affect the
+animals at adulthood, not immediately after the cessation depressive like behaviors of rats. To our knowledge,
+of stress period. In addition, stress regimes are different research on the effects of noise stress on behaviors
+i.e. the duration of stress application per day was shorter associated with depression is very limited. On the
+in our study. There are various studies that have contrary to our results, it has been suggested that
+investigated the effects of different types of stressors on increased and decreased durations of loud tones have
+learning and memory of rats and they have documented a depressogenic effects in rats in the behavioral despair
+
+===== PAGE 5 =====
+Ankara Üniv Vet Fak Derg, 58, 2011 237
+model, based on forced swim test (4). However, the type 5. Campeau S, Dolan D, Akil H, Watson SJ (2002): c-fos
+of noise stressor was different than the white noise used mRNA induction in acute and chronic audiogenic stress:
+possible role of the orbitofrontal cortex in habituation.
+in the present study. Moreover, they measured only acute
+Stress, 5, 121-130.
+effects of stress exposure, not long-term effects.
+6. Coppola CL, Enns RM, Grandin T (2006): Noise in the
+Therefore, discrepancies in results may not only be due
+animal shelter environment: building design and the
+to type and duration of noise stressor, but may also be a
+effects of daily noise exposure. J Appl Anim Welf Sci, 9,
+consequence of investigating stress effects in different 1-7.
+durations after the end of the stress. Results of other 7. Cui B, Wu M, She X (2009): Effects of Chronic Noise
+studies, using different stressors rather than noise, vary in Exposure on Spatial Learning and Memory of Rats in
+Relation to Neurotransmitters and NMDAR2B Alteration
+terms of effects of stress on behaviors. In accordance
+in the Hippocampus. J Occup Health, 51, 152-158.
+with our results, it was reported that physical and
+8. Dal-Zotto S, Martí O, Armario A (2000): Influence of
+emotional stress did not have long-term effects on
+single or repeated experience of rats with forced swimming
+behaviors of rats measured in FST (21). Furthermore, no
+on behavioural and physiological responses to the
+effects of prenatal restraint stress on depressive-like stressor. Behav Brain Res, 114, 175-181.
+behaviors in rats’ offspring were found when measured at 9. Darnaudéry M, Dutriez I, Viltart O, Morley-Fletcher S,
+the age of 6 months. On the other hand, it was reported Maccari S (2004): Stress during gestation induces lasting
+effects on emotional reactivity of the dam rat. Behav Brain
+that chronic foot shock stress and restraint stress had
+Res, 153, 211-216.
+opposite effects, while former increased, later decreased
+10. Dayas CV, Buller KM, Crane JW, Xu Y, Day TA
+the duration of immobility (an indicator of depression-
+(2001): Stressor categorization: acute physical and
+related behavior) in FST (26). Furthermore, depressive
+psychological stressors elicit distinctive recruitment
+like effects of chronic stress and long term consequences patterns in the amygdala and in medullary noradrenergic
+were reported (9, 27). As it was demonstrated in these cell groups. Eur J Neurosci, 14, 1143-1152.
+studies, the type and the intensity of the stressors used 11. Isgor C, Kabbaj M, Akil H, Watson SJ (2004): Delayed
+and the stress modality and many other factors may effects of chronic variable stress during peripubertal-
+juvenile period on hippocampal morphology and on
+affect the results of stress exposure. The lack of effects of
+cognitive and stress axis functions in rats. Hippocampus,
+noise stress exposure on depressive-like behaviors may
+14, 636-648.
+be accounted for the type of stressor used in our study or
+12. Kendler KS, Karkowski LM, Prescott CA (1999):
+for by investigating the long term effects of stress rather Causal relationship between stressful life events and the
+than immediate effects. onset of major depression. Am J Psychiatry, 156, 837-841.
+As a conclusion it is suggested that chronic WNS 13. Luine V, Villegas M, Martinez C, McEwen BS (1994):
+(100 dB) exposed during prenatal and adolescent periods Repeated stress causes reversible impairments of spatial
+memory performance. Brain Res, 639, 167-170.
+does not have long term effects on cognition and
+14. Manikandan S, Padma MK, Srikumar R, Jeya
+depressive like behaviors of adult rats. Further research is
+Parthasarathy N, Muthuvel A, Sheela Devi R (2006):
+needed to understand the consequences of noise stress
+Effects of chronic noise stress on spatial memory of rats in
+exposure and response mechanisms of organism. relation to neuronal dendritic alteration and free radical-
+imbalance in hippocampus and medial prefrontal cortex.
+Acknowledgements Neurosci Lett, 399, 17-22.
+15. Marin MT, Cruz FC, Planeta CS (2007): Chronic
+This work was supported by Research Fund of
+restraint or variable stresses differently affect the
+Istanbul University (Project number: 207/29042004).The
+behavior, corticosterone secretion and body weight in rats.
+authors sincerely thank Dr. Bülent Ekiz for his valuable
+Physiol Behav, 90, 29-35.
+contributions to statistical analyses. 16. Marjut MA, Wallenius A (2004): The interaction of noise
+stress and personal project stress on subjective health. J
+References Environ Psychol, 24, 167-177.
+17. McEwen BS (2000): The neurobiology of stress: from
+1. Abidin I, Yargiçoglu P, Agar A, Gümüslü S, Aydin S,
+serendipity to clinical relevance. Brain Res, 886, 172-189.
+Oztürk O, Sahin E (2004): The effect of chronic restraint
+18. McLaughlin KJ, Gomez JL, Baran SE, Conrad CD
+stress on spatial learning and memory: relation to oxidant
+(2007): The effects of chronic stress on hippocampal
+stress. Int J Neurosci, 114, 683-99.
+morphology and function: an evaluation of chronic
+2. Aguilera G (1998): Corticotrophin Releasing Hormone,
+restraint paradigms. Brain Res, 1161, 56-64.
+Receptor Regulation and the Stress Response. Trends
+19. Mello PB, Benetti F, Cammarota M, Izquierdo I (2008):
+Endocrinol Metab, 9, 329-336.
+Effects of acute and chronic physical exercise and stress
+3. Bowman RE (2005): Stress induced changes in spatial
+on different types of memory in rats. An Acad Bras Cienc,
+memory are sexually differentiated and vary across the
+80, 301-309.
+lifespan. J Neuroendocrinol, 17, 526-535.
+20. Park CR, Campbell AM, Diamond DM (2001): Chronic
+4. Bulduk S, Canbeyli R (2004): Effect of inescapable tones
+psychosocial stress impairs learning and memory and
+on behavioral despair in Wistar rats. Prog
+increases sensitivity to yohimbine in adult rats. Biol
+Neuropsychopharmacol Biol Psychiatry, 28, 471-475.
+Psychiatry, 50, 994-1004.
+
+===== PAGE 6 =====
+238 Evren Eraslan-Uygur - Elif Ergül-Ekiz - İbrahim Akyazı - Güldal İnal-Gültekin - Murat Arslan
+21. Pijlman FT, Herremans AH, van de Kieft J, Kruse CG, 26. Swiergiel AH, Zhou Y, Dunn AJ (2007): Effects of
+van Ree JM (2003): Behavioural changes after different chronic footshock, restraint and corticotropin-releasing
+stress paradigms: prepulse inhibition increased after factor on freezing, ultrasonic vocalization and forced swim
+physical, but not emotional stress. Eur behavior in rats. Behav Brain Res, 183, 178-187.
+Neuropsychopharmacol, 13, 369-380. 27. Veena J, Srikumar BN, Raju TR, Shankaranarayana
+22. Porsolt RD, Anton G, Blavet N, Jalfre M (1978): Rao BS (2009): Exposure to enriched environment
+Behavioural despair in rats: a new model sensitive to restores the survival and differentiation of new born cells
+antidepressant treatments. Eur J Pharmacol, 47, 379-391. in the hippocampus and ameliorates depressive symptoms
+23. Samson J, Sheeladevi R, Ravindran R, Senthilvelan M in chronically stressed rats. Neurosci Lett, 455, 178-182.
+(2007): Stress response in rat brain after different
+Geliş tarihi: 24.09.2010 / Kabul tarihi: 25.01.20111
+durations of noise exposure. Neurosci Res, 7, 143-147.
+24. Smith JW, Seckl JR, Evans AT, Costall B, Smythe JW Address for correspondance:
+(2004): Gestational stress induces post-partum depression- Dr. Evren Eraslan-Uygur
+like behaviour and alters maternal care in rats. Istanbul University, Faculty of Veterinary Medicine,
+Psychoneuroendocrinology, 29, 227-244. Department of Physiology
+25. Sterlemann V, Rammes G, Wolf M, Liebl C, Ganea K, 34320, Avcilar/Istanbul/Turkey
+Müller MB, Schmidt MV (2010): Chronic social stress e-mail address: erarslan@istanbul.edu.tr
+during adolescence induces cognitive impairment in aged
+mice. Hippocampus, 20, 540-549.

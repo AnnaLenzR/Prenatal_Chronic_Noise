@@ -1,0 +1,228 @@
+
+===== PAGE 1 =====
+The Psychological Record, 1965, 15, 571-575.
+PRENATAL SOUND STIMULATION ON POSTNATAL
+RAT OFFSPRING OPEN FIELD BEHAVIORS1
+MIKE MORRA
+Xavier University
+The impact of an intrinsically neutral stimulus (standard door
+buzzer), presented in a novel setting during the second semester
+of pregnancy, was capable of altering rat offspring behavior in
+the open field on Day 25, postpartum. Twenty-four female albino
+rats of approximately 120 days of age were used. This sound
+stressed group was compared to two control groups; a condi
+tioned-fear group and a non-stressed group. The direction of the
+behavioral differences was increased emotionality between the
+sound-fear group and the control group (p<.Ol). These find
+ings suggested that the stressor may have acted directly on the
+fetus rather than indirectly via the placental barrier.
+The adverse effects of maternal anxiety during pregnancy on off
+spring behaviors have been reported by a number of investigators. These
+studies presented evidence of significant increase of emotionality (Ader
+& Belfer, 1962; Doyle & Yule, 1959; Hockman, 1961; Morra, 1965;
+Thompson, Watson & Charlesworth, 1962), reduced cognitive efficiency
+(Davids, Holden & Gray, 1963; Graham, Ernhart, Thurston & Craft,
+1962), and decreased vitality and viability (Antonov, 1947; Hockman,
+1961; Morra, 1965). On the other hand, "positive effects" (greater
+resistance to stress; less emotionality) have been reported by Ader
+and Conklin (1963), with prenatal handling; Furchtgott and Echols
+( 1958), with prenatal x-irradiation; and Vincent (1958), with prenatal
+alcoholism.
+These effects of matern al anxiety have been attributed to con
+ditioned avoidance (Thompson, 1957) and to the direct action of a
+maternal noxious experience (Antonov, 1947; Sontag, 1944). However,
+contemporary motivation theory suggests that the impact of any stimulus
+on an organism is derived not only from its inherent capability to
+produce approach and avoidance behaviors (i.e. meaningfulness, hut
+also from its characteristics of intensity and variation. (Fiske & Maddi,
+1961, pp. 11-56). Consequently, the impetus of a "neutral" stimulus
+(e.g. standard door buzzer) should be capable of inducing fear when
+it causes the organism to depart markedly from optimal levels of
+arousal.
+This study attempted to test this proposition in a design in which
+a moderate level of intermittent sound stimulation was administered
+to female albino rats, in a novel setting, during the second semester
+1 This project was supported by the University of Tennessee, Knoxville, Tennessee.
+
+===== PAGE 2 =====
+572 MORRA
+of pregnancy. The behaviors of these animals were compared to those
+of two contral groups, a pre-pregnancy avoidance trained group and a
+handled-only graup. The avoidance trained group was used as a control
+group in that all previous prenatal stress studies, to date, have considered
+avoidance conditioning in their designs.
+METHOD
+Subjects
+Twenty-four female rats of Wistar strain, obtained from the Budd
+Mountain Rodent Farm, were divided randomly into three graups.
+These animals were between 120 and 140 days of age at the beginning
+of the experiment. In addition, 18 male albino rats, approximately 150
+days of age, were used in the mating procedure. These animals were
+assigned randomly to six cages in graups of three rats per cage.
+Of the female rats, Group I received pre-pregnancy avoidance
+training and exposure to the conditioned stimulus during the second
+phase of pregnancy. Group II received only the es exposure treatment
+during the same second period of pregnancy and Graup III received
+only equal handling during the same period during pregnancy. Thirteen
+out of the 24 mothers produced litters (six in Group III; three in Group
+II; and four in Group I). These litters were all born within 6 days, i.e.,
+Days 22-27 (counting from Day 1 of mating).
+Sixty-three offspring from Group III, 35 offspring from Graup 11,
+and 26 offspring from Group I were tested in the open field. The sizes
+of the litters on Day 25 are reported in Table 1. These differences in
+viability were consistent with the differences reported by other investi
+gators (Ader & Belfer, 1962; Doyle & Yule, 1959; Hockman, 1961;
+Morra, 1965). An analysis of the fertility and viability data was not
+attempted since it has already been demonstrated that these differences
+were not due to specific experimental conditions. The actual variables
+associated with these findings have not yet been researched.
+Apparatus
+The apparatus used in the avoidance training was a modified
+Mowrer-Miller shock avoidance box having interior dimensions as
+fallows: length, 36 in.; width, 5 in.; height, 2~f ft. The grid Haar con
+sisted of 1/16-in. diameter bars spaced 'J~ in. apart horizontally, and
+beneath this grid there were four bars equally spaced running length
+wise. A 3-in. high electrified barder across the middle of the box divided
+it into two parts. The es was a noise of 3.25 sec. duration produced
+bya door buzzer. The DeS was a 3.0 ma electric shock to the grids from
+a dc constant current generator which came on .35 sec. after the
+cessation of the es. An electric timer was activated at the time that
+the es was terminated. Exactly one minute after the cessation of
+the es, a new trial was begun with shock now administered to the
+other side. A commutator motor scrambled the grid bars so that all
+bars were charged in relation to each other. The entire apparatus, includ-
+
+===== PAGE 3 =====
+PRENATAL SOUND STIMULATION 573
+ing the recycling, was automatie so that E had only to record the avoid
+an ce behaviors. The estimated over-all sound pressure in db (Re:
+.0002 microbar) was 85.
+The open field apparatus used in the offspring testing was con
+structed out of ~~-in. plywood and was unpainted. Its dimensions were
+25 in. lang, 25 in. wide, 2 ft. high. Twenty-five squares were marked
+off in red paint and uniform lighting was provided by an overhanging
+60 w bulb.
+Procedure
+Each animal in Group I was placed in the non-shock side of the
+shuttlebox at the beginning of the trial phase. It received avoidance
+training at the rate of 20 trials a day for six consecutive days. At the
+end of this pretraining, the animals of all three groups were placed
+in mating cages for three consecutive days. Each mating ca ge con
+sisted of four females and three males. This mating procedure was
+used in order to minimize the effects of handling during pregnancy
+and to avoid the possible confounding effects of the additional stress
+brought about by the vaginal smear technique.
+On Day 12 (counting from Day 1 of mating), the animals in Groups
+land II were returned to the avoidance apparatus and were exposed
+only to the sound of the buzzer (Le. es for Group I) for eight consecu
+tive days. Each animal received three trials, twice daily, with an inter
+block interval of approximately one hour. The animals were not pre
+vented from traversing to the adjacent section of the shuttlebox. Group
+III received equal and similar handling throughout this same period.
+This handling included the removal of the animal from its home cage,
+the placing of it into the avoidance apparatus, and the return to the
+home cage.
+On Day 19 (again counting from Day 1 of mating), the animals
+were isolated and were given equal amounts of nesting materials. No
+cross-fostering was attempted since no primary effects of fastering were
+reported by other investigators. On Day 23 postpartum, the offspring
+were weaned and 2 days later they were tested in the open field for
+one one-minute trial per rat.
+RESULTS AND DIseUSSION
+The data for the offspring are presented in Table 1. Analysis of
+variance tests were applied to measures of frequency of traversals and
+initial latency times. Orthogonal camparisans of the groups were not
+necessary since the differences obtained were obvious upon inspection
+of the data. The analysis of the travers al measure yielded differences
+between the control group III and both stress groups (F=5.56;
+df=2/123; p<.Ol). The stressed groups were characterized by less activ
+ity. The analysis of the latency measure yielded significant differences be
+tween Group II (sound-stressed) and Groups land III (F=5.84;
+df=2/123; p<.Ol). With both measures, the sound-stressed group dif-
+
+===== PAGE 4 =====
+574 MORRA
+fered significantly from the control group (III) in the direction of greater
+emotionality (i.e. less activity and greater latency in a novel setting).
+The number of male and female offspring among the three groups were
+not significantly different, consequently no analysis of the sex variable
+was necessary. Ader and Belfer (1962) found that ". .. irrespective of
+sex . . ., the offspring of the manipulated mothers were significantly
+more emotional."
+TABLE 1
+OPEN FIELD BEHAVIORS OF RAT OFFS PRING ON DAY 25
+Conditioned Sound Handled
+Fear Fear Only
+(Group I) (Group II) (Group III)
+Number
+Offspring 26 35 63
+Mean Number
+Traversals 15.8 14.2 19.5
+u
+Traversals 5.7 8.3 8.4
+Mean Initial
+Latencies (sec) 13.5 18.8 13.1
+u
+Latencies (sec) 6.1 8.2 7.9
+The proposition tested in this study was supported by the data.
+That is, the impact of an intrinsically neutral stimulus (standard door
+buzzer) presented in a novel setting, during the second semester of
+pregnancy, was capable of altering rat offspring behaviors on Day 25,
+postpartum. The direction of the behavioral differences was increased
+emotionality between the sound-stressed group (II) and the control
+group. The conditioned-fear group did not differ from the sound-stressed
+group in activity which suggested that the findings reported by
+Thompson (1957; 1962) were confounded by the systematic effects
+of the buzzer treatment during pregnancy. It is possible that the fear
+component produced by this novel experience accounted for a con
+siderable portion of the variation reported by Thompson ( 1957).
+Interestingly enough, the question of whether these offspring
+behavioral differences were due to the stress state of the matemal host
+remains unresolved. The fact that a smaller number of litters occurred
+among the mothers of Groups land II (stress groups) might be taken
+to support the notion of basic disturbances in matemal physiology. Vari
+ations in the productivity of the experimental litters as a result of
+special conditions during pregnancy has also been noted by other
+investigators (e.g. Hockman, 1961). It is possible that certain types
+of "psychological" stressors are capable of affecting the fetus directly
+rather than indirectly via the placental barrier. Currently, a replication
+of this study is in process in which fertile chick eggs are being used
+as 5s. This choice of organism will tend to factor out the effects of the
+matemal influences on the developing fetus.
+
+===== PAGE 5 =====
+PRENATAL SOUND STIMULATION 575
+REFERENCES
+ADER, R. & BELFER, M. L. Prenatal maternal anxiety and offspring emotionality
+in the rat. Psychol. Rep., 1962, 10, 711-718.
+ADER, R. & CONKLIN, P. M. Handling of pregnant rats: Effects on emotionality
+of their offipring. Science, 1963, 142, 411-412.
+ANTONOV, A. N. Children born during the seige of Leningrad. ]. Pediat., 1947,
+30, 250-259.
+DAVIDS, A., HOLDEN, R. H. & GRAY, G. B. Maternal anxiety during pregnancy
+and adequacy of mother and child adjustment. Child Developm., 1963, 34,
+993-1002.
+DOYLE, G. A. & YULE, E. P. Early experience and emotionality: The effect of
+prenatal and maternal anxiety on emotionality of albino rats. S. Atr. ].
+Soc. Res., 1959, 10, 57-77.
+FISKE, D. W. & MADDI, S. R. A conceptual framework. In D. W. Fiske & S. R.
+Maddi, (Eds.), Functions of varied experience. Homewood, Ill.: Dorsey
+Press, 1961. Pp. 11-56.
+FURCHTGOTT, E. & ECHOLS, M. Locomotor coordination following pre- und
+neonatal x-irradiation. ]. camp. physiol., Psychol., 1958, 51, 292-294.
+GRAHAM, F. K, ERNHART, C. B., THURSTON, D. & CRAFT, M. Development
+three years after perinatal anoxia and other potentially damaging new
+born experiences. Psychol. Monogr., 1962,76,3,522, 53pp.
+HOCKMAN, C. H. Prenatal maternal stress in the rat: Its effects on emotional
+behavior in the offspring. J camp. physiol. Psychol., 1961, 54, 679-684.
+MORRA, M. Varying levels of prenatal stress during two periods on rat offspring
+behaviors. Psychonomic Sei. in press.
+SONTAG, L. W. War and the fetal-maternal relationship. Marriage and Family
+Living, 1944, 6, 1-5.
+THOMPSON, W. R. Influence of prenatal and maternal anxiety on emotionality in
+young rats. Seience, 1957, 125, 698-699.
+THOMPSON, W. R., WATSON, J. & CHARLESWORTH, W. R. The effects of
+prenatal maternal stress on offspring behavior in rats. Psychol. MonogT., 1962,
+76, No. 38, 1-26.
+VINCENT, N. M. The effects of prenatal alcoholism upon motivation, emotionality,
+and learning in the rat. Amer. Psychologist, 1958, 13, 401, (Abstract).

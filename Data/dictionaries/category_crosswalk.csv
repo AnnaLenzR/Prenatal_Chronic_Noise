@@ -1,0 +1,39 @@
+variable,raw_value,clean_value,reason,n_rows
+shared_control,No,no,standardize capitalization,104
+shared_control,Yes,yes,standardize capitalization,103
+exposure_type,Continuous,continuous,standardize capitalization,123
+exposure_type,Intermitent,intermittent,correct spelling,84
+noise_type,Ultrasound,ultrasound,standardize capitalization,135
+noise_type,White noise,white_noise,machine-readable label,53
+noise_type,Traffic,traffic,standardize capitalization,11
+noise_type,Other/Unclear,other_unclear,machine-readable label,6
+noise_type,Door bell,doorbell,standardize spelling,2
+noise_type_2,Ultrasound,ultrasound,standardize capitalization,135
+noise_type_2,Audible,audible,standardize capitalization,66
+noise_type_2,Unclear,unclear,standardize capitalization,6
+control_conditions,Ambient sound,ambient_sound,machine-readable label,118
+control_conditions,Silence,silence,standardize capitalization,6
+control_conditions,Unclear,unclear,standardize capitalization,83
+offspring_sex,male,male,verified canonical label,102
+offspring_sex,female,female,verified canonical label,67
+offspring_sex,mixed,mixed,verified canonical label,38
+outcome_type,Anxiety,anxiety,standardize capitalization,164
+outcome_type,Axiety,anxiety,correct spelling,16
+outcome_type,Depression,depression,standardize capitalization,27
+data_type,Count,count,standardize capitalization,108
+data_type,Time,time,standardize capitalization,69
+data_type,Percentage,percentage,standardize capitalization,16
+data_type,Index,index,standardize capitalization,7
+data_type,Latency,latency,standardize capitalization,7
+data_units,Count,count,standardize capitalization,108
+data_units,s,seconds,make unit explicit,76
+data_units,%,percent,make unit explicit,23
+measurement_timing,Light phase,light_phase,machine-readable label,141
+measurement_timing,Dark phase,dark_phase,machine-readable label,5
+measurement_timing,Not reported,not_reported,machine-readable missingness label,61
+comparison_structure,Independent,independent,standardize capitalization,165
+comparison_structure,Dependent,dependent,standardize capitalization,42
+higher_better,Yes,yes,standardize capitalization,106
+higher_better,No,no,standardize capitalization,101
+checked_ml,yes,yes,verified canonical label,196
+checked_ml,yes - recheck!,recheck,separate review status,11

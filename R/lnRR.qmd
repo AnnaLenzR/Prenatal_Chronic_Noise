@@ -1,4 +1,12 @@
-# Estimating effect sizes
+::: {.callout-warning}
+## Superseded analysis file
+
+This exploratory file is retained for provenance but is no longer part of the active workflow. The reviewed implementation is being migrated to `pcne_book/02_effect_size_lnRR.qmd`, which reads the audited output from `pcne_book/01_data_wrangling.qmd`.
+
+Do not use this file to regenerate the analysis dataset.
+:::
+
+# Estimating effect sizes (legacy)
 
 ```{r}
 #| label: setup

@@ -1,0 +1,5 @@
+"decision_id","scope","decision","status","decision_date","analysis_implication"
+"ARM-01","All 207 effect sizes","All control and noise-exposed arms consist of different animals and are classified as independent.","Approved","2026-08-13","Use the independent-arm branch for every row."
+"ARM-02","Oliveira es047-es052","Replace the six legacy Dependent labels with Independent.","Approved","2026-08-13","Repeated ETM outcomes remain dependent across effect sizes."
+"ARM-03","Whitlow es094-es129","Replace the 36 legacy Dependent labels with Independent.","Approved","2026-08-13","Shared groups, repeated times, and multiple OFT outcomes remain dependent across effect sizes."
+"ARM-04","Analysis workflow","Do not use ROMC or a treatment-control correlation; model dependence among effect sizes separately.","Approved","2026-08-13","Retain group, cohort, test, time, and outcome identifiers for the later VCV construction."

@@ -1,0 +1,13 @@
+arm,mean_source,sd_source,se_source,n_groups
+control,luo_2018_q1_median_q3,wan_2014_q1_q3,sd_div_sqrt_n,18
+control,raw_mean,assumed_sqrt_mean_in_extraction,sd_div_sqrt_n,36
+control,raw_mean,raw_sd,raw_se_verified,104
+control,raw_mean,raw_sd,recalculated_from_sd,34
+control,raw_mean,raw_sd,sd_div_sqrt_n,2
+control,raw_mean,se_times_sqrt_n,raw_se_verified,13
+experimental,luo_2018_q1_median_q3,wan_2014_q1_q3,sd_div_sqrt_n,18
+experimental,raw_mean,assumed_sqrt_mean_in_extraction,sd_div_sqrt_n,36
+experimental,raw_mean,raw_sd,raw_se_verified,127
+experimental,raw_mean,raw_sd,recalculated_from_sd,11
+experimental,raw_mean,raw_sd,sd_div_sqrt_n,2
+experimental,raw_mean,se_times_sqrt_n,raw_se_verified,13

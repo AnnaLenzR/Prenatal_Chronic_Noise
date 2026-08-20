@@ -1,0 +1,19 @@
+category,severity,certainty,cell_level_flags
+Identifier integrity,High,Confirmed,117
+Summary statistics,High,Confirmed,45
+Author raw-data reconciliation,High,Confirmed,15
+Exposure metadata,High,Confirmed,15
+Outcome metadata,High,Confirmed,12
+Source traceability,High,Confirmed,10
+Sample size,High,Confirmed,3
+Source availability,High,Review,2
+Study metadata,High,Confirmed,1
+Coding,Low,Confirmed,335
+Protocol conformity,Low,Confirmed,123
+Schema,Low,Confirmed,1
+Source traceability,Medium,Confirmed,66
+Protocol conformity,Medium,Confirmed,37
+Statistical assumption,Medium,Review,36
+Coding,Medium,Confirmed,16
+Study metadata,Medium,Confirmed,3
+Schema,Medium,Confirmed,1

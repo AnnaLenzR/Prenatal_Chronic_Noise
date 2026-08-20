@@ -1,0 +1,297 @@
+---
+title: "Uni-moderators"
+---
+
+## Approach
+
+Each candidate moderator from the protocol (biological factors: species, sex, age; methodological factors: exposure timing/intensity, noise type, outcome type, assay type) is fit **one at a time** ("uni-moderator"), using the same random-effects structure and cohort-level variance-covariance matrix as the overall-effect model in Chapter 3. Fitting moderators one at a time, rather than in one large multi-moderator model, matches the protocol and keeps every model interpretable given the sample size (207 effect sizes from 16 studies).
+
+For categorical moderators, a level is only modelled if it has at least 5 effect sizes; levels below that are dropped and reported as such, rather than silently included in an unstable estimate. The number of *studies* contributing to each level is always shown next to the number of effect sizes, because several effect sizes from one study are weaker evidence than the same count spread across studies. For categorical moderators with 3 or more surviving levels, pairwise contrasts between levels are also reported, unadjusted for multiple comparisons (as descriptive contrasts, not confirmatory tests). For continuous moderators, the model is a simple linear meta-regression.
+
+`offspring_age_class` (juvenile / adolescent / adult) is intentionally not in this main set - per the protocol deviation addendum, it is restricted to descriptive summaries and sensitivity analyses and does not replace `offspring_age_d` as the primary age moderator. It is fit at the end of this chapter, labelled as a sensitivity analysis, not a primary result.
+
+```{r}
+#| label: setup
+
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  stop(
+    'Package "pacman" is required. Install it once with ',
+    'install.packages("pacman").'
+  )
+}
+
+analysis_packages <- c("dplyr", "readr", "metafor", "knitr", "ggplot2")
+pacman::p_load(char = analysis_packages)
+
+if (!requireNamespace("orchaRd", quietly = TRUE)) {
+  if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
+  remotes::install_github("daniel1noble/orchaRd", force = FALSE)
+}
+if (!requireNamespace("multcomp", quietly = TRUE)) install.packages("multcomp")
+library(orchaRd)
+
+options(dplyr.summarise.inform = FALSE)
+knitr::opts_chunk$set(comment = "#>")
+
+project_root <- normalizePath("..", mustWork = TRUE)
+derived_dir <- file.path(project_root, "Data", "derived")
+
+es <- readr::read_csv(file.path(derived_dir, "db_effect_sizes.csv"), show_col_types = FALSE) %>%
+  mutate(across(where(is.character), as.factor)) %>%
+  mutate(across(c(lnrr_harm, lnrr_var), as.numeric))
+
+# acoustic_band_from_frequency uses "not_reported" as a missingness label, not a
+# real category, for this specific moderator model.
+es <- es %>%
+  mutate(
+    acoustic_band_from_frequency = na_if(as.character(acoustic_band_from_frequency), "not_reported"),
+    acoustic_band_from_frequency = factor(acoustic_band_from_frequency)
+  )
+```
+
+Each moderator model below rebuilds its own VCV matrix from `metafor::vcalc()` (same `dependency_cluster_id`, `rho = 0.5` as Chapter 3) on whatever rows survive that moderator's own missing-data and low-k filtering, so the matrix always matches the rows actually being modelled.
+
+```{r}
+#| label: moderator-list
+
+categorical_moderators <- tribble(
+  ~variable, ~label,
+  "sp_latin", "Species",
+  "gest_window", "Gestational exposure window",
+  "exposure_type", "Exposure type (continuous vs. intermittent)",
+  "noise_type", "Noise type",
+  "acoustic_band_from_frequency", "Acoustic band (audible vs. ultrasound)",
+  "offspring_sex", "Offspring sex",
+  "outcome_type", "Outcome type (anxiety vs. depression)",
+  "assay_type", "Behavioural assay",
+  "data_type", "Outcome data type"
+)
+
+continuous_moderators <- tribble(
+  ~variable, ~label,
+  "offspring_age_d", "Offspring age at testing (days)",
+  "exposure_span_d", "Total exposure span (days)",
+  "exposure_session_duration_h", "Exposure session duration (hours/day)",
+  "loudness_dB", "Noise loudness (dB)"
+)
+```
+
+::: {.callout-note collapse="true"}
+## Helper functions
+
+```{r}
+#| label: helper-functions
+#| code-fold: true
+
+# Keep only levels with at least min_k effect sizes. The VCV matrix does not
+# need to be subset here because it is rebuilt from the filtered data (see
+# fit_categorical()) rather than sliced from the full matrix.
+filter_low_k <- function(dat, moderator, min_k = 5) {
+  dat <- dat %>% filter(!is.na(.data[[moderator]]))
+  dat[[moderator]] <- droplevels(as.factor(dat[[moderator]]))
+
+  level_counts <- dat %>%
+    group_by(level = .data[[moderator]]) %>%
+    summarise(n_effect_sizes = n(), n_studies = n_distinct(study_id), .groups = "drop")
+
+  keep_levels <- level_counts %>% filter(n_effect_sizes >= min_k) %>% pull(level)
+  dat_f <- dat %>% filter(.data[[moderator]] %in% keep_levels)
+  dat_f[[moderator]] <- droplevels(dat_f[[moderator]])
+
+  list(data = dat_f, level_counts = level_counts)
+}
+
+fit_categorical <- function(es, moderator, min_k = 5) {
+  filtered <- filter_low_k(es, moderator, min_k)
+  dat <- filtered$data
+  if (nrow(dat) < 5 || nlevels(dat[[moderator]]) < 2) return(list(level_counts = filtered$level_counts, model = NULL))
+
+  V <- metafor::vcalc(vi = lnrr_var, cluster = dependency_cluster_id, obs = es_id, rho = 0.5, data = dat)
+
+  mod <- metafor::rma.mv(
+    yi = lnrr_harm,
+    V = V,
+    mods = as.formula(paste0("~ ", moderator)),
+    random = list(~1 | study_id, ~1 | es_id, ~1 | strain),
+    test = "t",
+    method = "REML",
+    sparse = TRUE,
+    data = dat
+  )
+
+  plot <- orchaRd::orchard_plot(
+    mod,
+    mod = moderator,
+    group = "study_id",
+    xlab = "lnRR (harmonized)",
+    flip = TRUE
+  )
+
+  tukey <- NULL
+  if (nlevels(dat[[moderator]]) >= 3) {
+    mod_nointercept <- metafor::rma.mv(
+      yi = lnrr_harm,
+      V = V,
+      mods = as.formula(paste0("~ ", moderator, " - 1")),
+      random = list(~1 | study_id, ~1 | es_id, ~1 | strain),
+      test = "t",
+      method = "REML",
+      sparse = TRUE,
+      data = dat
+    )
+    k <- nlevels(dat[[moderator]])
+    K <- multcomp::contrMat(rep(1, k), type = "Tukey")
+    colnames(K) <- names(coef(mod_nointercept))
+    tukey <- summary(multcomp::glht(mod_nointercept, linfct = K), test = multcomp::adjusted("none"))
+  }
+
+  list(level_counts = filtered$level_counts, model = mod, r2 = orchaRd::r2_ml(mod), plot = plot, tukey = tukey)
+}
+
+fit_continuous <- function(es, moderator, min_n = 10, min_studies = 3) {
+  dat <- es %>% filter(!is.na(.data[[moderator]]))
+  if (nrow(dat) < min_n || n_distinct(dat$study_id) < min_studies) {
+    return(list(n_effect_sizes = nrow(dat), n_studies = n_distinct(dat$study_id), model = NULL))
+  }
+
+  V <- metafor::vcalc(vi = lnrr_var, cluster = dependency_cluster_id, obs = es_id, rho = 0.5, data = dat)
+
+  mod <- metafor::rma.mv(
+    yi = lnrr_harm,
+    V = V,
+    mods = as.formula(paste0("~ ", moderator)),
+    random = list(~1 | study_id, ~1 | es_id, ~1 | strain),
+    test = "t",
+    method = "REML",
+    sparse = TRUE,
+    data = dat
+  )
+
+  plot <- orchaRd::bubble_plot(
+    mod,
+    mod = moderator,
+    group = "study_id",
+    xlab = moderator,
+    ylab = "lnRR (harmonized)"
+  )
+
+  list(n_effect_sizes = nrow(dat), n_studies = n_distinct(dat$study_id), model = mod, r2 = orchaRd::r2_ml(mod), plot = plot)
+}
+```
+:::
+
+## Categorical moderators
+
+```{r}
+#| label: run-categorical
+#| results: asis
+#| fig-width: 6
+#| fig-height: 4
+
+for (i in seq_len(nrow(categorical_moderators))) {
+  variable <- categorical_moderators$variable[i]
+  label <- categorical_moderators$label[i]
+
+  cat("\n\n### ", label, " (`", variable, "`)\n\n", sep = "")
+
+  res <- fit_categorical(es, variable)
+
+  cat("\n\n**Effect sizes / studies per level (before the k >= 5 filter):**\n\n")
+  cat(knitr::kable(res$level_counts, col.names = c("Level", "Effect sizes", "Studies")), sep = "\n")
+  cat("\n\n")
+
+  if (is.null(res$model)) {
+    cat("\n\nFewer than two levels reach 5 effect sizes; this moderator is not modelled.\n\n")
+    next
+  }
+
+  cat("\n\n```\n")
+  print(summary(res$model))
+  cat("\n```\n\n")
+
+  cat("\n\n**R-squared:**\n\n")
+  print(knitr::kable(as.data.frame(t(res$r2))))
+
+  print(res$plot)
+
+  if (!is.null(res$tukey)) {
+    cat("\n\n**Pairwise contrasts between levels (unadjusted p-values, descriptive):**\n\n")
+    cat("\n\n```\n")
+    print(res$tukey)
+    cat("\n```\n\n")
+  }
+}
+```
+
+## Continuous moderators
+
+```{r}
+#| label: run-continuous
+#| results: asis
+#| fig-width: 6
+#| fig-height: 4
+
+for (i in seq_len(nrow(continuous_moderators))) {
+  variable <- continuous_moderators$variable[i]
+  label <- continuous_moderators$label[i]
+
+  cat("\n\n### ", label, " (`", variable, "`)\n\n", sep = "")
+
+  res <- fit_continuous(es, variable)
+
+  cat(
+    "\n\n", res$n_effect_sizes, " effect sizes from ", res$n_studies, " studies have this value reported.\n\n",
+    sep = ""
+  )
+
+  if (is.null(res$model)) {
+    cat("\n\nToo few effect sizes or studies with a reported value to fit this model.\n\n")
+    next
+  }
+
+  cat("\n\n```\n")
+  print(summary(res$model))
+  cat("\n```\n\n")
+
+  cat("\n\n**R-squared:**\n\n")
+  print(knitr::kable(as.data.frame(t(res$r2))))
+
+  print(res$plot)
+}
+```
+
+## Sensitivity analysis: offspring age class
+
+Per the protocol deviation addendum, `offspring_age_class` (juvenile / adolescent / adult, using species- and sex-specific thresholds) is a sensitivity check alongside the continuous `offspring_age_d` model above, not a replacement for it.
+
+```{r}
+#| label: run-age-class
+#| results: asis
+#| fig-width: 6
+#| fig-height: 4
+
+res_age_class <- fit_categorical(es, "offspring_age_class")
+
+cat("\n\n**Effect sizes / studies per level:**\n\n")
+cat(knitr::kable(res_age_class$level_counts, col.names = c("Level", "Effect sizes", "Studies")), sep = "\n")
+
+if (!is.null(res_age_class$model)) {
+  cat("\n\n```\n")
+  print(summary(res_age_class$model))
+  cat("\n```\n\n")
+  print(res_age_class$plot)
+  if (!is.null(res_age_class$tukey)) {
+    cat("\n\n```\n")
+    print(res_age_class$tukey)
+    cat("\n```\n\n")
+  }
+}
+```
+
+## Session information
+
+```{r}
+#| label: session-information
+
+sessionInfo()
+```

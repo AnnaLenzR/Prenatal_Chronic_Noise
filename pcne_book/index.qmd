@@ -1,0 +1,20 @@
+---
+title: "Project workflow"
+---
+
+This Quarto book is the reproducible analysis record for the prenatal chronic noise exposure meta-analysis. It is intentionally separate from the older `book/` directory, which contains material adapted from a colleague's music-and-rodent meta-analysis and is kept only as a style reference.
+
+The workflow follows the protocol (`protocol/PCNE_protocol_v.4_111425.docx`, with the deviation addendum of 18 August 2026):
+
+1. finish preparing the extraction database for analysis (Chapter 1);
+2. calculate the log response ratio, lnRR (Chapter 2);
+3. estimate the overall effect of maternal chronic noise exposure on offspring anxiety- and depression-like behaviour (Chapter 3);
+4. fit uni-moderator models for the biological and methodological moderators listed in the protocol (Chapter 4);
+5. assess publication bias (Chapter 5);
+6. report the CRIME-Q critical appraisal of the included studies (Chapter 6).
+
+This analysis is scoped to lnRR and to uni-moderator models, matching the plan agreed for this project. Reproducible outputs are written to `Data/derived/` and `Data/audits/`; the reviewed extraction file in `outputs/019ff719-4f39-7b31-8dee-189f2b3ff628/` is never overwritten.
+
+## How to render this book
+
+Open `pcne_book` in RStudio (or run `quarto render` from within this folder) after installing the packages listed in each chapter's setup step. `orchaRd` is installed from GitHub (`daniel1noble/orchaRd`) the first time a chapter that needs it is rendered.

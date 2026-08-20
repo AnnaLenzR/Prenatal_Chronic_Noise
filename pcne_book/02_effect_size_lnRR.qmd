@@ -1,0 +1,145 @@
+---
+title: "Effect-size calculation: lnRR"
+---
+
+## The log response ratio
+
+This project uses the log response ratio (lnRR), the natural logarithm of the ratio of the treatment mean to the control mean [@hedges1999; @lajeunesse2015], as agreed in the protocol.
+
+::: {.callout-note}
+## Formula
+
+$$
+\ln RR = \ln\left(\frac{M_T}{M_C}\right) + \frac{1}{2}\left(\frac{SD_T^2}{N_T M_T^2} - \frac{SD_C^2}{N_C M_C^2}\right)
+$$
+
+where $M_T$, $SD_T$, $N_T$ are the mean, standard deviation, and sample size of the noise-exposed group, and $M_C$, $SD_C$, $N_C$ are the same for the control group. This is the bias-corrected estimator implemented by `metafor::escalc(measure = "ROM")`.
+:::
+
+::: {.callout-note collapse="true"}
+## A note on the "robust estimator" wording in the protocol
+
+The protocol cites Nakagawa et al. [@nakagawa2023c] for a "robust estimator of lnRR". That paper (Ecology Letters, 2023) proposes a method specifically for meta-analyses with a substantial share of *missing* standard deviations, using sample-size-based weighting instead of the usual SD-based sampling variance for the affected rows. In this dataset only 31/207 rows needed a derived SD (Chapter 1), and all 207 have a usable SD after that step, so the standard `escalc(measure = "ROM")` estimator above is used throughout. If a future update to this dataset has many more missing SDs, revisit this decision and implement the Nakagawa et al. (2023) weighting instead.
+:::
+
+Every treatment-control pair in this dataset uses independent animals (confirmed in the protocol deviation review: "the control and exposed animals are distinct for every comparison"), so the same independent-arm formula applies to all 207 effect sizes - there is no paired/dependent-design branch to handle.
+
+Positive lnRR is not yet interpretable on its own: it only means "the exposed-group mean was higher than the control-group mean" for a given outcome, and outcomes are scored in both directions (e.g., more time in the open arms of an elevated-plus maze is *less* anxiety-like behaviour, while more immobility in a forced-swim test is *more* depression-like behaviour). The next step harmonizes this so the sign is comparable across outcomes.
+
+```{r}
+#| label: setup
+
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  stop(
+    'Package "pacman" is required. Install it once with ',
+    'install.packages("pacman").'
+  )
+}
+
+analysis_packages <- c("dplyr", "readr", "metafor", "knitr", "ggplot2")
+pacman::p_load(char = analysis_packages)
+
+options(dplyr.summarise.inform = FALSE)
+knitr::opts_chunk$set(comment = "#>")
+
+project_root <- normalizePath("..", mustWork = TRUE)
+derived_dir <- file.path(project_root, "Data", "derived")
+
+db <- readr::read_csv(
+  file.path(derived_dir, "pcn_data_analysis_ready.csv"),
+  show_col_types = FALSE
+)
+```
+
+## Calculate lnRR and its sampling variance
+
+```{r}
+#| label: calculate-lnrr
+
+es <- metafor::escalc(
+  measure = "ROM",
+  m1i = ex_mean_final, sd1i = ex_sd_final, n1i = ex_n,
+  m2i = c_mean_final,  sd2i = c_sd_final,  n2i = c_n,
+  data = db
+)
+
+es <- es %>%
+  rename(lnrr_raw = yi, lnrr_var = vi) %>%
+  mutate(
+    lnrr_se = sqrt(lnrr_var),
+    higher_better = trimws(higher_better),
+    lnrr_harm = ifelse(tolower(higher_better) == "yes", -lnrr_raw, lnrr_raw)
+  )
+
+if (any(!es$higher_better %in% c("Yes", "No"))) {
+  stop("higher_better must be exactly 'Yes' or 'No' for every row.")
+}
+if (any(is.na(es$lnrr_raw) | is.na(es$lnrr_var))) {
+  stop("escalc produced a missing lnRR or variance; check the input means/SDs/n.")
+}
+
+tibble(
+  effect_sizes = nrow(es),
+  studies = n_distinct(es$study_id),
+  flipped_for_direction = sum(tolower(es$higher_better) == "yes")
+) %>%
+  knitr::kable()
+```
+
+`lnrr_raw` is the estimator applied directly to the exposed vs. control means. `lnrr_harm` multiplies `lnrr_raw` by $-1$ whenever `higher_better == "Yes"` (a higher raw value on that assay means *less* anxiety/depression), so that a positive `lnrr_harm` consistently means **more** anxiety- or depression-like behaviour under maternal chronic noise exposure, and a negative `lnrr_harm` means less. `lnrr_harm` is the value used in every model from Chapter 3 onward; `lnrr_raw` is kept only for auditing.
+
+## Effect-size table
+
+```{r}
+#| label: effect-size-table
+
+es %>%
+  select(
+    study_id, es_id, outcome_type, assay_type, measurement_variable,
+    higher_better, ex_mean_final, ex_sd_final, ex_n,
+    c_mean_final, c_sd_final, c_n,
+    lnrr_raw, lnrr_harm, lnrr_var, lnrr_se
+  ) %>%
+  knitr::kable(digits = 3)
+```
+
+## Distribution of effect sizes
+
+```{r}
+#| label: lnrr-histogram
+#| fig-cap: "Distribution of harmonized lnRR across all 207 effect sizes. Positive values indicate more anxiety- or depression-like behaviour under maternal chronic noise exposure."
+
+ggplot(es, aes(x = lnrr_harm)) +
+  geom_histogram(bins = 30, fill = "#477AA8", color = "white") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "#B24745") +
+  labs(x = "Harmonized lnRR", y = "Number of effect sizes") +
+  theme_minimal(base_size = 12)
+```
+
+```{r}
+#| label: lnrr-se-scatter
+#| fig-cap: "lnRR against its standard error. Points far to the right with a small effect size are the most influential on the funnel-plot check in Chapter 5."
+
+ggplot(es, aes(x = lnrr_se, y = lnrr_harm)) +
+  geom_point(alpha = 0.5, color = "#477AA8") +
+  labs(x = "Standard error of lnRR", y = "Harmonized lnRR") +
+  theme_minimal(base_size = 12)
+```
+
+## Export
+
+```{r}
+#| label: export
+
+readr::write_csv(es, file.path(derived_dir, "db_effect_sizes.csv"), na = "")
+
+tibble(output = "Data/derived/db_effect_sizes.csv") %>% knitr::kable()
+```
+
+## Session information
+
+```{r}
+#| label: session-information
+
+sessionInfo()
+```

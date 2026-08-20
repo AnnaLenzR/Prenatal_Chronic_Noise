@@ -1,0 +1,1446 @@
+
+===== PAGE 1 =====
+Research Article
+Developmental
+Neuroscience
+DevNeurosci2024;46:237–261 Received: March 1, 2023
+Accepted: October 6, 2023
+DOI:10.1159/000534687
+Published online: October 19, 2023
+Ultrasound-Induced Prenatal Stress:
+New Possibilities for Modeling Mental
+Disorders
+Olga Abramovaa,b Anna Morozovaa,b Eugene Zubkova
+Valeria Ushakovaa,b,c Yana Zorkinaa,b Andrey T. Proshind
+Zinaida Storozhevae Olga Gurinaa Vladimir Chekhonina,f
+aDepartment of Basic and Applied Neurobiology, V. Serbsky Federal Medical Research Centre of Psychiatry and
+Narcology, Moscow, Russia; bMental-health Clinic No. 1 named after N.A. Alekseev, Moscow, Russia;
+cDepartment of Biology, Lomonosov Moscow State University, Moscow, Russia; dLaboratory of General Physiology
+of Functional Systems, P.K. Anokhin Institute of Normal Physiology, Moscow, Russia; eLaboratory of Functional
+Neurochemistry, P.K. Anokhin Institute of Normal Physiology, Moscow, Russia; fDepartment of Medical
+Nanobiotechnology, Pirogov Russian National Research Medical University, Moscow, Russia
+Keywords associated with certain mental disorders in humans, to
+Prenatal stress · Ultrasound exposure · Mental disorders · determine the possibility of creating a new model of
+Animal models · Neurotransmitters psychopathology. Our study included a study of some
+behavioral characteristics of male and female rats in the
+elevated plus maze, open-field test, object recognition
+Abstract test, social interaction test, sucrose preference test, latent
+The development of animal models of mental disorders is inhibition test, Morris water maze, forced swimming test,
+an important task since such models are useful for acoustic startle reflex, and prepulse inhibition tests. We
+studying the neurobiological mechanisms of psychopa- also determined the activity of the serotonergic, dopa-
+thologies and for trial of new therapeutic drugs. One way minergic, and noradrenergic neurotransmitter systems in
+to model pathologies of the nervous system is to impair the hippocampus and frontal cortex by HPLC-ED. Con-
+fetal neurodevelopment through stress of the pregnant centration of norepinephrine, dopamine, DOPAC, seroto-
+future mother, or prenatal stress (PS). The use of variable nin, and HIAA, as well as DOPAC/dopamine and HIAA/
+frequency ultrasound (US) in rodents is a promising serotonin ratios were determined. A correlation analysis of
+method of imitating psychological stress, to which women behavioral and neurochemical parameters in male and
+in modern society are most often subjected. The aim of our female rats was performed based on the data obtained.
+study was to investigate the effect of PS induced by ex- The results of the study showed that US PS altered the
+posure to variable frequency ultrasound (US PS) behavioral phenotype of the rat offspring. US PS increased
+throughout the gestational period on the adult rat off- the level of anxious behavior, impaired orientation-
+spring, namely, to identify features of behavioral alter- research behavior, increased grooming activity, de-
+ations and neurochemical brain parameters that can be creased the desire for social contacts, shifted behavioral
+karger@karger.com ©2023TheAuthor(s). Correspondenceto:
+www.karger.com/dne PublishedbyS.KargerAG,Basel OlgaAbramova,abramova1128 @ gmail.com
+ThisarticleislicensedundertheCreativeCommonsAttribution4.0
+International License (CC BY) (http://www.karger.com/Services/
+OpenAccessLicense). Usage, derivative works and distribution are
+permittedprovidedthatpropercreditisgiventotheauthorandthe
+originalpublisher.
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 2 =====
+reactionsfromsocialinteractiontointeractionwithinanimate can disrupt after external deleterious environment ex-
+objects, impaired latent inhibition, and decreased the startle posure and induce psychopathology manifestation [17].
+reflex. US PS activated the serotonergic, dopaminergic, and Stress experienced by the mother during pregnancy is
+noradrenergic neurotransmitter systems of the rat frontal described as prenatal stress (PS). It is one of the main
+cortex and hippocampus. A correlation between neuro- negative environmental factors, which can indirectly
+chemical and behavioral parameters was revealed. Our study affect the offspring [13, 18].
+showed that US PS leads to a certain dysfunction on be- A large number of studies describe the effects of PS on
+havioral and neurochemical levels in rats that is most closely the offspring in humans and other animals [17]. Stress
+associated with symptoms of schizophrenia or autism. We induction in pregnant female animals leads to the de-
+hypothesize that this could potentially be an indicator of face velopment of a pathological behavioral phenotype in the
+validity for a model of psychopathology based on neuro- offspring. Stressful life events during pregnancy, as well as
+developmental impairment. © 2023 The Author(s). symptoms of maternal anxiety and depression, increase
+PublishedbyS.KargerAG,Basel the risk of a number of emotional, behavioral, and
+cognitive problems in the child [19]. Experienced PS is
+associated with mental disorders such as schizophrenia
+Introduction [20], depression, anxiety [21], autism [22, 23], and at-
+tention deficit hyperactivity disorder [22]. With this
+“Stress” is “a non-specific response of the organism to background, studying the effects of PS is an important
+any demand for change” as defined by Hans Selye [1, 2]. task [24].
+Selye identified several stages of the organism’s stress It is also important to note that the study of PS via the
+response, the last of which “exhaustion” is potentially animal models can be advantageous as a tool for mod-
+dangerous [3]. The consequences of stress can include eling of psychopathologies. Given that neurobiological
+both negative and positive aspects [4, 5]. An optimal level studies of human psychiatric pathologies are limited, the
+of stress is necessary to create adaptation to negative using of animal models for the investigation of brain
+influences through hormesis, which involves a positive impairments is practicable [25]. As PS disrupts the
+response to a low dose of stress [4, 6]. However, dis- neurodevelopment, the usage of PS has the potential to
+ruption of normal physiological function occurs when all imitate major etiological aspects of certain mental dis-
+stimuli outweigh the ability to cope with the effects of orders [26]. Therefore, animal models based on PS ex-
+stress [4, 5, 7]. Stress can be caused by various factors posure are applicable for the research of the neurobio-
+including environmental factors (light, noise, irritating logical mechanisms of psychopathologies for the evalu-
+colors, uncomfortable temperature, lack of access to ation of the new therapeutic drugs.
+food and water, crowding, negative social experiences) PS can alter not only behavioral traits but also related
+[7], in which case these factors are considered negative biochemical parameters, which reflect the functioning of
+environmental stressors. Stress exhaustion can lead to neurotransmitter systems of the brain. Neurotransmitters
+various behavioral disorders, among others, for example, play the critical role in the process of information
+increased population density is a strong stressor that can transmission between the neurons in the nervous system
+induce a stressful physiological response in mammals [27]. The impairments of neurotransmitter systems can
+[8], and even lead to aberrant behaviors such as can- induce behavioral alterations, leading to the development
+nibalism [9], increased aggression [10], addictions in of psychiatric pathologies [28–30]. Serotonin, dopamine,
+humans [11]. and norepinephrine are the most studied and functionally
+A separate area is the study of stress in early life, important neurotransmitters [31]. Serotonin is one of the
+including the prenatal period. Prenatal period of or- main monoamine neurotransmitter in the nervous sys-
+ganism development is an incredibly important stage tem. Serotonergic neurons modulate a wide range of
+because it is very sensitive to the various positive (en- functions, including mood, perception, aggression, anx-
+riched environment) and negative stimuli (maternal iety, cognition, attention, circadian rhythms, and em-
+deprivation, malnutrition, social isolation) [12–15]. bryonic development. Disruption of the serotonergic
+These factors together with genetic predisposition pro- system is critical for the manifestation of several mental
+duce a complex effect on the structural and functional disorders, including anxiety, depression, and schizo-
+organization of the entire organism, particular of the phrenia [32]. Dopamine and norepinephrine represent
+brain, which finally determines the behavioral phenotype catecholamine neurotransmitters. The dopaminergic
+of the organism [13–16]. Nervous system development system is important for the neuromodulation of
+238 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 3 =====
+motivation, reward, cognitive functions, and reproductive ations. We suggest that some identified traits of the
+behavior [33]. Altered catecholamine transmission play behavioral and biochemical phenotype of rats after US PS
+the significant role in the etiology of psychiatric disorders can be compared to the symptoms of certain human
+[34]. In particular, the dopamine hypothesis is the psychiatric disorders (schizophrenia spectrum disorder
+longest-standing pathoetiological theory of schizophrenia or autism). This approach can allow us to determine the
+[28, 35]. Norepinephrine is produced predominantly by possibility of modeling of psychopathologies on the basis
+noradrenergic neurons in the locus coeruleus and is re- of US PS exposure and to demonstrate the face validity of
+leased in almost all brain regions. It is involved in many the prospective translational model.
+processes, including learning, memory and attention,
+mood, and stress response. It is also considered as an
+important regulator of the brain development [36]
+Materials and Methods
+and associated with cognitive impairment and
+schizophrenia [37]. Experimental Animals
+Our study is focused on the new approach to rodents We used the rats from the Nursery for Laboratory Animals
+stressing. Basically, stress exposure can be of a different (Pushchino, RAS, Moscow region) in the experiment. The ex-
+perimental part of the work was performed on 20 female Wistar
+nature, and can often be divided into physical and
+rats from which the offspring were obtained (n = 165). Housing
+psychological stress. In the modern society, pregnant
+conditions and all experimental procedures were conducted in
+women experience psychological stress more often than accordance with the Directive 2010/63/EU of September 22, 2010
+physical stress. Consequently, the using of the animal and approved by the Local Ethical Committee of V.P. Serbsky
+models based on psychological stress exposure could be National Medical Research Center for Psychiatry and Narcology,
+approval number 1 from February 10, 2022. All animals were kept
+preferable [38]. Various exposure modalities are widely
+in the laboratory vivarium with constant room temperature 22°S,
+used to reproduce PS in animals for scientific research,
+lightregime12/12h,andfreeaccesstofoodandwater(adlibitum).
+such as restraint stress or chronic unpredictable mild Before the start of the experiments, the animals underwent the
+stress [26]. However, these approaches do not focus on period of adaptation for 7 days.
+the main stressor that affects humans in the modern
+society: the informational stress. The using of variable Design of the Experiment
+The scheme of the experiment is shown in Figure 1. Three
+frequency ultrasound (US) exposure in rats seems
+months old female rats were randomly paired with males at the
+promising for this purpose as adult rodents vocalize
+rate of two females per male. Vaginal swabs were sampled daily
+22–25 kHz US signals during dangerous situations, and
+fromthefemalestodeterminethemomentoffertilization.Theday
+pups vocalize 40 kHz signals when isolated from their the sperm was detected in the swab was considered as the 0 day of
+dams [39]. Earlier, we demonstrated that unavoidable US pregnancy. Female rats from each male were randomly divided
+exposure induces stress condition in rodents, and when into two groups after the fertilization and placed in individual
+cages (53 cm × 35 cm × 19 cm). The females from which the
+chronically exposed for 21 days leads to the development
+experimental geniture (PS offspring) were subsequently obtained
+of depressive-like state [40–44]. It should be noted that
+(n = 13) were placed under the experimental US radiation im-
+our model of US stress differs from another model based mediately after the fertilization for the entire period of gestation.
+on sound exposure, the noise stress model [45]. This type Females from which the control offspring were obtained (n = 7)
+of stress is based only on noise exposure to “white noise,” were kept in individual cages under the standard conditions
+without experimental exposure for the entire gestation period. All
+which is often presented at high intensity. However, our
+females after parturition were kept in individual cages with their
+model of US stress is based on the alternation of different
+pups under the standard conditions without experimental expo-
+US frequencies of moderate loudness (50 dB), which sure. The day of the birth was considered as the 1st postnatal day
+create primarily an information load for rodents and thus (PND) for the newborn rats. Pups were weaned from the dams at
+the animals experience information stress. theageof21PND,separatedbysex,anddividedintothegroupsof
+not more than 10 animals in 1 cage until the maturation (age 2
+Therefore, we hypothesized that chronic exposure of
+months). Therefore, four groups of adult animals were obtained:
+pregnant females to US for the entire gestation period
+the control males, the control females, PS males, and PS females.
+could eventually affect the offspring. Indeed, our studies The resulting adult control and PS offspring at the age 60 PND
+have demonstrated that PS induced by the US exposure were divided randomly into the two groups to minimize the
+(US PS) alters the behavior of both adult and juvenile rats negativeeffectsofalargenumberofbehavioraltests.Thefollowing
+behavioral tests were performed with the first group of offspring
+[46, 47]. In the current work, we aimed to study more
+(12 control males, 14 control females, 13 PS males, 14 PS females)
+thoroughly the behavioral phenotype of adult rats after
+in the following sequence: elevated plus maze test (EPM) (70
+US PS, to determine the effect of US PS on the brain PND), open-field test (74 PND), object recognition test (75 PND),
+neurotransmitter systems, and to evaluate their associ- sucrose preference test (80 PND), social interaction test (83 PND),
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 239
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 4 =====
+Fig. 1. Scheme of the experiment. Anhedonia – sucrose preference test; OF, open-field test; EPM, elevated plus
+maze;OR,objectrecognitiontest;SI,socialinteractiontest;Startle,startlereflextest;FS,forcedswimmingtest;LI,
+latent inhibition test; Morris, Morris water maze; PND, postnatal day; US, variable frequency ultrasound.
+startle reflex test (87 PND), and forced swimming test (95 PND). arms crossing. The tested animal was placed into the central
+The animals were not subjected to any manipulations for 1 month platform with its head toward the open arm. Behavioral param-
+after the last test. After that, the animals from this group were eters were registered during 5 min [48].
+sacrificed at the age of 125 PND for the brain tissue sampling. The open-field test was conducted to assess the level of anxiety,
+The following behavioral tests were performed with the second motor,andexploratoryactivityinanimals.Thetestwasconducted
+group of animals (23 control males, 23 control females, 31 PS onthesquarearena(fieldsize:45cm×45cm×40cm),thebottom
+males, 35 PS females) in the following sequence: EPM (70 PND), of which was divided into 9 square sectors (15 cm × 15 cm). The
+openfieldtest(74PND), objectrecognitiontest(75PND), sucrose arena was illuminated with direct bright white light during the test
+preference test (80 PND), social interaction test (83 PND), latent and cleaned after the each animal. The rat was placed in the center
+inhibition test (86–89 PND), and Morris water maze test of the arena; its behavior was registered for 5 min [43].
+(98–100 PND). The object recognition test was performed to assess short-term
+object memory. A square arena (45 cm × 45 cm × 40 cm) was used
+Experimental Exposure to Variable Frequency US for the test. The behavioral test consisted of the three succeeding
+PS in pregnant female ratswas induced by the exposure to the US stages. On the first day of testing, the rat was placed in an empty
+of variable frequency. The US was applied permanently during the arenafor5minforhabituation(thisstagecoincidedwiththeopen-
+whole period of gestation (21 days) using the US generator with the field test). On the second day, the training and the testing stages
+following technical specifications: power supply – 220 V through the were conducted. At the first stage (training), two objects of the
+deviceadapter,powerconsumption–0.3W.Soundpressurelevelwas sameshapeandsizewereplacedinthearena.Theratwasplacedin
+50 dB ± 5 dB (fluctuation ±10%). The range of US frequency was the center ofthe arena, and the total exploration time(s) of objects
+alternated every 10 min between the following frequencies: short was registered during 5 min. The second stage (test) was per-
+frequencies (20–25 kHz), medium frequencies (25–40 kHz), high formed 2 h later. One of the objects was replaced by the new of
+frequencies (40–45 kHz). The total duration of radiation at short and different shape and size. The rat was placed in the center of the
+medium frequencies was 35%, at high frequencies – 30%. The arena, and the total exploration time (s) of the familiar and new
+generator was placed 1 m above the cages with the animals, and the objects was registered. Animals that explored objects for less than
+location of the cages was changed daily [41, 43, 44, 46]. 10 s during the training or the testing stages were excluded. The
+discrimination index for each animal was calculated according to
+Behavioral Tests the formula: (Tn-To)/(Tn+To)*100, where Tn is the total ex-
+Behavioral testing was conducted between 10:00 a.m. and 2:00 ploration time of the new object in the test stage, To is the total
+p.m. Animals were transferred to the room where behavioral tests exploration time of the familiar object in the test stage [49, 50].
+were performed at least 30 min before the testing. The studied The social interaction test was performed to evaluate social
+parameters were registered under the standard conditions at an air activity. The test was conducted under the red light in the home
+temperatureof22°Candunderthewhitelight(100lx)orredlight, cage of the testing rat, in which a juvenile rat of the same sex was
+dependingonthetestconditions.Animal’sbehaviorwasregistered placed for 10 min. The total time of social contacts (s) between the
+via the digital video camera and analyzed using the computer experimental rat and a juvenile rat was registered. Rats that ex-
+program “RealTimer” (Open Science, Russia). hibited aggressive behavior toward juvenile rats were excluded
+The elevated plus maze was performed to evaluate the level of from the testing [40].
+anxiety in animals. The test was conducted in the cross-shaped The sucrose preference test was conducted to assess the level of
+maze, consisted of 2 closed (29 cm high walls) and 2 open (0.5 cm anhedonia in rats. Rats were placed in individual cages and pre-
+high sides) arms, and placed 100 cm above the floor. The size of sented with two bottles, one with pure water and the other with 1%
+armswas52× 14cm,with acentralplatform (14× 14cm)into the sucrose solution for 1 day under free choice conditions. The bottles
+240 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 5 =====
+a b c
+d e
+Fig. 2. a–e Elevated plus maze results. PS, offspring with prenatal stress; Control, control offspring; *p < 0.05; **p < 0.01; ***p < 0.001.
+wereswappedevery4htoeliminateplacepreference.After24h,the 50 s between the signals was applied. Animals from the non-pre-
+volume of obtained fluid from both bottles was measured and the exposure subgroup were placed in the arena and kept there for
+sucrose preference index was calculated according to the following 40 min without any sound exposure. The second stage was per-
+formula:Vs/(vs+Vw)*100%,whereVwisthevolumeofdrunkpure formedafter24h.The animalwasplacedon the arena, anda sound
+water, versus is the volume of obtained 1% sucrose solution [40]. signal (5 kHz, 10 s) was given, followed immediately by an electric
+The latent inhibition test was performed in an enclosed arena current across the floor grid (10 mA, 1.5 s). This series of exposures
+under dim light. The floor of the arena represented a grid with was repeated again after 5 min. The third stage was performed
+possibility of passage of current. At the first stage, the animals from 48h afterthesecondstage. Theanimal was placed in the arena, and
+each experimental group were divided into two subgroups: pre- after 30 s a sound signal (5 kHz) was given for 5 min. The total
+exposure and non-pre-exposure. The animals were divided into freezing time (s) of the animal was registered during the signal. The
+subgroups independently from each other in terms of the total test results were analyzed to determine the differences in the total
+freezing time in the open-field test. Each animal from the pre- freezingtimebetweenpre-exposureandnon-exposuresubgroupsin
+exposure subgroup was placed in the arena, and then a series of 40 each experimental group. In healthy animals, prior exposure to a
+sound signals (5 kHz) with a duration of 10 s and an interval of neutral stimulus (sound) should suppress its association with
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 241
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 6 =====
+a b c
+d e f
+Fig.3.a–f Results of the open-field test; PS, offspring with prenatal stress; Control, control offspring; *p < 0.05; **p < 0.01; ***p < 0.001.
+exposure to electric current in the second stage. In the third stage, (diameter 150 cm), filled with water for 40 cm (temperature 23°C)
+healthy animals should have a significant difference in the total and located in a room with a large number of spatial landmarks. A
+freezing time between pre-exposure and non-exposure subgroups round platform 8 cm in diameter made of transparent plastic was
+(pre-exposure animals demonstrate less freezing). Animals with placed inthe center of one of the quadrants of the pool 2cm below
+impaired latent inhibition donot differ between subgroups [51, 52]. the water level. The training session consisted of 8 trials, during
+The Morris water maze was performed to evaluate long-term which the rat was placed into the different sectors of the pool and
+spatial memory. The maze represented a pool with gray walls learned to find the platform. Platform search time (s) was
+242 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 7 =====
+a b c
+d
+e
+Fig.4.Resultsofforcedswimmingtest(a),socialinteractiontest(b),startreflextest(c),objectrecognitiontest(d),latent
+inhibition test (e); PS, offspring with prenatal stress; Control, control offspring; *p < 0.05; **p < 0.01; ***p < 0.001.
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 243
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 8 =====
+Table 1. Results of correlation analysis of behavioral test scores
+Behavioral indicator 1 Behavioral indicator 2 R p value
+Control males
+Head-dipping frequency (EPM) Total time of social contacts (SI) −0.60 0.003
+Total grooming time (OF) Total time of social contacts (SI) −0.64 0.001
+Frequency of grooming (OF) Total time of social contacts (SI) −0.67 <0.001
+Mean duration of grooming (OF) Total research time for different objects (OR) −0.49 0.006
+Total grooming time (OF) Sucrose preference index (A) −0.46 0.008
+PS males
+Frequency of crossing the center platform (EPM) Total research time for identical objects (OR) 0.54 0.003
+Frequency of looking out of closed arms (EPM) Total research time for different objects (OR) 0.66 <0.001
+Total grooming time (EPM) Total research time for identical objects (OR) −0.56 0.002
+Total freezing time (OF) Total research time for different objects (OR) −0.62 0.008
+Mean duration of grooming (EPM) Total research time for different objects (OR) −0.62 <0.001
+Total grooming time (OF) Sucrose preference index (A) 0.63 0.007
+Mean duration of grooming (OF) Sucrose preference index (A) 0.69 0.002
+Control females
+Head-dipping frequency (EPM) Total time of social contacts (SI) −0.54 0.009
+Total time spent in open arms (EPM) Total research time for different objects (OR) 0.51 0.004
+Head-dipping frequency (EPM) Total research time for different objects (OR) 0.50 0.004
+PS females
+Head-dipping frequency (EPM) Total time of social contacts (SI) 0.62 0.006
+Frequency of grooming (EPM) Total time of social contacts (SI) 0.71 <0.001
+Frequency of rearing (EPM) Discrimination index (OR) 0.59 0.007
+Head-dipping frequency (EPM) Sucrose preference index (A) 0.78 <0.001
+Frequency of rearing (EPM) Sucrose preference index (A) 0.66 <0.001
+Total time of social contacts (SI) Sucrose preference index (A) 0.81 <0.001
+A, sucrose preference test; OF, open-field test; EPM, elevated plus maze; PS, prenatal stress; OR, object recognition test; SI, social
+interaction test.
+registered. Animals that did not find the platform within 60 s were presentations and five presentations with a prepulse 100 ms before
+gently guided to it. The animal was left on the platform for 15 s, the main sound signal. The remaining 4 sound signals were pre-
+and then placed in an individual cage for 60 s. The test was sented without a prepulse. The intervals between the sound signals
+conducted after 48 h. The animal was placed in the pool, and were 15 s. The main stimulus used was broadband noise with a
+platform search time (s) was registered [43, 53]. durationof20msandavolumeof105dB.Thebackgroundmasking
+The forced swimming test was performed to assess despair soundsignalhadabroadbandnoiseof72dB,andtheprepulsehada
+behavior. The test was performed in a transparent cylinder (di- signal duration of 20 ms and a volume of 80 dB. The magnitude of
+ameter 31 cm, height 40 cm) filled with water (temperature 23°C) the prepulse inhibition was calculated according the formula: Ap/
+to a height of 30 cm from the bottom of the cylinder. The animal Am×100%,whereAmisthemeanamplitudeofthestartleresponse
+was placed in a cylinder for 8 min. The number of diving, active without a prepulse, excluding the first and last four, and Ap is the
+swimming time (s), passive swimming time (s), and immobility mean amplitudeofthe startleresponsecombinedwith the prepulse.
+time (s) were registered during the last 6 min of the test [54, 55].
+Evaluationofacousticstartlereflex(ASR)andprepulseinhibition: Collection and Storage of Biomaterials
+the prepulse inhibition test was performed using the TSE-systems’ Rat brain samples for biochemical analysis were collected after
+experimental startle reaction unit (TSE, Bad Homburg, Germany). brief anesthesia followed by rapid decapitation. The brain sections
+The test was performed according to the previously given protocol (frontal cortex and hippocampus) were isolated after the brain
+[56], but with slight modifications. The rats were tested in extraction. Brain samples immediately after the isolation were
+soundproofboxesinsideconfiningmetalcages,whichwereinstalled placed into cryoprobes and frozen in liquid nitrogen, where they
+onaplatform(27×9×19cm)equippedwithapressuresensor.The stored there until the analysis.
+acoustic stimulus was presented through two loudspeakers located
+along the walls of metal cages. All animals were presented with 18 Determination of Neurotransmitter Concentrations in the Brain
+sound stimuli after a 5-min adaptation. The first four stimuli were The methods most used to measure neurotransmitters include
+presented without a prepulse. The following 10 sound signals electrochemical methods using micro- and nanoelectrodes, bio-
+were presented in a pseudorandom order, including single-pulse sensors, liquid chromatography, and mass spectrometry [57–59].
+244 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 9 =====
+a b
+Fig. 5. Norepinephrine concentration in the frontal cortex (a) and hippocampus (b) of rats. PS, offspring with
+prenatal stress; Control, control offspring; *p < 0.05; **p < 0.01.
+In this work, we used the HPLC-ED method as one of the the internal standard method using a calibration curve with
+standard methods for detection of neurotransmitters. In the LabSolutions software (Shimadzu, Japan). Samples were nor-
+brain tissue samples (frontal cortex and hippocampus), the malized by tissue weight [60]. Based on the data obtained, the
+concentration of norepinephrine, dopamine, 3,4-dihydrox- DOPAC/dopamine and HIAA/serotonin ratios were calculated
+yphenylacetic acid (DOPAC), 5-hydroxyindoleacetic acid as indicators of dopamine and serotonin metabolic turnover,
+(HIAA) and serotonin (below analytes) were determined. The respectively [61].
+samples were homogenized in 0.1 n HClO4 (Sigma Aldrich,
+USA) with 50 pmol/mL internal standard 3,4-dihydrox-
+Statistics
+ybenzylamine hydrobromide (Sigma Aldrich, USA) via the ul- Statistical analysis of the obtained data and plotting were
+trasonic homogenizer (Sartorius, France). After that, the solution performed using RStudio (Version 1.4, RStudio PBC, USA), ja-
+was centrifuged for 15 min at 15,000 rpm. HPLC separation was
+movi (Version 1.6, the jamovi project, Australia), and STATIS-
+carried out on the reversed-phase column ReproSil-Pur, ODS-3,
+TICA (Version 12, StatSoft, USA) software. The normality of the
+4× 100 mmwitha pore diameter of 3 μm (Dr. Majsch, Germany)
+data distribution was estimated using the Shapiro-Wilk criterion.
+at +28°C and a mobile phase speed of 1 mL/min supported by the
+In the case of a normal distribution, p values were calculated using
+liquid chromatograph LC-20ADsp (Shimadzu, Japan). The
+ANOVA followed by Tukey test for multiple comparisons; the
+mobile phase consisted of 0.1 M citrate-phosphate buffer, 0.3 mM
+results were presented as mean ± SEM. In the case of nonnormal
+sodium octanesulfonate, 0.1 mM EDTA, and 8% acetonitrile (all
+reagents from Sigma Aldrich, USA), pH 2.58. The electro- distribution, nonparametric Kruskal-Wallis criterion, and Mann-
+chemical detector DECADE II (Antec Leyden, The Netherlands) Whitney U-criterion with Dwass-Steel-Critchlow-Fligner for
+was equipped with a working glassy carbon electrode (+0.80 V) multiple comparisons were used; results were presented as Med
+and an Ag/AgCl reference electrode. The peaks of interest and (Q1; Q3). p value <0.05 was considered as statistically significant.
+internal standard were identified by their release time in the ANOVA with repeated measures followed by Tukey test
+standard solution. The analytes concentration was calculated by for multiple comparisons was used to assess repeated
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 245
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 10 =====
+c
+a
+b
+d e f
+Fig.6.Resultsofdeterminationofindicatorsofserotonergicmetabolisminthefrontalcortex(a–c)andhippocampus
+(d–f) of rats. PS, offspring with prenatal stress; Control, control offspring; *p < 0.05; **p < 0.01; ***p < 0.001.
+measures (Morris water maze training). p value <0.05 was Results
+considered as statistically significant.
+Analysis of covariance (ANCOVA), followed by Tukey test for
+In our research, we studied the effect of US PS on the
+multiple comparisons, was used to determine the results of the
+latent inhibition test. The total freezing time in the open-field test behavioral phenotype of rats (anxiety and exploratory
+was taken as the covariate in this case. p value <0.05 was con- behavior, social behavior, cognitive functions, depressive-
+sidered statistically significant. like behavior, startle reflex, and latent inhibition) and also
+Spearman correlation was performed for the correlation
+analysis. p < 0.01 was considered statistically significant for the evaluated the correlation between the behavioral pa-
+correlation analysis to account for multiple comparisons. rameters and neurotransmitter systems of the brain.
+246 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 11 =====
+a b c
+d e f
+Fig.7.Resultsofdeterminationofparametersofdopaminergicmetabolisminthefrontalcortex(a–c)andhippocampus
+(d–f) of rats. PS, offspring with prenatal stress; Control, control offspring; *p < 0.05; **p < 0.01; ***p < 0.001.
+Evaluation of Anxiety and Exploratory Behavior Kruskel-Wallis test demonstrated significant differ-
+Elevated plus Maze ences between the groups by head-dipping frequency
+PS significantly influenced the rat’s behavior in this test. (χ2 = 15.59; p = 0.001) and total freezing time (χ2 = 29.70;
+Statistically significant differences were demonstrated for p < 0.001). Statistically significant differences were re-
+the total time spent in open arms (χ2 = 10.28; p = 0.02). PS vealed between the controls and PS females (shown in
+offspring spent less time in open arms compared to Fig. 2b, c). PS females demonstrated decreased head-
+controls (p = 0.01) (shown in Fig. 2a). However, a pos- dipping frequency (p = 0.007) and increased freezing (p <
+teriori analysis revealed no significant differences. 0.001) compared to the control females. In addition, PS
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 247
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 12 =====
+Table 2. Correlation analysis of the relationship between behavior and concentrations of biochemical indicators of brain tissue
+Group Biochemical indicator Behavioral indicator R p value
+Serotonergic system
+PS offspring HIAA (FC) Frequency of diving (FS) −0.63 0.007
+HIAA/serotonin ratio (FC) Frequency of diving (FS) −0.61 0.0097
+Control males HIAA (FC) Horizontal activity (OF) −0.87 0.004
+HIAA (FC) Number of center entries (OF) −0.82 0.007
+HIAA (H) Total grooming time (EPM) 0.85 0.006
+PS males HIAA (FC) Total grooming time (OF) −0.78 0.008
+HIAA (FC) Frequency of diving (FS) −0.79 0.006
+PS females Serotonin (FC) Total active swimming time (FS) −0.96 0.003
+Dopaminergic system
+Control offspring DOPAC/dopamine ratio (H) Frequency of crossing the center platform (EPM) 0.59 0.008
+DOPAC/dopamine ratio (H) Total freezing time (EPM) −0.60 0.006
+PS offspring DOPAC/dopamine ratio (FC) Head-dipping frequency (EPM) −0.65 0.004
+Control males DOPAC (FC) Frequency of rearing (OF) −0.89 0.001
+PS males Dopamine (FC) Discrimination index (OR) −0.79 0.006
+PS females DOPAC (FC) Mean duration of grooming (EPM) −0.88 0.008
+Norepinephrine
+Control offspring Norepinephrine (FC) Total freezing time (OF) 0.590 0.0099
+PS offspring Norepinephrine (FC) Discrimination index (OR) −0.77 0.003
+Norepinephrine (H) Total passive swimming time (FS) −0.67 0.004
+PS females Norepinephrine (FC) Frequency of rearing (OF) −0.92 0.003
+H, hippocampus; OF, open-field test; EPM, elevated plus maze; FS, forced swimming test; PS, prenatal stress; OR, object
+recognition test; FC, frontal cortex.
+females showed more prolonged freezing than PS males freezing time (χ2 = 17.90; p < 0.001), total grooming time
+(p = 0.005); the control group have not demonstrated this (χ2 = 15.46; p = 0.001), and grooming frequency (χ2 =
+difference. 7.86; p = 0.049). At the same time, analysis of posterior
+Kruskel-Wallis test also revealed significant differ- comparisons demonstrated statistically significant dif-
+ences in total grooming time (χ2 = 12.98; p = 0.005) and ferences only between the control and PS males. PS
+mean duration of grooming (χ2 = 9.41; p = 0.02). males demonstrated decreased number of the center
+However, significant differences were observed only in entries (p = 0.001) (shown in Fig. 3a), decreased hori-
+males (shown in Fig. 2d, e). PS males showed increased zontal activity (p = 0.004) (shown in Fig. 3b), reduced
+grooming time (p = 0.03) and increased mean duration vertical activity (p = 0.02) (shown in Fig. 3c), and in-
+of grooming (p = 0.02) compared to the control males. creased freezing (p = 0.02) (shown in Fig. 3d) and
+In addition, the effect of the sex factor was also grooming time (p = 0.001) (shown in Fig. 3e) compared
+demonstrated for the total grooming time: males to the control males. In addition, PS offspring dem-
+groomed longer than females (p = 0.02). Experimental onstrated increased number of grooming compared to
+groups did not differ significantly by the frequency of the controls (p = 0.01) (shown in Fig. 3f), but no dif-
+grooming (χ2 = 4.31; p = 0.23), number of peeking (χ2 = ferences were shown separately for males and females.
+7.04; p = 0.07), frequency of the center crossing (χ2 = Control and PS females did not differ significantly from
+2.45; p = 0.48), and number of rearing (χ2 = 7.37; each other. The sex factor influenced the behavior of the
+p = 0.06). PS offspring – PS males showed less horizontal activity
+compared to PS females (p = 0.008), while no significant
+Open-Field Test differences by the horizontal activity parameter were
+Overall statistically significant differences were found revealed between the control females and males (p =
+for the following parameters: number of center entries 0.56) (shown in Fig. 3b). The similar pattern was ob-
+(χ2 = 16.91; p < 0.001), horizontal activity (F = 8.81; p < served for vertical activity – PS males demonstrated
+0.001), vertical activity (χ2 = 16.27; p = 0.001), total decreased number of rearings compared to the PS
+248 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 13 =====
+females (p = 0.002), while the control males and females different objects did not differ significantly in the control
+did not differ significantly by the number of rearings (p = and PS males (p = 0.10), but it was decreased in PS fe-
+1.00) (shown in Fig. 3c). males compared to the control females (p = 0.002). The
+test also revealed the differences between the sexes in the
+Evaluation of Depressive-Like Behavior control group: males demonstrated decreased exploration
+Sucrose Preference Test time of different objects compared to the females (p =
+PS produced no significant effect on the level of an- 0.03), which was not observed in the PS groups (p = 0.77).
+hedonia in rats since the sucrose preference index did not ANOVA revealed statistically significant differences of
+differ significantly between the groups (F = 0.41; p = 0.75). the discrimination index (F = 6.84; p < 0.001). Dis-
+crimination index was reduced in PS offspring compared
+Forced Swimming Test to the control offspring (p = 0.009). A posteriori com-
+Kruskel-Wallis test demonstrated statistically significant parisons analysis showed that PS decreased the dis-
+differences only for the total immobility time (χ2 = 10.00; crimination index in males (p = 0.02), but not in females
+p = 0.02) (shown in Fig. 4a). Nevertheless, the posterior (p = 0.88). At the same time, control males and females
+comparisons analysis revealed only significant overall did not differ from each other by the discrimination index
+differences between the sexes for this parameter: males (p = 0.38), and the male discrimination index was sig-
+freeze longer than females (p = 0.005). However, males and nificantly decreased compared to the females of the PS
+females did not differ separately in the control and PS group (p = 0.005) (shown in Fig. 4d).
+groups. Immobility time did not differ significantly in the
+controls and PS offspring (p = 0.09). No significant overall Morris Water Maze
+differences were demonstrated for the active swimming The training stage was evaluated using ANOVA with
+time (F= 2.69;p =0.062),passiveswimmingtime(F =0.66; repeated measures, which allows to estimate the overall
+p = 0.58), and number of diving (χ2 = 5.46; p = 0.14). effect ofthe factor of repeated measures (number of trials)
+(F = 57.34; p < 0.001). Platform search time decreased
+Evaluation of Social Behavior from the first to the fourth trials (for trials 1 and 2 p <
+PS altered social behavior in adult rat offspring in the 0.001; for trials 2 and 3 p = 0.005; for trials 3 and 4 p =
+social interaction test. Overall statistically significant 0.03); no significant differences by the platform search
+differences were found for the total time of social contacts time were observed from the fifth to the eighth trials. The
+(F = 28.79; p < 0.001). PS offspring demonstrated de- analysis revealed no interaction of the repetitive change
+creased social interaction time with juvenile animals factor with the experimental group factor (F = 0.74; p =
+compared to the control offspring (p < 0.001). Never- 0.64) and with gender factor (F = 0.38; p = 0.91). The test
+theless, the differences was observed only in males (p < also demonstrated no overall differences in learning
+0.001), control, and PS females did not differ by the level between the PS and control groups (F = 2.13; p = 0.15), or
+of social activity (p = 0.34) (shown in Fig. 4b). The test between males and females (F = 2.88; p = 0.09). Test
+results also revealed statistical differences between the results 48 h after the training also showed no significant
+sexes by the social interaction time: males contacted differences between the groups (χ2 = 0.19; p = 0.98).
+juvenile animals longer than females (p < 0.001); it was
+observed in both control (p < 0.001) and PS (p < 0.001) ASR and Prepulse Inhibition
+offspring. Evaluation of ASR in adult offspring showed signifi-
+cant overall statistical differences in startle reflex am-
+Evaluation of Cognitive Functions plitude (F = 6.48; p < 0.001). Amplitude was significantly
+Object Recognition Test lower in PS males compared to the control males
+Kruskel-Wallis test revealed the significant overall (p<0.001) (shown in Fig. 4c). Control and PS females did
+differences in the total exploration time of the identical not differ statistically (p = 0.84). In addition, differences
+objects (χ2 = 19.6; p < 0.001) and in the total exploration were detected between the sexes in the control group: the
+time of the different objects (test phase) (χ2 = 22.8; p < amplitude in the control males was higher than that in the
+0.001) (shown in Fig. 4d). The total exploration time of control females (p = 0.007). The sex factor produced no
+the identical objects was reduced in PS males compared to effect on the amplitude in PS offspring (p = 0.35). AN-
+the control males (p = 0.006), but no significant differ- OVA also revealed no significant differences in the level
+ences were observed in the control and PS females (p = of prepulse inhibition among the experimental groups
+0.66). At the same time, the total exploration time of (F = 1.25; p = 0.30).
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 249
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 14 =====
+Latent Inhibition anxious behavioral traits in the control males; animals
+ANCOVA revealed overall significant differences be- with increased anxiety were characterized by a reduced
+tween the groups (F = 3.35; p = 0.002). The influence of level of social contacts. Social behavior was also negatively
+the pre-exposure factor was also detected (F = 11.07; p = correlated with intensity of grooming behavior, which
+0.001). The Mann-Whitney test was used to evaluate the can possibly indicate socially significant replacement
+effect of the pre-exposure stimulus because of the non- behavior. At the same time, social behavior was positively
+normal data distribution. Analysis was performed sep- correlated with dangling in EPM, the indicator of risk-
+arately for each experimental group since baseline anxiety assessment behavior. In contrast to the control males, PS
+(total freezing time in the open-field test) differed sig- males demonstrated no correlation of anxious behavior
+nificantly between the groups. Control males after the with social activity. Nevertheless, this group was char-
+pre-exposure stimulus demonstrated decreased freezing acterized by multiple correlations of anxiety behavior and
+time in the third stage of the test compared to the control object exploration activity in the object recognition test.
+males without the pre-exposure stimulus (U = 29; p = Based on this, we hypothesize that impaired social be-
+0.04), indicating that the control males express a normal havior is not strongly related to the level of anxiety in PS
+latent inhibition (shown in Fig. 4e). Control females males, oppositely to the controls. However, the anxious
+showed the similar results: control females froze signif- behavior of PS males is associated with the exploration of
+icantly less after the pre-exposure stimulus compared to nonliving objects. In PS females, the correlation of social
+the control females without the pre-exposure stimulus activity and anxious behavior was detected in the same
+(U = 27; p = 0.03). PS offspring demonstrated other way as in the control groups, but it did not represent a
+results (shown in Fig. 4e). The pre-exposure stimulus unidirectional form.
+factor produced no effect on PS males (U = 61; p = 0.78),
+indicating impaired latent inhibition. However, the PS Determination of Norepinephrine Concentration in the
+females demonstrated decreased freezing time after the Rat Brain Structures
+pre-exposure stimulus compared to the PS females Kruskal-Wallis test revealed significant overall dif-
+without the pre-exposure stimulus (U = 27; p = 0.02), ferences between the groups by the noradrenaline con-
+indicating normal latent inhibition. centration in the frontal cortex (χ2 = 8.65; p = 0.03). PS
+increased norepinephrine levels in the offspring (p =
+Correlation Analysis of Behavioral Test Scores 0.03). However, analysis of pairwise comparisons showed
+A correlation analysis was performed to evaluate the the increase of norepinephrine concentration only in PS
+association of behavioral phenotype traits that demon- males compared to the control males (p = 0.04) (shown in
+strated the multiple correlations of anxiety indicators Fig. 5a). Control and PS females did not differ signifi-
+with other behavioral parameters. The significant results cantly by the noradrenaline concentration in the frontal
+of the analysis (p < 0.01) are presented in Table 1. cortex (p = 0.99).
+Control males demonstrated the correlations between ANOVA showed significant differences between the
+grooming indicators in the open-field test, traits of social groups in hippocampus norepinephrine concentration
+behavior; anhedonia level, and duration of object ex- (F = 5.53; p = 0.004). Norepinephrine concentration was
+ploring in the object recognition test. PS males showed higher in the hippocampus of the PS offspring compared
+multiple correlations between the open field and EPM test to the control offspring (p = 0.003) (shown in Fig. 5b).
+parameters and the exploration time in the object rec- However, posterior analysis demonstrated no significant
+ognition test. In addition, the certain correlation between differences between PS and control offspring separately
+grooming and anhedonia level was also indicated in PS for males (p = 0.06) and females (p = 0.21). Additionally,
+males. Control females demonstrated the correlations of the statistical differences were detected between the sexes
+the EPM test parameters with the exploration time in the at the level of significance (p = 0.05): males demonstrated
+object recognition test and with the social interaction the higher concentrations of noradrenaline compared to
+time. At the same time, PS females showed the corre- the females.
+lations of EPM and open-field parameters scores with
+social behavior traits and anhedonia level. Determination of Serotonergic Metabolism in the Rat
+All experimental groups of animals, except PS male Brain Structures
+group, demonstrated multiple correlations between the ANOVA revealed significant differences between the
+indicators of social behavior and anxiety. In particular, groups by the serotonin concentration in the frontal
+the inverse correlation was found between social and cortex (F = 8.38; p < 0.001) (shown in Fig. 6a). PS
+250 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 15 =====
+offspring were characterized by elevated serotonin levels Determination of Dopaminergic Metabolism in the Rat
+compared to the control offspring (p < 0.001). Never- Brain Structures
+theless, analysis of posterior comparisons showed the PS did not alter dopamine (χ2 = 4.34; p = 0.23) or
+presence of differences only in males (p < 0.001), but not DOPAC (χ2 = 5.23; p = 0.16) concentration in the frontal
+in females (p = 0.19). cortex. However, Kruskal-Wallis test revealed significant
+ANOVA demonstrated significant differences between differences in the DOPAC/dopamine ratio (χ2 = 12.2; p =
+the groups by HIAA concentration in the frontal cortex 0.007) (shown in Fig. 7a–c). Analysis of pairwise com-
+(F = 3.94; p = 0.02) (shown in Fig. 6b). The control and PS parisons showed statistical differences between the sexes
+offspring did not differ significantly between each other in the control group; the DOPAC/dopamine ratio was
+(p = 0.72). However, statistical differences were indicated higher in control males compared to the control females
+between the sexes (p = 0.02). A posteriori comparisons (p = 0.02). No significant differences between the sexes
+analysis revealed that control males demonstrated sig- were observed in the PS offspring.
+nificantly higher HIAA concentrations compared to the Kruskal-Wallis test revealed statistical differences
+control females (p = 0.01). PS effect eliminated these between the groups by the hippocampal dopamine
+differences (p = 0.99). In addition, the interaction of concentration (χ2 = 8.75; p = 0.03) (shown in Fig. 7d). PS
+group factor and gender factor has been detected (F = offspring demonstrated the increased dopamine con-
+4.57; p = 0.04). centration compared to the control offspring (p = 0.009).
+Kruskal-Wallis test revealed significant differences However, analysis of pairwise comparisons showed that
+between the groups by HIAA/serotonin ratio in the males (p = 0.51) and females (p = 0.14) did not differ
+frontal cortex (χ2 = 12.6; p = 0.006) (shown in Fig. 6c). separately.
+The ratio was statistically higher in the control males Kruskal-Wallis test also detected significant dif-
+compared to the control females (p = 0.02), which was not ferences between the groups by the hippocampal
+observed in PS offspring (p = 1.00). In addition, the DOPAC concentration (χ2 = 9.84; p = 0.02) (shown in
+HIAA/serotonin ratio was increased generally in males Fig. 7e). Analysis of pairwise comparisons revealed
+compared to the females (p = 0.02). The HIAA/serotonin that control males demonstrated the increased con-
+ratio was lower in PS males compared to the control centration of DOPAC compared to the control females
+males (p = 0.03), but the females did not differ by this (p = 0.01). Nevertheless, PS offspring showed no
+parameter (p = 0.96). statistical differences between the sexes (p = 1.00). PS
+Kruskal-Wallis test revealed significant differences also produced no effect on DOPAC concentration in
+between the groups by the hippocampal serotonin con- the hippocampus.
+centration (χ2 = 13.35; p = 0.004) (shown in Fig. 6d). PS ANOVA showed significant differences in the hip-
+offspring were characterized by the increased concen- pocampal DOPAC/dopamine ratio (F = 9.75; p < 0.001)
+tration of serotonin compared to the control offspring (shown in Fig. 7f). PS reduced the DOPAC/dopamine
+(p < 0.001). Analysis of pairwise comparisons showed ratio in the hippocampus (p < 0.001). A posteriori
+that only PS females demonstrated elevated serotonin analysis revealed significant differences only between the
+concentrations compared to the control females (p = control and PS males (p = 0.002), but not between the
+0.02); the males did not differ by that parameter females (p = 0.32). In addition, significant differences
+(p = 0.24). were detected between the sexes. Females demonstrated
+Kruskal-Wallis test also detected statistical differ- the lower DOPAC/dopamine ratio compared to the males
+ences between the groups by the hippocampal HIAA (p = 0.001). However, posterior analysis showed signif-
+concentration (χ2 = 15.89; p = 0.001) (shown in icant differences between the sexes only in the control
+Fig. 6e). PS offspring demonstrated the increased offspring (p = 0.005), but not in the PS offspring
+concentration of HIAA compared to the controls (p = 0.49).
+(p < 0.001). However, analysis of pairwise comparisons
+showed that only PS females had increased serotonin Correlation Analysis of Behavioral and Biochemical
+concentrations compared to the control females Parameters
+(p = 0.01), males did not differ significantly by this Correlation analysis was performed to evaluate the
+parameter (p = 0.36). ANOVA revealed no significant relationship between the elements of behavioral pheno-
+overall differences between the groups by the HIAA/ type and biochemical parameters of the brain. The
+serotonin hippocampal ratio (F = 2.18; p = 0.11) analysis demonstrated the presence of multiple correla-
+(shown in Fig. 6f). tions between biochemical and behavioral parameters.
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 251
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 16 =====
+The significant results of the analysis (p < 0.01) are Discussion
+presented in Table 2.
+Correlation analysis demonstrated that behavioral Our study revealed that US PS affected some behav-
+traits are related to the parameters of the serotonergic ioral traits and biochemical parameters of the adult rat
+system, mainly in the frontal cortex. Elevated levels of brain. Below, we will discuss the observed alterations in
+HIAA metabolite and a high HIAA/serotonin ratio more detailed way.
+(i.e., high levels of serotonin metabolism) were associated
+with negative behavioral traits: decreased locomotor Changes of the Rat Behavioral Phenotype under the US
+activity, increased anxiety, active grooming in the control PS Exposure
+group, and also with decreased activity in the forced swim We observed impaired exploratory behavior, the
+test in the PS group. Elevated levels of HIAA in the frontal presence of anxious traits and increased passive-
+cortex were associated with less active grooming in PS defensive reactions of adult rats after the US PS in
+males, whereas increased levels of HIAA in the hippo- the open-field test and EPM. The results of our study
+campus were associated with more active grooming in correspond to the data of numerous research studies,
+control males. devoted to the study of PS action on animal behavior.
+The character of correlations of the dopaminergic Different types of PS cause anxious behavior in animals
+system and animals behavior differed in the hippocampus of different ages [62–66]. In addition, we also previously
+and frontal cortex. Elevated DOPAC/dopamine ratio showed similar results in the open-field test for the
+(i.e., the index of high dopamine metabolism) in the juvenile rat offspring after the exposure to US PS [46].
+hippocampus of control animals was associated with Another aspect of behavior that we studied in this ex-
+decreased anxiety. However, no associations were found periment is grooming. US PS increased grooming ac-
+in the PS offspring hippocampus. At the same time, the tivity in male rats. It has previously been shown that
+increased dopamine metabolism in the frontal cortex of stress can enhance grooming in rodents [67–69]. Our
+control and PS groups was associated with pathological study also indicated this effect for PS.
+behavior: reduced exploration activity, and impaired The important indicator of social activity is the degree
+cognitive function. of interest to unfamiliar individuals of one’s species,
+Increased frontal cortex noradrenaline concentration i.e., the level of preference for social novelty [70]. This
+was associated with negative behavioral traits: impaired behavioral aspect was studied using the social interaction
+cognitive function, decreased exploration activity, and test, which showed a negative effect of US PS on the
+increased anxiety in the control and PS offspring. male’s social contacts. Our results are supported by the
+However, the high norepinephrine concentration in the earlier studies, which have demonstrated that different
+PS offspring hippocampus was associated with decreased types of PS produce a negative effect on the animal social
+passive swimming time in the forced swimming test. activity [64, 71–73].
+Therefore, we can suggest that US PS altered the The present data addressed to the effect of PS on latent
+behavioral phenotype of the offspring: US PS increased inhibition are few and contradictory since different types
+the level of anxious behavior, impaired exploratory of PS produce opposite effects on latent inhibition in
+behavior, and increased grooming activity. Social be- animals. For example, the administration of dexameth-
+havior was also altered: males demonstrated decreased asone to female rats during pregnancy does not impair
+social contacts, impaired latent inhibition, and de- latent inhibition in the offspring [74]. Nevertheless,
+creased ASR levels. Their behavioral reactions shifted prenatal administration of corticosterone impairs latent
+from social interaction to interaction with the nonliving inhibition in males, but not in females [75]. Restraint PS
+objects. The second part of the experiment demon- could potentiate latent inhibition in the offspring [76], or
+strated the effect of US PS on neurotransmitter systems have no effect [75, 77]. Exposure of pregnant rats to
+of the brain. Our study demonstrated significant results electric current results in disruption of latent inhibition in
+for the serotoninergic, dopaminergic, and noradrenergic males, but not in females [75]. In our study, control males
+neurotransmitter systems in the frontal cortex and and females demonstrated a normal latent inhibition
+hippocampus. The US PS activated all of these systems, process, but US PS disrupted latent inhibition in males.
+increasing the concentration of neurotransmitters in the This finding could potentially indicate some behavioral
+brain. The presence of associations between biochemical impairments since several studies have interpreted dis-
+and behavioral indicators in our study supports the rupted latent inhibition as an indicator decreased ability
+suggestion of their interrelation. to use acquired patterns for learning [78].
+252 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 17 =====
+US PS decreased the overall level of ASR in male rats, decrease of the HIAA/serotonin ratio, on the one hand,
+but not in females. Decreased ASR may indicate that the may indicatea decreaseofserotonin metabolism.But since
+animal exhibits less fear, so the decreased ASR in the PS the HIAA concentration has not changed, this cannot be
+offspring can represent impaired behavioral reaction in fair assumption. Most probably, the ratio change is related
+response to the stress exposure [79]. Studies on animals only to increased serotonin production and possibly to its
+have revealed that different types of PS mostly either have decreased neurotransmission in frontal cortex. In contrast,
+no effect on the strength of ASR, or increase its intensity PS offspring demonstrated elevated concentrations of both
+[63, 80–82]. Nevertheless, the ASR reduction after the PS serotonin and HIAA in the hippocampus, which may
+exposure has been shown in some studies. For example, indicate increased serotonin metabolism in this structure.
+juvenile male guinea pigs demonstrated significantly Elevated serotonin levels were associated predominantly
+lower ASR after PS induced by a stroboscope compared to with negative behavioral traits in animals from different
+controls, but this was not observed in adult animals [79]. groups, which probably indicate increased serotonin
+In another study, adult and adolescent rats showed a concentration as a pathological feature in PS offspring.
+reduced ASR amplitude in the dexamethasone admin- Changes of the neurotransmitter systems functioning ac-
+istration model [83]. company various CNS pathologies. Numerous studies have
+Our study demonstrated that the US PS produced no demonstrated the involvement of the serotonergic system
+effect on some behavioral traits. Rats after the US PS did in the pathogenesis of mental disorders. Altered serotonin
+not express depressive-like behavior. We also revealed no homeostasis at an early age is associated with various
+differencesintheMorriswatermaze,indicatingthatthePS psychiatric pathologies, such as anxiety disorders, sub-
+offspring demonstrated no impairments of spatial long- stance abuse, and especially autism [29, 30, 86]. Changes of
+term memory. We investigated rats’ short-term object the brain serotonergic system are also associated with
+memory in the object recognition test. PS males showed depression. The dominant paradigm defines depression as
+the decreased discrimination index, which may indicate a pathology that is accompanied by decreased serotonin
+memoryimpairment.However,thistestshowedadecrease levels in the brain. However, nowadays, a lot of data evi-
+of the total exploration time of the identical objects in the dence to the contrary results [86], so this issue requires
+PS offspring. This fact cannot allow to evaluate these more research. Presumably, serotonin transmission may be
+cognitive impairments in PS offspring definitively. increased in atypical forms of depression [87].
+Therefore, our study did not indicate a significant effect of The serotonergic system has been studied previously in
+US PS on rat’s cognitive functions. We also demonstrated some animal PS models, which demonstrated changes of
+that US PS did not change PPI in rats. However, the results serotonergic system activity in some brain regions, but
+of this test may depend on the level of noise exposure the results have been contradictory. PS induced opposite
+duringthetest[84,85].Inthisconnection,itisnecessaryto responses of the serotonergic system, depended on such
+further investigate the US PS effect on the PPI with other factors as brain region, sex, age, and animal species and
+parameters of the test protocol. strain [88–90]. For example, it has been demonstrated
+that restraint PS can reduce serotonin metabolism in the
+Changes of the Neurotransmitter Systems under the US cortex of adult mice [71] and in the hippocampus of
+PS Exposure juvenile mice [90], and decrease serotonin level in the
+In our study, we determined biochemical parameters brain of adult male Lewis rats, female Wistar and Lewis
+in the hippocampus and frontal cortex, which can reflect rats, and in female C57BL6 mice [88]. At the same time,
+changes of the neurotransmitter systems functioning. We administration of dexamethasone to pregnant females
+have demonstrated that US PS significantly affects their increased serotonin level in the medial prefrontal cortex
+functioning. In addition, correlation analysis revealed the of the adult offspring [91]. Nevertheless, another research
+correlations between the behavior traits and neuro- of this model revealed decreased serotonin metabolism in
+transmittersystems’ activity. This supports the suggestion the neocortex, hippocampus, hypothalamus, and mid-
+that neurotransmitter systems are involved in the de- brain in juvenile and adult rats [89].
+velopment of pathological behavioral phenotype in the Therefore, in spite of the majority of studies show a
+rat offspring after the US PS. decrease of serotonin level in different brain areas under
+ExposuretoUSPSresultedinpronouncedalterationsof the influence of PS, there is also the evidence of its in-
+the serotonergic system in the hippocampus and frontal crease, consistent with our research. Since it is known that
+cortex. The concentration of serotonin increased in the serotonin is involved in many behavior reactions and also
+frontal cortex, but its metabolic level did not alter. The plays a role in neurodevelopment during the prenatal
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 253
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 18 =====
+period [17, 92], we can suggest that its increase may be Interestingly, our experiment detected the increase
+involved in the processes by which US PS changes animal of dopamine or its metabolite in the hippocampus of
+behavior in the postnatal period. the PS offspring, which may indicate the presence of
+The US PS produced no significant effect on the do- neuropathological features in rats after the US PS ex-
+paminergic system in the frontal cortex. The most pro- posure comparable to the schizophrenia traits. It
+nounced differences were detected in the hippocampus. should also be mentioned that literature data evidence
+US PS increased dopamine concentration and decreased of the involvement of the hippocampus in the
+the DOPAC/dopamine ratio in the rat hippocampus, schizophrenia pathology. Human and animal studies
+while the DOPAC concentration did not change, prob- have demonstrated that schizophrenia is characterized
+ably indicating the absence of dopamine metabolism by decreased hippocampal volume and anterior hip-
+changes in the hippocampus after US SP. pocampal hyperactivity, which correlates with the se-
+A few animal studies have demonstrated the effect of verity of psychosis [95].
+different PS types on the dopaminergic system in dif- Finally, we demonstrated that US PS exposure pro-
+ferent areas of the brain. For example, administration of voked noradrenergic system changes in the rat offspring.
+dexamethasone to pregnant female rats resulted in a PS offspring showed increased concentrations of nor-
+significant decrease of dopamine metabolism in the adrenaline in the frontal cortex and hippocampus. Some
+hypothalamus [89]. In another study, restraint PS studies have revealed that different PS types can affect the
+stimulated extracellular dopamine production in the noradrenergic system. For example, administration of
+nucleus accumbens of juvenile and adult rats [34]. dexamethasone to pregnant females resulted in decreased
+Unpredictable chronic mild PS increased dopamine level of noradrenaline in the neocortex and hippocampus
+metabolism in the right prefrontal cortex and decreased of the adult offspring [89]. PS induced by the daily
+dopamine activity in the right nucleus accumbens and subcutaneous injections of saline to pregnant female rats
+left striatum of adult rats [93]. PS induced by tail sus- changed the concentration of norepinephrine in the
+pension reduced dopamine metabolism in the nucleus hypothalamus and cortex of the offspring in an age-
+accumbens of adult rat offspring [94]. Therefore, PS can dependent manner [96]. PS induced by current shocks
+potentially modulate the dopaminergic system of dif- reduced the norepinephrine levels, but increased its
+ferent brain regions, but the patters of its effect can metabolism in the cortex and locus coeruleus of the adult
+probably depend on various factors. Our study dem- rats [97].
+onstrated the vulnerability of the hippocampal dopa-
+minergic system to US PS, but the frontal cortex ap- Sex Differences
+peared to be less affected. Our study indicated some behavioral sex differences
+Altered catecholamine transmission plays an impor- after US exposure. The research revealed the difference of
+tant role in the etiology of psychiatric disorders [34]. In the ASR parameter in the control group: males showed a
+particular, the dopamine hypothesis is the longest- higher level of ASR compared to the females. This dif-
+standing pathoetiological theory of schizophrenia [28, ference was compensated after PS exposure. The exis-
+35]. Plenty of evidences of the dopamine system hy- tence of sex differences in the level of ASR in healthy rats
+perreactivity in schizophrenia exist. Antipsychotic drugs is also supported by some studies [77, 98, 99]. The results
+block dopamine receptors. Moreover, drugs that stimu- of our experiment may indicate some influence of sex
+late dopamine release or enhance its transmission, such as factor on the stress response in rats, which may be
+amphetamine or L-DOPA, exacerbate psychosis in pa- modulated by PS. Males subjected to US PS were char-
+tients with schizophrenia and can induce schizophrenic- acterized by a more anxious phenotype than females in
+like symptoms in healthy people [28, 95]. Postmortem the open-field test. The analysis of social behavior showed
+studies have provided direct evidence of dopaminergic a greater vulnerability of social activity in males com-
+dysfunction in schizophrenia, showing elevated levels of pared to the females. In addition, males after PS definitely
+dopamine, its metabolites, and receptors in the striatum demonstrated a disturbance of latent inhibition, which
+[28]. Studies have also demonstrated changes of do- was not observed in females. Finally, the object recog-
+pamine level and metabolic activity in certain brain nition test showed that cognitive abilities of males were
+areas (hippocampus, frontal cortex, striatum, hypo- probably more susceptible to the negative influence of PS
+thalamus, and substantia nigra) in animal models of than in females. Therefore, we can conclude that males
+schizophrenia-like state, obtained via the neuro- are more vulnerable to stress induced by US during the
+development impairments [26]. prenatal period. These results are consistent with many
+254 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 19 =====
+studies that have used other types of PS in animal ex- potentially this type of stress can be used to model mental
+periments [100–103], suggesting that important sex disorders.
+differences in fetal responses to maternal stress during The impaired behavior of animals after US PS expo-
+pregnancy exist. sure could indicate the external validity of our model. In
+Sex differences in biochemical parameters were also particular, our study revealed that US PS increase anxious
+observed in our research. Multiple biochemical pa- behavior, alter social activity, and exploratory behavior in
+rameters significantly differed between males and animals. These behavioraldysfunctions may be associated
+females in the control animals (HIAA, HIAA/ with certain symptoms in humans, but they are not
+serotonin ratio, DOPAC, DOPAC/dopamine ratio, disease-specific and characterize a wide range of human
+and α-MSH). Nevertheless, these differences were not mental disorders. For example, social dysfunction is a
+detected in PS offspring. It was shown that PS can defining feature of autism [109], but impaired social
+disturb sexual differentiation of the brain. Most fre- interaction can also be observed in schizophrenia [110],
+quently, these impairments can shift the brain de- social anxiety disorder [111], and depression [112]. In-
+veloping toward demasculinization or feminization in creased anxiety is characteristic for the anxiety person-
+males [104, 105]. The neurotransmitter systems of the ality disorder, but it can also accompany autism [113] and
+brain play an extremely important role in this process. schizophrenia [114]. Disturbance of orientation and
+Neurotransmitters sexual differentiation largely de- exploratory activity, namely, reactions to unexpected
+termines the sexual dimorphism of the whole neu- stimuli and novelty, can be observed during neurosis,
+roendocrine system [89, 105, 106]. These assumptions organic brain damage, schizophrenia, and depression
+are also supported by the results of our study as the [115, 116].
+effects of US PS alleviated the sex differences of The social impairments in the social interaction test
+neurochemical and behavioral parameters, associated can indicate the presence of autistic-like behavior in the
+with each other. animals after US PS. From this point of view, it is also
+Therefore, our findings highlight the importance of important to consider the identified relationship be-
+including both sexes into scientific researches. It is also tween anxious and social behavior. In adult control
+important to develop future therapeutic strategies for males, social behavior was negatively correlated with the
+humans that consider gender. Data from animal studies anxious behavior. As the social interaction test was
+represent a substantial step toward this goal. developed as one of the first models of anxiety-like
+behavior and the reduction of social activity in this
+Modeling Mental Disorders by the US PS test indicated the increased anxiety [117], this rela-
+In general, the results of our study demonstrated the tionship is predictable. It is suggested that a decrease of
+negative effect of US exposure during the prenatal period social interaction indicates social avoidance and thus
+on the rat’s behavior, which is consistent with the results may reflect social fear in rodents [118]. It is interesting
+of previous studies of other prenatal stressors. As rodents that impaired social behavior in males after PS was not
+communicate via US, we suggest that this type of stressor associated with the level of anxiety. However, their level
+can have psychological character. In view of this, the use of anxiety was correlated with the exploration time of
+of US PS can probably be applied to model PS with nonliving object that probably can reflect the deviance in
+psychological nature. As such, stress is most typical for behavioral reactions from social interaction to interac-
+humans in modern society; our translational model has tion with nonliving objects, which in turn could possibly
+the potential to describe more appropriately the effect of indicate the presence of quasi-autistic traits in rodent’s
+stress during pregnancy compared to the models with behavior since patients with autism are characterized by
+other stress types. Such models are mostly based on the the modification of attention from social toward non-
+physical stress exposure, often used in experiments with social stimuli [119]. At the same time, our previous
+laboratory animals. studies have demonstrated that US PS altered social
+PS is a risk factor for the development of mental preferences, decreased play behavior in juvenile rats
+disorders in humans, so PS is used to model mental [46], and decreased social contact in adult Sprague-
+disorders on animals. Some attempts were undertaken to Dawley rats [47]. Impaired social interaction is one of
+develop PS-based models of diseases such as schizo- the major characteristics of autism [120]. Animal autism
+phrenia and depression [107, 108]. Since US PS leads to a models are expected to exhibit at least one of the main
+behavioral dysfunction in animals and shows similarities behavioral symptoms: impaired social interaction or the
+with some symptoms of psychopathologies in humans, presence of stereotyped repetitive behavior [121]. This
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 255
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 20 =====
+fact allow us to suggest the presence of autism-like [132, 133]. Model validity is stronger when behavioral
+behavior phenotype in rats after US PS, especially phenotypes reflect two or more disease symptoms [133].
+given the fact that social dysfunction was observed from In our study, beside the observed latent inhibition, which
+the early age [46], when relevant autism symptoms are can be compared to positive symptomatology, social
+also observed in humans. dysfunction was also detected in animals after US PS,
+Another frequent symptom of autism is autoag- which may be associated with negative symptoms. We
+gression [122]. Increased autoaggressive behavior and observed no pronounced cognitive impairment in rats,
+other types of behavior directed at their own body nonetheless schizophrenia is not always characterized by
+(grooming, scratching) can also be observed in animals cognitive decline [134, 135]. Thus, it is possible to suggest
+[123]. Although grooming is not a defining trait of any that impaired behavioral phenotype in animals after US
+modeling pathology, its various aspects can reflect some PS may reflect schizophrenic-like behavior features. The
+patterns of human behavior [124]. Some evidence sug- additional important confirmation of this assumption is
+gests that increased grooming activity may characterize the detected activation of the dopaminergic system in the
+models of autism, anxiety disorder, psychosis, and rat hippocampus since this phenomenon is characteristic
+obsessive-compulsive disorder [68, 124–127]. for schizophrenia.
+In order to investigate depressive-like behavior in the It is important to note that the previous suggestion
+animals in our experiment, we conducted behavioral tests about autistic-like behavior observed in rats in our ex-
+that could detect anhedonia and despair behavior in periment does not contradict this assumption since the
+animals since these behavioral traits are commonly as- psychopathology of schizophrenia and autism signifi-
+sociated with symptoms of depression in humans [108]. cantly overlap [26]. Because of the similarities in social
+However, these tests showed the absence of behavioral deficits that can be observed in rodent models of
+abnormalities, which allowed us to exclude a depressive- schizophrenia and autism, it is difficult to distinguish
+like behavioral phenotype in animals after US PS. In between the social dysfunction associated with the two
+addition, the study of the serotonergic system has not disorders [136].
+demonstrated a decrease of serotonin level in the frontal Nevertheless, the potential model of a schizophrenic-
+cortex or hippocampus characteristic for depression. like condition has the advantage because of the negative
+Instead, the activation of this system was revealed after symptoms presence. While current therapeutic agents
+the US PS. However, in our study, we detected a decrease (neuroleptics) can reduce the positive symptoms of
+of ASR in males exposed to US PS. This phenomenon can schizophrenia, treatment of the negative symptoms is a
+also be observed in people suffering from mental dis- vital and unmet clinical need [107]. Developing of the
+orders. Patients with depression or bipolar disorder translational models that more appropriately replicate the
+demonstrated a blunted response to acoustic stimuli [128, negative disease symptoms, in addition to positive
+129]. Patients with distress states also showed signs of symptoms, is an important task [107].
+reduced ASR [130, 131]. Therefore, depression may Additionally, it is necessary to mention schizotypal
+produce an inhibitory effect on the startle modulation. disorder. Schizotypal personality traits phenomenologi-
+This allows to suggest the presence of some depressive- cally remind the signs and symptoms of schizophrenia
+like behavioral traits in animals after US PS. and conceptualized as a latent predisposition to schizo-
+The important result was shown by the latent inhi- phrenia [137]. Schizotypal disorder is generally charac-
+bition test, which detected impaired latent inhibition terized by three major types of symptoms: cognitive
+process in rats after US PS. This trait is often observed in deficits of perception (strange beliefs, perceptual dis-
+patients with schizophrenia and is normalized by neu- turbances, and mentalism), interpersonal deficits (lack of
+roleptics [76]. It is suggested that latent inhibition may be intimate friends, social anxiety), and disorganization
+associated with positive symptoms of schizophrenia [26]. (strange speech and thoughts, blunted affect, odd be-
+Latent inhibition has been widely studied in translational havior) [138, 139]. This set of personality traits can range
+schizophrenia models and is closely related to dopami- from minimal disturbances to psychotic disorders in the
+nergic activity [76, 132]. Most rodent models of general human population [140]. A number of studies
+schizophrenia primarily reproduce positive symptoms of have shown that latent inhibition can also be impaired in
+schizophrenia as negative and cognitive symptoms are this disorder [141, 142], which allows us to consider the
+less specific [107]. Nevertheless, schizophrenia represents behavioral phenotype of rats after US PS also as a model,
+a complex disease with a heterogeneous group of reproducing schizotypy symptoms, that may have im-
+symptoms, which cannot be fully modeled in rodents portant practical relevance as schizotypy allows us to
+256 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 21 =====
+explore the etiological pathways underlying schizo- that it is not necessary to associate behavioral phenotype
+phrenic spectrum psychopathology [139]. impairments in rats after US PS with a strictly defined
+The promising experimental approach to focus on psychopathological syndrome. Instead, we need to look
+individual behavioral, physiological, and neuroana- more closely at individual symptoms, such as social
+tomical phenotypes of the disease, rather than modeling deficits, increased anxious behavior, or impaired latent
+the entire syndrome, should also be mentioned [26]. For Inhibition, as well as changes of neurotransmitter sys-
+the great majority of psychiatric pathological conditions, tems. Such complex may form the core or be one of the
+knowledge of pathophysiology remains insufficient, and elements of pathological manifestations of different
+objective diagnostic tests for them are lacking. Diagnosis diseases and represent the target for therapy of different
+in psychiatry is currently guided by the International nosologies.
+Classification of Diseases (ICD) and the Diagnostic and
+Statistical Manual of Mental Disorders (DSM), which
+are based on the assumption that mental disorders Conclusion
+represent separated nosological entities. Diagnoses are
+based exclusively on phenomenology, namely, on Our study demonstrated that stress in pregnant females
+symptoms, signs, and progress of the disease. However, caused by chronic exposure to variable frequency US, which
+the similarity of clinical phenotypic manifestations and carries the information significance for rodents, lead to the
+frequently observed comorbidities support the as- development of the pathological behavioral phenotype in
+sumption that mental disorders are not separate con- the offspring. Emotional reactions, social functions, and
+ditions [26, 135, 143]. DSM and ICD do not correlate exploratory behavior of the animals were mostly affected.
+well with the new data from genetics and neurobiology, These behavioral disturbances were accompanied by
+hindering not only etiology and pathophysiology re- changes in the functioning of the serotonergic, do-
+search but also the development of the new treatments paminergic, and noradrenergic neurotransmitter
+[144]. Psychiatric drugs are not effective in all patients. systems in the frontal cortex and hippocampus, which
+One reason for this low response rate is the artificial were correlated with behavioral dysfunction.
+association of heterogeneous syndromes with different Our study has practical relevance because PS in ro-
+pathophysiological mechanisms into a common disor- dents caused by variable US exposure could probably be
+der [144]. applied to model the psychological PS that is primary
+Becauseof this, in2009, theNationalInstituteofMental characteristic for humans in modern society. In addition,
+Health launched the Research Domain Criteria (RDoC) US PS leads to the certain dysfunction on behavioral and
+project [134, 144] to develop a system for classifying biochemical levels in animals, which could potentially
+mental disorders based on neurobiology parameters and indicate the validity for future modeling of psychopa-
+observed behavior, which represent a new approach to thology based on the impairments of neurodevelopment.
+translational research. The RDoC represents the paradigm Our study has shown that changes in rats after US PS are
+allowing to looks at mental disorders from a translational most closely associated with symptoms of schizophrenia/
+perspective. RDoC enhances the translational potential of
+schizotypy or autism. However, in order to develop a
+animal research to address neurobiological questions re- complete effective translational model, predictive, and
+lated to psychopathology. The RDoC structure avoids the
+construct validity must also be evaluated in the future.
+serious problem of translational research strictly con-
+forming to an animal model of disorder [134].
+The borders between the different disorders, as well as
+Acknowledgments
+the boundaries between the pathology and mental nor-
+mality, are often arbitrary, creating huge barriers to the WearedeeplygratefultoEkaterinaPavlovaandVictorBlokhin
+development of effective animal models of mental dis- (Koltzov Institute of Developmental Biology of the RAS, Moscow,
+orders. Animal models cannot fully reflect human mental Russia) for excellent experimental assistance.
+disorder characteristics. In addition, individual symp-
+toms observed in animal models may not have a simple
+Statement of Ethics
+and direct correspondence to the human symptoms.
+Translational models reproduce only certain symptoms
+This study protocol was reviewed and approved by Local
+instead of accurate and complete simulations of psy-
+Ethical Committee of V.P. Serbsky National Medical Research
+chiatric syndromes [26, 132, 135]. Therefore, we suggest Center for Psychiatry and Narcology, approval number 1 from
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 257
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 22 =====
+February 10, 2022. Housing conditions and all experimental Author Contributions
+procedures weresetup,maintained,conductedinaccordancewith
+Directive 2010/63/EU of September 22, 2010. Conceptualization:E.Z.,A.M.,andV.C.;methodology:E.Z.and
+A.M.; formal analysis: O.A. and Y.Z.; investigation: O.A., Y.Z.,
+V.U., and A.T.P.; resources: O.G. and V.C.; writing – original draft
+Conflict of Interest Statement preparation: O.A., Y.Z., and V.U.; writing – review and editing,
+O.A., Y.Z., E.Z., Z.S., A.M., and V.U.; supervision: O.G., Z.S., and
+The authors have no conflicts of interest to declare. V.C.; project administration: E.Z. and A.M.; funding acquisi-
+tion: O.G.
+Funding Sources
+The study was performed employing the unique scientific fa- Data Availability Statement
+cility scanning ion-conductance microscope with a confocal
+module (registration number 2512530) and was financially sup- Alldata generatedoranalyzed during thisstudy areincludedin
+ported by the Ministry of Education and Science of the Russian this article. Further inquiries can be directed to the corresponding
+Federation, Agreement No. 075-15-2022-264. author.
+References
+1 Baik JH. Stress and the dopaminergic re- Dutch city: 23-year follow-up of the Dutch spring. Curr Psychiatry Rep. 2019 Sep 14;
+ward system. Exp Mol Med. 2020;52(12): GLOBE study. Health Place. 2018;53:79–85. 21(10):99.
+1879–90. 12 Creutzberg KC, Sanson A, Viola TW, 21 Torbeyns M, Claes S, Morrens M, Hompes
+2 SelyeH.Theevolutionofthestressconcept. Marchisella F, Begni V, Grassi-Oliveira R, T. Prenatale psychologische stressfactoren
+Am Sci. 1973;61(6):692–9. et al. Long-lasting effects of prenatal stress en de ontwikkeling van affectieve stoornis-
+3 Zefferino R, Di Gioia S, Conese M. Mo- onHPAaxisandinflammation:asystematic sen bij het kind: literatuuroverzicht [Pre-
+lecular links between endocrine, nervous review and multilevel meta-analysis in ro- natal psychological stress and the develop-
+and immune system during chronic stress. dent studies. Neurosci Biobehav Rev. 2021 ment of affective disorders in children: lit-
+Brain Behav. 2021;11(2):e01960. Aug;127:270–83. erature review]. Tijdschr Psychiatr. 2018;
+4 Lu S, Wei F, Li G. The evolution of the 13 Krontira AC, Cruceanu C, Binder EB. 60(10):699–709.
+concept of stress and the framework of the Glucocorticoids as mediators of adverse 22 Manzari N, Matvienko-Sikar K, Baldoni F,
+stress system. Cell Stress. 2021;5(6):76–85. outcomes of prenatal stress. Trends Neu- O’Keeffe GW, Khashan AS. Prenatal ma-
+5 McEwen BS, Gianaros PJ. Stress- and rosci. 2020 Jun;43(6):394–405. ternal stress and risk of neurodevelopmental
+allostasis-induced brain plasticity. Annu 14 MiguelPM,PereiraLO,SilveiraPP,Meaney disordersintheoffspring:asystematicreview
+Rev Med. 2011;62:431–45. MJ. Early environmental influences on the and meta-analysis. Soc Psychiatry Psychiatr
+6 Agathokleous E, Kitao M, Calabrese EJ. development of children’s brain structure Epidemiol. 2019 Nov;54(11):1299–309.
+Hormesis: highly generalizable and beyond and function. Dev Med Child Neurol. 2019 23 Beversdorf DQ, Stevens HE, Jones KL.
+laboratory. Trends Plant Sci. 2020;25(11): Oct;61(10):1127–33. Prenatal stress, maternal immune dysregu-
+1076–86. 15 Monk C, Lugo-Candelas C, Trumpff C. lation, and their association with autism
+7 Gatersleben B, Griffin I. Environmental Prenatal developmental origins of future spectrum disorders. Curr Psychiatry Rep.
+stress. In: Fleury-Bahi G, Pol E, Navarro O, psychopathology: mechanisms and path- 2018 Aug 9;20(9):76.
+editors. Handbook of environmental psy- ways. Annu Rev Clin Psychol. 2019 May 7; 24 RehmJ,ShieldKD.Globalburdenofdisease
+chology and quality of life research. Inter- 15:317–44. and the impact of mental and addictive
+national handbooks of quality-of-life. 16 Stiles J. Principles of brain development. disorders. Curr Psychiatry Rep. 2019 Feb 7;
+Cham: Springer; 2017. Wiley Interdiscip Rev Cogn Sci. 2017 Jan; 21(2):10.
+8 DettmerAM,NovakMA,MeyerJS,SuomiSJ. 8(1–2):10.1002/wcs.1402. 25 Scharf SH, Schmidt MV. Animal models of
+Population density-dependent hair cortisol 17 Haq SU, Bhat UA, Kumar A. Prenatal stress stress vulnerability and resilience in trans-
+concentrations in rhesus monkeys (Macaca effects on offspring brain and behavior: me- lational research. CurrPsychiatryRep.2012
+mulatta).Psychoneuroendocrinology.2014;42: diators,alterationsanddysregulatedepigenetic Apr;14(2):159–65.
+59–67. mechanisms. J Biosci. 2021;46(2):34. 26 Meyer U, Feldon J. Epidemiology-driven
+9 RosenheimJA,SchreiberSJ.Pathwaystothe 18 Roshan-MilaniS,SeyyedabadiB,SabooryE, neurodevelopmental animal models of
+density-dependent expression of cannibal- Parsamanesh N, Mehranfard N. Prenatal schizophrenia. Prog Neurobiol. 2010 Mar;
+ism, and consequences for regulated pop- stress and increased susceptibility to 90(3):285–326.
+ulation dynamics. Ecology. 2022;103(10): anxiety-like behaviors: role of neuro- 27 Hyman SE Neurotransmitters Curr Biol.
+e3785. inflammation and balance between GA- 2005 Mar 8;15(5):R154–8.
+10 HuangS,LiG,PanY,SongM,ZhaoJ,Wan BAergic and glutamatergic transmission. 28 Howes OD, McCutcheon R, Owen MJ,
+X, et al. Density-induced social stress alters Stress. 2021 Sep;24(5):481–95. Murray RM. The role of genes, stress, and
+oxytocin and vasopressin activities in the 19 Lautarescu A, Craig MC, Glover V. Prenatal dopamine in the development of schizophre-
+brain of a small rodent species. Integr Zool. stress: effects on fetal and child brain devel- nia. Biol Psychiatry. 2017 Jan 1;81(1):9–20.
+2021;16(2):149–59. opment. Int Rev Neurobiol. 2020;150:17–40. 29 St-Pierre J, Laurent L, King S, Vaillancourt
+11 Beenackers MA, Oude Groeniger J, Kam- 20 Lipner E, Murphy SK, Ellman LM. Prenatal C. Effects of prenatal maternal stress on
+phuis CBM, Van Lenthe FJ. Urban pop- maternal stress and the cascade of risk to serotonin and fetal development. Placenta.
+ulation density and mortality in a compact schizophrenia spectrum disorders in off- 2016 Dec;48(Suppl 1):S66–71.
+258 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 23 =====
+30 Yang CJ, Tan HP, Du YJ. The developmental 43 Zorkina YA, Zubkov EA, Morozova AY, serotonin receptors. J Psychiatry Neurosci.
+disruptions of serotonin signaling may in- Ushakova VM, Chekhonin VP. The com- 2004 Mar;29(2):126–33.
+volved in autism during early brain develop- parison of a new ultrasound-induced depres- 56 Wood GK, Tomasiewicz H, Rutishauser U,
+ment. Neuroscience. 2014 May 16;267:1–10. sion model to the chronic mild stress para- Magnuson T, Quirion R, Rochford J, et al.
+31 Pronina T, Pavlova E, Dil’mukhametova L, digm.FrontBehavNeurosci.2019Jul2;13:146. NCAM-180 knockout mice display in-
+Ugrumov M. Development of the periven- 44 Abramova O, Zorkina Y, Syunyakov T, creased lateral ventricle size and reduced
+tricularnucleusasabraincenter,containing Zubkov E, Ushakova V, Silantyev A, et al. prepulse inhibition of startle. Neuroreport.
+dopaminergic neurons and neurons ex- Brain metabolic profile after intranasal vs. 1998 Feb 16;9(3):461–6.
+pressing individual enzymes of dopamine Intraperitoneal clomipramine treatment in 57 Vaneev AN, Timoshenko RV, Gorelkin PV,
+synthesis. Int J Mol Sci. 2022;23(23):14682. rats with ultrasound model of depression. Klyachko NL, Korchev YE, Erofeev AS.
+32 Pourhamzeh M, Moravej FG, Arabi M, Int J Mol Sci. 2021 Sep 4;22(17):9598. Nano- and microsensors for in vivo real-
+Shahriari E, Mehrabi S, Ward R, et al. The 45 HahadO,ProchaskaJH,DaiberA,Muenzel time electrochemical analysis: present and
+roles of serotonin in neuropsychiatric dis- T. Environmental noise-induced effects on future perspectives. Nanomaterials. 2022;
+orders.CellMolNeurobiol.2022Aug;42(6): stress hormones, oxidative stress, and vas- 12(21):3736.
+1671–92. cular dysfunction: key factors in the rela- 58 Perry M, Li Q, Kennedy RT. Review of
+33 Klein MO, Battagello DS, Cardoso AR, tionshipbetweencerebrocardiovascularand recent advances in analytical techniques for
+Hauser DN, Bittencourt JC, Correa RG. psychological disorders. Oxid Med Cell the determination of neurotransmitters.
+Dopamine: functions, signaling, and asso- Longev. 2019;2019:4623109. Anal Chim Acta. 2009;653(1):1–22.
+ciation with neurological diseases. Cell Mol 46 Abramova O, Ushakova V, Zorkina Y, 59 Vaneev AN, Gorelkin PV, Garanina AS,
+Neurobiol. 2019 Jan;39(1):31–59. Zubkov E, Storozheva Z, Morozova A, et al. Lopatukhina HV, Vodopyanov SS, Alova
+34 Silvagni A, Barros VG, Mura C, Antonelli The behavior and postnatal development in AV, et al. In vitro and in vivo electro-
+MC, Carboni E. Prenatal restraint stress infant and juvenile rats after ultrasound- chemical measurement of reactive oxygen
+differentially modifies basal and stimulated induced chronic prenatal stress. Front species after treatment with anticancer
+dopamine and noradrenaline release in the Physiol. 2021 Apr 15;12:659366. drugs. Anal Chem. 2020;92(12):8010–4.
+nucleus accumbens shell: an “in vivo” mi- 47 Abramova OV, Zubkov EA, Zorkina YA, 60 Kolacheva A, Alekperova L, Pavlova E,
+crodialysis study in adolescent and young Morozova AY, Pavlov KA, Chekhonin VP. Bannikova A, Ugrumov MV. Changes in
+adult rats. Eur J Neurosci. 2008 Aug;28(4): Social and cognitive impairments in rat off- tyrosine hydroxylase activity and dopamine
+744–58. springafterultrasound-inducedprenatalstress. synthesis in the nigrostriatal system of mice
+35 Yang AC, Tsai SJ. New targets for schizo- Bull Exp Biol Med. 2020 Apr;168(6):730–3. inanacutemodelofParkinson’sdiseaseasa
+phrenia treatment beyond the dopamine hy- 48 KnightP,ChellianR,WilsonR,Behnood-Rod manifestation of neurodegeneration and
+pothesis.IntJMolSci.2017Aug3;18(8):1689. A,PanunzioS,BruijnzeelAW.Sexdifferences neuroplasticity. Brain Sci. 2022 Jun 14;
+36 Saboory E, Ghasemi M, Mehranfard N. in the elevated plus-maze test and large open 12(6):779.
+Norepinephrine, neurodevelopment and field test in adult Wistar rats. Pharmacol Bi- 61 Smith JE, Koves TR, Co C. Brain neuro-
+behavior. Neurochem Int. 2020 May;135: ochem Behav. 2021 May;204:173168. transmitter turnover rates during rat in-
+104706. 49 ChenMX,LiuQ,ChengS,LeiL,LinAJ,Wei travenous cocaine self-administration.
+37 Mäki-Marttunen V, Andreassen OA, Es- R, et al. Interleukin-18 levels in the hippo- Neuroscience. 2003;117(2):461–75.
+peseth T. The role of norepinephrine in the campus and behavior of adult rat offspring 62 Green A, Esser MJ, Perrot TS. Develop-
+pathophysiology ofschizophrenia. Neurosci exposed to prenatal restraint stress during mental expression of anxiety and depres-
+Biobehav Rev. 2020 Nov;118:298–314. early and late pregnancy. Neural Regen Res. sive behaviours after prenatal predator
+38 Abe H, Hidaka N, Kawagoe C, Odagiri K, 2020 Sep;15(9):1748–56. exposure and early life homecage en-
+Watanabe Y, Ikeda T, et al. Prenatal psy- 50 Markham JA, Taylor AR, Taylor SB, Bell hancement. Behav Brain Res. 2018 Jul 2;
+chologicalstresscauseshigheremotionality, DB, Koenig JI. Characterization of the 346:122–36.
+depression-like behavior, and elevated ac- cognitive impairments induced by prenatal 63 GhotbiRavandi S, Shabani M, Bakhshaei S,
+tivity in the hypothalamo-pituitary-adrenal exposure to stress in the rat. Front Behav Nazeri M, Nozari M. Effects of psycholog-
+axis. Neurosci Res. 2007 Oct;59(2):145–51. Neurosci. 2010 Nov 25;4:173. ical or physical prenatal stress on attention
+39 Takahashi N, Kashino M, Hironaka N. 51 Meyer U, Feldon J, Schedlowski M, Yee BK. and locomotion in juvenile rats. Int
+Structure of rat ultrasonic vocalizations and Towards an immuno-precipitated neuro- J Neurosci. 2021 Mar;131(3):233–8.
+its relevance to behavior. PLoS One. 2010 developmentalanimalmodelofschizophrenia. 64 Iturra-Mena AM, Arriagada-Solimano M,
+Nov 29;5(11):e14115. Neurosci Biobehav Rev. 2005;29(6):913–47. Luttecke-Anders A, Dagnino-Subiabre A.
+40 Morozova A, Zubkov E, Strekalova T, Ke- 52 Singer P, Feldon J, Yee BK. Interference of Effects of prenatal stress on anxiety- and
+kelidze Z, Storozeva Z, Schroeter CA, et al. Glycine transporter 1: modulation of cog- depressive-like behaviours are sex-specific
+Ultrasound of alternating frequencies and nitive functions via activation of Glycine-B in prepubertal rats. J Neuroendocrinol.
+variableemotionalimpactevokesdepressive site of the NMDA receptor. Cent Nerv Syst 2018 Jul;30(7):e12609.
+syndrome in mice and rats. Prog Neuro- Agents Med Chem. 2007;7(4):259–68. 65 Razavinasab M, Sheibani V, Kohlmeier
+Psychopharmacol Biol Psychiatry. 2016 Jul 53 Morris R. Developments of a water-maze KA, Nazeri M, Shabani M. Hyperexcit-
+4;68:52–63. procedure for studying spatial learning in ability of VTA dopaminergic neurons in
+41 Morozova AY, Zubkov EA, Storozheva ZI, the rat. J Neurosci Methods. 1984 May; male offspring exposed to physical or
+Kekelidze ZI, Chekhonin VP. Effect of ul- 11(1):47–60. psychological prenatal stress. Prog Neuro-
+trasonic irradiation on the development of 54 Bopaiah CP, Pradhan N, Venkataram BS. Psychopharmacol Biol Psychiatry. 2020 Jul
+symptomsofdepressionandanxietyinrats. Pharmacological study on antidepressant 13;101:109923.
+Bull Exp Biol Med. 2013 Apr;154(6):740–3. activity of 50% ethanol extract of a for- 66 Roque A, Ruiz-González R, Pineda-López
+42 Morozova AY, Zubkov EA, Storozheva ZI, mulated ayurvedic product in rats. E, Torner L, Lajud N. Prenatal immobili-
+Koshkin PA, Shepeleva II, Kekelidze ZI. J Ethnopharmacol. 2000 Oct;72(3):411–9. zation stress and postnatal maternal sep-
+Behavioral patterns and expression of genes 55 Bourin M, Mocaër E, Porsolt R. aration cause differential neuroendocrine
+coding serotonin receptors in rats with ul- Antidepressant-like activity of S 20098 responses to fasting stress in adult male
+trasoundinduceddepression.BrJMedMed (agomelatine) in the forced swimming test rats. Dev Psychobiol. 2020 Sep;62(6):
+Res. 2013;3(4):2107–18. in rodents: involvement of melatonin and 737–48.
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 259
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 24 =====
+67 Estanislau C, Veloso AWN, Filgueiras GB, development in the rat offspring. Behav 93 Fride E, Weinstock M. Prenatal stress in-
+Maio TP, Dal-Cól MLC, Cunha DC, et al. Brain Res. 2005 Jul 1;162(1):153–60. creases anxiety related behavior and alters
+Rat self-grooming and its relationships with 81 HougaardKS,MandrupKR,KjaerSL,Bøgh cerebral lateralization of dopamine activity.
+anxiety, dearousal and perseveration: evi- IB, Rosenberg R, Wegener G. Gestational Life Sci. 1988;42(10):1059–65.
+dence for a self-grooming trait. Physiol chronic mild stress: effects on acoustic 94 Alonso SJ, Navarro E, Rodriguez M. Per-
+Behav. 2019 Oct 1;209:112585. startle in male offspring of rats. Int J Dev manent dopaminergic alterations in the
+68 Kalueff AV, Aldridge JW, LaPorte JL, Neurosci. 2011 Jun;29(4):495–500. n.accumbensafterprenatalstress.Pharmacol
+Murphy DL, Tuohimaa P. Analyzing 82 Kjaer SL, Hougaard KS, Tasker RA, Mac- Biochem Behav. 1994 Oct;49(2):353–8.
+grooming microstructure in neuro- Donald DS, Rosenberg R, Elfving B, et al. 95 Grace AA. Dysregulation of the dopamine
+behavioral experiments. Nat Protoc. 2007; Influence of diurnal phase on startle re- system in the pathophysiology of schizo-
+2(10):2538–44. sponse in adult rats exposed to dexameth- phrenia and depression. Nat Rev Neurosci.
+69 Song C, Berridge KC, Kalueff AV. “Stress- asone in utero. Physiol Behav. 2011Mar 28; 2016 Aug;17(8):524–32.
+ing” rodent self-grooming for neuroscience 102(5):444–52. 96 Peters DA. Prenatal stress: effects on brain
+research. Nat Rev Neurosci. 2016 Sep; 83 Kleinhaus K, Steinfeld S, Balaban J, Good- biogenic amine and plasma corticosterone
+17(9):591. man L, Craft TS, Malaspina D, et al. Effects levels.PharmacolBiochemBehav.1982Oct;
+70 Smith CJ, Wilkins KB, Mogavero JN, Vee- of excessive glucocorticoid receptor stimu- 17(4):721–5.
+nemaAH.Socialnoveltyinvestigationinthe lation during early gestation on psycho- 97 Takahashi LK, Turner JG, Kalin NH. Pre-
+juvenile rat: modulation by the μ-opioid motor and social behavior in the rat. Dev natal stress alters brain catecholaminergic
+system. J Neuroendocrinol. 2015 Oct; Psychobiol. 2010 Mar;52(2):121–32. activity and potentiates stress-induced be-
+27(10):752–64. 84 Kjaer SL, Wegener G, Rosenberg R, Lund havior in adult rats. Brain Res. 1992 Mar 6;
+71 Gur TL, Palkar AV, Rajasekera T, Allen J, SP, Hougaard KS. Prenatal and adult stress 574(1–2):131–7.
+Niraula A, Godbout J, et al. Prenatal stress interplay: behavioral implications. Brain 98 Lehmann J, Pryce CR, Feldon J. Sex dif-
+disrupts social behavior, cortical neurobi- Res. 2010 Mar 12;1320:106–13. ferences in the acoustic startle response and
+ology and commensal microbes in adult 85 NiuY,WangT,LiangS,LiW,HuX,WuX, prepulse inhibition in Wistar rats. Behav
+maleoffspring.BehavBrainRes.2019Feb1; et al. Sex-dependent aberrant PFC devel- Brain Res. 1999 Oct;104(1–2):113–7.
+359:886–94. opment in the adolescent offspring rats 99 BlanchA,LucasI,Balada F,BlancoE,Aluja
+72 Grundwald NJ, Benítez DP, Brunton PJ. exposedtovariableprenatalstress.IntJDev A. Sex differences and personality in the
+Sex-dependent effects of prenatal stress on Neurosci. 2020 Oct;80(6):464–76. modulation of the acoustic startle reflex.
+social memory in rats: a role for differential 86 MaffeiME.5-Hydroxytryptophan(5-HTP): Physiol Behav. 2018 Oct 15;195:20–7.
+expression of central vasopressin-1a recep- natural occurrence, analysis, biosynthesis, 100 Fineberg AM, Ellman LM, Schaefer CA,
+tors.JNeuroendocrinol.2016Apr;28(4):n/a. biotechnology, physiology and toxicology. Maxwell SD, Shen L, Chaudhury NH, et al.
+73 Gumusoglu SB, Fine RS, Murray SJ, Bittle Int J Mol Sci. 2020 Dec 26;22(1):181. Fetal exposure to maternal stress and risk
+JL, Stevens HE. The role of IL-6 in neuro- 87 Andrews PW, Bharwani A, Lee KR, Fox M, for schizophrenia spectrum disorders
+development after prenatal stress. Brain Thomson JA Jr. Is serotonin an upper or a among offspring: differential influences of
+Behav Immun. 2017 Oct;65:274–83. downer? The evolution of the serotonergic fetal sex. Psychiatry Res. 2016 Feb 28;
+74 Hauser J, Feldon J, Pryce CR. Prenatal system and its role in depression and the 236:91–7.
+dexamethasone exposure, postnatal devel- antidepressantresponse.NeurosciBiobehav 101 Li J, Olsen J, Vestergaard M, Obel C. At-
+opment, and adulthood prepulse inhibition Rev. 2015 Apr;51:164–88. tention-deficit/hyperactivity disorder in the
+and latent inhibition in Wistar rats. Behav 88 Enayati M, Mosaferi B, Homberg JR, Diniz offspring following prenatal maternal be-
+Brain Res. 2006 Nov 25;175(1):51–61. DM, Salari AA. Prenatal maternal stress reavement: a nationwide follow-up study in
+75 Shalev U, Weiner I. Gender-dependent alters depression-related symptoms in a Denmark. Eur Child Adolesc Psychiatry.
+differences in latent inhibition following strain - and sex-dependent manner in ro- 2010 Oct;19(10):747–53.
+prenatal stress and corticosterone admin- dent offspring. Life Sci. 2020 Jun 15;251: 102 Brunton PJ, Russell JA. Prenatal socialstressin
+istration. Behav Brain Res. 2001 Nov 29; 117597. the rat programmes neuroendocrine and be-
+126(1–2):57–63. 89 Muneoka K, Mikuni M, Ogawa T, Kitera K, havioural responses to stress in the adult off-
+76 Bethus I, Lemaire V, Lhomme M, Goodall Kamei K, Takigawa M, et al. Prenatal spring: sex-specific effects. J Neuroendocrinol.
+G. Does prenatal stress affect latent inhi- dexamethasone exposure alters brain 2010 Apr;22(4):258–71.
+bition? It depends on the gender. Behav monoamine metabolism and adrenocortical 103 Mueller BR, Bale TL. Sex-specific pro-
+Brain Res. 2005 Mar 30;158(2):331–8. responseinratoffspring.AmJPhysiol.1997 gramming of offspring emotionality after
+77 Lehmann J, Stöhr T, Feldon J. Long-term Nov;273(5):R1669–75. stress early in pregnancy. J Neurosci. 2008
+effects of prenatal stress experiences and 90 Ishiwata H, Shiga T, Okado N. Selective Sep 3;28(36):9055–65.
+postnatal maternal separation on emotion- serotonin reuptake inhibitor treatment of 104 Barrett ES, Swan SH. Stress and androgen
+ality and attentional processes. Behav Brain early postnatal mice reverses their prenatal activity during fetal development. Endo-
+Res. 2000 Jan;107(1–2):133–44. stress-induced brain dysfunction. Neuro- crinology. 2015 Oct;156(10):3435–41.
+78 Byrom NC, Msetfi RM, Murphy RA. Hu- science. 2005;133(4):893–901. 105 Nosenko ND, Reznikov AG. Prenatal stress
+man latent inhibition: problems with the 91 Nagano M, Liu M, Inagaki H, Kawada T, and sexual differentiation of monoaminer-
+stimulus exposure effect. Psychon Bull Rev. SuzukiH.Earlyinterventionwithfluoxetine gic brain systems. Neurophysiology. 2001;
+2018 Dec;25(6):2102–18. reverses abnormalities in the serotonergic 33(2):125–34.
+79 Kapoor A, Matthews SG. Testosterone is system and behavior of rats exposed pre- 106 ReznikovAG,NosenkoND.Earlypostnatal
+involved inmediatingtheeffectsofprenatal natally to dexamethasone. Neuropharma- changes in sexual dimorphism of catechol-
+stress in male Guinea pig offspring. cology. 2012 Aug;63(2):292–300. amineandindoleaminecontentinthebrain
+J Physiol. 2011 Feb 1;589(Pt 3):755–66. 92 Bondarenko NS, Voronova SN, Vor- of prenatally stressed rats. Neuroscience.
+80 Tazumi T, Hori E, Uwano T, Umeno K, onezhskaya EE, Melnikova VI. Prenatal 1996 Jan;70(2):547–51.
+Tanebe K, Tabuchi E, et al. Effects of pre- stressandadaptivebehaviorofoffspring:the 107 Jones CA, Watson DJ, Fone KC. Animal
+natal maternal stress by repeated cold en- role of placental serotonin. Dokl Biochem models of schizophrenia. Br J Pharmacol.
+vironment on behavioral and emotional Biophys. 2022 Apr;503(1):104–7. 2011 Oct;164(4):1162–94.
+260 Dev Neurosci 2024;46:237–261 Abramova et al.
+DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025
+
+===== PAGE 25 =====
+108 Bogi E, Belovicova K, Csatlosova K, Du- 121 Chadman KK. Animal models for autismin 132 KokrasN,DallaC.Sexdifferencesinanimal
+bovicky M. Animal models of maternal de- 2017 and the consequential implications to models of psychiatric disorders. Br
+pressionformonitoringneurodevelopmental drug discovery. Expert Opin Drug Discov. J Pharmacol. 2014 Oct;171(20):4595–619.
+changes occurring in dams and offspring. 2017 Dec;12(12):1187–94. 133 ChadmanKK,YangM,CrawleyJN.Criteria
+Interdiscip Toxicol. 2017 Sep;10(1):35–9. 122 DominickKC,DavisNO,LainhartJ,Tager- for validating mouse models of psychiatric
+109 Servadio M, Vanderschuren LJ, Trezza V. FlusbergH,FolsteinS.Atypicalbehaviorsin diseases.AmJMedGenetBNeuropsychiatr
+Modeling autism-relevant behavioral phe- children with autism and children with a Genet. 2009 Jan 5;150B(1):1–11.
+notypes in rats and mice: do ‘autistic’ ro- history of language impairment. Res Dev 134 Morris SE, Sanislow CA, Pacheco J, Vai-
+dents exist? Behav Pharmacol. 2015 Sep; Disabil. 2007 Mar-Apr;28(2):145–62. dyanathan U, Gordon JA, Cuthbert BN.
+26(6):522–40. 123 Iwata K, Matsuzaki H, Takei N, Manabe T, Revisiting the seven pillars of RDoC. BMC
+110 Dziwota E, Stepulak MZ, Włoszczak- Mori N. Animal models of autism: an epi- Med. 2022 Jun 30;20(1):220.
+Szubzda A, Olajossy M. Social functioning genetic and environmental viewpoint. 135 Nestler EJ, Hyman SE. Animal models of
+and the quality of life of patients diagnosed J Cent Nerv Syst Dis. 2010 Nov 10;2:37–44. neuropsychiatric disorders. Nat Neurosci.
+with schizophrenia. Ann Agric Environ 124 Kalueff AV, Stewart AM, Song C, Berridge 2010 Oct;13(10):1161–9.
+Med. 2018 Mar 14;25(1):50–5. KC, Graybiel AM, Fentress JC. Neurobiol- 136 WilsonCA,KoenigJI.Socialinteractionand
+111 Asher M, Asnaani A, Aderka IM. Gender ogyofrodentself-groominganditsvaluefor social withdrawal in rodents as readouts for
+differences in social anxiety disorder: a re- translational neuroscience. Nat Rev Neu- investigating the negative symptoms of
+view. Clin Psychol Rev. 2017 Aug;56:1–12. rosci. 2016 Jan;17(1):45–59. schizophrenia.EurNeuropsychopharmacol.
+112 Fernández-TheodulozG,PazV,Nicolaisen- 125 Bagnall-MoreauC,HuertaPT,ComolettiD, 2014 May;24(5):759–73.
+Sobesky E, Pérez A, Buunk AP, Cabana Á, La-Bella A, Berlin R, Zhao C, et al. In utero 137 PolnerB,FaiolaE,UrquijoMF,MeyhöferI,
+etal.Socialavoidanceindepression:astudy exposure to endogenous maternal poly- Steffens M, Rónai L, et al. The network
+using a social decision-making task. clonal anti-Caspr2 antibody leads to be- structure of schizotypy in the general pop-
+JAbnormPsychol.2019Apr;128(3):234–44. havioral abnormalities resembling autism ulation. Eur Arch Psychiatry Clin Neurosci.
+113 PostorinoV,KernsCM,VivantiG,Bradshaw spectrum disorder in male mice. Sci Rep. 2021 Jun;271(4):635–45.
+J, Siracusano M, Mazzone L. Anxiety disor- 2020 Sep 2;10(1):14446. 138 Wong KK, Raine A. Developmental aspects
+ders and obsessive-compulsive disorder in 126 Amodeo DA, Yi J, Sweeney JA, Ragozzino of schizotypy and suspiciousness: a review.
+individuals with autism spectrum disorder. ME. Oxotremorine treatment reduces re- Curr Behav Neurosci Rep. 2018;5(1):
+Curr Psychiatry Rep. 2017 Oct 30;19(12):92. petitive behaviors in BTBR T+ tf/J mice. 94–101.
+114 Temmingh H, Stein DJ. Anxiety in patients Front Synaptic Neurosci. 2014 Aug 13; 139 Kwapil TR, Barrantes-Vidal N. Schizo-
+with schizophrenia: epidemiology and man- 6:17. typy: looking back and moving forward.
+agement. CNS Drugs. 2015;29(10):819–32. 127 Liu H, Huang X, Xu J, Mao H, Li Y, Ren K, Schizophr Bull. 2015 Mar;41(Suppl 2):
+115 Hattangadi S, Lidsky A, Lee H, Ban TA. et al. Dissection of the relationship between S366–73.
+Orienting-reflex behavior and clinical psy- anxietyandstereotypedself-groomingusing 140 Bedwell JS, Compton MT, Jentsch FG,
+chopathology. Cond Reflex. 1968 Jan-Mar; the Shank3B mutant autistic model, acute DeptulaAE,GouldingSM,ToneEB.Latent
+3(1):29–33. stress model and chronic pain model. factor modeling of four schizotypy di-
+116 Zernicki B. Pavlovian orienting reflex. Acta Neurobiol Stress. 2021 Nov 12;15:100417. mensions with theory of mind and em-
+NeurobiolExp(Wars).1987;47(5–6):239–47. 128 Durbano F. “New insights into anxiety pathy. PLoS One. 2014 Nov 21;9(11):
+117 Campos AC, Fogaça MV, Aguiar DC, disorders”. edited by Durbano F, ISBN 978- e113853.
+Guimarães FS. Animal models of anxiety 953-51-1053-8, InTech, 2013. 141 DawesC,QuinnD,BickerdikeA,O’NeillC,
+disordersandstress.BrazJPsychiatry.2013; 129 Giakoumaki SG, Bitsios P, Frangou S, Granger KT, Pereira SC, et al. Latent inhi-
+35(Suppl 2):S101–11. Roussos P, Aasen I, Galea A, et al. Low bition, aberrant salience, and schizotypy
+118 Toth I, Neumann ID. Animal models of baseline startle anddeficient affective startle traits in cannabis users. Schizophr Res
+social avoidance and social fear. Cell Tissue modulation in remitted bipolar disorder Cogn. 2022 Jan 5;28:100235.
+Res. 2013 Oct;354(1):107–18. patients and their unaffected siblings. Psy- 142 Schmidt-Hansen M, Killcross AS, Honey
+119 Vacas J, Antolí A, Sánchez-Raya A, Pérez- chophysiology. 2010 Jul 1;47(4):659–68. RC. Latent inhibition, learned irrelevance,
+Dueñas C, Cuadrado F. Visual preference 130 Ayers L, Agostini A, Schulkin J, Rosen JB. and schizotypy: assessing their relationship.
+for social vs. non-social images in young Effects of oxytocin on background anxiety Cogn Neuropsychiatry. 2009 Jan;14(1):
+children with autism spectrum disorders. in rats with high or low baseline startle. 11–29.
+An eye tracking study. PLoS One. 2021 Jun Psychopharmacol. 2016 Jun;233(11): 143 Modenato C, Draganski B. The concept of
+4;16(6):e0252795. 2165–72. schizotypy - a computational anatomy
+120 Pasciuto E, Borrie SC, Kanellopoulos AK, 131 Yancey JR, Vaidyanathan U, Patrick CJ. perspective. Schizophr Res Cogn. 2015 Jun
+Santos AR, Cappuyns E, D’Andrea L, et al. Aversive startle potentiation and fear pa- 20;2(2):89–92.
+Autism Spectrum Disorders: translating thology: mediating role of threat sensitivity 144 CuthbertBN,InselTR.Towardthefutureof
+human deficits into mouse behavior. Neu- and moderating impact of depression. Int psychiatric diagnosis: the seven pillars of
+robiol Learn Mem. 2015 Oct;124:71–87. JPsychophysiol.2015Nov;98(2Pt2):262–9. RDoC. BMC Med. 2013 May 14;11:126.
+Modeling Psychopathology by Ultrasound Dev Neurosci 2024;46:237–261 261
+Prenatal Stress DOI: 10.1159/000534687
+Downloaded
+from
+http://karger.com/dne/article-pdf/46/4/237/4264151/000534687.pdf
+by
+guest
+on
+10
+October
+2025

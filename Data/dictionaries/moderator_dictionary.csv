@@ -1,0 +1,21 @@
+variable,domain,kind,units,planned_use,definition_or_caution
+sp_latin,offspring_biology,categorical,,candidate,Species; assess imbalance by study
+strain,offspring_biology,categorical,,exploratory,Do not collapse strains without biological justification
+dam_age_weeks,maternal,numeric,weeks,exploratory,Substantial missingness expected
+gest_window,prenatal_exposure,categorical,,candidate,"Mutually exclusive window: late, early_mid, mid_late, or full_gestation"
+exposure_span_d,prenatal_exposure,numeric,days,candidate,Total exposure span
+exposure_type,prenatal_exposure,categorical,,candidate,Continuous versus intermittent
+exposure_session_duration_h,prenatal_exposure,numeric,hours,candidate,Duration per exposure session
+noise_type,prenatal_exposure,categorical,,candidate,Source/noise class from extraction
+acoustic_band_from_frequency,prenatal_exposure,categorical,,candidate,Derived from reported frequency limits
+frequency_mid_hz,prenatal_exposure,numeric,Hz,exploratory,Point and range midpoint are not equivalent
+frequency_format,prenatal_exposure,categorical,,descriptive,"Point, range, or not reported"
+loudness_db,prenatal_exposure,numeric,dB,candidate,Confirm comparability of acoustic weighting/reference
+control_conditions,methodological,categorical,,candidate,"Ambient sound, silence, or unclear"
+offspring_sex,offspring_biology,categorical,,candidate,"Male, female, or mixed"
+offspring_age_d,offspring_biology,numeric,days,candidate,Age at outcome assessment
+outcome_type,outcome,categorical,,candidate,Anxiety or depression
+assay_type,outcome,categorical,,candidate,Behavioural assay
+measurement_variable,outcome,categorical,,exploratory,Many levels; likely sparse
+data_type,methodological,categorical,,candidate,"Count, time, latency, percentage, or index"
+measurement_timing,methodological,categorical,,exploratory,"Light phase, dark phase, or not reported"
