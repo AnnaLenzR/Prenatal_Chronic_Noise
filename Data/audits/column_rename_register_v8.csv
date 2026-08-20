@@ -1,4 +1,0 @@
-"old_column","new_column","rationale","cleanup_date"
-"higher_better_notes","effect_direction_label","The values are Positive/Negative direction labels, not explanatory notes.","2026-08-13"
-"higher_better_notes.1","higher_better_notes","This is the actual explanatory higher-better note field.","2026-08-13"
-"crosscheck_status","data_status","Shorter, clearer name for the approved Verified/Corrected/Decision-required flag.","2026-08-13"
