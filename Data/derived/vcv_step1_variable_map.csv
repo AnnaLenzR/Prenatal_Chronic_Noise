@@ -1,0 +1,28 @@
+requested_variable,existing_column,status,assessment
+effect_id,es_id,Available,Unique in all 207 rows.
+study_id,study_id,Available after repair,"One malformed Whitlow value must be repaired; study_id is a publication identifier, not an experimental unit."
+experiment_id,ex_id,Available,The CSV ex_id corresponds to the protocol ex_cohort_id: an independent exposed experimental cohort retained across its assays and outcomes.
+cohort_id,ex_id; con_id,Available,ex_id identifies the exposed cohort and con_id identifies the control group within the experiment and study.
+dam_group_id,,Out of scope,Not collected and not used in the planned VCV.
+litter_group_id,,Out of scope,Not collected and not used in the planned VCV.
+treatment_group_id,ex_id,Available,Stable identifier for the exposed experimental cohort across assays and outcomes.
+control_group_id,con_id,Available,Stable identifier for the control group within an experiment and study.
+animal_sample_id,,Not required,Individual-animal IDs were not extracted; dependence is represented at the recorded cohort/group level.
+sex,offspring_sex,Available,"Recorded for every effect size, but does not identify whether male and female offspring came from the same litters."
+species,sp_latin,Available,Recorded for every effect size.
+behavioural_test,assay_type,Available,Recorded for every effect size.
+behavioural_outcome,out_id; measurement_variable,Available,out_id is the outcome identifier and measurement_variable is the reported measure.
+outcome_domain,outcome_type,Available,Anxiety or depression domain.
+time_id,offspring_age_d; measurement_timing; out_id,Available descriptors,"Age, test timing, and outcome ID distinguish measurements; repeated outcomes from the same cohort remain linked by ex_id or con_id."
+yi,lnRR in db_effect_sizes.csv,Derived,Created in Chapter 2; not present in the original extraction file.
+vi,lnRR_var in db_effect_sizes.csv,Derived,Created in Chapter 2; not present in the original extraction file.
+treatment mean,ex_mean,Available/derived when missing,Original values are completed in Chapter 1 when sufficient summary statistics are available.
+treatment SD,ex_sd,Available/derived when missing,Original values are completed in Chapter 1.
+treatment sample size,ex_n,Available,Recorded for every effect size.
+control mean,c_mean,Available/derived when missing,Original values are completed in Chapter 1 when sufficient summary statistics are available.
+control SD,c_sd,Available/derived when missing,Original values are completed in Chapter 1.
+control sample size,c_n,Available,Recorded for every effect size.
+treatment information,ex_id; gest_stage_ex; exposure_span_d; exposure_type; exposure_session_duration_h; noise_type; noise_type_2; loudness_dB; frequency_Hz,Available,Describes exposure but does not identify animal overlap.
+analysis-specific arm labels,ex_a_id; c_a_id; comparison,Proxy only,Labels commonly change by outcome or time and are not stable animal-sample identifiers.
+within-effect comparison type,comparison_structure,Available,Selects ROM or ROMC for one effect size; it does not describe pairwise dependence between different effect sizes.
+shared-control identifier,con_id; shared_control,Available,Identical con_id values identify the shared control group; shared_control is retained as an audit flag.

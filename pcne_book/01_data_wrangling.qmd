@@ -1,13 +1,11 @@
 ---
-title: "Data wrangling"
+title: "Data preparation"
 ---
 
-This chapter reads the original extraction file, calculates only the missing summary statistics, and creates the two derived databases used by the analysis. The original CSV is not changed.
+This chapter reads the original extraction database and creates the two derived databases used in the analysis. The original file is not overwritten.
 
 ```{r}
 #| label: setup
-#| message: false
-#| warning: false
 
 pacman::p_load(
   dplyr,
@@ -30,10 +28,14 @@ statistics_path <- file.path(
 analysis_path <- file.path(derived_dir, "PCN_analysis_ready.csv")
 ```
 
-# Original extraction database
+# Source database
+
+The source is the clean extraction file `Data/PCN_data_ext_checking_v.3.csv`. Its checksum is recorded before any derived files are created.
 
 ```{r}
-#| label: read-original-data
+#| label: read-source-data
+
+original_checksum <- unname(tools::md5sum(original_path))
 
 original <- readr::read_csv(
   original_path,
@@ -42,35 +44,50 @@ original <- readr::read_csv(
   show_col_types = FALSE
 )
 
-# Remove the unnamed source column only when it is completely empty.
-empty_unnamed <- names(original)[
-  stringr::str_detect(names(original), "^\\.\\.\\.[0-9]+$") &
+required_columns <- c(
+  "study_id", "ex_id", "con_id", "out_id", "es_id",
+  "comparison_structure", "higher_better",
+  "c_mean", "c_sd", "c_n", "c_se", "c_median", "c_q1", "c_q3",
+  "ex_mean", "ex_sd", "ex_n", "ex_se", "ex_median", "ex_q1", "ex_q3"
+)
+
+if (length(setdiff(required_columns, names(original))) > 0) {
+  stop("Required columns are missing from the original extraction database.")
+}
+
+empty_unnamed_columns <- names(original)[
+  str_detect(names(original), "^\\.\\.\\.[0-9]+$") &
     vapply(original, function(x) all(is.na(x)), logical(1))
 ]
 
-original <- original |>
-  select(-any_of(empty_unnamed))
+source_for_derivation <- original |>
+  select(-any_of(empty_unnamed_columns))
 
 tibble(
+  file = "Data/PCN_data_ext_checking_v.3.csv",
   rows = nrow(original),
   columns = ncol(original),
-  effect_sizes = n_distinct(original$es_id)
+  studies = n_distinct(original$study_id),
+  effect_sizes = n_distinct(original$es_id),
+  checksum = original_checksum
 ) |>
-  knitr::kable()
+  knitr::kable(caption = "Original extraction database.")
 ```
 
 # Missing summary statistics
 
-The same formulas are applied separately to the control and exposed arms.
+::: callout-note
+## Calculation rules
 
-- If a mean is missing and the median, Q1, and Q3 are available, the mean is estimated with the Luo et al. method [@luo2018].
-- If an SD is missing and Q1 and Q3 are available, the SD is estimated with the Wan et al. method [@wan2014].
-- If an SD is missing and an SE is available, `SD = SE * sqrt(n)`.
+- A missing mean is estimated from Q1, the median, Q3, and sample size with the Luo et al. method [@luo2018].
+- A missing SD is estimated from Q1, Q3, and sample size with the Wan et al. method [@wan2014].
+- If an SD is missing but an SE is available, `SD = SE × sqrt(n)`.
 - If an SE is missing, `SE = SD / sqrt(n)`.
-- Reported or extracted values are otherwise kept unchanged.
+- Existing extracted values are retained unchanged.
 
 $$
-\widehat{M} = \left(0.7 + \frac{0.39}{n}\right)\frac{Q_1 + Q_3}{2}
+\widehat{M} =
+\left(0.7 + \frac{0.39}{n}\right)\frac{Q_1 + Q_3}{2}
 + \left(0.3 - \frac{0.39}{n}\right)M_d
 $$
 
@@ -79,115 +96,104 @@ $$
 \frac{Q_3-Q_1}
 {2\Phi^{-1}\left(\frac{0.75n-0.125}{n+0.25}\right)}
 $$
+:::
 
 ```{r}
 #| label: summary-statistic-functions
 
-luo_iqr_mean <- function(q1, median, q3, n) {
+estimate_mean_luo <- function(q1, median, q3, n) {
   weight <- 0.7 + 0.39 / n
   weight * ((q1 + q3) / 2) + (1 - weight) * median
 }
 
-wan_iqr_sd <- function(q1, q3, n) {
+estimate_sd_wan <- function(q1, q3, n) {
   denominator <- 2 * stats::qnorm((0.75 * n - 0.125) / (n + 0.25))
   (q3 - q1) / denominator
 }
 
-derive_arm_statistics <- function(data, arm) {
+complete_arm_statistics <- function(data, arm) {
   n <- data[[paste0(arm, "_n")]]
-  mean_reported <- data[[paste0(arm, "_mean")]]
-  sd_reported <- data[[paste0(arm, "_sd")]]
-  se_reported <- data[[paste0(arm, "_se")]]
+  mean_source <- data[[paste0(arm, "_mean")]]
+  sd_source <- data[[paste0(arm, "_sd")]]
+  se_source <- data[[paste0(arm, "_se")]]
   median <- data[[paste0(arm, "_median")]]
   q1 <- data[[paste0(arm, "_q1")]]
   q3 <- data[[paste0(arm, "_q3")]]
 
-  use_iqr_mean <- is.na(mean_reported) & complete.cases(q1, median, q3, n)
-  use_iqr_sd <- is.na(sd_reported) & complete.cases(q1, q3, n)
-  use_se_for_sd <- is.na(sd_reported) & !is.na(se_reported) & !is.na(n)
+  mean_from_iqr <- is.na(mean_source) & complete.cases(q1, median, q3, n)
+  sd_from_iqr <- is.na(sd_source) & complete.cases(q1, q3, n)
+  sd_from_se <- is.na(sd_source) & !sd_from_iqr & !is.na(se_source) & !is.na(n)
 
-  if (any(use_iqr_mean & !(q1 <= median & median <= q3))) {
+  if (any(mean_from_iqr & !(q1 <= median & median <= q3))) {
     stop("Invalid Q1 <= median <= Q3 ordering in the ", arm, " arm.")
   }
 
-  mean_analysis <- mean_reported
-  mean_analysis[use_iqr_mean] <- luo_iqr_mean(
-    q1[use_iqr_mean], median[use_iqr_mean], q3[use_iqr_mean], n[use_iqr_mean]
+  mean_analysis <- mean_source
+  mean_analysis[mean_from_iqr] <- estimate_mean_luo(
+    q1[mean_from_iqr], median[mean_from_iqr], q3[mean_from_iqr], n[mean_from_iqr]
   )
 
-  sd_analysis <- sd_reported
-  sd_analysis[use_iqr_sd] <- wan_iqr_sd(
-    q1[use_iqr_sd], q3[use_iqr_sd], n[use_iqr_sd]
+  sd_analysis <- sd_source
+  sd_analysis[sd_from_iqr] <- estimate_sd_wan(
+    q1[sd_from_iqr], q3[sd_from_iqr], n[sd_from_iqr]
   )
-  sd_analysis[use_se_for_sd] <- se_reported[use_se_for_sd] * sqrt(n[use_se_for_sd])
+  sd_analysis[sd_from_se] <- se_source[sd_from_se] * sqrt(n[sd_from_se])
 
-  se_analysis <- se_reported
-  use_sd_for_se <- is.na(se_analysis) & !is.na(sd_analysis) & !is.na(n)
-  se_analysis[use_sd_for_se] <- sd_analysis[use_sd_for_se] / sqrt(n[use_sd_for_se])
+  se_analysis <- se_source
+  se_from_sd <- is.na(se_analysis) & !is.na(sd_analysis) & !is.na(n)
+  se_analysis[se_from_sd] <- sd_analysis[se_from_sd] / sqrt(n[se_from_sd])
 
-  mean_note <- ifelse(
-    use_iqr_mean,
-    "Luo et al. (2018): mean estimated from Q1, median, Q3, and n",
-    "Existing mean in original extraction used unchanged"
+  data[[paste0(arm, "_mean_analysis")]] <- mean_analysis
+  data[[paste0(arm, "_mean_method")]] <- if_else(
+    mean_from_iqr,
+    "Luo et al. (2018): Q1, median, Q3, and n",
+    "Extracted mean used unchanged"
   )
-
-  sd_note <- case_when(
-    use_iqr_sd ~ "Wan et al. (2014): SD estimated from Q1, Q3, and n",
-    use_se_for_sd ~ "SD = SE * sqrt(n)",
-    TRUE ~ "Existing SD in original extraction used unchanged"
+  data[[paste0(arm, "_sd_analysis")]] <- sd_analysis
+  data[[paste0(arm, "_sd_method")]] <- case_when(
+    sd_from_iqr ~ "Wan et al. (2014): Q1, Q3, and n",
+    sd_from_se ~ "SD = SE * sqrt(n)",
+    TRUE ~ "Extracted SD used unchanged"
   )
-
-  se_note <- ifelse(
-    use_sd_for_se,
+  data[[paste0(arm, "_se_analysis")]] <- se_analysis
+  data[[paste0(arm, "_se_method")]] <- if_else(
+    se_from_sd,
     "SE = SD / sqrt(n)",
-    "Existing SE in original extraction used unchanged"
+    "Extracted SE used unchanged"
   )
 
   if (anyNA(mean_analysis) || anyNA(sd_analysis) || anyNA(se_analysis)) {
     stop("Unresolved summary statistic in the ", arm, " arm.")
   }
 
-  data[[paste0(arm, "_mean_analysis")]] <- mean_analysis
-  data[[paste0(arm, "_mean_note")]] <- mean_note
-  data[[paste0(arm, "_sd_analysis")]] <- sd_analysis
-  data[[paste0(arm, "_sd_note")]] <- sd_note
-  data[[paste0(arm, "_se_analysis")]] <- se_analysis
-  data[[paste0(arm, "_se_note")]] <- se_note
   data
 }
 ```
 
 ```{r}
-#| label: calculate-missing-statistics
+#| label: calculate-summary-statistics
 
-with_statistics <- original |>
-  derive_arm_statistics("c") |>
-  derive_arm_statistics("ex")
+with_statistics <- source_for_derivation |>
+  complete_arm_statistics("c") |>
+  complete_arm_statistics("ex")
 
-bind_rows(
-  with_statistics |>
-    count(
-      arm = "control",
-      mean_method = c_mean_note,
-      sd_method = c_sd_note,
-      se_method = c_se_note,
-      name = "rows"
-    ),
-  with_statistics |>
-    count(
-      arm = "exposed",
-      mean_method = ex_mean_note,
-      sd_method = ex_sd_note,
-      se_method = ex_se_note,
-      name = "rows"
-    )
-) |>
-  knitr::kable(caption = "Summary-statistic sources used in the derived database.")
+method_counts <- bind_rows(
+  with_statistics |> count(arm = "Control", statistic = "Mean", method = c_mean_method, name = "rows"),
+  with_statistics |> count(arm = "Control", statistic = "SD", method = c_sd_method, name = "rows"),
+  with_statistics |> count(arm = "Control", statistic = "SE", method = c_se_method, name = "rows"),
+  with_statistics |> count(arm = "Exposed", statistic = "Mean", method = ex_mean_method, name = "rows"),
+  with_statistics |> count(arm = "Exposed", statistic = "SD", method = ex_sd_method, name = "rows"),
+  with_statistics |> count(arm = "Exposed", statistic = "SE", method = ex_se_method, name = "rows")
+)
+
+method_counts |>
+  arrange(arm, statistic, desc(rows)) |>
+  knitr::kable(caption = "Sources of the analysis statistics.")
 ```
 
 # Analysis-ready database
 
-The analysis-ready database contains the identifiers, planned moderators, source fields, and one mean, SD, SE, and sample size for each arm. `comparison_structure` is retained because Chapter 2 uses it to select the independent- or dependent-groups effect-size formula. `cohort_id` follows the same construction used in the reference workflow: `study_id` plus `ex_id`.
+The analysis-ready database contains one mean, SD, SE, and sample size for each arm and the variables required by the effect-size and meta-analytic models. `comparison_structure` is retained for the lnRR calculation.
 
 ```{r}
 #| label: create-analysis-ready-data
@@ -196,7 +202,7 @@ analysis_ready <- with_statistics |>
   mutate(
     data_cleaning_note = if_else(
       study_id == "`" & data_file == "whitlow_1978_thesis_fig2",
-      "study_id repaired from ` to whitlow_1978_thesis using the source file and title",
+      "study_id repaired to whitlow_1978_thesis using data_file and title",
       NA_character_
     ),
     study_id = if_else(
@@ -204,7 +210,7 @@ analysis_ready <- with_statistics |>
       "whitlow_1978_thesis",
       study_id
     ),
-    across(where(is.character), stringr::str_squish),
+    across(where(is.character), str_squish),
     shared_control = str_to_lower(shared_control),
     comparison_structure = str_to_lower(comparison_structure),
     higher_better = str_to_lower(higher_better),
@@ -236,12 +242,12 @@ analysis_ready <- with_statistics |>
     c_sd = c_sd_analysis,
     c_n,
     c_se = c_se_analysis,
-    c_mean_note, c_sd_note, c_se_note,
+    c_mean_method, c_sd_method, c_se_method,
     ex_mean = ex_mean_analysis,
     ex_sd = ex_sd_analysis,
     ex_n,
     ex_se = ex_se_analysis,
-    ex_mean_note, ex_sd_note, ex_se_note,
+    ex_mean_method, ex_sd_method, ex_se_method,
     data_cleaning_note
   )
 ```
@@ -253,53 +259,68 @@ analysis_ready <- with_statistics |>
 
 validation <- tibble(
   check = c(
-    "one row per es_id",
-    "study_id present",
-    "sample sizes positive",
-    "means complete",
-    "SDs complete and non-negative",
-    "SEs complete and non-negative",
-    "higher_better is yes or no",
-    "comparison_structure is independent or dependent"
+    "One row per es_id",
+    "Study identifiers present",
+    "Positive sample sizes",
+    "Complete means",
+    "Complete non-negative SDs",
+    "Complete non-negative SEs",
+    "Valid higher_better values",
+    "Valid comparison_structure values"
   ),
   failures = c(
     sum(is.na(analysis_ready$es_id)) + sum(duplicated(analysis_ready$es_id)),
     sum(is.na(analysis_ready$study_id) | analysis_ready$study_id == ""),
-    sum(analysis_ready$c_n <= 0 | analysis_ready$ex_n <= 0 | is.na(analysis_ready$c_n) | is.na(analysis_ready$ex_n)),
+    sum(is.na(analysis_ready$c_n) | is.na(analysis_ready$ex_n) |
+          analysis_ready$c_n <= 0 | analysis_ready$ex_n <= 0),
     sum(is.na(analysis_ready$c_mean) | is.na(analysis_ready$ex_mean)),
-    sum(is.na(analysis_ready$c_sd) | is.na(analysis_ready$ex_sd) | analysis_ready$c_sd < 0 | analysis_ready$ex_sd < 0),
-    sum(is.na(analysis_ready$c_se) | is.na(analysis_ready$ex_se) | analysis_ready$c_se < 0 | analysis_ready$ex_se < 0),
+    sum(is.na(analysis_ready$c_sd) | is.na(analysis_ready$ex_sd) |
+          analysis_ready$c_sd < 0 | analysis_ready$ex_sd < 0),
+    sum(is.na(analysis_ready$c_se) | is.na(analysis_ready$ex_se) |
+          analysis_ready$c_se < 0 | analysis_ready$ex_se < 0),
     sum(!analysis_ready$higher_better %in% c("yes", "no")),
     sum(!analysis_ready$comparison_structure %in% c("independent", "dependent"))
   )
 ) |>
-  mutate(status = if_else(failures == 0, "pass", "fail"))
+  mutate(status = if_else(failures == 0, "Pass", "Fail"))
 
 validation |>
-  knitr::kable()
+  knitr::kable(caption = "Analysis-ready data checks.")
 
-if (any(validation$status == "fail")) {
-  stop("Analysis-ready data failed validation.")
+if (any(validation$status == "Fail")) {
+  stop("The analysis-ready database failed validation.")
 }
 
 readr::write_csv(with_statistics, statistics_path, na = "")
 readr::write_csv(analysis_ready, analysis_path, na = "")
 
+if (!identical(original_checksum, unname(tools::md5sum(original_path)))) {
+  stop("The original extraction file changed during data preparation.")
+}
+
 tibble(
-  output = c(
+  database = c(
+    "Original extraction",
+    "Original extraction plus calculated statistics",
+    "Analysis-ready data"
+  ),
+  file = c(
+    "Data/PCN_data_ext_checking_v.3.csv",
     "Data/derived/PCN_data_ext_checking_v.3_with_derived_statistics.csv",
     "Data/derived/PCN_analysis_ready.csv"
   ),
-  rows = c(nrow(with_statistics), nrow(analysis_ready)),
-  columns = c(ncol(with_statistics), ncol(analysis_ready))
+  rows = c(nrow(original), nrow(with_statistics), nrow(analysis_ready)),
+  columns = c(ncol(original), ncol(with_statistics), ncol(analysis_ready))
 ) |>
-  knitr::kable()
+  knitr::kable(caption = "Databases used in the workflow.")
 ```
 
-# Session information
+::: callout-note
+## Session information
 
 ```{r}
 #| label: session-information
 
 sessionInfo()
 ```
+:::

@@ -1,20 +1,31 @@
 ---
-title: "Project workflow"
+title: "Prenatal chronic noise exposure meta-analysis"
+subtitle: "Reproducible workflow, full outputs, and extended methods"
+toc: false
 ---
 
-This Quarto book is the reproducible analysis record for the prenatal chronic noise exposure meta-analysis.
+::: card
+# What this site contains
 
-The workflow follows the protocol (`protocol/PCNE_protocol_v.4_111425.docx`, with the deviation addendum of 18 August 2026):
+This online supplement provides the computational workflow for the systematic review and multilevel meta-analysis of prenatal chronic noise exposure and offspring behavioural outcomes in laboratory rodents.
 
-1. finish preparing the extraction database for analysis (Chapter 1);
-2. calculate the log response ratio, lnRR (Chapter 2);
-3. estimate the overall effect of maternal chronic noise exposure on offspring anxiety- and depression-like behaviour (Chapter 3);
-4. fit uni-moderator models for the biological and methodological moderators listed in the protocol (Chapter 4);
-5. assess publication bias (Chapter 5);
-6. report the CRIME-Q critical appraisal of the included studies (Chapter 6).
+It includes:
 
-This analysis is scoped to lnRR only - no lnVR or lnCVR - and to uni-moderator models, matching the plan agreed for this project. Reproducible outputs are written to `Data/derived/` and `Data/audits/`; the reviewed extraction file in `outputs/019ff719-4f39-7b31-8dee-189f2b3ff628/` is never overwritten.
+- preparation of the analysis database from the original extraction file;
+- calculation of the log response ratio (lnRR) and its sampling variance;
+- audit of the experimental dependency identifiers required for the sampling variance-covariance matrix.
+:::
 
-## How to render this book
+::: card
+# How to navigate
 
-Open `pcne_book` in RStudio (or run `quarto render` from within this folder) after installing the packages listed in each chapter's setup step. `orchaRd` is installed from GitHub (`daniel1noble/orchaRd`) the first time a chapter that needs it is rendered.
+- **Data preparation** creates the extraction database with calculated missing statistics and the analysis-ready database.
+- **Effect size calculation** calculates lnRR and `lnRR_var` and reports their distributions.
+- **Dependency structure audit** maps the existing identifiers and reports the additional sampling-unit IDs required before the VCV can be constructed.
+:::
+
+::: card
+# Reproducibility
+
+All data preparation and analyses are executed in R through Quarto. The original extraction file is read but not overwritten. Chapter 3 documents the dependency identifiers that will be used to construct the sampling variance-covariance matrix in the next analysis stage.
+:::

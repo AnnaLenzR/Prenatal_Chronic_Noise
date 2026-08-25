@@ -1,33 +1,47 @@
 project:
-  type: book
+  type: website
   output-dir: _site
   execute-dir: project
-
-book:
-  title: "Prenatal Chronic Noise Exposure Meta-analysis"
-  author: "Anna Lenz"
-  chapters:
+  render:
     - index.qmd
     - 01_data_wrangling.qmd
     - 02_effect_size_lnRR.qmd
-    - 03_overall_effect.qmd
-    - 04_uni_moderators.qmd
-    - 05_publication_bias.qmd
-    - 06_crime_q.qmd
-    - 07_leave_one_out.qmd
+    - 03_dependency_structure_audit.qmd
+
+website:
+  title: "Prenatal chronic noise exposure meta-analysis"
+  page-navigation: true
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - text: "Online supplementary"
+        href: index.qmd
+      - text: "Data preparation"
+        href: 01_data_wrangling.qmd
+      - text: "Effect size calculation"
+        href: 02_effect_size_lnRR.qmd
+      - text: "Dependency structure audit"
+        href: 03_dependency_structure_audit.qmd
 
 bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme:
+      - cosmo
+      - styles.scss
     toc: true
+    toc-location: left
     code-fold: false
     code-tools: true
-    number-sections: true
+    code-copy: true
+    number-sections: false
+    page-layout: full
+    smooth-scroll: true
 
 execute:
   echo: true
-  warning: true
+  warning: false
   message: false
   freeze: auto

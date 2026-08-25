@@ -2,12 +2,8 @@
 title: "Effect size calculation"
 ---
 
-This chapter calculates the log response ratio (lnRR) and its sampling variance from the analysis-ready database.
-
 ```{r}
 #| label: setup
-#| message: false
-#| warning: false
 
 pacman::p_load(
   dplyr,
@@ -15,7 +11,8 @@ pacman::p_load(
   knitr,
   metafor,
   readr,
-  tibble
+  tibble,
+  tidyr
 )
 
 project_root <- normalizePath("..", mustWork = TRUE)
@@ -29,7 +26,10 @@ db <- readr::read_csv(
 
 # lnRR
 
-For continuous outcomes, lnRR is calculated with the same design branches as the reference workflow [@hedges1999; @lajeunesse2015]. `comparison_structure == "independent"` uses `metafor::escalc(measure = "ROM")`. `comparison_structure == "dependent"` uses `metafor::escalc(measure = "ROMC", ri = 0.5)` and the average of the exposed and control sample sizes.
+This section calculates the log response ratio (lnRR), which compares the mean outcome in the prenatal-noise group with the control group.
+
+::: card
+The bias-corrected lnRR is:
 
 $$
 \ln RR =
@@ -38,39 +38,60 @@ $$
 \left(
 \frac{SD_T^2}{N_T M_T^2}
 - \frac{SD_C^2}{N_C M_C^2}
-\right)
+\right),
 $$
 
-`higher_better` is used to place outcomes in one direction. The lnRR value is multiplied by -1 when `higher_better == "yes"`.
+where $M$, $SD$, and $N$ are the mean, standard deviation, and sample size for the exposed ($T$) and control ($C$) groups [@hedges1999; @lajeunesse2015].
+:::
 
-# Boundary corrections
+Outcome direction is harmonised with `higher_better`. The lnRR sign is multiplied by -1 when `higher_better == "yes"`.
 
-Log ratios require positive means. For non-percentage outcomes, an exact-zero mean is replaced with 0.9 times the smallest positive mean in the same outcome stratum. An exact-zero SD is replaced with 0.05. Percentage outcomes are kept inside their 0-100 bounds and are calculated after an arcsine-square-root transformation, following the reference workflow.
+# Functions and computation
+
+::: callout-note
+## Shared workflow details
+
+### Data-type handling
+
+- Non-percentage outcomes are calculated on their extracted scale.
+- Percentage outcomes are calculated after an arcsine-square-root transformation.
+
+### Boundary corrections
+
+- For non-percentage outcomes, a zero mean is replaced by 0.9 times the smallest positive mean in the same outcome stratum.
+- A zero SD is replaced by 0.05.
+- Percentage means of 0 and 100 are replaced by 0.5 and 99.5, respectively. A zero percentage SD is replaced by 0.5.
+
+### Independent and dependent comparisons
+
+- `comparison_structure == "independent"` uses `metafor::escalc(measure = "ROM")`.
+- `comparison_structure == "dependent"` uses `metafor::escalc(measure = "ROMC", ri = 0.5)`.
+:::
 
 ```{r}
-#| label: boundary-correction-functions
+#| label: continuity-correction-functions
 
-min_positive <- function(x) {
+minimum_positive <- function(x) {
   x <- x[is.finite(x) & x > 0]
   if (length(x) == 0) NA_real_ else min(x)
 }
 
-apply_continuity_correction <- function(data) {
+apply_nonpercentage_corrections <- function(data) {
   strata <- c("assay_type", "measurement_variable", "data_type", "data_units")
 
-  minima <- data |>
+  local_minima <- data |>
     group_by(across(all_of(strata))) |>
     summarise(
-      min_c_mean = min_positive(c_mean),
-      min_ex_mean = min_positive(ex_mean),
+      minimum_control_mean = minimum_positive(c_mean),
+      minimum_exposed_mean = minimum_positive(ex_mean),
       .groups = "drop"
     )
 
-  global_c_mean <- min_positive(data$c_mean)
-  global_ex_mean <- min_positive(data$ex_mean)
+  global_control_minimum <- minimum_positive(data$c_mean)
+  global_exposed_minimum <- minimum_positive(data$ex_mean)
 
   data |>
-    left_join(minima, by = strata) |>
+    left_join(local_minima, by = strata) |>
     mutate(
       c_mean_continuity_corrected = !is.na(c_mean) & c_mean == 0,
       ex_mean_continuity_corrected = !is.na(ex_mean) & ex_mean == 0,
@@ -78,159 +99,197 @@ apply_continuity_correction <- function(data) {
       ex_sd_continuity_corrected = !is.na(ex_sd) & ex_sd == 0,
       c_mean = if_else(
         c_mean_continuity_corrected,
-        0.9 * coalesce(min_c_mean, global_c_mean),
+        0.9 * coalesce(minimum_control_mean, global_control_minimum),
         c_mean
       ),
       ex_mean = if_else(
         ex_mean_continuity_corrected,
-        0.9 * coalesce(min_ex_mean, global_ex_mean),
+        0.9 * coalesce(minimum_exposed_mean, global_exposed_minimum),
         ex_mean
       ),
       c_sd = if_else(c_sd_continuity_corrected, 0.05, c_sd),
       ex_sd = if_else(ex_sd_continuity_corrected, 0.05, ex_sd)
     ) |>
-    select(-min_c_mean, -min_ex_mean)
+    select(-minimum_control_mean, -minimum_exposed_mean)
+}
+
+prepare_lnrr_data <- function(data) {
+  nonpercentage <- data |>
+    filter(data_type != "percentage") |>
+    apply_nonpercentage_corrections()
+
+  percentage <- data |>
+    filter(data_type == "percentage") |>
+    mutate(
+      c_mean_continuity_corrected = c_mean %in% c(0, 100),
+      ex_mean_continuity_corrected = ex_mean %in% c(0, 100),
+      c_sd_continuity_corrected = c_sd == 0,
+      ex_sd_continuity_corrected = ex_sd == 0,
+      c_mean = case_when(c_mean == 0 ~ 0.5, c_mean == 100 ~ 99.5, TRUE ~ c_mean),
+      ex_mean = case_when(ex_mean == 0 ~ 0.5, ex_mean == 100 ~ 99.5, TRUE ~ ex_mean),
+      c_sd = if_else(c_sd == 0, 0.5, c_sd),
+      ex_sd = if_else(ex_sd == 0, 0.5, ex_sd)
+    )
+
+  bind_rows(nonpercentage, percentage) |>
+    arrange(match(es_id, data$es_id))
 }
 ```
 
-# Calculation
+```{r}
+#| label: continuity-correction-audit
+
+db_prepared <- prepare_lnrr_data(db)
+
+continuity_audit <- db |>
+  select(
+    es_id, study_id,
+    c_mean_old = c_mean,
+    ex_mean_old = ex_mean,
+    c_sd_old = c_sd,
+    ex_sd_old = ex_sd
+  ) |>
+  left_join(
+    db_prepared |>
+      select(
+        es_id,
+        c_mean_new = c_mean,
+        ex_mean_new = ex_mean,
+        c_sd_new = c_sd,
+        ex_sd_new = ex_sd,
+        c_mean_continuity_corrected,
+        ex_mean_continuity_corrected,
+        c_sd_continuity_corrected,
+        ex_sd_continuity_corrected
+      ),
+    by = "es_id"
+  ) |>
+  mutate(
+    any_correction = c_mean_continuity_corrected |
+      ex_mean_continuity_corrected |
+      c_sd_continuity_corrected |
+      ex_sd_continuity_corrected
+  )
+
+continuity_audit |>
+  summarise(
+    `Total effect sizes` = n(),
+    `Any correction` = sum(any_correction),
+    `Control mean` = sum(c_mean_continuity_corrected),
+    `Exposed mean` = sum(ex_mean_continuity_corrected),
+    `Control SD` = sum(c_sd_continuity_corrected),
+    `Exposed SD` = sum(ex_sd_continuity_corrected)
+  ) |>
+  knitr::kable(caption = "Continuity-correction audit summary.")
+
+continuity_audit |>
+  filter(any_correction) |>
+  select(
+    study_id, es_id,
+    c_mean_old, c_mean_new,
+    ex_mean_old, ex_mean_new,
+    c_sd_old, c_sd_new,
+    ex_sd_old, ex_sd_new
+  ) |>
+  knitr::kable(digits = 3, caption = "Effect sizes modified by a boundary correction.")
+```
 
 ```{r}
 #| label: calculate-lnrr
 
-if (any(!db$comparison_structure %in% c("independent", "dependent"))) {
-  stop("comparison_structure must be independent or dependent.")
-}
+calculate_lnrr <- function(data, within_subject_correlation = 0.5) {
+  if (any(!data$comparison_structure %in% c("independent", "dependent"))) {
+    stop("comparison_structure must be independent or dependent.")
+  }
 
-continuous <- db |>
-  filter(data_type != "percentage") |>
-  apply_continuity_correction()
+  result <- data |>
+    mutate(lnRR = NA_real_, lnRR_var = NA_real_)
 
-percentage <- db |>
-  filter(data_type == "percentage") |>
-  mutate(
-    c_mean_continuity_corrected = c_mean %in% c(0, 100),
-    ex_mean_continuity_corrected = ex_mean %in% c(0, 100),
-    c_sd_continuity_corrected = c_sd == 0,
-    ex_sd_continuity_corrected = ex_sd == 0,
-    c_mean = case_when(c_mean == 0 ~ 0.5, c_mean == 100 ~ 99.5, TRUE ~ c_mean),
-    ex_mean = case_when(ex_mean == 0 ~ 0.5, ex_mean == 100 ~ 99.5, TRUE ~ ex_mean),
-    c_sd = if_else(c_sd == 0, 0.5, c_sd),
-    ex_sd = if_else(ex_sd == 0, 0.5, ex_sd)
-  )
+  arcsine_sqrt <- function(proportion) asin(sqrt(proportion))
 
-db_effect_sizes <- bind_rows(continuous, percentage) |>
-  arrange(match(es_id, db$es_id)) |>
-  mutate(lnRR = NA_real_, lnRR_var = NA_real_)
+  for (i in seq_len(nrow(result))) {
+    ex_n <- result$ex_n[i]
+    c_n <- result$c_n[i]
+    ex_mean <- result$ex_mean[i]
+    c_mean <- result$c_mean[i]
+    ex_sd <- result$ex_sd[i]
+    c_sd <- result$c_sd[i]
+    data_type <- result$data_type[i]
+    comparison_structure <- result$comparison_structure[i]
 
-asin_trans <- function(proportion) asin(sqrt(proportion))
+    if (data_type != "percentage") {
+      if (comparison_structure == "independent") {
+        effect <- metafor::escalc(
+          measure = "ROM",
+          n1i = ex_n, n2i = c_n,
+          m1i = ex_mean, m2i = c_mean,
+          sd1i = ex_sd, sd2i = c_sd,
+          var.names = c("lnRR", "lnRR_var")
+        )
+      } else {
+        effect <- metafor::escalc(
+          measure = "ROMC",
+          ni = (ex_n + c_n) / 2,
+          m1i = ex_mean, m2i = c_mean,
+          sd1i = ex_sd, sd2i = c_sd,
+          ri = within_subject_correlation,
+          var.names = c("lnRR", "lnRR_var")
+        )
+      }
 
-for (i in seq_len(nrow(db_effect_sizes))) {
-  ex_n <- db_effect_sizes$ex_n[i]
-  c_n <- db_effect_sizes$c_n[i]
-  ex_mean <- db_effect_sizes$ex_mean[i]
-  c_mean <- db_effect_sizes$c_mean[i]
-  ex_sd <- db_effect_sizes$ex_sd[i]
-  c_sd <- db_effect_sizes$c_sd[i]
-  data_type <- db_effect_sizes$data_type[i]
-  comparison_structure <- db_effect_sizes$comparison_structure[i]
-
-  if (data_type != "percentage") {
-    if (comparison_structure == "independent") {
-      effect <- metafor::escalc(
-        measure = "ROM",
-        n1i = ex_n, n2i = c_n,
-        m1i = ex_mean, m2i = c_mean,
-        sd1i = ex_sd, sd2i = c_sd,
-        var.names = c("lnRR", "lnRR_var")
-      )
+      result$lnRR[i] <- effect$lnRR
+      result$lnRR_var[i] <- effect$lnRR_var
     } else {
-      effect <- metafor::escalc(
-        measure = "ROMC",
-        ni = (ex_n + c_n) / 2,
-        m1i = ex_mean, m2i = c_mean,
-        sd1i = ex_sd, sd2i = c_sd,
-        ri = 0.5,
-        var.names = c("lnRR", "lnRR_var")
-      )
+      if (max(c(ex_mean, c_mean), na.rm = TRUE) > 1) {
+        ex_mean <- ex_mean / 100
+        c_mean <- c_mean / 100
+        ex_sd <- ex_sd / 100
+        c_sd <- c_sd / 100
+      }
+
+      ex_sd_transformed <- sqrt(ex_sd^2 / (4 * ex_mean * (1 - ex_mean)))
+      c_sd_transformed <- sqrt(c_sd^2 / (4 * c_mean * (1 - c_mean)))
+      ex_mean_transformed <- arcsine_sqrt(ex_mean)
+      c_mean_transformed <- arcsine_sqrt(c_mean)
+
+      variance_exposed <- ex_sd_transformed^2 / (ex_mean_transformed^2 * ex_n)
+      variance_control <- c_sd_transformed^2 / (c_mean_transformed^2 * c_n)
+
+      result$lnRR[i] <- log(ex_mean_transformed / c_mean_transformed)
+      result$lnRR_var[i] <- if (comparison_structure == "independent") {
+        variance_exposed + variance_control
+      } else {
+        variance_exposed + variance_control -
+          2 * within_subject_correlation *
+          sqrt(variance_exposed) * sqrt(variance_control)
+      }
     }
 
-    db_effect_sizes$lnRR[i] <- effect$lnRR
-    db_effect_sizes$lnRR_var[i] <- effect$lnRR_var
-  } else {
-    if (max(c(ex_mean, c_mean), na.rm = TRUE) > 1) {
-      ex_mean <- ex_mean / 100
-      c_mean <- c_mean / 100
-      ex_sd <- ex_sd / 100
-      c_sd <- c_sd / 100
-    }
-
-    ex_sd_transformed <- sqrt(ex_sd^2 / (4 * ex_mean * (1 - ex_mean)))
-    c_sd_transformed <- sqrt(c_sd^2 / (4 * c_mean * (1 - c_mean)))
-    ex_mean_transformed <- asin_trans(ex_mean)
-    c_mean_transformed <- asin_trans(c_mean)
-
-    v_ex <- ex_sd_transformed^2 / (ex_mean_transformed^2 * ex_n)
-    v_c <- c_sd_transformed^2 / (c_mean_transformed^2 * c_n)
-
-    db_effect_sizes$lnRR[i] <- log(ex_mean_transformed / c_mean_transformed)
-    db_effect_sizes$lnRR_var[i] <- if (comparison_structure == "independent") {
-      v_ex + v_c
-    } else {
-      v_ex + v_c - 2 * 0.5 * sqrt(v_ex) * sqrt(v_c)
+    if (result$higher_better[i] == "yes") {
+      result$lnRR[i] <- -result$lnRR[i]
     }
   }
 
-  if (db_effect_sizes$higher_better[i] == "yes") {
-    db_effect_sizes$lnRR[i] <- -db_effect_sizes$lnRR[i]
-  }
+  result
 }
 
-db_effect_sizes <- db_effect_sizes |>
-  mutate(lnRR_se = sqrt(lnRR_var))
+db_effect_sizes <- calculate_lnrr(db_prepared)
 
-if (nrow(db_effect_sizes) != nrow(db) ||
+if (
+  nrow(db_effect_sizes) != nrow(db) ||
     anyNA(db_effect_sizes$lnRR) ||
     anyNA(db_effect_sizes$lnRR_var) ||
-    any(db_effect_sizes$lnRR_var < 0)) {
+    any(db_effect_sizes$lnRR_var < 0)
+) {
   stop("Effect-size calculation failed validation.")
 }
 
-tibble(
-  effect_sizes = nrow(db_effect_sizes),
-  studies = n_distinct(db_effect_sizes$study_id),
-  mean_corrections = sum(
-    db_effect_sizes$c_mean_continuity_corrected |
-      db_effect_sizes$ex_mean_continuity_corrected
-  ),
-  sd_corrections = sum(
-    db_effect_sizes$c_sd_continuity_corrected |
-      db_effect_sizes$ex_sd_continuity_corrected
-  )
-) |>
-  knitr::kable()
-
 db_effect_sizes |>
   count(comparison_structure, name = "effect_sizes") |>
-  knitr::kable(caption = "Effect sizes calculated by comparison structure.")
+  knitr::kable(caption = "Effect sizes by comparison structure.")
 ```
 
-# Effect-size distribution
-
-```{r}
-#| label: effect-size-distributions
-#| fig-width: 6
-#| fig-height: 4
-
-p_effect <- ggplot(db_effect_sizes, aes(x = lnRR)) +
-  geom_histogram(bins = 30) +
-  labs(x = "lnRR", y = "Count") +
-  theme_minimal()
-
-p_effect
-```
-
-# Export
+# Analysis-ready effect-size table
 
 ```{r}
 #| label: export-effect-sizes
@@ -241,14 +300,51 @@ readr::write_csv(
   na = ""
 )
 
-tibble(output = "Data/derived/db_effect_sizes.csv") |>
-  knitr::kable()
+tibble(
+  file = "Data/derived/db_effect_sizes.csv",
+  rows = nrow(db_effect_sizes),
+  studies = n_distinct(db_effect_sizes$study_id),
+  effect_sizes = n_distinct(db_effect_sizes$es_id)
+) |>
+  knitr::kable(caption = "Effect-size database.")
 ```
 
-# Session information
+# Effect-size distributions
+
+The paired histograms show the calculated lnRR values and their sampling variances (`lnRR_var`).
+
+```{r}
+#| label: lnrr-histograms
+#| fig-width: 9
+#| fig-height: 4
+
+db_effect_sizes |>
+  select(lnRR, lnRR_var) |>
+  pivot_longer(
+    cols = everything(),
+    names_to = "statistic",
+    values_to = "value"
+  ) |>
+  mutate(statistic = factor(statistic, levels = c("lnRR", "lnRR_var"))) |>
+  ggplot(aes(x = value)) +
+  geom_histogram(
+    bins = 30,
+    boundary = 0,
+    colour = "white",
+    linewidth = 0.2
+  ) +
+  facet_wrap(~ statistic, scales = "free_x", nrow = 1) +
+  labs(x = NULL, y = "Count") +
+  theme_minimal() +
+  theme(strip.text = element_text(face = "bold"))
+```
+
+::: callout-note
+## Session information
 
 ```{r}
 #| label: session-information
 
 sessionInfo()
 ```
+:::
