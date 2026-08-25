@@ -2,74 +2,77 @@
 title: "Overall effect"
 ---
 
-## Model
+This chapter fits a multilevel, intercept-only meta-analytic model for lnRR.
 
-This chapter fits one multilevel, intercept-only meta-analytic model to estimate the overall effect of maternal chronic noise exposure on offspring anxiety- and depression-like behaviour, using the harmonized lnRR (`lnrr_harm`) from Chapter 2. A positive overall effect means more anxiety-/depression-like behaviour under exposure; a negative effect means less.
-
-Several effect sizes are not independent: some share a control group, and several studies contribute more than one outcome per study. Two things are used together to account for this, following standard practice for multilevel meta-analyses [@nakagawa2023b]:
-
-- a variance-covariance (VCV) matrix built with `metafor::vcalc()`, assuming a correlation of $\rho = 0.5$ between sampling errors of effect sizes that share a control group (`dependency_cluster_id`, defined in Chapter 1) - 0.5 is a conventional working value used when the true within-cluster correlation is not estimable from the data, not an estimated parameter;
-- random intercepts for `study_id` (between-study heterogeneity), `es_id` (residual/within-study heterogeneity), and `strain` (heterogeneity attributable to rodent strain).
+`comparison_structure` was already used to calculate each sampling variance in Chapter 2. It is not used again in the variance-covariance matrix. The matrix instead uses `cohort_id`, `es_id`, and an assumed sampling-error correlation of `rho = 0.5`.
 
 ```{r}
 #| label: setup
+#| message: false
+#| warning: false
 
-if (!requireNamespace("pacman", quietly = TRUE)) {
-  stop(
-    'Package "pacman" is required. Install it once with ',
-    'install.packages("pacman").'
-  )
-}
-
-analysis_packages <- c("dplyr", "readr", "metafor", "knitr")
-pacman::p_load(char = analysis_packages)
-
-if (!requireNamespace("orchaRd", quietly = TRUE)) {
-  if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
-  remotes::install_github("daniel1noble/orchaRd", force = FALSE)
-}
-library(orchaRd)
-
-options(dplyr.summarise.inform = FALSE)
-knitr::opts_chunk$set(comment = "#>")
+pacman::p_load(
+  dplyr,
+  ggplot2,
+  knitr,
+  metafor,
+  orchaRd,
+  readr,
+  tibble
+)
 
 project_root <- normalizePath("..", mustWork = TRUE)
 derived_dir <- file.path(project_root, "Data", "derived")
 
-es <- readr::read_csv(file.path(derived_dir, "db_effect_sizes.csv"), show_col_types = FALSE) %>%
-  mutate(across(where(is.character), as.factor)) %>%
-  mutate(across(c(lnrr_harm, lnrr_var), as.numeric))
+db <- readr::read_csv(
+  file.path(derived_dir, "db_effect_sizes.csv"),
+  show_col_types = FALSE
+) |>
+  mutate(across(where(is.character), as.factor)) |>
+  mutate(across(c(lnRR, lnRR_var), as.numeric))
 ```
 
+# Variance-covariance matrix
+
+Multiple outcomes from the same cohort are assigned an assumed sampling-error correlation of `rho = 0.5`. The cohort identifier is `study_id` plus `ex_id`, created in Chapter 1.
+
 ```{r}
-#| label: vcv
+#| label: variance-covariance-matrix
 
 VCV <- metafor::vcalc(
-  vi = lnrr_var,
-  cluster = dependency_cluster_id,
+  vi = lnRR_var,
+  cluster = cohort_id,
   obs = es_id,
   rho = 0.5,
-  data = es
+  data = db
 )
 ```
 
+# Multilevel model
+
+The model uses random intercepts for study, effect size, and strain. Estimation uses REML and `test = "t"`.
+
 ```{r}
-#| label: model-overall
+#| label: overall-model
 
 overall_model <- metafor::rma.mv(
-  yi = lnrr_harm,
+  yi = lnRR,
   V = VCV,
-  random = list(~1 | study_id, ~1 | es_id, ~1 | strain),
+  random = list(
+    ~ 1 | study_id,
+    ~ 1 | es_id,
+    ~ 1 | strain
+  ),
   test = "t",
   method = "REML",
   sparse = TRUE,
-  data = es
+  data = db
 )
 
 summary(overall_model)
 ```
 
-## Heterogeneity
+# Heterogeneity
 
 ```{r}
 #| label: heterogeneity
@@ -77,38 +80,39 @@ summary(overall_model)
 orchaRd::i2_ml(overall_model)
 ```
 
-$I^2$ is partitioned across the three random-effects levels (study, effect size, strain); the total is the proportion of variance in observed effect sizes not attributable to sampling error.
-
-## Orchard plot
+# Orchard plot
 
 ```{r}
-#| label: orchard-overall
+#| label: orchard-plot
 #| fig-width: 6
 #| fig-height: 4
 
-orchard_overall <- orchaRd::orchard_plot(
+overall_plot <- orchaRd::orchard_plot(
   overall_model,
   group = "study_id",
-  xlab = "lnRR (harmonized)",
+  xlab = "lnRR",
   flip = TRUE
 ) +
-  ggplot2::scale_y_discrete(labels = c("1" = "Overall effect", "All" = "Overall effect"))
+  scale_x_discrete(labels = "Overall effect")
 
-orchard_overall
+overall_plot
 ```
 
-Each small point is one effect size, sized by precision (inverse sampling variance); the large point and its interval are the model estimate and its 95% confidence and prediction intervals.
-
-## Export
+# Export
 
 ```{r}
-#| label: export
+#| label: export-model
 
-readr::write_rds(overall_model, file.path(derived_dir, "overall_model_lnRR.rds"))
-tibble::tibble(output = "Data/derived/overall_model_lnRR.rds") %>% knitr::kable()
+readr::write_rds(
+  overall_model,
+  file.path(derived_dir, "overall_model_lnRR.rds")
+)
+
+tibble(output = "Data/derived/overall_model_lnRR.rds") |>
+  knitr::kable()
 ```
 
-## Session information
+# Session information
 
 ```{r}
 #| label: session-information

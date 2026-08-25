@@ -1,142 +1,251 @@
 ---
-title: "Effect-size calculation: lnRR"
+title: "Effect size calculation"
 ---
 
-## The log response ratio
-
-This project uses the log response ratio (lnRR), the natural logarithm of the ratio of the treatment mean to the control mean [@hedges1999; @lajeunesse2015], as agreed in the protocol.
-
-::: {.callout-note}
-## Formula
-
-$$
-\ln RR = \ln\left(\frac{M_T}{M_C}\right) + \frac{1}{2}\left(\frac{SD_T^2}{N_T M_T^2} - \frac{SD_C^2}{N_C M_C^2}\right)
-$$
-
-where $M_T$, $SD_T$, $N_T$ are the mean, standard deviation, and sample size of the noise-exposed group, and $M_C$, $SD_C$, $N_C$ are the same for the control group. This is the bias-corrected estimator implemented by `metafor::escalc(measure = "ROM")`.
-:::
-
-::: {.callout-note collapse="true"}
-## A note on the "robust estimator" wording in the protocol
-
-The protocol cites Nakagawa et al. [@nakagawa2023c] for a "robust estimator of lnRR". That paper (Ecology Letters, 2023) proposes a method specifically for meta-analyses with a substantial share of *missing* standard deviations, using sample-size-based weighting instead of the usual SD-based sampling variance for the affected rows. In this dataset only 31/207 rows needed a derived SD (Chapter 1), and all 207 have a usable SD after that step, so the standard `escalc(measure = "ROM")` estimator above is used throughout. If a future update to this dataset has many more missing SDs, revisit this decision and implement the Nakagawa et al. (2023) weighting instead.
-:::
-
-Every treatment-control pair in this dataset uses independent animals (confirmed in the protocol deviation review: "the control and exposed animals are distinct for every comparison"), so the same independent-arm formula applies to all 207 effect sizes - there is no paired/dependent-design branch to handle.
-
-Positive lnRR is not yet interpretable on its own: it only means "the exposed-group mean was higher than the control-group mean" for a given outcome, and outcomes are scored in both directions (e.g., more time in the open arms of an elevated-plus maze is *less* anxiety-like behaviour, while more immobility in a forced-swim test is *more* depression-like behaviour). The next step harmonizes this so the sign is comparable across outcomes.
+This chapter calculates the log response ratio (lnRR) and its sampling variance from the analysis-ready database.
 
 ```{r}
 #| label: setup
+#| message: false
+#| warning: false
 
-if (!requireNamespace("pacman", quietly = TRUE)) {
-  stop(
-    'Package "pacman" is required. Install it once with ',
-    'install.packages("pacman").'
-  )
-}
-
-analysis_packages <- c("dplyr", "readr", "metafor", "knitr", "ggplot2")
-pacman::p_load(char = analysis_packages)
-
-options(dplyr.summarise.inform = FALSE)
-knitr::opts_chunk$set(comment = "#>")
+pacman::p_load(
+  dplyr,
+  ggplot2,
+  knitr,
+  metafor,
+  readr,
+  tibble
+)
 
 project_root <- normalizePath("..", mustWork = TRUE)
 derived_dir <- file.path(project_root, "Data", "derived")
 
 db <- readr::read_csv(
-  file.path(derived_dir, "pcn_data_analysis_ready.csv"),
+  file.path(derived_dir, "PCN_analysis_ready.csv"),
   show_col_types = FALSE
 )
 ```
 
-## Calculate lnRR and its sampling variance
+# lnRR
+
+For continuous outcomes, lnRR is calculated with the same design branches as the reference workflow [@hedges1999; @lajeunesse2015]. `comparison_structure == "independent"` uses `metafor::escalc(measure = "ROM")`. `comparison_structure == "dependent"` uses `metafor::escalc(measure = "ROMC", ri = 0.5)` and the average of the exposed and control sample sizes.
+
+$$
+\ln RR =
+\ln\left(\frac{M_T}{M_C}\right)
++ \frac{1}{2}
+\left(
+\frac{SD_T^2}{N_T M_T^2}
+- \frac{SD_C^2}{N_C M_C^2}
+\right)
+$$
+
+`higher_better` is used to place outcomes in one direction. The lnRR value is multiplied by -1 when `higher_better == "yes"`.
+
+# Boundary corrections
+
+Log ratios require positive means. For non-percentage outcomes, an exact-zero mean is replaced with 0.9 times the smallest positive mean in the same outcome stratum. An exact-zero SD is replaced with 0.05. Percentage outcomes are kept inside their 0-100 bounds and are calculated after an arcsine-square-root transformation, following the reference workflow.
+
+```{r}
+#| label: boundary-correction-functions
+
+min_positive <- function(x) {
+  x <- x[is.finite(x) & x > 0]
+  if (length(x) == 0) NA_real_ else min(x)
+}
+
+apply_continuity_correction <- function(data) {
+  strata <- c("assay_type", "measurement_variable", "data_type", "data_units")
+
+  minima <- data |>
+    group_by(across(all_of(strata))) |>
+    summarise(
+      min_c_mean = min_positive(c_mean),
+      min_ex_mean = min_positive(ex_mean),
+      .groups = "drop"
+    )
+
+  global_c_mean <- min_positive(data$c_mean)
+  global_ex_mean <- min_positive(data$ex_mean)
+
+  data |>
+    left_join(minima, by = strata) |>
+    mutate(
+      c_mean_continuity_corrected = !is.na(c_mean) & c_mean == 0,
+      ex_mean_continuity_corrected = !is.na(ex_mean) & ex_mean == 0,
+      c_sd_continuity_corrected = !is.na(c_sd) & c_sd == 0,
+      ex_sd_continuity_corrected = !is.na(ex_sd) & ex_sd == 0,
+      c_mean = if_else(
+        c_mean_continuity_corrected,
+        0.9 * coalesce(min_c_mean, global_c_mean),
+        c_mean
+      ),
+      ex_mean = if_else(
+        ex_mean_continuity_corrected,
+        0.9 * coalesce(min_ex_mean, global_ex_mean),
+        ex_mean
+      ),
+      c_sd = if_else(c_sd_continuity_corrected, 0.05, c_sd),
+      ex_sd = if_else(ex_sd_continuity_corrected, 0.05, ex_sd)
+    ) |>
+    select(-min_c_mean, -min_ex_mean)
+}
+```
+
+# Calculation
 
 ```{r}
 #| label: calculate-lnrr
 
-es <- metafor::escalc(
-  measure = "ROM",
-  m1i = ex_mean_final, sd1i = ex_sd_final, n1i = ex_n,
-  m2i = c_mean_final,  sd2i = c_sd_final,  n2i = c_n,
-  data = db
-)
+if (any(!db$comparison_structure %in% c("independent", "dependent"))) {
+  stop("comparison_structure must be independent or dependent.")
+}
 
-es <- es %>%
-  rename(lnrr_raw = yi, lnrr_var = vi) %>%
+continuous <- db |>
+  filter(data_type != "percentage") |>
+  apply_continuity_correction()
+
+percentage <- db |>
+  filter(data_type == "percentage") |>
   mutate(
-    lnrr_se = sqrt(lnrr_var),
-    higher_better = trimws(higher_better),
-    lnrr_harm = ifelse(tolower(higher_better) == "yes", -lnrr_raw, lnrr_raw)
+    c_mean_continuity_corrected = c_mean %in% c(0, 100),
+    ex_mean_continuity_corrected = ex_mean %in% c(0, 100),
+    c_sd_continuity_corrected = c_sd == 0,
+    ex_sd_continuity_corrected = ex_sd == 0,
+    c_mean = case_when(c_mean == 0 ~ 0.5, c_mean == 100 ~ 99.5, TRUE ~ c_mean),
+    ex_mean = case_when(ex_mean == 0 ~ 0.5, ex_mean == 100 ~ 99.5, TRUE ~ ex_mean),
+    c_sd = if_else(c_sd == 0, 0.5, c_sd),
+    ex_sd = if_else(ex_sd == 0, 0.5, ex_sd)
   )
 
-if (any(!es$higher_better %in% c("Yes", "No"))) {
-  stop("higher_better must be exactly 'Yes' or 'No' for every row.")
+db_effect_sizes <- bind_rows(continuous, percentage) |>
+  arrange(match(es_id, db$es_id)) |>
+  mutate(lnRR = NA_real_, lnRR_var = NA_real_)
+
+asin_trans <- function(proportion) asin(sqrt(proportion))
+
+for (i in seq_len(nrow(db_effect_sizes))) {
+  ex_n <- db_effect_sizes$ex_n[i]
+  c_n <- db_effect_sizes$c_n[i]
+  ex_mean <- db_effect_sizes$ex_mean[i]
+  c_mean <- db_effect_sizes$c_mean[i]
+  ex_sd <- db_effect_sizes$ex_sd[i]
+  c_sd <- db_effect_sizes$c_sd[i]
+  data_type <- db_effect_sizes$data_type[i]
+  comparison_structure <- db_effect_sizes$comparison_structure[i]
+
+  if (data_type != "percentage") {
+    if (comparison_structure == "independent") {
+      effect <- metafor::escalc(
+        measure = "ROM",
+        n1i = ex_n, n2i = c_n,
+        m1i = ex_mean, m2i = c_mean,
+        sd1i = ex_sd, sd2i = c_sd,
+        var.names = c("lnRR", "lnRR_var")
+      )
+    } else {
+      effect <- metafor::escalc(
+        measure = "ROMC",
+        ni = (ex_n + c_n) / 2,
+        m1i = ex_mean, m2i = c_mean,
+        sd1i = ex_sd, sd2i = c_sd,
+        ri = 0.5,
+        var.names = c("lnRR", "lnRR_var")
+      )
+    }
+
+    db_effect_sizes$lnRR[i] <- effect$lnRR
+    db_effect_sizes$lnRR_var[i] <- effect$lnRR_var
+  } else {
+    if (max(c(ex_mean, c_mean), na.rm = TRUE) > 1) {
+      ex_mean <- ex_mean / 100
+      c_mean <- c_mean / 100
+      ex_sd <- ex_sd / 100
+      c_sd <- c_sd / 100
+    }
+
+    ex_sd_transformed <- sqrt(ex_sd^2 / (4 * ex_mean * (1 - ex_mean)))
+    c_sd_transformed <- sqrt(c_sd^2 / (4 * c_mean * (1 - c_mean)))
+    ex_mean_transformed <- asin_trans(ex_mean)
+    c_mean_transformed <- asin_trans(c_mean)
+
+    v_ex <- ex_sd_transformed^2 / (ex_mean_transformed^2 * ex_n)
+    v_c <- c_sd_transformed^2 / (c_mean_transformed^2 * c_n)
+
+    db_effect_sizes$lnRR[i] <- log(ex_mean_transformed / c_mean_transformed)
+    db_effect_sizes$lnRR_var[i] <- if (comparison_structure == "independent") {
+      v_ex + v_c
+    } else {
+      v_ex + v_c - 2 * 0.5 * sqrt(v_ex) * sqrt(v_c)
+    }
+  }
+
+  if (db_effect_sizes$higher_better[i] == "yes") {
+    db_effect_sizes$lnRR[i] <- -db_effect_sizes$lnRR[i]
+  }
 }
-if (any(is.na(es$lnrr_raw) | is.na(es$lnrr_var))) {
-  stop("escalc produced a missing lnRR or variance; check the input means/SDs/n.")
+
+db_effect_sizes <- db_effect_sizes |>
+  mutate(lnRR_se = sqrt(lnRR_var))
+
+if (nrow(db_effect_sizes) != nrow(db) ||
+    anyNA(db_effect_sizes$lnRR) ||
+    anyNA(db_effect_sizes$lnRR_var) ||
+    any(db_effect_sizes$lnRR_var < 0)) {
+  stop("Effect-size calculation failed validation.")
 }
 
 tibble(
-  effect_sizes = nrow(es),
-  studies = n_distinct(es$study_id),
-  flipped_for_direction = sum(tolower(es$higher_better) == "yes")
-) %>%
+  effect_sizes = nrow(db_effect_sizes),
+  studies = n_distinct(db_effect_sizes$study_id),
+  mean_corrections = sum(
+    db_effect_sizes$c_mean_continuity_corrected |
+      db_effect_sizes$ex_mean_continuity_corrected
+  ),
+  sd_corrections = sum(
+    db_effect_sizes$c_sd_continuity_corrected |
+      db_effect_sizes$ex_sd_continuity_corrected
+  )
+) |>
+  knitr::kable()
+
+db_effect_sizes |>
+  count(comparison_structure, name = "effect_sizes") |>
+  knitr::kable(caption = "Effect sizes calculated by comparison structure.")
+```
+
+# Effect-size distribution
+
+```{r}
+#| label: effect-size-distributions
+#| fig-width: 6
+#| fig-height: 4
+
+p_effect <- ggplot(db_effect_sizes, aes(x = lnRR)) +
+  geom_histogram(bins = 30) +
+  labs(x = "lnRR", y = "Count") +
+  theme_minimal()
+
+p_effect
+```
+
+# Export
+
+```{r}
+#| label: export-effect-sizes
+
+readr::write_csv(
+  db_effect_sizes,
+  file.path(derived_dir, "db_effect_sizes.csv"),
+  na = ""
+)
+
+tibble(output = "Data/derived/db_effect_sizes.csv") |>
   knitr::kable()
 ```
 
-`lnrr_raw` is the estimator applied directly to the exposed vs. control means. `lnrr_harm` multiplies `lnrr_raw` by $-1$ whenever `higher_better == "Yes"` (a higher raw value on that assay means *less* anxiety/depression), so that a positive `lnrr_harm` consistently means **more** anxiety- or depression-like behaviour under maternal chronic noise exposure, and a negative `lnrr_harm` means less. `lnrr_harm` is the value used in every model from Chapter 3 onward; `lnrr_raw` is kept only for auditing.
-
-## Effect-size table
-
-```{r}
-#| label: effect-size-table
-
-es %>%
-  select(
-    study_id, es_id, outcome_type, assay_type, measurement_variable,
-    higher_better, ex_mean_final, ex_sd_final, ex_n,
-    c_mean_final, c_sd_final, c_n,
-    lnrr_raw, lnrr_harm, lnrr_var, lnrr_se
-  ) %>%
-  knitr::kable(digits = 3)
-```
-
-## Distribution of effect sizes
-
-```{r}
-#| label: lnrr-histogram
-#| fig-cap: "Distribution of harmonized lnRR across all 207 effect sizes. Positive values indicate more anxiety- or depression-like behaviour under maternal chronic noise exposure."
-
-ggplot(es, aes(x = lnrr_harm)) +
-  geom_histogram(bins = 30, fill = "#477AA8", color = "white") +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "#B24745") +
-  labs(x = "Harmonized lnRR", y = "Number of effect sizes") +
-  theme_minimal(base_size = 12)
-```
-
-```{r}
-#| label: lnrr-se-scatter
-#| fig-cap: "lnRR against its standard error. Points far to the right with a small effect size are the most influential on the funnel-plot check in Chapter 5."
-
-ggplot(es, aes(x = lnrr_se, y = lnrr_harm)) +
-  geom_point(alpha = 0.5, color = "#477AA8") +
-  labs(x = "Standard error of lnRR", y = "Harmonized lnRR") +
-  theme_minimal(base_size = 12)
-```
-
-## Export
-
-```{r}
-#| label: export
-
-readr::write_csv(es, file.path(derived_dir, "db_effect_sizes.csv"), na = "")
-
-tibble(output = "Data/derived/db_effect_sizes.csv") %>% knitr::kable()
-```
-
-## Session information
+# Session information
 
 ```{r}
 #| label: session-information

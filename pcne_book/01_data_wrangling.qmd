@@ -1,203 +1,87 @@
 ---
-title: "Data wrangling and central-tendency estimates"
+title: "Data wrangling"
 ---
 
-## Purpose and data lineage
-
-This chapter turns the reviewed extraction database into the analysis-ready table used from Chapter 2 onward.
-
-The starting point is `outputs/019ff719-4f39-7b31-8dee-189f2b3ff628/PCN_data_v10_clean.csv`. That file is the endpoint of the cross-checking and correction work already completed outside this book (column names, category labels, the `offspring_age_class` variable defined in the protocol deviation addendum of 18 August 2026, and the `gest_window` re-label of `gest_stage_ex_new`). This chapter does not repeat that work, and it does **not** override any reported mean or SD: for 176 of 207 arms per outcome, `c_sd`/`ex_sd` is the value already extracted from the study (or from metaDigitise) and is carried through unchanged. Only two situations produce a new number in R, and both use methods already documented in `c_se_derivation`/`ex_se_derivation`:
-
-- **18 arms per outcome** where only the median and Q1/Q3 were reported - the mean and SD are calculated from those quartiles using the Luo (2018) and Wan (2014) estimators, because no mean/SD was ever reported to begin with.
-- **13 arms per outcome** where SD was not reported but SE was - SD is back-calculated as SE x sqrt(n), the standard conversion, so a value exists to carry into the effect-size formula.
-
-The standard error (`se_final`) is calculated the same way for every arm: where an SE was already reported (65 of 207 arms), that reported value is used unchanged; where it was not (142 of 207 arms), it is calculated as SD/sqrt(n) using the mean/SD from the two bullets above. This is the same formula the extraction team already used to populate `c_se_analysis`/`ex_se_analysis`, so this chapter's independent R recalculation is then cross-checked against those columns rather than replacing them. Concretely, this chapter:
-
-1. reads the documented derivation method for every effect size (`c_se_derivation` / `ex_se_derivation`) and shows how many effect sizes and studies used each method;
-2. calculates the mean and SD only for the rows where they are genuinely missing (median/Q1/Q3 only), passes through every other reported mean and SD unchanged, and calculates the SE only where it was not already reported - then cross-checks that recalculation against the extraction team's own `*_se_analysis` columns;
-3. derives the handful of continuous fields that are still stored as free text (`frequency_Hz`);
-4. checks the result against a short set of validation gates and writes the analysis-ready file that Chapter 2 reads.
-
-As in the original extraction, every derived value keeps a label recording how it was obtained, so a reported statistic and a calculated one are never visually indistinguishable.
+This chapter reads the original extraction file, calculates only the missing summary statistics, and creates the two derived databases used by the analysis. The original CSV is not changed.
 
 ```{r}
 #| label: setup
+#| message: false
+#| warning: false
 
-if (!requireNamespace("pacman", quietly = TRUE)) {
-  stop(
-    'Package "pacman" is required. Install it once with ',
-    'install.packages("pacman").'
-  )
-}
-
-analysis_packages <- c("dplyr", "readr", "stringr", "knitr", "digest")
-pacman::p_load(char = analysis_packages)
-
-required_packages <- c("pacman", analysis_packages)
-
-options(dplyr.summarise.inform = FALSE)
-knitr::opts_chunk$set(comment = "#>")
-
-# Quarto executes this chapter from pcne_book/.
-project_root <- normalizePath("..", mustWork = TRUE)
-clean_path <- file.path(
-  project_root, "outputs", "019ff719-4f39-7b31-8dee-189f2b3ff628",
-  "PCN_data_v10_clean.csv"
+pacman::p_load(
+  dplyr,
+  knitr,
+  readr,
+  stringr,
+  tibble
 )
-derived_dir <- file.path(project_root, "Data", "derived")
-audit_dir <- file.path(project_root, "Data", "audits")
 
+project_root <- normalizePath("..", mustWork = TRUE)
+data_dir <- file.path(project_root, "Data")
+derived_dir <- file.path(data_dir, "derived")
 dir.create(derived_dir, recursive = TRUE, showWarnings = FALSE)
-dir.create(audit_dir, recursive = TRUE, showWarnings = FALSE)
+
+original_path <- file.path(data_dir, "PCN_data_ext_checking_v.3.csv")
+statistics_path <- file.path(
+  derived_dir,
+  "PCN_data_ext_checking_v.3_with_derived_statistics.csv"
+)
+analysis_path <- file.path(derived_dir, "PCN_analysis_ready.csv")
 ```
 
-## Import the reviewed extraction file
+# Original extraction database
 
 ```{r}
-#| label: import
+#| label: read-original-data
 
-db <- readr::read_csv(clean_path, show_col_types = FALSE)
+original <- readr::read_csv(
+  original_path,
+  na = c("", "NA"),
+  name_repair = "unique_quiet",
+  show_col_types = FALSE
+)
 
-raw_row_count <- nrow(db)
-raw_column_count <- ncol(db)
+# Remove the unnamed source column only when it is completely empty.
+empty_unnamed <- names(original)[
+  stringr::str_detect(names(original), "^\\.\\.\\.[0-9]+$") &
+    vapply(original, function(x) all(is.na(x)), logical(1))
+]
+
+original <- original |>
+  select(-any_of(empty_unnamed))
 
 tibble(
-  rows = nrow(db),
-  columns = ncol(db),
-  studies = n_distinct(db$study_id),
-  effect_size_ids = n_distinct(db$es_id)
-) %>%
+  rows = nrow(original),
+  columns = ncol(original),
+  effect_sizes = n_distinct(original$es_id)
+) |>
   knitr::kable()
 ```
 
-The source CSV contains a small number of corrupted multi-byte characters - an en dash inside the `data_status` value `Verified - no change` was truncated to a single stray byte at some earlier export step, which is invalid UTF-8. Left as-is, this crashes downstream functions that assume valid UTF-8 (including `knitr`'s own table rendering), so it is detected and repaired immediately after import, and reported below rather than silently patched.
+# Missing summary statistics
+
+The same formulas are applied separately to the control and exposed arms.
+
+- If a mean is missing and the median, Q1, and Q3 are available, the mean is estimated with the Luo et al. method [@luo2018].
+- If an SD is missing and Q1 and Q3 are available, the SD is estimated with the Wan et al. method [@wan2014].
+- If an SD is missing and an SE is available, `SD = SE * sqrt(n)`.
+- If an SE is missing, `SE = SD / sqrt(n)`.
+- Reported or extracted values are otherwise kept unchanged.
+
+$$
+\widehat{M} = \left(0.7 + \frac{0.39}{n}\right)\frac{Q_1 + Q_3}{2}
++ \left(0.3 - \frac{0.39}{n}\right)M_d
+$$
+
+$$
+\widehat{SD} =
+\frac{Q_3-Q_1}
+{2\Phi^{-1}\left(\frac{0.75n-0.125}{n+0.25}\right)}
+$$
 
 ```{r}
-#| label: fix-invalid-utf8
-
-is_invalid_utf8 <- function(x) !is.na(x) & !validUTF8(x)
-
-char_cols <- names(db)[vapply(db, is.character, logical(1))]
-utf8_issue_counts <- vapply(char_cols, function(col) sum(is_invalid_utf8(db[[col]])), integer(1))
-utf8_issue_counts <- utf8_issue_counts[utf8_issue_counts > 0]
-
-if (length(utf8_issue_counts) > 0) {
-  tibble(
-    column = names(utf8_issue_counts),
-    n_invalid_values = unname(utf8_issue_counts),
-    example_raw_value = vapply(names(utf8_issue_counts), function(col) {
-      bad_value <- db[[col]][is_invalid_utf8(db[[col]])][1]
-      iconv(bad_value, from = "UTF-8", to = "UTF-8", sub = "byte")
-    }, character(1))
-  ) %>%
-    knitr::kable(caption = "Invalid UTF-8 bytes found in the source CSV (the offending byte is shown as <hex>) - repaired below by dropping only that byte, not the surrounding text.")
-
-  db <- db %>%
-    mutate(across(
-      all_of(char_cols),
-      ~ ifelse(
-        is_invalid_utf8(.x),
-        str_squish(iconv(.x, from = "UTF-8", to = "UTF-8", sub = "")),
-        .x
-      )
-    ))
-} else {
-  tibble(note = "No invalid UTF-8 bytes found in this copy of the file.") %>% knitr::kable()
-}
-```
-
-`strain` has one labelling inconsistency: 6 effect sizes from `arjunan_2023_stress` are recorded as `"Wistar albino rat"`, while the 109 effect sizes from the other 9 Wistar-strain studies are recorded as `"Wistar rat"`. These are the same strain - Wistar rats are albino by definition - so `"Wistar albino rat"` is relabelled to `"Wistar rat"` here, before `strain` is used anywhere downstream.
-
-```{r}
-#| label: harmonize-strain
-
-strain_before <- db %>% count(strain, name = "n_effect_sizes") %>% arrange(desc(n_effect_sizes))
-strain_before %>% knitr::kable(caption = "`strain` values before harmonization.")
-
-db$strain <- ifelse(db$strain == "Wistar albino rat", "Wistar rat", db$strain)
-
-db %>%
-  count(strain, name = "n_effect_sizes") %>%
-  arrange(desc(n_effect_sizes)) %>%
-  knitr::kable(caption = "`strain` values after harmonization.")
-```
-
-```{r}
-#| label: data-status-overview
-
-db %>%
-  count(data_status, name = "n_effect_sizes") %>%
-  arrange(desc(n_effect_sizes)) %>%
-  knitr::kable(caption = "Extraction status carried over from the reviewed v10 file.")
-```
-
-`Analysis decision required` marks the rows this chapter still needs to finish. `Corrected derived value`, `Corrected transcription`, and `Verified - no change` are already final.
-
-## Finish the remaining central-tendency statistics
-
-The reviewed file already carries a note for every row - `c_se_derivation` / `ex_se_derivation` - recording how that row's statistics were actually obtained, even for rows that already had a mean, SD, and SE. This section makes that provenance visible for all 207 rows (not only the ones that were still blank), and then **recalculates the mean, SD, and SE for every row from first principles in R**, rather than reading the extraction team's pre-computed `*_se_analysis` columns as a finished input. The last step below cross-checks that this from-scratch recalculation reproduces those columns, as proof the two agree.
-
-```{r}
-#| label: derivation-method-labels
-
-if (!identical(db$c_se_derivation, db$ex_se_derivation)) {
-  stop("c_se_derivation and ex_se_derivation differ for at least one row; both arms of a comparison should share one documented method.")
-}
-
-db$stat_derivation_method <- case_when(
-  db$c_se_derivation == "Reported SEM; used unchanged for analysis" ~ "author_reported_se",
-  db$c_se_derivation == "Digitised reported SEM; used unchanged for analysis" ~ "digitised_se_metadigitise",
-  db$c_se_derivation == "Reported SE in author email; used unchanged for analysis" ~ "author_email_se",
-  db$c_se_derivation == "SD / sqrt(n); derived for analysis from the extracted SD and sample size" ~ "se_from_reported_sd",
-  db$c_se_derivation == "SD / sqrt(n), using descriptive statistics calculated from author raw data" ~ "sd_se_from_author_raw_data",
-  db$c_se_derivation == "SD / sqrt(n), using the same-sex subgroup in author raw data" ~ "sd_se_from_author_raw_data_subgroup",
-  db$c_se_derivation == "Accepted analysis assumption: SD = sqrt(mean); SE = SD / sqrt(n)" ~ "assumed_sd_sqrt_mean",
-  db$c_se_derivation == "Not calculated here: median (Q1; Q3) reported; estimation is deferred to reproducible R data wrangling" ~ "median_iqr_deferred_to_r",
-  TRUE ~ NA_character_
-)
-
-if (any(is.na(db$stat_derivation_method))) {
-  stop("Found a c_se_derivation value not recognized by the crosswalk above; add it before proceeding.")
-}
-
-db %>%
-  group_by(stat_derivation_method) %>%
-  summarise(
-    n_effect_sizes = n(),
-    n_studies = n_distinct(study_id),
-    studies = paste(sort(unique(study_id)), collapse = ", "),
-    .groups = "drop"
-  ) %>%
-  arrange(desc(n_effect_sizes)) %>%
-  knitr::kable(caption = "How every effect size's mean/SD/SE were actually obtained during extraction, before this chapter's own calculations.")
-```
-
-::: {.callout-warning}
-## A documented assumption to be aware of: `assumed_sd_sqrt_mean`
-
-All 36 effect sizes from **`whitlow_1978_thesis`** (100% of that study's rows) did not report any measure of spread at all. The extraction team's accepted fallback for that study's count-type outcomes was to assume `SD = sqrt(mean)` - the variance-equals-mean relationship expected under a Poisson distribution, a common assumption for behavioural counts. This is verified below (the already-populated `c_sd` / `ex_sd` for these rows already equals `sqrt(mean)` to rounding error) and carried through unchanged; it is not something this chapter can re-derive independently; it is a substantive assumption worth revisiting in a sensitivity analysis that excludes `whitlow_1978_thesis`, since it is the only study relying on it.
-:::
-
-```{r}
-#| label: verify-sqrt-mean-assumption
-
-sqrt_mean_check <- db %>%
-  filter(stat_derivation_method == "assumed_sd_sqrt_mean") %>%
-  transmute(
-    study_id, es_id,
-    c_sd_minus_sqrt_c_mean = c_sd - sqrt(c_mean),
-    ex_sd_minus_sqrt_ex_mean = ex_sd - sqrt(ex_mean)
-  )
-
-tibble(
-  n_rows_checked = nrow(sqrt_mean_check),
-  max_abs_discrepancy = max(abs(c(sqrt_mean_check$c_sd_minus_sqrt_c_mean, sqrt_mean_check$ex_sd_minus_sqrt_ex_mean)))
-) %>%
-  knitr::kable(digits = 6, caption = "Confirms SD already equals sqrt(mean) for the affected rows (near-zero discrepancy expected from rounding).")
-```
-
-```{r}
-#| label: central-tendency-functions
+#| label: summary-statistic-functions
 
 luo_iqr_mean <- function(q1, median, q3, n) {
   weight <- 0.7 + 0.39 / n
@@ -208,305 +92,211 @@ wan_iqr_sd <- function(q1, q3, n) {
   denominator <- 2 * stats::qnorm((0.75 * n - 0.125) / (n + 0.25))
   (q3 - q1) / denominator
 }
-```
 
-Only one situation needs a mean or SD calculated from another statistic: the 18 `abramova_2023_biopsy` rows tagged `median_iqr_deferred_to_r` above, where the study reported the median, Q1, and Q3 for each arm but not the mean or SD. These use the Luo et al. [@luo2018] mean estimator and the Wan et al. [@wan2014] SD estimator agreed for this project. Every other row already has a final mean and SD (by whichever route the table above shows), so this chapter passes those through unchanged.
+derive_arm_statistics <- function(data, arm) {
+  n <- data[[paste0(arm, "_n")]]
+  mean_reported <- data[[paste0(arm, "_mean")]]
+  sd_reported <- data[[paste0(arm, "_sd")]]
+  se_reported <- data[[paste0(arm, "_se")]]
+  median <- data[[paste0(arm, "_median")]]
+  q1 <- data[[paste0(arm, "_q1")]]
+  q3 <- data[[paste0(arm, "_q3")]]
 
-The SE is handled the same way for **every** row, including the 18 above: if the study (or the extraction team, from digitised or emailed data) directly reported an SE, that value is used unchanged; otherwise `SE = SD / sqrt(n)` is calculated from the mean/SD obtained above. This is the same relationship the extraction team used to build `*_se_analysis` - the validation step at the end of this section confirms the two agree.
+  use_iqr_mean <- is.na(mean_reported) & complete.cases(q1, median, q3, n)
+  use_iqr_sd <- is.na(sd_reported) & complete.cases(q1, q3, n)
+  use_se_for_sd <- is.na(sd_reported) & !is.na(se_reported) & !is.na(n)
 
-```{r}
-#| label: finish-arm-statistics
-
-finish_arm_statistics <- function(data, arm) {
-  n        <- data[[paste0(arm, "_n")]]
-  mean_x   <- data[[paste0(arm, "_mean")]]
-  sd_x     <- data[[paste0(arm, "_sd")]]
-  se_x     <- data[[paste0(arm, "_se")]]
-  median_x <- data[[paste0(arm, "_median")]]
-  q1       <- data[[paste0(arm, "_q1")]]
-  q3       <- data[[paste0(arm, "_q3")]]
-  method   <- data$stat_derivation_method
-
-  from_iqr <- method == "median_iqr_deferred_to_r"
-  if (any(from_iqr & !(is.na(q1) | is.na(median_x) | is.na(q3)) & !(q1 <= median_x & median_x <= q3))) {
+  if (any(use_iqr_mean & !(q1 <= median & median <= q3))) {
     stop("Invalid Q1 <= median <= Q3 ordering in the ", arm, " arm.")
   }
 
-  # Mean: calculated only for the median/IQR rows; passed through otherwise.
-  mean_final <- mean_x
-  mean_final[from_iqr] <- luo_iqr_mean(q1[from_iqr], median_x[from_iqr], q3[from_iqr], n[from_iqr])
-  mean_source <- ifelse(from_iqr, "luo_2018_median_iqr", method)
-
-  # SD: calculated for the median/IQR rows (Wan et al.), and for the small
-  # group of rows where a study reported an SE but no SD (SD = SE * sqrt(n),
-  # 13 rows in `uygur_2010_aphyhun`, `uygur_2011_ankarauniv`, and
-  # `abramova_2024_devneur`); passed through otherwise (including the
-  # assumed-SD-equals-sqrt(mean) and raw-data-derived rows, which are already
-  # final numbers, just obtained upstream of this chapter).
-  sd_final <- sd_x
-  sd_final[from_iqr] <- wan_iqr_sd(q1[from_iqr], q3[from_iqr], n[from_iqr])
-  sd_from_se <- is.na(sd_final) & !is.na(se_x)
-  sd_final[sd_from_se] <- se_x[sd_from_se] * sqrt(n[sd_from_se])
-  sd_source <- case_when(
-    from_iqr ~ "wan_2014_median_iqr",
-    sd_from_se ~ paste0(method, "_sd_from_se_times_sqrt_n"),
-    TRUE ~ method
+  mean_analysis <- mean_reported
+  mean_analysis[use_iqr_mean] <- luo_iqr_mean(
+    q1[use_iqr_mean], median[use_iqr_mean], q3[use_iqr_mean], n[use_iqr_mean]
   )
 
-  # SE: use a directly reported/digitised/emailed SE unchanged; otherwise
-  # calculate it from the mean/SD obtained above. This is computed for every
-  # row, including the 18 median/IQR rows, which had no SE at all before.
-  se_reported <- !is.na(se_x)
-  se_final <- ifelse(se_reported, se_x, sd_final / sqrt(n))
-  se_source <- ifelse(se_reported, paste0(method, "_se_reported"), paste0(method, "_se_computed_sd_over_sqrt_n"))
+  sd_analysis <- sd_reported
+  sd_analysis[use_iqr_sd] <- wan_iqr_sd(
+    q1[use_iqr_sd], q3[use_iqr_sd], n[use_iqr_sd]
+  )
+  sd_analysis[use_se_for_sd] <- se_reported[use_se_for_sd] * sqrt(n[use_se_for_sd])
 
-  data[[paste0(arm, "_mean_final")]] <- mean_final
-  data[[paste0(arm, "_mean_source")]] <- mean_source
-  data[[paste0(arm, "_sd_final")]] <- sd_final
-  data[[paste0(arm, "_sd_source")]] <- sd_source
-  data[[paste0(arm, "_se_final")]] <- se_final
-  data[[paste0(arm, "_se_source")]] <- se_source
-  data[[paste0(arm, "_mean_pre_zero_correction")]] <- mean_final
+  se_analysis <- se_reported
+  use_sd_for_se <- is.na(se_analysis) & !is.na(sd_analysis) & !is.na(n)
+  se_analysis[use_sd_for_se] <- sd_analysis[use_sd_for_se] / sqrt(n[use_sd_for_se])
+
+  mean_note <- ifelse(
+    use_iqr_mean,
+    "Luo et al. (2018): mean estimated from Q1, median, Q3, and n",
+    "Existing mean in original extraction used unchanged"
+  )
+
+  sd_note <- case_when(
+    use_iqr_sd ~ "Wan et al. (2014): SD estimated from Q1, Q3, and n",
+    use_se_for_sd ~ "SD = SE * sqrt(n)",
+    TRUE ~ "Existing SD in original extraction used unchanged"
+  )
+
+  se_note <- ifelse(
+    use_sd_for_se,
+    "SE = SD / sqrt(n)",
+    "Existing SE in original extraction used unchanged"
+  )
+
+  if (anyNA(mean_analysis) || anyNA(sd_analysis) || anyNA(se_analysis)) {
+    stop("Unresolved summary statistic in the ", arm, " arm.")
+  }
+
+  data[[paste0(arm, "_mean_analysis")]] <- mean_analysis
+  data[[paste0(arm, "_mean_note")]] <- mean_note
+  data[[paste0(arm, "_sd_analysis")]] <- sd_analysis
+  data[[paste0(arm, "_sd_note")]] <- sd_note
+  data[[paste0(arm, "_se_analysis")]] <- se_analysis
+  data[[paste0(arm, "_se_note")]] <- se_note
   data
 }
+```
 
-db <- finish_arm_statistics(db, "c")
-db <- finish_arm_statistics(db, "ex")
+```{r}
+#| label: calculate-missing-statistics
+
+with_statistics <- original |>
+  derive_arm_statistics("c") |>
+  derive_arm_statistics("ex")
 
 bind_rows(
-  db %>% count(arm = "control", mean_source = c_mean_source, sd_source = c_sd_source, se_source = c_se_source),
-  db %>% count(arm = "experimental", mean_source = ex_mean_source, sd_source = ex_sd_source, se_source = ex_se_source)
-) %>%
-  arrange(arm, mean_source, sd_source, se_source) %>%
-  knitr::kable(caption = "How every arm's final mean, SD, and SE were obtained, effect-size by effect-size.")
+  with_statistics |>
+    count(
+      arm = "control",
+      mean_method = c_mean_note,
+      sd_method = c_sd_note,
+      se_method = c_se_note,
+      name = "rows"
+    ),
+  with_statistics |>
+    count(
+      arm = "exposed",
+      mean_method = ex_mean_note,
+      sd_method = ex_sd_note,
+      se_method = ex_se_note,
+      name = "rows"
+    )
+) |>
+  knitr::kable(caption = "Summary-statistic sources used in the derived database.")
 ```
 
-### Cross-check against the extraction team's `*_se_analysis` columns
+# Analysis-ready database
+
+The analysis-ready database contains the identifiers, planned moderators, source fields, and one mean, SD, SE, and sample size for each arm. `comparison_structure` is retained because Chapter 2 uses it to select the independent- or dependent-groups effect-size formula. `cohort_id` follows the same construction used in the reference workflow: `study_id` plus `ex_id`.
 
 ```{r}
-#| label: validate-se-against-analysis-columns
+#| label: create-analysis-ready-data
 
-se_crosscheck <- bind_rows(
-  db %>% filter(!is.na(c_se_analysis)) %>%
-    transmute(study_id, es_id, arm = "control", se_recalculated = c_se_final, se_analysis_column = c_se_analysis),
-  db %>% filter(!is.na(ex_se_analysis)) %>%
-    transmute(study_id, es_id, arm = "experimental", se_recalculated = ex_se_final, se_analysis_column = ex_se_analysis)
-) %>%
-  mutate(abs_diff = abs(se_recalculated - se_analysis_column))
-
-tibble(
-  arms_compared = nrow(se_crosscheck),
-  max_abs_difference = max(se_crosscheck$abs_diff),
-  arms_matching_within_0.001 = sum(se_crosscheck$abs_diff < 0.001)
-) %>%
-  knitr::kable(digits = 6, caption = "This chapter's from-scratch SE recalculation vs. the extraction team's *_se_analysis columns.")
-```
-
-If `max_abs_difference` above is not negligible, the mismatched rows are worth inspecting individually before trusting either value; a large discrepancy would mean this chapter's formulas and the extraction team's method disagree about how a specific row's SE was obtained.
-
-::: {.callout-note}
-## Provenance check: the 86 rows where `c_se` was populated in the original extraction sheet but is blank in v10
-
-An earlier version of the extraction sheet (`PCN_data_ext_checking_v.3.csv`) had a value in `c_se` for 86 rows that are blank in `PCN_data_v10_clean.csv`. Every one of these was checked individually against the correction logs and the audit trail in `Data/audits/summary_statistics_audit_v10.csv`, and none represents a reported or digitised value that was lost:
-
-- **34 rows** (`abramova_2020_genpath`, raw-data paper) are documented in `correction_log_v4.csv`: the raw-data SD and n were kept unchanged, and only the deterministic SE formula applied to them was corrected.
-- **14 rows** (`abramova_2021_front`, same-sex-subgroup raw data) belong to the same raw-data recalculation already described above for that study.
-- **38 rows** (`abramova_2024_devneur`, `arjunan_2023_stress`, `pavlov_2023_molsci`, `hassanvand_2012_phyphar`) are metaDigitise figure extractions. Their `c_mean`, `c_sd`, and `c_n` are identical between v3 and v10 - nothing digitised changed. metaDigitise never extracts an SE from a figure; the v3 `c_se` value in these rows was already a calculated SD/sqrt(n), sitting in the wrong column. v10 moved that calculated value into `c_se_analysis` (where calculated statistics belong) and left the raw `c_se` field blank, since that field is reserved for a value the authors actually reported.
-
-In short: `c_se` and `ex_se` hold only what was reported or read directly off a figure; `c_se_analysis`/`ex_se_analysis` hold the calculated values used for analysis. The 86 blanks reflect that column split, not missing or discarded data.
-:::
-
-## Exact-zero continuity correction
-
-The Luo estimator returns an exact zero mean whenever a study reports `Q1 = median = Q3 = 0` (a "floor effect", e.g. no head-out inspections recorded for any animal in that arm). `log(0)` is undefined, so the primary lnRR analysis replaces an exact-zero analysis mean with 0.9 times the smallest positive analysis mean observed in the same outcome stratum (`assay_type`, `measurement_variable`, `data_type`, `data_units`), matching the correction rule already agreed for this project. The uncorrected value is kept in `*_mean_pre_zero_correction`; the SD is not changed by this rule.
-
-```{r}
-#| label: zero-correction
-
-zero_correction_strata <- c("assay_type", "measurement_variable", "data_type", "data_units")
-
-zero_correction_values <- db %>%
-  group_by(across(all_of(zero_correction_strata))) %>%
-  summarise(
-    zero_correction_reference_mean = {
-      candidates <- c(c_mean_pre_zero_correction, ex_mean_pre_zero_correction)
-      positive <- candidates[is.finite(candidates) & candidates > 0]
-      if (length(positive) == 0) NA_real_ else min(positive)
-    },
-    .groups = "drop"
-  ) %>%
-  mutate(zero_correction_primary_09 = 0.9 * zero_correction_reference_mean)
-
-db <- db %>%
-  # Drop these columns first (rather than relying on left_join to overwrite
-  # them) so this chunk gives the same result whether it is run once or
-  # re-run later in the same R session - re-running it without this line
-  # would leave the old columns in place and add new ones with a ".y"
-  # suffix instead, since the columns already exist in `db` after the first
-  # run.
-  select(-any_of(c("zero_correction_reference_mean", "zero_correction_primary_09"))) %>%
-  left_join(zero_correction_values, by = zero_correction_strata) %>%
+analysis_ready <- with_statistics |>
   mutate(
-    c_mean_exact_zero = !is.na(c_mean_pre_zero_correction) & c_mean_pre_zero_correction == 0,
-    ex_mean_exact_zero = !is.na(ex_mean_pre_zero_correction) & ex_mean_pre_zero_correction == 0,
-    c_mean_final = ifelse(c_mean_exact_zero, zero_correction_primary_09, c_mean_final),
-    ex_mean_final = ifelse(ex_mean_exact_zero, zero_correction_primary_09, ex_mean_final),
-    c_mean_source = ifelse(c_mean_exact_zero, paste0(c_mean_source, "_zero_corrected"), c_mean_source),
-    ex_mean_source = ifelse(ex_mean_exact_zero, paste0(ex_mean_source, "_zero_corrected"), ex_mean_source),
-    c_sd_zero_review = c_mean_exact_zero & (is.na(c_sd_final) | c_sd_final == 0),
-    ex_sd_zero_review = ex_mean_exact_zero & (is.na(ex_sd_final) | ex_sd_final == 0)
+    data_cleaning_note = if_else(
+      study_id == "`" & data_file == "whitlow_1978_thesis_fig2",
+      "study_id repaired from ` to whitlow_1978_thesis using the source file and title",
+      NA_character_
+    ),
+    study_id = if_else(
+      study_id == "`" & data_file == "whitlow_1978_thesis_fig2",
+      "whitlow_1978_thesis",
+      study_id
+    ),
+    across(where(is.character), stringr::str_squish),
+    shared_control = str_to_lower(shared_control),
+    comparison_structure = str_to_lower(comparison_structure),
+    higher_better = str_to_lower(higher_better),
+    gest_stage_ex = str_to_lower(gest_stage_ex),
+    exposure_type = str_to_lower(exposure_type),
+    exposure_type = recode(exposure_type, "intermitent" = "intermittent"),
+    noise_type = str_to_lower(noise_type),
+    noise_type_2 = str_to_lower(noise_type_2),
+    control_conditions = str_to_lower(control_conditions),
+    offspring_sex = str_to_lower(offspring_sex),
+    outcome_type = str_to_lower(outcome_type),
+    data_type = str_to_lower(data_type),
+    measurement_timing = str_to_lower(measurement_timing),
+    strain = recode(strain, "Wistar albino rat" = "Wistar rat"),
+    cohort_id = paste(study_id, ex_id, sep = "_")
+  ) |>
+  transmute(
+    study_id, title, doi, publish_in,
+    ex_id, con_id, out_id, es_id, cohort_id, shared_control,
+    sp_latin, sp_common, strain, dam_age, gest_stage_ex,
+    exposure_span_d, exposure_type, exposure_session_duration_h,
+    noise_type, noise_type_2, loudness_dB, frequency_Hz,
+    control_conditions, offspring_sex, offspring_age_d,
+    experimental_procedures, outcome_type, assay_type,
+    measurement_variable, data_type, data_units, measurement_timing,
+    data_source, data_file, c_a_id, ex_a_id, comparison,
+    comparison_structure, higher_better,
+    c_mean = c_mean_analysis,
+    c_sd = c_sd_analysis,
+    c_n,
+    c_se = c_se_analysis,
+    c_mean_note, c_sd_note, c_se_note,
+    ex_mean = ex_mean_analysis,
+    ex_sd = ex_sd_analysis,
+    ex_n,
+    ex_se = ex_se_analysis,
+    ex_mean_note, ex_sd_note, ex_se_note,
+    data_cleaning_note
   )
-
-db %>%
-  filter(c_mean_exact_zero | ex_mean_exact_zero) %>%
-  select(
-    study_id, es_id, assay_type, measurement_variable,
-    c_mean_pre_zero_correction, c_mean_final, c_sd_final,
-    ex_mean_pre_zero_correction, ex_mean_final, ex_sd_final,
-    zero_correction_reference_mean
-  ) %>%
-  knitr::kable(digits = 4, caption = "Rows receiving the exact-zero continuity correction.")
 ```
 
-::: {.callout-warning}
-## Review needed: zero SD alongside the zero-mean correction
-
-`es184` and `es190` (`abramova_2023_biopsy`) have `Q1 = median = Q3 = 0` in the control arm, so both the corrected mean *and* the Wan-estimated SD are effectively zero for that arm. A zero SD is not an error for the lnRR variance formula (it simply contributes no sampling variance from that arm), but it does mean the control arm is being treated as reported with no uncertainty, which is a strong assumption for a floor-effect count. This is flagged (`c_sd_zero_review` / `ex_sd_zero_review`) rather than silently altered - decided during review: kept in the primary analysis, and excluded as a sensitivity check in Chapter 7 (Leave-one-out sensitivity analysis).
-:::
-
-## Parse the remaining free-text fields
-
-`frequency_Hz` is reported as a mix of single values and ranges (e.g. `"20,000-45,000"`). It is not collapsed to one number; the categorical acoustic band is what feeds the moderator models, and the midpoint is kept only for exploratory use. A range is `audible` at or below 20,000 Hz, `ultrasound` when entirely above 20,000 Hz, and `mixed_or_boundary` when it crosses that line, following the same rule already used in the extraction review.
-
-`dam_age` and `loudness_dB` are already numeric in the v10 file, so they are used as is (aliasing `dam_age` to `dam_age_weeks` to match the moderator dictionary's naming). `dam_age` remains missing for 118/207 rows, as anticipated during extraction.
+# Validation and export
 
 ```{r}
-#| label: parse-frequency
+#| label: validate-and-export
 
-extract_numbers <- function(x) {
-  if (is.na(x) || trimws(x) == "") return(numeric(0))
-  normalized <- gsub(",", "", x, fixed = TRUE)
-  hits <- regmatches(
-    normalized,
-    gregexpr("[0-9]+(?:\\.[0-9]+)?", normalized, perl = TRUE)
-  )[[1]]
-  if (length(hits) == 1 && hits[1] == "") return(numeric(0))
-  as.numeric(hits)
-}
-
-frequency_values <- lapply(as.character(db$frequency_Hz), extract_numbers)
-
-db$frequency_min_hz <- vapply(frequency_values, function(x) if (length(x) == 0) NA_real_ else x[1], numeric(1))
-db$frequency_max_hz <- vapply(frequency_values, function(x) if (length(x) == 0) NA_real_ else x[length(x)], numeric(1))
-db$frequency_mid_hz <- rowMeans(cbind(db$frequency_min_hz, db$frequency_max_hz), na.rm = FALSE)
-db$frequency_format <- case_when(
-  is.na(db$frequency_min_hz) ~ "not_reported",
-  db$frequency_min_hz != db$frequency_max_hz ~ "range",
-  TRUE ~ "point"
-)
-db$acoustic_band_from_frequency <- case_when(
-  is.na(db$frequency_min_hz) | is.na(db$frequency_max_hz) ~ "not_reported",
-  db$frequency_max_hz <= 20000 ~ "audible",
-  db$frequency_min_hz > 20000 ~ "ultrasound",
-  TRUE ~ "mixed_or_boundary"
-)
-
-db$dam_age_weeks <- db$dam_age
-
-db %>%
-  count(frequency_Hz, frequency_format, acoustic_band_from_frequency) %>%
-  knitr::kable(caption = "Parsed frequency bands.")
-```
-
-## Dependence-structure identifiers
-
-Several effect sizes share a control group: `shared_control == "yes"` for 103/207 rows, and in some studies (e.g. `barzegar_2014_hippo`) one control group (`con_id`) is reused against several different exposed cohorts (`ex_id`). That reuse is exactly the kind of dependence the protocol deviation addendum flags for the variance-covariance structure rather than the extraction sheet itself. Because `con_id` already identifies which rows share a control group's data - and, in this dataset, is finer-grained than grouping by `ex_id` alone would be - Chapters 3-5 build the variance-covariance matrix by clustering on `con_id`. This section just aliases it as `dependency_cluster_id` so later chapters read one clearly-named column instead of re-deriving the same idea, and checks that no cluster keys are missing.
-
-```{r}
-#| label: dependence-check
-
-if (any(is.na(db$con_id)) || any(is.na(db$ex_id))) {
-  stop("con_id and ex_id must be present for every effect size to model dependence later.")
-}
-
-db$dependency_cluster_id <- db$con_id
-
-db %>%
-  count(dependency_cluster_id, name = "effect_sizes_sharing_this_control") %>%
-  count(effect_sizes_sharing_this_control, name = "n_control_groups") %>%
-  knitr::kable(caption = "How many effect sizes share the same control group (dependency_cluster_id).")
-```
-
-::: {.callout-note}
-A small number of `ex_id` cohorts (2 of 26) are compared against more than one `con_id`. Clustering on `con_id` still groups those rows correctly with whichever control they share; it just means those two exposed cohorts each contribute rows to two different clusters rather than one. This is a minor simplification, not a data problem.
-:::
-
-## Validation gates
-
-```{r}
-#| label: validation
-
-validation_summary <- tribble(
-  ~check, ~severity, ~n_failed, ~interpretation,
-  "es_id is present and unique", "error", sum(is.na(db$es_id)) + sum(duplicated(db$es_id)), "Each effect size must have one row",
-  "study_id is present", "error", sum(is.na(db$study_id) | trimws(db$study_id) == ""), "Every effect size must link to a study",
-  "sample sizes are positive", "error", sum(is.na(db$c_n) | db$c_n <= 0 | is.na(db$ex_n) | db$ex_n <= 0), "lnRR variance requires valid n",
-  "analysis means are complete", "error", sum(is.na(db$c_mean_final) | is.na(db$ex_mean_final)), "All arms require a mean for lnRR",
-  "analysis SDs are complete", "error", sum(is.na(db$c_sd_final) | is.na(db$ex_sd_final)), "All arms require an SD for lnRR variance",
-  "analysis SEs are complete", "error", sum(is.na(db$c_se_final) | is.na(db$ex_se_final)), "Every arm should now have a directly reported or SD-derived SE",
-  "analysis means are positive", "error", sum(db$c_mean_final <= 0 | db$ex_mean_final <= 0, na.rm = TRUE), "lnRR requires positive means after the zero correction",
-  "con_id / ex_id present", "error", sum(is.na(db$con_id) | is.na(db$ex_id)), "Needed to model dependence among effect sizes",
-  "recalculated SE matches extraction team's *_se_analysis", "review", sum(se_crosscheck$abs_diff >= 0.001), "This chapter's SD-derived SE should reproduce the pre-computed *_se_analysis columns to within rounding",
-  "zero SD alongside zero-mean correction", "review", sum(db$c_sd_zero_review | db$ex_sd_zero_review), "es184 / es190: control arm has no reported spread",
-  "frequency values failed to parse", "review", sum(!is.na(db$frequency_Hz) & db$frequency_format == "not_reported"), "Check the frequency text for an unexpected format",
-  "dam_age missing", "review", sum(is.na(db$dam_age_weeks)), "Expected: dam_age was only reported for a subset of studies"
-) %>%
-  mutate(status = ifelse(n_failed == 0, "pass", ifelse(severity == "error", "fail", "review"))) %>%
-  select(check, severity, status, n_failed, interpretation)
-
-validation_summary %>% knitr::kable()
-
-critical_failures <- validation_summary %>% filter(severity == "error", status == "fail")
-if (nrow(critical_failures) > 0) {
-  stop("Critical validation failed: ", paste(critical_failures$check, collapse = "; "))
-}
-```
-
-## Export the analysis-ready file
-
-```{r}
-#| label: export
-
-reproducibility_manifest <- tibble(
-  item = c("source_file", "source_file_sha256", "source_rows", "source_columns", "r_version",
-           paste0("package_", required_packages)),
-  value = c(
-    "outputs/019ff719-4f39-7b31-8dee-189f2b3ff628/PCN_data_v10_clean.csv",
-    digest::digest(file = clean_path, algo = "sha256"),
-    as.character(raw_row_count),
-    as.character(raw_column_count),
-    R.version.string,
-    vapply(required_packages, function(x) as.character(packageVersion(x)), character(1))
+validation <- tibble(
+  check = c(
+    "one row per es_id",
+    "study_id present",
+    "sample sizes positive",
+    "means complete",
+    "SDs complete and non-negative",
+    "SEs complete and non-negative",
+    "higher_better is yes or no",
+    "comparison_structure is independent or dependent"
+  ),
+  failures = c(
+    sum(is.na(analysis_ready$es_id)) + sum(duplicated(analysis_ready$es_id)),
+    sum(is.na(analysis_ready$study_id) | analysis_ready$study_id == ""),
+    sum(analysis_ready$c_n <= 0 | analysis_ready$ex_n <= 0 | is.na(analysis_ready$c_n) | is.na(analysis_ready$ex_n)),
+    sum(is.na(analysis_ready$c_mean) | is.na(analysis_ready$ex_mean)),
+    sum(is.na(analysis_ready$c_sd) | is.na(analysis_ready$ex_sd) | analysis_ready$c_sd < 0 | analysis_ready$ex_sd < 0),
+    sum(is.na(analysis_ready$c_se) | is.na(analysis_ready$ex_se) | analysis_ready$c_se < 0 | analysis_ready$ex_se < 0),
+    sum(!analysis_ready$higher_better %in% c("yes", "no")),
+    sum(!analysis_ready$comparison_structure %in% c("independent", "dependent"))
   )
-)
+) |>
+  mutate(status = if_else(failures == 0, "pass", "fail"))
 
-readr::write_csv(db, file.path(derived_dir, "pcn_data_analysis_ready.csv"), na = "")
-readr::write_csv(validation_summary, file.path(audit_dir, "v10_validation_summary.csv"), na = "")
-readr::write_csv(reproducibility_manifest, file.path(audit_dir, "v10_reproducibility_manifest.csv"), na = "")
-readr::write_csv(se_crosscheck, file.path(audit_dir, "v10_se_recalculation_crosscheck.csv"), na = "")
+validation |>
+  knitr::kable()
+
+if (any(validation$status == "fail")) {
+  stop("Analysis-ready data failed validation.")
+}
+
+readr::write_csv(with_statistics, statistics_path, na = "")
+readr::write_csv(analysis_ready, analysis_path, na = "")
 
 tibble(
   output = c(
-    "Data/derived/pcn_data_analysis_ready.csv",
-    "Data/audits/v10_validation_summary.csv",
-    "Data/audits/v10_reproducibility_manifest.csv",
-    "Data/audits/v10_se_recalculation_crosscheck.csv"
-  )
-) %>%
+    "Data/derived/PCN_data_ext_checking_v.3_with_derived_statistics.csv",
+    "Data/derived/PCN_analysis_ready.csv"
+  ),
+  rows = c(nrow(with_statistics), nrow(analysis_ready)),
+  columns = c(ncol(with_statistics), ncol(analysis_ready))
+) |>
   knitr::kable()
 ```
 
-## Session information
+# Session information
 
 ```{r}
 #| label: session-information
