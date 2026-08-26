@@ -1,8 +1,8 @@
 ---
-title: "Sampling dependency structure"
+title: "Sampling variance-covariance matrix"
 ---
 
-Effect sizes within a publication may share an exposed cohort, a control group, or both. The identifiers used to represent these sampling dependencies are described below.
+The sampling variance-covariance matrix was constructed from the lnRR sampling variances and the recorded exposed- and control-group identifiers.
 
 ```{r}
 #| label: setup
@@ -10,336 +10,170 @@ Effect sizes within a publication may share an exposed cohort, a control group, 
 pacman::p_load(
   dplyr,
   knitr,
+  metafor,
   readr,
-  stringr,
-  tibble,
-  tidyr
+  tibble
 )
 
 project_root <- normalizePath("..", mustWork = TRUE)
-data_dir <- file.path(project_root, "Data")
-derived_dir <- file.path(data_dir, "derived")
+derived_dir <- file.path(project_root, "Data", "derived")
 
-original_path <- file.path(data_dir, "PCN_data_ext_checking_v.3.csv")
-
-original <- readr::read_csv(
-  original_path,
-  na = c("", "NA"),
-  name_repair = "unique_quiet",
+vcv_data <- readr::read_csv(
+  file.path(derived_dir, "db_effect_sizes.csv"),
   show_col_types = FALSE
 )
 
-dependency_data <- original
+required_columns <- c(
+  "study_id", "es_id", "ex_id", "con_id", "out_id",
+  "ex_n", "c_n", "lnRR", "lnRR_var"
+)
+
+if (length(setdiff(required_columns, names(vcv_data))) > 0) {
+  stop("Required columns are missing from the effect-size database.")
+}
+if (anyDuplicated(vcv_data$es_id)) {
+  stop("es_id must be unique before constructing V.")
+}
+if (anyNA(vcv_data[c("study_id", "es_id", "ex_id", "con_id")])) {
+  stop("Study and group identifiers must be complete before constructing V.")
+}
+if (any(!is.finite(vcv_data$lnRR_var)) || any(vcv_data$lnRR_var <= 0)) {
+  stop("lnRR_var must contain positive finite sampling variances.")
+}
+if (any(vcv_data$ex_n <= 0) || any(vcv_data$c_n <= 0)) {
+  stop("Group sample sizes must be positive before constructing V.")
+}
 ```
 
-# Data structure
+# Matrix construction
 
-The extraction database contains one row per effect size.
+`metafor::vcalc()` was used to construct `V` [@viechtbauer2010]. `study_id` defines the study cluster, `ex_id` and `con_id` identify the contrasted groups, and `ex_n` and `c_n` provide the group weights. Each `es_id` is supplied as a distinct observation. A working correlation of $\rho = 0.5$ is used for multiple or repeated outcomes that share an exposed or control group. Effect sizes that share neither group have sampling covariance equal to zero.
 
 ```{r}
-#| label: database-summary
+#| label: construct-vcv
 
-database_summary <- tibble(
-  item = c(
-    "Rows",
-    "Columns",
-    "Studies",
-    "Unique effect sizes"
+working_rho <- 0.5
+
+V <- metafor::vcalc(
+  vi = lnRR_var,
+  cluster = study_id,
+  grp1 = ex_id,
+  grp2 = con_id,
+  w1 = ex_n,
+  w2 = c_n,
+  obs = es_id,
+  rho = working_rho,
+  checkpd = TRUE,
+  data = vcv_data
+)
+
+dimnames(V) <- list(vcv_data$es_id, vcv_data$es_id)
+```
+
+# Matrix checks
+
+The diagonal, symmetry, dependency pattern, and positive definiteness of `V` were checked before export.
+
+```{r}
+#| label: check-vcv
+
+same_study <- outer(vcv_data$study_id, vcv_data$study_id, `==`)
+shared_exposed_group <- same_study &
+  outer(vcv_data$ex_id, vcv_data$ex_id, `==`)
+shared_control_group <- same_study &
+  outer(vcv_data$con_id, vcv_data$con_id, `==`)
+shared_group <- shared_exposed_group | shared_control_group
+diag(shared_group) <- FALSE
+
+nonzero_covariance <- abs(V) > sqrt(.Machine$double.eps)
+diag(nonzero_covariance) <- FALSE
+
+minimum_eigenvalue <- min(eigen(V, symmetric = TRUE, only.values = TRUE)$values)
+
+vcv_checks <- tibble(
+  check = c(
+    "Matrix rows",
+    "Matrix columns",
+    "Diagonal equals lnRR_var",
+    "Finite matrix entries",
+    "Symmetric matrix",
+    "Positive-definite matrix",
+    "Effect-size pairs with non-zero covariance",
+    "Non-zero covariance pairs without a shared group"
   ),
   value = c(
-    nrow(original),
-    ncol(original),
-    n_distinct(original$study_id),
-    n_distinct(original$es_id)
+    as.character(nrow(V)),
+    as.character(ncol(V)),
+    as.character(max(abs(diag(V) - vcv_data$lnRR_var)) < sqrt(.Machine$double.eps)),
+    as.character(all(is.finite(V))),
+    as.character(isSymmetric(V)),
+    as.character(minimum_eigenvalue > 0),
+    as.character(sum(upper.tri(V) & nonzero_covariance)),
+    as.character(sum(upper.tri(V) & nonzero_covariance & !shared_group))
   )
 )
 
-database_summary |>
-  knitr::kable(caption = "Structure of the original extraction database.")
+vcv_checks |>
+  knitr::kable(caption = "Checks of the sampling variance-covariance matrix.")
 ```
 
-## Column inventory
+```{r}
+#| label: display-vcv
 
-The table lists the imported class, completeness, and number of unique values for each column in the original extraction file.
+V[seq_len(8), seq_len(8)] |>
+  round(6) |>
+  knitr::kable(caption = "First eight rows and columns of V.")
+```
+
+# Output files
+
+The matrix is saved as CSV and RDS files. The index file records the effect-size order used for the rows and columns of `V`.
 
 ```{r}
-#| label: column-inventory
+#| label: export-vcv
 
-column_inventory <- tibble(
-  column_number = seq_along(original),
-  column_name = names(original),
-  r_class = vapply(original, function(x) class(x)[1], character(1)),
-  non_missing_rows = vapply(original, function(x) sum(!is.na(x)), integer(1)),
-  missing_rows = vapply(original, function(x) sum(is.na(x)), integer(1)),
-  unique_non_missing_values = vapply(
-    original,
-    function(x) dplyr::n_distinct(x, na.rm = TRUE),
-    integer(1)
+vcv_index <- vcv_data |>
+  transmute(
+    matrix_row = row_number(),
+    study_id,
+    es_id,
+    ex_id,
+    con_id,
+    out_id,
+    ex_n,
+    c_n,
+    lnRR,
+    lnRR_var
   )
+
+vcv_matrix_export <- as.data.frame(V, check.names = FALSE) |>
+  tibble::rownames_to_column("es_id")
+
+readr::write_csv(
+  vcv_index,
+  file.path(derived_dir, "PCN_vcv_index.csv"),
+  na = ""
 )
-
-column_inventory |>
-  knitr::kable(caption = "Columns in the original extraction database.")
-```
-
-# Variable definitions
-
-The variables used to identify effect sizes, experimental groups, outcomes, and sampling statistics are defined below.
-
-```{r}
-#| label: variable-definitions
-
-variable_definitions <- tribble(
-  ~analysis_variable, ~database_column, ~definition,
-  "Effect size", "es_id", "Unique identifier for each effect size.",
-  "Study", "study_id", "Identifier for the primary publication.",
-  "Exposed cohort", "ex_id", "Identifier for an exposed experimental cohort retained across its assays and outcomes.",
-  "Control group", "con_id", "Identifier for a control group within an experiment and study.",
-  "Outcome", "out_id; measurement_variable", "Outcome identifier and reported behavioural measure.",
-  "Outcome domain", "outcome_type", "Anxiety- or depression-like behaviour.",
-  "Behavioural test", "assay_type", "Behavioural test used to measure the outcome.",
-  "Measurement time", "offspring_age_d; measurement_timing", "Offspring age and timing of behavioural measurement.",
-  "Sex", "offspring_sex", "Sex of the assessed offspring.",
-  "Species", "sp_latin", "Species of the assessed offspring.",
-  "Treatment statistics", "ex_mean; ex_sd; ex_n", "Mean, standard deviation, and sample size for the exposed group.",
-  "Control statistics", "c_mean; c_sd; c_n", "Mean, standard deviation, and sample size for the control group.",
-  "Effect-size estimate", "lnRR", "Log response ratio calculated in Chapter 2.",
-  "Sampling variance", "lnRR_var", "Sampling variance of the log response ratio calculated in Chapter 2.",
-  "Comparison structure", "comparison_structure", "Specifies an independent or correlated comparison within one effect size.",
-  "Shared-control flag", "shared_control", "Indicates comparisons that use a shared control group.",
-  "Reported group labels", "ex_a_id; c_a_id; comparison", "Labels for reported comparisons; not used as cohort identifiers."
+readr::write_csv(
+  vcv_matrix_export,
+  file.path(derived_dir, "PCN_vcv_matrix.csv"),
+  na = ""
 )
+saveRDS(V, file.path(derived_dir, "PCN_vcv_matrix.rds"))
 
-variable_definitions |>
-  knitr::kable(caption = "Variables used for the sampling dependency structure.")
-```
-
-# Experimental identifiers
-
-The code below summarizes the number and reuse of the identifiers present in the extraction database.
-
-```{r}
-#| label: identifier-summary
-
-identifier_columns <- c(
-  "study_id", "ex_id", "con_id", "out_id", "es_id",
-  "c_a_id", "ex_a_id", "comparison", "data_file"
-)
-
-identifier_summary <- bind_rows(lapply(identifier_columns, function(id) {
-  grouped <- dependency_data |>
-    filter(!is.na(.data[[id]])) |>
-    group_by(.data[[id]]) |>
-    summarise(
-      rows = n(),
-      studies = n_distinct(study_id),
-      .groups = "drop"
-    )
-
-  tibble(
-    identifier = id,
-    unique_values = nrow(grouped),
-    values_repeated_across_rows = sum(grouped$rows > 1),
-    values_spanning_multiple_studies = sum(grouped$studies > 1)
-  )
-}))
-
-identifier_summary |>
-  knitr::kable(caption = "Identifier variables in the extraction database.")
-```
-
-`es_id` identifies one effect size. Within each study, `ex_id` identifies the exposed cohort and `con_id` identifies the control group. The fields `ex_a_id` and `c_a_id` are retained as reported group labels.
-
-## Study structure
-
-The number of exposed cohorts, control groups, outcomes, tests, and measurement ages is summarized for each study.
-
-```{r}
-#| label: study-structure
-
-study_structure <- dependency_data |>
-  group_by(study_id) |>
-  summarise(
-    effect_sizes = n(),
-    exposed_group_ids = n_distinct(ex_id),
-    control_group_ids = n_distinct(con_id),
-    outcome_ids = n_distinct(out_id),
-    sexes = str_c(sort(unique(offspring_sex)), collapse = " | "),
-    offspring_ages_d = str_c(sort(unique(offspring_age_d)), collapse = " | "),
-    behavioural_tests = n_distinct(assay_type),
-    behavioural_outcomes = n_distinct(measurement_variable),
-    data_files = n_distinct(data_file, na.rm = TRUE),
-    comparison_structures = str_c(
-      sort(unique(comparison_structure)),
-      collapse = " | "
-    ),
-    .groups = "drop"
-  ) |>
-  arrange(study_id)
-
-study_structure |>
-  knitr::kable(caption = "Experimental and outcome structure by study.")
-```
-
-## Exposed cohorts and control groups
-
-Group identifiers were retained across outcomes, behavioural tests, and measurement ages. Differences in sample size within a group identifier were retained as recorded for each outcome.
-
-```{r}
-#| label: group-structure
-
-summarize_group_ids <- function(data, arm) {
-  id_column <- paste0(arm, "_id")
-  n_column <- if (arm == "ex") "ex_n" else "c_n"
-
-  data |>
-    group_by(study_id, group_id = .data[[id_column]]) |>
-    summarise(
-      group = if_else(arm == "ex", "Exposed", "Control"),
-      effect_sizes = n(),
-      distinct_sample_sizes = n_distinct(.data[[n_column]]),
-      sample_sizes = str_c(sort(unique(.data[[n_column]])), collapse = " | "),
-      sexes = n_distinct(offspring_sex),
-      ages = n_distinct(offspring_age_d),
-      behavioural_tests = n_distinct(assay_type),
-      behavioural_outcomes = n_distinct(measurement_variable),
-      data_files = n_distinct(data_file, na.rm = TRUE),
-      sample_size_varies = distinct_sample_sizes > 1,
-      .groups = "drop"
-    )
-}
-
-group_structure <- bind_rows(
-  summarize_group_ids(dependency_data, "ex"),
-  summarize_group_ids(dependency_data, "con")
-) |>
-  arrange(study_id, group, group_id)
-
-group_structure |>
-  filter(
-    distinct_sample_sizes > 1 |
-      ages > 1 |
-      behavioural_tests > 1 |
-      behavioural_outcomes > 1 |
-      data_files > 1
-  ) |>
-  knitr::kable(
-    caption = "Group identifiers used across more than one analysis context."
-  )
-```
-
-# Pairwise dependency structure
-
-Pairs of effect sizes were classified according to shared study, exposed-cohort, and control-group identifiers. This step does not assign covariance values.
-
-```{r}
-#| label: pairwise-dependency-structure
-
-pair_index <- t(utils::combn(seq_len(nrow(dependency_data)), 2))
-
-pairwise_ids <- tibble(
-  row_1 = pair_index[, 1],
-  row_2 = pair_index[, 2]
-) |>
-  mutate(
-    same_study =
-      dependency_data$study_id[row_1] == dependency_data$study_id[row_2],
-    same_exposed_group =
-      same_study & dependency_data$ex_id[row_1] == dependency_data$ex_id[row_2],
-    same_control_group =
-      same_study & dependency_data$con_id[row_1] == dependency_data$con_id[row_2],
-    same_group = same_exposed_group | same_control_group,
-    different_treatment_n =
-      same_exposed_group & dependency_data$ex_n[row_1] != dependency_data$ex_n[row_2],
-    different_control_n =
-      same_control_group & dependency_data$c_n[row_1] != dependency_data$c_n[row_2],
-    different_sample_size = different_treatment_n | different_control_n,
-    different_age =
-      same_group &
-        dependency_data$offspring_age_d[row_1] != dependency_data$offspring_age_d[row_2],
-    different_test =
-      same_group & dependency_data$assay_type[row_1] != dependency_data$assay_type[row_2],
-    different_outcome =
-      same_group &
-        dependency_data$measurement_variable[row_1] !=
-          dependency_data$measurement_variable[row_2]
-  )
-
-pairwise_summary <- tibble(
-  pair_classification = c(
-    "All effect-size pairs",
-    "Same publication",
-    "Shared exposed cohort or control group",
-    "Same publication without a shared cohort or control group",
-    "Shared group with different sample sizes",
-    "Shared exposed cohort with different treatment sample sizes",
-    "Shared control group with different control sample sizes",
-    "Shared group spanning offspring ages",
-    "Shared group spanning behavioural tests",
-    "Shared group spanning behavioural outcomes"
+tibble(
+  file = c(
+    "Data/derived/PCN_vcv_index.csv",
+    "Data/derived/PCN_vcv_matrix.csv",
+    "Data/derived/PCN_vcv_matrix.rds"
   ),
-  effect_size_pairs = c(
-    nrow(pairwise_ids),
-    sum(pairwise_ids$same_study),
-    sum(pairwise_ids$same_group),
-    sum(pairwise_ids$same_study & !pairwise_ids$same_group),
-    sum(pairwise_ids$different_sample_size),
-    sum(pairwise_ids$different_treatment_n),
-    sum(pairwise_ids$different_control_n),
-    sum(pairwise_ids$different_age),
-    sum(pairwise_ids$different_test),
-    sum(pairwise_ids$different_outcome)
+  contents = c(
+    "Effect-size order and identifiers",
+    "Sampling variance-covariance matrix",
+    "R matrix used for modelling"
   )
-)
-
-pairwise_summary |>
-  knitr::kable(caption = "Pairwise sampling dependency structure.")
-```
-
-# Dependency rules for VCV construction
-
-The sampling variance-covariance matrix will use the following rules:
-
-1. Effect sizes with the same `study_id` and `ex_id` share an exposed cohort.
-2. Effect sizes with the same `study_id` and `con_id` share a control group.
-3. Effect sizes within a publication that share neither identifier have sampling covariance equal to zero.
-4. For multiple outcomes, tests, or ages measured in the same group, an unreported outcome correlation of $\rho = 0.5$ is used.
-5. The recorded group identifier is retained when outcome-specific sample sizes differ.
-6. `comparison_structure` specifies the calculation of an individual effect size; it is not used as a dependency identifier.
-7. No additional direction reversal is applied during VCV construction.
-
-# Supplementary data files
-
-The tables generated in this chapter are saved as comma-separated files.
-
-```{r}
-#| label: export-supplementary-tables
-
-readr::write_csv(
-  column_inventory,
-  file.path(derived_dir, "dependency_column_inventory.csv"),
-  na = ""
-)
-readr::write_csv(
-  variable_definitions,
-  file.path(derived_dir, "dependency_variable_definitions.csv"),
-  na = ""
-)
-readr::write_csv(
-  study_structure,
-  file.path(derived_dir, "dependency_study_structure.csv"),
-  na = ""
-)
-readr::write_csv(
-  group_structure,
-  file.path(derived_dir, "dependency_group_structure.csv"),
-  na = ""
-)
-readr::write_csv(
-  pairwise_summary,
-  file.path(derived_dir, "dependency_pairwise_summary.csv"),
-  na = ""
-)
+) |>
+  knitr::kable(caption = "Files created for the sampling variance-covariance matrix.")
 ```
 
 ::: callout-note

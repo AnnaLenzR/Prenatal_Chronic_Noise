@@ -13,7 +13,7 @@ It includes:
 
 - preparation of the analysis database from the original extraction file;
 - calculation of the log response ratio (lnRR) and its sampling variance;
-- definition of the experimental dependency identifiers used for the sampling variance-covariance matrix.
+- construction of the sampling variance-covariance matrix.
 :::
 
 ::: card
@@ -21,11 +21,11 @@ It includes:
 
 - **Data preparation** creates the extraction database with calculated missing statistics and the analysis-ready database.
 - **Effect size calculation** calculates lnRR and `lnRR_var` and reports their distributions.
-- **Sampling dependency structure** defines the study, exposed-cohort, and control-group identifiers used for VCV construction.
+- **Sampling variance-covariance matrix** constructs and checks `V` with `metafor`.
 :::
 
 ::: card
 # Reproducibility
 
-All data preparation and analyses are executed in R through Quarto. The original extraction file is read but not overwritten. Chapter 3 documents the dependency identifiers that will be used to construct the sampling variance-covariance matrix in the next analysis stage.
+All data preparation and analyses are executed in R through Quarto. The original extraction file is read but not overwritten. Chapter 3 creates the sampling variance-covariance matrix used in the meta-analysis.
 :::

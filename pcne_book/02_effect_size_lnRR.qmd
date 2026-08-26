@@ -52,8 +52,8 @@ where $M$, $SD$, and $N$ are the mean, standard deviation, and sample size for t
 ## Boundary corrections
 
 - For non-percentage outcomes, a zero mean is replaced by 0.9 times the smallest positive mean in the same outcome stratum.
-- A zero SD is replaced by 0.05.
-- Percentage means of 0 and 100 are replaced by 0.5 and 99.5, respectively. A zero percentage SD is replaced by 0.5.
+- For all outcomes, a zero SD is replaced by the smallest positive SD for the same treatment arm and outcome stratum.
+- Percentage means of 0 and 100 are replaced by 0.5 and 99.5, respectively.
 
 ## Comparison structure
 
@@ -70,6 +70,35 @@ The lnRR sign is multiplied by -1 when `higher_better == "yes"` so that outcome 
 minimum_positive <- function(x) {
   x <- x[is.finite(x) & x > 0]
   if (length(x) == 0) NA_real_ else min(x)
+}
+
+apply_zero_sd_corrections <- function(data) {
+  strata <- c("assay_type", "measurement_variable", "data_type", "data_units")
+
+  local_minima <- data |>
+    group_by(across(all_of(strata))) |>
+    summarise(
+      minimum_control_sd = minimum_positive(c_sd),
+      minimum_exposed_sd = minimum_positive(ex_sd),
+      .groups = "drop"
+    )
+
+  corrected <- data |>
+    left_join(local_minima, by = strata) |>
+    mutate(
+      c_sd_continuity_corrected = !is.na(c_sd) & c_sd == 0,
+      ex_sd_continuity_corrected = !is.na(ex_sd) & ex_sd == 0,
+      c_sd = if_else(c_sd_continuity_corrected, minimum_control_sd, c_sd),
+      ex_sd = if_else(ex_sd_continuity_corrected, minimum_exposed_sd, ex_sd)
+    )
+
+  if (any(corrected$c_sd_continuity_corrected & is.na(corrected$minimum_control_sd)) ||
+      any(corrected$ex_sd_continuity_corrected & is.na(corrected$minimum_exposed_sd))) {
+    stop("A zero SD has no positive SD in the same treatment arm and outcome stratum.")
+  }
+
+  corrected |>
+    select(-minimum_control_sd, -minimum_exposed_sd)
 }
 
 apply_nonpercentage_corrections <- function(data) {
@@ -91,8 +120,6 @@ apply_nonpercentage_corrections <- function(data) {
     mutate(
       c_mean_continuity_corrected = !is.na(c_mean) & c_mean == 0,
       ex_mean_continuity_corrected = !is.na(ex_mean) & ex_mean == 0,
-      c_sd_continuity_corrected = !is.na(c_sd) & c_sd == 0,
-      ex_sd_continuity_corrected = !is.na(ex_sd) & ex_sd == 0,
       c_mean = if_else(
         c_mean_continuity_corrected,
         0.9 * coalesce(minimum_control_mean, global_control_minimum),
@@ -102,11 +129,10 @@ apply_nonpercentage_corrections <- function(data) {
         ex_mean_continuity_corrected,
         0.9 * coalesce(minimum_exposed_mean, global_exposed_minimum),
         ex_mean
-      ),
-      c_sd = if_else(c_sd_continuity_corrected, 0.05, c_sd),
-      ex_sd = if_else(ex_sd_continuity_corrected, 0.05, ex_sd)
+      )
     ) |>
-    select(-minimum_control_mean, -minimum_exposed_mean)
+    select(-minimum_control_mean, -minimum_exposed_mean) |>
+    apply_zero_sd_corrections()
 }
 
 prepare_lnrr_data <- function(data) {
@@ -119,13 +145,10 @@ prepare_lnrr_data <- function(data) {
     mutate(
       c_mean_continuity_corrected = c_mean %in% c(0, 100),
       ex_mean_continuity_corrected = ex_mean %in% c(0, 100),
-      c_sd_continuity_corrected = c_sd == 0,
-      ex_sd_continuity_corrected = ex_sd == 0,
       c_mean = case_when(c_mean == 0 ~ 0.5, c_mean == 100 ~ 99.5, TRUE ~ c_mean),
-      ex_mean = case_when(ex_mean == 0 ~ 0.5, ex_mean == 100 ~ 99.5, TRUE ~ ex_mean),
-      c_sd = if_else(c_sd == 0, 0.5, c_sd),
-      ex_sd = if_else(ex_sd == 0, 0.5, ex_sd)
-    )
+      ex_mean = case_when(ex_mean == 0 ~ 0.5, ex_mean == 100 ~ 99.5, TRUE ~ ex_mean)
+    ) |>
+    apply_zero_sd_corrections()
 
   bind_rows(nonpercentage, percentage) |>
     arrange(match(es_id, data$es_id))
@@ -178,16 +201,24 @@ boundary_corrections |>
   ) |>
   knitr::kable(caption = "Boundary corrections by statistic.")
 
-boundary_corrections |>
-  filter(any_correction) |>
-  select(
-    study_id, es_id,
-    c_mean_old, c_mean_new,
-    ex_mean_old, ex_mean_new,
-    c_sd_old, c_sd_new,
-    ex_sd_old, ex_sd_new
-  ) |>
-  knitr::kable(digits = 3, caption = "Effect sizes modified by a boundary correction.")
+modified_statistics <- bind_rows(
+  boundary_corrections |>
+    filter(c_mean_continuity_corrected) |>
+    transmute(study_id, es_id, statistic = "Control mean", original = c_mean_old, corrected = c_mean_new),
+  boundary_corrections |>
+    filter(ex_mean_continuity_corrected) |>
+    transmute(study_id, es_id, statistic = "Exposed mean", original = ex_mean_old, corrected = ex_mean_new),
+  boundary_corrections |>
+    filter(c_sd_continuity_corrected) |>
+    transmute(study_id, es_id, statistic = "Control SD", original = c_sd_old, corrected = c_sd_new),
+  boundary_corrections |>
+    filter(ex_sd_continuity_corrected) |>
+    transmute(study_id, es_id, statistic = "Exposed SD", original = ex_sd_old, corrected = ex_sd_new)
+) |>
+  arrange(study_id, es_id, statistic)
+
+modified_statistics |>
+  knitr::kable(digits = 3, caption = "Statistics modified by a boundary correction.")
 ```
 
 ```{r}
@@ -310,29 +341,37 @@ tibble(
 The histograms show the calculated lnRR values and their sampling variances (`lnRR_var`).
 
 ```{r}
-#| label: lnrr-histograms
-#| fig-width: 9
+#| label: lnrr-histogram
+#| fig-cap: "Distribution of lnRR effect sizes."
+#| fig-width: 7
 #| fig-height: 4
 
-db_effect_sizes |>
-  select(lnRR, lnRR_var) |>
-  pivot_longer(
-    cols = everything(),
-    names_to = "statistic",
-    values_to = "value"
-  ) |>
-  mutate(statistic = factor(statistic, levels = c("lnRR", "lnRR_var"))) |>
-  ggplot(aes(x = value)) +
+ggplot(db_effect_sizes, aes(x = lnRR)) +
   geom_histogram(
     bins = 30,
     boundary = 0,
     colour = "white",
     linewidth = 0.2
   ) +
-  facet_wrap(~ statistic, scales = "free_x", nrow = 1) +
-  labs(x = NULL, y = "Count") +
-  theme_minimal() +
-  theme(strip.text = element_text(face = "bold"))
+  labs(x = "lnRR", y = "Count") +
+  theme_minimal()
+```
+
+```{r}
+#| label: lnrr-var-histogram
+#| fig-cap: "Distribution of lnRR sampling variances."
+#| fig-width: 7
+#| fig-height: 4
+
+ggplot(db_effect_sizes, aes(x = lnRR_var)) +
+  geom_histogram(
+    bins = 30,
+    boundary = 0,
+    colour = "white",
+    linewidth = 0.2
+  ) +
+  labs(x = "lnRR_var", y = "Count") +
+  theme_minimal()
 ```
 
 ::: callout-note
