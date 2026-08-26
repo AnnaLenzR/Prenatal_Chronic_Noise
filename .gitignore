@@ -13,3 +13,5 @@
 /pcne_book/_freeze/
 /pcne_book/_site/
 **/*.quarto_ipynb
+
+/.quarto/
