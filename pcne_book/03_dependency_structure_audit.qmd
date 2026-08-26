@@ -1,9 +1,8 @@
 ---
-title: "Dependency structure audit"
-subtitle: "Step 1 before construction of the sampling VCV matrix"
+title: "Sampling dependency structure"
 ---
 
-This chapter inspects the experimental dependency information in the original extraction database. It does not construct a sampling variance-covariance matrix and does not fit a meta-analytic model.
+Effect sizes within a publication may share an exposed cohort, a control group, or both. The identifiers used to represent these sampling dependencies are described below.
 
 ```{r}
 #| label: setup
@@ -30,20 +29,12 @@ original <- readr::read_csv(
   show_col_types = FALSE
 )
 
-audit_data <- original |>
-  mutate(
-    study_id_raw = study_id,
-    study_id = if_else(
-      study_id == "`" & data_file == "whitlow_1978_thesis_fig2",
-      "whitlow_1978_thesis",
-      study_id
-    )
-  )
+dependency_data <- original
 ```
 
-# Database structure
+# Data structure
 
-The original extraction file has one row per effect size. One row contains a malformed `study_id` value (`\``). Its title, data file, and all other study fields identify it as `whitlow_1978_thesis`. The correction is made only in the in-memory audit copy; the original file is not changed.
+The extraction database contains one row per effect size.
 
 ```{r}
 #| label: database-summary
@@ -52,15 +43,13 @@ database_summary <- tibble(
   item = c(
     "Rows",
     "Columns",
-    "Raw study_id values",
-    "Studies after documented ID repair",
+    "Studies",
     "Unique effect sizes"
   ),
   value = c(
     nrow(original),
     ncol(original),
     n_distinct(original$study_id),
-    n_distinct(audit_data$study_id),
     n_distinct(original$es_id)
   )
 )
@@ -71,7 +60,7 @@ database_summary |>
 
 ## Column inventory
 
-The inventory reports every column, its imported R class, number of non-missing values, and number of unique non-missing values.
+The table lists the imported class, completeness, and number of unique values for each column in the original extraction file.
 
 ```{r}
 #| label: column-inventory
@@ -90,52 +79,44 @@ column_inventory <- tibble(
 )
 
 column_inventory |>
-  knitr::kable(caption = "All columns in the original extraction database.")
+  knitr::kable(caption = "Columns in the original extraction database.")
 ```
 
-# Requested-variable map
+# Variable definitions
 
-The table maps each variable required for the dependency assessment to the existing database. The definitions follow Table 5 of the protocol and the clarification that `con_id` identifies a control group within an experiment and study. Dam- and litter-level identifiers were not extraction items and are outside the planned VCV structure.
+The variables used to identify effect sizes, experimental groups, outcomes, and sampling statistics are defined below.
 
 ```{r}
-#| label: requested-variable-map
+#| label: variable-definitions
 
-variable_map <- tribble(
-  ~requested_variable, ~existing_column, ~status, ~assessment,
-  "effect_id", "es_id", "Available", "Unique in all 207 rows.",
-  "study_id", "study_id", "Available after repair", "One malformed Whitlow value must be repaired; study_id is a publication identifier, not an experimental unit.",
-  "experiment_id", "ex_id", "Available", "The CSV ex_id corresponds to the protocol ex_cohort_id: an independent exposed experimental cohort retained across its assays and outcomes.",
-  "cohort_id", "ex_id; con_id", "Available", "ex_id identifies the exposed cohort and con_id identifies the control group within the experiment and study.",
-  "dam_group_id", NA_character_, "Out of scope", "Not collected and not used in the planned VCV.",
-  "litter_group_id", NA_character_, "Out of scope", "Not collected and not used in the planned VCV.",
-  "treatment_group_id", "ex_id", "Available", "Stable identifier for the exposed experimental cohort across assays and outcomes.",
-  "control_group_id", "con_id", "Available", "Stable identifier for the control group within an experiment and study.",
-  "animal_sample_id", NA_character_, "Not required", "Individual-animal IDs were not extracted; dependence is represented at the recorded cohort/group level.",
-  "sex", "offspring_sex", "Available", "Recorded for every effect size, but does not identify whether male and female offspring came from the same litters.",
-  "species", "sp_latin", "Available", "Recorded for every effect size.",
-  "behavioural_test", "assay_type", "Available", "Recorded for every effect size.",
-  "behavioural_outcome", "out_id; measurement_variable", "Available", "out_id is the outcome identifier and measurement_variable is the reported measure.",
-  "outcome_domain", "outcome_type", "Available", "Anxiety or depression domain.",
-  "time_id", "offspring_age_d; measurement_timing; out_id", "Available descriptors", "Age, test timing, and outcome ID distinguish measurements; repeated outcomes from the same cohort remain linked by ex_id or con_id.",
-  "yi", "lnRR in db_effect_sizes.csv", "Derived", "Created in Chapter 2; not present in the original extraction file.",
-  "vi", "lnRR_var in db_effect_sizes.csv", "Derived", "Created in Chapter 2; not present in the original extraction file.",
-  "treatment mean", "ex_mean", "Available/derived when missing", "Original values are completed in Chapter 1 when sufficient summary statistics are available.",
-  "treatment SD", "ex_sd", "Available/derived when missing", "Original values are completed in Chapter 1.",
-  "treatment sample size", "ex_n", "Available", "Recorded for every effect size.",
-  "control mean", "c_mean", "Available/derived when missing", "Original values are completed in Chapter 1 when sufficient summary statistics are available.",
-  "control SD", "c_sd", "Available/derived when missing", "Original values are completed in Chapter 1.",
-  "control sample size", "c_n", "Available", "Recorded for every effect size.",
-  "treatment information", "ex_id; gest_stage_ex; exposure_span_d; exposure_type; exposure_session_duration_h; noise_type; noise_type_2; loudness_dB; frequency_Hz", "Available", "Describes exposure but does not identify animal overlap.",
-  "analysis-specific arm labels", "ex_a_id; c_a_id; comparison", "Proxy only", "Labels commonly change by outcome or time and are not stable animal-sample identifiers.",
-  "within-effect comparison type", "comparison_structure", "Available", "Selects ROM or ROMC for one effect size; it does not describe pairwise dependence between different effect sizes.",
-  "shared-control identifier", "con_id; shared_control", "Available", "Identical con_id values identify the shared control group; shared_control is retained as an audit flag."
+variable_definitions <- tribble(
+  ~analysis_variable, ~database_column, ~definition,
+  "Effect size", "es_id", "Unique identifier for each effect size.",
+  "Study", "study_id", "Identifier for the primary publication.",
+  "Exposed cohort", "ex_id", "Identifier for an exposed experimental cohort retained across its assays and outcomes.",
+  "Control group", "con_id", "Identifier for a control group within an experiment and study.",
+  "Outcome", "out_id; measurement_variable", "Outcome identifier and reported behavioural measure.",
+  "Outcome domain", "outcome_type", "Anxiety- or depression-like behaviour.",
+  "Behavioural test", "assay_type", "Behavioural test used to measure the outcome.",
+  "Measurement time", "offspring_age_d; measurement_timing", "Offspring age and timing of behavioural measurement.",
+  "Sex", "offspring_sex", "Sex of the assessed offspring.",
+  "Species", "sp_latin", "Species of the assessed offspring.",
+  "Treatment statistics", "ex_mean; ex_sd; ex_n", "Mean, standard deviation, and sample size for the exposed group.",
+  "Control statistics", "c_mean; c_sd; c_n", "Mean, standard deviation, and sample size for the control group.",
+  "Effect-size estimate", "lnRR", "Log response ratio calculated in Chapter 2.",
+  "Sampling variance", "lnRR_var", "Sampling variance of the log response ratio calculated in Chapter 2.",
+  "Comparison structure", "comparison_structure", "Specifies an independent or correlated comparison within one effect size.",
+  "Shared-control flag", "shared_control", "Indicates comparisons that use a shared control group.",
+  "Reported group labels", "ex_a_id; c_a_id; comparison", "Labels for reported comparisons; not used as cohort identifiers."
 )
 
-variable_map |>
-  knitr::kable(caption = "Mapping of required dependency variables to the extraction database.")
+variable_definitions |>
+  knitr::kable(caption = "Variables used for the sampling dependency structure.")
 ```
 
-# Existing identifier structure
+# Experimental identifiers
+
+The code below summarizes the number and reuse of the identifiers present in the extraction database.
 
 ```{r}
 #| label: identifier-summary
@@ -146,7 +127,7 @@ identifier_columns <- c(
 )
 
 identifier_summary <- bind_rows(lapply(identifier_columns, function(id) {
-  grouped <- audit_data |>
+  grouped <- dependency_data |>
     filter(!is.na(.data[[id]])) |>
     group_by(.data[[id]]) |>
     summarise(
@@ -164,17 +145,19 @@ identifier_summary <- bind_rows(lapply(identifier_columns, function(id) {
 }))
 
 identifier_summary |>
-  knitr::kable(caption = "Existing identifier variables.")
+  knitr::kable(caption = "Identifier variables in the extraction database.")
 ```
 
-`es_id` is unique. `ex_id` identifies the exposed experimental cohort and `con_id` identifies the control group within the experiment and study. The `ex_a_id` and `c_a_id` fields are author-provided analysis labels and are not used as cohort identifiers.
+`es_id` identifies one effect size. Within each study, `ex_id` identifies the exposed cohort and `con_id` identifies the control group. The fields `ex_a_id` and `c_a_id` are retained as reported group labels.
 
-## Study-level structure
+## Study structure
+
+The number of exposed cohorts, control groups, outcomes, tests, and measurement ages is summarized for each study.
 
 ```{r}
-#| label: study-level-audit
+#| label: study-structure
 
-study_audit <- audit_data |>
+study_structure <- dependency_data |>
   group_by(study_id) |>
   summarise(
     effect_sizes = n(),
@@ -190,30 +173,29 @@ study_audit <- audit_data |>
       sort(unique(comparison_structure)),
       collapse = " | "
     ),
-    id_notes = str_c(unique(id_notes), collapse = " || "),
     .groups = "drop"
   ) |>
   arrange(study_id)
 
-study_audit |>
-  knitr::kable(caption = "Study-level identifier and outcome structure.")
+study_structure |>
+  knitr::kable(caption = "Experimental and outcome structure by study.")
 ```
 
-## Arm-ID resolution
+## Exposed cohorts and control groups
 
-The following audit describes how each cohort or control-group ID is reused across outcomes. Different sample sizes within one ID are retained as outcome-specific availability or missingness; they do not create a new cohort unless the extraction assigns a new `ex_id` or `con_id`.
+Group identifiers were retained across outcomes, behavioural tests, and measurement ages. Differences in sample size within a group identifier were retained as recorded for each outcome.
 
 ```{r}
-#| label: arm-id-audit
+#| label: group-structure
 
-audit_arm_ids <- function(data, arm) {
+summarize_group_ids <- function(data, arm) {
   id_column <- paste0(arm, "_id")
   n_column <- if (arm == "ex") "ex_n" else "c_n"
 
   data |>
     group_by(study_id, group_id = .data[[id_column]]) |>
     summarise(
-      arm = if_else(arm == "ex", "Treatment", "Control"),
+      group = if_else(arm == "ex", "Exposed", "Control"),
       effect_sizes = n(),
       distinct_sample_sizes = n_distinct(.data[[n_column]]),
       sample_sizes = str_c(sort(unique(.data[[n_column]])), collapse = " | "),
@@ -222,19 +204,18 @@ audit_arm_ids <- function(data, arm) {
       behavioural_tests = n_distinct(assay_type),
       behavioural_outcomes = n_distinct(measurement_variable),
       data_files = n_distinct(data_file, na.rm = TRUE),
-      cohort_or_control_group_identified = TRUE,
       sample_size_varies = distinct_sample_sizes > 1,
       .groups = "drop"
     )
 }
 
-group_id_audit <- bind_rows(
-  audit_arm_ids(audit_data, "ex"),
-  audit_arm_ids(audit_data, "con")
+group_structure <- bind_rows(
+  summarize_group_ids(dependency_data, "ex"),
+  summarize_group_ids(dependency_data, "con")
 ) |>
-  arrange(study_id, arm, group_id)
+  arrange(study_id, group, group_id)
 
-group_id_audit |>
+group_structure |>
   filter(
     distinct_sample_sizes > 1 |
       ages > 1 |
@@ -242,17 +223,19 @@ group_id_audit |>
       behavioural_outcomes > 1 |
       data_files > 1
   ) |>
-  knitr::kable(caption = "Broad group IDs spanning more than one analysis context.")
+  knitr::kable(
+    caption = "Group identifiers used across more than one analysis context."
+  )
 ```
 
-# Pairwise dependency audit
+# Pairwise dependency structure
 
-The pairwise audit uses the existing IDs only to measure how much dependency is identifiable and how much remains ambiguous. It does not assign covariance values.
+Pairs of effect sizes were classified according to shared study, exposed-cohort, and control-group identifiers. This step does not assign covariance values.
 
 ```{r}
-#| label: pairwise-identifier-audit
+#| label: pairwise-dependency-structure
 
-pair_index <- t(utils::combn(seq_len(nrow(audit_data)), 2))
+pair_index <- t(utils::combn(seq_len(nrow(dependency_data)), 2))
 
 pairwise_ids <- tibble(
   row_1 = pair_index[, 1],
@@ -260,46 +243,46 @@ pairwise_ids <- tibble(
 ) |>
   mutate(
     same_study =
-      audit_data$study_id[row_1] == audit_data$study_id[row_2],
+      dependency_data$study_id[row_1] == dependency_data$study_id[row_2],
     same_exposed_group =
-      same_study & audit_data$ex_id[row_1] == audit_data$ex_id[row_2],
+      same_study & dependency_data$ex_id[row_1] == dependency_data$ex_id[row_2],
     same_control_group =
-      same_study & audit_data$con_id[row_1] == audit_data$con_id[row_2],
-    same_broad_arm = same_exposed_group | same_control_group,
+      same_study & dependency_data$con_id[row_1] == dependency_data$con_id[row_2],
+    same_group = same_exposed_group | same_control_group,
     different_treatment_n =
-      same_exposed_group & audit_data$ex_n[row_1] != audit_data$ex_n[row_2],
+      same_exposed_group & dependency_data$ex_n[row_1] != dependency_data$ex_n[row_2],
     different_control_n =
-      same_control_group & audit_data$c_n[row_1] != audit_data$c_n[row_2],
+      same_control_group & dependency_data$c_n[row_1] != dependency_data$c_n[row_2],
     different_sample_size = different_treatment_n | different_control_n,
     different_age =
-      same_broad_arm &
-        audit_data$offspring_age_d[row_1] != audit_data$offspring_age_d[row_2],
+      same_group &
+        dependency_data$offspring_age_d[row_1] != dependency_data$offspring_age_d[row_2],
     different_test =
-      same_broad_arm & audit_data$assay_type[row_1] != audit_data$assay_type[row_2],
+      same_group & dependency_data$assay_type[row_1] != dependency_data$assay_type[row_2],
     different_outcome =
-      same_broad_arm &
-        audit_data$measurement_variable[row_1] !=
-          audit_data$measurement_variable[row_2]
+      same_group &
+        dependency_data$measurement_variable[row_1] !=
+          dependency_data$measurement_variable[row_2]
   )
 
 pairwise_summary <- tibble(
-  check = c(
+  pair_classification = c(
     "All effect-size pairs",
-    "Pairs from the same publication",
-    "Pairs sharing an exposed cohort or control-group ID",
-    "Same-publication pairs without a shared cohort/group ID",
-    "Shared-group pairs with any different arm sample size",
-    "Shared-group pairs with different treatment sample sizes",
-    "Shared-group pairs with different control sample sizes",
-    "Shared-group pairs spanning offspring ages",
-    "Shared-group pairs spanning behavioural tests",
-    "Shared-group pairs spanning behavioural outcomes"
+    "Same publication",
+    "Shared exposed cohort or control group",
+    "Same publication without a shared cohort or control group",
+    "Shared group with different sample sizes",
+    "Shared exposed cohort with different treatment sample sizes",
+    "Shared control group with different control sample sizes",
+    "Shared group spanning offspring ages",
+    "Shared group spanning behavioural tests",
+    "Shared group spanning behavioural outcomes"
   ),
   effect_size_pairs = c(
     nrow(pairwise_ids),
     sum(pairwise_ids$same_study),
-    sum(pairwise_ids$same_broad_arm),
-    sum(pairwise_ids$same_study & !pairwise_ids$same_broad_arm),
+    sum(pairwise_ids$same_group),
+    sum(pairwise_ids$same_study & !pairwise_ids$same_group),
     sum(pairwise_ids$different_sample_size),
     sum(pairwise_ids$different_treatment_n),
     sum(pairwise_ids$different_control_n),
@@ -310,55 +293,51 @@ pairwise_summary <- tibble(
 )
 
 pairwise_summary |>
-  knitr::kable(caption = "Pairwise resolution available from the current identifiers.")
+  knitr::kable(caption = "Pairwise sampling dependency structure.")
 ```
 
-# Step 1 decision
+# Dependency rules for VCV construction
 
-::: callout-important
-## The database is sufficient for the planned cohort-level VCV matrix
-
-The protocol defines `ex_id` as the exposed experimental cohort and `con_id` identifies the control group within the experiment and study. These identifiers provide the dependency structure required by the planned analysis:
+The sampling variance-covariance matrix will use the following rules:
 
 1. Effect sizes with the same `study_id` and `ex_id` share an exposed cohort.
 2. Effect sizes with the same `study_id` and `con_id` share a control group.
-3. Effect sizes from the same publication that share neither `ex_id` nor `con_id` are treated as independent experimental cohorts for the sampling VCV.
-4. Multiple outcomes, assays, or ages from the same cohort/group are assigned the fixed working outcome correlation `rho = 0.5` because their correlations were not reported.
-5. Different sample sizes under one cohort/group ID are treated as outcome-specific availability or missingness; the recorded cohort/group ID is retained.
-6. `ex_a_id` and `c_a_id` are author-provided labels used for auditing, not for defining the covariance clusters.
-7. `comparison_structure` determines the within-effect calculation in Chapter 2 and is retained in the database, but it does not replace `ex_id` or `con_id` in the VCV.
+3. Effect sizes within a publication that share neither identifier have sampling covariance equal to zero.
+4. For multiple outcomes, tests, or ages measured in the same group, an unreported outcome correlation of $\rho = 0.5$ is used.
+5. The recorded group identifier is retained when outcome-specific sample sizes differ.
+6. `comparison_structure` specifies the calculation of an individual effect size; it is not used as a dependency identifier.
+7. No additional direction reversal is applied during VCV construction.
 
-Dam- and litter-level identifiers are not used. No additional sign reversal is performed during VCV construction.
-:::
+# Supplementary data files
 
-# Audit exports
+The tables generated in this chapter are saved as comma-separated files.
 
 ```{r}
-#| label: export-step-1-audit
+#| label: export-supplementary-tables
 
 readr::write_csv(
   column_inventory,
-  file.path(derived_dir, "vcv_step1_column_inventory.csv"),
+  file.path(derived_dir, "dependency_column_inventory.csv"),
   na = ""
 )
 readr::write_csv(
-  variable_map,
-  file.path(derived_dir, "vcv_step1_variable_map.csv"),
+  variable_definitions,
+  file.path(derived_dir, "dependency_variable_definitions.csv"),
   na = ""
 )
 readr::write_csv(
-  study_audit,
-  file.path(derived_dir, "vcv_step1_study_audit.csv"),
+  study_structure,
+  file.path(derived_dir, "dependency_study_structure.csv"),
   na = ""
 )
 readr::write_csv(
-  group_id_audit,
-  file.path(derived_dir, "vcv_step1_group_id_audit.csv"),
+  group_structure,
+  file.path(derived_dir, "dependency_group_structure.csv"),
   na = ""
 )
 readr::write_csv(
   pairwise_summary,
-  file.path(derived_dir, "vcv_step1_pairwise_summary.csv"),
+  file.path(derived_dir, "dependency_pairwise_summary.csv"),
   na = ""
 )
 ```

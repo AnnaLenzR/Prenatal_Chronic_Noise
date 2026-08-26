@@ -2,7 +2,7 @@
 title: "Data preparation"
 ---
 
-This chapter reads the original extraction database and creates the two derived databases used in the analysis. The original file is not overwritten.
+The original extraction database is retained unchanged. Two derived databases are created for the analysis.
 
 ```{r}
 #| label: setup
@@ -28,9 +28,9 @@ statistics_path <- file.path(
 analysis_path <- file.path(derived_dir, "PCN_analysis_ready.csv")
 ```
 
-# Source database
+# Source data
 
-The source is the clean extraction file `Data/PCN_data_ext_checking_v.3.csv`. Its checksum is recorded before any derived files are created.
+The source file is `Data/PCN_data_ext_checking_v.3.csv`. Its checksum is recorded before the derived files are created.
 
 ```{r}
 #| label: read-source-data
@@ -74,10 +74,9 @@ tibble(
   knitr::kable(caption = "Original extraction database.")
 ```
 
-# Missing summary statistics
+# Derivation of missing summary statistics
 
-::: callout-note
-## Calculation rules
+## Calculation methods
 
 - A missing mean is estimated from Q1, the median, Q3, and sample size with the Luo et al. method [@luo2018].
 - A missing SD is estimated from Q1, Q3, and sample size with the Wan et al. method [@wan2014].
@@ -96,7 +95,6 @@ $$
 \frac{Q_3-Q_1}
 {2\Phi^{-1}\left(\frac{0.75n-0.125}{n+0.25}\right)}
 $$
-:::
 
 ```{r}
 #| label: summary-statistic-functions
@@ -191,25 +189,15 @@ method_counts |>
   knitr::kable(caption = "Sources of the analysis statistics.")
 ```
 
-# Analysis-ready database
+# Analysis-ready data
 
-The analysis-ready database contains one mean, SD, SE, and sample size for each arm and the variables required by the effect-size and meta-analytic models. `comparison_structure` is retained for the lnRR calculation.
+The analysis-ready database contains one mean, SD, SE, and sample size for each arm. The identifiers `ex_id` and `con_id` are retained for the sampling dependency structure, and `comparison_structure` is retained for the lnRR calculation.
 
 ```{r}
 #| label: create-analysis-ready-data
 
 analysis_ready <- with_statistics |>
   mutate(
-    data_cleaning_note = if_else(
-      study_id == "`" & data_file == "whitlow_1978_thesis_fig2",
-      "study_id repaired to whitlow_1978_thesis using data_file and title",
-      NA_character_
-    ),
-    study_id = if_else(
-      study_id == "`" & data_file == "whitlow_1978_thesis_fig2",
-      "whitlow_1978_thesis",
-      study_id
-    ),
     across(where(is.character), str_squish),
     shared_control = str_to_lower(shared_control),
     comparison_structure = str_to_lower(comparison_structure),
@@ -224,12 +212,11 @@ analysis_ready <- with_statistics |>
     outcome_type = str_to_lower(outcome_type),
     data_type = str_to_lower(data_type),
     measurement_timing = str_to_lower(measurement_timing),
-    strain = recode(strain, "Wistar albino rat" = "Wistar rat"),
-    cohort_id = paste(study_id, ex_id, sep = "_")
+    strain = recode(strain, "Wistar albino rat" = "Wistar rat")
   ) |>
   transmute(
     study_id, title, doi, publish_in,
-    ex_id, con_id, out_id, es_id, cohort_id, shared_control,
+    ex_id, con_id, out_id, es_id, shared_control,
     sp_latin, sp_common, strain, dam_age, gest_stage_ex,
     exposure_span_d, exposure_type, exposure_session_duration_h,
     noise_type, noise_type_2, loudness_dB, frequency_Hz,
@@ -247,15 +234,14 @@ analysis_ready <- with_statistics |>
     ex_sd = ex_sd_analysis,
     ex_n,
     ex_se = ex_se_analysis,
-    ex_mean_method, ex_sd_method, ex_se_method,
-    data_cleaning_note
+    ex_mean_method, ex_sd_method, ex_se_method
   )
 ```
 
-# Validation and export
+## Data checks
 
 ```{r}
-#| label: validate-and-export
+#| label: validate-analysis-data
 
 validation <- tibble(
   check = c(
@@ -290,6 +276,14 @@ validation |>
 if (any(validation$status == "Fail")) {
   stop("The analysis-ready database failed validation.")
 }
+```
+
+# Data files
+
+The completed extraction database and the analysis-ready database are saved as comma-separated files. The original extraction file is not overwritten.
+
+```{r}
+#| label: export-data-files
 
 readr::write_csv(with_statistics, statistics_path, na = "")
 readr::write_csv(analysis_ready, analysis_path, na = "")
@@ -300,19 +294,17 @@ if (!identical(original_checksum, unname(tools::md5sum(original_path)))) {
 
 tibble(
   database = c(
-    "Original extraction",
     "Original extraction plus calculated statistics",
     "Analysis-ready data"
   ),
   file = c(
-    "Data/PCN_data_ext_checking_v.3.csv",
     "Data/derived/PCN_data_ext_checking_v.3_with_derived_statistics.csv",
     "Data/derived/PCN_analysis_ready.csv"
   ),
-  rows = c(nrow(original), nrow(with_statistics), nrow(analysis_ready)),
-  columns = c(ncol(original), ncol(with_statistics), ncol(analysis_ready))
+  rows = c(nrow(with_statistics), nrow(analysis_ready)),
+  columns = c(ncol(with_statistics), ncol(analysis_ready))
 ) |>
-  knitr::kable(caption = "Databases used in the workflow.")
+  knitr::kable(caption = "Derived data files.")
 ```
 
 ::: callout-note

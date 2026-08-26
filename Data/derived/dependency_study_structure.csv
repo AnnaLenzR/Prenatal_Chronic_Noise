@@ -1,0 +1,17 @@
+study_id,effect_sizes,exposed_group_ids,control_group_ids,outcome_ids,sexes,offspring_ages_d,behavioural_tests,behavioural_outcomes,data_files,comparison_structures
+abramova_2020_genpath,34,2,2,17,female | male,90,4,12,2,independent
+abramova_2021_front,14,2,2,7,female | male,20,1,7,14,independent
+abramova_2023_biopsy,44,2,2,22,female | male,70 | 74 | 80 | 95,4,16,1,independent
+abramova_2024_devneur,26,2,2,13,female | male,70 | 74 | 80 | 95,4,11,12,independent
+arjunan_2023_stress,6,3,1,2,male,45,1,2,2,independent
+badache_2017_stress,6,1,1,6,male,45 | 46,2,5,6,independent
+barzegar_2014_hippo,6,3,1,2,male,46,1,2,2,independent
+hadizadeh_2018_irjbamedsci,2,1,1,2,male,45,1,2,2,independent
+hassanvand_2012_phyphar,3,1,1,3,male,90,1,3,1,independent
+morra_1965_physiolrec,2,1,1,2,mixed,25,1,2,0,independent
+nishio_2006_intjdevlneur,6,2,2,3,female | male,35,1,3,3,independent
+oliveira_2015_jbehavbraisci,6,1,1,2,male,60,1,2,2,dependent
+pavlov_2023_molsci,5,1,1,5,female,60,3,5,5,independent
+uygur_2010_aphyhun,3,1,1,3,male,70,1,3,1,independent
+uygur_2011_ankarauniv,8,1,1,4,male,70,1,4,1,independent
+whitlow_1978_thesis,36,2,2,6,mixed,25 | 26 | 27,1,3,3,dependent

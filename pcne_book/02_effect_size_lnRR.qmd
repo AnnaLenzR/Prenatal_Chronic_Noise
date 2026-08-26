@@ -26,9 +26,8 @@ db <- readr::read_csv(
 
 # lnRR
 
-This section calculates the log response ratio (lnRR), which compares the mean outcome in the prenatal-noise group with the control group.
+The log response ratio (lnRR) compares the mean outcome in the prenatal-noise group with the control group.
 
-::: card
 The bias-corrected lnRR is:
 
 $$
@@ -42,34 +41,31 @@ $$
 $$
 
 where $M$, $SD$, and $N$ are the mean, standard deviation, and sample size for the exposed ($T$) and control ($C$) groups [@hedges1999; @lajeunesse2015].
-:::
 
-Outcome direction is harmonised with `higher_better`. The lnRR sign is multiplied by -1 when `higher_better == "yes"`.
+# Data preparation for lnRR
 
-# Functions and computation
-
-::: callout-note
-## Shared workflow details
-
-### Data-type handling
+## Data types
 
 - Non-percentage outcomes are calculated on their extracted scale.
 - Percentage outcomes are calculated after an arcsine-square-root transformation.
 
-### Boundary corrections
+## Boundary corrections
 
 - For non-percentage outcomes, a zero mean is replaced by 0.9 times the smallest positive mean in the same outcome stratum.
 - A zero SD is replaced by 0.05.
 - Percentage means of 0 and 100 are replaced by 0.5 and 99.5, respectively. A zero percentage SD is replaced by 0.5.
 
-### Independent and dependent comparisons
+## Comparison structure
 
 - `comparison_structure == "independent"` uses `metafor::escalc(measure = "ROM")`.
 - `comparison_structure == "dependent"` uses `metafor::escalc(measure = "ROMC", ri = 0.5)`.
-:::
+
+## Direction harmonisation
+
+The lnRR sign is multiplied by -1 when `higher_better == "yes"` so that outcome direction is consistent across effect sizes.
 
 ```{r}
-#| label: continuity-correction-functions
+#| label: boundary-correction-functions
 
 minimum_positive <- function(x) {
   x <- x[is.finite(x) & x > 0]
@@ -137,11 +133,11 @@ prepare_lnrr_data <- function(data) {
 ```
 
 ```{r}
-#| label: continuity-correction-audit
+#| label: boundary-correction-summary
 
 db_prepared <- prepare_lnrr_data(db)
 
-continuity_audit <- db |>
+boundary_corrections <- db |>
   select(
     es_id, study_id,
     c_mean_old = c_mean,
@@ -171,7 +167,7 @@ continuity_audit <- db |>
       ex_sd_continuity_corrected
   )
 
-continuity_audit |>
+boundary_corrections |>
   summarise(
     `Total effect sizes` = n(),
     `Any correction` = sum(any_correction),
@@ -180,9 +176,9 @@ continuity_audit |>
     `Control SD` = sum(c_sd_continuity_corrected),
     `Exposed SD` = sum(ex_sd_continuity_corrected)
   ) |>
-  knitr::kable(caption = "Continuity-correction audit summary.")
+  knitr::kable(caption = "Boundary corrections by statistic.")
 
-continuity_audit |>
+boundary_corrections |>
   filter(any_correction) |>
   select(
     study_id, es_id,
@@ -289,7 +285,7 @@ db_effect_sizes |>
   knitr::kable(caption = "Effect sizes by comparison structure.")
 ```
 
-# Analysis-ready effect-size table
+# Effect-size database
 
 ```{r}
 #| label: export-effect-sizes
@@ -309,9 +305,9 @@ tibble(
   knitr::kable(caption = "Effect-size database.")
 ```
 
-# Effect-size distributions
+# lnRR distributions
 
-The paired histograms show the calculated lnRR values and their sampling variances (`lnRR_var`).
+The histograms show the calculated lnRR values and their sampling variances (`lnRR_var`).
 
 ```{r}
 #| label: lnrr-histograms

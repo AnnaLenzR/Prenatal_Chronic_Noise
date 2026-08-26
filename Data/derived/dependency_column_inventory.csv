@@ -1,5 +1,5 @@
 column_number,column_name,r_class,non_missing_rows,missing_rows,unique_non_missing_values
-1,study_id,character,207,0,17
+1,study_id,character,207,0,16
 2,ex_id,character,207,0,26
 3,con_id,character,207,0,22
 4,out_id,character,207,0,99

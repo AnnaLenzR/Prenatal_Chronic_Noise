@@ -13,7 +13,7 @@ It includes:
 
 - preparation of the analysis database from the original extraction file;
 - calculation of the log response ratio (lnRR) and its sampling variance;
-- audit of the experimental dependency identifiers required for the sampling variance-covariance matrix.
+- definition of the experimental dependency identifiers used for the sampling variance-covariance matrix.
 :::
 
 ::: card
@@ -21,7 +21,7 @@ It includes:
 
 - **Data preparation** creates the extraction database with calculated missing statistics and the analysis-ready database.
 - **Effect size calculation** calculates lnRR and `lnRR_var` and reports their distributions.
-- **Dependency structure audit** maps the existing identifiers and reports the additional sampling-unit IDs required before the VCV can be constructed.
+- **Sampling dependency structure** defines the study, exposed-cohort, and control-group identifiers used for VCV construction.
 :::
 
 ::: card
