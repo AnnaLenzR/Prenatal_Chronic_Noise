@@ -15,7 +15,9 @@ It includes:
 - calculation of the log response ratio (lnRR) and its sampling variance;
 - construction of the sampling variance-covariance matrix;
 - estimation of the overall lnRR with a multilevel intercept-only model;
-- separate multilevel meta-regressions for the planned moderators.
+- separate multilevel meta-regressions for the planned moderators;
+- publication-bias diagnostics for small-study effects and time-lag patterns;
+- the adapted CRIME-Q appraisal for each included study.
 :::
 
 ::: card
@@ -25,7 +27,9 @@ It includes:
 - **Effect size calculation** calculates lnRR and `lnRR_var` and reports their distributions.
 - **Sampling variance-covariance matrix** constructs and checks `V` with `metafor`.
 - **Overall effect** fits the intercept-only multilevel meta-analytic model.
-- **Uni-moderators** regenerates `V` and fits one multilevel meta-regression for each moderator.
+- **Uni-moderators** subsets `V` and fits one multilevel meta-regression for each moderator.
+- **Publication bias** displays the funnel plot and fits the small-study and publication-year models.
+- **CRIME-Q appraisal** displays the adapted item definitions and finalized study-level ratings.
 :::
 
 ::: card

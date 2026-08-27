@@ -1,0 +1,296 @@
+---
+title: "CRIME-Q appraisal"
+---
+
+We summarize the finalized CRIME-Q appraisal for the included studies. We use the adapted items defined in the appraisal workbook to assess quality of reporting, methodological quality, and risk of bias [@andersen2024]. The code below reads the item definitions and ratings from the same workbook so their order remains aligned.
+
+::: callout-note
+## Variable definitions
+
+| Variable | Definition |
+|:--|:--|
+| `study_id` | Unique identifier for each included study. |
+| QoR | Quality of reporting. |
+| MQ | Methodological quality. |
+| RoB | Risk of bias. |
+| Rating | Recorded response for an appraisal item: `Yes`, `Partly`, `No`, `Unclear`, or `NA`, where applicable. |
+:::
+
+```{r}
+#| label: setup
+#| include: false
+
+pacman::p_load(
+  dplyr,
+  ggplot2,
+  knitr,
+  readxl,
+  stringr,
+  tibble,
+  tidyr
+)
+
+knitr::opts_chunk$set(comment = "#>")
+
+# Define the location of the CRIME-Q workbook.
+project_root <- normalizePath("..", mustWork = TRUE)
+input_file <- file.path(
+  project_root,
+  "Data",
+  "CRIME-Q_Appraisal_Template.xlsx"
+)
+```
+
+# Appraisal data
+
+We load the finalized study ratings from the `CRIME-Q_Appraisal` sheet and the adapted item definitions from the `Codebook` sheet. We remove a `.pdf` suffix from one `study_id` so the identifier matches the rest of the project. This step does not change any CRIME-Q rating or note.
+
+```{r}
+#| label: load-crime-q
+
+# Read the finalized study-level ratings.
+appraisal <- readxl::read_excel(
+  path = input_file,
+  sheet = "CRIME-Q_Appraisal",
+  col_types = "text",
+  na = ""
+) |>
+  dplyr::mutate(
+    dplyr::across(
+      dplyr::everything(),
+      ~ dplyr::na_if(stringr::str_squish(.x), "")
+    ),
+    study_id = stringr::str_remove(study_id, "\\.pdf$")
+  )
+
+# Read the codebook table below the rating legend.
+codebook_raw <- readxl::read_excel(
+  path = input_file,
+  sheet = "Codebook",
+  skip = 7,
+  col_types = "text",
+  na = ""
+)
+
+# Assign concise names to the five codebook columns.
+names(codebook_raw)[1:5] <- c(
+  "item",
+  "item_name",
+  "domain",
+  "question",
+  "criteria"
+)
+
+# Keep the 21 scored items and omit their paired notes fields.
+codebook <- codebook_raw |>
+  dplyr::mutate(
+    dplyr::across(
+      dplyr::everything(),
+      ~ dplyr::na_if(stringr::str_squish(.x), "")
+    )
+  ) |>
+  dplyr::filter(
+    domain %in% c("QoR", "MQ", "RoB"),
+    !stringr::str_detect(item, "n$|_n$")
+  ) |>
+  dplyr::mutate(
+    item_key = stringr::str_remove_all(item, "[^[:alnum:]]")
+  )
+```
+
+# Data checks
+
+We identify the rating columns and check that they match the 21 scored items in the codebook. We also check the study identifiers, missing ratings, and recorded response values before creating the figure.
+
+```{r}
+#| label: validate-crime-q
+
+# Select rating columns while excluding notes and appraisal time.
+score_columns <- names(appraisal)[
+  stringr::str_detect(names(appraisal), "^[0-9]+[A-Z]") &
+    !stringr::str_detect(names(appraisal), "notes$")
+]
+
+# Match workbook column prefixes to the item codes in the codebook.
+score_keys <- stringr::str_extract(score_columns, "^[^_]+")
+
+if (!identical(score_keys, codebook$item_key)) {
+  stop("The CRIME-Q rating columns do not match the codebook item order.")
+}
+
+if (anyDuplicated(appraisal$study_id) > 0L || anyNA(appraisal$study_id)) {
+  stop("Each CRIME-Q row must have one unique study_id.")
+}
+
+# Convert the rating matrix to long format for validation and plotting.
+item_map <- tibble::tibble(
+  score_column = score_columns,
+  item = codebook$item,
+  domain = codebook$domain
+)
+
+plot_data <- appraisal |>
+  dplyr::select(study_id, dplyr::all_of(score_columns)) |>
+  tidyr::pivot_longer(
+    cols = dplyr::all_of(score_columns),
+    names_to = "score_column",
+    values_to = "rating"
+  ) |>
+  dplyr::left_join(item_map, by = "score_column")
+
+valid_ratings <- c("Yes", "Partly", "No", "Unclear", "NA")
+
+if (anyNA(plot_data$rating)) {
+  stop("The CRIME-Q appraisal contains a missing rating.")
+}
+
+unexpected_ratings <- setdiff(unique(plot_data$rating), valid_ratings)
+
+if (length(unexpected_ratings) > 0L) {
+  stop(
+    "Unexpected CRIME-Q rating: ",
+    paste(unexpected_ratings, collapse = ", ")
+  )
+}
+
+# Report the dimensions of the finalized appraisal matrix.
+tibble::tibble(
+  studies = dplyr::n_distinct(appraisal$study_id),
+  items = length(score_columns),
+  ratings = nrow(plot_data)
+)
+```
+
+# CRIME-Q item definitions
+
+We display the adapted item definitions and coding criteria recorded in the workbook.
+
+```{r}
+#| label: crime-q-definitions
+#| results: asis
+
+codebook |>
+  dplyr::transmute(
+    Item = item,
+    `Item name` = item_name,
+    Domain = domain,
+    Question = question,
+    `Criteria and coding` = criteria
+  ) |>
+  knitr::kable(
+    format = "html",
+    align = c("l", "l", "l", "l", "l"),
+    escape = TRUE,
+    table.attr = 'class="table table-striped table-hover crime-q-codebook"'
+  )
+```
+
+# Study-level ratings
+
+The workbook contains `r dplyr::n_distinct(appraisal$study_id)` studies and `r length(score_columns)` scored CRIME-Q items. We plot the finalized ratings below. Notes and appraisal time remain in the workbook but do not enter the figure.
+
+```{r}
+#| label: crime-q-heatmap
+#| fig-width: 13
+#| fig-height: 8
+#| out-width: "100%"
+#| fig-cap: "Final CRIME-Q ratings for each included study and adapted appraisal item."
+
+# Create a concise study label from the study identifier.
+study_labels <- appraisal |>
+  dplyr::transmute(
+    study_id,
+    study = paste(
+      stringr::str_to_title(stringr::str_extract(study_id, "^[^_]+")),
+      "et al.",
+      stringr::str_extract(study_id, "(19|20)[0-9]{2}")
+    )
+  ) |>
+  dplyr::arrange(study_id)
+
+# Set the item and study order used in the heatmap.
+plot_data <- plot_data |>
+  dplyr::left_join(study_labels, by = "study_id") |>
+  dplyr::mutate(
+    item = factor(item, levels = codebook$item),
+    study = factor(study, levels = rev(study_labels$study)),
+    rating = factor(rating, levels = valid_ratings)
+  )
+
+# Use one colour for each recorded rating.
+rating_colours <- c(
+  "Yes" = "#009E60",
+  "Partly" = "#EFBF04",
+  "No" = "#DC143C",
+  "Unclear" = "#F4B183",
+  "NA" = "#D9EAF7"
+)
+
+# Plot one tile for every study-item rating.
+ggplot2::ggplot(
+  plot_data,
+  ggplot2::aes(x = item, y = study, fill = rating)
+) +
+  ggplot2::geom_tile(color = "#FFFDF8", linewidth = 0.65) +
+  ggplot2::scale_x_discrete(position = "top") +
+  ggplot2::scale_fill_manual(
+    values = rating_colours,
+    breaks = valid_ratings,
+    drop = FALSE,
+    name = NULL
+  ) +
+  ggplot2::labs(x = NULL, y = NULL) +
+  ggplot2::theme_minimal(base_size = 12) +
+  ggplot2::theme(
+    panel.grid = ggplot2::element_blank(),
+    axis.text.x = ggplot2::element_text(
+      face = "bold",
+      colour = "#242321",
+      size = 10
+    ),
+    axis.text.y = ggplot2::element_text(
+      face = "bold",
+      colour = "#242321",
+      size = 10
+    ),
+    axis.ticks = ggplot2::element_blank(),
+    legend.position = "bottom",
+    legend.text = ggplot2::element_text(size = 11),
+    legend.key.width = grid::unit(1.5, "lines"),
+    plot.margin = ggplot2::margin(10, 10, 10, 10)
+  )
+```
+
+```{css}
+.crime-q-codebook {
+  width: 100%;
+  font-size: 0.93rem;
+}
+
+.crime-q-codebook th {
+  background: #eef2f4;
+  color: #24313a;
+  vertical-align: bottom;
+}
+
+.crime-q-codebook td {
+  vertical-align: top;
+}
+
+.crime-q-codebook th:first-child,
+.crime-q-codebook td:first-child,
+.crime-q-codebook th:nth-child(3),
+.crime-q-codebook td:nth-child(3) {
+  white-space: nowrap;
+}
+```
+
+::: callout-note
+## Session information
+
+```{r}
+#| label: session-information
+
+sessionInfo()
+```
+:::

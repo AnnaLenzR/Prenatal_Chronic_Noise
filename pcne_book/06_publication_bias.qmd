@@ -1,0 +1,263 @@
+---
+title: "Publication bias"
+---
+
+We evaluate small-study effects and time-lag patterns for lnRR. We use the same sampling variance-covariance matrix and random-effects structure as the overall-effect model.
+
+::: callout-note
+## Variable definitions
+
+| Variable | Definition |
+|:--|:--|
+| `sqrt_inv_e_n` | Square root of the inverse effective sample size, calculated as $\sqrt{1/n_{ex} + 1/n_c}$. |
+| `publication_year` | Publication year extracted from `study_id`. |
+| `year_c` | Publication year centred on the mean publication year. |
+:::
+
+```{r}
+#| label: setup
+#| include: false
+
+pacman::p_load(
+  dplyr,
+  ggplot2,
+  metafor,
+  orchaRd,
+  patchwork,
+  readr,
+  scales,
+  stringr
+)
+
+knitr::opts_chunk$set(comment = "#>")
+
+# Define the folder that contains the effect-size database.
+project_root <- normalizePath("..", mustWork = TRUE)
+derived_dir <- file.path(project_root, "Data", "derived")
+```
+
+# Analysis data and overall model
+
+We load the effect-size database and reconstruct the complete VCV matrix with the same `metafor::vcalc()` specification used in Chapter 3. We then fit the intercept-only model that provides the centre line for the funnel plot.
+
+```{r}
+#| label: overall-model
+
+# Load the lnRR effect sizes and sampling variances.
+db <- readr::read_csv(
+  file.path(derived_dir, "db_effect_sizes.csv"),
+  show_col_types = FALSE
+)
+
+# Extract the four-digit publication year from study_id.
+db <- db |>
+  mutate(
+    publication_year = as.integer(
+      stringr::str_extract(study_id, "(19|20)[0-9]{2}")
+    )
+  )
+
+if (anyNA(db$publication_year)) {
+  stop("A publication year could not be extracted from study_id.")
+}
+
+# Construct the complete sampling VCV matrix.
+VCV_lnRR <- metafor::vcalc(
+  vi = lnRR_var,
+  cluster = study_id,
+  grp1 = ex_id,
+  grp2 = con_id,
+  w1 = ex_n,
+  w2 = c_n,
+  obs = es_id,
+  rho = 0.5,
+  data = db
+)
+
+# Fit the intercept-only multilevel model.
+ma_all <- metafor::rma.mv(
+  yi = lnRR,
+  V = VCV_lnRR,
+  random = list(
+    ~ 1 | study_id,
+    ~ 1 | es_id,
+    ~ 1 | strain
+  ),
+  test = "t",
+  method = "REML",
+  sparse = TRUE,
+  data = db
+)
+
+summary(ma_all)
+```
+
+# Visual inspection: funnel plot
+
+We plot lnRR against inverse standard error. Greater values on the vertical axis represent greater precision.
+
+```{r}
+#| label: funnel-plot
+#| fig-width: 8
+#| fig-height: 6
+
+# Draw the inverse-SE funnel plot.
+metafor::funnel(
+  ma_all,
+  yaxis = "seinv",
+  las = 1,
+  digits = c(2, 1),
+  xlab = "Standardised residuals (lnRR)",
+  ylab = "Precision (inverse of SE)",
+  pch = 21,
+  bg = scales::alpha("black", 0.2),
+  col = "black",
+  cex = 1.2
+)
+```
+
+# Egger-type regression
+
+We test small-study effects with an N-based precision term. This avoids using the sampling standard error as the predictor because lnRR and its sampling variance are mathematically related [@nakagawa2022].
+
+```{r}
+#| label: egger-test
+
+# Calculate the N-based precision term for every effect size.
+dt_egger_full <- db |>
+  mutate(
+    sqrt_inv_e_n = sqrt((1 / ex_n) + (1 / c_n))
+  )
+
+# Fit the Egger-type multilevel meta-regression.
+egger_model_full <- metafor::rma.mv(
+  yi = lnRR,
+  V = VCV_lnRR,
+  mods = ~ 1 + sqrt_inv_e_n,
+  random = list(
+    ~ 1 | study_id,
+    ~ 1 | es_id,
+    ~ 1 | strain
+  ),
+  test = "t",
+  method = "REML",
+  sparse = TRUE,
+  data = dt_egger_full
+)
+
+summary(egger_model_full)
+```
+
+We display the fitted relationship between lnRR and the N-based precision term.
+
+```{r}
+#| label: egger-bubble-plot
+#| fig-width: 7
+#| fig-height: 5
+
+egger_plot <- orchaRd::bubble_plot(
+  egger_model_full,
+  mod = "sqrt_inv_e_n",
+  group = "study_id",
+  xlab = "Square root of inverse effective sample size",
+  ylab = "Effect size (lnRR)"
+)
+
+egger_plot
+```
+
+# Time-lag pattern
+
+We use publication year to test whether lnRR estimates change systematically over time. This analysis evaluates a time-lag or decline pattern, in which effect-size estimates differ between earlier and later publications. We include the N-based precision term in the same model so we can estimate the publication-year coefficient while accounting for differences in effective sample size. We centre publication year on its mean so the model intercept represents the expected lnRR at the average publication year. The model retains the same VCV matrix and random-effects structure.
+
+```{r}
+#| label: time-lag-analysis
+
+# Centre publication year on its mean.
+db_decline <- dt_egger_full |>
+  mutate(
+    year_c = publication_year - mean(publication_year)
+  )
+
+# Fit publication year and the precision term in the same model.
+year_lag_model <- metafor::rma.mv(
+  yi = lnRR,
+  V = VCV_lnRR,
+  mods = ~ 1 + year_c + sqrt_inv_e_n,
+  random = list(
+    ~ 1 | study_id,
+    ~ 1 | es_id,
+    ~ 1 | strain
+  ),
+  test = "t",
+  method = "REML",
+  sparse = TRUE,
+  data = db_decline
+)
+
+summary(year_lag_model)
+```
+
+We display the fitted relationship between lnRR and publication year while retaining the precision term in the model.
+
+```{r}
+#| label: time-lag-bubble-plot
+#| fig-width: 10
+#| fig-height: 5
+
+# Draw the bubble plot on the centred-year scale.
+time_lag_plot <- orchaRd::bubble_plot(
+  year_lag_model,
+  mod = "year_c",
+  group = "study_id",
+  xlab = "Year of publication",
+  ylab = "Effect size (lnRR)"
+)
+
+# Replace centred values with publication years on the horizontal axis.
+mean_year <- mean(db_decline$publication_year)
+target_years <- pretty(range(db_decline$publication_year), n = 6)
+target_years <- target_years[
+  target_years >= min(db_decline$publication_year) &
+    target_years <= max(db_decline$publication_year)
+]
+
+time_lag_plot <- time_lag_plot +
+  ggplot2::scale_x_continuous(
+    breaks = target_years - mean_year,
+    labels = target_years,
+    name = "Year of publication"
+  )
+
+time_lag_plot
+```
+
+# Small-study and time-lag plots
+
+We combine the two regression plots in one figure.
+
+```{r}
+#| label: publication-bias-dashboard
+#| fig-width: 10
+#| fig-height: 7
+
+publication_bias_dashboard <- egger_plot / time_lag_plot +
+  patchwork::plot_annotation(tag_levels = "A") &
+  ggplot2::theme(
+    plot.tag = ggplot2::element_text(size = 12, face = "bold")
+  )
+
+publication_bias_dashboard
+```
+
+We treat these diagnostics as exploratory because the effect sizes are heterogeneous and statistically dependent. We consider them together because each examines a different pattern, and we do not treat any single diagnostic as conclusive evidence of publication bias.
+
+::: callout-note
+## Session information
+
+```{r}
+#| label: session-information
+
+sessionInfo()
+```
+:::

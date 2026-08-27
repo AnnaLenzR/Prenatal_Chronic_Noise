@@ -9,6 +9,8 @@ project:
     - 03_dependency_structure_audit.qmd
     - 04_overall_effect.qmd
     - 05_uni_moderators.qmd
+    - 06_publication_bias.qmd
+    - 07_crime_q.qmd
 
 website:
   title: "Prenatal chronic noise exposure meta-analysis"
@@ -29,6 +31,10 @@ website:
         href: 04_overall_effect.qmd
       - text: "Uni-moderators"
         href: 05_uni_moderators.qmd
+      - text: "Publication bias"
+        href: 06_publication_bias.qmd
+      - text: "CRIME-Q appraisal"
+        href: 07_crime_q.qmd
 
 bibliography: references.bib
 

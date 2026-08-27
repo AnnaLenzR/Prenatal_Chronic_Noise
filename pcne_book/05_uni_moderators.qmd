@@ -280,7 +280,7 @@ fit_unimoderator <- function(
     )
     colnames(contrast_matrix) <- names(coef(no_intercept_model))
 
-    # Report unadjusted contrast p-values, as in the reference workflow.
+    # Report the unadjusted p-value for each contrast.
     contrasts <- summary(
       multcomp::glht(no_intercept_model, linfct = contrast_matrix),
       test = multcomp::adjusted("none")
