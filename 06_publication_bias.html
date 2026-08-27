@@ -420,7 +420,7 @@ window.Quarto = {
 </section>
 <section id="egger-type-regression" class="level1">
 <h1>Egger-type regression</h1>
-<p>We test small-study effects with the N-based precision term used in Santiagoâ€™s workflow. This avoids using the sampling standard error as the predictor because lnRR and its sampling variance are mathematically related <span class="citation" data-cites="nakagawa2022">(<a href="#ref-nakagawa2022" role="doc-biblioref">Nakagawa et al. 2022</a>)</span>.</p>
+<p>We test small-study effects with an N-based precision term. This avoids using the sampling standard error as the predictor because lnRR and its sampling variance are mathematically related <span class="citation" data-cites="nakagawa2022">(<a href="#ref-nakagawa2022" role="doc-biblioref">Nakagawa et al. 2022</a>)</span>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the N-based precision term for every effect size.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dt_egger_full <span class="ot">&lt;-</span> db <span class="sc">|&gt;</span></span>
@@ -1257,7 +1257,7 @@ Nakagawa, Shinichi, Malgorzata Lagisz, Michael D. Jennions, et al. 2022. <span>â
 <span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a><span class="fu"># Egger-type regression</span></span>
 <span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a>We test small-study effects with the N-based precision term used in Santiago's workflow. This avoids using the sampling standard error as the predictor because lnRR and its sampling variance are mathematically related <span class="co">[</span><span class="ot">@nakagawa2022</span><span class="co">]</span>.</span>
+<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a>We test small-study effects with an N-based precision term. This avoids using the sampling standard error as the predictor because lnRR and its sampling variance are mathematically related <span class="co">[</span><span class="ot">@nakagawa2022</span><span class="co">]</span>.</span>
 <span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: egger-test</span></span>

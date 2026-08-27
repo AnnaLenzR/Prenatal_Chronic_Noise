@@ -671,7 +671,7 @@ window.Quarto = {
 <span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(contrast_matrix) <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(no_intercept_model))</span>
 <span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report unadjusted contrast p-values, as in the reference workflow.</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report the unadjusted p-value for each contrast.</span></span>
 <span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    contrasts <span class="ot">&lt;-</span> <span class="fu">summary</span>(</span>
 <span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>      multcomp<span class="sc">::</span><span class="fu">glht</span>(no_intercept_model, <span class="at">linfct =</span> contrast_matrix),</span>
 <span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> multcomp<span class="sc">::</span><span class="fu">adjusted</span>(<span class="st">"none"</span>)</span>
@@ -2256,7 +2256,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <span id="cb22-290"><a href="#cb22-290" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb22-291"><a href="#cb22-291" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(contrast_matrix) <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(no_intercept_model))</span>
 <span id="cb22-292"><a href="#cb22-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-293"><a href="#cb22-293" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report unadjusted contrast p-values, as in the reference workflow.</span></span>
+<span id="cb22-293"><a href="#cb22-293" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report the unadjusted p-value for each contrast.</span></span>
 <span id="cb22-294"><a href="#cb22-294" aria-hidden="true" tabindex="-1"></a>    contrasts <span class="ot">&lt;-</span> <span class="fu">summary</span>(</span>
 <span id="cb22-295"><a href="#cb22-295" aria-hidden="true" tabindex="-1"></a>      multcomp<span class="sc">::</span><span class="fu">glht</span>(no_intercept_model, <span class="at">linfct =</span> contrast_matrix),</span>
 <span id="cb22-296"><a href="#cb22-296" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> multcomp<span class="sc">::</span><span class="fu">adjusted</span>(<span class="st">"none"</span>)</span>
