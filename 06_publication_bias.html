@@ -497,7 +497,7 @@ window.Quarto = {
 </section>
 <section id="time-lag-pattern" class="level1">
 <h1>Time-lag pattern</h1>
-<p>We centre publication year and fit it together with the N-based precision term. The model retains the same VCV matrix and random-effects structure.</p>
+<p>We use publication year to test whether lnRR estimates change systematically over time. This analysis evaluates a time-lag or decline pattern, in which effect-size estimates differ between earlier and later publications. We include the N-based precision term in the same model so we can estimate the publication-year coefficient while accounting for differences in effective sample size. We centre publication year on its mean so the model intercept represents the expected lnRR at the average publication year. The model retains the same VCV matrix and random-effects structure.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Centre publication year on its mean.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>db_decline <span class="ot">&lt;-</span> dt_egger_full <span class="sc">|&gt;</span></span>
@@ -1307,7 +1307,7 @@ Nakagawa, Shinichi, Malgorzata Lagisz, Michael D. Jennions, et al. 2022. <span>â
 <span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a><span class="fu"># Time-lag pattern</span></span>
 <span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>We centre publication year and fit it together with the N-based precision term. The model retains the same VCV matrix and random-effects structure.</span>
+<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>We use publication year to test whether lnRR estimates change systematically over time. This analysis evaluates a time-lag or decline pattern, in which effect-size estimates differ between earlier and later publications. We include the N-based precision term in the same model so we can estimate the publication-year coefficient while accounting for differences in effective sample size. We centre publication year on its mean so the model intercept represents the expected lnRR at the average publication year. The model retains the same VCV matrix and random-effects structure.</span>
 <span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: time-lag-analysis</span></span>
