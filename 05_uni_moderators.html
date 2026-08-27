@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Uni-moderators – Prenatal chronic noise exposure meta-analysis</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06_publication_bias.html" rel="next">
+<link href="./04_overall_effect.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-0a9e9a5cb224e5ad040bda149683c35e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_uni_moderators.html">Uni-moderators</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Prenatal chronic noise exposure meta-analysis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Online supplementary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_data_wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data preparation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_effect_size_lnRR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Effect size calculation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_dependency_structure_audit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sampling variance-covariance matrix</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_overall_effect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overall effect</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_uni_moderators.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Uni-moderators</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_publication_bias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Publication bias</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#analysis-data-and-vcv-matrix" id="toc-analysis-data-and-vcv-matrix" class="nav-link active" data-scroll-target="#analysis-data-and-vcv-matrix">Analysis data and VCV matrix</a></li>
+  <li><a href="#moderators" id="toc-moderators" class="nav-link" data-scroll-target="#moderators">Moderators</a></li>
+  <li><a href="#model-functions" id="toc-model-functions" class="nav-link" data-scroll-target="#model-functions">Model functions</a>
+  <ul class="collapse">
+  <li><a href="#prepare-the-moderator-data" id="toc-prepare-the-moderator-data" class="nav-link" data-scroll-target="#prepare-the-moderator-data">Prepare the moderator data</a></li>
+  <li><a href="#fit-one-uni-moderator-model" id="toc-fit-one-uni-moderator-model" class="nav-link" data-scroll-target="#fit-one-uni-moderator-model">Fit one uni-moderator model</a></li>
+  </ul></li>
+  <li><a href="#fit-all-uni-moderator-models" id="toc-fit-all-uni-moderator-models" class="nav-link" data-scroll-target="#fit-all-uni-moderator-models">Fit all uni-moderator models</a></li>
+  <li><a href="#model-results" id="toc-model-results" class="nav-link" data-scroll-target="#model-results">Model results</a>
+  <ul class="collapse">
+  <li><a href="#species" id="toc-species" class="nav-link" data-scroll-target="#species">Species</a>
+  <ul class="collapse">
+  <li><a href="#model-summary" id="toc-model-summary" class="nav-link" data-scroll-target="#model-summary">Model summary</a></li>
+  <li><a href="#multilevel-r-squared" id="toc-multilevel-r-squared" class="nav-link" data-scroll-target="#multilevel-r-squared">Multilevel R-squared</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
+  </ul></li>
+  <li><a href="#gestational-exposure-stage" id="toc-gestational-exposure-stage" class="nav-link" data-scroll-target="#gestational-exposure-stage">Gestational exposure stage</a>
+  <ul class="collapse">
+  <li><a href="#model-summary-1" id="toc-model-summary-1" class="nav-link" data-scroll-target="#model-summary-1">Model summary</a></li>
+  <li><a href="#multilevel-r-squared-1" id="toc-multilevel-r-squared-1" class="nav-link" data-scroll-target="#multilevel-r-squared-1">Multilevel R-squared</a></li>
+  <li><a href="#plot-1" id="toc-plot-1" class="nav-link" data-scroll-target="#plot-1">Plot</a></li>
+  <li><a href="#pairwise-contrasts" id="toc-pairwise-contrasts" class="nav-link" data-scroll-target="#pairwise-contrasts">Pairwise contrasts</a></li>
+  </ul></li>
+  <li><a href="#exposure-type" id="toc-exposure-type" class="nav-link" data-scroll-target="#exposure-type">Exposure type</a>
+  <ul class="collapse">
+  <li><a href="#model-summary-2" id="toc-model-summary-2" class="nav-link" data-scroll-target="#model-summary-2">Model summary</a></li>
+  <li><a href="#multilevel-r-squared-2" id="toc-multilevel-r-squared-2" class="nav-link" data-scroll-target="#multilevel-r-squared-2">Multilevel R-squared</a></li>
+  <li><a href="#plot-2" id="toc-plot-2" class="nav-link" data-scroll-target="#plot-2">Plot</a></li>
+  </ul></li>
+  <li><a href="#noise-type" id="toc-noise-type" class="nav-link" data-scroll-target="#noise-type">Noise type</a>
+  <ul class="collapse">
+  <li><a href="#model-summary-3" id="toc-model-summary-3" class="nav-link" data-scroll-target="#model-summary-3">Model summary</a></li>
+  <li><a href="#multilevel-r-squared-3" id="toc-multilevel-r-squared-3" class="nav-link" data-scroll-target="#multilevel-r-squared-3">Multilevel R-squared</a></li>
+  <li><a href="#plot-3" id="toc-plot-3" class="nav-link" data-scroll-target="#plot-3">Plot</a></li>
+  </ul></li>
+  <li><a href="#control-conditions" id="toc-control-conditions" class="nav-link" data-scroll-target="#control-conditions">Control conditions</a>
+  <ul class="collapse">
+  <li><a href="#model-summary-4" id="toc-model-summary-4" class="nav-link" data-scroll-target="#model-summary-4">Model summary</a></li>
+  <li><a href="#multilevel-r-squared-4" id="toc-multilevel-r-squared-4" class="nav-link" data-scroll-target="#multilevel-r-squared-4">Multilevel R-squared</a></li>
+  <li><a href="#plot-4" id="toc-plot-4" class="nav-link" data-scroll-target="#plot-4">Plot</a></li>
+  <li><a href="#pairwise-contrasts-1" id="toc-pairwise-contrasts-1" class="nav-link" data-scroll-target="#pairwise-contrasts-1">Pairwise contrasts</a></li>
+  </ul></li>
+  <li><a href="#offspring-sex" id="toc-offspring-sex" class="nav-link" data-scroll-target="#offspring-sex">Offspring sex</a>
+  <ul class="collapse">
+  <li><a href="#model-summary-5" id="toc-model-summary-5" class="nav-link" data-scroll-target="#model-summary-5">Model summary</a></li>
+  <li><a href="#multilevel-r-squared-5" id="toc-multilevel-r-squared-5" class="nav-link" data-scroll-target="#multilevel-r-squared-5">Multilevel R-squared</a></li>
+  <li><a href="#plot-5" id="toc-plot-5" class="nav-link" data-scroll-target="#plot-5">Plot</a></li>
+  <li><a href="#pairwise-contrasts-2" id="toc-pairwise-contrasts-2" class="nav-link" data-scroll-target="#pairwise-contrasts-2">Pairwise contrasts</a></li>
+  </ul></li>
+  <li><a href="#outcome-type" id="toc-outcome-type" class="nav-link" data-scroll-target="#outcome-type">Outcome type</a>
+  <ul class="collapse">
+  <li><a href="#model-summary-6" id="toc-model-summary-6" class="nav-link" data-scroll-target="#model-summary-6">Model summary</a></li>
+  <li><a href="#multilevel-r-squared-6" id="toc-multilevel-r-squared-6" class="nav-link" data-scroll-target="#multilevel-r-squared-6">Multilevel R-squared</a></li>
+  <li><a href="#plot-6" id="toc-plot-6" class="nav-link" data-scroll-target="#plot-6">Plot</a></li>
+  </ul></li>
+  <li><a href="#behavioural-assay" id="toc-behavioural-assay" class="nav-link" data-scroll-target="#behavioural-assay">Behavioural assay</a>
+  <ul class="collapse">
+  <li><a href="#model-summary-7" id="toc-model-summary-7" class="nav-link" data-scroll-target="#model-summary-7">Model summary</a></li>
+  <li><a href="#multilevel-r-squared-7" id="toc-multilevel-r-squared-7" class="nav-link" data-scroll-target="#multilevel-r-squared-7">Multilevel R-squared</a></li>
+  <li><a href="#plot-7" id="toc-plot-7" class="nav-link" data-scroll-target="#plot-7">Plot</a></li>
+  <li><a href="#pairwise-contrasts-3" id="toc-pairwise-contrasts-3" class="nav-link" data-scroll-target="#pairwise-contrasts-3">Pairwise contrasts</a></li>
+  </ul></li>
+  <li><a href="#offspring-age-at-testing-days" id="toc-offspring-age-at-testing-days" class="nav-link" data-scroll-target="#offspring-age-at-testing-days">Offspring age at testing (days)</a>
+  <ul class="collapse">
+  <li><a href="#model-summary-8" id="toc-model-summary-8" class="nav-link" data-scroll-target="#model-summary-8">Model summary</a></li>
+  <li><a href="#multilevel-r-squared-8" id="toc-multilevel-r-squared-8" class="nav-link" data-scroll-target="#multilevel-r-squared-8">Multilevel R-squared</a></li>
+  <li><a href="#plot-8" id="toc-plot-8" class="nav-link" data-scroll-target="#plot-8">Plot</a></li>
+  </ul></li>
+  <li><a href="#loudness-in-db" id="toc-loudness-in-db" class="nav-link" data-scroll-target="#loudness-in-db">Loudness in dB</a>
+  <ul class="collapse">
+  <li><a href="#model-summary-9" id="toc-model-summary-9" class="nav-link" data-scroll-target="#model-summary-9">Model summary</a></li>
+  <li><a href="#multilevel-r-squared-9" id="toc-multilevel-r-squared-9" class="nav-link" data-scroll-target="#multilevel-r-squared-9">Multilevel R-squared</a></li>
+  <li><a href="#plot-9" id="toc-plot-9" class="nav-link" data-scroll-target="#plot-9">Plot</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Uni-moderators</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>We fit one uni-moderator multilevel meta-regression for each study characteristic. Every model uses lnRR as the response and the same random-effects structure as the overall-effect model: study (<code>study_id</code>), effect size (<code>es_id</code>), and strain (<code>strain</code>). We construct the complete VCV matrix with <code>rho = 0.5</code>. For categorical moderators, we remove levels with fewer than five effect sizes (<span class="math inline">\(k &lt; 5\)</span>) and subset the corresponding rows and columns of the VCV matrix.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Variable definitions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(k\)</span></td>
+<td style="text-align: left;">Number of effect sizes in a model.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>V</code></td>
+<td style="text-align: left;">Sampling variance-covariance matrix for the lnRR estimates.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\rho\)</span></td>
+<td style="text-align: left;">Working correlation for multiple or repeated outcomes that share a group.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>QM</code></td>
+<td style="text-align: left;">Omnibus test statistic for the moderator.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Marginal <span class="math inline">\(R^2\)</span></td>
+<td style="text-align: left;">Proportion of model variance associated with the moderator.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Conditional <span class="math inline">\(R^2\)</span></td>
+<td style="text-align: left;">Proportion of model variance associated with the moderator and random effects.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="analysis-data-and-vcv-matrix" class="level1">
+<h1>Analysis data and VCV matrix</h1>
+<p>We load the effect-size database from Chapter 2 and construct one complete VCV matrix using the same code as Chapter 3.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database created in Chapter 2.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># List the variables required to construct V and fit the models.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>required_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>, <span class="st">"strain"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_n"</span>, <span class="st">"c_n"</span>, <span class="st">"lnRR"</span>, <span class="st">"lnRR_var"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop if any required variable is missing.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(db))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"The effect-size database does not contain all model variables."</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm that each row has a unique effect-size identifier.</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyDuplicated</span>(db<span class="sc">$</span>es_id)) {</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"es_id must identify one effect-size row."</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct the complete sampling VCV matrix once.</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>VCV_lnRR <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">vcalc</span>(</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">vi =</span> lnRR_var,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">cluster =</span> study_id,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp1 =</span> ex_id,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp2 =</span> con_id,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">w1 =</span> ex_n,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">w2 =</span> c_n,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">obs =</span> es_id,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">rho =</span> <span class="fl">0.5</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> db</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="moderators" class="level1">
+<h1>Moderators</h1>
+<p>The moderator list follows the biological and methodological domains in the protocol. We use the column names from the analysis-ready database.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>moderators <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>variable,                       <span class="sc">~</span>label,                                  <span class="sc">~</span>kind,          <span class="sc">~</span>missing_label,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sp_latin"</span>,                     <span class="st">"Species"</span>,                               <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gest_stage_ex_standardised"</span>,   <span class="st">"Gestational exposure stage"</span>,            <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"exposure_type"</span>,                <span class="st">"Exposure type"</span>,                         <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"noise_type_2"</span>,                 <span class="st">"Noise type"</span>,                            <span class="st">"categorical"</span>,  <span class="st">"unclear"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"control_conditions"</span>,           <span class="st">"Control conditions"</span>,                    <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"offspring_sex"</span>,                <span class="st">"Offspring sex"</span>,                         <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"outcome_type"</span>,                 <span class="st">"Outcome type"</span>,                          <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"assay_type"</span>,                   <span class="st">"Behavioural assay"</span>,                     <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"offspring_age_d"</span>,              <span class="st">"Offspring age at testing (days)"</span>,       <span class="st">"continuous"</span>,   <span class="cn">NA_character_</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"loudness_dB"</span>,                  <span class="st">"Loudness in dB"</span>,                         <span class="st">"continuous"</span>,   <span class="cn">NA_character_</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop if the database does not contain one of the planned moderators.</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(moderators<span class="sc">$</span>variable, <span class="fu">names</span>(db))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"The effect-size database does not contain all moderators."</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the moderator names used in the models.</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>moderators <span class="sc">|&gt;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(variable, label, kind) <span class="sc">|&gt;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Database variable"</span>, <span class="st">"Moderator"</span>, <span class="st">"Type"</span>),</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Uni-moderators in the analysis."</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Uni-moderators in the analysis.</caption>
+<colgroup>
+<col style="width: 38%">
+<col style="width: 45%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Database variable</th>
+<th style="text-align: left;">Moderator</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">sp_latin</td>
+<td style="text-align: left;">Species</td>
+<td style="text-align: left;">categorical</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">gest_stage_ex_standardised</td>
+<td style="text-align: left;">Gestational exposure stage</td>
+<td style="text-align: left;">categorical</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">exposure_type</td>
+<td style="text-align: left;">Exposure type</td>
+<td style="text-align: left;">categorical</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">noise_type_2</td>
+<td style="text-align: left;">Noise type</td>
+<td style="text-align: left;">categorical</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">control_conditions</td>
+<td style="text-align: left;">Control conditions</td>
+<td style="text-align: left;">categorical</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">offspring_sex</td>
+<td style="text-align: left;">Offspring sex</td>
+<td style="text-align: left;">categorical</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">outcome_type</td>
+<td style="text-align: left;">Outcome type</td>
+<td style="text-align: left;">categorical</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">assay_type</td>
+<td style="text-align: left;">Behavioural assay</td>
+<td style="text-align: left;">categorical</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">offspring_age_d</td>
+<td style="text-align: left;">Offspring age at testing (days)</td>
+<td style="text-align: left;">continuous</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">loudness_dB</td>
+<td style="text-align: left;">Loudness in dB</td>
+<td style="text-align: left;">continuous</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>For <code>noise_type_2</code>, we treat <code>unclear</code> as a missing acoustic-band value rather than a moderator level. We retain the recorded categories for the other categorical moderators. For <code>loudness_dB</code>, we retain unweighted dB values. Barzegar et al.&nbsp;(2014) reported 95 dBA, so we record its loudness value as missing because dBA and unweighted dB are not directly comparable.</p>
+<p>The <code>gest_stage_ex_standardised</code> variable groups the recorded exposure windows as <code>early_mid</code>, <code>full_gestation</code>, <code>mid_late</code>, and <code>late</code>.</p>
+</section>
+<section id="model-functions" class="level1">
+<h1>Model functions</h1>
+<section id="prepare-the-moderator-data" class="level2">
+<h2 class="anchored" data-anchor-id="prepare-the-moderator-data">Prepare the moderator data</h2>
+<p>For a categorical moderator, we remove levels with <span class="math inline">\(k &lt; 5\)</span> and subset the same rows and columns from <code>V</code>. For a continuous moderator, we retain finite values and subset <code>V</code> in the same way.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>prepare_categorical <span class="ot">&lt;-</span> <span class="cf">function</span>(data, V, moderator, <span class="at">missing_label =</span> <span class="cn">NA_character_</span>, <span class="at">min_k =</span> <span class="dv">5</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Start with rows that contain a recorded moderator value.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  usable <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(data[[moderator]])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Treat a specified text label as missing when required.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(missing_label)) {</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    usable <span class="ot">&lt;-</span> usable <span class="sc">&amp;</span> <span class="fu">as.character</span>(data[[moderator]]) <span class="sc">!=</span> missing_label</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Count the effect sizes in each moderator level.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  level_counts <span class="ot">&lt;-</span> data[usable, ] <span class="sc">|&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(<span class="at">level =</span> .data[[moderator]], <span class="at">name =</span> <span class="st">"effect_sizes"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">studies =</span> <span class="fu">vapply</span>(</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        level,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">function</span>(x) <span class="fu">n_distinct</span>(data<span class="sc">$</span>study_id[usable <span class="sc">&amp;</span> data[[moderator]] <span class="sc">==</span> x]),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">integer</span>(<span class="dv">1</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">include =</span> effect_sizes <span class="sc">&gt;=</span> min_k</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain levels represented by at least five effect sizes.</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  keep_levels <span class="ot">&lt;-</span> level_counts <span class="sc">|&gt;</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(include) <span class="sc">|&gt;</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(level)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use the same row positions to subset the data and VCV matrix.</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(usable <span class="sc">&amp;</span> data[[moderator]] <span class="sc">%in%</span> keep_levels)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> V[idx, idx, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unused factor levels after filtering.</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  dat[[moderator]] <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">factor</span>(dat[[moderator]]))</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A categorical moderator requires at least two retained levels.</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nlevels</span>(dat[[moderator]]) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Fewer than two levels remain for "</span>, moderator, <span class="st">"."</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">data =</span> dat, <span class="at">V =</span> V_subset, <span class="at">level_counts =</span> level_counts)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>prepare_continuous <span class="ot">&lt;-</span> <span class="cf">function</span>(data, V, moderator) {</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain rows with finite moderator values.</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.finite</span>(data[[moderator]]))</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Subset the data and VCV matrix with the same row positions.</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> V[idx, idx, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the moderator as a numeric variable.</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  dat[[moderator]] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat[[moderator]])</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A continuous moderator requires at least two distinct values.</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">n_distinct</span>(dat[[moderator]]) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"The moderator does not contain at least two values: "</span>, moderator, <span class="st">"."</span>)</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">data =</span> dat, <span class="at">V =</span> V_subset, <span class="at">level_counts =</span> <span class="cn">NULL</span>)</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="fit-one-uni-moderator-model" class="level2">
+<h2 class="anchored" data-anchor-id="fit-one-uni-moderator-model">Fit one uni-moderator model</h2>
+<p>The function below prepares one moderator, subsets the complete VCV matrix, and fits its model. For categorical moderators with at least three retained levels, it also calculates unadjusted Tukey contrasts with a separate no-intercept model.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fit_unimoderator <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  data,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  V,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  moderator,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  label,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  kind,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing_label =</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_k =</span> <span class="dv">5</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>) {</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Apply the appropriate preparation rule for the moderator type.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  prepared <span class="ot">&lt;-</span> <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prepare_categorical</span>(data, V, moderator, missing_label, min_k)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prepare_continuous</span>(data, V, moderator)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  model_data <span class="ot">&lt;-</span> prepared<span class="sc">$</span>data</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> prepared<span class="sc">$</span>V</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit one multilevel meta-regression with the subsetted VCV matrix.</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.mv</span>(</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">yi =</span> lnRR,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">V =</span> V_subset,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">mods =</span> <span class="fu">reformulate</span>(moderator),</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">random =</span> <span class="fu">list</span>(</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> study_id,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> es_id,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> strain</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">test =</span> <span class="st">"t"</span>,</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">sparse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> model_data</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw an orchard plot for a categorical moderator. We draw continuous</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># moderators with metafor::regplot() when we display the model results.</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  model_plot <span class="ot">&lt;-</span> <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    orchaRd<span class="sc">::</span><span class="fu">orchard_plot</span>(</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>      model,</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>      <span class="at">mod =</span> moderator,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> <span class="st">"study_id"</span>,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">"lnRR"</span>,</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">flip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">angle =</span> <span class="dv">0</span>,</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.pos =</span> <span class="st">"top.left"</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    <span class="cn">NULL</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  contrasts <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate unadjusted Tukey contrasts when at least three levels remain.</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span> <span class="sc">&amp;&amp;</span> <span class="fu">nlevels</span>(model_data[[moderator]]) <span class="sc">&gt;=</span> <span class="dv">3</span>) {</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit a no-intercept model so that each coefficient represents one level.</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    no_intercept_model <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.mv</span>(</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">yi =</span> lnRR,</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>      <span class="at">V =</span> V_subset,</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>      <span class="at">mods =</span> <span class="fu">reformulate</span>(moderator, <span class="at">intercept =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>      <span class="at">random =</span> <span class="fu">list</span>(</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> study_id,</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> es_id,</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> strain</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> <span class="st">"t"</span>,</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>      <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>      <span class="at">sparse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> model_data</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create all pairwise Tukey contrasts among the retained levels.</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>    contrast_matrix <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">contrMat</span>(</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>      <span class="fu">table</span>(model_data[[moderator]]),</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">"Tukey"</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(contrast_matrix) <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(no_intercept_model))</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report unadjusted contrast p-values, as in the reference workflow.</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    contrasts <span class="ot">&lt;-</span> <span class="fu">summary</span>(</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>      multcomp<span class="sc">::</span><span class="fu">glht</span>(no_intercept_model, <span class="at">linfct =</span> contrast_matrix),</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> multcomp<span class="sc">::</span><span class="fu">adjusted</span>(<span class="st">"none"</span>)</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable =</span> moderator,</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> label,</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">kind =</span> kind,</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> model_data,</span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">V =</span> V_subset,</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">level_counts =</span> prepared<span class="sc">$</span>level_counts,</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> model,</span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>    <span class="at">r2 =</span> orchaRd<span class="sc">::</span><span class="fu">r2_ml</span>(model),</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot =</span> model_plot,</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">contrasts =</span> contrasts</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="fit-all-uni-moderator-models" class="level1">
+<h1>Fit all uni-moderator models</h1>
+<p>We call <code>fit_unimoderator()</code> once for each row of the moderator table. The function subsets the complete VCV matrix to match the effect sizes retained for each moderator.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the same function to each moderator in the table.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>unimoderator_results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">pmap</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  moderators,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(variable, label, kind, missing_label) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit_unimoderator</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> db,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">V =</span> VCV_lnRR,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">moderator =</span> variable,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> label,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">kind =</span> kind,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">missing_label =</span> missing_label,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">min_k =</span> <span class="dv">5</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Name each result with its database variable.</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(unimoderator_results) <span class="ot">&lt;-</span> moderators<span class="sc">$</span>variable</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="model-results" class="level1">
+<h1>Model results</h1>
+<p>For each moderator, we print the model summary and multilevel <span class="math inline">\(R^2\)</span>. We use orchard plots for categorical moderators and <code>metafor::regplot()</code> for continuous moderators. For categorical moderators with three or more levels, we also print the unadjusted pairwise contrasts.</p>
+<section id="species" class="level2">
+<h2 class="anchored" data-anchor-id="species">Species</h2>
+<section id="model-summary" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 207; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-148.0199   296.0398   306.0398   322.6548   306.3413   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0290  0.1702     16     no  study_id 
+sigma^2.2  0.1480  0.3848    207     no     es_id 
+sigma^2.3  0.0747  0.2733      5     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 205) = 2787.3741, p-val &lt; .0001
+
+Test of Moderators (coefficient 2):
+F(df1 = 1, df2 = 205) = 0.6251, p-val = 0.4301
+
+Model Results:
+
+                           estimate      se     tval   df    pval    ci.lb 
+intrcpt                      0.3433  0.2661   1.2901  205  0.1985  -0.1813 
+sp_latinRattus norvegicus   -0.2534  0.3205  -0.7906  205  0.4301  -0.8852 
+                            ci.ub    
+intrcpt                    0.8679    
+sp_latinRattus norvegicus  0.3785    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Species</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0127</td>
+<td style="text-align: right;">0.4193</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-1.png" class="img-fluid" width="768"></p>
+</section>
+</section>
+<section id="gestational-exposure-stage" class="level2">
+<h2 class="anchored" data-anchor-id="gestational-exposure-stage">Gestational exposure stage</h2>
+<section id="model-summary-1" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary-1">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 207; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-146.4957   292.9914   306.9914   330.1839   307.5658   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0394  0.1985     16     no  study_id 
+sigma^2.2  0.1475  0.3841    207     no     es_id 
+sigma^2.3  0.0673  0.2595      5     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 203) = 2481.2759, p-val &lt; .0001
+
+Test of Moderators (coefficients 2:4):
+F(df1 = 3, df2 = 203) = 0.6973, p-val = 0.5547
+
+Model Results:
+
+                                          estimate      se     tval   df 
+intrcpt                                    -0.1326  0.2719  -0.4877  203 
+gest_stage_ex_standardisedfull_gestation    0.2997  0.2399   1.2492  203 
+gest_stage_ex_standardisedlate              0.3649  0.2621   1.3919  203 
+gest_stage_ex_standardisedmid_late          0.3176  0.2740   1.1593  203 
+                                            pval    ci.lb   ci.ub    
+intrcpt                                   0.6263  -0.6687  0.4035    
+gest_stage_ex_standardisedfull_gestation  0.2130  -0.1733  0.7727    
+gest_stage_ex_standardisedlate            0.1655  -0.1520  0.8817    
+gest_stage_ex_standardisedmid_late        0.2477  -0.2226  0.8578    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared-1" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared-1">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Gestational exposure stage</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0099</td>
+<td style="text-align: right;">0.4255</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-1" class="level3">
+<h3 class="anchored" data-anchor-id="plot-1">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-2.png" class="img-fluid" width="768"></p>
+</section>
+<section id="pairwise-contrasts" class="level3">
+<h3 class="anchored" data-anchor-id="pairwise-contrasts">Pairwise contrasts</h3>
+<p>We report unadjusted Tukey contrasts between the retained levels.</p>
+<pre><code>
+     Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: metafor::rma.mv(yi = lnRR, V = V_subset, mods = reformulate(moderator, 
+    intercept = FALSE), data = model_data, random = list(~1 | 
+    study_id, ~1 | es_id, ~1 | strain), method = "REML", test = "t", 
+    sparse = TRUE)
+
+Linear Hypotheses:
+                                Estimate Std. Error z value Pr(&gt;|z|)
+full_gestation - early_mid == 0  0.29969    0.23990   1.249    0.212
+late - early_mid == 0            0.36485    0.26213   1.392    0.164
+mid_late - early_mid == 0        0.31759    0.27396   1.159    0.246
+late - full_gestation == 0       0.06517    0.18743   0.348    0.728
+mid_late - full_gestation == 0   0.01790    0.18397   0.097    0.922
+mid_late - late == 0            -0.04727    0.22572  -0.209    0.834
+(Adjusted p values reported -- none method)
+</code></pre>
+</section>
+</section>
+<section id="exposure-type" class="level2">
+<h2 class="anchored" data-anchor-id="exposure-type">Exposure type</h2>
+<section id="model-summary-2" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary-2">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 207; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-148.3259   296.6518   306.6518   323.2668   306.9533   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0409  0.2022     16     no  study_id 
+sigma^2.2  0.1481  0.3848    207     no     es_id 
+sigma^2.3  0.0515  0.2269      5     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 205) = 2798.4395, p-val &lt; .0001
+
+Test of Moderators (coefficient 2):
+F(df1 = 1, df2 = 205) = 0.0005, p-val = 0.9822
+
+Model Results:
+
+                           estimate      se     tval   df    pval    ci.lb 
+intrcpt                      0.1745  0.1631   1.0698  205  0.2860  -0.1471 
+exposure_typeintermittent   -0.0033  0.1491  -0.0223  205  0.9822  -0.2973 
+                            ci.ub    
+intrcpt                    0.4961    
+exposure_typeintermittent  0.2906    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared-2" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared-2">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Exposure type</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.3842</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-2" class="level3">
+<h3 class="anchored" data-anchor-id="plot-2">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-3.png" class="img-fluid" width="768"></p>
+</section>
+</section>
+<section id="noise-type" class="level2">
+<h2 class="anchored" data-anchor-id="noise-type">Noise type</h2>
+<section id="model-summary-3" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary-3">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 201; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-146.1736   292.3472   302.3472   318.8137   302.6580   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0311  0.1765     15     no  study_id 
+sigma^2.2  0.1527  0.3907    201     no     es_id 
+sigma^2.3  0.1005  0.3170      4     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 199) = 2781.9709, p-val &lt; .0001
+
+Test of Moderators (coefficient 2):
+F(df1 = 1, df2 = 199) = 0.5256, p-val = 0.4693
+
+Model Results:
+
+                        estimate      se     tval   df    pval    ci.lb   ci.ub 
+intrcpt                   0.2567  0.1957   1.3117  199  0.1911  -0.1292  0.6426 
+noise_type_2ultrasound   -0.1033  0.1425  -0.7250  199  0.4693  -0.3844  0.1777 
+                          
+intrcpt                   
+noise_type_2ultrasound    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared-3" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared-3">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Noise type</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0086</td>
+<td style="text-align: right;">0.4676</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-3" class="level3">
+<h3 class="anchored" data-anchor-id="plot-3">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-4.png" class="img-fluid" width="768"></p>
+</section>
+</section>
+<section id="control-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="control-conditions">Control conditions</h2>
+<section id="model-summary-4" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary-4">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 207; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-146.3949   292.7897   304.7897   324.6984   305.2161   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0284  0.1686     16     no  study_id 
+sigma^2.2  0.1484  0.3852    207     no     es_id 
+sigma^2.3  0.0643  0.2536      5     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 204) = 2803.2050, p-val &lt; .0001
+
+Test of Moderators (coefficients 2:3):
+F(df1 = 2, df2 = 204) = 1.1664, p-val = 0.3135
+
+Model Results:
+
+                           estimate      se     tval   df    pval    ci.lb 
+intrcpt                      0.0824  0.1750   0.4712  204  0.6380  -0.2625 
+control_conditionssilence   -0.3873  0.3762  -1.0295  204  0.3045  -1.1290 
+control_conditionsunclear    0.1250  0.1414   0.8842  204  0.3777  -0.1537 
+                            ci.ub    
+intrcpt                    0.4274    
+control_conditionssilence  0.3544    
+control_conditionsunclear  0.4037    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared-4" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared-4">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Control conditions</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0365</td>
+<td style="text-align: right;">0.4072</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-4" class="level3">
+<h3 class="anchored" data-anchor-id="plot-4">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-5.png" class="img-fluid" width="768"></p>
+</section>
+<section id="pairwise-contrasts-1" class="level3">
+<h3 class="anchored" data-anchor-id="pairwise-contrasts-1">Pairwise contrasts</h3>
+<p>We report unadjusted Tukey contrasts between the retained levels.</p>
+<pre><code>
+     Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: metafor::rma.mv(yi = lnRR, V = V_subset, mods = reformulate(moderator, 
+    intercept = FALSE), data = model_data, random = list(~1 | 
+    study_id, ~1 | es_id, ~1 | strain), method = "REML", test = "t", 
+    sparse = TRUE)
+
+Linear Hypotheses:
+                             Estimate Std. Error z value Pr(&gt;|z|)
+silence - ambient_sound == 0  -0.3873     0.3762  -1.030    0.303
+unclear - ambient_sound == 0   0.1250     0.1414   0.884    0.377
+unclear - silence == 0         0.5123     0.3728   1.374    0.169
+(Adjusted p values reported -- none method)
+</code></pre>
+</section>
+</section>
+<section id="offspring-sex" class="level2">
+<h2 class="anchored" data-anchor-id="offspring-sex">Offspring sex</h2>
+<section id="model-summary-5" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary-5">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 207; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-146.7023   293.4046   305.4046   325.3133   305.8310   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0315  0.1774     16     no  study_id 
+sigma^2.2  0.1483  0.3851    207     no     es_id 
+sigma^2.3  0.0707  0.2660      5     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 204) = 2469.8937, p-val &lt; .0001
+
+Test of Moderators (coefficients 2:3):
+F(df1 = 2, df2 = 204) = 0.8184, p-val = 0.4426
+
+Model Results:
+
+                    estimate      se     tval   df    pval    ci.lb   ci.ub    
+intrcpt               0.1282  0.1666   0.7695  204  0.4425  -0.2003  0.4567    
+offspring_sexmale     0.1204  0.1021   1.1790  204  0.2398  -0.0809  0.3216    
+offspring_sexmixed   -0.0483  0.2639  -0.1830  204  0.8550  -0.5686  0.4720    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared-5" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared-5">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Offspring sex</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0197</td>
+<td style="text-align: right;">0.4197</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-5" class="level3">
+<h3 class="anchored" data-anchor-id="plot-5">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-6.png" class="img-fluid" width="768"></p>
+</section>
+<section id="pairwise-contrasts-2" class="level3">
+<h3 class="anchored" data-anchor-id="pairwise-contrasts-2">Pairwise contrasts</h3>
+<p>We report unadjusted Tukey contrasts between the retained levels.</p>
+<pre><code>
+     Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: metafor::rma.mv(yi = lnRR, V = V_subset, mods = reformulate(moderator, 
+    intercept = FALSE), data = model_data, random = list(~1 | 
+    study_id, ~1 | es_id, ~1 | strain), method = "REML", test = "t", 
+    sparse = TRUE)
+
+Linear Hypotheses:
+                    Estimate Std. Error z value Pr(&gt;|z|)
+male - female == 0   0.12036    0.10209   1.179    0.238
+mixed - female == 0 -0.04828    0.26389  -0.183    0.855
+mixed - male == 0   -0.16864    0.25779  -0.654    0.513
+(Adjusted p values reported -- none method)
+</code></pre>
+</section>
+</section>
+<section id="outcome-type" class="level2">
+<h2 class="anchored" data-anchor-id="outcome-type">Outcome type</h2>
+<section id="model-summary-6" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary-6">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 207; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-147.7141   295.4282   305.4282   322.0432   305.7297   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0304  0.1743     16     no  study_id 
+sigma^2.2  0.1467  0.3830    207     no     es_id 
+sigma^2.3  0.0561  0.2369      5     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 205) = 2794.4279, p-val &lt; .0001
+
+Test of Moderators (coefficient 2):
+F(df1 = 1, df2 = 205) = 2.6601, p-val = 0.1044
+
+Model Results:
+
+                        estimate      se     tval   df    pval    ci.lb   ci.ub 
+intrcpt                   0.1907  0.1356   1.4061  205  0.1612  -0.0767  0.4581 
+outcome_typedepression   -0.1671  0.1025  -1.6310  205  0.1044  -0.3692  0.0349 
+                          
+intrcpt                   
+outcome_typedepression    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared-6" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared-6">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Outcome type</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0135</td>
+<td style="text-align: right;">0.3794</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-6" class="level3">
+<h3 class="anchored" data-anchor-id="plot-6">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-7.png" class="img-fluid" width="768"></p>
+</section>
+</section>
+<section id="behavioural-assay" class="level2">
+<h2 class="anchored" data-anchor-id="behavioural-assay">Behavioural assay</h2>
+<section id="model-summary-7" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary-7">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 204; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-142.0648   284.1295   300.1295   326.4760   300.8874   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0271  0.1647     15     no  study_id 
+sigma^2.2  0.1476  0.3841    204     no     es_id 
+sigma^2.3  0.0822  0.2868      5     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 199) = 2757.7007, p-val &lt; .0001
+
+Test of Moderators (coefficients 2:5):
+F(df1 = 4, df2 = 199) = 2.0805, p-val = 0.0847
+
+Model Results:
+
+                                         estimate      se     tval   df    pval 
+intrcpt                                    0.1081  0.1599   0.6758  199  0.5000 
+assay_typeElevated T Maze (ETM)           -0.3822  0.3690  -1.0357  199  0.3016 
+assay_typeForced Swimming Test (FST)      -0.0351  0.1321  -0.2654  199  0.7910 
+assay_typeOpen Field Test (OFT)            0.1529  0.0821   1.8627  199  0.0640 
+assay_typeSucrose Preference Test (SPT)   -0.1910  0.1631  -1.1710  199  0.2430 
+                                           ci.lb   ci.ub    
+intrcpt                                  -0.2073  0.4235    
+assay_typeElevated T Maze (ETM)          -1.1099  0.3455    
+assay_typeForced Swimming Test (FST)     -0.2956  0.2254    
+assay_typeOpen Field Test (OFT)          -0.0090  0.3148  . 
+assay_typeSucrose Preference Test (SPT)  -0.5128  0.1307    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared-7" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared-7">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Behavioural assay</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0533</td>
+<td style="text-align: right;">0.4563</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-7" class="level3">
+<h3 class="anchored" data-anchor-id="plot-7">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-8.png" class="img-fluid" width="768"></p>
+</section>
+<section id="pairwise-contrasts-3" class="level3">
+<h3 class="anchored" data-anchor-id="pairwise-contrasts-3">Pairwise contrasts</h3>
+<p>We report unadjusted Tukey contrasts between the retained levels.</p>
+<pre><code>
+     Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Tukey Contrasts
+
+
+Fit: metafor::rma.mv(yi = lnRR, V = V_subset, mods = reformulate(moderator, 
+    intercept = FALSE), data = model_data, random = list(~1 | 
+    study_id, ~1 | es_id, ~1 | strain), method = "REML", test = "t", 
+    sparse = TRUE)
+
+Linear Hypotheses:
+                                                                Estimate
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0           -0.38222
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0      -0.03506
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0            0.15290
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0   -0.19104
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0          0.34716
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0               0.53511
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0       0.19117
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0          0.18796
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0 -0.15599
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0      -0.34394
+                                                                Std. Error
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0              0.36903
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0         0.13210
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0              0.08208
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0      0.16315
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0            0.38496
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                 0.36703
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0         0.39610
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0            0.13459
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0    0.19413
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0         0.16384
+                                                                z value
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0            -1.036
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0       -0.265
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0             1.863
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0    -1.171
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0           0.902
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                1.458
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0        0.483
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0           1.396
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0  -0.804
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0       -2.099
+                                                                Pr(&gt;|z|)  
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0             0.3003  
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0        0.7907  
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0             0.0625 .
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0     0.2416  
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0           0.3672  
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                0.1448  
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0        0.6293  
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0           0.1626  
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0   0.4217  
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0        0.0358 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+(Adjusted p values reported -- none method)
+</code></pre>
+</section>
+</section>
+<section id="offspring-age-at-testing-days" class="level2">
+<h2 class="anchored" data-anchor-id="offspring-age-at-testing-days">Offspring age at testing (days)</h2>
+<section id="model-summary-8" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary-8">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 207; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-147.5205   295.0411   305.0411   321.6561   305.3426   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0310  0.1762     16     no  study_id 
+sigma^2.2  0.1468  0.3832    207     no     es_id 
+sigma^2.3  0.0716  0.2675      5     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 205) = 2749.1852, p-val &lt; .0001
+
+Test of Moderators (coefficient 2):
+F(df1 = 1, df2 = 205) = 1.5720, p-val = 0.2113
+
+Model Results:
+
+                 estimate      se     tval   df    pval    ci.lb   ci.ub    
+intrcpt            0.3628  0.2132   1.7017  205  0.0903  -0.0575  0.7831  . 
+offspring_age_d   -0.0037  0.0029  -1.2538  205  0.2113  -0.0094  0.0021    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared-8" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared-8">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Offspring age at testing (days)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0331</td>
+<td style="text-align: right;">0.4308</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-8" class="level3">
+<h3 class="anchored" data-anchor-id="plot-8">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-9.png" class="img-fluid" width="768"></p>
+</section>
+</section>
+<section id="loudness-in-db" class="level2">
+<h2 class="anchored" data-anchor-id="loudness-in-db">Loudness in dB</h2>
+<section id="model-summary-9" class="level3">
+<h3 class="anchored" data-anchor-id="model-summary-9">Model summary</h3>
+<pre><code>
+Multivariate Meta-Analysis Model (k = 201; method: REML)
+
+   logLik   Deviance        AIC        BIC       AICc   
+-147.3267   294.6535   304.6535   321.1200   304.9644   
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed    factor 
+sigma^2.1  0.0428  0.2070     15     no  study_id 
+sigma^2.2  0.1541  0.3926    201     no     es_id 
+sigma^2.3  0.0534  0.2311      5     no    strain 
+
+Test for Residual Heterogeneity:
+QE(df = 199) = 2748.4572, p-val &lt; .0001
+
+Test of Moderators (coefficient 2):
+F(df1 = 1, df2 = 199) = 0.0487, p-val = 0.8255
+
+Model Results:
+
+             estimate      se    tval   df    pval    ci.lb   ci.ub    
+intrcpt        0.1323  0.2472  0.5354  199  0.5930  -0.3551  0.6197    
+loudness_dB    0.0006  0.0028  0.2207  199  0.8255  -0.0049  0.0061    
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
+</section>
+<section id="multilevel-r-squared-9" class="level3">
+<h3 class="anchored" data-anchor-id="multilevel-r-squared-9">Multilevel R-squared</h3>
+<table class="caption-top table">
+<caption>Multilevel R-squared for Loudness in dB</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">R2_marginal</th>
+<th style="text-align: right;">R2_conditional</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6e-04</td>
+<td style="text-align: right;">0.3849</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="plot-9" class="level3">
+<h3 class="anchored" data-anchor-id="plot-9">Plot</h3>
+<p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-10.png" class="img-fluid" width="768"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Session information
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; R version 4.5.1 (2025-06-13)
+#&gt; Platform: aarch64-apple-darwin20
+#&gt; Running under: macOS Tahoe 26.6.2
+#&gt; 
+#&gt; Matrix products: default
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib 
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
+#&gt; 
+#&gt; locale:
+#&gt; [1] C.UTF-8/C.UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8
+#&gt; 
+#&gt; time zone: America/Edmonton
+#&gt; tzcode source: internal
+#&gt; 
+#&gt; attached base packages:
+#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
+#&gt; 
+#&gt; other attached packages:
+#&gt;  [1] tibble_3.3.1        readr_2.2.0         purrr_1.2.2        
+#&gt;  [4] orchaRd_2.2.1       multcomp_1.4-31     TH.data_1.1-5      
+#&gt;  [7] MASS_7.3-65         survival_3.8-3      mvtnorm_1.4-2      
+#&gt; [10] metafor_5.0-1       numDeriv_2016.8-1.1 metadat_1.6-0      
+#&gt; [13] Matrix_1.7-3        knitr_1.51          ggplot2_4.0.3      
+#&gt; [16] dplyr_1.2.1        
+#&gt; 
+#&gt; loaded via a namespace (and not attached):
+#&gt;  [1] sandwich_3.1-3     generics_0.1.4     lattice_0.22-7     hms_1.1.4         
+#&gt;  [5] digest_0.6.39      magrittr_2.0.5     estimability_2.0.0 evaluate_1.0.5    
+#&gt;  [9] grid_4.5.1         RColorBrewer_1.1-3 fastmap_1.2.0      jsonlite_2.0.0    
+#&gt; [13] scales_1.4.0       codetools_0.2-20   cli_3.6.6          crayon_1.5.3      
+#&gt; [17] rlang_1.3.0        bit64_4.8.2        splines_4.5.1      withr_3.0.3       
+#&gt; [21] yaml_2.3.12        otel_0.2.0         ggbeeswarm_0.7.3   parallel_4.5.1    
+#&gt; [25] tools_4.5.1        tzdb_0.5.0         mathjaxr_2.0-0     latex2exp_0.9.8   
+#&gt; [29] pacman_0.5.1       vctrs_0.7.3        R6_2.6.1           emmeans_2.0.4     
+#&gt; [33] zoo_1.9-0          lifecycle_1.0.5    bit_4.6.0          htmlwidgets_1.6.4 
+#&gt; [37] vipor_0.4.7        vroom_1.7.1        beeswarm_0.4.0     pkgconfig_2.0.3   
+#&gt; [41] pillar_1.11.1      gtable_0.3.6       glue_1.8.1         xfun_0.60         
+#&gt; [45] tidyselect_1.2.1   farver_2.1.2       htmltools_0.5.9    nlme_3.1-168      
+#&gt; [49] labeling_0.4.3     rmarkdown_2.31     compiler_4.5.1     S7_0.2.2</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./04_overall_effect.html" class="pagination-link" aria-label="Overall effect">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overall effect</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06_publication_bias.html" class="pagination-link" aria-label="Publication bias">
+        <span class="nav-page-text">Publication bias</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Uni-moderators"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>We fit one uni-moderator multilevel meta-regression for each study characteristic. Every model uses lnRR as the response and the same random-effects structure as the overall-effect model: study (<span class="in">`study_id`</span>), effect size (<span class="in">`es_id`</span>), and strain (<span class="in">`strain`</span>). We construct the complete VCV matrix with <span class="in">`rho = 0.5`</span>. For categorical moderators, we remove levels with fewer than five effect sizes ($k &lt; 5$) and subset the corresponding rows and columns of the VCV matrix.</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variable definitions</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable <span class="pp">|</span> Definition <span class="pp">|</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>:--<span class="pp">|</span>:--<span class="pp">|</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $k$ <span class="pp">|</span> Number of effect sizes in a model. <span class="pp">|</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`V`</span> <span class="pp">|</span> Sampling variance-covariance matrix for the lnRR estimates. <span class="pp">|</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\rho$ <span class="pp">|</span> Working correlation for multiple or repeated outcomes that share a group. <span class="pp">|</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`QM`</span> <span class="pp">|</span> Omnibus test statistic for the moderator. <span class="pp">|</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Marginal $R^2$ <span class="pp">|</span> Proportion of model variance associated with the moderator. <span class="pp">|</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Conditional $R^2$ <span class="pp">|</span> Proportion of model variance associated with the moderator and random effects. <span class="pp">|</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  dplyr,</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>  ggplot2,</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  knitr,</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>  metafor,</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>  multcomp,</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>  orchaRd,</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>  purrr,</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>  readr,</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>  tibble</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep the rendered output concise and use a consistent code-output prefix.</span></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">dplyr.summarise.inform =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">comment =</span> <span class="st">"#&gt;"</span>)</span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the project folders used in this chapter.</span></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="fu">normalizePath</span>(<span class="st">".."</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>derived_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"Data"</span>, <span class="st">"derived"</span>)</span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analysis data and VCV matrix</span></span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>We load the effect-size database from Chapter 2 and construct one complete VCV matrix using the same code as Chapter 3.</span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-effect-size-data</span></span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database created in Chapter 2.</span></span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a><span class="co"># List the variables required to construct V and fit the models.</span></span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a>required_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>, <span class="st">"strain"</span>,</span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_n"</span>, <span class="st">"c_n"</span>, <span class="st">"lnRR"</span>, <span class="st">"lnRR_var"</span></span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop if any required variable is missing.</span></span>
+<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(db))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb22-70"><a href="#cb22-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"The effect-size database does not contain all model variables."</span>)</span>
+<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm that each row has a unique effect-size identifier.</span></span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyDuplicated</span>(db<span class="sc">$</span>es_id)) {</span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"es_id must identify one effect-size row."</span>)</span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-77"><a href="#cb22-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-78"><a href="#cb22-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct the complete sampling VCV matrix once.</span></span>
+<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a>VCV_lnRR <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">vcalc</span>(</span>
+<span id="cb22-80"><a href="#cb22-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">vi =</span> lnRR_var,</span>
+<span id="cb22-81"><a href="#cb22-81" aria-hidden="true" tabindex="-1"></a>  <span class="at">cluster =</span> study_id,</span>
+<span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp1 =</span> ex_id,</span>
+<span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp2 =</span> con_id,</span>
+<span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a>  <span class="at">w1 =</span> ex_n,</span>
+<span id="cb22-85"><a href="#cb22-85" aria-hidden="true" tabindex="-1"></a>  <span class="at">w2 =</span> c_n,</span>
+<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a>  <span class="at">obs =</span> es_id,</span>
+<span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a>  <span class="at">rho =</span> <span class="fl">0.5</span>,</span>
+<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> db</span>
+<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-92"><a href="#cb22-92" aria-hidden="true" tabindex="-1"></a><span class="fu"># Moderators</span></span>
+<span id="cb22-93"><a href="#cb22-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-94"><a href="#cb22-94" aria-hidden="true" tabindex="-1"></a>The moderator list follows the biological and methodological domains in the protocol. We use the column names from the analysis-ready database.</span>
+<span id="cb22-95"><a href="#cb22-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-98"><a href="#cb22-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-99"><a href="#cb22-99" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: moderator-list</span></span>
+<span id="cb22-100"><a href="#cb22-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-101"><a href="#cb22-101" aria-hidden="true" tabindex="-1"></a>moderators <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb22-102"><a href="#cb22-102" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>variable,                       <span class="sc">~</span>label,                                  <span class="sc">~</span>kind,          <span class="sc">~</span>missing_label,</span>
+<span id="cb22-103"><a href="#cb22-103" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sp_latin"</span>,                     <span class="st">"Species"</span>,                               <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb22-104"><a href="#cb22-104" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gest_stage_ex_standardised"</span>,   <span class="st">"Gestational exposure stage"</span>,            <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb22-105"><a href="#cb22-105" aria-hidden="true" tabindex="-1"></a>  <span class="st">"exposure_type"</span>,                <span class="st">"Exposure type"</span>,                         <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb22-106"><a href="#cb22-106" aria-hidden="true" tabindex="-1"></a>  <span class="st">"noise_type_2"</span>,                 <span class="st">"Noise type"</span>,                            <span class="st">"categorical"</span>,  <span class="st">"unclear"</span>,</span>
+<span id="cb22-107"><a href="#cb22-107" aria-hidden="true" tabindex="-1"></a>  <span class="st">"control_conditions"</span>,           <span class="st">"Control conditions"</span>,                    <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb22-108"><a href="#cb22-108" aria-hidden="true" tabindex="-1"></a>  <span class="st">"offspring_sex"</span>,                <span class="st">"Offspring sex"</span>,                         <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb22-109"><a href="#cb22-109" aria-hidden="true" tabindex="-1"></a>  <span class="st">"outcome_type"</span>,                 <span class="st">"Outcome type"</span>,                          <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb22-110"><a href="#cb22-110" aria-hidden="true" tabindex="-1"></a>  <span class="st">"assay_type"</span>,                   <span class="st">"Behavioural assay"</span>,                     <span class="st">"categorical"</span>,  <span class="cn">NA_character_</span>,</span>
+<span id="cb22-111"><a href="#cb22-111" aria-hidden="true" tabindex="-1"></a>  <span class="st">"offspring_age_d"</span>,              <span class="st">"Offspring age at testing (days)"</span>,       <span class="st">"continuous"</span>,   <span class="cn">NA_character_</span>,</span>
+<span id="cb22-112"><a href="#cb22-112" aria-hidden="true" tabindex="-1"></a>  <span class="st">"loudness_dB"</span>,                  <span class="st">"Loudness in dB"</span>,                         <span class="st">"continuous"</span>,   <span class="cn">NA_character_</span></span>
+<span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-115"><a href="#cb22-115" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop if the database does not contain one of the planned moderators.</span></span>
+<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(moderators<span class="sc">$</span>variable, <span class="fu">names</span>(db))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"The effect-size database does not contain all moderators."</span>)</span>
+<span id="cb22-118"><a href="#cb22-118" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-119"><a href="#cb22-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-120"><a href="#cb22-120" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the moderator names used in the models.</span></span>
+<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a>moderators <span class="sc">|&gt;</span></span>
+<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(variable, label, kind) <span class="sc">|&gt;</span></span>
+<span id="cb22-123"><a href="#cb22-123" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Database variable"</span>, <span class="st">"Moderator"</span>, <span class="st">"Type"</span>),</span>
+<span id="cb22-125"><a href="#cb22-125" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Uni-moderators in the analysis."</span></span>
+<span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a>For <span class="in">`noise_type_2`</span>, we treat <span class="in">`unclear`</span> as a missing acoustic-band value rather than a moderator level. We retain the recorded categories for the other categorical moderators. For <span class="in">`loudness_dB`</span>, we retain unweighted dB values. Barzegar et al. (2014) reported 95 dBA, so we record its loudness value as missing because dBA and unweighted dB are not directly comparable.</span>
+<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a>The <span class="in">`gest_stage_ex_standardised`</span> variable groups the recorded exposure windows as <span class="in">`early_mid`</span>, <span class="in">`full_gestation`</span>, <span class="in">`mid_late`</span>, and <span class="in">`late`</span>.</span>
+<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a><span class="fu"># Model functions</span></span>
+<span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-135"><a href="#cb22-135" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prepare the moderator data</span></span>
+<span id="cb22-136"><a href="#cb22-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-137"><a href="#cb22-137" aria-hidden="true" tabindex="-1"></a>For a categorical moderator, we remove levels with $k &lt; 5$ and subset the same rows and columns from <span class="in">`V`</span>. For a continuous moderator, we retain finite values and subset <span class="in">`V`</span> in the same way.</span>
+<span id="cb22-138"><a href="#cb22-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-141"><a href="#cb22-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-142"><a href="#cb22-142" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prepare-moderator-data</span></span>
+<span id="cb22-143"><a href="#cb22-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-144"><a href="#cb22-144" aria-hidden="true" tabindex="-1"></a>prepare_categorical <span class="ot">&lt;-</span> <span class="cf">function</span>(data, V, moderator, <span class="at">missing_label =</span> <span class="cn">NA_character_</span>, <span class="at">min_k =</span> <span class="dv">5</span>) {</span>
+<span id="cb22-145"><a href="#cb22-145" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Start with rows that contain a recorded moderator value.</span></span>
+<span id="cb22-146"><a href="#cb22-146" aria-hidden="true" tabindex="-1"></a>  usable <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(data[[moderator]])</span>
+<span id="cb22-147"><a href="#cb22-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-148"><a href="#cb22-148" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Treat a specified text label as missing when required.</span></span>
+<span id="cb22-149"><a href="#cb22-149" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(missing_label)) {</span>
+<span id="cb22-150"><a href="#cb22-150" aria-hidden="true" tabindex="-1"></a>    usable <span class="ot">&lt;-</span> usable <span class="sc">&amp;</span> <span class="fu">as.character</span>(data[[moderator]]) <span class="sc">!=</span> missing_label</span>
+<span id="cb22-151"><a href="#cb22-151" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-152"><a href="#cb22-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-153"><a href="#cb22-153" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Count the effect sizes in each moderator level.</span></span>
+<span id="cb22-154"><a href="#cb22-154" aria-hidden="true" tabindex="-1"></a>  level_counts <span class="ot">&lt;-</span> data[usable, ] <span class="sc">|&gt;</span></span>
+<span id="cb22-155"><a href="#cb22-155" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(<span class="at">level =</span> .data[[moderator]], <span class="at">name =</span> <span class="st">"effect_sizes"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb22-156"><a href="#cb22-156" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb22-157"><a href="#cb22-157" aria-hidden="true" tabindex="-1"></a>      <span class="at">studies =</span> <span class="fu">vapply</span>(</span>
+<span id="cb22-158"><a href="#cb22-158" aria-hidden="true" tabindex="-1"></a>        level,</span>
+<span id="cb22-159"><a href="#cb22-159" aria-hidden="true" tabindex="-1"></a>        <span class="cf">function</span>(x) <span class="fu">n_distinct</span>(data<span class="sc">$</span>study_id[usable <span class="sc">&amp;</span> data[[moderator]] <span class="sc">==</span> x]),</span>
+<span id="cb22-160"><a href="#cb22-160" aria-hidden="true" tabindex="-1"></a>        <span class="fu">integer</span>(<span class="dv">1</span>)</span>
+<span id="cb22-161"><a href="#cb22-161" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb22-162"><a href="#cb22-162" aria-hidden="true" tabindex="-1"></a>      <span class="at">include =</span> effect_sizes <span class="sc">&gt;=</span> min_k</span>
+<span id="cb22-163"><a href="#cb22-163" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-164"><a href="#cb22-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-165"><a href="#cb22-165" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain levels represented by at least five effect sizes.</span></span>
+<span id="cb22-166"><a href="#cb22-166" aria-hidden="true" tabindex="-1"></a>  keep_levels <span class="ot">&lt;-</span> level_counts <span class="sc">|&gt;</span></span>
+<span id="cb22-167"><a href="#cb22-167" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(include) <span class="sc">|&gt;</span></span>
+<span id="cb22-168"><a href="#cb22-168" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(level)</span>
+<span id="cb22-169"><a href="#cb22-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-170"><a href="#cb22-170" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use the same row positions to subset the data and VCV matrix.</span></span>
+<span id="cb22-171"><a href="#cb22-171" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(usable <span class="sc">&amp;</span> data[[moderator]] <span class="sc">%in%</span> keep_levels)</span>
+<span id="cb22-172"><a href="#cb22-172" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb22-173"><a href="#cb22-173" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> V[idx, idx, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb22-174"><a href="#cb22-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-175"><a href="#cb22-175" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unused factor levels after filtering.</span></span>
+<span id="cb22-176"><a href="#cb22-176" aria-hidden="true" tabindex="-1"></a>  dat[[moderator]] <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">factor</span>(dat[[moderator]]))</span>
+<span id="cb22-177"><a href="#cb22-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-178"><a href="#cb22-178" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A categorical moderator requires at least two retained levels.</span></span>
+<span id="cb22-179"><a href="#cb22-179" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nlevels</span>(dat[[moderator]]) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
+<span id="cb22-180"><a href="#cb22-180" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Fewer than two levels remain for "</span>, moderator, <span class="st">"."</span>)</span>
+<span id="cb22-181"><a href="#cb22-181" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-182"><a href="#cb22-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-183"><a href="#cb22-183" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">data =</span> dat, <span class="at">V =</span> V_subset, <span class="at">level_counts =</span> level_counts)</span>
+<span id="cb22-184"><a href="#cb22-184" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-185"><a href="#cb22-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-186"><a href="#cb22-186" aria-hidden="true" tabindex="-1"></a>prepare_continuous <span class="ot">&lt;-</span> <span class="cf">function</span>(data, V, moderator) {</span>
+<span id="cb22-187"><a href="#cb22-187" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain rows with finite moderator values.</span></span>
+<span id="cb22-188"><a href="#cb22-188" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.finite</span>(data[[moderator]]))</span>
+<span id="cb22-189"><a href="#cb22-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-190"><a href="#cb22-190" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Subset the data and VCV matrix with the same row positions.</span></span>
+<span id="cb22-191"><a href="#cb22-191" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb22-192"><a href="#cb22-192" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> V[idx, idx, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb22-193"><a href="#cb22-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-194"><a href="#cb22-194" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the moderator as a numeric variable.</span></span>
+<span id="cb22-195"><a href="#cb22-195" aria-hidden="true" tabindex="-1"></a>  dat[[moderator]] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat[[moderator]])</span>
+<span id="cb22-196"><a href="#cb22-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-197"><a href="#cb22-197" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A continuous moderator requires at least two distinct values.</span></span>
+<span id="cb22-198"><a href="#cb22-198" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">n_distinct</span>(dat[[moderator]]) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
+<span id="cb22-199"><a href="#cb22-199" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"The moderator does not contain at least two values: "</span>, moderator, <span class="st">"."</span>)</span>
+<span id="cb22-200"><a href="#cb22-200" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-201"><a href="#cb22-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-202"><a href="#cb22-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">data =</span> dat, <span class="at">V =</span> V_subset, <span class="at">level_counts =</span> <span class="cn">NULL</span>)</span>
+<span id="cb22-203"><a href="#cb22-203" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-204"><a href="#cb22-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-205"><a href="#cb22-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-206"><a href="#cb22-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fit one uni-moderator model</span></span>
+<span id="cb22-207"><a href="#cb22-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-208"><a href="#cb22-208" aria-hidden="true" tabindex="-1"></a>The function below prepares one moderator, subsets the complete VCV matrix, and fits its model. For categorical moderators with at least three retained levels, it also calculates unadjusted Tukey contrasts with a separate no-intercept model.</span>
+<span id="cb22-209"><a href="#cb22-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-212"><a href="#cb22-212" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-213"><a href="#cb22-213" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fit-one-unimoderator</span></span>
+<span id="cb22-214"><a href="#cb22-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-215"><a href="#cb22-215" aria-hidden="true" tabindex="-1"></a>fit_unimoderator <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb22-216"><a href="#cb22-216" aria-hidden="true" tabindex="-1"></a>  data,</span>
+<span id="cb22-217"><a href="#cb22-217" aria-hidden="true" tabindex="-1"></a>  V,</span>
+<span id="cb22-218"><a href="#cb22-218" aria-hidden="true" tabindex="-1"></a>  moderator,</span>
+<span id="cb22-219"><a href="#cb22-219" aria-hidden="true" tabindex="-1"></a>  label,</span>
+<span id="cb22-220"><a href="#cb22-220" aria-hidden="true" tabindex="-1"></a>  kind,</span>
+<span id="cb22-221"><a href="#cb22-221" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing_label =</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb22-222"><a href="#cb22-222" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_k =</span> <span class="dv">5</span></span>
+<span id="cb22-223"><a href="#cb22-223" aria-hidden="true" tabindex="-1"></a>) {</span>
+<span id="cb22-224"><a href="#cb22-224" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Apply the appropriate preparation rule for the moderator type.</span></span>
+<span id="cb22-225"><a href="#cb22-225" aria-hidden="true" tabindex="-1"></a>  prepared <span class="ot">&lt;-</span> <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
+<span id="cb22-226"><a href="#cb22-226" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prepare_categorical</span>(data, V, moderator, missing_label, min_k)</span>
+<span id="cb22-227"><a href="#cb22-227" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb22-228"><a href="#cb22-228" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prepare_continuous</span>(data, V, moderator)</span>
+<span id="cb22-229"><a href="#cb22-229" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-230"><a href="#cb22-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-231"><a href="#cb22-231" aria-hidden="true" tabindex="-1"></a>  model_data <span class="ot">&lt;-</span> prepared<span class="sc">$</span>data</span>
+<span id="cb22-232"><a href="#cb22-232" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> prepared<span class="sc">$</span>V</span>
+<span id="cb22-233"><a href="#cb22-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-234"><a href="#cb22-234" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit one multilevel meta-regression with the subsetted VCV matrix.</span></span>
+<span id="cb22-235"><a href="#cb22-235" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.mv</span>(</span>
+<span id="cb22-236"><a href="#cb22-236" aria-hidden="true" tabindex="-1"></a>    <span class="at">yi =</span> lnRR,</span>
+<span id="cb22-237"><a href="#cb22-237" aria-hidden="true" tabindex="-1"></a>    <span class="at">V =</span> V_subset,</span>
+<span id="cb22-238"><a href="#cb22-238" aria-hidden="true" tabindex="-1"></a>    <span class="at">mods =</span> <span class="fu">reformulate</span>(moderator),</span>
+<span id="cb22-239"><a href="#cb22-239" aria-hidden="true" tabindex="-1"></a>    <span class="at">random =</span> <span class="fu">list</span>(</span>
+<span id="cb22-240"><a href="#cb22-240" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> study_id,</span>
+<span id="cb22-241"><a href="#cb22-241" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> es_id,</span>
+<span id="cb22-242"><a href="#cb22-242" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> strain</span>
+<span id="cb22-243"><a href="#cb22-243" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb22-244"><a href="#cb22-244" aria-hidden="true" tabindex="-1"></a>    <span class="at">test =</span> <span class="st">"t"</span>,</span>
+<span id="cb22-245"><a href="#cb22-245" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb22-246"><a href="#cb22-246" aria-hidden="true" tabindex="-1"></a>    <span class="at">sparse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-247"><a href="#cb22-247" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> model_data</span>
+<span id="cb22-248"><a href="#cb22-248" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-249"><a href="#cb22-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-250"><a href="#cb22-250" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw an orchard plot for a categorical moderator. We draw continuous</span></span>
+<span id="cb22-251"><a href="#cb22-251" aria-hidden="true" tabindex="-1"></a>  <span class="co"># moderators with metafor::regplot() when we display the model results.</span></span>
+<span id="cb22-252"><a href="#cb22-252" aria-hidden="true" tabindex="-1"></a>  model_plot <span class="ot">&lt;-</span> <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
+<span id="cb22-253"><a href="#cb22-253" aria-hidden="true" tabindex="-1"></a>    orchaRd<span class="sc">::</span><span class="fu">orchard_plot</span>(</span>
+<span id="cb22-254"><a href="#cb22-254" aria-hidden="true" tabindex="-1"></a>      model,</span>
+<span id="cb22-255"><a href="#cb22-255" aria-hidden="true" tabindex="-1"></a>      <span class="at">mod =</span> moderator,</span>
+<span id="cb22-256"><a href="#cb22-256" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> <span class="st">"study_id"</span>,</span>
+<span id="cb22-257"><a href="#cb22-257" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">"lnRR"</span>,</span>
+<span id="cb22-258"><a href="#cb22-258" aria-hidden="true" tabindex="-1"></a>      <span class="at">flip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-259"><a href="#cb22-259" aria-hidden="true" tabindex="-1"></a>      <span class="at">angle =</span> <span class="dv">0</span>,</span>
+<span id="cb22-260"><a href="#cb22-260" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.pos =</span> <span class="st">"top.left"</span></span>
+<span id="cb22-261"><a href="#cb22-261" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-262"><a href="#cb22-262" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb22-263"><a href="#cb22-263" aria-hidden="true" tabindex="-1"></a>    <span class="cn">NULL</span></span>
+<span id="cb22-264"><a href="#cb22-264" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-265"><a href="#cb22-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-266"><a href="#cb22-266" aria-hidden="true" tabindex="-1"></a>  contrasts <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb22-267"><a href="#cb22-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-268"><a href="#cb22-268" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate unadjusted Tukey contrasts when at least three levels remain.</span></span>
+<span id="cb22-269"><a href="#cb22-269" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span> <span class="sc">&amp;&amp;</span> <span class="fu">nlevels</span>(model_data[[moderator]]) <span class="sc">&gt;=</span> <span class="dv">3</span>) {</span>
+<span id="cb22-270"><a href="#cb22-270" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit a no-intercept model so that each coefficient represents one level.</span></span>
+<span id="cb22-271"><a href="#cb22-271" aria-hidden="true" tabindex="-1"></a>    no_intercept_model <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.mv</span>(</span>
+<span id="cb22-272"><a href="#cb22-272" aria-hidden="true" tabindex="-1"></a>      <span class="at">yi =</span> lnRR,</span>
+<span id="cb22-273"><a href="#cb22-273" aria-hidden="true" tabindex="-1"></a>      <span class="at">V =</span> V_subset,</span>
+<span id="cb22-274"><a href="#cb22-274" aria-hidden="true" tabindex="-1"></a>      <span class="at">mods =</span> <span class="fu">reformulate</span>(moderator, <span class="at">intercept =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb22-275"><a href="#cb22-275" aria-hidden="true" tabindex="-1"></a>      <span class="at">random =</span> <span class="fu">list</span>(</span>
+<span id="cb22-276"><a href="#cb22-276" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> study_id,</span>
+<span id="cb22-277"><a href="#cb22-277" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> es_id,</span>
+<span id="cb22-278"><a href="#cb22-278" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> strain</span>
+<span id="cb22-279"><a href="#cb22-279" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb22-280"><a href="#cb22-280" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> <span class="st">"t"</span>,</span>
+<span id="cb22-281"><a href="#cb22-281" aria-hidden="true" tabindex="-1"></a>      <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb22-282"><a href="#cb22-282" aria-hidden="true" tabindex="-1"></a>      <span class="at">sparse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-283"><a href="#cb22-283" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> model_data</span>
+<span id="cb22-284"><a href="#cb22-284" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-285"><a href="#cb22-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-286"><a href="#cb22-286" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create all pairwise Tukey contrasts among the retained levels.</span></span>
+<span id="cb22-287"><a href="#cb22-287" aria-hidden="true" tabindex="-1"></a>    contrast_matrix <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">contrMat</span>(</span>
+<span id="cb22-288"><a href="#cb22-288" aria-hidden="true" tabindex="-1"></a>      <span class="fu">table</span>(model_data[[moderator]]),</span>
+<span id="cb22-289"><a href="#cb22-289" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">"Tukey"</span></span>
+<span id="cb22-290"><a href="#cb22-290" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-291"><a href="#cb22-291" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(contrast_matrix) <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(no_intercept_model))</span>
+<span id="cb22-292"><a href="#cb22-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-293"><a href="#cb22-293" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report unadjusted contrast p-values, as in the reference workflow.</span></span>
+<span id="cb22-294"><a href="#cb22-294" aria-hidden="true" tabindex="-1"></a>    contrasts <span class="ot">&lt;-</span> <span class="fu">summary</span>(</span>
+<span id="cb22-295"><a href="#cb22-295" aria-hidden="true" tabindex="-1"></a>      multcomp<span class="sc">::</span><span class="fu">glht</span>(no_intercept_model, <span class="at">linfct =</span> contrast_matrix),</span>
+<span id="cb22-296"><a href="#cb22-296" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> multcomp<span class="sc">::</span><span class="fu">adjusted</span>(<span class="st">"none"</span>)</span>
+<span id="cb22-297"><a href="#cb22-297" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-298"><a href="#cb22-298" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-299"><a href="#cb22-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-300"><a href="#cb22-300" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb22-301"><a href="#cb22-301" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable =</span> moderator,</span>
+<span id="cb22-302"><a href="#cb22-302" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> label,</span>
+<span id="cb22-303"><a href="#cb22-303" aria-hidden="true" tabindex="-1"></a>    <span class="at">kind =</span> kind,</span>
+<span id="cb22-304"><a href="#cb22-304" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> model_data,</span>
+<span id="cb22-305"><a href="#cb22-305" aria-hidden="true" tabindex="-1"></a>    <span class="at">V =</span> V_subset,</span>
+<span id="cb22-306"><a href="#cb22-306" aria-hidden="true" tabindex="-1"></a>    <span class="at">level_counts =</span> prepared<span class="sc">$</span>level_counts,</span>
+<span id="cb22-307"><a href="#cb22-307" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> model,</span>
+<span id="cb22-308"><a href="#cb22-308" aria-hidden="true" tabindex="-1"></a>    <span class="at">r2 =</span> orchaRd<span class="sc">::</span><span class="fu">r2_ml</span>(model),</span>
+<span id="cb22-309"><a href="#cb22-309" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot =</span> model_plot,</span>
+<span id="cb22-310"><a href="#cb22-310" aria-hidden="true" tabindex="-1"></a>    <span class="at">contrasts =</span> contrasts</span>
+<span id="cb22-311"><a href="#cb22-311" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-312"><a href="#cb22-312" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-313"><a href="#cb22-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-314"><a href="#cb22-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-315"><a href="#cb22-315" aria-hidden="true" tabindex="-1"></a><span class="fu"># Fit all uni-moderator models</span></span>
+<span id="cb22-316"><a href="#cb22-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-317"><a href="#cb22-317" aria-hidden="true" tabindex="-1"></a>We call <span class="in">`fit_unimoderator()`</span> once for each row of the moderator table. The function subsets the complete VCV matrix to match the effect sizes retained for each moderator.</span>
+<span id="cb22-318"><a href="#cb22-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-321"><a href="#cb22-321" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-322"><a href="#cb22-322" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fit-all-unimoderators</span></span>
+<span id="cb22-323"><a href="#cb22-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-324"><a href="#cb22-324" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the same function to each moderator in the table.</span></span>
+<span id="cb22-325"><a href="#cb22-325" aria-hidden="true" tabindex="-1"></a>unimoderator_results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">pmap</span>(</span>
+<span id="cb22-326"><a href="#cb22-326" aria-hidden="true" tabindex="-1"></a>  moderators,</span>
+<span id="cb22-327"><a href="#cb22-327" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(variable, label, kind, missing_label) {</span>
+<span id="cb22-328"><a href="#cb22-328" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit_unimoderator</span>(</span>
+<span id="cb22-329"><a href="#cb22-329" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> db,</span>
+<span id="cb22-330"><a href="#cb22-330" aria-hidden="true" tabindex="-1"></a>      <span class="at">V =</span> VCV_lnRR,</span>
+<span id="cb22-331"><a href="#cb22-331" aria-hidden="true" tabindex="-1"></a>      <span class="at">moderator =</span> variable,</span>
+<span id="cb22-332"><a href="#cb22-332" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> label,</span>
+<span id="cb22-333"><a href="#cb22-333" aria-hidden="true" tabindex="-1"></a>      <span class="at">kind =</span> kind,</span>
+<span id="cb22-334"><a href="#cb22-334" aria-hidden="true" tabindex="-1"></a>      <span class="at">missing_label =</span> missing_label,</span>
+<span id="cb22-335"><a href="#cb22-335" aria-hidden="true" tabindex="-1"></a>      <span class="at">min_k =</span> <span class="dv">5</span></span>
+<span id="cb22-336"><a href="#cb22-336" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-337"><a href="#cb22-337" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-338"><a href="#cb22-338" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-339"><a href="#cb22-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-340"><a href="#cb22-340" aria-hidden="true" tabindex="-1"></a><span class="co"># Name each result with its database variable.</span></span>
+<span id="cb22-341"><a href="#cb22-341" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(unimoderator_results) <span class="ot">&lt;-</span> moderators<span class="sc">$</span>variable</span>
+<span id="cb22-342"><a href="#cb22-342" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-343"><a href="#cb22-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-344"><a href="#cb22-344" aria-hidden="true" tabindex="-1"></a><span class="fu"># Model results</span></span>
+<span id="cb22-345"><a href="#cb22-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-346"><a href="#cb22-346" aria-hidden="true" tabindex="-1"></a>For each moderator, we print the model summary and multilevel $R^2$. We use orchard plots for categorical moderators and <span class="in">`metafor::regplot()`</span> for continuous moderators. For categorical moderators with three or more levels, we also print the unadjusted pairwise contrasts.</span>
+<span id="cb22-347"><a href="#cb22-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-350"><a href="#cb22-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-351"><a href="#cb22-351" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: display-unimoderator-results</span></span>
+<span id="cb22-352"><a href="#cb22-352" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb22-353"><a href="#cb22-353" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb22-354"><a href="#cb22-354" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb22-355"><a href="#cb22-355" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb22-356"><a href="#cb22-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-357"><a href="#cb22-357" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the same set of outputs for each uni-moderator model.</span></span>
+<span id="cb22-358"><a href="#cb22-358" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (result <span class="cf">in</span> unimoderator_results) {</span>
+<span id="cb22-359"><a href="#cb22-359" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">## "</span>, result<span class="sc">$</span>label, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb22-360"><a href="#cb22-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-361"><a href="#cb22-361" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"### Model summary</span><span class="sc">\n\n</span><span class="st">```</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb22-362"><a href="#cb22-362" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">summary</span>(result<span class="sc">$</span>model))</span>
+<span id="cb22-363"><a href="#cb22-363" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb22-364"><a href="#cb22-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-365"><a href="#cb22-365" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"### Multilevel R-squared</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb22-366"><a href="#cb22-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(</span>
+<span id="cb22-367"><a href="#cb22-367" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb22-368"><a href="#cb22-368" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as.data.frame</span>(<span class="fu">t</span>(result<span class="sc">$</span>r2)),</span>
+<span id="cb22-369"><a href="#cb22-369" aria-hidden="true" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">4</span>,</span>
+<span id="cb22-370"><a href="#cb22-370" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="fu">paste</span>(<span class="st">"Multilevel R-squared for"</span>, result<span class="sc">$</span>label)</span>
+<span id="cb22-371"><a href="#cb22-371" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb22-372"><a href="#cb22-372" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb22-373"><a href="#cb22-373" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-374"><a href="#cb22-374" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb22-375"><a href="#cb22-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-376"><a href="#cb22-376" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"### Plot</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb22-377"><a href="#cb22-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-378"><a href="#cb22-378" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (result<span class="sc">$</span>kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
+<span id="cb22-379"><a href="#cb22-379" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(result<span class="sc">$</span>plot)</span>
+<span id="cb22-380"><a href="#cb22-380" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb22-381"><a href="#cb22-381" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the marginal regression line and its 95% confidence interval.</span></span>
+<span id="cb22-382"><a href="#cb22-382" aria-hidden="true" tabindex="-1"></a>    metafor<span class="sc">::</span><span class="fu">regplot</span>(</span>
+<span id="cb22-383"><a href="#cb22-383" aria-hidden="true" tabindex="-1"></a>      result<span class="sc">$</span>model,</span>
+<span id="cb22-384"><a href="#cb22-384" aria-hidden="true" tabindex="-1"></a>      <span class="at">mod =</span> result<span class="sc">$</span>variable,</span>
+<span id="cb22-385"><a href="#cb22-385" aria-hidden="true" tabindex="-1"></a>      <span class="at">pred =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-386"><a href="#cb22-386" aria-hidden="true" tabindex="-1"></a>      <span class="at">ci =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-387"><a href="#cb22-387" aria-hidden="true" tabindex="-1"></a>      <span class="at">pi =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-388"><a href="#cb22-388" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> result<span class="sc">$</span>label,</span>
+<span id="cb22-389"><a href="#cb22-389" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"lnRR"</span>,</span>
+<span id="cb22-390"><a href="#cb22-390" aria-hidden="true" tabindex="-1"></a>      <span class="at">psize =</span> <span class="st">"seinv"</span>,</span>
+<span id="cb22-391"><a href="#cb22-391" aria-hidden="true" tabindex="-1"></a>      <span class="at">plim =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">2.2</span>),</span>
+<span id="cb22-392"><a href="#cb22-392" aria-hidden="true" tabindex="-1"></a>      <span class="at">refline =</span> <span class="dv">0</span></span>
+<span id="cb22-393"><a href="#cb22-393" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb22-394"><a href="#cb22-394" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-395"><a href="#cb22-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-396"><a href="#cb22-396" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb22-397"><a href="#cb22-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-398"><a href="#cb22-398" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print pairwise contrasts only when the function created them.</span></span>
+<span id="cb22-399"><a href="#cb22-399" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(result<span class="sc">$</span>contrasts)) {</span>
+<span id="cb22-400"><a href="#cb22-400" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"### Pairwise contrasts</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb22-401"><a href="#cb22-401" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"We report unadjusted Tukey contrasts between the retained levels.</span><span class="sc">\n\n</span><span class="st">```</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb22-402"><a href="#cb22-402" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(result<span class="sc">$</span>contrasts)</span>
+<span id="cb22-403"><a href="#cb22-403" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb22-404"><a href="#cb22-404" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-405"><a href="#cb22-405" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-406"><a href="#cb22-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-407"><a href="#cb22-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-408"><a href="#cb22-408" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb22-409"><a href="#cb22-409" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session information</span></span>
+<span id="cb22-410"><a href="#cb22-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-413"><a href="#cb22-413" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-414"><a href="#cb22-414" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: session-information</span></span>
+<span id="cb22-415"><a href="#cb22-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-416"><a href="#cb22-416" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb22-417"><a href="#cb22-417" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-418"><a href="#cb22-418" aria-hidden="true" tabindex="-1"></a>:::</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
