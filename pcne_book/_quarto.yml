@@ -7,6 +7,8 @@ project:
     - 01_data_wrangling.qmd
     - 02_effect_size_lnRR.qmd
     - 03_dependency_structure_audit.qmd
+    - 04_overall_effect.qmd
+    - 05_uni_moderators.qmd
 
 website:
   title: "Prenatal chronic noise exposure meta-analysis"
@@ -23,6 +25,10 @@ website:
         href: 02_effect_size_lnRR.qmd
       - text: "Sampling variance-covariance matrix"
         href: 03_dependency_structure_audit.qmd
+      - text: "Overall effect"
+        href: 04_overall_effect.qmd
+      - text: "Uni-moderators"
+        href: 05_uni_moderators.qmd
 
 bibliography: references.bib
 

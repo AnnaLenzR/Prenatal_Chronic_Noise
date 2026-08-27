@@ -2,6 +2,8 @@
 title: "Effect size calculation"
 ---
 
+We load the analysis-ready database from the preceding chapter and calculate one lnRR and sampling variance for each effect-size row.
+
 ```{r}
 #| label: setup
 
@@ -18,6 +20,7 @@ pacman::p_load(
 project_root <- normalizePath("..", mustWork = TRUE)
 derived_dir <- file.path(project_root, "Data", "derived")
 
+# Load the analysis-ready database.
 db <- readr::read_csv(
   file.path(derived_dir, "PCN_analysis_ready.csv"),
   show_col_types = FALSE
@@ -42,31 +45,53 @@ $$
 
 where $M$, $SD$, and $N$ are the mean, standard deviation, and sample size for the exposed ($T$) and control ($C$) groups [@hedges1999; @lajeunesse2015].
 
+::: callout-note
+## Variable definitions
+
+| Variable | Definition |
+|:--|:--|
+| `c_mean`, `c_sd`, `c_n` | Control-group mean, standard deviation, and sample size. |
+| `ex_mean`, `ex_sd`, `ex_n` | Exposed-group mean, standard deviation, and sample size. |
+| `data_type` | Scale of the extracted outcome, including percentage outcomes. |
+| `assay_type` | Behavioural test or assay. |
+| `measurement_variable` | Behavioural variable reported for the assay. |
+| `data_units` | Units of the reported measurement. |
+| `comparison_structure` | Indicates an independent- or dependent-group comparison. |
+| `higher_better` | Indicates whether a higher outcome value represents better performance. |
+| `lnRR` | Bias-corrected log response ratio. |
+| `lnRR_var` | Sampling variance of lnRR. |
+:::
+
 # Data preparation for lnRR
 
 ## Data types
 
-- Non-percentage outcomes are calculated on their extracted scale.
-- Percentage outcomes are calculated after an arcsine-square-root transformation.
+- We calculate non-percentage outcomes on their extracted scale.
+- We apply an arcsine-square-root transformation before calculating percentage outcomes.
 
 ## Boundary corrections
 
-- For non-percentage outcomes, a zero mean is replaced by 0.9 times the smallest positive mean in the same outcome stratum.
-- For all outcomes, a zero SD is replaced by the smallest positive SD for the same treatment arm and outcome stratum.
-- Percentage means of 0 and 100 are replaced by 0.5 and 99.5, respectively.
+- For non-percentage outcomes, we replace a zero mean with 0.9 times the smallest positive mean in the same outcome stratum.
+- For all outcomes, we replace a zero SD with the smallest positive SD for the same treatment arm and outcome stratum.
+- For percentage outcomes, we replace means of 0 and 100 with 0.5 and 99.5, respectively.
+
+We define an outcome stratum with `assay_type`, `measurement_variable`, `data_type`, and `data_units`.
 
 ## Comparison structure
 
-- `comparison_structure == "independent"` uses `metafor::escalc(measure = "ROM")`.
-- `comparison_structure == "dependent"` uses `metafor::escalc(measure = "ROMC", ri = 0.5)`.
+- For `comparison_structure == "independent"`, we use `metafor::escalc(measure = "ROM")`.
+- For `comparison_structure == "dependent"`, we use `metafor::escalc(measure = "ROMC", ri = 0.5)`.
 
 ## Direction harmonisation
 
-The lnRR sign is multiplied by -1 when `higher_better == "yes"` so that outcome direction is consistent across effect sizes.
+When `higher_better == "yes"`, we multiply lnRR by -1 to keep the outcome direction consistent across effect sizes.
+
+The following functions apply these rules while preserving the original row order.
 
 ```{r}
 #| label: boundary-correction-functions
 
+# Return the smallest positive value in a vector.
 minimum_positive <- function(x) {
   x <- x[is.finite(x) & x > 0]
   if (length(x) == 0) NA_real_ else min(x)
@@ -75,6 +100,7 @@ minimum_positive <- function(x) {
 apply_zero_sd_corrections <- function(data) {
   strata <- c("assay_type", "measurement_variable", "data_type", "data_units")
 
+  # Calculate the smallest positive SD within each outcome stratum and arm.
   local_minima <- data |>
     group_by(across(all_of(strata))) |>
     summarise(
@@ -104,6 +130,7 @@ apply_zero_sd_corrections <- function(data) {
 apply_nonpercentage_corrections <- function(data) {
   strata <- c("assay_type", "measurement_variable", "data_type", "data_units")
 
+  # Calculate the smallest positive mean within each outcome stratum and arm.
   local_minima <- data |>
     group_by(across(all_of(strata))) |>
     summarise(
@@ -136,10 +163,12 @@ apply_nonpercentage_corrections <- function(data) {
 }
 
 prepare_lnrr_data <- function(data) {
+  # Apply the non-percentage rules.
   nonpercentage <- data |>
     filter(data_type != "percentage") |>
     apply_nonpercentage_corrections()
 
+  # Apply the percentage rules.
   percentage <- data |>
     filter(data_type == "percentage") |>
     mutate(
@@ -150,10 +179,13 @@ prepare_lnrr_data <- function(data) {
     ) |>
     apply_zero_sd_corrections()
 
+  # Recombine the rows in their original order.
   bind_rows(nonpercentage, percentage) |>
     arrange(match(es_id, data$es_id))
 }
 ```
+
+We apply the boundary corrections and report the number of changes. The second table lists only the statistics that the rules modified.
 
 ```{r}
 #| label: boundary-correction-summary
@@ -218,8 +250,10 @@ modified_statistics <- bind_rows(
   arrange(study_id, es_id, statistic)
 
 modified_statistics |>
-  knitr::kable(digits = 3, caption = "Statistics modified by a boundary correction.")
+  knitr::kable(digits = 3, caption = "Statistics before and after boundary correction.")
 ```
+
+We calculate lnRR and `lnRR_var` row by row because the formula depends on `data_type` and `comparison_structure`. We then confirm that every input row produces one effect size and a non-negative sampling variance.
 
 ```{r}
 #| label: calculate-lnrr
@@ -235,6 +269,7 @@ calculate_lnrr <- function(data, within_subject_correlation = 0.5) {
   arcsine_sqrt <- function(proportion) asin(sqrt(proportion))
 
   for (i in seq_len(nrow(result))) {
+    # Read the statistics and calculation settings for one effect size.
     ex_n <- result$ex_n[i]
     c_n <- result$c_n[i]
     ex_mean <- result$ex_mean[i]
@@ -245,6 +280,7 @@ calculate_lnrr <- function(data, within_subject_correlation = 0.5) {
     comparison_structure <- result$comparison_structure[i]
 
     if (data_type != "percentage") {
+      # Use metafor for outcomes on their extracted scale.
       if (comparison_structure == "independent") {
         effect <- metafor::escalc(
           measure = "ROM",
@@ -267,6 +303,7 @@ calculate_lnrr <- function(data, within_subject_correlation = 0.5) {
       result$lnRR[i] <- effect$lnRR
       result$lnRR_var[i] <- effect$lnRR_var
     } else {
+      # Convert percentage inputs to proportions and transform them.
       if (max(c(ex_mean, c_mean), na.rm = TRUE) > 1) {
         ex_mean <- ex_mean / 100
         c_mean <- c_mean / 100
@@ -293,6 +330,7 @@ calculate_lnrr <- function(data, within_subject_correlation = 0.5) {
     }
 
     if (result$higher_better[i] == "yes") {
+      # Harmonise the direction after calculating the effect size.
       result$lnRR[i] <- -result$lnRR[i]
     }
   }
@@ -318,6 +356,8 @@ db_effect_sizes |>
 
 # Effect-size database
 
+We add `lnRR` and `lnRR_var` to the analysis data and save the result. The following chapters use this file.
+
 ```{r}
 #| label: export-effect-sizes
 
@@ -338,7 +378,7 @@ tibble(
 
 # lnRR distributions
 
-The histograms show the calculated lnRR values and their sampling variances (`lnRR_var`).
+We plot lnRR and `lnRR_var` in separate histograms.
 
 ```{r}
 #| label: lnrr-histogram

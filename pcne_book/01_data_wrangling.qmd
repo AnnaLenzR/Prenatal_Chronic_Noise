@@ -2,7 +2,7 @@
 title: "Data preparation"
 ---
 
-The original extraction database is retained unchanged. Two derived databases are created for the analysis.
+We keep the original extraction database unchanged and create two derived databases for the analysis.
 
 ```{r}
 #| label: setup
@@ -20,6 +20,7 @@ data_dir <- file.path(project_root, "Data")
 derived_dir <- file.path(data_dir, "derived")
 dir.create(derived_dir, recursive = TRUE, showWarnings = FALSE)
 
+# Define the input and output file paths.
 original_path <- file.path(data_dir, "PCN_data_ext_checking_v.3.csv")
 statistics_path <- file.path(
   derived_dir,
@@ -30,13 +31,33 @@ analysis_path <- file.path(derived_dir, "PCN_analysis_ready.csv")
 
 # Source data
 
-The source file is `Data/PCN_data_ext_checking_v.3.csv`. Its checksum is recorded before the derived files are created.
+We start with `Data/PCN_data_ext_checking_v.3.csv`. We record its checksum before creating the derived files.
+
+::: callout-note
+## Variable definitions
+
+| Variable | Definition |
+|:--|:--|
+| `study_id` | Identifier for the primary research paper. |
+| `es_id` | Unique identifier for each effect size. |
+| `ex_id` | Identifier for an exposed group within an experiment and study. |
+| `con_id` | Identifier for a control group within an experiment and study. |
+| `out_id` | Identifier for a behavioural outcome. |
+| `c_` | Prefix for control-group statistics. |
+| `ex_` | Prefix for exposed-group statistics. |
+| `mean`, `sd`, `se`, `n` | Mean, standard deviation, standard error, and sample size. |
+| `median`, `q1`, `q3` | Median, first quartile, and third quartile. |
+| `comparison_structure` | Indicates an independent- or dependent-group comparison. |
+| `higher_better` | Indicates whether a higher outcome value represents better performance. |
+:::
 
 ```{r}
 #| label: read-source-data
 
+# Record the checksum of the original file.
 original_checksum <- unname(tools::md5sum(original_path))
 
+# Read the original extraction database.
 original <- readr::read_csv(
   original_path,
   na = c("", "NA"),
@@ -44,9 +65,10 @@ original <- readr::read_csv(
   show_col_types = FALSE
 )
 
+# List the columns that the derivation requires.
 required_columns <- c(
   "study_id", "ex_id", "con_id", "out_id", "es_id",
-  "comparison_structure", "higher_better",
+  "comparison_structure", "higher_better", "gest_stage_ex_standardised",
   "c_mean", "c_sd", "c_n", "c_se", "c_median", "c_q1", "c_q3",
   "ex_mean", "ex_sd", "ex_n", "ex_se", "ex_median", "ex_q1", "ex_q3"
 )
@@ -55,6 +77,7 @@ if (length(setdiff(required_columns, names(original))) > 0) {
   stop("Required columns are missing from the original extraction database.")
 }
 
+# Remove unnamed empty export columns.
 empty_unnamed_columns <- names(original)[
   str_detect(names(original), "^\\.\\.\\.[0-9]+$") &
     vapply(original, function(x) all(is.na(x)), logical(1))
@@ -78,11 +101,11 @@ tibble(
 
 ## Calculation methods
 
-- A missing mean is estimated from Q1, the median, Q3, and sample size with the Luo et al. method [@luo2018].
-- A missing SD is estimated from Q1, Q3, and sample size with the Wan et al. method [@wan2014].
-- If an SD is missing but an SE is available, `SD = SE × sqrt(n)`.
-- If an SE is missing, `SE = SD / sqrt(n)`.
-- Existing extracted values are retained unchanged.
+- We estimate a missing mean from Q1, the median, Q3, and sample size with the Luo et al. method [@luo2018].
+- We estimate a missing SD from Q1, Q3, and sample size with the Wan et al. method [@wan2014].
+- When the source reports an SE but not an SD, we calculate `SD = SE × sqrt(n)`.
+- When the source does not report an SE, we calculate `SE = SD / sqrt(n)`.
+- We retain existing extracted values unchanged.
 
 $$
 \widehat{M} =
@@ -95,6 +118,8 @@ $$
 \frac{Q_3-Q_1}
 {2\Phi^{-1}\left(\frac{0.75n-0.125}{n+0.25}\right)}
 $$
+
+We define one function for each published estimator and one function that completes the mean, SD, and SE for either treatment arm. The function also records the source of every analysis value.
 
 ```{r}
 #| label: summary-statistic-functions
@@ -168,6 +193,8 @@ complete_arm_statistics <- function(data, arm) {
 }
 ```
 
+We apply the functions to the control arm (`c`) and then to the exposed arm (`ex`). We summarise the calculation methods by arm and statistic.
+
 ```{r}
 #| label: calculate-summary-statistics
 
@@ -191,7 +218,9 @@ method_counts |>
 
 # Analysis-ready data
 
-The analysis-ready database contains one mean, SD, SE, and sample size for each arm. The identifiers `ex_id` and `con_id` are retained for the sampling dependency structure, and `comparison_structure` is retained for the lnRR calculation.
+We create an analysis-ready database with one mean, SD, SE, and sample size for each arm. We retain `ex_id` and `con_id` for the sampling dependency structure and `comparison_structure` for the lnRR calculation.
+
+We also standardise character spacing and category labels before selecting the columns required for the analyses.
 
 ```{r}
 #| label: create-analysis-ready-data
@@ -202,7 +231,7 @@ analysis_ready <- with_statistics |>
     shared_control = str_to_lower(shared_control),
     comparison_structure = str_to_lower(comparison_structure),
     higher_better = str_to_lower(higher_better),
-    gest_stage_ex = str_to_lower(gest_stage_ex),
+    gest_stage_ex_standardised = str_to_lower(gest_stage_ex_standardised),
     exposure_type = str_to_lower(exposure_type),
     exposure_type = recode(exposure_type, "intermitent" = "intermittent"),
     noise_type = str_to_lower(noise_type),
@@ -217,7 +246,7 @@ analysis_ready <- with_statistics |>
   transmute(
     study_id, title, doi, publish_in,
     ex_id, con_id, out_id, es_id, shared_control,
-    sp_latin, sp_common, strain, dam_age, gest_stage_ex,
+    sp_latin, sp_common, strain, dam_age, gest_stage_ex_standardised,
     exposure_span_d, exposure_type, exposure_session_duration_h,
     noise_type, noise_type_2, loudness_dB, frequency_Hz,
     control_conditions, offspring_sex, offspring_age_d,
@@ -239,6 +268,8 @@ analysis_ready <- with_statistics |>
 ```
 
 ## Data checks
+
+We check the identifiers, summary statistics, sample sizes, and coded variables before exporting the analysis-ready database. The chapter stops if any check fails.
 
 ```{r}
 #| label: validate-analysis-data
@@ -280,7 +311,7 @@ if (any(validation$status == "Fail")) {
 
 # Data files
 
-The completed extraction database and the analysis-ready database are saved as comma-separated files. The original extraction file is not overwritten.
+We save the completed extraction database and the analysis-ready database as comma-separated files. We then compare the original checksum with its starting value to confirm that we did not overwrite the source file.
 
 ```{r}
 #| label: export-data-files
@@ -294,7 +325,7 @@ if (!identical(original_checksum, unname(tools::md5sum(original_path)))) {
 
 tibble(
   database = c(
-    "Original extraction plus calculated statistics",
+    "Original extraction plus R-derived statistics",
     "Analysis-ready data"
   ),
   file = c(

@@ -13,19 +13,23 @@ It includes:
 
 - preparation of the analysis database from the original extraction file;
 - calculation of the log response ratio (lnRR) and its sampling variance;
-- construction of the sampling variance-covariance matrix.
+- construction of the sampling variance-covariance matrix;
+- estimation of the overall lnRR with a multilevel intercept-only model;
+- separate multilevel meta-regressions for the planned moderators.
 :::
 
 ::: card
 # How to navigate
 
-- **Data preparation** creates the extraction database with calculated missing statistics and the analysis-ready database.
+- **Data preparation** calculates missing statistics and creates the two derived databases.
 - **Effect size calculation** calculates lnRR and `lnRR_var` and reports their distributions.
 - **Sampling variance-covariance matrix** constructs and checks `V` with `metafor`.
+- **Overall effect** fits the intercept-only multilevel meta-analytic model.
+- **Uni-moderators** regenerates `V` and fits one multilevel meta-regression for each moderator.
 :::
 
 ::: card
 # Reproducibility
 
-All data preparation and analyses are executed in R through Quarto. The original extraction file is read but not overwritten. Chapter 3 creates the sampling variance-covariance matrix used in the meta-analysis.
+We run all data preparation and analyses in R through Quarto. We read the original extraction file without overwriting it. Each chapter creates the data or model object required by the following chapter.
 :::

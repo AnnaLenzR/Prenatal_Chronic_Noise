@@ -2,7 +2,25 @@
 title: "Sampling variance-covariance matrix"
 ---
 
-The sampling variance-covariance matrix was constructed from the lnRR sampling variances and the recorded exposed- and control-group identifiers.
+We construct the sampling variance-covariance matrix from the lnRR sampling variances and the exposed- and control-group identifiers in the extraction database.
+
+We first load the effect-size database and check the columns required to construct `V`.
+
+::: callout-note
+## Variable definitions
+
+| Variable | Definition |
+|:--|:--|
+| `study_id` | Identifier for the primary research paper and the cluster argument in `vcalc()`. |
+| `es_id` | Unique identifier for each effect size. |
+| `ex_id` | Identifier for an exposed group within an experiment and study. |
+| `con_id` | Identifier for a control group within an experiment and study. |
+| `out_id` | Identifier for a behavioural outcome. |
+| `ex_n`, `c_n` | Exposed- and control-group sample sizes. |
+| `lnRR_var` | Sampling variance of lnRR and the diagonal value of `V`. |
+| `V` | Sampling variance-covariance matrix for the lnRR estimates. |
+| $\rho$ | Working correlation for multiple or repeated outcomes that share a group. |
+:::
 
 ```{r}
 #| label: setup
@@ -18,11 +36,13 @@ pacman::p_load(
 project_root <- normalizePath("..", mustWork = TRUE)
 derived_dir <- file.path(project_root, "Data", "derived")
 
+# Load the effect-size database from Chapter 2.
 vcv_data <- readr::read_csv(
   file.path(derived_dir, "db_effect_sizes.csv"),
   show_col_types = FALSE
 )
 
+# List the variables required to construct V and its index.
 required_columns <- c(
   "study_id", "es_id", "ex_id", "con_id", "out_id",
   "ex_n", "c_n", "lnRR", "lnRR_var"
@@ -47,13 +67,15 @@ if (any(vcv_data$ex_n <= 0) || any(vcv_data$c_n <= 0)) {
 
 # Matrix construction
 
-`metafor::vcalc()` was used to construct `V` [@viechtbauer2010]. `study_id` defines the study cluster, `ex_id` and `con_id` identify the contrasted groups, and `ex_n` and `c_n` provide the group weights. Each `es_id` is supplied as a distinct observation. A working correlation of $\rho = 0.5$ is used for multiple or repeated outcomes that share an exposed or control group. Effect sizes that share neither group have sampling covariance equal to zero.
+We use `metafor::vcalc()` to construct `V` [@viechtbauer2010]. We use `study_id` as the study cluster, `ex_id` and `con_id` as the contrasted-group identifiers, and `ex_n` and `c_n` as the group weights. We supply each `es_id` as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of $\rho = 0.5$. We assign zero sampling covariance to effect sizes that share neither group.
 
 ```{r}
 #| label: construct-vcv
 
+# Set the fixed working correlation.
 working_rho <- 0.5
 
+# Construct the sampling variance-covariance matrix.
 V <- metafor::vcalc(
   vi = lnRR_var,
   cluster = study_id,
@@ -67,16 +89,18 @@ V <- metafor::vcalc(
   data = vcv_data
 )
 
+# Label the matrix rows and columns with es_id.
 dimnames(V) <- list(vcv_data$es_id, vcv_data$es_id)
 ```
 
 # Matrix checks
 
-The diagonal, symmetry, dependency pattern, and positive definiteness of `V` were checked before export.
+We check the diagonal, finite values, symmetry, dependency pattern, and positive definiteness of `V` before exporting it.
 
 ```{r}
 #| label: check-vcv
 
+# Identify effect-size pairs from the same study that share either group.
 same_study <- outer(vcv_data$study_id, vcv_data$study_id, `==`)
 shared_exposed_group <- same_study &
   outer(vcv_data$ex_id, vcv_data$ex_id, `==`)
@@ -85,9 +109,11 @@ shared_control_group <- same_study &
 shared_group <- shared_exposed_group | shared_control_group
 diag(shared_group) <- FALSE
 
+# Identify effect-size pairs with non-zero covariance.
 nonzero_covariance <- abs(V) > sqrt(.Machine$double.eps)
 diag(nonzero_covariance) <- FALSE
 
+# Use the smallest eigenvalue to check positive definiteness.
 minimum_eigenvalue <- min(eigen(V, symmetric = TRUE, only.values = TRUE)$values)
 
 vcv_checks <- tibble(
@@ -117,6 +143,8 @@ vcv_checks |>
   knitr::kable(caption = "Checks of the sampling variance-covariance matrix.")
 ```
 
+We display the first eight rows and columns to show the matrix structure.
+
 ```{r}
 #| label: display-vcv
 
@@ -127,11 +155,12 @@ V[seq_len(8), seq_len(8)] |>
 
 # Output files
 
-The matrix is saved as CSV and RDS files. The index file records the effect-size order used for the rows and columns of `V`.
+We save the matrix as CSV and RDS files. We also save an index that records the effect-size order in the rows and columns of `V`.
 
 ```{r}
 #| label: export-vcv
 
+# Create the index for the rows and columns of V.
 vcv_index <- vcv_data |>
   transmute(
     matrix_row = row_number(),
@@ -149,6 +178,7 @@ vcv_index <- vcv_data |>
 vcv_matrix_export <- as.data.frame(V, check.names = FALSE) |>
   tibble::rownames_to_column("es_id")
 
+# Export the index and both matrix formats.
 readr::write_csv(
   vcv_index,
   file.path(derived_dir, "PCN_vcv_index.csv"),
@@ -170,10 +200,10 @@ tibble(
   contents = c(
     "Effect-size order and identifiers",
     "Sampling variance-covariance matrix",
-    "R matrix used for modelling"
+    "R matrix for modelling"
   )
 ) |>
-  knitr::kable(caption = "Files created for the sampling variance-covariance matrix.")
+  knitr::kable(caption = "Sampling variance-covariance matrix files.")
 ```
 
 ::: callout-note

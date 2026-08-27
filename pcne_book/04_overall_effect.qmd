@@ -1,0 +1,161 @@
+---
+title: "Overall effect"
+---
+
+After estimating the effect sizes and constructing their sampling variance-covariance matrix, we fit one multilevel, intercept-only meta-analytic model to estimate the overall mean effect of prenatal noise exposure on lnRR.
+
+```{r}
+#| label: setup
+#| include: false
+
+pacman::p_load(
+  dplyr,
+  ggplot2,
+  knitr,
+  metafor,
+  orchaRd,
+  readr,
+  tibble
+)
+
+project_root <- normalizePath("..", mustWork = TRUE)
+derived_dir <- file.path(project_root, "Data", "derived")
+```
+
+# Analysis data
+
+We first load the effect-size database, the sampling variance-covariance matrix (`V`), and the file that records the row order of `V`.
+
+::: callout-note
+## Variable definitions
+
+| Variable | Definition |
+|:--|:--|
+| `study_id` | Identifier for the primary research paper. |
+| `es_id` | Unique identifier for each effect size. |
+| `strain` | Rodent strain in the experiment. |
+| `lnRR` | Bias-corrected log response ratio. |
+| `lnRR_var` | Sampling variance of lnRR. |
+| `V` | Sampling variance-covariance matrix for the lnRR estimates. |
+:::
+
+```{r}
+#| label: load-model-data
+
+# Load the effect-size database.
+db <- readr::read_csv(
+  file.path(derived_dir, "db_effect_sizes.csv"),
+  show_col_types = FALSE
+)
+
+# Load V and its effect-size index.
+V <- readRDS(file.path(derived_dir, "PCN_vcv_matrix.rds"))
+vcv_index <- readr::read_csv(
+  file.path(derived_dir, "PCN_vcv_index.csv"),
+  show_col_types = FALSE
+)
+
+# Check that the database and V contain the same effect sizes in the same order.
+if (
+  nrow(db) != nrow(V) ||
+    ncol(V) != nrow(V) ||
+    !identical(as.character(db$es_id), as.character(vcv_index$es_id))
+) {
+  stop("The effect-size database and VCV matrix are not aligned.")
+}
+
+# Check that the diagonal of V contains the lnRR sampling variances.
+if (max(abs(diag(V) - db$lnRR_var)) >= sqrt(.Machine$double.eps)) {
+  stop("The diagonal of V does not match lnRR_var.")
+}
+```
+
+# Multilevel intercept-only meta-analytic model
+
+We use `metafor::rma.mv()` to fit the model [@viechtbauer2010]. We provide the lnRR estimates as the response and the matrix from the preceding chapter as `V`. We include random intercepts for study (`study_id`), effect size (`es_id`), and strain (`strain`). We use restricted maximum likelihood estimation and `test = "t"`.
+
+```{r}
+#| label: fit-overall-lnrr-model
+
+# Fit the intercept-only multilevel model.
+overall_lnRR_model <- metafor::rma.mv(
+  yi = lnRR,
+  V = V,
+  random = list(
+    ~ 1 | study_id,
+    ~ 1 | es_id,
+    ~ 1 | strain
+  ),
+  test = "t",
+  method = "REML",
+  sparse = TRUE,
+  data = db
+)
+
+# Save the fitted model for the following analyses.
+saveRDS(
+  overall_lnRR_model,
+  file.path(derived_dir, "PCN_overall_lnRR_model.rds")
+)
+```
+
+## lnRR
+
+We print the complete model summary, including the overall lnRR estimate, its standard error, confidence interval, heterogeneity test, and variance components.
+
+```{r}
+#| label: summary-overall-lnrr
+
+summary(overall_lnRR_model)
+```
+
+We calculate multilevel $I^2$ for the total heterogeneity and for each random-effect level.
+
+```{r}
+#| label: i2-overall-lnrr
+
+orchaRd::i2_ml(overall_lnRR_model)
+```
+
+We use an orchard plot to display the effect sizes and the overall model estimate. Point size represents precision, and the horizontal interval shows the confidence interval around the overall estimate.
+
+```{r}
+#| label: orchard-overall-lnrr
+#| fig-cap: "Overall lnRR from the multilevel intercept-only meta-analysis."
+#| fig-width: 6
+#| fig-height: 4
+
+p_lnRR <- orchaRd::orchard_plot(
+  overall_lnRR_model,
+  group = "study_id",
+  xlab = "lnRR",
+  flip = TRUE
+) +
+  ggplot2::scale_x_discrete(labels = "Overall effect")
+
+p_lnRR
+```
+
+# Output file
+
+We save the fitted model as an R object so that the following chapters can use the same model specification.
+
+```{r}
+#| label: overall-model-output
+
+tibble(
+  file = "Data/derived/PCN_overall_lnRR_model.rds",
+  contents = "Intercept-only multilevel lnRR model"
+) |>
+  knitr::kable(caption = "Model object for the following chapters.")
+```
+
+::: callout-note
+## Session information
+
+```{r}
+#| label: session-information
+
+sessionInfo()
+```
+:::
