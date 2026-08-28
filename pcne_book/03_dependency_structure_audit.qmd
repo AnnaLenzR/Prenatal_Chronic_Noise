@@ -1,10 +1,10 @@
 ---
-title: "Sampling variance-covariance matrix"
+title: "Sampling variance-covariance matrices"
 ---
 
-We construct the sampling variance-covariance matrix from the lnRR sampling variances and the exposed- and control-group identifiers in the extraction database.
+We construct one sampling variance-covariance matrix for each effect-size type. Each matrix uses the corresponding sampling variances and the exposed- and control-group identifiers in the extraction database.
 
-We first load the effect-size database and check the columns required to construct `V`.
+We first load the effect-size database and check the columns required to construct the matrices.
 
 ::: callout-note
 ## Variable definitions
@@ -17,8 +17,8 @@ We first load the effect-size database and check the columns required to constru
 | `con_id` | Identifier for a control group within an experiment and study. |
 | `out_id` | Identifier for a behavioural outcome. |
 | `ex_n`, `c_n` | Exposed- and control-group sample sizes. |
-| `lnRR_var` | Sampling variance of lnRR and the diagonal value of `V`. |
-| `V` | Sampling variance-covariance matrix for the lnRR estimates. |
+| `lnRR_var`, `lnVR_var`, `lnCVR_var` | Sampling variances and the diagonal values of the corresponding matrices. |
+| `V` | Sampling variance-covariance matrix for one effect-size type. |
 | $\rho$ | Working correlation for multiple or repeated outcomes that share a group. |
 :::
 
@@ -29,8 +29,10 @@ pacman::p_load(
   dplyr,
   knitr,
   metafor,
+  purrr,
   readr,
-  tibble
+  tibble,
+  tidyr
 )
 
 project_root <- normalizePath("..", mustWork = TRUE)
@@ -45,7 +47,8 @@ vcv_data <- readr::read_csv(
 # List the variables required to construct V and its index.
 required_columns <- c(
   "study_id", "es_id", "ex_id", "con_id", "out_id",
-  "ex_n", "c_n", "lnRR", "lnRR_var"
+  "ex_n", "c_n",
+  "lnRR", "lnRR_var", "lnVR", "lnVR_var", "lnCVR", "lnCVR_var"
 )
 
 if (length(setdiff(required_columns, names(vcv_data))) > 0) {
@@ -57,17 +60,24 @@ if (anyDuplicated(vcv_data$es_id)) {
 if (anyNA(vcv_data[c("study_id", "es_id", "ex_id", "con_id")])) {
   stop("Study and group identifiers must be complete before constructing V.")
 }
-if (any(!is.finite(vcv_data$lnRR_var)) || any(vcv_data$lnRR_var <= 0)) {
-  stop("lnRR_var must contain positive finite sampling variances.")
-}
 if (any(vcv_data$ex_n <= 0) || any(vcv_data$c_n <= 0)) {
   stop("Group sample sizes must be positive before constructing V.")
 }
+
+# Link each effect size to its sampling-variance column.
+effect_specs <- tibble::tribble(
+  ~effect, ~variance,
+  "lnRR",  "lnRR_var",
+  "lnVR",  "lnVR_var",
+  "lnCVR", "lnCVR_var"
+)
 ```
 
 # Matrix construction
 
-We use `metafor::vcalc()` to construct `V` [@viechtbauer2010]. We use `study_id` as the study cluster, `ex_id` and `con_id` as the contrasted-group identifiers, and `ex_n` and `c_n` as the group weights. We supply each `es_id` as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of $\rho = 0.5$. We assign zero sampling covariance to effect sizes that share neither group.
+We use `metafor::vcalc()` to construct each matrix [@viechtbauer2010]. We use `study_id` as the study cluster, `ex_id` and `con_id` as the contrasted-group identifiers, and `ex_n` and `c_n` as the group weights. We supply each `es_id` as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of $\rho = 0.5$. We assign zero sampling covariance to effect sizes that share neither group.
+
+The lnRR matrix contains every effect-size row. The lnVR and lnCVR matrices contain only non-percentage outcomes because Chapter 2 does not calculate variability metrics for percentage outcomes.
 
 ```{r}
 #| label: construct-vcv
@@ -75,135 +85,169 @@ We use `metafor::vcalc()` to construct `V` [@viechtbauer2010]. We use `study_id`
 # Set the fixed working correlation.
 working_rho <- 0.5
 
-# Construct the sampling variance-covariance matrix.
-V <- metafor::vcalc(
-  vi = lnRR_var,
-  cluster = study_id,
-  grp1 = ex_id,
-  grp2 = con_id,
-  w1 = ex_n,
-  w2 = c_n,
-  obs = es_id,
-  rho = working_rho,
-  checkpd = TRUE,
-  data = vcv_data
-)
+# Construct one matrix and retain the matching data rows.
+construct_vcv <- function(data, effect, variance, rho = 0.5) {
+  # Retain rows with a complete effect size and sampling variance.
+  idx <- which(is.finite(data[[effect]]) & is.finite(data[[variance]]))
+  metric_data <- data[idx, , drop = FALSE]
 
-# Label the matrix rows and columns with es_id.
-dimnames(V) <- list(vcv_data$es_id, vcv_data$es_id)
+  if (any(metric_data[[variance]] <= 0)) {
+    stop(variance, " must contain positive sampling variances.")
+  }
+
+  # Construct V from the group identifiers and sampling variances.
+  V <- metafor::vcalc(
+    vi = metric_data[[variance]],
+    cluster = metric_data$study_id,
+    grp1 = metric_data$ex_id,
+    grp2 = metric_data$con_id,
+    w1 = metric_data$ex_n,
+    w2 = metric_data$c_n,
+    obs = metric_data$es_id,
+    rho = rho,
+    checkpd = TRUE
+  )
+
+  # Label the rows and columns with the retained effect-size IDs.
+  dimnames(V) <- list(metric_data$es_id, metric_data$es_id)
+
+  list(effect = effect, variance = variance, data = metric_data, V = V)
+}
+
+# Apply the same matrix construction to lnRR, lnVR, and lnCVR.
+vcv_results <- purrr::map2(
+  effect_specs$effect,
+  effect_specs$variance,
+  ~ construct_vcv(vcv_data, .x, .y, rho = working_rho)
+)
+names(vcv_results) <- effect_specs$effect
 ```
 
 # Matrix checks
 
-We check the diagonal, finite values, symmetry, dependency pattern, and positive definiteness of `V` before exporting it.
+We check the diagonal, finite values, symmetry, dependency pattern, and positive definiteness of each matrix before exporting it.
 
 ```{r}
 #| label: check-vcv
 
-# Identify effect-size pairs from the same study that share either group.
-same_study <- outer(vcv_data$study_id, vcv_data$study_id, `==`)
-shared_exposed_group <- same_study &
-  outer(vcv_data$ex_id, vcv_data$ex_id, `==`)
-shared_control_group <- same_study &
-  outer(vcv_data$con_id, vcv_data$con_id, `==`)
-shared_group <- shared_exposed_group | shared_control_group
-diag(shared_group) <- FALSE
+check_vcv <- function(result) {
+  data <- result$data
+  V <- result$V
 
-# Identify effect-size pairs with non-zero covariance.
-nonzero_covariance <- abs(V) > sqrt(.Machine$double.eps)
-diag(nonzero_covariance) <- FALSE
+  # Identify pairs from the same study that share either group.
+  same_study <- outer(data$study_id, data$study_id, `==`)
+  shared_exposed_group <- same_study & outer(data$ex_id, data$ex_id, `==`)
+  shared_control_group <- same_study & outer(data$con_id, data$con_id, `==`)
+  shared_group <- shared_exposed_group | shared_control_group
+  diag(shared_group) <- FALSE
 
-# Use the smallest eigenvalue to check positive definiteness.
-minimum_eigenvalue <- min(eigen(V, symmetric = TRUE, only.values = TRUE)$values)
+  # Identify off-diagonal non-zero sampling covariances.
+  nonzero_covariance <- abs(V) > sqrt(.Machine$double.eps)
+  diag(nonzero_covariance) <- FALSE
 
-vcv_checks <- tibble(
-  check = c(
-    "Matrix rows",
-    "Matrix columns",
-    "Diagonal equals lnRR_var",
-    "Finite matrix entries",
-    "Symmetric matrix",
-    "Positive-definite matrix",
-    "Effect-size pairs with non-zero covariance",
-    "Non-zero covariance pairs without a shared group"
-  ),
-  value = c(
-    as.character(nrow(V)),
-    as.character(ncol(V)),
-    as.character(max(abs(diag(V) - vcv_data$lnRR_var)) < sqrt(.Machine$double.eps)),
-    as.character(all(is.finite(V))),
-    as.character(isSymmetric(V)),
-    as.character(minimum_eigenvalue > 0),
-    as.character(sum(upper.tri(V) & nonzero_covariance)),
-    as.character(sum(upper.tri(V) & nonzero_covariance & !shared_group))
+  tibble(
+    effect_size = result$effect,
+    k = nrow(V),
+    diagonal_matches = max(abs(diag(V) - data[[result$variance]])) <
+      sqrt(.Machine$double.eps),
+    finite = all(is.finite(V)),
+    symmetric = isSymmetric(V),
+    positive_definite = min(eigen(V, symmetric = TRUE, only.values = TRUE)$values) > 0,
+    nonzero_covariance_pairs = sum(upper.tri(V) & nonzero_covariance),
+    nonzero_pairs_without_shared_group = sum(
+      upper.tri(V) & nonzero_covariance & !shared_group
+    )
   )
-)
+}
+
+vcv_checks <- purrr::map_dfr(vcv_results, check_vcv)
 
 vcv_checks |>
   knitr::kable(caption = "Checks of the sampling variance-covariance matrix.")
 ```
 
-We display the first eight rows and columns to show the matrix structure.
+We display the first eight rows and columns of each matrix to show its structure.
 
 ```{r}
 #| label: display-vcv
+#| results: asis
 
-V[seq_len(8), seq_len(8)] |>
-  round(6) |>
-  knitr::kable(caption = "First eight rows and columns of V.")
+for (result in vcv_results) {
+  n_display <- min(8, nrow(result$V))
+  cat("\n\n## ", result$effect, "\n\n", sep = "")
+  cat(
+    knitr::kable(
+      round(result$V[seq_len(n_display), seq_len(n_display)], 6),
+      caption = paste("First rows and columns of the", result$effect, "matrix.")
+    ),
+    sep = "\n"
+  )
+  cat("\n\n")
+}
 ```
 
 # Output files
 
-We save the matrix as CSV and RDS files. We also save an index that records the effect-size order in the rows and columns of `V`.
+We save each matrix as CSV and RDS files. We also save an index that records the effect-size order in the rows and columns of each matrix.
 
 ```{r}
 #| label: export-vcv
 
-# Create the index for the rows and columns of V.
-vcv_index <- vcv_data |>
-  transmute(
-    matrix_row = row_number(),
-    study_id,
-    es_id,
-    ex_id,
-    con_id,
-    out_id,
-    ex_n,
-    c_n,
-    lnRR,
-    lnRR_var
-  )
-
-vcv_matrix_export <- as.data.frame(V, check.names = FALSE) |>
-  tibble::rownames_to_column("es_id")
-
-# Export the index and both matrix formats.
-readr::write_csv(
-  vcv_index,
-  file.path(derived_dir, "PCN_vcv_index.csv"),
-  na = ""
+# Define file names for the three sets of outputs. We retain the existing
+# lnRR names so the overall-effect chapter remains compatible.
+vcv_files <- tribble(
+  ~effect, ~index_file, ~csv_file, ~rds_file,
+  "lnRR",  "PCN_vcv_index.csv",       "PCN_vcv_matrix.csv",       "PCN_vcv_matrix.rds",
+  "lnVR",  "PCN_lnVR_vcv_index.csv",  "PCN_lnVR_vcv_matrix.csv",  "PCN_lnVR_vcv_matrix.rds",
+  "lnCVR", "PCN_lnCVR_vcv_index.csv", "PCN_lnCVR_vcv_matrix.csv", "PCN_lnCVR_vcv_matrix.rds"
 )
-readr::write_csv(
-  vcv_matrix_export,
-  file.path(derived_dir, "PCN_vcv_matrix.csv"),
-  na = ""
-)
-saveRDS(V, file.path(derived_dir, "PCN_vcv_matrix.rds"))
 
-tibble(
-  file = c(
-    "Data/derived/PCN_vcv_index.csv",
-    "Data/derived/PCN_vcv_matrix.csv",
-    "Data/derived/PCN_vcv_matrix.rds"
-  ),
-  contents = c(
-    "Effect-size order and identifiers",
-    "Sampling variance-covariance matrix",
-    "R matrix for modelling"
+for (i in seq_len(nrow(vcv_files))) {
+  result <- vcv_results[[vcv_files$effect[i]]]
+
+  # Record the row order and the effect-size values used in this matrix.
+  vcv_index <- result$data |>
+    transmute(
+      matrix_row = row_number(),
+      study_id,
+      es_id,
+      ex_id,
+      con_id,
+      out_id,
+      ex_n,
+      c_n,
+      effect_size = .data[[result$effect]],
+      sampling_variance = .data[[result$variance]]
+    )
+
+  vcv_matrix_export <- as.data.frame(result$V, check.names = FALSE) |>
+    tibble::rownames_to_column("es_id")
+
+  readr::write_csv(
+    vcv_index,
+    file.path(derived_dir, vcv_files$index_file[i]),
+    na = ""
   )
-) |>
-  knitr::kable(caption = "Sampling variance-covariance matrix files.")
+  readr::write_csv(
+    vcv_matrix_export,
+    file.path(derived_dir, vcv_files$csv_file[i]),
+    na = ""
+  )
+  saveRDS(result$V, file.path(derived_dir, vcv_files$rds_file[i]))
+}
+
+vcv_files |>
+  tidyr::pivot_longer(
+    cols = c(index_file, csv_file, rds_file),
+    names_to = "format",
+    values_to = "file"
+  ) |>
+  mutate(file = file.path("Data", "derived", file)) |>
+  select(effect, format, file) |>
+  knitr::kable(
+    col.names = c("Effect size", "File type", "File"),
+    caption = "Sampling variance-covariance matrix files."
+  )
 ```
 
 ::: callout-note

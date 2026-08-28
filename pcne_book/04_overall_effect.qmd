@@ -1,8 +1,14 @@
 ---
-title: "Overall effect"
+title: "Overall effects"
 ---
 
-After estimating the effect sizes and constructing their sampling variance-covariance matrix, we fit one multilevel, intercept-only meta-analytic model to estimate the overall mean effect of prenatal noise exposure on lnRR.
+After estimating effect sizes, we fit three multilevel, intercept-only meta-analytic models to estimate the overall effect of prenatal noise exposure on:
+
+- the mean outcome (lnRR),
+- the absolute variability (lnVR),
+- the relative variability (lnCVR).
+
+Because studies can contribute multiple dependent outcomes, we use `metafor::rma.mv()` with the sampling variance-covariance matrices constructed in the preceding chapter.
 
 ```{r}
 #| label: setup
@@ -14,17 +20,22 @@ pacman::p_load(
   knitr,
   metafor,
   orchaRd,
+  purrr,
   readr,
   tibble
 )
 
+# Keep the rendered output concise and use a consistent code-output prefix.
+knitr::opts_chunk$set(comment = "#>")
+
+# Define the project folders used in this chapter.
 project_root <- normalizePath("..", mustWork = TRUE)
 derived_dir <- file.path(project_root, "Data", "derived")
 ```
 
-# Analysis data
+# Variance-covariance matrices (shared-group dependence)
 
-We first load the effect-size database, the sampling variance-covariance matrix (`V`), and the file that records the row order of `V`.
+We load the effect-size database and the matching sampling variance-covariance matrix (`V`) for each effect-size type. Chapter 3 uses `metafor::vcalc()` to represent dependence from shared prenatal-noise and control groups. It uses a working correlation of $\rho = 0.5$ for multiple or repeated outcomes that share a group. Each matrix index records the effect-size order in the rows and columns of `V`.
 
 ::: callout-note
 ## Variable definitions
@@ -34,121 +45,283 @@ We first load the effect-size database, the sampling variance-covariance matrix 
 | `study_id` | Identifier for the primary research paper. |
 | `es_id` | Unique identifier for each effect size. |
 | `strain` | Rodent strain in the experiment. |
-| `lnRR` | Bias-corrected log response ratio. |
-| `lnRR_var` | Sampling variance of lnRR. |
-| `V` | Sampling variance-covariance matrix for the lnRR estimates. |
+| `lnRR` | Log response ratio, which measures differences in group means. |
+| `lnVR` | Log variability ratio, which measures absolute variability. |
+| `lnCVR` | Log coefficient of variation ratio, which measures variability relative to the group mean. |
+| `lnRR_var`, `lnVR_var`, `lnCVR_var` | Sampling variance of the corresponding effect size. |
+| `V` | Sampling variance-covariance matrix for one effect-size type. |
+| $k$ | Number of effect sizes included in a model. |
 :::
+
+**Direction conventions:** lnRR values below zero represent less anxiety- or depression-like behaviour, while values above zero represent more. For lnVR and lnCVR, values below zero represent lower variability and values above zero represent greater variability in the prenatal-noise group.
 
 ```{r}
 #| label: load-model-data
 
-# Load the effect-size database.
+# Load the effect-size database created in Chapter 2.
 db <- readr::read_csv(
   file.path(derived_dir, "db_effect_sizes.csv"),
   show_col_types = FALSE
 )
 
-# Load V and its effect-size index.
-V <- readRDS(file.path(derived_dir, "PCN_vcv_matrix.rds"))
-vcv_index <- readr::read_csv(
-  file.path(derived_dir, "PCN_vcv_index.csv"),
-  show_col_types = FALSE
+# Link each effect-size type to its sampling variance, VCV matrix, and index.
+metric_specs <- tribble(
+  ~effect, ~variance, ~matrix_file, ~index_file, ~axis_label,
+  "lnRR",  "lnRR_var",  "PCN_vcv_matrix.rds",       "PCN_vcv_index.csv",       "lnRR",
+  "lnVR",  "lnVR_var",  "PCN_lnVR_vcv_matrix.rds",  "PCN_lnVR_vcv_index.csv",  "lnVR",
+  "lnCVR", "lnCVR_var", "PCN_lnCVR_vcv_matrix.rds", "PCN_lnCVR_vcv_index.csv", "lnCVR"
 )
 
-# Check that the database and V contain the same effect sizes in the same order.
-if (
-  nrow(db) != nrow(V) ||
-    ncol(V) != nrow(V) ||
-    !identical(as.character(db$es_id), as.character(vcv_index$es_id))
-) {
-  stop("The effect-size database and VCV matrix are not aligned.")
+load_metric_input <- function(effect, variance, matrix_file, index_file) {
+  # Load the matrix and its row-order index from Chapter 3.
+  V <- readRDS(file.path(derived_dir, matrix_file))
+  index <- readr::read_csv(
+    file.path(derived_dir, index_file),
+    show_col_types = FALSE
+  )
+
+  # Arrange the effect-size database in the order recorded by the index.
+  positions <- match(index$es_id, db$es_id)
+  if (anyNA(positions)) {
+    stop("The ", effect, " index contains an unknown es_id.")
+  }
+  metric_data <- db[positions, , drop = FALSE]
+
+  # Confirm that the data, index, and matrix describe the same effect sizes.
+  if (
+    nrow(metric_data) != nrow(V) ||
+      ncol(V) != nrow(V) ||
+      !identical(as.character(metric_data$es_id), as.character(index$es_id))
+  ) {
+    stop("The ", effect, " data and VCV matrix are not aligned.")
+  }
+
+  # Confirm that every model row has a valid effect size and sampling variance.
+  if (
+    any(!is.finite(metric_data[[effect]])) ||
+      any(!is.finite(metric_data[[variance]])) ||
+      any(metric_data[[variance]] <= 0)
+  ) {
+    stop("The ", effect, " model data contain invalid values.")
+  }
+
+  # Confirm that the matrix diagonal contains the corresponding variances.
+  if (
+    max(abs(diag(V) - metric_data[[variance]])) >=
+      sqrt(.Machine$double.eps)
+  ) {
+    stop("The diagonal of the ", effect, " matrix does not match ", variance, ".")
+  }
+
+  list(data = metric_data, V = V)
 }
 
-# Check that the diagonal of V contains the lnRR sampling variances.
-if (max(abs(diag(V) - db$lnRR_var)) >= sqrt(.Machine$double.eps)) {
-  stop("The diagonal of V does not match lnRR_var.")
-}
+# Load and validate the three model datasets and matrices.
+metric_inputs <- purrr::pmap(
+  metric_specs[, c("effect", "variance", "matrix_file", "index_file")],
+  load_metric_input
+)
+names(metric_inputs) <- metric_specs$effect
+
+# Report the number of effect sizes available for each overall model.
+metric_specs |>
+  transmute(
+    `Effect size` = effect,
+    k = purrr::map_int(effect, ~ nrow(metric_inputs[[.x]]$data))
+  ) |>
+  knitr::kable(caption = "Effect sizes included in the overall models.")
 ```
 
-# Multilevel intercept-only meta-analytic model
+The lnRR model includes every effect size. The lnVR and lnCVR models exclude percentage outcomes because the mean and variance of a proportion are mathematically dependent. They do not provide independent information, so we do not calculate separate variability effect sizes for these outcomes.
 
-We use `metafor::rma.mv()` to fit the model [@viechtbauer2010]. We provide the lnRR estimates as the response and the matrix from the preceding chapter as `V`. We include random intercepts for study (`study_id`), effect size (`es_id`), and strain (`strain`). We use restricted maximum likelihood estimation and `test = "t"`.
+# Multilevel intercept-only meta-analytic models
+
+We use `metafor::rma.mv()` to fit each model [@viechtbauer2010]. We provide one effect-size column as the response and its matching matrix as `V`. We use the same specification for all three models:
+
+- random intercepts for study (`study_id`),
+- random intercepts for effect size (`es_id`),
+- random intercepts for strain (`strain`),
+- REML estimation and `test = "t"`.
 
 ```{r}
-#| label: fit-overall-lnrr-model
+#| label: fit-overall-models
 
-# Fit the intercept-only multilevel model.
-overall_lnRR_model <- metafor::rma.mv(
-  yi = lnRR,
-  V = V,
-  random = list(
-    ~ 1 | study_id,
-    ~ 1 | es_id,
-    ~ 1 | strain
-  ),
-  test = "t",
-  method = "REML",
-  sparse = TRUE,
-  data = db
+fit_overall_model <- function(input, effect) {
+  # Fit one intercept-only model with the matching data and VCV matrix.
+  metafor::rma.mv(
+    yi = input$data[[effect]],
+    V = input$V,
+    random = list(
+      ~ 1 | study_id,
+      ~ 1 | es_id,
+      ~ 1 | strain
+    ),
+    test = "t",
+    method = "REML",
+    sparse = TRUE,
+    data = input$data
+  )
+}
+
+# Apply the same model specification to lnRR, lnVR, and lnCVR.
+overall_models <- purrr::map2(
+  metric_inputs,
+  metric_specs$effect,
+  fit_overall_model
 )
+names(overall_models) <- metric_specs$effect
 
-# Save the fitted model for the following analyses.
+overall_lnRR_model <- overall_models$lnRR
+overall_lnVR_model <- overall_models$lnVR
+overall_lnCVR_model <- overall_models$lnCVR
+
+# Save each fitted model for the following analyses.
 saveRDS(
   overall_lnRR_model,
   file.path(derived_dir, "PCN_overall_lnRR_model.rds")
 )
+saveRDS(
+  overall_lnVR_model,
+  file.path(derived_dir, "PCN_overall_lnVR_model.rds")
+)
+saveRDS(
+  overall_lnCVR_model,
+  file.path(derived_dir, "PCN_overall_lnCVR_model.rds")
+)
 ```
 
-## lnRR
+For each effect-size type, we print the complete model summary and calculate multilevel $I^2$. We then use an orchard plot to display the effect sizes and the overall model estimate. Point size represents precision, and the horizontal interval shows the confidence interval around the overall estimate.
 
-We print the complete model summary, including the overall lnRR estimate, its standard error, confidence interval, heterogeneity test, and variance components.
+```{r}
+#| label: overall-plot-function
+#| include: false
+
+plot_overall_model <- function(model, axis_label) {
+  # Draw one orchard plot with the direction stated on the effect-size axis.
+  orchaRd::orchard_plot(
+    model,
+    group = "study_id",
+    xlab = axis_label,
+    flip = TRUE
+  ) +
+    ggplot2::scale_x_discrete(labels = "Overall effect")
+}
+```
+
+:::::::::: columns
+::::: {.column width="49%"}
+::: panel-text
+## lnRR
+:::
 
 ```{r}
 #| label: summary-overall-lnrr
 
+# Print the complete lnRR model results.
 summary(overall_lnRR_model)
 ```
-
-We calculate multilevel $I^2$ for the total heterogeneity and for each random-effect level.
 
 ```{r}
 #| label: i2-overall-lnrr
 
+# Calculate total and level-specific multilevel I-squared.
 orchaRd::i2_ml(overall_lnRR_model)
 ```
 
-We use an orchard plot to display the effect sizes and the overall model estimate. Point size represents precision, and the horizontal interval shows the confidence interval around the overall estimate.
-
+::: card
 ```{r}
 #| label: orchard-overall-lnrr
 #| fig-cap: "Overall lnRR from the multilevel intercept-only meta-analysis."
 #| fig-width: 6
 #| fig-height: 4
 
-p_lnRR <- orchaRd::orchard_plot(
+plot_overall_model(
   overall_lnRR_model,
-  group = "study_id",
-  xlab = "lnRR",
-  flip = TRUE
-) +
-  ggplot2::scale_x_discrete(labels = "Overall effect")
-
-p_lnRR
+  metric_specs$axis_label[metric_specs$effect == "lnRR"]
+)
 ```
+:::
+:::::
 
-# Output file
+::: {.column width="2%"}
+:::
 
-We save the fitted model as an R object so that the following chapters can use the same model specification.
+::::: {.column width="49%"}
+::: panel-text
+## lnVR
+:::
 
 ```{r}
-#| label: overall-model-output
+#| label: summary-overall-lnvr
 
-tibble(
-  file = "Data/derived/PCN_overall_lnRR_model.rds",
-  contents = "Intercept-only multilevel lnRR model"
-) |>
-  knitr::kable(caption = "Model object for the following chapters.")
+# Print the complete lnVR model results.
+summary(overall_lnVR_model)
 ```
+
+```{r}
+#| label: i2-overall-lnvr
+
+# Calculate total and level-specific multilevel I-squared.
+orchaRd::i2_ml(overall_lnVR_model)
+```
+
+::: card
+```{r}
+#| label: orchard-overall-lnvr
+#| fig-cap: "Overall lnVR from the multilevel intercept-only meta-analysis."
+#| fig-width: 6
+#| fig-height: 4
+
+plot_overall_model(
+  overall_lnVR_model,
+  metric_specs$axis_label[metric_specs$effect == "lnVR"]
+)
+```
+:::
+:::::
+::::::::::
+
+:::::::: columns
+::: {.column width="25%"}
+:::
+
+::::: {.column width="50%"}
+::: panel-text
+## lnCVR
+:::
+
+```{r}
+#| label: summary-overall-lncvr
+
+# Print the complete lnCVR model results.
+summary(overall_lnCVR_model)
+```
+
+```{r}
+#| label: i2-overall-lncvr
+
+# Calculate total and level-specific multilevel I-squared.
+orchaRd::i2_ml(overall_lnCVR_model)
+```
+
+::: card
+```{r}
+#| label: orchard-overall-lncvr
+#| fig-cap: "Overall lnCVR from the multilevel intercept-only meta-analysis."
+#| fig-width: 6
+#| fig-height: 4
+
+plot_overall_model(
+  overall_lnCVR_model,
+  metric_specs$axis_label[metric_specs$effect == "lnCVR"]
+)
+```
+:::
+:::::
+
+::: {.column width="25%"}
+:::
+::::::::
 
 ::: callout-note
 ## Session information

@@ -8,9 +8,9 @@ noise_type,White noise,white_noise,machine-readable label,53
 noise_type,Traffic,traffic,standardize capitalization,11
 noise_type,Other/Unclear,other_unclear,machine-readable label,6
 noise_type,Door bell,doorbell,standardize spelling,2
-noise_type_2,Ultrasound,ultrasound,standardize capitalization,135
-noise_type_2,Audible,audible,standardize capitalization,66
-noise_type_2,Unclear,unclear,standardize capitalization,6
+noise_frequency_range,Ultrasound,ultrasound,standardize capitalization,135
+noise_frequency_range,Audible,audible,standardize capitalization,66
+noise_frequency_range,Unclear,unclear,standardize capitalization,6
 control_conditions,Ambient sound,ambient_sound,machine-readable label,118
 control_conditions,Silence,silence,standardize capitalization,6
 control_conditions,Unclear,unclear,standardize capitalization,83

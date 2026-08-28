@@ -1,4 +1,4 @@
-matrix_row,study_id,es_id,ex_id,con_id,out_id,ex_n,c_n,lnRR,lnRR_var
+matrix_row,study_id,es_id,ex_id,con_id,out_id,ex_n,c_n,effect_size,sampling_variance
 1,uygur_2010_aphyhun,es001,ex001,con001,out001,10,9,0.32101479719866327,0.6553273808977046
 2,uygur_2010_aphyhun,es002,ex001,con001,out002,10,9,0.15682355183769348,0.0759308236480169
 3,uygur_2010_aphyhun,es003,ex001,con001,out003,10,9,0.42144857607545705,0.12562202572156428

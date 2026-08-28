@@ -94,7 +94,7 @@ summary(ma_all)
 
 # Visual inspection: funnel plot
 
-We plot lnRR against inverse standard error. Greater values on the vertical axis represent greater precision.
+We plot lnRR against inverse standard error. Greater values on the vertical axis represent greater precision. Negative lnRR values represent less anxiety- or depression-like behaviour, and positive values represent more.
 
 ```{r}
 #| label: funnel-plot
@@ -107,7 +107,7 @@ metafor::funnel(
   yaxis = "seinv",
   las = 1,
   digits = c(2, 1),
-  xlab = "Standardised residuals (lnRR)",
+  xlab = "Standardised residual lnRR (- less, + more anxiety/depression-like behaviour)",
   ylab = "Precision (inverse of SE)",
   pch = 21,
   bg = scales::alpha("black", 0.2),
@@ -160,7 +160,7 @@ egger_plot <- orchaRd::bubble_plot(
   mod = "sqrt_inv_e_n",
   group = "study_id",
   xlab = "Square root of inverse effective sample size",
-  ylab = "Effect size (lnRR)"
+  ylab = "lnRR (- less, + more anxiety/depression-like behaviour)"
 )
 
 egger_plot
@@ -211,7 +211,7 @@ time_lag_plot <- orchaRd::bubble_plot(
   mod = "year_c",
   group = "study_id",
   xlab = "Year of publication",
-  ylab = "Effect size (lnRR)"
+  ylab = "lnRR (- less, + more anxiety/depression-like behaviour)"
 )
 
 # Replace centred values with publication years on the horizontal axis.
@@ -241,7 +241,14 @@ We combine the two regression plots in one figure.
 #| fig-width: 10
 #| fig-height: 7
 
-publication_bias_dashboard <- egger_plot / time_lag_plot +
+# Use a compact version of the same direction label in the two-panel figure.
+egger_dashboard_plot <- egger_plot +
+  ggplot2::labs(y = "lnRR (- less, + more)")
+
+time_lag_dashboard_plot <- time_lag_plot +
+  ggplot2::labs(y = "lnRR (- less, + more)")
+
+publication_bias_dashboard <- egger_dashboard_plot / time_lag_dashboard_plot +
   patchwork::plot_annotation(tag_levels = "A") &
   ggplot2::theme(
     plot.tag = ggplot2::element_text(size = 12, face = "bold")

@@ -12,10 +12,10 @@ This online supplement provides the computational workflow for the systematic re
 It includes:
 
 - preparation of the analysis database from the original extraction file;
-- calculation of the log response ratio (lnRR) and its sampling variance;
-- construction of the sampling variance-covariance matrix;
-- estimation of the overall lnRR with a multilevel intercept-only model;
-- separate multilevel meta-regressions for the planned moderators;
+- calculation of lnRR, lnVR, lnCVR, and their sampling variances;
+- construction of the sampling variance-covariance matrix for each effect-size type;
+- estimation of the overall lnRR, lnVR, and lnCVR with multilevel intercept-only models;
+- separate multilevel meta-regressions for each effect-size type and moderator;
 - publication-bias diagnostics for small-study effects and time-lag patterns;
 - the adapted CRIME-Q appraisal for each included study.
 :::
@@ -24,10 +24,10 @@ It includes:
 # How to navigate
 
 - **Data preparation** calculates missing statistics and creates the two derived databases.
-- **Effect size calculation** calculates lnRR and `lnRR_var` and reports their distributions.
-- **Sampling variance-covariance matrix** constructs and checks `V` with `metafor`.
-- **Overall effect** fits the intercept-only multilevel meta-analytic model.
-- **Uni-moderators** subsets `V` and fits one multilevel meta-regression for each moderator.
+- **Effect size calculation** calculates lnRR, lnVR, lnCVR, and their sampling variances and reports their distributions.
+- **Sampling variance-covariance matrices** constructs and checks one `V` matrix for each effect-size type with `metafor`.
+- **Overall effects** fits one intercept-only multilevel meta-analytic model for lnRR, lnVR, and lnCVR.
+- **Uni-moderators** subsets the matching `V` and fits one multilevel meta-regression for each effect-size type and moderator.
 - **Publication bias** displays the funnel plot and fits the small-study and publication-year models.
 - **CRIME-Q appraisal** displays the adapted item definitions and finalized study-level ratings.
 :::

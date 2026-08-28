@@ -1,0 +1,477 @@
+created_at,user_id,user_email,article_id,key,value
+2025-11-18T18:24:02.255Z,845395,lenzrive@ualberta.ca,386282570,note-17181404,1
+2025-11-18T18:24:05.380Z,845395,lenzrive@ualberta.ca,386282570,included,1
+2025-11-18T19:59:05.567Z,845395,lenzrive@ualberta.ca,386283005,included,-1
+2025-11-19T20:27:36.067Z,845395,lenzrive@ualberta.ca,386282672,note-17204799,1
+2025-11-19T20:27:37.227Z,845395,lenzrive@ualberta.ca,386282672,included,1
+2025-11-19T20:49:44.493Z,845395,lenzrive@ualberta.ca,386282675,note-17205060,1
+2025-11-19T20:49:46.014Z,845395,lenzrive@ualberta.ca,386282675,included,1
+2025-11-19T20:50:07.104Z,845395,lenzrive@ualberta.ca,386282708,note-17205061,1
+2025-11-19T20:50:08.270Z,845395,lenzrive@ualberta.ca,386282708,included,1
+2025-11-19T20:50:22.734Z,845395,lenzrive@ualberta.ca,386282791,included,-1
+2025-11-19T23:07:33.770Z,845395,lenzrive@ualberta.ca,386283545,included,0
+2025-11-21T15:09:45.228Z,845395,lenzrive@ualberta.ca,386283393,included,1
+2025-11-25T21:58:47.351Z,845395,lenzrive@ualberta.ca,386283985,included,1
+2025-11-25T22:01:33.997Z,845395,lenzrive@ualberta.ca,386284014,included,-1
+2025-11-25T22:11:22.128Z,845395,lenzrive@ualberta.ca,386284007,included,-1
+2025-11-25T22:33:13.555Z,845395,lenzrive@ualberta.ca,386283023,included,-1
+2025-11-25T22:36:02.165Z,845395,lenzrive@ualberta.ca,386283770,included,1
+2025-11-25T22:57:22.565Z,845395,lenzrive@ualberta.ca,386283263,included,-1
+2025-11-25T22:57:40.428Z,845395,lenzrive@ualberta.ca,386283263,included,1
+2025-11-26T21:23:56.514Z,845395,lenzrive@ualberta.ca,386283545,note-17358557,1
+2025-11-26T21:24:00.471Z,845395,lenzrive@ualberta.ca,386283545,included,-1
+2025-11-26T21:27:32.532Z,845395,lenzrive@ualberta.ca,386281952,included,1
+2025-11-26T21:34:58.872Z,845395,lenzrive@ualberta.ca,386281970,included,1
+2025-11-26T23:24:35.339Z,845395,lenzrive@ualberta.ca,386282158,included,1
+2025-11-27T22:47:59.101Z,845395,lenzrive@ualberta.ca,386282418,included,1
+2025-11-27T22:57:50.747Z,845395,lenzrive@ualberta.ca,386282451,included,1
+2025-11-27T23:24:49.205Z,845395,lenzrive@ualberta.ca,386282504,included,1
+2025-11-27T23:26:14.164Z,845395,lenzrive@ualberta.ca,386282504,note-17386312,1
+2025-11-27T23:26:16.195Z,845395,lenzrive@ualberta.ca,386282504,included,-1
+2025-11-27T23:29:19.456Z,845395,lenzrive@ualberta.ca,386282511,note-17386341,1
+2025-11-27T23:29:20.934Z,845395,lenzrive@ualberta.ca,386282511,included,-1
+2025-11-28T00:58:54.520Z,845395,lenzrive@ualberta.ca,386282493,included,1
+2025-11-28T01:17:24.136Z,845395,lenzrive@ualberta.ca,386282729,included,1
+2025-11-28T01:19:15.516Z,845395,lenzrive@ualberta.ca,386282738,included,1
+2025-11-28T02:02:24.619Z,845395,lenzrive@ualberta.ca,386282678,included,-1
+2025-11-28T02:08:02.485Z,845395,lenzrive@ualberta.ca,386282742,included,-1
+2025-11-28T02:10:10.653Z,845395,lenzrive@ualberta.ca,386282801,included,-1
+2025-11-28T02:10:52.311Z,845395,lenzrive@ualberta.ca,386282810,included,-1
+2025-11-28T02:11:17.680Z,845395,lenzrive@ualberta.ca,386282812,included,-1
+2025-11-28T02:12:53.189Z,845395,lenzrive@ualberta.ca,386282821,included,-1
+2025-11-28T02:18:05.559Z,845395,lenzrive@ualberta.ca,386282921,note-17387888,1
+2025-11-28T02:18:07.259Z,845395,lenzrive@ualberta.ca,386282921,included,-1
+2025-11-28T02:28:43.825Z,845395,lenzrive@ualberta.ca,386282676,included,-1
+2025-11-28T02:28:59.790Z,845395,lenzrive@ualberta.ca,386282745,included,-1
+2025-11-28T02:34:32.827Z,845395,lenzrive@ualberta.ca,386282858,included,-1
+2025-11-28T02:35:46.817Z,845395,lenzrive@ualberta.ca,386282859,included,-1
+2025-11-28T02:40:08.428Z,845395,lenzrive@ualberta.ca,386282868,included,-1
+2025-11-28T02:40:14.561Z,845395,lenzrive@ualberta.ca,386282868,note-17388192,1
+2025-11-28T04:32:54.822Z,845395,lenzrive@ualberta.ca,386282763,included,-1
+2025-11-28T05:09:03.143Z,845395,lenzrive@ualberta.ca,386282782,included,1
+2025-11-28T05:09:11.493Z,845395,lenzrive@ualberta.ca,386282782,included,-1
+2025-11-28T05:22:51.722Z,845395,lenzrive@ualberta.ca,386283223,included,1
+2025-11-28T05:28:22.332Z,845395,lenzrive@ualberta.ca,386283326,included,1
+2025-11-28T05:43:20.639Z,845395,lenzrive@ualberta.ca,386283438,included,1
+2025-11-28T05:56:10.522Z,845395,lenzrive@ualberta.ca,386283539,included,-1
+2025-11-28T06:01:08.588Z,845395,lenzrive@ualberta.ca,386283617,included,-1
+2025-11-28T06:05:43.377Z,845395,lenzrive@ualberta.ca,386283651,included,1
+2025-11-28T06:08:08.638Z,845395,lenzrive@ualberta.ca,386283720,included,1
+2025-11-28T06:15:01.530Z,845395,lenzrive@ualberta.ca,386283754,included,-1
+2025-11-28T06:15:48.007Z,845395,lenzrive@ualberta.ca,386283761,included,1
+2025-11-28T06:16:10.419Z,845395,lenzrive@ualberta.ca,386283763,included,-1
+2025-11-28T06:18:20.107Z,845395,lenzrive@ualberta.ca,386283838,included,-1
+2025-11-28T06:27:59.287Z,845395,lenzrive@ualberta.ca,386283046,included,1
+2025-11-28T06:28:59.809Z,845395,lenzrive@ualberta.ca,386283061,included,1
+2025-11-28T06:30:46.775Z,845395,lenzrive@ualberta.ca,386283068,included,-1
+2025-11-28T06:33:59.612Z,845395,lenzrive@ualberta.ca,386283075,included,1
+2025-11-28T06:41:11.931Z,845395,lenzrive@ualberta.ca,386283175,included,-1
+2025-11-28T06:41:22.733Z,845395,lenzrive@ualberta.ca,386283175,included,1
+2025-11-28T06:46:44.473Z,845395,lenzrive@ualberta.ca,386283208,included,1
+2025-11-28T06:47:01.804Z,845395,lenzrive@ualberta.ca,386283209,included,1
+2025-11-28T06:48:00.650Z,845395,lenzrive@ualberta.ca,386283467,included,1
+2025-11-28T06:53:11.106Z,845395,lenzrive@ualberta.ca,386283501,included,1
+2025-11-28T06:55:09.171Z,845395,lenzrive@ualberta.ca,386283689,included,1
+2025-11-28T06:57:05.209Z,845395,lenzrive@ualberta.ca,386283703,included,1
+2025-11-28T07:04:58.425Z,845395,lenzrive@ualberta.ca,386283891,included,1
+2025-11-28T07:06:16.681Z,845395,lenzrive@ualberta.ca,386283897,included,-1
+2025-11-28T07:08:39.663Z,845395,lenzrive@ualberta.ca,386283981,included,1
+2025-11-28T07:11:15.957Z,845395,lenzrive@ualberta.ca,386283297,included,1
+2025-11-28T07:11:54.131Z,845395,lenzrive@ualberta.ca,386283305,included,-1
+2025-11-28T07:14:55.922Z,845395,lenzrive@ualberta.ca,386283561,included,1
+2025-11-28T07:23:16.361Z,845395,lenzrive@ualberta.ca,386283912,included,-1
+2025-11-28T07:24:19.787Z,845395,lenzrive@ualberta.ca,386283927,included,-1
+2025-11-28T07:25:46.615Z,845395,lenzrive@ualberta.ca,386283942,included,-1
+2025-11-28T07:25:51.947Z,845395,lenzrive@ualberta.ca,386283946,included,-1
+2025-11-28T07:27:23.069Z,845395,lenzrive@ualberta.ca,386284089,included,-1
+2025-11-28T07:29:08.504Z,845395,lenzrive@ualberta.ca,386284125,included,-1
+2025-11-28T07:30:14.385Z,845395,lenzrive@ualberta.ca,386284175,included,-1
+2025-11-28T07:31:44.035Z,845395,lenzrive@ualberta.ca,386284195,included,-1
+2025-11-28T07:33:11.286Z,845395,lenzrive@ualberta.ca,386283372,included,-1
+2025-11-28T07:34:55.861Z,845395,lenzrive@ualberta.ca,386283398,included,-1
+2025-11-28T07:35:40.653Z,845395,lenzrive@ualberta.ca,386283406,included,1
+2025-11-28T07:39:17.485Z,845395,lenzrive@ualberta.ca,386284036,included,1
+2025-11-28T07:41:39.176Z,845395,lenzrive@ualberta.ca,386283776,included,1
+2025-11-28T07:41:47.688Z,845395,lenzrive@ualberta.ca,386283784,included,1
+2025-11-28T07:42:06.543Z,845395,lenzrive@ualberta.ca,386283789,included,-1
+2025-11-28T07:42:34.595Z,845395,lenzrive@ualberta.ca,386283805,included,-1
+2025-11-28T07:43:19.895Z,845395,lenzrive@ualberta.ca,386284128,included,-1
+2025-11-28T07:45:10.467Z,845395,lenzrive@ualberta.ca,386284145,included,-1
+2025-11-28T07:45:15.348Z,845395,lenzrive@ualberta.ca,386284146,included,1
+2025-11-28T07:47:57.202Z,845395,lenzrive@ualberta.ca,386284153,included,-1
+2025-11-28T07:48:21.584Z,845395,lenzrive@ualberta.ca,386284157,included,-1
+2025-11-28T17:53:36.175Z,845395,lenzrive@ualberta.ca,386282504,note-17405216,1
+2025-11-28T18:00:16.608Z,845395,lenzrive@ualberta.ca,386282921,included,-1
+2025-11-28T18:04:47.870Z,845395,lenzrive@ualberta.ca,386282451,note-17405420,1
+2025-11-28T18:07:02.941Z,845395,lenzrive@ualberta.ca,386282451,note-17405458,1
+2025-11-28T18:09:36.990Z,845395,lenzrive@ualberta.ca,386282782,note-17405519,1
+2025-11-28T18:09:37.266Z,845395,lenzrive@ualberta.ca,386282782,included,-1
+2025-11-28T18:12:59.287Z,845395,lenzrive@ualberta.ca,386282791,note-17405585,1
+2025-11-28T18:13:38.216Z,845395,lenzrive@ualberta.ca,386282801,note-17405600,1
+2025-11-28T18:18:33.650Z,845395,lenzrive@ualberta.ca,386282810,note-17405720,1
+2025-11-28T18:19:18.421Z,845395,lenzrive@ualberta.ca,386282812,note-17405733,1
+2025-11-28T18:20:00.431Z,845395,lenzrive@ualberta.ca,386282821,note-17405747,1
+2025-11-28T18:25:11.783Z,845395,lenzrive@ualberta.ca,386282858,note-17405845,1
+2025-11-28T18:26:02.429Z,845395,lenzrive@ualberta.ca,386282859,note-17405864,1
+2025-11-28T18:36:54.662Z,845395,lenzrive@ualberta.ca,386283068,note-17406002,1
+2025-11-28T18:37:44.926Z,845395,lenzrive@ualberta.ca,386283068,note-17406002,deleted
+2025-11-28T18:37:46.722Z,845395,lenzrive@ualberta.ca,386283068,included,1
+2025-11-28T19:11:11.734Z,845395,lenzrive@ualberta.ca,386283539,note-17406383,1
+2025-11-28T19:11:44.865Z,845395,lenzrive@ualberta.ca,386283545,note-17406392,1
+2025-11-28T19:24:04.396Z,845395,lenzrive@ualberta.ca,386284089,note-17406504,1
+2025-11-28T19:29:01.812Z,845395,lenzrive@ualberta.ca,386282511,note-17406544,1
+2025-11-28T19:29:11.475Z,845395,lenzrive@ualberta.ca,386282504,note-17386312,deleted
+2025-11-28T19:29:35.630Z,845395,lenzrive@ualberta.ca,386282511,note-17386341,deleted
+2025-11-28T19:35:42.367Z,845395,lenzrive@ualberta.ca,386282676,note-17406647,1
+2025-11-28T19:36:54.171Z,845395,lenzrive@ualberta.ca,386282678,note-17406659,1
+2025-11-28T19:43:17.663Z,845395,lenzrive@ualberta.ca,386282745,note-17406754,1
+2025-11-28T19:44:36.109Z,845395,lenzrive@ualberta.ca,386283005,note-17406770,1
+2025-11-28T19:46:25.014Z,845395,lenzrive@ualberta.ca,386283023,note-17406792,1
+2025-11-28T19:55:29.625Z,845395,lenzrive@ualberta.ca,386283305,note-17406899,1
+2025-11-28T19:56:08.212Z,845395,lenzrive@ualberta.ca,386283305,note-17406902,1
+2025-11-28T19:59:22.597Z,845395,lenzrive@ualberta.ca,386283393,note-17406937,1
+2025-11-28T20:00:04.022Z,845395,lenzrive@ualberta.ca,386283398,note-17406949,1
+2025-11-28T20:08:14.702Z,845395,lenzrive@ualberta.ca,386283305,included,1
+2025-11-28T20:09:41.933Z,845395,lenzrive@ualberta.ca,386283372,included,1
+2025-11-28T20:11:46.688Z,845395,lenzrive@ualberta.ca,386283398,note-17407101,1
+2025-11-28T20:12:09.712Z,845395,lenzrive@ualberta.ca,386283398,note-17407108,1
+2025-11-28T20:12:19.448Z,845395,lenzrive@ualberta.ca,386283398,note-17407101,deleted
+2025-11-28T20:12:34.085Z,845395,lenzrive@ualberta.ca,386283398,included,1
+2025-11-28T20:16:19.849Z,845395,lenzrive@ualberta.ca,386283617,included,1
+2025-11-28T20:17:16.478Z,845395,lenzrive@ualberta.ca,386283754,included,1
+2025-11-28T20:18:10.811Z,845395,lenzrive@ualberta.ca,386283763,included,1
+2025-11-28T20:18:57.667Z,845395,lenzrive@ualberta.ca,386283789,included,1
+2025-11-28T20:19:12.749Z,845395,lenzrive@ualberta.ca,386283805,included,1
+2025-11-28T20:20:36.627Z,845395,lenzrive@ualberta.ca,386283838,included,1
+2025-11-28T20:23:41.217Z,845395,lenzrive@ualberta.ca,386283897,included,1
+2025-11-28T20:25:44.453Z,845395,lenzrive@ualberta.ca,386283912,included,1
+2025-11-28T20:26:06.789Z,845395,lenzrive@ualberta.ca,386283927,included,1
+2025-11-28T20:27:08.731Z,845395,lenzrive@ualberta.ca,386283942,included,1
+2025-11-28T20:27:52.025Z,845395,lenzrive@ualberta.ca,386283946,included,1
+2025-11-28T20:28:13.537Z,845395,lenzrive@ualberta.ca,386284007,included,1
+2025-11-28T20:29:09.453Z,845395,lenzrive@ualberta.ca,386284014,included,1
+2025-11-28T20:30:40.871Z,845395,lenzrive@ualberta.ca,386284089,included,1
+2025-11-28T20:31:29.967Z,845395,lenzrive@ualberta.ca,386284125,included,1
+2025-11-28T20:33:25.304Z,845395,lenzrive@ualberta.ca,386284128,included,1
+2025-11-28T20:34:12.675Z,845395,lenzrive@ualberta.ca,386284145,included,1
+2025-11-28T20:34:42.964Z,845395,lenzrive@ualberta.ca,386284153,included,1
+2025-11-28T20:35:07.946Z,845395,lenzrive@ualberta.ca,386284157,included,1
+2025-11-28T20:35:39.537Z,845395,lenzrive@ualberta.ca,386284175,included,1
+2025-11-28T20:37:06.234Z,845395,lenzrive@ualberta.ca,386284195,included,1
+2025-11-28T21:19:05.699Z,845395,lenzrive@ualberta.ca,386282676,included,1
+2025-11-28T21:19:22.780Z,845395,lenzrive@ualberta.ca,386282678,included,1
+2025-11-28T21:21:04.842Z,845395,lenzrive@ualberta.ca,386282742,included,1
+2025-11-28T21:22:42.187Z,845395,lenzrive@ualberta.ca,386282745,included,1
+2025-11-28T21:23:09.697Z,845395,lenzrive@ualberta.ca,386282763,included,-1
+2025-11-28T21:23:13.264Z,845395,lenzrive@ualberta.ca,386282763,included,1
+2025-11-28T21:23:23.811Z,845395,lenzrive@ualberta.ca,386282782,included,1
+2025-11-28T21:23:59.770Z,845395,lenzrive@ualberta.ca,386282791,included,1
+2025-11-28T21:24:23.368Z,845395,lenzrive@ualberta.ca,386282801,included,1
+2025-11-28T21:24:36.143Z,845395,lenzrive@ualberta.ca,386282810,included,1
+2025-11-28T21:24:46.042Z,845395,lenzrive@ualberta.ca,386282812,included,1
+2025-11-28T21:25:03.618Z,845395,lenzrive@ualberta.ca,386282821,included,1
+2025-11-28T21:27:36.476Z,845395,lenzrive@ualberta.ca,386282859,included,1
+2025-11-28T21:28:15.300Z,845395,lenzrive@ualberta.ca,386282868,included,1
+2025-11-28T21:28:23.902Z,845395,lenzrive@ualberta.ca,386282921,included,1
+2025-11-28T21:30:17.883Z,845395,lenzrive@ualberta.ca,386283005,included,1
+2025-11-28T21:30:30.756Z,845395,lenzrive@ualberta.ca,386283023,included,1
+2025-11-28T21:30:41.122Z,845395,lenzrive@ualberta.ca,386283539,included,1
+2025-11-28T21:30:52.019Z,845395,lenzrive@ualberta.ca,386283545,included,1
+2025-11-28T21:32:54.255Z,845395,lenzrive@ualberta.ca,386282858,included,1
+2025-11-28T22:22:14.919Z,845395,lenzrive@ualberta.ca,386282504,included,1
+2025-11-28T22:22:33.974Z,845395,lenzrive@ualberta.ca,386282511,included,1
+2025-12-01T02:25:37.670Z,845395,lenzrive@ualberta.ca,386282676,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:25:52.690Z,845395,lenzrive@ualberta.ca,386282745,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:26:24.194Z,845395,lenzrive@ualberta.ca,386282791,"""__EXR__wrong publication type""",1
+2025-12-01T02:26:24.206Z,845395,lenzrive@ualberta.ca,386282791,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:27:04.628Z,845395,lenzrive@ualberta.ca,386282801,"""__EXR__wrong exposure""",1
+2025-12-01T02:27:04.641Z,845395,lenzrive@ualberta.ca,386282801,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:27:30.592Z,845395,lenzrive@ualberta.ca,386282504,"""__EXR__wrong exposure""",1
+2025-12-01T02:27:30.592Z,845395,lenzrive@ualberta.ca,386282504,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:27:30.592Z,845395,lenzrive@ualberta.ca,386282511,"""__EXR__wrong exposure""",1
+2025-12-01T02:27:30.592Z,845395,lenzrive@ualberta.ca,386282511,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:27:51.692Z,845395,lenzrive@ualberta.ca,386283545,"""__EXR__wrong exposure""",1
+2025-12-01T02:27:51.705Z,845395,lenzrive@ualberta.ca,386283545,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:28:01.518Z,845395,lenzrive@ualberta.ca,386283539,"""__EXR__wrong exposure""",1
+2025-12-01T02:28:01.530Z,845395,lenzrive@ualberta.ca,386283539,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:28:10.335Z,845395,lenzrive@ualberta.ca,386283023,"""__EXR__wrong exposure""",1
+2025-12-01T02:28:10.346Z,845395,lenzrive@ualberta.ca,386283023,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:28:21.163Z,845395,lenzrive@ualberta.ca,386282921,"""__EXR__wrong exposure""",1
+2025-12-01T02:28:21.163Z,845395,lenzrive@ualberta.ca,386282921,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:28:21.163Z,845395,lenzrive@ualberta.ca,386283005,"""__EXR__wrong exposure""",1
+2025-12-01T02:28:21.163Z,845395,lenzrive@ualberta.ca,386283005,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:28:28.320Z,845395,lenzrive@ualberta.ca,386282868,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:28:37.570Z,845395,lenzrive@ualberta.ca,386282868,"""__EXR__wrong exposure""",1
+2025-12-01T02:28:37.577Z,845395,lenzrive@ualberta.ca,386282868,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:28:50.230Z,845395,lenzrive@ualberta.ca,386282859,"""__EXR__wrong exposure""",1
+2025-12-01T02:28:50.243Z,845395,lenzrive@ualberta.ca,386282859,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:29:02.537Z,845395,lenzrive@ualberta.ca,386282821,"""__EXR__wrong exposure""",1
+2025-12-01T02:29:02.545Z,845395,lenzrive@ualberta.ca,386282821,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:29:12.744Z,845395,lenzrive@ualberta.ca,386282812,"""__EXR__wrong exposure""",1
+2025-12-01T02:29:12.753Z,845395,lenzrive@ualberta.ca,386282812,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:29:23.211Z,845395,lenzrive@ualberta.ca,386282782,"""__EXR__wrong exposure""",1
+2025-12-01T02:29:23.221Z,845395,lenzrive@ualberta.ca,386282782,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:29:37.413Z,845395,lenzrive@ualberta.ca,386282678,"""__EXR__wrong exposure""",1
+2025-12-01T02:29:37.422Z,845395,lenzrive@ualberta.ca,386282678,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:30:18.158Z,845395,lenzrive@ualberta.ca,386282451,included__SYSTEM__STAGE__209807,1
+2025-12-01T02:30:21.231Z,845395,lenzrive@ualberta.ca,386282451,included__SYSTEM__STAGE__209807,1
+2025-12-01T02:31:23.274Z,845395,lenzrive@ualberta.ca,386281952,"""__EXR__wrong outcome""",1
+2025-12-01T02:31:23.274Z,845395,lenzrive@ualberta.ca,386281952,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:31:23.274Z,845395,lenzrive@ualberta.ca,386281970,"""__EXR__wrong outcome""",1
+2025-12-01T02:31:23.274Z,845395,lenzrive@ualberta.ca,386281970,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:31:48.975Z,845395,lenzrive@ualberta.ca,386281952,"""__EXR__wrong population""",deleted
+2025-12-01T02:31:48.982Z,845395,lenzrive@ualberta.ca,386281952,"""__EXR__wrong outcome""",deleted
+2025-12-01T02:31:55.289Z,845395,lenzrive@ualberta.ca,386281952,"""__EXR__wrong outcome""",1
+2025-12-01T02:31:55.322Z,845395,lenzrive@ualberta.ca,386281952,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:32:45.648Z,845395,lenzrive@ualberta.ca,386284195,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:32:48.884Z,845395,lenzrive@ualberta.ca,386284175,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:32:54.208Z,845395,lenzrive@ualberta.ca,386284157,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:32:56.553Z,845395,lenzrive@ualberta.ca,386284153,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:06.389Z,845395,lenzrive@ualberta.ca,386284125,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:06.389Z,845395,lenzrive@ualberta.ca,386284128,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:06.389Z,845395,lenzrive@ualberta.ca,386284145,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:15.747Z,845395,lenzrive@ualberta.ca,386284089,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:19.229Z,845395,lenzrive@ualberta.ca,386284036,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:45.069Z,845395,lenzrive@ualberta.ca,386283897,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:45.069Z,845395,lenzrive@ualberta.ca,386283912,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:45.069Z,845395,lenzrive@ualberta.ca,386283927,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:45.069Z,845395,lenzrive@ualberta.ca,386283942,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:33:45.069Z,845395,lenzrive@ualberta.ca,386283946,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:34:15.487Z,845395,lenzrive@ualberta.ca,386282676,"""__EXR__wrong exposure""",1
+2025-12-01T02:34:15.496Z,845395,lenzrive@ualberta.ca,386282676,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:34:27.649Z,845395,lenzrive@ualberta.ca,386282745,"""__EXR__wrong exposure""",1
+2025-12-01T02:34:27.657Z,845395,lenzrive@ualberta.ca,386282745,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:35:35.462Z,845395,lenzrive@ualberta.ca,386283393,included__SYSTEM__STAGE__209807,1
+2025-12-01T02:35:53.653Z,845395,lenzrive@ualberta.ca,386283406,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:36:01.161Z,845395,lenzrive@ualberta.ca,386283438,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:36:26.800Z,845395,lenzrive@ualberta.ca,386283703,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:36:26.800Z,845395,lenzrive@ualberta.ca,386283720,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:36:26.800Z,845395,lenzrive@ualberta.ca,386283754,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:36:26.800Z,845395,lenzrive@ualberta.ca,386283763,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:36:43.767Z,845395,lenzrive@ualberta.ca,386283776,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:36:43.767Z,845395,lenzrive@ualberta.ca,386283789,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:36:43.767Z,845395,lenzrive@ualberta.ca,386283805,included__SYSTEM__STAGE__209807,-1
+2025-12-01T02:36:43.767Z,845395,lenzrive@ualberta.ca,386283838,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:06:45.634Z,845395,lenzrive@ualberta.ca,386282418,note-17489064,1
+2025-12-01T17:08:18.045Z,845395,lenzrive@ualberta.ca,386282493,note-17489096,1
+2025-12-01T17:08:22.414Z,845395,lenzrive@ualberta.ca,386282493,"""__EXR__wrong exposure""",1
+2025-12-01T17:08:22.464Z,845395,lenzrive@ualberta.ca,386282493,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:09:33.850Z,845395,lenzrive@ualberta.ca,386282570,note-17489117,1
+2025-12-01T17:09:40.480Z,845395,lenzrive@ualberta.ca,386282570,"""__EXR__wrong exposure""",1
+2025-12-01T17:09:40.493Z,845395,lenzrive@ualberta.ca,386282570,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:11:15.522Z,845395,lenzrive@ualberta.ca,386282672,note-17489633,1
+2025-12-01T17:11:19.353Z,845395,lenzrive@ualberta.ca,386282672,"""__EXR__wrong exposure""",1
+2025-12-01T17:11:19.366Z,845395,lenzrive@ualberta.ca,386282672,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:12:19.372Z,845395,lenzrive@ualberta.ca,386282675,note-17489644,1
+2025-12-01T17:12:23.009Z,845395,lenzrive@ualberta.ca,386282675,"""__EXR__wrong exposure""",1
+2025-12-01T17:12:23.024Z,845395,lenzrive@ualberta.ca,386282675,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:12:58.310Z,845395,lenzrive@ualberta.ca,386282708,note-17489656,1
+2025-12-01T17:13:01.598Z,845395,lenzrive@ualberta.ca,386282708,"""__EXR__wrong exposure""",1
+2025-12-01T17:13:01.607Z,845395,lenzrive@ualberta.ca,386282708,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:14:38.382Z,845395,lenzrive@ualberta.ca,386282729,included__SYSTEM__STAGE__209807,1
+2025-12-01T17:15:42.490Z,845395,lenzrive@ualberta.ca,386282738,note-17489697,1
+2025-12-01T17:15:48.554Z,845395,lenzrive@ualberta.ca,386282738,"""__EXR__wrong outcome""",1
+2025-12-01T17:15:48.565Z,845395,lenzrive@ualberta.ca,386282738,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:18:13.138Z,845395,lenzrive@ualberta.ca,386282742,note-17489737,1
+2025-12-01T17:18:16.165Z,845395,lenzrive@ualberta.ca,386282742,"""__EXR__wrong exposure""",1
+2025-12-01T17:18:16.174Z,845395,lenzrive@ualberta.ca,386282742,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:20:51.214Z,845395,lenzrive@ualberta.ca,386282763,note-17489793,1
+2025-12-01T17:20:54.280Z,845395,lenzrive@ualberta.ca,386282763,"""__EXR__wrong exposure""",1
+2025-12-01T17:20:54.291Z,845395,lenzrive@ualberta.ca,386282763,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:22:41.101Z,845395,lenzrive@ualberta.ca,386282810,note-17489822,1
+2025-12-01T17:22:43.619Z,845395,lenzrive@ualberta.ca,386282810,"""__EXR__wrong exposure""",1
+2025-12-01T17:22:43.628Z,845395,lenzrive@ualberta.ca,386282810,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:38:09.260Z,845395,lenzrive@ualberta.ca,386282858,note-17490075,1
+2025-12-01T17:39:57.330Z,845395,lenzrive@ualberta.ca,386283046,note-17490106,1
+2025-12-01T17:40:00.679Z,845395,lenzrive@ualberta.ca,386283046,"""__EXR__wrong exposure""",1
+2025-12-01T17:40:00.698Z,845395,lenzrive@ualberta.ca,386283046,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:43:30.453Z,845395,lenzrive@ualberta.ca,386283061,included__SYSTEM__STAGE__209807,1
+2025-12-01T17:45:10.263Z,845395,lenzrive@ualberta.ca,386283467,included__SYSTEM__STAGE__209807,1
+2025-12-01T17:49:07.017Z,845395,lenzrive@ualberta.ca,386283561,note-17490260,1
+2025-12-01T17:49:10.815Z,845395,lenzrive@ualberta.ca,386283561,"""__EXR__wrong outcome""",1
+2025-12-01T17:49:10.824Z,845395,lenzrive@ualberta.ca,386283561,included__SYSTEM__STAGE__209807,-1
+2025-12-01T17:55:05.932Z,845395,lenzrive@ualberta.ca,386283561,included__SYSTEM__STAGE__209807,0
+2025-12-01T17:55:09.742Z,845395,lenzrive@ualberta.ca,386283561,"""__EXR__wrong outcome""",deleted
+2025-12-01T18:21:08.882Z,845395,lenzrive@ualberta.ca,386282158,included__SYSTEM__STAGE__209807,1
+2025-12-01T18:22:22.153Z,845395,lenzrive@ualberta.ca,386282418,included__SYSTEM__STAGE__209807,1
+2025-12-01T18:26:03.739Z,845395,lenzrive@ualberta.ca,386282729,note-17490985,1
+2025-12-01T18:26:10.024Z,845395,lenzrive@ualberta.ca,386282729,"""__EXR__wrong population""",1
+2025-12-01T18:26:10.034Z,845395,lenzrive@ualberta.ca,386282729,included__SYSTEM__STAGE__209807,-1
+2025-12-01T18:30:48.853Z,845395,lenzrive@ualberta.ca,386283208,included__SYSTEM__STAGE__209807,-1
+2025-12-01T18:31:02.213Z,845395,lenzrive@ualberta.ca,386283208,note-17491084,1
+2025-12-01T18:34:54.880Z,845395,lenzrive@ualberta.ca,386282729,included__SYSTEM__STAGE__209807,1
+2025-12-01T18:35:04.275Z,845395,lenzrive@ualberta.ca,386282729,"""__EXR__wrong population""",deleted
+2025-12-01T18:37:15.811Z,845395,lenzrive@ualberta.ca,386282729,note-17490985,deleted
+2025-12-01T18:37:20.749Z,845395,lenzrive@ualberta.ca,386282729,note-17491175,1
+2025-12-01T18:40:36.555Z,845395,lenzrive@ualberta.ca,386283068,note-17491218,1
+2025-12-01T18:40:49.897Z,845395,lenzrive@ualberta.ca,386283068,included__SYSTEM__STAGE__209807,-1
+2025-12-01T18:44:36.810Z,845395,lenzrive@ualberta.ca,386283075,included__SYSTEM__STAGE__209807,1
+2025-12-01T18:46:07.950Z,845395,lenzrive@ualberta.ca,386283175,note-17491814,1
+2025-12-01T18:46:37.112Z,845395,lenzrive@ualberta.ca,386283208,included__SYSTEM__STAGE__209807,-1
+2025-12-01T18:50:39.729Z,845395,lenzrive@ualberta.ca,386283263,included__SYSTEM__STAGE__209807,1
+2025-12-01T18:52:05.460Z,845395,lenzrive@ualberta.ca,386283209,note-17491895,1
+2025-12-01T18:52:06.803Z,845395,lenzrive@ualberta.ca,386283209,included__SYSTEM__STAGE__209807,-1
+2025-12-01T18:52:43.499Z,845395,lenzrive@ualberta.ca,386283223,included__SYSTEM__STAGE__209807,-1
+2025-12-01T18:54:27.863Z,845395,lenzrive@ualberta.ca,386283297,note-17491927,1
+2025-12-01T18:54:32.887Z,845395,lenzrive@ualberta.ca,386283297,included__SYSTEM__STAGE__209807,-1
+2025-12-01T18:56:28.184Z,845395,lenzrive@ualberta.ca,386283305,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:01:58.232Z,845395,lenzrive@ualberta.ca,386283326,note-17492038,1
+2025-12-01T19:02:00.224Z,845395,lenzrive@ualberta.ca,386283326,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:02:52.523Z,845395,lenzrive@ualberta.ca,386283372,note-17492052,1
+2025-12-01T19:02:54.123Z,845395,lenzrive@ualberta.ca,386283372,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:25:47.310Z,845395,lenzrive@ualberta.ca,386283398,"""__EXR__wrong population""",1
+2025-12-01T19:25:47.327Z,845395,lenzrive@ualberta.ca,386283398,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:26:45.172Z,845395,lenzrive@ualberta.ca,386283406,"""__EXR__foreign language""",1
+2025-12-01T19:26:45.183Z,845395,lenzrive@ualberta.ca,386283406,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:27:27.165Z,845395,lenzrive@ualberta.ca,386283438,"""__EXR__wrong publication type""",1
+2025-12-01T19:27:27.174Z,845395,lenzrive@ualberta.ca,386283438,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:28:57.706Z,845395,lenzrive@ualberta.ca,386283501,note-17492500,1
+2025-12-01T19:29:01.664Z,845395,lenzrive@ualberta.ca,386283501,"""__EXR__wrong exposure""",1
+2025-12-01T19:29:01.673Z,845395,lenzrive@ualberta.ca,386283501,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:29:18.494Z,845395,lenzrive@ualberta.ca,386283561,note-17492507,1
+2025-12-01T19:31:57.317Z,845395,lenzrive@ualberta.ca,386283617,note-17492531,1
+2025-12-01T19:32:03.307Z,845395,lenzrive@ualberta.ca,386283617,"""__EXR__wrong exposure""",1
+2025-12-01T19:32:03.318Z,845395,lenzrive@ualberta.ca,386283617,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:33:30.538Z,845395,lenzrive@ualberta.ca,386283651,included__SYSTEM__STAGE__209807,0
+2025-12-01T19:33:44.994Z,845395,lenzrive@ualberta.ca,386283651,note-17492548,1
+2025-12-01T19:34:43.466Z,845395,lenzrive@ualberta.ca,386283689,note-17492560,1
+2025-12-01T19:34:47.416Z,845395,lenzrive@ualberta.ca,386283689,"""__EXR__wrong exposure""",1
+2025-12-01T19:34:47.426Z,845395,lenzrive@ualberta.ca,386283689,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:36:26.866Z,845395,lenzrive@ualberta.ca,386283703,note-17492582,1
+2025-12-01T19:36:30.243Z,845395,lenzrive@ualberta.ca,386283703,"""__EXR__wrong exposure""",1
+2025-12-01T19:36:30.252Z,845395,lenzrive@ualberta.ca,386283703,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:37:32.385Z,845395,lenzrive@ualberta.ca,386283720,note-17492599,1
+2025-12-01T19:37:35.491Z,845395,lenzrive@ualberta.ca,386283720,"""__EXR__wrong exposure""",1
+2025-12-01T19:37:35.498Z,845395,lenzrive@ualberta.ca,386283720,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:38:31.507Z,845395,lenzrive@ualberta.ca,386283754,note-17492615,1
+2025-12-01T19:38:37.078Z,845395,lenzrive@ualberta.ca,386283754,"""__EXR__wrong exposure""",1
+2025-12-01T19:38:37.088Z,845395,lenzrive@ualberta.ca,386283754,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:39:30.989Z,845395,lenzrive@ualberta.ca,386283761,note-17492627,1
+2025-12-01T19:39:34.384Z,845395,lenzrive@ualberta.ca,386283761,"""__EXR__wrong exposure""",1
+2025-12-01T19:39:34.392Z,845395,lenzrive@ualberta.ca,386283761,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:40:16.408Z,845395,lenzrive@ualberta.ca,386283763,note-17492641,1
+2025-12-01T19:40:19.887Z,845395,lenzrive@ualberta.ca,386283763,"""__EXR__wrong exposure""",1
+2025-12-01T19:40:19.895Z,845395,lenzrive@ualberta.ca,386283763,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:41:19.194Z,845395,lenzrive@ualberta.ca,386283770,included__SYSTEM__STAGE__209807,1
+2025-12-01T19:41:57.053Z,845395,lenzrive@ualberta.ca,386283776,note-17492671,1
+2025-12-01T19:42:01.155Z,845395,lenzrive@ualberta.ca,386283776,"""__EXR__wrong exposure""",1
+2025-12-01T19:42:01.163Z,845395,lenzrive@ualberta.ca,386283776,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:45:48.900Z,845395,lenzrive@ualberta.ca,386283784,"""__EXR__foreign language""",1
+2025-12-01T19:45:48.909Z,845395,lenzrive@ualberta.ca,386283784,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:46:26.053Z,845395,lenzrive@ualberta.ca,386283789,note-17492752,1
+2025-12-01T19:46:29.452Z,845395,lenzrive@ualberta.ca,386283789,"""__EXR__wrong exposure""",1
+2025-12-01T19:46:29.465Z,845395,lenzrive@ualberta.ca,386283789,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:48:02.624Z,845395,lenzrive@ualberta.ca,386283805,note-17492774,1
+2025-12-01T19:48:06.999Z,845395,lenzrive@ualberta.ca,386283805,"""__EXR__wrong exposure""",1
+2025-12-01T19:48:07.040Z,845395,lenzrive@ualberta.ca,386283805,included__SYSTEM__STAGE__209807,-1
+2025-12-01T19:48:07.051Z,845395,lenzrive@ualberta.ca,386283805,"""__EXR__wrong outcome""",deleted
+2025-12-01T19:49:01.249Z,845395,lenzrive@ualberta.ca,386283838,note-17492786,1
+2025-12-01T19:49:04.918Z,845395,lenzrive@ualberta.ca,386283838,"""__EXR__wrong exposure""",1
+2025-12-01T19:49:04.927Z,845395,lenzrive@ualberta.ca,386283838,included__SYSTEM__STAGE__209807,-1
+2025-12-01T20:02:16.850Z,845395,lenzrive@ualberta.ca,386283175,"""__EXR__wrong exposure""",1
+2025-12-01T20:02:16.919Z,845395,lenzrive@ualberta.ca,386283175,included__SYSTEM__STAGE__209807,-1
+2025-12-01T20:03:19.259Z,845395,lenzrive@ualberta.ca,386283175,"""__EXR__wrong exposure""",1
+2025-12-01T20:03:19.266Z,845395,lenzrive@ualberta.ca,386283175,included__SYSTEM__STAGE__209807,-1
+2025-12-01T20:03:29.753Z,845395,lenzrive@ualberta.ca,386283208,"""__EXR__wrong population""",1
+2025-12-01T20:03:29.769Z,845395,lenzrive@ualberta.ca,386283208,included__SYSTEM__STAGE__209807,-1
+2025-12-01T20:50:50.170Z,845395,lenzrive@ualberta.ca,386283209,"""__EXR__wrong exposure""",1
+2025-12-01T20:50:50.201Z,845395,lenzrive@ualberta.ca,386283209,included__SYSTEM__STAGE__209807,-1
+2025-12-01T20:56:08.920Z,845395,lenzrive@ualberta.ca,386283891,included__SYSTEM__STAGE__209807,1
+2025-12-01T21:01:02.844Z,845395,lenzrive@ualberta.ca,386283897,"""__EXR__wrong exposure""",1
+2025-12-01T21:01:02.866Z,845395,lenzrive@ualberta.ca,386283897,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:01:57.434Z,845395,lenzrive@ualberta.ca,386283912,note-17493641,1
+2025-12-01T21:02:00.832Z,845395,lenzrive@ualberta.ca,386283912,"""__EXR__wrong exposure""",1
+2025-12-01T21:02:00.845Z,845395,lenzrive@ualberta.ca,386283912,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:04:18.222Z,845395,lenzrive@ualberta.ca,386283927,"""__EXR__wrong exposure""",1
+2025-12-01T21:04:18.232Z,845395,lenzrive@ualberta.ca,386283927,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:04:54.450Z,845395,lenzrive@ualberta.ca,386283942,note-17493676,1
+2025-12-01T21:04:57.243Z,845395,lenzrive@ualberta.ca,386283942,"""__EXR__wrong exposure""",1
+2025-12-01T21:04:57.251Z,845395,lenzrive@ualberta.ca,386283942,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:05:28.043Z,845395,lenzrive@ualberta.ca,386283946,note-17493684,1
+2025-12-01T21:05:32.169Z,845395,lenzrive@ualberta.ca,386283946,"""__EXR__wrong exposure""",1
+2025-12-01T21:05:32.178Z,845395,lenzrive@ualberta.ca,386283946,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:07:18.984Z,845395,lenzrive@ualberta.ca,386283981,"""__EXR__full text not available""",1
+2025-12-01T21:07:18.997Z,845395,lenzrive@ualberta.ca,386283981,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:11:08.768Z,845395,lenzrive@ualberta.ca,386283985,"""__EXR__wrong population""",1
+2025-12-01T21:11:08.788Z,845395,lenzrive@ualberta.ca,386283985,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:11:51.582Z,845395,lenzrive@ualberta.ca,386284007,note-17493781,1
+2025-12-01T21:11:59.954Z,845395,lenzrive@ualberta.ca,386284007,"""__EXR__wrong exposure""",1
+2025-12-01T21:11:59.980Z,845395,lenzrive@ualberta.ca,386284007,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:14:18.039Z,845395,lenzrive@ualberta.ca,386284014,note-17493807,1
+2025-12-01T21:14:22.705Z,845395,lenzrive@ualberta.ca,386284014,"""__EXR__wrong exposure""",1
+2025-12-01T21:14:22.715Z,845395,lenzrive@ualberta.ca,386284014,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:15:19.164Z,845395,lenzrive@ualberta.ca,386284036,note-17493817,1
+2025-12-01T21:15:22.152Z,845395,lenzrive@ualberta.ca,386284036,"""__EXR__wrong exposure""",1
+2025-12-01T21:15:22.160Z,845395,lenzrive@ualberta.ca,386284036,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:17:44.589Z,845395,lenzrive@ualberta.ca,386284089,"""__EXR__full text not available""",1
+2025-12-01T21:17:44.599Z,845395,lenzrive@ualberta.ca,386284089,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:18:19.079Z,845395,lenzrive@ualberta.ca,386284125,"""__EXR__wrong publication type""",1
+2025-12-01T21:18:19.091Z,845395,lenzrive@ualberta.ca,386284125,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:18:55.873Z,845395,lenzrive@ualberta.ca,386284128,note-17493849,1
+2025-12-01T21:18:59.367Z,845395,lenzrive@ualberta.ca,386284128,"""__EXR__wrong exposure""",1
+2025-12-01T21:18:59.375Z,845395,lenzrive@ualberta.ca,386284128,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:19:22.165Z,845395,lenzrive@ualberta.ca,386284145,note-17493855,1
+2025-12-01T21:19:27.055Z,845395,lenzrive@ualberta.ca,386284145,"""__EXR__wrong exposure""",1
+2025-12-01T21:19:27.065Z,845395,lenzrive@ualberta.ca,386284145,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:20:05.408Z,845395,lenzrive@ualberta.ca,386284146,included__SYSTEM__STAGE__209807,1
+2025-12-01T21:20:45.234Z,845395,lenzrive@ualberta.ca,386284153,note-17493865,1
+2025-12-01T21:20:47.647Z,845395,lenzrive@ualberta.ca,386284153,"""__EXR__wrong exposure""",1
+2025-12-01T21:20:47.655Z,845395,lenzrive@ualberta.ca,386284153,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:21:18.586Z,845395,lenzrive@ualberta.ca,386284157,note-17493870,1
+2025-12-01T21:21:21.501Z,845395,lenzrive@ualberta.ca,386284157,"""__EXR__wrong exposure""",1
+2025-12-01T21:21:21.509Z,845395,lenzrive@ualberta.ca,386284157,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:22:42.942Z,845395,lenzrive@ualberta.ca,386284175,"""__EXR__wrong publication type""",1
+2025-12-01T21:22:42.950Z,845395,lenzrive@ualberta.ca,386284175,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:23:19.065Z,845395,lenzrive@ualberta.ca,386284195,note-17493885,1
+2025-12-01T21:23:22.082Z,845395,lenzrive@ualberta.ca,386284195,"""__EXR__wrong exposure""",1
+2025-12-01T21:23:22.097Z,845395,lenzrive@ualberta.ca,386284195,included__SYSTEM__STAGE__209807,-1
+2025-12-01T21:23:52.842Z,845395,lenzrive@ualberta.ca,386282858,included__SYSTEM__STAGE__209807,0
+2025-12-08T21:04:46.924Z,845395,lenzrive@ualberta.ca,386281970,note-17681029,1
+2025-12-08T21:40:04.654Z,845395,lenzrive@ualberta.ca,386282493,note-17681544,1
+2025-12-08T21:45:15.362Z,845395,lenzrive@ualberta.ca,386283561,included__SYSTEM__STAGE__209807,-1
+2025-12-08T21:46:01.099Z,845395,lenzrive@ualberta.ca,386283561,"""__EXR__wrong outcome""",1
+2025-12-08T21:46:01.107Z,845395,lenzrive@ualberta.ca,386283561,included__SYSTEM__STAGE__209807,-1
+2025-12-08T21:46:18.499Z,845395,lenzrive@ualberta.ca,386283651,included__SYSTEM__STAGE__209807,-1
+2025-12-08T21:53:24.330Z,845395,lenzrive@ualberta.ca,386282729,included__SYSTEM__STAGE__209807,-1
+2025-12-08T21:53:34.605Z,845395,lenzrive@ualberta.ca,386282729,note-17681670,1
+2025-12-08T22:20:48.925Z,845395,lenzrive@ualberta.ca,386282451,included__SYSTEM__STAGE__209807,0
+2025-12-08T22:24:50.728Z,845395,lenzrive@ualberta.ca,386282451,note-17681985,1
+2025-12-08T22:24:54.500Z,845395,lenzrive@ualberta.ca,386282451,included__SYSTEM__STAGE__209807,1
+2025-12-09T18:00:47.121Z,845395,lenzrive@ualberta.ca,386282858,note-17723537,1
+2025-12-09T18:00:59.542Z,845395,lenzrive@ualberta.ca,386282858,note-17723782,1
+2025-12-09T18:01:15.997Z,845395,lenzrive@ualberta.ca,386282858,note-17723537,deleted
+2025-12-09T18:01:22.890Z,845395,lenzrive@ualberta.ca,386283981,note-17723792,1
+2025-12-09T18:09:47.768Z,845395,lenzrive@ualberta.ca,386283406,included__SYSTEM__STAGE__209807,0
+2025-12-09T18:10:01.539Z,845395,lenzrive@ualberta.ca,386283651,included__SYSTEM__STAGE__209807,0
+2025-12-09T18:15:49.396Z,845395,lenzrive@ualberta.ca,386283223,included__SYSTEM__STAGE__209807,0
+2025-12-09T18:25:27.374Z,845395,lenzrive@ualberta.ca,386283784,note-17724315,1
+2025-12-09T18:29:31.428Z,845395,lenzrive@ualberta.ca,386283897,"""__EXR__no full text""",deleted
+2025-12-09T18:30:38.217Z,845395,lenzrive@ualberta.ca,386284089,note-17724463,1
+2025-12-09T18:32:45.651Z,845395,lenzrive@ualberta.ca,386284175,note-17724520,1
+2025-12-09T18:32:56.365Z,845395,lenzrive@ualberta.ca,386284175,"""__EXR__no full text""",deleted
+2025-12-09T18:33:34.410Z,845395,lenzrive@ualberta.ca,386284089,included__SYSTEM__STAGE__209807,0
+2025-12-09T18:33:51.058Z,845395,lenzrive@ualberta.ca,386283784,"""__EXR__wrong outcome""",1
+2025-12-09T18:33:51.067Z,845395,lenzrive@ualberta.ca,386283784,included__SYSTEM__STAGE__209807,-1
+2025-12-09T18:34:19.232Z,845395,lenzrive@ualberta.ca,386283438,"""__EXR__no full text""",deleted
+2025-12-09T18:44:24.665Z,845395,lenzrive@ualberta.ca,386283406,included__SYSTEM__STAGE__209807,1
+2026-02-09T23:28:40.759Z,845395,lenzrive@ualberta.ca,386284089,included__SYSTEM__STAGE__209807,-1
+2026-02-09T23:28:54.142Z,845395,lenzrive@ualberta.ca,386284089,"""__EXR__wrong exposure""",1
+2026-02-09T23:28:54.150Z,845395,lenzrive@ualberta.ca,386284089,included__SYSTEM__STAGE__209807,-1
+2026-02-09T23:28:54.182Z,845395,lenzrive@ualberta.ca,386284089,"""__EXR__no full text""",deleted
+2026-02-09T23:28:54.189Z,845395,lenzrive@ualberta.ca,386284089,"""__EXR__full text not available""",deleted
+2026-02-09T23:29:54.546Z,845395,lenzrive@ualberta.ca,386284089,note-19327250,1
+2026-08-28T20:42:09.862Z,845395,lenzrive@ualberta.ca,386282858,included__SYSTEM__STAGE__209807,-1
+2026-08-28T20:42:34.514Z,845395,lenzrive@ualberta.ca,386282858,"""__EXR__wrong exposure""",1
+2026-08-28T20:42:34.523Z,845395,lenzrive@ualberta.ca,386282858,included__SYSTEM__STAGE__209807,-1
+2026-08-28T20:43:25.406Z,845395,lenzrive@ualberta.ca,386283223,"""__EXR__wrong exposure""",1
+2026-08-28T20:43:25.415Z,845395,lenzrive@ualberta.ca,386283223,included__SYSTEM__STAGE__209807,-1
+2026-08-28T20:43:25.425Z,845395,lenzrive@ualberta.ca,386283223,"""__EXR__no full text""",deleted
+2026-08-28T20:43:38.998Z,845395,lenzrive@ualberta.ca,386283651,included__SYSTEM__STAGE__209807,-1
+2026-08-28T20:43:45.712Z,845395,lenzrive@ualberta.ca,386283981,"""__EXR__no full text""",1
+2026-08-28T20:43:45.722Z,845395,lenzrive@ualberta.ca,386283981,included__SYSTEM__STAGE__209807,-1
+2026-08-28T20:43:54.394Z,845395,lenzrive@ualberta.ca,386283651,"""__EXR__full text not available""",1
+2026-08-28T20:43:54.403Z,845395,lenzrive@ualberta.ca,386283651,included__SYSTEM__STAGE__209807,-1
+2026-08-28T20:44:52.818Z,845395,lenzrive@ualberta.ca,386283981,"""__EXR__wrong exposure""",1
+2026-08-28T20:44:52.828Z,845395,lenzrive@ualberta.ca,386283981,included__SYSTEM__STAGE__209807,-1
+2026-08-28T20:44:52.841Z,845395,lenzrive@ualberta.ca,386283981,"""__EXR__full text not available""",deleted
+2026-08-28T20:44:52.847Z,845395,lenzrive@ualberta.ca,386283981,"""__EXR__no full text""",deleted

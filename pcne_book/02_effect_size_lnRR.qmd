@@ -2,7 +2,7 @@
 title: "Effect size calculation"
 ---
 
-We load the analysis-ready database from the preceding chapter and calculate one lnRR and sampling variance for each effect-size row.
+We load the analysis-ready database from the preceding chapter and calculate three effect sizes: the log response ratio (lnRR), log variability ratio (lnVR), and log coefficient of variation ratio (lnCVR). We also calculate the sampling variance of each effect size.
 
 ```{r}
 #| label: setup
@@ -45,6 +45,47 @@ $$
 
 where $M$, $SD$, and $N$ are the mean, standard deviation, and sample size for the exposed ($T$) and control ($C$) groups [@hedges1999; @lajeunesse2015].
 
+# lnVR
+
+The log variability ratio (lnVR) compares the standard deviation of the prenatal-noise treatment group with the standard deviation of the control group. We use it to measure absolute variability.
+
+The bias-corrected lnVR is:
+
+$$
+\ln VR =
+\ln\left(\frac{SD_T}{SD_C}\right)
++ \frac{1}{2}
+\left(
+\frac{1}{N_T-1}
+- \frac{1}{N_C-1}
+\right).
+$$
+
+A positive lnVR indicates greater absolute variability in the treatment group, while a negative lnVR indicates lower absolute variability [@nakagawa2015].
+
+# lnCVR
+
+The log coefficient of variation ratio (lnCVR) compares variability relative to the group mean. We first define the coefficient of variation as $CV = SD/M$.
+
+The bias-corrected lnCVR is:
+
+$$
+\ln CVR =
+\ln\left(\frac{CV_T}{CV_C}\right)
++ \frac{1}{2}
+\left(
+\frac{1}{N_T-1}
+- \frac{1}{N_C-1}
+\right)
+- \frac{1}{2}
+\left(
+\frac{SD_T^2}{N_T M_T^2}
+- \frac{SD_C^2}{N_C M_C^2}
+\right).
+$$
+
+A positive lnCVR indicates greater relative variability in the treatment group, while a negative lnCVR indicates lower relative variability [@senior2020].
+
 ::: callout-note
 ## Variable definitions
 
@@ -60,14 +101,18 @@ where $M$, $SD$, and $N$ are the mean, standard deviation, and sample size for t
 | `higher_better` | Indicates whether a higher outcome value represents better performance. |
 | `lnRR` | Bias-corrected log response ratio. |
 | `lnRR_var` | Sampling variance of lnRR. |
+| `lnVR` | Bias-corrected log variability ratio. |
+| `lnVR_var` | Sampling variance of lnVR. |
+| `lnCVR` | Bias-corrected log coefficient of variation ratio. |
+| `lnCVR_var` | Sampling variance of lnCVR. |
 :::
 
-# Data preparation for lnRR
+# Data preparation
 
 ## Data types
 
-- We calculate non-percentage outcomes on their extracted scale.
-- We apply an arcsine-square-root transformation before calculating percentage outcomes.
+- We calculate lnRR for every outcome. We apply an arcsine-square-root transformation before calculating lnRR for percentage outcomes.
+- We calculate lnVR and lnCVR only for non-percentage outcomes. We exclude percentage outcomes because their bounded scale creates a mechanical relationship between the mean and variance.
 
 ## Boundary corrections
 
@@ -79,12 +124,14 @@ We define an outcome stratum with `assay_type`, `measurement_variable`, `data_ty
 
 ## Comparison structure
 
-- For `comparison_structure == "independent"`, we use `metafor::escalc(measure = "ROM")`.
-- For `comparison_structure == "dependent"`, we use `metafor::escalc(measure = "ROMC", ri = 0.5)`.
+- For independent comparisons, we use `ROM`, `VR`, and `CVR` in `metafor::escalc()`.
+- For dependent comparisons, we use `ROMC`, `VRC`, and `CVRC` with a within-subject correlation of 0.5.
 
 ## Direction harmonisation
 
-When `higher_better == "yes"`, we multiply lnRR by -1 to keep the outcome direction consistent across effect sizes.
+When `higher_better == "yes"`, we multiply lnRR by -1 to keep the behavioural direction consistent across effect sizes. After this harmonisation, a positive lnRR represents more anxiety- or depression-like behaviour in the treatment group, while a negative lnRR represents less anxiety- or depression-like behaviour.
+
+We do not reverse lnVR or lnCVR because standard deviations do not have an anxiety- or depression-like direction. For both variability metrics, positive values represent greater variability in the treatment group and negative values represent lower variability.
 
 The following functions apply these rules while preserving the original row order.
 
@@ -253,7 +300,7 @@ modified_statistics |>
   knitr::kable(digits = 3, caption = "Statistics before and after boundary correction.")
 ```
 
-We calculate lnRR and `lnRR_var` row by row because the formula depends on `data_type` and `comparison_structure`. We then confirm that every input row produces one effect size and a non-negative sampling variance.
+We calculate lnRR and `lnRR_var` row by row because the formula depends on `data_type` and `comparison_structure`. We then calculate lnVR and lnCVR for the non-percentage rows. `metafor::escalc()` returns each effect size and its sampling variance.
 
 ```{r}
 #| label: calculate-lnrr
@@ -338,25 +385,135 @@ calculate_lnrr <- function(data, within_subject_correlation = 0.5) {
   result
 }
 
-db_effect_sizes <- calculate_lnrr(db_prepared)
+calculate_lnvr <- function(data, within_subject_correlation = 0.5) {
+  # Exclude percentage outcomes before calculating variability.
+  result <- data |>
+    filter(data_type != "percentage") |>
+    mutate(lnVR = NA_real_, lnVR_var = NA_real_)
+
+  for (i in seq_len(nrow(result))) {
+    # Use the estimator that matches the comparison structure.
+    effect <- if (result$comparison_structure[i] == "independent") {
+      metafor::escalc(
+        measure = "VR",
+        n1i = result$ex_n[i], n2i = result$c_n[i],
+        sd1i = result$ex_sd[i], sd2i = result$c_sd[i],
+        var.names = c("lnVR", "lnVR_var")
+      )
+    } else {
+      metafor::escalc(
+        measure = "VRC",
+        ni = (result$ex_n[i] + result$c_n[i]) / 2,
+        sd1i = result$ex_sd[i], sd2i = result$c_sd[i],
+        ri = within_subject_correlation,
+        var.names = c("lnVR", "lnVR_var")
+      )
+    }
+
+    result$lnVR[i] <- effect$lnVR
+    result$lnVR_var[i] <- effect$lnVR_var
+  }
+
+  result
+}
+
+calculate_lncvr <- function(data, within_subject_correlation = 0.5) {
+  # Exclude percentage outcomes before calculating relative variability.
+  result <- data |>
+    filter(data_type != "percentage") |>
+    mutate(lnCVR = NA_real_, lnCVR_var = NA_real_)
+
+  for (i in seq_len(nrow(result))) {
+    # Use the estimator that matches the comparison structure.
+    effect <- if (result$comparison_structure[i] == "independent") {
+      metafor::escalc(
+        measure = "CVR",
+        n1i = result$ex_n[i], n2i = result$c_n[i],
+        m1i = result$ex_mean[i], m2i = result$c_mean[i],
+        sd1i = result$ex_sd[i], sd2i = result$c_sd[i],
+        var.names = c("lnCVR", "lnCVR_var")
+      )
+    } else {
+      metafor::escalc(
+        measure = "CVRC",
+        ni = (result$ex_n[i] + result$c_n[i]) / 2,
+        m1i = result$ex_mean[i], m2i = result$c_mean[i],
+        sd1i = result$ex_sd[i], sd2i = result$c_sd[i],
+        ri = within_subject_correlation,
+        var.names = c("lnCVR", "lnCVR_var")
+      )
+    }
+
+    result$lnCVR[i] <- effect$lnCVR
+    result$lnCVR_var[i] <- effect$lnCVR_var
+  }
+
+  result
+}
+
+# Calculate the three effect-size types.
+db_lnrr <- calculate_lnrr(db_prepared)
+db_lnvr <- calculate_lnvr(db_prepared)
+db_lncvr <- calculate_lncvr(db_prepared)
+
+# Keep every lnRR row and join variability estimates by effect-size ID.
+db_effect_sizes <- db_lnrr |>
+  left_join(
+    db_lnvr |>
+      select(es_id, lnVR, lnVR_var),
+    by = "es_id"
+  ) |>
+  left_join(
+    db_lncvr |>
+      select(es_id, lnCVR, lnCVR_var),
+    by = "es_id"
+  )
 
 if (
   nrow(db_effect_sizes) != nrow(db) ||
     anyNA(db_effect_sizes$lnRR) ||
     anyNA(db_effect_sizes$lnRR_var) ||
-    any(db_effect_sizes$lnRR_var < 0)
+    any(db_effect_sizes$lnRR_var <= 0)
 ) {
-  stop("Effect-size calculation failed validation.")
+  stop("The lnRR calculation failed validation.")
+}
+
+nonpercentage <- db_effect_sizes$data_type != "percentage"
+percentage <- db_effect_sizes$data_type == "percentage"
+
+if (
+  any(!is.finite(db_effect_sizes$lnVR[nonpercentage])) ||
+    any(!is.finite(db_effect_sizes$lnVR_var[nonpercentage])) ||
+    any(db_effect_sizes$lnVR_var[nonpercentage] <= 0) ||
+    any(!is.finite(db_effect_sizes$lnCVR[nonpercentage])) ||
+    any(!is.finite(db_effect_sizes$lnCVR_var[nonpercentage])) ||
+    any(db_effect_sizes$lnCVR_var[nonpercentage] <= 0) ||
+    any(!is.na(db_effect_sizes$lnVR[percentage])) ||
+    any(!is.na(db_effect_sizes$lnCVR[percentage]))
+) {
+  stop("The variability effect-size calculations failed validation.")
 }
 
 db_effect_sizes |>
-  count(comparison_structure, name = "effect_sizes") |>
-  knitr::kable(caption = "Effect sizes by comparison structure.")
+  summarise(
+    lnRR = sum(is.finite(lnRR)),
+    lnVR = sum(is.finite(lnVR)),
+    lnCVR = sum(is.finite(lnCVR))
+  ) |>
+  tidyr::pivot_longer(
+    everything(),
+    names_to = "effect_size",
+    values_to = "k"
+  ) |>
+  knitr::kable(
+    col.names = c("Effect size", "k"),
+    caption = "Effect sizes available for analysis."
+  )
 ```
 
 # Effect-size database
 
-We add `lnRR` and `lnRR_var` to the analysis data and save the result. The following chapters use this file.
+We add all three effect sizes and their sampling variances to the analysis data and save the result. Percentage rows retain missing values for lnVR and lnCVR. The following chapters use this file.
 
 ```{r}
 #| label: export-effect-sizes
@@ -376,9 +533,9 @@ tibble(
   knitr::kable(caption = "Effect-size database.")
 ```
 
-# lnRR distributions
+# Effect-size distributions
 
-We plot lnRR and `lnRR_var` in separate histograms.
+We plot each effect size and its sampling variance in a separate histogram.
 
 ```{r}
 #| label: lnrr-histogram
@@ -393,7 +550,10 @@ ggplot(db_effect_sizes, aes(x = lnRR)) +
     colour = "white",
     linewidth = 0.2
   ) +
-  labs(x = "lnRR", y = "Count") +
+  labs(
+    x = "lnRR (- less, + more anxiety/depression-like behaviour)",
+    y = "Count"
+  ) +
   theme_minimal()
 ```
 
@@ -411,6 +571,82 @@ ggplot(db_effect_sizes, aes(x = lnRR_var)) +
     linewidth = 0.2
   ) +
   labs(x = "lnRR_var", y = "Count") +
+  theme_minimal()
+```
+
+```{r}
+#| label: lnvr-histogram
+#| fig-cap: "Distribution of lnVR effect sizes."
+#| fig-width: 7
+#| fig-height: 4
+
+db_effect_sizes |>
+  filter(is.finite(lnVR)) |>
+  ggplot(aes(x = lnVR)) +
+  geom_histogram(
+    bins = 30,
+    boundary = 0,
+    colour = "white",
+    linewidth = 0.2
+  ) +
+  labs(x = "lnVR (- lower, + greater absolute variability)", y = "Count") +
+  theme_minimal()
+```
+
+```{r}
+#| label: lnvr-var-histogram
+#| fig-cap: "Distribution of lnVR sampling variances."
+#| fig-width: 7
+#| fig-height: 4
+
+db_effect_sizes |>
+  filter(is.finite(lnVR_var)) |>
+  ggplot(aes(x = lnVR_var)) +
+  geom_histogram(
+    bins = 30,
+    boundary = 0,
+    colour = "white",
+    linewidth = 0.2
+  ) +
+  labs(x = "lnVR_var", y = "Count") +
+  theme_minimal()
+```
+
+```{r}
+#| label: lncvr-histogram
+#| fig-cap: "Distribution of lnCVR effect sizes."
+#| fig-width: 7
+#| fig-height: 4
+
+db_effect_sizes |>
+  filter(is.finite(lnCVR)) |>
+  ggplot(aes(x = lnCVR)) +
+  geom_histogram(
+    bins = 30,
+    boundary = 0,
+    colour = "white",
+    linewidth = 0.2
+  ) +
+  labs(x = "lnCVR (- lower, + greater relative variability)", y = "Count") +
+  theme_minimal()
+```
+
+```{r}
+#| label: lncvr-var-histogram
+#| fig-cap: "Distribution of lnCVR sampling variances."
+#| fig-width: 7
+#| fig-height: 4
+
+db_effect_sizes |>
+  filter(is.finite(lnCVR_var)) |>
+  ggplot(aes(x = lnCVR_var)) +
+  geom_histogram(
+    bins = 30,
+    boundary = 0,
+    colour = "white",
+    linewidth = 0.2
+  ) +
+  labs(x = "lnCVR_var", y = "Count") +
   theme_minimal()
 ```
 

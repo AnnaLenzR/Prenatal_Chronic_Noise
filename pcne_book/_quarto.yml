@@ -25,9 +25,9 @@ website:
         href: 01_data_wrangling.qmd
       - text: "Effect size calculation"
         href: 02_effect_size_lnRR.qmd
-      - text: "Sampling variance-covariance matrix"
+      - text: "Sampling variance-covariance matrices"
         href: 03_dependency_structure_audit.qmd
-      - text: "Overall effect"
+      - text: "Overall effects"
         href: 04_overall_effect.qmd
       - text: "Uni-moderators"
         href: 05_uni_moderators.qmd

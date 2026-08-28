@@ -49,6 +49,8 @@ We start with `Data/PCN_data_ext_checking_v.3.csv`. We record its checksum befor
 | `median`, `q1`, `q3` | Median, first quartile, and third quartile. |
 | `comparison_structure` | Indicates an independent- or dependent-group comparison. |
 | `higher_better` | Indicates whether a higher outcome value represents better performance. |
+| `control_conditions` | Acoustic conditions experienced by the control animals; retained as a moderator. |
+| `control_setting` | Physical setting where control animals were kept; retained for descriptive reporting only. |
 :::
 
 ```{r}
@@ -69,6 +71,7 @@ original <- readr::read_csv(
 required_columns <- c(
   "study_id", "ex_id", "con_id", "out_id", "es_id",
   "comparison_structure", "higher_better", "gest_stage_ex_standardised",
+  "control_conditions", "control_setting",
   "c_mean", "c_sd", "c_n", "c_se", "c_median", "c_q1", "c_q3",
   "ex_mean", "ex_sd", "ex_n", "ex_se", "ex_median", "ex_q1", "ex_q3"
 )
@@ -235,8 +238,9 @@ analysis_ready <- with_statistics |>
     exposure_type = str_to_lower(exposure_type),
     exposure_type = recode(exposure_type, "intermitent" = "intermittent"),
     noise_type = str_to_lower(noise_type),
-    noise_type_2 = str_to_lower(noise_type_2),
+    noise_frequency_range = str_to_lower(noise_frequency_range),
     control_conditions = str_to_lower(control_conditions),
+    control_setting = str_to_lower(control_setting),
     offspring_sex = str_to_lower(offspring_sex),
     outcome_type = str_to_lower(outcome_type),
     data_type = str_to_lower(data_type),
@@ -248,8 +252,8 @@ analysis_ready <- with_statistics |>
     ex_id, con_id, out_id, es_id, shared_control,
     sp_latin, sp_common, strain, dam_age, gest_stage_ex_standardised,
     exposure_span_d, exposure_type, exposure_session_duration_h,
-    noise_type, noise_type_2, loudness_dB, frequency_Hz,
-    control_conditions, offspring_sex, offspring_age_d,
+    noise_type, noise_frequency_range, loudness_dB, frequency_Hz,
+    control_conditions, control_setting, offspring_sex, offspring_age_d,
     experimental_procedures, outcome_type, assay_type,
     measurement_variable, data_type, data_units, measurement_timing,
     data_source, data_file, c_a_id, ex_a_id, comparison,

@@ -25,11 +25,12 @@ clean extraction,exposure_type,extracted/reported,"Code the noise exposure as �
 clean extraction,exposure_session_duration_h,extracted/reported,"Only if the exposure was intermittent, is the number of daily hours of exposure (convert minutes to hour fraction, e.g., 30 min is 0.5 h).",hours,,registered protocol v4
 clean extraction,ex_session_duration_notes,extracted/reported,"Notes related to the exposure timing (e.g., if the authors provided duration in minutes, write it here).",,,registered protocol v4
 clean extraction,noise_type,extracted/reported,"State the type of noise they used as the author states (synthetic noise, traffic playback, ultrasonic, other). For “other” add explanation in the noise_notes field.",,,registered protocol v4
-clean extraction,noise_type_2,extracted/reported,Standardized acoustic-band descriptor retained from the approved clearer identifier mapping.,,,approved codebook addition or clearer mapping
+clean extraction,noise_frequency_range,extracted/reported,Standardized acoustic frequency range of the exposure.,,"Audible; Ultrasound; Unclear",approved codebook addition and variable rename
 clean extraction,loudness_dB,extracted/reported,Loudness of the noise in decibels. Leave blank if not reported.,dB,,registered protocol v4
 clean extraction,frequency_Hz,extracted/reported,"Frequency of the speakers used, in hertz. Leave blank if not reported.",Hz,,registered protocol v4
 clean extraction,noise_notes,extracted/reported,Notes related to exposure conditions.,,,registered protocol v4
 clean extraction,control_conditions,extracted/reported,"Conditions under which the control animals were kept during the noise exposure phase: silence, ambient sound; white noise; other. For “other” add explanation in the control_notes field.",,,registered protocol v4
+clean extraction,control_setting,derived classification,Standardized physical setting where control animals were kept during the maternal noise-exposure period.,,standard_housing_conditions | experimental_room | acoustic_chamber | unclear,approved post-extraction descriptive variable
 clean extraction,control_loudness,extracted/reported,"Loudness of the control conditions in decibels, if provided.",,,registered protocol v4
 clean extraction,control_notes,extracted/reported,Notes related to control conditions (e.g. no description provided).,,,registered protocol v4
 clean extraction,offspring_sex,extracted/reported,"Sex of the offspring investigated: male, female, mixed, not reported. If not reported, the cell will be coded as “not reported”.",,male | female | mixed | not reported,registered protocol v4

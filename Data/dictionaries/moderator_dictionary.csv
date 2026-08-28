@@ -12,6 +12,7 @@ frequency_mid_hz,prenatal_exposure,numeric,Hz,exploratory,Point and range midpoi
 frequency_format,prenatal_exposure,categorical,,descriptive,"Point, range, or not reported"
 loudness_db,prenatal_exposure,numeric,dB,candidate,Confirm comparability of acoustic weighting/reference
 control_conditions,methodological,categorical,,candidate,"Ambient sound, silence, or unclear"
+control_setting,methodological,categorical,,descriptive,"Physical setting where control animals were kept; retained for narrative description and not fitted as a moderator"
 offspring_sex,offspring_biology,categorical,,candidate,"Male, female, or mixed"
 offspring_age_d,offspring_biology,numeric,days,candidate,Age at outcome assessment
 outcome_type,outcome,categorical,,candidate,Anxiety or depression

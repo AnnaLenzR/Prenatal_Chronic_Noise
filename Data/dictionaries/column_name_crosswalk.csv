@@ -22,7 +22,7 @@ position,source_name,resolved_name,clean_name
 21,exposure_session_duration_h,exposure_session_duration_h,exposure_session_duration_h
 22,ex_session_duration_notes,ex_session_duration_notes,ex_session_duration_notes
 23,noise_type,noise_type,noise_type
-24,noise_type_2,noise_type_2,noise_type_2
+24,noise_frequency_range,noise_frequency_range,noise_frequency_range
 25,loudness_dB,loudness_dB,loudness_d_b
 26,frequency_Hz,frequency_Hz,frequency_hz
 27,control_conditions,control_conditions,control_conditions
