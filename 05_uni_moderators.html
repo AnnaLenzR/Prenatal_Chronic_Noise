@@ -573,13 +573,20 @@ window.Quarto = {
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      category_levels <span class="ot">&lt;-</span> category_levels[category_levels <span class="sc">!=</span> missing_label]</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    stats<span class="sc">::</span><span class="fu">setNames</span>(</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="fu">length</span>(category_levels), <span class="at">palette =</span> <span class="st">"Dark 3"</span>),</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      category_levels</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(category_palettes) <span class="ot">&lt;-</span> categorical_moderators<span class="sc">$</span>variable</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># orchaRd capitalizes the first letter of plotted moderator levels.</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Name the palette with those displayed labels so ggplot can match every</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># category instead of falling back to grey. Because this palette is built</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># once per moderator, each level keeps its colour across all three metrics.</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    plotted_levels <span class="ot">&lt;-</span> category_levels</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(plotted_levels, <span class="dv">1</span>, <span class="dv">1</span>) <span class="ot">&lt;-</span> <span class="fu">toupper</span>(<span class="fu">substr</span>(plotted_levels, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    stats<span class="sc">::</span><span class="fu">setNames</span>(</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="fu">length</span>(category_levels), <span class="at">palette =</span> <span class="st">"Dark 3"</span>),</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      plotted_levels</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(category_palettes) <span class="ot">&lt;-</span> categorical_moderators<span class="sc">$</span>variable</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -2771,13 +2778,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; R version 4.5.1 (2025-06-13)
-#&gt; Platform: aarch64-apple-darwin20
-#&gt; Running under: macOS Tahoe 26.6.2
+<pre><code>#&gt; R version 4.6.0 (2026-04-24)
+#&gt; Platform: aarch64-apple-darwin23
+#&gt; Running under: macOS Tahoe 26.6
 #&gt; 
 #&gt; Matrix products: default
-#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib 
-#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
+#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRblas.0.dylib 
+#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
 #&gt; 
 #&gt; locale:
 #&gt; [1] C.UTF-8/C.UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8
@@ -2790,26 +2797,27 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #&gt; 
 #&gt; other attached packages:
 #&gt;  [1] tibble_3.3.1        readr_2.2.0         purrr_1.2.2        
-#&gt;  [4] orchaRd_2.2.1       multcomp_1.4-31     TH.data_1.1-5      
-#&gt;  [7] MASS_7.3-65         survival_3.8-3      mvtnorm_1.4-2      
+#&gt;  [4] orchaRd_2.2.0       multcomp_1.4-30     TH.data_1.1-5      
+#&gt;  [7] MASS_7.3-65         survival_3.8-6      mvtnorm_1.3-7      
 #&gt; [10] metafor_5.0-1       numDeriv_2016.8-1.1 metadat_1.6-0      
-#&gt; [13] Matrix_1.7-3        knitr_1.51          ggplot2_4.0.3      
+#&gt; [13] Matrix_1.7-5        knitr_1.51          ggplot2_4.0.3      
 #&gt; [16] dplyr_1.2.1        
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
-#&gt;  [1] sandwich_3.1-3     generics_0.1.4     lattice_0.22-7     hms_1.1.4         
-#&gt;  [5] digest_0.6.39      magrittr_2.0.5     estimability_2.0.0 evaluate_1.0.5    
-#&gt;  [9] grid_4.5.1         RColorBrewer_1.1-3 fastmap_1.2.0      jsonlite_2.0.0    
-#&gt; [13] scales_1.4.0       codetools_0.2-20   cli_3.6.6          crayon_1.5.3      
-#&gt; [17] rlang_1.3.0        bit64_4.8.2        splines_4.5.1      withr_3.0.3       
-#&gt; [21] yaml_2.3.12        otel_0.2.0         ggbeeswarm_0.7.3   parallel_4.5.1    
-#&gt; [25] tools_4.5.1        tzdb_0.5.0         mathjaxr_2.0-0     latex2exp_0.9.8   
-#&gt; [29] pacman_0.5.1       vctrs_0.7.3        R6_2.6.1           emmeans_2.0.4     
-#&gt; [33] zoo_1.9-0          lifecycle_1.0.5    bit_4.6.0          htmlwidgets_1.6.4 
-#&gt; [37] vipor_0.4.7        vroom_1.7.1        beeswarm_0.4.0     pkgconfig_2.0.3   
-#&gt; [41] pillar_1.11.1      gtable_0.3.6       glue_1.8.1         xfun_0.60         
-#&gt; [45] tidyselect_1.2.1   farver_2.1.2       htmltools_0.5.9    nlme_3.1-168      
-#&gt; [49] labeling_0.4.3     rmarkdown_2.31     compiler_4.5.1     S7_0.2.2</code></pre>
+#&gt;  [1] gtable_0.3.6       beeswarm_0.4.0     xfun_0.57          htmlwidgets_1.6.4 
+#&gt;  [5] lattice_0.22-9     mathjaxr_2.0-0     tzdb_0.5.0         vctrs_0.7.3       
+#&gt;  [9] tools_4.6.0        generics_0.1.4     parallel_4.6.0     sandwich_3.1-1    
+#&gt; [13] pacman_0.5.1       pkgconfig_2.0.3    RColorBrewer_1.1-3 S7_0.2.2          
+#&gt; [17] lifecycle_1.0.5    compiler_4.6.0     farver_2.1.2       codetools_0.2-20  
+#&gt; [21] vipor_0.4.7        htmltools_0.5.9    yaml_2.3.12        pillar_1.11.1     
+#&gt; [25] crayon_1.5.3       nlme_3.1-169       tidyselect_1.2.1   digest_0.6.39     
+#&gt; [29] labeling_0.4.3     splines_4.6.0      latex2exp_0.9.8    fastmap_1.2.0     
+#&gt; [33] grid_4.6.0         cli_3.6.6          magrittr_2.0.5     withr_3.0.2       
+#&gt; [37] scales_1.4.0       bit64_4.8.0        ggbeeswarm_0.7.3   estimability_1.5.1
+#&gt; [41] rmarkdown_2.31     emmeans_2.0.3      bit_4.6.0          otel_0.2.0        
+#&gt; [45] zoo_1.8-15         hms_1.1.4          evaluate_1.0.5     rlang_1.2.0       
+#&gt; [49] xtable_1.8-8       glue_1.8.1         vroom_1.7.1        jsonlite_2.0.0    
+#&gt; [53] R6_2.6.1</code></pre>
 </div>
 </div>
 </div>
@@ -3470,345 +3478,352 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <span id="cb90-192"><a href="#cb90-192" aria-hidden="true" tabindex="-1"></a>      category_levels <span class="ot">&lt;-</span> category_levels[category_levels <span class="sc">!=</span> missing_label]</span>
 <span id="cb90-193"><a href="#cb90-193" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb90-194"><a href="#cb90-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-195"><a href="#cb90-195" aria-hidden="true" tabindex="-1"></a>    stats<span class="sc">::</span><span class="fu">setNames</span>(</span>
-<span id="cb90-196"><a href="#cb90-196" aria-hidden="true" tabindex="-1"></a>      grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="fu">length</span>(category_levels), <span class="at">palette =</span> <span class="st">"Dark 3"</span>),</span>
-<span id="cb90-197"><a href="#cb90-197" aria-hidden="true" tabindex="-1"></a>      category_levels</span>
-<span id="cb90-198"><a href="#cb90-198" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb90-199"><a href="#cb90-199" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-200"><a href="#cb90-200" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb90-201"><a href="#cb90-201" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(category_palettes) <span class="ot">&lt;-</span> categorical_moderators<span class="sc">$</span>variable</span>
-<span id="cb90-202"><a href="#cb90-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-203"><a href="#cb90-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-204"><a href="#cb90-204" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prepare the moderator data</span></span>
-<span id="cb90-205"><a href="#cb90-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-206"><a href="#cb90-206" aria-hidden="true" tabindex="-1"></a>For a categorical moderator, we remove levels with $k &lt; 5$ and subset the same rows and columns from <span class="in">`V`</span>. For a continuous moderator, we retain finite values and subset <span class="in">`V`</span> in the same way.</span>
-<span id="cb90-207"><a href="#cb90-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-210"><a href="#cb90-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-211"><a href="#cb90-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prepare-moderator-data</span></span>
-<span id="cb90-212"><a href="#cb90-212" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb90-213"><a href="#cb90-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-214"><a href="#cb90-214" aria-hidden="true" tabindex="-1"></a>prepare_categorical <span class="ot">&lt;-</span> <span class="cf">function</span>(data, V, moderator, <span class="at">missing_label =</span> <span class="cn">NA_character_</span>, <span class="at">min_k =</span> <span class="dv">5</span>) {</span>
-<span id="cb90-215"><a href="#cb90-215" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Start with rows that contain a recorded moderator value.</span></span>
-<span id="cb90-216"><a href="#cb90-216" aria-hidden="true" tabindex="-1"></a>  usable <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(data[[moderator]])</span>
-<span id="cb90-217"><a href="#cb90-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-218"><a href="#cb90-218" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Treat a specified text label as missing when required.</span></span>
-<span id="cb90-219"><a href="#cb90-219" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(missing_label)) {</span>
-<span id="cb90-220"><a href="#cb90-220" aria-hidden="true" tabindex="-1"></a>    usable <span class="ot">&lt;-</span> usable <span class="sc">&amp;</span> <span class="fu">as.character</span>(data[[moderator]]) <span class="sc">!=</span> missing_label</span>
-<span id="cb90-221"><a href="#cb90-221" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-222"><a href="#cb90-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-223"><a href="#cb90-223" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Count the effect sizes in each moderator level.</span></span>
-<span id="cb90-224"><a href="#cb90-224" aria-hidden="true" tabindex="-1"></a>  level_counts <span class="ot">&lt;-</span> data[usable, ] <span class="sc">|&gt;</span></span>
-<span id="cb90-225"><a href="#cb90-225" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(<span class="at">level =</span> .data[[moderator]], <span class="at">name =</span> <span class="st">"effect_sizes"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb90-226"><a href="#cb90-226" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb90-227"><a href="#cb90-227" aria-hidden="true" tabindex="-1"></a>      <span class="at">studies =</span> <span class="fu">vapply</span>(</span>
-<span id="cb90-228"><a href="#cb90-228" aria-hidden="true" tabindex="-1"></a>        level,</span>
-<span id="cb90-229"><a href="#cb90-229" aria-hidden="true" tabindex="-1"></a>        <span class="cf">function</span>(x) <span class="fu">n_distinct</span>(data<span class="sc">$</span>study_id[usable <span class="sc">&amp;</span> data[[moderator]] <span class="sc">==</span> x]),</span>
-<span id="cb90-230"><a href="#cb90-230" aria-hidden="true" tabindex="-1"></a>        <span class="fu">integer</span>(<span class="dv">1</span>)</span>
-<span id="cb90-231"><a href="#cb90-231" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb90-232"><a href="#cb90-232" aria-hidden="true" tabindex="-1"></a>      <span class="at">include =</span> effect_sizes <span class="sc">&gt;=</span> min_k</span>
-<span id="cb90-233"><a href="#cb90-233" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb90-234"><a href="#cb90-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-235"><a href="#cb90-235" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain levels represented by at least five effect sizes.</span></span>
-<span id="cb90-236"><a href="#cb90-236" aria-hidden="true" tabindex="-1"></a>  keep_levels <span class="ot">&lt;-</span> level_counts <span class="sc">|&gt;</span></span>
-<span id="cb90-237"><a href="#cb90-237" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(include) <span class="sc">|&gt;</span></span>
-<span id="cb90-238"><a href="#cb90-238" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(level)</span>
-<span id="cb90-239"><a href="#cb90-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-240"><a href="#cb90-240" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use the same row positions to subset the data and VCV matrix.</span></span>
-<span id="cb90-241"><a href="#cb90-241" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(usable <span class="sc">&amp;</span> data[[moderator]] <span class="sc">%in%</span> keep_levels)</span>
-<span id="cb90-242"><a href="#cb90-242" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb90-243"><a href="#cb90-243" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> V[idx, idx, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb90-244"><a href="#cb90-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-245"><a href="#cb90-245" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unused factor levels after filtering.</span></span>
-<span id="cb90-246"><a href="#cb90-246" aria-hidden="true" tabindex="-1"></a>  dat[[moderator]] <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">factor</span>(dat[[moderator]]))</span>
-<span id="cb90-247"><a href="#cb90-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-248"><a href="#cb90-248" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A categorical moderator requires at least two retained levels.</span></span>
-<span id="cb90-249"><a href="#cb90-249" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nlevels</span>(dat[[moderator]]) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
-<span id="cb90-250"><a href="#cb90-250" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Fewer than two levels remain for "</span>, moderator, <span class="st">"."</span>)</span>
-<span id="cb90-251"><a href="#cb90-251" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-252"><a href="#cb90-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-253"><a href="#cb90-253" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">data =</span> dat, <span class="at">V =</span> V_subset, <span class="at">level_counts =</span> level_counts)</span>
-<span id="cb90-254"><a href="#cb90-254" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb90-255"><a href="#cb90-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-256"><a href="#cb90-256" aria-hidden="true" tabindex="-1"></a>prepare_continuous <span class="ot">&lt;-</span> <span class="cf">function</span>(data, V, moderator) {</span>
-<span id="cb90-257"><a href="#cb90-257" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain rows with finite moderator values.</span></span>
-<span id="cb90-258"><a href="#cb90-258" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.finite</span>(data[[moderator]]))</span>
+<span id="cb90-195"><a href="#cb90-195" aria-hidden="true" tabindex="-1"></a>    <span class="co"># orchaRd capitalizes the first letter of plotted moderator levels.</span></span>
+<span id="cb90-196"><a href="#cb90-196" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Name the palette with those displayed labels so ggplot can match every</span></span>
+<span id="cb90-197"><a href="#cb90-197" aria-hidden="true" tabindex="-1"></a>    <span class="co"># category instead of falling back to grey. Because this palette is built</span></span>
+<span id="cb90-198"><a href="#cb90-198" aria-hidden="true" tabindex="-1"></a>    <span class="co"># once per moderator, each level keeps its colour across all three metrics.</span></span>
+<span id="cb90-199"><a href="#cb90-199" aria-hidden="true" tabindex="-1"></a>    plotted_levels <span class="ot">&lt;-</span> category_levels</span>
+<span id="cb90-200"><a href="#cb90-200" aria-hidden="true" tabindex="-1"></a>    <span class="fu">substr</span>(plotted_levels, <span class="dv">1</span>, <span class="dv">1</span>) <span class="ot">&lt;-</span> <span class="fu">toupper</span>(<span class="fu">substr</span>(plotted_levels, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb90-201"><a href="#cb90-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-202"><a href="#cb90-202" aria-hidden="true" tabindex="-1"></a>    stats<span class="sc">::</span><span class="fu">setNames</span>(</span>
+<span id="cb90-203"><a href="#cb90-203" aria-hidden="true" tabindex="-1"></a>      grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="fu">length</span>(category_levels), <span class="at">palette =</span> <span class="st">"Dark 3"</span>),</span>
+<span id="cb90-204"><a href="#cb90-204" aria-hidden="true" tabindex="-1"></a>      plotted_levels</span>
+<span id="cb90-205"><a href="#cb90-205" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb90-206"><a href="#cb90-206" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-207"><a href="#cb90-207" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb90-208"><a href="#cb90-208" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(category_palettes) <span class="ot">&lt;-</span> categorical_moderators<span class="sc">$</span>variable</span>
+<span id="cb90-209"><a href="#cb90-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-210"><a href="#cb90-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-211"><a href="#cb90-211" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prepare the moderator data</span></span>
+<span id="cb90-212"><a href="#cb90-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-213"><a href="#cb90-213" aria-hidden="true" tabindex="-1"></a>For a categorical moderator, we remove levels with $k &lt; 5$ and subset the same rows and columns from <span class="in">`V`</span>. For a continuous moderator, we retain finite values and subset <span class="in">`V`</span> in the same way.</span>
+<span id="cb90-214"><a href="#cb90-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-217"><a href="#cb90-217" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-218"><a href="#cb90-218" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prepare-moderator-data</span></span>
+<span id="cb90-219"><a href="#cb90-219" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb90-220"><a href="#cb90-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-221"><a href="#cb90-221" aria-hidden="true" tabindex="-1"></a>prepare_categorical <span class="ot">&lt;-</span> <span class="cf">function</span>(data, V, moderator, <span class="at">missing_label =</span> <span class="cn">NA_character_</span>, <span class="at">min_k =</span> <span class="dv">5</span>) {</span>
+<span id="cb90-222"><a href="#cb90-222" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Start with rows that contain a recorded moderator value.</span></span>
+<span id="cb90-223"><a href="#cb90-223" aria-hidden="true" tabindex="-1"></a>  usable <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(data[[moderator]])</span>
+<span id="cb90-224"><a href="#cb90-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-225"><a href="#cb90-225" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Treat a specified text label as missing when required.</span></span>
+<span id="cb90-226"><a href="#cb90-226" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(missing_label)) {</span>
+<span id="cb90-227"><a href="#cb90-227" aria-hidden="true" tabindex="-1"></a>    usable <span class="ot">&lt;-</span> usable <span class="sc">&amp;</span> <span class="fu">as.character</span>(data[[moderator]]) <span class="sc">!=</span> missing_label</span>
+<span id="cb90-228"><a href="#cb90-228" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-229"><a href="#cb90-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-230"><a href="#cb90-230" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Count the effect sizes in each moderator level.</span></span>
+<span id="cb90-231"><a href="#cb90-231" aria-hidden="true" tabindex="-1"></a>  level_counts <span class="ot">&lt;-</span> data[usable, ] <span class="sc">|&gt;</span></span>
+<span id="cb90-232"><a href="#cb90-232" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(<span class="at">level =</span> .data[[moderator]], <span class="at">name =</span> <span class="st">"effect_sizes"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb90-233"><a href="#cb90-233" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb90-234"><a href="#cb90-234" aria-hidden="true" tabindex="-1"></a>      <span class="at">studies =</span> <span class="fu">vapply</span>(</span>
+<span id="cb90-235"><a href="#cb90-235" aria-hidden="true" tabindex="-1"></a>        level,</span>
+<span id="cb90-236"><a href="#cb90-236" aria-hidden="true" tabindex="-1"></a>        <span class="cf">function</span>(x) <span class="fu">n_distinct</span>(data<span class="sc">$</span>study_id[usable <span class="sc">&amp;</span> data[[moderator]] <span class="sc">==</span> x]),</span>
+<span id="cb90-237"><a href="#cb90-237" aria-hidden="true" tabindex="-1"></a>        <span class="fu">integer</span>(<span class="dv">1</span>)</span>
+<span id="cb90-238"><a href="#cb90-238" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb90-239"><a href="#cb90-239" aria-hidden="true" tabindex="-1"></a>      <span class="at">include =</span> effect_sizes <span class="sc">&gt;=</span> min_k</span>
+<span id="cb90-240"><a href="#cb90-240" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb90-241"><a href="#cb90-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-242"><a href="#cb90-242" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain levels represented by at least five effect sizes.</span></span>
+<span id="cb90-243"><a href="#cb90-243" aria-hidden="true" tabindex="-1"></a>  keep_levels <span class="ot">&lt;-</span> level_counts <span class="sc">|&gt;</span></span>
+<span id="cb90-244"><a href="#cb90-244" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(include) <span class="sc">|&gt;</span></span>
+<span id="cb90-245"><a href="#cb90-245" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(level)</span>
+<span id="cb90-246"><a href="#cb90-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-247"><a href="#cb90-247" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use the same row positions to subset the data and VCV matrix.</span></span>
+<span id="cb90-248"><a href="#cb90-248" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(usable <span class="sc">&amp;</span> data[[moderator]] <span class="sc">%in%</span> keep_levels)</span>
+<span id="cb90-249"><a href="#cb90-249" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb90-250"><a href="#cb90-250" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> V[idx, idx, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb90-251"><a href="#cb90-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-252"><a href="#cb90-252" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unused factor levels after filtering.</span></span>
+<span id="cb90-253"><a href="#cb90-253" aria-hidden="true" tabindex="-1"></a>  dat[[moderator]] <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">factor</span>(dat[[moderator]]))</span>
+<span id="cb90-254"><a href="#cb90-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-255"><a href="#cb90-255" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A categorical moderator requires at least two retained levels.</span></span>
+<span id="cb90-256"><a href="#cb90-256" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nlevels</span>(dat[[moderator]]) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
+<span id="cb90-257"><a href="#cb90-257" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Fewer than two levels remain for "</span>, moderator, <span class="st">"."</span>)</span>
+<span id="cb90-258"><a href="#cb90-258" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb90-259"><a href="#cb90-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-260"><a href="#cb90-260" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Subset the data and VCV matrix with the same row positions.</span></span>
-<span id="cb90-261"><a href="#cb90-261" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb90-262"><a href="#cb90-262" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> V[idx, idx, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb90-263"><a href="#cb90-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-264"><a href="#cb90-264" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the moderator as a numeric variable.</span></span>
-<span id="cb90-265"><a href="#cb90-265" aria-hidden="true" tabindex="-1"></a>  dat[[moderator]] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat[[moderator]])</span>
+<span id="cb90-260"><a href="#cb90-260" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">data =</span> dat, <span class="at">V =</span> V_subset, <span class="at">level_counts =</span> level_counts)</span>
+<span id="cb90-261"><a href="#cb90-261" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb90-262"><a href="#cb90-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-263"><a href="#cb90-263" aria-hidden="true" tabindex="-1"></a>prepare_continuous <span class="ot">&lt;-</span> <span class="cf">function</span>(data, V, moderator) {</span>
+<span id="cb90-264"><a href="#cb90-264" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain rows with finite moderator values.</span></span>
+<span id="cb90-265"><a href="#cb90-265" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.finite</span>(data[[moderator]]))</span>
 <span id="cb90-266"><a href="#cb90-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-267"><a href="#cb90-267" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A continuous moderator requires at least two distinct values.</span></span>
-<span id="cb90-268"><a href="#cb90-268" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">n_distinct</span>(dat[[moderator]]) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
-<span id="cb90-269"><a href="#cb90-269" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"The moderator does not contain at least two values: "</span>, moderator, <span class="st">"."</span>)</span>
-<span id="cb90-270"><a href="#cb90-270" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-271"><a href="#cb90-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-272"><a href="#cb90-272" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">data =</span> dat, <span class="at">V =</span> V_subset, <span class="at">level_counts =</span> <span class="cn">NULL</span>)</span>
-<span id="cb90-273"><a href="#cb90-273" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb90-274"><a href="#cb90-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-275"><a href="#cb90-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-276"><a href="#cb90-276" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fit one uni-moderator model</span></span>
-<span id="cb90-277"><a href="#cb90-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-278"><a href="#cb90-278" aria-hidden="true" tabindex="-1"></a>The function below prepares one moderator, subsets the complete VCV matrix, and fits its model. For categorical moderators with at least three retained levels, it also calculates unadjusted Tukey contrasts with a separate no-intercept model.</span>
-<span id="cb90-279"><a href="#cb90-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-282"><a href="#cb90-282" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-283"><a href="#cb90-283" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fit-one-unimoderator</span></span>
-<span id="cb90-284"><a href="#cb90-284" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb90-285"><a href="#cb90-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-286"><a href="#cb90-286" aria-hidden="true" tabindex="-1"></a>fit_unimoderator <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
-<span id="cb90-287"><a href="#cb90-287" aria-hidden="true" tabindex="-1"></a>  data,</span>
-<span id="cb90-288"><a href="#cb90-288" aria-hidden="true" tabindex="-1"></a>  V,</span>
-<span id="cb90-289"><a href="#cb90-289" aria-hidden="true" tabindex="-1"></a>  yi,</span>
-<span id="cb90-290"><a href="#cb90-290" aria-hidden="true" tabindex="-1"></a>  effect_label,</span>
-<span id="cb90-291"><a href="#cb90-291" aria-hidden="true" tabindex="-1"></a>  effect_axis_label,</span>
-<span id="cb90-292"><a href="#cb90-292" aria-hidden="true" tabindex="-1"></a>  moderator,</span>
-<span id="cb90-293"><a href="#cb90-293" aria-hidden="true" tabindex="-1"></a>  label,</span>
-<span id="cb90-294"><a href="#cb90-294" aria-hidden="true" tabindex="-1"></a>  kind,</span>
-<span id="cb90-295"><a href="#cb90-295" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing_label =</span> <span class="cn">NA_character_</span>,</span>
-<span id="cb90-296"><a href="#cb90-296" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_k =</span> <span class="dv">5</span></span>
-<span id="cb90-297"><a href="#cb90-297" aria-hidden="true" tabindex="-1"></a>) {</span>
-<span id="cb90-298"><a href="#cb90-298" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Apply the appropriate preparation rule for the moderator type.</span></span>
-<span id="cb90-299"><a href="#cb90-299" aria-hidden="true" tabindex="-1"></a>  prepared <span class="ot">&lt;-</span> <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
-<span id="cb90-300"><a href="#cb90-300" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prepare_categorical</span>(data, V, moderator, missing_label, min_k)</span>
-<span id="cb90-301"><a href="#cb90-301" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb90-302"><a href="#cb90-302" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prepare_continuous</span>(data, V, moderator)</span>
-<span id="cb90-303"><a href="#cb90-303" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-304"><a href="#cb90-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-305"><a href="#cb90-305" aria-hidden="true" tabindex="-1"></a>  model_data <span class="ot">&lt;-</span> prepared<span class="sc">$</span>data</span>
-<span id="cb90-306"><a href="#cb90-306" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> prepared<span class="sc">$</span>V</span>
-<span id="cb90-307"><a href="#cb90-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-308"><a href="#cb90-308" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit one multilevel meta-regression with the subsetted VCV matrix.</span></span>
-<span id="cb90-309"><a href="#cb90-309" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.mv</span>(</span>
-<span id="cb90-310"><a href="#cb90-310" aria-hidden="true" tabindex="-1"></a>    <span class="at">yi =</span> model_data[[yi]],</span>
-<span id="cb90-311"><a href="#cb90-311" aria-hidden="true" tabindex="-1"></a>    <span class="at">V =</span> V_subset,</span>
-<span id="cb90-312"><a href="#cb90-312" aria-hidden="true" tabindex="-1"></a>    <span class="at">mods =</span> <span class="fu">reformulate</span>(moderator),</span>
-<span id="cb90-313"><a href="#cb90-313" aria-hidden="true" tabindex="-1"></a>    <span class="at">random =</span> <span class="fu">list</span>(</span>
-<span id="cb90-314"><a href="#cb90-314" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> study_id,</span>
-<span id="cb90-315"><a href="#cb90-315" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> es_id,</span>
-<span id="cb90-316"><a href="#cb90-316" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> strain</span>
-<span id="cb90-317"><a href="#cb90-317" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb90-318"><a href="#cb90-318" aria-hidden="true" tabindex="-1"></a>    <span class="at">test =</span> <span class="st">"t"</span>,</span>
-<span id="cb90-319"><a href="#cb90-319" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"REML"</span>,</span>
-<span id="cb90-320"><a href="#cb90-320" aria-hidden="true" tabindex="-1"></a>    <span class="at">sparse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb90-321"><a href="#cb90-321" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> model_data</span>
-<span id="cb90-322"><a href="#cb90-322" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb90-323"><a href="#cb90-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-324"><a href="#cb90-324" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw an orchard plot for a categorical moderator. We draw continuous</span></span>
-<span id="cb90-325"><a href="#cb90-325" aria-hidden="true" tabindex="-1"></a>  <span class="co"># moderators with metafor::regplot() when we display the model results.</span></span>
-<span id="cb90-326"><a href="#cb90-326" aria-hidden="true" tabindex="-1"></a>  model_plot <span class="ot">&lt;-</span> <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
-<span id="cb90-327"><a href="#cb90-327" aria-hidden="true" tabindex="-1"></a>    orchaRd<span class="sc">::</span><span class="fu">orchard_plot</span>(</span>
-<span id="cb90-328"><a href="#cb90-328" aria-hidden="true" tabindex="-1"></a>      model,</span>
-<span id="cb90-329"><a href="#cb90-329" aria-hidden="true" tabindex="-1"></a>      <span class="at">mod =</span> moderator,</span>
-<span id="cb90-330"><a href="#cb90-330" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> <span class="st">"study_id"</span>,</span>
-<span id="cb90-331"><a href="#cb90-331" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> effect_axis_label,</span>
-<span id="cb90-332"><a href="#cb90-332" aria-hidden="true" tabindex="-1"></a>      <span class="at">flip =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb90-333"><a href="#cb90-333" aria-hidden="true" tabindex="-1"></a>      <span class="at">angle =</span> <span class="dv">0</span>,</span>
-<span id="cb90-334"><a href="#cb90-334" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.pos =</span> <span class="st">"top.left"</span></span>
-<span id="cb90-335"><a href="#cb90-335" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb90-336"><a href="#cb90-336" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Use the complete named palette so shared categories keep their colour.</span></span>
-<span id="cb90-337"><a href="#cb90-337" aria-hidden="true" tabindex="-1"></a>      ggplot2<span class="sc">::</span><span class="fu">scale_colour_manual</span>(</span>
-<span id="cb90-338"><a href="#cb90-338" aria-hidden="true" tabindex="-1"></a>        <span class="at">values =</span> category_palettes[[moderator]],</span>
-<span id="cb90-339"><a href="#cb90-339" aria-hidden="true" tabindex="-1"></a>        <span class="at">drop =</span> <span class="cn">FALSE</span></span>
-<span id="cb90-340"><a href="#cb90-340" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">+</span></span>
-<span id="cb90-341"><a href="#cb90-341" aria-hidden="true" tabindex="-1"></a>      ggplot2<span class="sc">::</span><span class="fu">scale_fill_manual</span>(</span>
-<span id="cb90-342"><a href="#cb90-342" aria-hidden="true" tabindex="-1"></a>        <span class="at">values =</span> category_palettes[[moderator]],</span>
-<span id="cb90-343"><a href="#cb90-343" aria-hidden="true" tabindex="-1"></a>        <span class="at">drop =</span> <span class="cn">FALSE</span></span>
-<span id="cb90-344"><a href="#cb90-344" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb90-345"><a href="#cb90-345" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb90-346"><a href="#cb90-346" aria-hidden="true" tabindex="-1"></a>    <span class="cn">NULL</span></span>
-<span id="cb90-347"><a href="#cb90-347" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-348"><a href="#cb90-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-349"><a href="#cb90-349" aria-hidden="true" tabindex="-1"></a>  contrasts <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb90-350"><a href="#cb90-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-351"><a href="#cb90-351" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate unadjusted Tukey contrasts when at least three levels remain.</span></span>
-<span id="cb90-352"><a href="#cb90-352" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span> <span class="sc">&amp;&amp;</span> <span class="fu">nlevels</span>(model_data[[moderator]]) <span class="sc">&gt;=</span> <span class="dv">3</span>) {</span>
-<span id="cb90-353"><a href="#cb90-353" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit a no-intercept model so that each coefficient represents one level.</span></span>
-<span id="cb90-354"><a href="#cb90-354" aria-hidden="true" tabindex="-1"></a>    no_intercept_model <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.mv</span>(</span>
-<span id="cb90-355"><a href="#cb90-355" aria-hidden="true" tabindex="-1"></a>      <span class="at">yi =</span> model_data[[yi]],</span>
-<span id="cb90-356"><a href="#cb90-356" aria-hidden="true" tabindex="-1"></a>      <span class="at">V =</span> V_subset,</span>
-<span id="cb90-357"><a href="#cb90-357" aria-hidden="true" tabindex="-1"></a>      <span class="at">mods =</span> <span class="fu">reformulate</span>(moderator, <span class="at">intercept =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb90-358"><a href="#cb90-358" aria-hidden="true" tabindex="-1"></a>      <span class="at">random =</span> <span class="fu">list</span>(</span>
-<span id="cb90-359"><a href="#cb90-359" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> study_id,</span>
-<span id="cb90-360"><a href="#cb90-360" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> es_id,</span>
-<span id="cb90-361"><a href="#cb90-361" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> strain</span>
-<span id="cb90-362"><a href="#cb90-362" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb90-363"><a href="#cb90-363" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> <span class="st">"t"</span>,</span>
-<span id="cb90-364"><a href="#cb90-364" aria-hidden="true" tabindex="-1"></a>      <span class="at">method =</span> <span class="st">"REML"</span>,</span>
-<span id="cb90-365"><a href="#cb90-365" aria-hidden="true" tabindex="-1"></a>      <span class="at">sparse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb90-366"><a href="#cb90-366" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> model_data</span>
-<span id="cb90-367"><a href="#cb90-367" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb90-368"><a href="#cb90-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-369"><a href="#cb90-369" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create all pairwise Tukey contrasts among the retained levels.</span></span>
-<span id="cb90-370"><a href="#cb90-370" aria-hidden="true" tabindex="-1"></a>    contrast_matrix <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">contrMat</span>(</span>
-<span id="cb90-371"><a href="#cb90-371" aria-hidden="true" tabindex="-1"></a>      <span class="fu">table</span>(model_data[[moderator]]),</span>
-<span id="cb90-372"><a href="#cb90-372" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">"Tukey"</span></span>
-<span id="cb90-373"><a href="#cb90-373" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb90-374"><a href="#cb90-374" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(contrast_matrix) <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(no_intercept_model))</span>
+<span id="cb90-267"><a href="#cb90-267" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Subset the data and VCV matrix with the same row positions.</span></span>
+<span id="cb90-268"><a href="#cb90-268" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb90-269"><a href="#cb90-269" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> V[idx, idx, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb90-270"><a href="#cb90-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-271"><a href="#cb90-271" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the moderator as a numeric variable.</span></span>
+<span id="cb90-272"><a href="#cb90-272" aria-hidden="true" tabindex="-1"></a>  dat[[moderator]] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat[[moderator]])</span>
+<span id="cb90-273"><a href="#cb90-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-274"><a href="#cb90-274" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A continuous moderator requires at least two distinct values.</span></span>
+<span id="cb90-275"><a href="#cb90-275" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">n_distinct</span>(dat[[moderator]]) <span class="sc">&lt;</span> <span class="dv">2</span>) {</span>
+<span id="cb90-276"><a href="#cb90-276" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"The moderator does not contain at least two values: "</span>, moderator, <span class="st">"."</span>)</span>
+<span id="cb90-277"><a href="#cb90-277" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-278"><a href="#cb90-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-279"><a href="#cb90-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">data =</span> dat, <span class="at">V =</span> V_subset, <span class="at">level_counts =</span> <span class="cn">NULL</span>)</span>
+<span id="cb90-280"><a href="#cb90-280" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb90-281"><a href="#cb90-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-282"><a href="#cb90-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-283"><a href="#cb90-283" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fit one uni-moderator model</span></span>
+<span id="cb90-284"><a href="#cb90-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-285"><a href="#cb90-285" aria-hidden="true" tabindex="-1"></a>The function below prepares one moderator, subsets the complete VCV matrix, and fits its model. For categorical moderators with at least three retained levels, it also calculates unadjusted Tukey contrasts with a separate no-intercept model.</span>
+<span id="cb90-286"><a href="#cb90-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-289"><a href="#cb90-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-290"><a href="#cb90-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fit-one-unimoderator</span></span>
+<span id="cb90-291"><a href="#cb90-291" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb90-292"><a href="#cb90-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-293"><a href="#cb90-293" aria-hidden="true" tabindex="-1"></a>fit_unimoderator <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb90-294"><a href="#cb90-294" aria-hidden="true" tabindex="-1"></a>  data,</span>
+<span id="cb90-295"><a href="#cb90-295" aria-hidden="true" tabindex="-1"></a>  V,</span>
+<span id="cb90-296"><a href="#cb90-296" aria-hidden="true" tabindex="-1"></a>  yi,</span>
+<span id="cb90-297"><a href="#cb90-297" aria-hidden="true" tabindex="-1"></a>  effect_label,</span>
+<span id="cb90-298"><a href="#cb90-298" aria-hidden="true" tabindex="-1"></a>  effect_axis_label,</span>
+<span id="cb90-299"><a href="#cb90-299" aria-hidden="true" tabindex="-1"></a>  moderator,</span>
+<span id="cb90-300"><a href="#cb90-300" aria-hidden="true" tabindex="-1"></a>  label,</span>
+<span id="cb90-301"><a href="#cb90-301" aria-hidden="true" tabindex="-1"></a>  kind,</span>
+<span id="cb90-302"><a href="#cb90-302" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing_label =</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb90-303"><a href="#cb90-303" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_k =</span> <span class="dv">5</span></span>
+<span id="cb90-304"><a href="#cb90-304" aria-hidden="true" tabindex="-1"></a>) {</span>
+<span id="cb90-305"><a href="#cb90-305" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Apply the appropriate preparation rule for the moderator type.</span></span>
+<span id="cb90-306"><a href="#cb90-306" aria-hidden="true" tabindex="-1"></a>  prepared <span class="ot">&lt;-</span> <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
+<span id="cb90-307"><a href="#cb90-307" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prepare_categorical</span>(data, V, moderator, missing_label, min_k)</span>
+<span id="cb90-308"><a href="#cb90-308" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb90-309"><a href="#cb90-309" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prepare_continuous</span>(data, V, moderator)</span>
+<span id="cb90-310"><a href="#cb90-310" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-311"><a href="#cb90-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-312"><a href="#cb90-312" aria-hidden="true" tabindex="-1"></a>  model_data <span class="ot">&lt;-</span> prepared<span class="sc">$</span>data</span>
+<span id="cb90-313"><a href="#cb90-313" aria-hidden="true" tabindex="-1"></a>  V_subset <span class="ot">&lt;-</span> prepared<span class="sc">$</span>V</span>
+<span id="cb90-314"><a href="#cb90-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-315"><a href="#cb90-315" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit one multilevel meta-regression with the subsetted VCV matrix.</span></span>
+<span id="cb90-316"><a href="#cb90-316" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.mv</span>(</span>
+<span id="cb90-317"><a href="#cb90-317" aria-hidden="true" tabindex="-1"></a>    <span class="at">yi =</span> model_data[[yi]],</span>
+<span id="cb90-318"><a href="#cb90-318" aria-hidden="true" tabindex="-1"></a>    <span class="at">V =</span> V_subset,</span>
+<span id="cb90-319"><a href="#cb90-319" aria-hidden="true" tabindex="-1"></a>    <span class="at">mods =</span> <span class="fu">reformulate</span>(moderator),</span>
+<span id="cb90-320"><a href="#cb90-320" aria-hidden="true" tabindex="-1"></a>    <span class="at">random =</span> <span class="fu">list</span>(</span>
+<span id="cb90-321"><a href="#cb90-321" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> study_id,</span>
+<span id="cb90-322"><a href="#cb90-322" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> es_id,</span>
+<span id="cb90-323"><a href="#cb90-323" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> strain</span>
+<span id="cb90-324"><a href="#cb90-324" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb90-325"><a href="#cb90-325" aria-hidden="true" tabindex="-1"></a>    <span class="at">test =</span> <span class="st">"t"</span>,</span>
+<span id="cb90-326"><a href="#cb90-326" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb90-327"><a href="#cb90-327" aria-hidden="true" tabindex="-1"></a>    <span class="at">sparse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb90-328"><a href="#cb90-328" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> model_data</span>
+<span id="cb90-329"><a href="#cb90-329" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb90-330"><a href="#cb90-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-331"><a href="#cb90-331" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw an orchard plot for a categorical moderator. We draw continuous</span></span>
+<span id="cb90-332"><a href="#cb90-332" aria-hidden="true" tabindex="-1"></a>  <span class="co"># moderators with metafor::regplot() when we display the model results.</span></span>
+<span id="cb90-333"><a href="#cb90-333" aria-hidden="true" tabindex="-1"></a>  model_plot <span class="ot">&lt;-</span> <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
+<span id="cb90-334"><a href="#cb90-334" aria-hidden="true" tabindex="-1"></a>    orchaRd<span class="sc">::</span><span class="fu">orchard_plot</span>(</span>
+<span id="cb90-335"><a href="#cb90-335" aria-hidden="true" tabindex="-1"></a>      model,</span>
+<span id="cb90-336"><a href="#cb90-336" aria-hidden="true" tabindex="-1"></a>      <span class="at">mod =</span> moderator,</span>
+<span id="cb90-337"><a href="#cb90-337" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> <span class="st">"study_id"</span>,</span>
+<span id="cb90-338"><a href="#cb90-338" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> effect_axis_label,</span>
+<span id="cb90-339"><a href="#cb90-339" aria-hidden="true" tabindex="-1"></a>      <span class="at">flip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb90-340"><a href="#cb90-340" aria-hidden="true" tabindex="-1"></a>      <span class="at">angle =</span> <span class="dv">0</span>,</span>
+<span id="cb90-341"><a href="#cb90-341" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.pos =</span> <span class="st">"top.left"</span></span>
+<span id="cb90-342"><a href="#cb90-342" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb90-343"><a href="#cb90-343" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Use the complete named palette so shared categories keep their colour.</span></span>
+<span id="cb90-344"><a href="#cb90-344" aria-hidden="true" tabindex="-1"></a>      ggplot2<span class="sc">::</span><span class="fu">scale_colour_manual</span>(</span>
+<span id="cb90-345"><a href="#cb90-345" aria-hidden="true" tabindex="-1"></a>        <span class="at">values =</span> category_palettes[[moderator]],</span>
+<span id="cb90-346"><a href="#cb90-346" aria-hidden="true" tabindex="-1"></a>        <span class="at">drop =</span> <span class="cn">FALSE</span></span>
+<span id="cb90-347"><a href="#cb90-347" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb90-348"><a href="#cb90-348" aria-hidden="true" tabindex="-1"></a>      ggplot2<span class="sc">::</span><span class="fu">scale_fill_manual</span>(</span>
+<span id="cb90-349"><a href="#cb90-349" aria-hidden="true" tabindex="-1"></a>        <span class="at">values =</span> category_palettes[[moderator]],</span>
+<span id="cb90-350"><a href="#cb90-350" aria-hidden="true" tabindex="-1"></a>        <span class="at">drop =</span> <span class="cn">FALSE</span></span>
+<span id="cb90-351"><a href="#cb90-351" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb90-352"><a href="#cb90-352" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb90-353"><a href="#cb90-353" aria-hidden="true" tabindex="-1"></a>    <span class="cn">NULL</span></span>
+<span id="cb90-354"><a href="#cb90-354" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-355"><a href="#cb90-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-356"><a href="#cb90-356" aria-hidden="true" tabindex="-1"></a>  contrasts <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb90-357"><a href="#cb90-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-358"><a href="#cb90-358" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate unadjusted Tukey contrasts when at least three levels remain.</span></span>
+<span id="cb90-359"><a href="#cb90-359" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (kind <span class="sc">==</span> <span class="st">"categorical"</span> <span class="sc">&amp;&amp;</span> <span class="fu">nlevels</span>(model_data[[moderator]]) <span class="sc">&gt;=</span> <span class="dv">3</span>) {</span>
+<span id="cb90-360"><a href="#cb90-360" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit a no-intercept model so that each coefficient represents one level.</span></span>
+<span id="cb90-361"><a href="#cb90-361" aria-hidden="true" tabindex="-1"></a>    no_intercept_model <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.mv</span>(</span>
+<span id="cb90-362"><a href="#cb90-362" aria-hidden="true" tabindex="-1"></a>      <span class="at">yi =</span> model_data[[yi]],</span>
+<span id="cb90-363"><a href="#cb90-363" aria-hidden="true" tabindex="-1"></a>      <span class="at">V =</span> V_subset,</span>
+<span id="cb90-364"><a href="#cb90-364" aria-hidden="true" tabindex="-1"></a>      <span class="at">mods =</span> <span class="fu">reformulate</span>(moderator, <span class="at">intercept =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb90-365"><a href="#cb90-365" aria-hidden="true" tabindex="-1"></a>      <span class="at">random =</span> <span class="fu">list</span>(</span>
+<span id="cb90-366"><a href="#cb90-366" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> study_id,</span>
+<span id="cb90-367"><a href="#cb90-367" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> es_id,</span>
+<span id="cb90-368"><a href="#cb90-368" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> strain</span>
+<span id="cb90-369"><a href="#cb90-369" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb90-370"><a href="#cb90-370" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> <span class="st">"t"</span>,</span>
+<span id="cb90-371"><a href="#cb90-371" aria-hidden="true" tabindex="-1"></a>      <span class="at">method =</span> <span class="st">"REML"</span>,</span>
+<span id="cb90-372"><a href="#cb90-372" aria-hidden="true" tabindex="-1"></a>      <span class="at">sparse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb90-373"><a href="#cb90-373" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> model_data</span>
+<span id="cb90-374"><a href="#cb90-374" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb90-375"><a href="#cb90-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-376"><a href="#cb90-376" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report the unadjusted p-value for each contrast.</span></span>
-<span id="cb90-377"><a href="#cb90-377" aria-hidden="true" tabindex="-1"></a>    contrasts <span class="ot">&lt;-</span> <span class="fu">summary</span>(</span>
-<span id="cb90-378"><a href="#cb90-378" aria-hidden="true" tabindex="-1"></a>      multcomp<span class="sc">::</span><span class="fu">glht</span>(no_intercept_model, <span class="at">linfct =</span> contrast_matrix),</span>
-<span id="cb90-379"><a href="#cb90-379" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> multcomp<span class="sc">::</span><span class="fu">adjusted</span>(<span class="st">"none"</span>)</span>
+<span id="cb90-376"><a href="#cb90-376" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create all pairwise Tukey contrasts among the retained levels.</span></span>
+<span id="cb90-377"><a href="#cb90-377" aria-hidden="true" tabindex="-1"></a>    contrast_matrix <span class="ot">&lt;-</span> multcomp<span class="sc">::</span><span class="fu">contrMat</span>(</span>
+<span id="cb90-378"><a href="#cb90-378" aria-hidden="true" tabindex="-1"></a>      <span class="fu">table</span>(model_data[[moderator]]),</span>
+<span id="cb90-379"><a href="#cb90-379" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">"Tukey"</span></span>
 <span id="cb90-380"><a href="#cb90-380" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb90-381"><a href="#cb90-381" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-381"><a href="#cb90-381" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(contrast_matrix) <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(no_intercept_model))</span>
 <span id="cb90-382"><a href="#cb90-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-383"><a href="#cb90-383" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb90-384"><a href="#cb90-384" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect =</span> yi,</span>
-<span id="cb90-385"><a href="#cb90-385" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect_label =</span> effect_label,</span>
-<span id="cb90-386"><a href="#cb90-386" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect_axis_label =</span> effect_axis_label,</span>
-<span id="cb90-387"><a href="#cb90-387" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable =</span> moderator,</span>
-<span id="cb90-388"><a href="#cb90-388" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> label,</span>
-<span id="cb90-389"><a href="#cb90-389" aria-hidden="true" tabindex="-1"></a>    <span class="at">kind =</span> kind,</span>
-<span id="cb90-390"><a href="#cb90-390" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> model_data,</span>
-<span id="cb90-391"><a href="#cb90-391" aria-hidden="true" tabindex="-1"></a>    <span class="at">V =</span> V_subset,</span>
-<span id="cb90-392"><a href="#cb90-392" aria-hidden="true" tabindex="-1"></a>    <span class="at">level_counts =</span> prepared<span class="sc">$</span>level_counts,</span>
-<span id="cb90-393"><a href="#cb90-393" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> model,</span>
-<span id="cb90-394"><a href="#cb90-394" aria-hidden="true" tabindex="-1"></a>    <span class="at">r2 =</span> orchaRd<span class="sc">::</span><span class="fu">r2_ml</span>(model),</span>
-<span id="cb90-395"><a href="#cb90-395" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot =</span> model_plot,</span>
-<span id="cb90-396"><a href="#cb90-396" aria-hidden="true" tabindex="-1"></a>    <span class="at">contrasts =</span> contrasts</span>
-<span id="cb90-397"><a href="#cb90-397" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb90-398"><a href="#cb90-398" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb90-399"><a href="#cb90-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-400"><a href="#cb90-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-401"><a href="#cb90-401" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fit all uni-moderator models</span></span>
-<span id="cb90-402"><a href="#cb90-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-403"><a href="#cb90-403" aria-hidden="true" tabindex="-1"></a>We call <span class="in">`fit_unimoderator()`</span> once for each combination of effect-size type and moderator. The function subsets the corresponding complete VCV matrix to match the effect sizes retained for each model.</span>
-<span id="cb90-404"><a href="#cb90-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-407"><a href="#cb90-407" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-408"><a href="#cb90-408" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fit-all-unimoderators</span></span>
-<span id="cb90-409"><a href="#cb90-409" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb90-410"><a href="#cb90-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-411"><a href="#cb90-411" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit every moderator separately for lnRR, lnVR, and lnCVR.</span></span>
-<span id="cb90-412"><a href="#cb90-412" aria-hidden="true" tabindex="-1"></a>unimoderator_results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
-<span id="cb90-413"><a href="#cb90-413" aria-hidden="true" tabindex="-1"></a>  effect_specs<span class="sc">$</span>effect,</span>
-<span id="cb90-414"><a href="#cb90-414" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(effect) {</span>
-<span id="cb90-415"><a href="#cb90-415" aria-hidden="true" tabindex="-1"></a>    effect_label <span class="ot">&lt;-</span> effect_specs<span class="sc">$</span>label[effect_specs<span class="sc">$</span>effect <span class="sc">==</span> effect]</span>
-<span id="cb90-416"><a href="#cb90-416" aria-hidden="true" tabindex="-1"></a>    effect_axis_label <span class="ot">&lt;-</span> effect_specs<span class="sc">$</span>axis_label[effect_specs<span class="sc">$</span>effect <span class="sc">==</span> effect]</span>
-<span id="cb90-417"><a href="#cb90-417" aria-hidden="true" tabindex="-1"></a>    input <span class="ot">&lt;-</span> metric_inputs[[effect]]</span>
-<span id="cb90-418"><a href="#cb90-418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-419"><a href="#cb90-419" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">pmap</span>(</span>
-<span id="cb90-420"><a href="#cb90-420" aria-hidden="true" tabindex="-1"></a>      moderators <span class="sc">|&gt;</span></span>
-<span id="cb90-421"><a href="#cb90-421" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(variable, label, kind, missing_label),</span>
-<span id="cb90-422"><a href="#cb90-422" aria-hidden="true" tabindex="-1"></a>      <span class="cf">function</span>(variable, label, kind, missing_label) {</span>
-<span id="cb90-423"><a href="#cb90-423" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fit_unimoderator</span>(</span>
-<span id="cb90-424"><a href="#cb90-424" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> input<span class="sc">$</span>data,</span>
-<span id="cb90-425"><a href="#cb90-425" aria-hidden="true" tabindex="-1"></a>          <span class="at">V =</span> input<span class="sc">$</span>V,</span>
-<span id="cb90-426"><a href="#cb90-426" aria-hidden="true" tabindex="-1"></a>          <span class="at">yi =</span> effect,</span>
-<span id="cb90-427"><a href="#cb90-427" aria-hidden="true" tabindex="-1"></a>          <span class="at">effect_label =</span> effect_label,</span>
-<span id="cb90-428"><a href="#cb90-428" aria-hidden="true" tabindex="-1"></a>          <span class="at">effect_axis_label =</span> effect_axis_label,</span>
-<span id="cb90-429"><a href="#cb90-429" aria-hidden="true" tabindex="-1"></a>          <span class="at">moderator =</span> variable,</span>
-<span id="cb90-430"><a href="#cb90-430" aria-hidden="true" tabindex="-1"></a>          <span class="at">label =</span> label,</span>
-<span id="cb90-431"><a href="#cb90-431" aria-hidden="true" tabindex="-1"></a>          <span class="at">kind =</span> kind,</span>
-<span id="cb90-432"><a href="#cb90-432" aria-hidden="true" tabindex="-1"></a>          <span class="at">missing_label =</span> missing_label,</span>
-<span id="cb90-433"><a href="#cb90-433" aria-hidden="true" tabindex="-1"></a>          <span class="at">min_k =</span> <span class="dv">5</span></span>
-<span id="cb90-434"><a href="#cb90-434" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb90-435"><a href="#cb90-435" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb90-436"><a href="#cb90-436" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb90-437"><a href="#cb90-437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-438"><a href="#cb90-438" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(results) <span class="ot">&lt;-</span> moderators<span class="sc">$</span>variable</span>
-<span id="cb90-439"><a href="#cb90-439" aria-hidden="true" tabindex="-1"></a>    results</span>
-<span id="cb90-440"><a href="#cb90-440" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-441"><a href="#cb90-441" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb90-442"><a href="#cb90-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-443"><a href="#cb90-443" aria-hidden="true" tabindex="-1"></a><span class="co"># Name the outer list by effect-size type.</span></span>
-<span id="cb90-444"><a href="#cb90-444" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(unimoderator_results) <span class="ot">&lt;-</span> effect_specs<span class="sc">$</span>effect</span>
-<span id="cb90-445"><a href="#cb90-445" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-446"><a href="#cb90-446" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb90-447"><a href="#cb90-447" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-448"><a href="#cb90-448" aria-hidden="true" tabindex="-1"></a>For each moderator, we present lnRR and lnVR side by side, followed by lnCVR below. Each result contains the model summary, multilevel $R^2$, and plot. We use orchard plots for categorical moderators and <span class="in">`metafor::regplot()`</span> for continuous moderators. For categorical moderators with three or more levels, we also print the unadjusted pairwise contrasts.</span>
+<span id="cb90-383"><a href="#cb90-383" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Report the unadjusted p-value for each contrast.</span></span>
+<span id="cb90-384"><a href="#cb90-384" aria-hidden="true" tabindex="-1"></a>    contrasts <span class="ot">&lt;-</span> <span class="fu">summary</span>(</span>
+<span id="cb90-385"><a href="#cb90-385" aria-hidden="true" tabindex="-1"></a>      multcomp<span class="sc">::</span><span class="fu">glht</span>(no_intercept_model, <span class="at">linfct =</span> contrast_matrix),</span>
+<span id="cb90-386"><a href="#cb90-386" aria-hidden="true" tabindex="-1"></a>      <span class="at">test =</span> multcomp<span class="sc">::</span><span class="fu">adjusted</span>(<span class="st">"none"</span>)</span>
+<span id="cb90-387"><a href="#cb90-387" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb90-388"><a href="#cb90-388" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-389"><a href="#cb90-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-390"><a href="#cb90-390" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb90-391"><a href="#cb90-391" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect =</span> yi,</span>
+<span id="cb90-392"><a href="#cb90-392" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect_label =</span> effect_label,</span>
+<span id="cb90-393"><a href="#cb90-393" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect_axis_label =</span> effect_axis_label,</span>
+<span id="cb90-394"><a href="#cb90-394" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable =</span> moderator,</span>
+<span id="cb90-395"><a href="#cb90-395" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> label,</span>
+<span id="cb90-396"><a href="#cb90-396" aria-hidden="true" tabindex="-1"></a>    <span class="at">kind =</span> kind,</span>
+<span id="cb90-397"><a href="#cb90-397" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> model_data,</span>
+<span id="cb90-398"><a href="#cb90-398" aria-hidden="true" tabindex="-1"></a>    <span class="at">V =</span> V_subset,</span>
+<span id="cb90-399"><a href="#cb90-399" aria-hidden="true" tabindex="-1"></a>    <span class="at">level_counts =</span> prepared<span class="sc">$</span>level_counts,</span>
+<span id="cb90-400"><a href="#cb90-400" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> model,</span>
+<span id="cb90-401"><a href="#cb90-401" aria-hidden="true" tabindex="-1"></a>    <span class="at">r2 =</span> orchaRd<span class="sc">::</span><span class="fu">r2_ml</span>(model),</span>
+<span id="cb90-402"><a href="#cb90-402" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot =</span> model_plot,</span>
+<span id="cb90-403"><a href="#cb90-403" aria-hidden="true" tabindex="-1"></a>    <span class="at">contrasts =</span> contrasts</span>
+<span id="cb90-404"><a href="#cb90-404" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb90-405"><a href="#cb90-405" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb90-406"><a href="#cb90-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-407"><a href="#cb90-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-408"><a href="#cb90-408" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fit all uni-moderator models</span></span>
+<span id="cb90-409"><a href="#cb90-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-410"><a href="#cb90-410" aria-hidden="true" tabindex="-1"></a>We call <span class="in">`fit_unimoderator()`</span> once for each combination of effect-size type and moderator. The function subsets the corresponding complete VCV matrix to match the effect sizes retained for each model.</span>
+<span id="cb90-411"><a href="#cb90-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-414"><a href="#cb90-414" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-415"><a href="#cb90-415" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fit-all-unimoderators</span></span>
+<span id="cb90-416"><a href="#cb90-416" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb90-417"><a href="#cb90-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-418"><a href="#cb90-418" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit every moderator separately for lnRR, lnVR, and lnCVR.</span></span>
+<span id="cb90-419"><a href="#cb90-419" aria-hidden="true" tabindex="-1"></a>unimoderator_results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb90-420"><a href="#cb90-420" aria-hidden="true" tabindex="-1"></a>  effect_specs<span class="sc">$</span>effect,</span>
+<span id="cb90-421"><a href="#cb90-421" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(effect) {</span>
+<span id="cb90-422"><a href="#cb90-422" aria-hidden="true" tabindex="-1"></a>    effect_label <span class="ot">&lt;-</span> effect_specs<span class="sc">$</span>label[effect_specs<span class="sc">$</span>effect <span class="sc">==</span> effect]</span>
+<span id="cb90-423"><a href="#cb90-423" aria-hidden="true" tabindex="-1"></a>    effect_axis_label <span class="ot">&lt;-</span> effect_specs<span class="sc">$</span>axis_label[effect_specs<span class="sc">$</span>effect <span class="sc">==</span> effect]</span>
+<span id="cb90-424"><a href="#cb90-424" aria-hidden="true" tabindex="-1"></a>    input <span class="ot">&lt;-</span> metric_inputs[[effect]]</span>
+<span id="cb90-425"><a href="#cb90-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-426"><a href="#cb90-426" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">pmap</span>(</span>
+<span id="cb90-427"><a href="#cb90-427" aria-hidden="true" tabindex="-1"></a>      moderators <span class="sc">|&gt;</span></span>
+<span id="cb90-428"><a href="#cb90-428" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(variable, label, kind, missing_label),</span>
+<span id="cb90-429"><a href="#cb90-429" aria-hidden="true" tabindex="-1"></a>      <span class="cf">function</span>(variable, label, kind, missing_label) {</span>
+<span id="cb90-430"><a href="#cb90-430" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fit_unimoderator</span>(</span>
+<span id="cb90-431"><a href="#cb90-431" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> input<span class="sc">$</span>data,</span>
+<span id="cb90-432"><a href="#cb90-432" aria-hidden="true" tabindex="-1"></a>          <span class="at">V =</span> input<span class="sc">$</span>V,</span>
+<span id="cb90-433"><a href="#cb90-433" aria-hidden="true" tabindex="-1"></a>          <span class="at">yi =</span> effect,</span>
+<span id="cb90-434"><a href="#cb90-434" aria-hidden="true" tabindex="-1"></a>          <span class="at">effect_label =</span> effect_label,</span>
+<span id="cb90-435"><a href="#cb90-435" aria-hidden="true" tabindex="-1"></a>          <span class="at">effect_axis_label =</span> effect_axis_label,</span>
+<span id="cb90-436"><a href="#cb90-436" aria-hidden="true" tabindex="-1"></a>          <span class="at">moderator =</span> variable,</span>
+<span id="cb90-437"><a href="#cb90-437" aria-hidden="true" tabindex="-1"></a>          <span class="at">label =</span> label,</span>
+<span id="cb90-438"><a href="#cb90-438" aria-hidden="true" tabindex="-1"></a>          <span class="at">kind =</span> kind,</span>
+<span id="cb90-439"><a href="#cb90-439" aria-hidden="true" tabindex="-1"></a>          <span class="at">missing_label =</span> missing_label,</span>
+<span id="cb90-440"><a href="#cb90-440" aria-hidden="true" tabindex="-1"></a>          <span class="at">min_k =</span> <span class="dv">5</span></span>
+<span id="cb90-441"><a href="#cb90-441" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb90-442"><a href="#cb90-442" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb90-443"><a href="#cb90-443" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb90-444"><a href="#cb90-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-445"><a href="#cb90-445" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(results) <span class="ot">&lt;-</span> moderators<span class="sc">$</span>variable</span>
+<span id="cb90-446"><a href="#cb90-446" aria-hidden="true" tabindex="-1"></a>    results</span>
+<span id="cb90-447"><a href="#cb90-447" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-448"><a href="#cb90-448" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb90-449"><a href="#cb90-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-452"><a href="#cb90-452" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-453"><a href="#cb90-453" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: display-unimoderator-results</span></span>
-<span id="cb90-454"><a href="#cb90-454" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
-<span id="cb90-455"><a href="#cb90-455" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb90-456"><a href="#cb90-456" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
-<span id="cb90-457"><a href="#cb90-457" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
-<span id="cb90-458"><a href="#cb90-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-459"><a href="#cb90-459" aria-hidden="true" tabindex="-1"></a><span class="co"># Print one effect-size result within the current layout column.</span></span>
-<span id="cb90-460"><a href="#cb90-460" aria-hidden="true" tabindex="-1"></a>print_metric_result <span class="ot">&lt;-</span> <span class="cf">function</span>(result) {</span>
-<span id="cb90-461"><a href="#cb90-461" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"### "</span>, result<span class="sc">$</span>effect_label, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
-<span id="cb90-462"><a href="#cb90-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-463"><a href="#cb90-463" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print the model summary.</span></span>
-<span id="cb90-464"><a href="#cb90-464" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb90-465"><a href="#cb90-465" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">summary</span>(result<span class="sc">$</span>model))</span>
-<span id="cb90-466"><a href="#cb90-466" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-467"><a href="#cb90-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-468"><a href="#cb90-468" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print marginal and conditional multilevel R-squared.</span></span>
-<span id="cb90-469"><a href="#cb90-469" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb90-470"><a href="#cb90-470" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">round</span>(result<span class="sc">$</span>r2, <span class="dv">4</span>))</span>
-<span id="cb90-471"><a href="#cb90-471" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-472"><a href="#cb90-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-473"><a href="#cb90-473" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Place each plot in a card.</span></span>
-<span id="cb90-474"><a href="#cb90-474" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::: card</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-475"><a href="#cb90-475" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (result<span class="sc">$</span>kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
-<span id="cb90-476"><a href="#cb90-476" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(result<span class="sc">$</span>plot)</span>
-<span id="cb90-477"><a href="#cb90-477" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb90-478"><a href="#cb90-478" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the marginal regression line and its 95% confidence interval.</span></span>
-<span id="cb90-479"><a href="#cb90-479" aria-hidden="true" tabindex="-1"></a>    metafor<span class="sc">::</span><span class="fu">regplot</span>(</span>
-<span id="cb90-480"><a href="#cb90-480" aria-hidden="true" tabindex="-1"></a>      result<span class="sc">$</span>model,</span>
-<span id="cb90-481"><a href="#cb90-481" aria-hidden="true" tabindex="-1"></a>      <span class="at">mod =</span> result<span class="sc">$</span>variable,</span>
-<span id="cb90-482"><a href="#cb90-482" aria-hidden="true" tabindex="-1"></a>      <span class="at">pred =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb90-483"><a href="#cb90-483" aria-hidden="true" tabindex="-1"></a>      <span class="at">ci =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb90-484"><a href="#cb90-484" aria-hidden="true" tabindex="-1"></a>      <span class="at">pi =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb90-485"><a href="#cb90-485" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> result<span class="sc">$</span>label,</span>
-<span id="cb90-486"><a href="#cb90-486" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> result<span class="sc">$</span>effect_axis_label,</span>
-<span id="cb90-487"><a href="#cb90-487" aria-hidden="true" tabindex="-1"></a>      <span class="at">psize =</span> <span class="st">"seinv"</span>,</span>
-<span id="cb90-488"><a href="#cb90-488" aria-hidden="true" tabindex="-1"></a>      <span class="at">plim =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">2.2</span>),</span>
-<span id="cb90-489"><a href="#cb90-489" aria-hidden="true" tabindex="-1"></a>      <span class="at">refline =</span> <span class="dv">0</span></span>
-<span id="cb90-490"><a href="#cb90-490" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb90-491"><a href="#cb90-491" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-492"><a href="#cb90-492" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">:::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-493"><a href="#cb90-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-494"><a href="#cb90-494" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print pairwise contrasts only when the function created them.</span></span>
-<span id="cb90-495"><a href="#cb90-495" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(result<span class="sc">$</span>contrasts)) {</span>
-<span id="cb90-496"><a href="#cb90-496" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"We report unadjusted Tukey contrasts between the retained levels.</span><span class="sc">\n\n</span><span class="st">```</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb90-497"><a href="#cb90-497" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(result<span class="sc">$</span>contrasts)</span>
-<span id="cb90-498"><a href="#cb90-498" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-499"><a href="#cb90-499" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb90-500"><a href="#cb90-500" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb90-501"><a href="#cb90-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-502"><a href="#cb90-502" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the same three-panel layout for every moderator.</span></span>
-<span id="cb90-503"><a href="#cb90-503" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (moderator <span class="cf">in</span> moderators<span class="sc">$</span>variable) {</span>
-<span id="cb90-504"><a href="#cb90-504" aria-hidden="true" tabindex="-1"></a>  moderator_label <span class="ot">&lt;-</span> moderators<span class="sc">$</span>label[moderators<span class="sc">$</span>variable <span class="sc">==</span> moderator]</span>
-<span id="cb90-505"><a href="#cb90-505" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">## "</span>, moderator_label, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
-<span id="cb90-506"><a href="#cb90-506" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-507"><a href="#cb90-507" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Place lnRR and lnVR in the first row.</span></span>
-<span id="cb90-508"><a href="#cb90-508" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: columns</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-509"><a href="#cb90-509" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">49%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-510"><a href="#cb90-510" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_metric_result</span>(unimoderator_results<span class="sc">$</span>lnRR[[moderator]])</span>
-<span id="cb90-511"><a href="#cb90-511" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-512"><a href="#cb90-512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-513"><a href="#cb90-513" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">2%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n</span><span class="st">::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-514"><a href="#cb90-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-515"><a href="#cb90-515" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">49%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-516"><a href="#cb90-516" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_metric_result</span>(unimoderator_results<span class="sc">$</span>lnVR[[moderator]])</span>
-<span id="cb90-517"><a href="#cb90-517" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-450"><a href="#cb90-450" aria-hidden="true" tabindex="-1"></a><span class="co"># Name the outer list by effect-size type.</span></span>
+<span id="cb90-451"><a href="#cb90-451" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(unimoderator_results) <span class="ot">&lt;-</span> effect_specs<span class="sc">$</span>effect</span>
+<span id="cb90-452"><a href="#cb90-452" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-453"><a href="#cb90-453" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb90-454"><a href="#cb90-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-455"><a href="#cb90-455" aria-hidden="true" tabindex="-1"></a>For each moderator, we present lnRR and lnVR side by side, followed by lnCVR below. Each result contains the model summary, multilevel $R^2$, and plot. We use orchard plots for categorical moderators and <span class="in">`metafor::regplot()`</span> for continuous moderators. For categorical moderators with three or more levels, we also print the unadjusted pairwise contrasts.</span>
+<span id="cb90-456"><a href="#cb90-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-459"><a href="#cb90-459" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-460"><a href="#cb90-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: display-unimoderator-results</span></span>
+<span id="cb90-461"><a href="#cb90-461" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb90-462"><a href="#cb90-462" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb90-463"><a href="#cb90-463" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb90-464"><a href="#cb90-464" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb90-465"><a href="#cb90-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-466"><a href="#cb90-466" aria-hidden="true" tabindex="-1"></a><span class="co"># Print one effect-size result within the current layout column.</span></span>
+<span id="cb90-467"><a href="#cb90-467" aria-hidden="true" tabindex="-1"></a>print_metric_result <span class="ot">&lt;-</span> <span class="cf">function</span>(result) {</span>
+<span id="cb90-468"><a href="#cb90-468" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"### "</span>, result<span class="sc">$</span>effect_label, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb90-469"><a href="#cb90-469" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-470"><a href="#cb90-470" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print the model summary.</span></span>
+<span id="cb90-471"><a href="#cb90-471" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb90-472"><a href="#cb90-472" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">summary</span>(result<span class="sc">$</span>model))</span>
+<span id="cb90-473"><a href="#cb90-473" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-474"><a href="#cb90-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-475"><a href="#cb90-475" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print marginal and conditional multilevel R-squared.</span></span>
+<span id="cb90-476"><a href="#cb90-476" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb90-477"><a href="#cb90-477" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">round</span>(result<span class="sc">$</span>r2, <span class="dv">4</span>))</span>
+<span id="cb90-478"><a href="#cb90-478" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-479"><a href="#cb90-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-480"><a href="#cb90-480" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Place each plot in a card.</span></span>
+<span id="cb90-481"><a href="#cb90-481" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::: card</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-482"><a href="#cb90-482" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (result<span class="sc">$</span>kind <span class="sc">==</span> <span class="st">"categorical"</span>) {</span>
+<span id="cb90-483"><a href="#cb90-483" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(result<span class="sc">$</span>plot)</span>
+<span id="cb90-484"><a href="#cb90-484" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb90-485"><a href="#cb90-485" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the marginal regression line and its 95% confidence interval.</span></span>
+<span id="cb90-486"><a href="#cb90-486" aria-hidden="true" tabindex="-1"></a>    metafor<span class="sc">::</span><span class="fu">regplot</span>(</span>
+<span id="cb90-487"><a href="#cb90-487" aria-hidden="true" tabindex="-1"></a>      result<span class="sc">$</span>model,</span>
+<span id="cb90-488"><a href="#cb90-488" aria-hidden="true" tabindex="-1"></a>      <span class="at">mod =</span> result<span class="sc">$</span>variable,</span>
+<span id="cb90-489"><a href="#cb90-489" aria-hidden="true" tabindex="-1"></a>      <span class="at">pred =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb90-490"><a href="#cb90-490" aria-hidden="true" tabindex="-1"></a>      <span class="at">ci =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb90-491"><a href="#cb90-491" aria-hidden="true" tabindex="-1"></a>      <span class="at">pi =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb90-492"><a href="#cb90-492" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> result<span class="sc">$</span>label,</span>
+<span id="cb90-493"><a href="#cb90-493" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> result<span class="sc">$</span>effect_axis_label,</span>
+<span id="cb90-494"><a href="#cb90-494" aria-hidden="true" tabindex="-1"></a>      <span class="at">psize =</span> <span class="st">"seinv"</span>,</span>
+<span id="cb90-495"><a href="#cb90-495" aria-hidden="true" tabindex="-1"></a>      <span class="at">plim =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">2.2</span>),</span>
+<span id="cb90-496"><a href="#cb90-496" aria-hidden="true" tabindex="-1"></a>      <span class="at">refline =</span> <span class="dv">0</span></span>
+<span id="cb90-497"><a href="#cb90-497" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb90-498"><a href="#cb90-498" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-499"><a href="#cb90-499" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">:::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-500"><a href="#cb90-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-501"><a href="#cb90-501" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print pairwise contrasts only when the function created them.</span></span>
+<span id="cb90-502"><a href="#cb90-502" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(result<span class="sc">$</span>contrasts)) {</span>
+<span id="cb90-503"><a href="#cb90-503" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"We report unadjusted Tukey contrasts between the retained levels.</span><span class="sc">\n\n</span><span class="st">```</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb90-504"><a href="#cb90-504" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(result<span class="sc">$</span>contrasts)</span>
+<span id="cb90-505"><a href="#cb90-505" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"```</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-506"><a href="#cb90-506" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb90-507"><a href="#cb90-507" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb90-508"><a href="#cb90-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-509"><a href="#cb90-509" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the same three-panel layout for every moderator.</span></span>
+<span id="cb90-510"><a href="#cb90-510" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (moderator <span class="cf">in</span> moderators<span class="sc">$</span>variable) {</span>
+<span id="cb90-511"><a href="#cb90-511" aria-hidden="true" tabindex="-1"></a>  moderator_label <span class="ot">&lt;-</span> moderators<span class="sc">$</span>label[moderators<span class="sc">$</span>variable <span class="sc">==</span> moderator]</span>
+<span id="cb90-512"><a href="#cb90-512" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">## "</span>, moderator_label, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb90-513"><a href="#cb90-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-514"><a href="#cb90-514" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Place lnRR and lnVR in the first row.</span></span>
+<span id="cb90-515"><a href="#cb90-515" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: columns</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-516"><a href="#cb90-516" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">49%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-517"><a href="#cb90-517" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_metric_result</span>(unimoderator_results<span class="sc">$</span>lnRR[[moderator]])</span>
 <span id="cb90-518"><a href="#cb90-518" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
 <span id="cb90-519"><a href="#cb90-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-520"><a href="#cb90-520" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Centre lnCVR in the second row.</span></span>
-<span id="cb90-521"><a href="#cb90-521" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: columns</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-522"><a href="#cb90-522" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">25%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n</span><span class="st">::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-523"><a href="#cb90-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-524"><a href="#cb90-524" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">50%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-525"><a href="#cb90-525" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_metric_result</span>(unimoderator_results<span class="sc">$</span>lnCVR[[moderator]])</span>
-<span id="cb90-526"><a href="#cb90-526" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-527"><a href="#cb90-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-528"><a href="#cb90-528" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">25%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n</span><span class="st">::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-529"><a href="#cb90-529" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
-<span id="cb90-530"><a href="#cb90-530" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb90-531"><a href="#cb90-531" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-532"><a href="#cb90-532" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-533"><a href="#cb90-533" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb90-534"><a href="#cb90-534" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session information</span></span>
-<span id="cb90-535"><a href="#cb90-535" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-538"><a href="#cb90-538" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb90-539"><a href="#cb90-539" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: session-information</span></span>
-<span id="cb90-540"><a href="#cb90-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-541"><a href="#cb90-541" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb90-542"><a href="#cb90-542" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-543"><a href="#cb90-543" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb90-520"><a href="#cb90-520" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">2%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n</span><span class="st">::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-521"><a href="#cb90-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-522"><a href="#cb90-522" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">49%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-523"><a href="#cb90-523" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_metric_result</span>(unimoderator_results<span class="sc">$</span>lnVR[[moderator]])</span>
+<span id="cb90-524"><a href="#cb90-524" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-525"><a href="#cb90-525" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-526"><a href="#cb90-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-527"><a href="#cb90-527" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Centre lnCVR in the second row.</span></span>
+<span id="cb90-528"><a href="#cb90-528" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: columns</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-529"><a href="#cb90-529" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">25%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n</span><span class="st">::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-530"><a href="#cb90-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-531"><a href="#cb90-531" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">50%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-532"><a href="#cb90-532" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print_metric_result</span>(unimoderator_results<span class="sc">$</span>lnCVR[[moderator]])</span>
+<span id="cb90-533"><a href="#cb90-533" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-534"><a href="#cb90-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-535"><a href="#cb90-535" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">":::: {.column width=</span><span class="sc">\"</span><span class="st">25%</span><span class="sc">\"</span><span class="st">}</span><span class="sc">\n</span><span class="st">::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-536"><a href="#cb90-536" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"::::</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb90-537"><a href="#cb90-537" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb90-538"><a href="#cb90-538" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-539"><a href="#cb90-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-540"><a href="#cb90-540" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb90-541"><a href="#cb90-541" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session information</span></span>
+<span id="cb90-542"><a href="#cb90-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-545"><a href="#cb90-545" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb90-546"><a href="#cb90-546" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: session-information</span></span>
+<span id="cb90-547"><a href="#cb90-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-548"><a href="#cb90-548" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb90-549"><a href="#cb90-549" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-550"><a href="#cb90-550" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
