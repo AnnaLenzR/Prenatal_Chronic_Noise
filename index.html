@@ -166,13 +166,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_dependency_structure_audit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sampling variance-covariance matrix</span></a>
+ <span class="menu-text">Sampling variance-covariance matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_overall_effect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overall effect</span></a>
+ <span class="menu-text">Overall effects</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -185,6 +185,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./06_publication_bias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Publication bias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_crime_q.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CRIME-Q appraisal</span></a>
   </div>
 </li>
     </ul>
@@ -223,22 +229,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It includes:</p>
 <ul>
 <li>preparation of the analysis database from the original extraction file;</li>
-<li>calculation of the log response ratio (lnRR) and its sampling variance;</li>
-<li>construction of the sampling variance-covariance matrix;</li>
-<li>estimation of the overall lnRR with a multilevel intercept-only model;</li>
-<li>separate multilevel meta-regressions for the planned moderators;</li>
-<li>publication-bias diagnostics for small-study effects and time-lag patterns.</li>
+<li>calculation of lnRR, lnVR, lnCVR, and their sampling variances;</li>
+<li>construction of the sampling variance-covariance matrix for each effect-size type;</li>
+<li>estimation of the overall lnRR, lnVR, and lnCVR with multilevel intercept-only models;</li>
+<li>separate multilevel meta-regressions for each effect-size type and moderator;</li>
+<li>publication-bias diagnostics for small-study effects and time-lag patterns;</li>
+<li>the adapted CRIME-Q appraisal for each included study.</li>
 </ul>
 </section>
 <section id="how-to-navigate" class="level1 card">
 <h1>How to navigate</h1>
 <ul>
 <li><strong>Data preparation</strong> calculates missing statistics and creates the two derived databases.</li>
-<li><strong>Effect size calculation</strong> calculates lnRR and <code>lnRR_var</code> and reports their distributions.</li>
-<li><strong>Sampling variance-covariance matrix</strong> constructs and checks <code>V</code> with <code>metafor</code>.</li>
-<li><strong>Overall effect</strong> fits the intercept-only multilevel meta-analytic model.</li>
-<li><strong>Uni-moderators</strong> subsets <code>V</code> and fits one multilevel meta-regression for each moderator.</li>
+<li><strong>Effect size calculation</strong> calculates lnRR, lnVR, lnCVR, and their sampling variances and reports their distributions.</li>
+<li><strong>Sampling variance-covariance matrices</strong> constructs and checks one <code>V</code> matrix for each effect-size type with <code>metafor</code>.</li>
+<li><strong>Overall effects</strong> fits one intercept-only multilevel meta-analytic model for lnRR, lnVR, and lnCVR.</li>
+<li><strong>Uni-moderators</strong> subsets the matching <code>V</code> and fits one multilevel meta-regression for each effect-size type and moderator.</li>
 <li><strong>Publication bias</strong> displays the funnel plot and fits the small-study and publication-year models.</li>
+<li><strong>CRIME-Q appraisal</strong> displays the adapted item definitions and finalized study-level ratings.</li>
 </ul>
 </section>
 <section id="reproducibility" class="level1 card">
@@ -725,29 +733,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>It includes:</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>preparation of the analysis database from the original extraction file;</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>calculation of the log response ratio (lnRR) and its sampling variance;</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>construction of the sampling variance-covariance matrix;</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>estimation of the overall lnRR with a multilevel intercept-only model;</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>separate multilevel meta-regressions for the planned moderators;</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>publication-bias diagnostics for small-study effects and time-lag patterns.</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>::: card</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu"># How to navigate</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Data preparation** calculates missing statistics and creates the two derived databases.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Effect size calculation** calculates lnRR and <span class="in">`lnRR_var`</span> and reports their distributions.</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sampling variance-covariance matrix** constructs and checks <span class="in">`V`</span> with <span class="in">`metafor`</span>.</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Overall effect** fits the intercept-only multilevel meta-analytic model.</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Uni-moderators** subsets <span class="in">`V`</span> and fits one multilevel meta-regression for each moderator.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Publication bias** displays the funnel plot and fits the small-study and publication-year models.</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>::: card</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reproducibility</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>We run all data preparation and analyses in R through Quarto. We read the original extraction file without overwriting it. Each chapter creates the data or model object required by the following chapter.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>calculation of lnRR, lnVR, lnCVR, and their sampling variances;</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>construction of the sampling variance-covariance matrix for each effect-size type;</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>estimation of the overall lnRR, lnVR, and lnCVR with multilevel intercept-only models;</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>separate multilevel meta-regressions for each effect-size type and moderator;</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>publication-bias diagnostics for small-study effects and time-lag patterns;</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the adapted CRIME-Q appraisal for each included study.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>::: card</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu"># How to navigate</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Data preparation** calculates missing statistics and creates the two derived databases.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Effect size calculation** calculates lnRR, lnVR, lnCVR, and their sampling variances and reports their distributions.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sampling variance-covariance matrices** constructs and checks one <span class="in">`V`</span> matrix for each effect-size type with <span class="in">`metafor`</span>.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Overall effects** fits one intercept-only multilevel meta-analytic model for lnRR, lnVR, and lnCVR.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Uni-moderators** subsets the matching <span class="in">`V`</span> and fits one multilevel meta-regression for each effect-size type and moderator.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Publication bias** displays the funnel plot and fits the small-study and publication-year models.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**CRIME-Q appraisal** displays the adapted item definitions and finalized study-level ratings.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>::: card</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reproducibility</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>We run all data preparation and analyses in R through Quarto. We read the original extraction file without overwriting it. Each chapter creates the data or model object required by the following chapter.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

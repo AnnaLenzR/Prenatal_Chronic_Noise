@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sampling variance-covariance matrix – Prenatal chronic noise exposure meta-analysis</title>
+<title>Sampling variance-covariance matrices – Prenatal chronic noise exposure meta-analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -169,7 +169,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_dependency_structure_audit.html">Sampling variance-covariance matrix</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_dependency_structure_audit.html">Sampling variance-covariance matrices</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -215,13 +215,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_dependency_structure_audit.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Sampling variance-covariance matrix</span></a>
+ <span class="menu-text">Sampling variance-covariance matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_overall_effect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overall effect</span></a>
+ <span class="menu-text">Overall effects</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -236,6 +236,12 @@ window.Quarto = {
  <span class="menu-text">Publication bias</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_crime_q.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CRIME-Q appraisal</span></a>
+  </div>
+</li>
     </ul>
     </div>
     <nav id="TOC" role="doc-toc" class="toc-active">
@@ -243,7 +249,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#matrix-construction" id="toc-matrix-construction" class="nav-link active" data-scroll-target="#matrix-construction">Matrix construction</a></li>
-  <li><a href="#matrix-checks" id="toc-matrix-checks" class="nav-link" data-scroll-target="#matrix-checks">Matrix checks</a></li>
+  <li><a href="#matrix-checks" id="toc-matrix-checks" class="nav-link" data-scroll-target="#matrix-checks">Matrix checks</a>
+  <ul class="collapse">
+  <li><a href="#lnrr" id="toc-lnrr" class="nav-link" data-scroll-target="#lnrr">lnRR</a></li>
+  <li><a href="#lnvr" id="toc-lnvr" class="nav-link" data-scroll-target="#lnvr">lnVR</a></li>
+  <li><a href="#lncvr" id="toc-lncvr" class="nav-link" data-scroll-target="#lncvr">lnCVR</a></li>
+  </ul></li>
   <li><a href="#output-files" id="toc-output-files" class="nav-link" data-scroll-target="#output-files">Output files</a></li>
   </ul>
 </nav>
@@ -257,7 +268,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Sampling variance-covariance matrix</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Sampling variance-covariance matrices</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -274,8 +285,8 @@ window.Quarto = {
 </header>
 
 
-<p>We construct the sampling variance-covariance matrix from the lnRR sampling variances and the exposed- and control-group identifiers in the extraction database.</p>
-<p>We first load the effect-size database and check the columns required to construct <code>V</code>.</p>
+<p>We construct one sampling variance-covariance matrix for each effect-size type. Each matrix uses the corresponding sampling variances and the exposed- and control-group identifiers in the extraction database.</p>
+<p>We first load the effect-size database and check the columns required to construct the matrices.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -323,12 +334,12 @@ window.Quarto = {
 <td style="text-align: left;">Exposed- and control-group sample sizes.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><code>lnRR_var</code></td>
-<td style="text-align: left;">Sampling variance of lnRR and the diagonal value of <code>V</code>.</td>
+<td style="text-align: left;"><code>lnRR_var</code>, <code>lnVR_var</code>, <code>lnCVR_var</code></td>
+<td style="text-align: left;">Sampling variances and the diagonal values of the corresponding matrices.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><code>V</code></td>
-<td style="text-align: left;">Sampling variance-covariance matrix for the lnRR estimates.</td>
+<td style="text-align: left;">Sampling variance-covariance matrix for one effect-size type.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\rho\)</span></td>
@@ -343,165 +354,210 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  dplyr,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  knitr,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  metafor,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  readr,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  tibble</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="fu">normalizePath</span>(<span class="st">".."</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>derived_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"Data"</span>, <span class="st">"derived"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database from Chapter 2.</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>vcv_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># List the variables required to construct V and its index.</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>required_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>, <span class="st">"out_id"</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_n"</span>, <span class="st">"c_n"</span>, <span class="st">"lnRR"</span>, <span class="st">"lnRR_var"</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(vcv_data))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Required columns are missing from the effect-size database."</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyDuplicated</span>(vcv_data<span class="sc">$</span>es_id)) {</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"es_id must be unique before constructing V."</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  purrr,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  readr,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  tibble,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  tidyr</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="fu">normalizePath</span>(<span class="st">".."</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>derived_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"Data"</span>, <span class="st">"derived"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database from Chapter 2.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>vcv_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># List the variables required to construct V and its index.</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>required_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>, <span class="st">"out_id"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_n"</span>, <span class="st">"c_n"</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnRR"</span>, <span class="st">"lnRR_var"</span>, <span class="st">"lnVR"</span>, <span class="st">"lnVR_var"</span>, <span class="st">"lnCVR"</span>, <span class="st">"lnCVR_var"</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(vcv_data))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Required columns are missing from the effect-size database."</span>)</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyNA</span>(vcv_data[<span class="fu">c</span>(<span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>)])) {</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Study and group identifiers must be complete before constructing V."</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyDuplicated</span>(vcv_data<span class="sc">$</span>es_id)) {</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"es_id must be unique before constructing V."</span>)</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(<span class="sc">!</span><span class="fu">is.finite</span>(vcv_data<span class="sc">$</span>lnRR_var)) <span class="sc">||</span> <span class="fu">any</span>(vcv_data<span class="sc">$</span>lnRR_var <span class="sc">&lt;=</span> <span class="dv">0</span>)) {</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"lnRR_var must contain positive finite sampling variances."</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyNA</span>(vcv_data[<span class="fu">c</span>(<span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>)])) {</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Study and group identifiers must be complete before constructing V."</span>)</span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(vcv_data<span class="sc">$</span>ex_n <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="sc">||</span> <span class="fu">any</span>(vcv_data<span class="sc">$</span>c_n <span class="sc">&lt;=</span> <span class="dv">0</span>)) {</span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Group sample sizes must be positive before constructing V."</span>)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Link each effect size to its sampling-variance column.</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>effect_specs <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>effect, <span class="sc">~</span>variance,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnRR"</span>,  <span class="st">"lnRR_var"</span>,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnVR"</span>,  <span class="st">"lnVR_var"</span>,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnCVR"</span>, <span class="st">"lnCVR_var"</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="matrix-construction" class="level1">
 <h1>Matrix construction</h1>
-<p>We use <code>metafor::vcalc()</code> to construct <code>V</code> <span class="citation" data-cites="viechtbauer2010">(<a href="#ref-viechtbauer2010" role="doc-biblioref">Viechtbauer 2010</a>)</span>. We use <code>study_id</code> as the study cluster, <code>ex_id</code> and <code>con_id</code> as the contrasted-group identifiers, and <code>ex_n</code> and <code>c_n</code> as the group weights. We supply each <code>es_id</code> as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of <span class="math inline">\(\rho = 0.5\)</span>. We assign zero sampling covariance to effect sizes that share neither group.</p>
+<p>We use <code>metafor::vcalc()</code> to construct each matrix <span class="citation" data-cites="viechtbauer2010">(<a href="#ref-viechtbauer2010" role="doc-biblioref">Viechtbauer 2010</a>)</span>. We use <code>study_id</code> as the study cluster, <code>ex_id</code> and <code>con_id</code> as the contrasted-group identifiers, and <code>ex_n</code> and <code>c_n</code> as the group weights. We supply each <code>es_id</code> as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of <span class="math inline">\(\rho = 0.5\)</span>. We assign zero sampling covariance to effect sizes that share neither group.</p>
+<p>The lnRR matrix contains every effect-size row. The lnVR and lnCVR matrices contain only non-percentage outcomes because Chapter 2 does not calculate variability metrics for percentage outcomes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the fixed working correlation.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>working_rho <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct the sampling variance-covariance matrix.</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">vcalc</span>(</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">vi =</span> lnRR_var,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cluster =</span> study_id,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp1 =</span> ex_id,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp2 =</span> con_id,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">w1 =</span> ex_n,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">w2 =</span> c_n,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">obs =</span> es_id,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">rho =</span> working_rho,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">checkpd =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> vcv_data</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Label the matrix rows and columns with es_id.</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(V) <span class="ot">&lt;-</span> <span class="fu">list</span>(vcv_data<span class="sc">$</span>es_id, vcv_data<span class="sc">$</span>es_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct one matrix and retain the matching data rows.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>construct_vcv <span class="ot">&lt;-</span> <span class="cf">function</span>(data, effect, variance, <span class="at">rho =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain rows with a complete effect size and sampling variance.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.finite</span>(data[[effect]]) <span class="sc">&amp;</span> <span class="fu">is.finite</span>(data[[variance]]))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  metric_data <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">any</span>(metric_data[[variance]] <span class="sc">&lt;=</span> <span class="dv">0</span>)) {</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(variance, <span class="st">" must contain positive sampling variances."</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Construct V from the group identifiers and sampling variances.</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">vcalc</span>(</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">vi =</span> metric_data[[variance]],</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">cluster =</span> metric_data<span class="sc">$</span>study_id,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">grp1 =</span> metric_data<span class="sc">$</span>ex_id,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">grp2 =</span> metric_data<span class="sc">$</span>con_id,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">w1 =</span> metric_data<span class="sc">$</span>ex_n,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">w2 =</span> metric_data<span class="sc">$</span>c_n,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">obs =</span> metric_data<span class="sc">$</span>es_id,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">rho =</span> rho,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">checkpd =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Label the rows and columns with the retained effect-size IDs.</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dimnames</span>(V) <span class="ot">&lt;-</span> <span class="fu">list</span>(metric_data<span class="sc">$</span>es_id, metric_data<span class="sc">$</span>es_id)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">effect =</span> effect, <span class="at">variance =</span> variance, <span class="at">data =</span> metric_data, <span class="at">V =</span> V)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the same matrix construction to lnRR, lnVR, and lnCVR.</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>vcv_results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  effect_specs<span class="sc">$</span>effect,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  effect_specs<span class="sc">$</span>variance,</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> <span class="fu">construct_vcv</span>(vcv_data, .x, .y, <span class="at">rho =</span> working_rho)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(vcv_results) <span class="ot">&lt;-</span> effect_specs<span class="sc">$</span>effect</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="matrix-checks" class="level1">
 <h1>Matrix checks</h1>
-<p>We check the diagonal, finite values, symmetry, dependency pattern, and positive definiteness of <code>V</code> before exporting it.</p>
+<p>We check the diagonal, finite values, symmetry, dependency pattern, and positive definiteness of each matrix before exporting it.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify effect-size pairs from the same study that share either group.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>same_study <span class="ot">&lt;-</span> <span class="fu">outer</span>(vcv_data<span class="sc">$</span>study_id, vcv_data<span class="sc">$</span>study_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>shared_exposed_group <span class="ot">&lt;-</span> same_study <span class="sc">&amp;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">outer</span>(vcv_data<span class="sc">$</span>ex_id, vcv_data<span class="sc">$</span>ex_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>shared_control_group <span class="ot">&lt;-</span> same_study <span class="sc">&amp;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">outer</span>(vcv_data<span class="sc">$</span>con_id, vcv_data<span class="sc">$</span>con_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>shared_group <span class="ot">&lt;-</span> shared_exposed_group <span class="sc">|</span> shared_control_group</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(shared_group) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify effect-size pairs with non-zero covariance.</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>nonzero_covariance <span class="ot">&lt;-</span> <span class="fu">abs</span>(V) <span class="sc">&gt;</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(nonzero_covariance) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the smallest eigenvalue to check positive definiteness.</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>minimum_eigenvalue <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">eigen</span>(V, <span class="at">symmetric =</span> <span class="cn">TRUE</span>, <span class="at">only.values =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>values)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>vcv_checks <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">check =</span> <span class="fu">c</span>(</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Matrix rows"</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Matrix columns"</span>,</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Diagonal equals lnRR_var"</span>,</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Finite matrix entries"</span>,</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Symmetric matrix"</span>,</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Positive-definite matrix"</span>,</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Effect-size pairs with non-zero covariance"</span>,</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Non-zero covariance pairs without a shared group"</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">nrow</span>(V)),</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">ncol</span>(V)),</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">max</span>(<span class="fu">abs</span>(<span class="fu">diag</span>(V) <span class="sc">-</span> vcv_data<span class="sc">$</span>lnRR_var)) <span class="sc">&lt;</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)),</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">all</span>(<span class="fu">is.finite</span>(V))),</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">isSymmetric</span>(V)),</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(minimum_eigenvalue <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">sum</span>(<span class="fu">upper.tri</span>(V) <span class="sc">&amp;</span> nonzero_covariance)),</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">sum</span>(<span class="fu">upper.tri</span>(V) <span class="sc">&amp;</span> nonzero_covariance <span class="sc">&amp;</span> <span class="sc">!</span>shared_group))</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>vcv_checks <span class="sc">|&gt;</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Checks of the sampling variance-covariance matrix."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>check_vcv <span class="ot">&lt;-</span> <span class="cf">function</span>(result) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> result<span class="sc">$</span>data</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> result<span class="sc">$</span>V</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify pairs from the same study that share either group.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  same_study <span class="ot">&lt;-</span> <span class="fu">outer</span>(data<span class="sc">$</span>study_id, data<span class="sc">$</span>study_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  shared_exposed_group <span class="ot">&lt;-</span> same_study <span class="sc">&amp;</span> <span class="fu">outer</span>(data<span class="sc">$</span>ex_id, data<span class="sc">$</span>ex_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  shared_control_group <span class="ot">&lt;-</span> same_study <span class="sc">&amp;</span> <span class="fu">outer</span>(data<span class="sc">$</span>con_id, data<span class="sc">$</span>con_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  shared_group <span class="ot">&lt;-</span> shared_exposed_group <span class="sc">|</span> shared_control_group</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(shared_group) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify off-diagonal non-zero sampling covariances.</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  nonzero_covariance <span class="ot">&lt;-</span> <span class="fu">abs</span>(V) <span class="sc">&gt;</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(nonzero_covariance) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect_size =</span> result<span class="sc">$</span>effect,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">k =</span> <span class="fu">nrow</span>(V),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">diagonal_matches =</span> <span class="fu">max</span>(<span class="fu">abs</span>(<span class="fu">diag</span>(V) <span class="sc">-</span> data[[result<span class="sc">$</span>variance]])) <span class="sc">&lt;</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">finite =</span> <span class="fu">all</span>(<span class="fu">is.finite</span>(V)),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">symmetric =</span> <span class="fu">isSymmetric</span>(V),</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">positive_definite =</span> <span class="fu">min</span>(<span class="fu">eigen</span>(V, <span class="at">symmetric =</span> <span class="cn">TRUE</span>, <span class="at">only.values =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>values) <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">nonzero_covariance_pairs =</span> <span class="fu">sum</span>(<span class="fu">upper.tri</span>(V) <span class="sc">&amp;</span> nonzero_covariance),</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">nonzero_pairs_without_shared_group =</span> <span class="fu">sum</span>(</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">upper.tri</span>(V) <span class="sc">&amp;</span> nonzero_covariance <span class="sc">&amp;</span> <span class="sc">!</span>shared_group</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>vcv_checks <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(vcv_results, check_vcv)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>vcv_checks <span class="sc">|&gt;</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Checks of the sampling variance-covariance matrix."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Checks of the sampling variance-covariance matrix.</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 3%">
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 14%">
+<col style="width: 19%">
+<col style="width: 27%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">check</th>
-<th style="text-align: left;">value</th>
+<th style="text-align: left;">effect_size</th>
+<th style="text-align: right;">k</th>
+<th style="text-align: left;">diagonal_matches</th>
+<th style="text-align: left;">finite</th>
+<th style="text-align: left;">symmetric</th>
+<th style="text-align: left;">positive_definite</th>
+<th style="text-align: right;">nonzero_covariance_pairs</th>
+<th style="text-align: right;">nonzero_pairs_without_shared_group</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Matrix rows</td>
-<td style="text-align: left;">207</td>
+<td style="text-align: left;">lnRR</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">1512</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Matrix columns</td>
-<td style="text-align: left;">207</td>
+<td style="text-align: left;">lnVR</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">1408</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Diagonal equals lnRR_var</td>
+<td style="text-align: left;">lnCVR</td>
+<td style="text-align: right;">191</td>
 <td style="text-align: left;">TRUE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Finite matrix entries</td>
 <td style="text-align: left;">TRUE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Symmetric matrix</td>
 <td style="text-align: left;">TRUE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Positive-definite matrix</td>
 <td style="text-align: left;">TRUE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Effect-size pairs with non-zero covariance</td>
-<td style="text-align: left;">1512</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Non-zero covariance pairs without a shared group</td>
-<td style="text-align: left;">0</td>
+<td style="text-align: right;">1408</td>
+<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>We display the first eight rows and columns to show the matrix structure.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>V[<span class="fu">seq_len</span>(<span class="dv">8</span>), <span class="fu">seq_len</span>(<span class="dv">8</span>)] <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">6</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"First eight rows and columns of V."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>First eight rows and columns of V.</caption>
+<p>We display the first eight rows and columns of each matrix to show its structure.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (result <span class="cf">in</span> vcv_results) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  n_display <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="dv">8</span>, <span class="fu">nrow</span>(result<span class="sc">$</span>V))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">## "</span>, result<span class="sc">$</span>effect, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">round</span>(result<span class="sc">$</span>V[<span class="fu">seq_len</span>(n_display), <span class="fu">seq_len</span>(n_display)], <span class="dv">6</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="fu">paste</span>(<span class="st">"First rows and columns of the"</span>, result<span class="sc">$</span>effect, <span class="st">"matrix."</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="lnrr" class="level2">
+<h2 class="anchored" data-anchor-id="lnrr">lnRR</h2>
+<table class="caption-top table">
+<caption>First rows and columns of the lnRR matrix.</caption>
 <colgroup>
 <col style="width: 7%">
 <col style="width: 11%">
@@ -617,78 +673,362 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</section>
+<section id="lnvr" class="level2">
+<h2 class="anchored" data-anchor-id="lnvr">lnVR</h2>
+<table class="caption-top table">
+<caption>First rows and columns of the lnVR matrix.</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">es001</th>
+<th style="text-align: right;">es002</th>
+<th style="text-align: right;">es003</th>
+<th style="text-align: right;">es010</th>
+<th style="text-align: right;">es011</th>
+<th style="text-align: right;">es012</th>
+<th style="text-align: right;">es013</th>
+<th style="text-align: right;">es014</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">es001</td>
+<td style="text-align: right;">0.118056</td>
+<td style="text-align: right;">0.059028</td>
+<td style="text-align: right;">0.059028</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">es002</td>
+<td style="text-align: right;">0.059028</td>
+<td style="text-align: right;">0.118056</td>
+<td style="text-align: right;">0.059028</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">es003</td>
+<td style="text-align: right;">0.059028</td>
+<td style="text-align: right;">0.059028</td>
+<td style="text-align: right;">0.118056</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">es010</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">es011</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">es012</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">es013</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">es014</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lncvr" class="level2">
+<h2 class="anchored" data-anchor-id="lncvr">lnCVR</h2>
+<table class="caption-top table">
+<caption>First rows and columns of the lnCVR matrix.</caption>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">es001</th>
+<th style="text-align: right;">es002</th>
+<th style="text-align: right;">es003</th>
+<th style="text-align: right;">es010</th>
+<th style="text-align: right;">es011</th>
+<th style="text-align: right;">es012</th>
+<th style="text-align: right;">es013</th>
+<th style="text-align: right;">es014</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">es001</td>
+<td style="text-align: right;">0.773383</td>
+<td style="text-align: right;">0.193666</td>
+<td style="text-align: right;">0.217058</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">es002</td>
+<td style="text-align: right;">0.193666</td>
+<td style="text-align: right;">0.193986</td>
+<td style="text-align: right;">0.108708</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">es003</td>
+<td style="text-align: right;">0.217058</td>
+<td style="text-align: right;">0.108708</td>
+<td style="text-align: right;">0.243678</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">es010</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.201855</td>
+<td style="text-align: right;">0.101774</td>
+<td style="text-align: right;">0.102159</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">es011</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.101774</td>
+<td style="text-align: right;">0.205254</td>
+<td style="text-align: right;">0.103016</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">es012</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.102159</td>
+<td style="text-align: right;">0.103016</td>
+<td style="text-align: right;">0.206812</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">es013</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.204511</td>
+<td style="text-align: right;">0.108288</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">es014</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.108288</td>
+<td style="text-align: right;">0.229354</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="output-files" class="level1">
 <h1>Output files</h1>
-<p>We save the matrix as CSV and RDS files. We also save an index that records the effect-size order in the rows and columns of <code>V</code>.</p>
+<p>We save each matrix as CSV and RDS files. We also save an index that records the effect-size order in the rows and columns of each matrix.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the index for the rows and columns of V.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>vcv_index <span class="ot">&lt;-</span> vcv_data <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">matrix_row =</span> <span class="fu">row_number</span>(),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    study_id,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    es_id,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    ex_id,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    con_id,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    out_id,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    ex_n,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    c_n,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    lnRR,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    lnRR_var</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>vcv_matrix_export <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(V, <span class="at">check.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(<span class="st">"es_id"</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the index and both matrix formats.</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  vcv_index,</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"PCN_vcv_index.csv"</span>),</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="st">""</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  vcv_matrix_export,</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"PCN_vcv_matrix.csv"</span>),</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="st">""</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(V, <span class="fu">file.path</span>(derived_dir, <span class="st">"PCN_vcv_matrix.rds"</span>))</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">c</span>(</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_vcv_index.csv"</span>,</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_vcv_matrix.csv"</span>,</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_vcv_matrix.rds"</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">contents =</span> <span class="fu">c</span>(</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Effect-size order and identifiers"</span>,</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sampling variance-covariance matrix"</span>,</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"R matrix for modelling"</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Sampling variance-covariance matrix files."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define file names for the three sets of outputs. We retain the existing</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lnRR names so the overall-effect chapter remains compatible.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>vcv_files <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>effect, <span class="sc">~</span>index_file, <span class="sc">~</span>csv_file, <span class="sc">~</span>rds_file,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnRR"</span>,  <span class="st">"PCN_vcv_index.csv"</span>,       <span class="st">"PCN_vcv_matrix.csv"</span>,       <span class="st">"PCN_vcv_matrix.rds"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnVR"</span>,  <span class="st">"PCN_lnVR_vcv_index.csv"</span>,  <span class="st">"PCN_lnVR_vcv_matrix.csv"</span>,  <span class="st">"PCN_lnVR_vcv_matrix.rds"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnCVR"</span>, <span class="st">"PCN_lnCVR_vcv_index.csv"</span>, <span class="st">"PCN_lnCVR_vcv_matrix.csv"</span>, <span class="st">"PCN_lnCVR_vcv_matrix.rds"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(vcv_files))) {</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> vcv_results[[vcv_files<span class="sc">$</span>effect[i]]]</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Record the row order and the effect-size values used in this matrix.</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  vcv_index <span class="ot">&lt;-</span> result<span class="sc">$</span>data <span class="sc">|&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">transmute</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">matrix_row =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      study_id,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      es_id,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      ex_id,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      con_id,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      out_id,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      ex_n,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      c_n,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">effect_size =</span> .data[[result<span class="sc">$</span>effect]],</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">sampling_variance =</span> .data[[result<span class="sc">$</span>variance]]</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  vcv_matrix_export <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(result<span class="sc">$</span>V, <span class="at">check.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(<span class="st">"es_id"</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    vcv_index,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">file.path</span>(derived_dir, vcv_files<span class="sc">$</span>index_file[i]),</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">na =</span> <span class="st">""</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    vcv_matrix_export,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">file.path</span>(derived_dir, vcv_files<span class="sc">$</span>csv_file[i]),</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">na =</span> <span class="st">""</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS</span>(result<span class="sc">$</span>V, <span class="fu">file.path</span>(derived_dir, vcv_files<span class="sc">$</span>rds_file[i]))</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>vcv_files <span class="sc">|&gt;</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(index_file, csv_file, rds_file),</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"format"</span>,</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"file"</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">file =</span> <span class="fu">file.path</span>(<span class="st">"Data"</span>, <span class="st">"derived"</span>, file)) <span class="sc">|&gt;</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(effect, format, file) <span class="sc">|&gt;</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Effect size"</span>, <span class="st">"File type"</span>, <span class="st">"File"</span>),</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Sampling variance-covariance matrix files."</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Sampling variance-covariance matrix files.</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">file</th>
-<th style="text-align: left;">contents</th>
+<th style="text-align: left;">Effect size</th>
+<th style="text-align: left;">File type</th>
+<th style="text-align: left;">File</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">lnRR</td>
+<td style="text-align: left;">index_file</td>
 <td style="text-align: left;">Data/derived/PCN_vcv_index.csv</td>
-<td style="text-align: left;">Effect-size order and identifiers</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">lnRR</td>
+<td style="text-align: left;">csv_file</td>
 <td style="text-align: left;">Data/derived/PCN_vcv_matrix.csv</td>
-<td style="text-align: left;">Sampling variance-covariance matrix</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">lnRR</td>
+<td style="text-align: left;">rds_file</td>
 <td style="text-align: left;">Data/derived/PCN_vcv_matrix.rds</td>
-<td style="text-align: left;">R matrix for modelling</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lnVR</td>
+<td style="text-align: left;">index_file</td>
+<td style="text-align: left;">Data/derived/PCN_lnVR_vcv_index.csv</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lnVR</td>
+<td style="text-align: left;">csv_file</td>
+<td style="text-align: left;">Data/derived/PCN_lnVR_vcv_matrix.csv</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lnVR</td>
+<td style="text-align: left;">rds_file</td>
+<td style="text-align: left;">Data/derived/PCN_lnVR_vcv_matrix.rds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lnCVR</td>
+<td style="text-align: left;">index_file</td>
+<td style="text-align: left;">Data/derived/PCN_lnCVR_vcv_index.csv</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lnCVR</td>
+<td style="text-align: left;">csv_file</td>
+<td style="text-align: left;">Data/derived/PCN_lnCVR_vcv_matrix.csv</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lnCVR</td>
+<td style="text-align: left;">rds_file</td>
+<td style="text-align: left;">Data/derived/PCN_lnCVR_vcv_matrix.rds</td>
 </tr>
 </tbody>
 </table>
@@ -725,9 +1065,10 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] tibble_3.3.1        readr_2.2.0         metafor_5.0-1      
-[4] numDeriv_2016.8-1.1 metadat_1.6-0       Matrix_1.7-3       
-[7] knitr_1.51          dplyr_1.2.1        
+ [1] tidyr_1.3.2         tibble_3.3.1        readr_2.2.0        
+ [4] purrr_1.2.2         metafor_5.0-1       numDeriv_2016.8-1.1
+ [7] metadat_1.6-0       Matrix_1.7-3        knitr_1.51         
+[10] dplyr_1.2.1        
 
 loaded via a namespace (and not attached):
  [1] bit_4.6.0         jsonlite_2.0.0    crayon_1.5.3      compiler_4.5.1   
@@ -735,10 +1076,10 @@ loaded via a namespace (and not attached):
  [9] lattice_0.22-7    R6_2.6.1          generics_0.1.4    htmlwidgets_1.6.4
 [13] pillar_1.11.1     tzdb_0.5.0        rlang_1.3.0       mathjaxr_2.0-0   
 [17] xfun_0.60         bit64_4.8.2       otel_0.2.0        cli_3.6.6        
-[21] magrittr_2.0.5    digest_0.6.39     grid_4.5.1        vroom_1.7.1      
-[25] hms_1.1.4         lifecycle_1.0.5   nlme_3.1-168      vctrs_0.7.3      
-[29] evaluate_1.0.5    glue_1.8.1        pacman_0.5.1      rmarkdown_2.31   
-[33] tools_4.5.1       pkgconfig_2.0.3   htmltools_0.5.9  </code></pre>
+[21] withr_3.0.3       magrittr_2.0.5    digest_0.6.39     grid_4.5.1       
+[25] vroom_1.7.1       hms_1.1.4         lifecycle_1.0.5   nlme_3.1-168     
+[29] vctrs_0.7.3       evaluate_1.0.5    glue_1.8.1        pacman_0.5.1     
+[33] rmarkdown_2.31    tools_4.5.1       pkgconfig_2.0.3   htmltools_0.5.9  </code></pre>
 </div>
 </div>
 </div>
@@ -1213,18 +1554,18 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04_overall_effect.html" class="pagination-link" aria-label="Overall effect">
-        <span class="nav-page-text">Overall effect</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04_overall_effect.html" class="pagination-link" aria-label="Overall effects">
+        <span class="nav-page-text">Overall effects</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Sampling variance-covariance matrix"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Sampling variance-covariance matrices"</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>We construct the sampling variance-covariance matrix from the lnRR sampling variances and the exposed- and control-group identifiers in the extraction database.</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>We construct one sampling variance-covariance matrix for each effect-size type. Each matrix uses the corresponding sampling variances and the exposed- and control-group identifiers in the extraction database.</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>We first load the effect-size database and check the columns required to construct <span class="in">`V`</span>.</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>We first load the effect-size database and check the columns required to construct the matrices.</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variable definitions</span></span>
@@ -1237,8 +1578,8 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`con_id`</span> <span class="pp">|</span> Identifier for a control group within an experiment and study. <span class="pp">|</span></span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`out_id`</span> <span class="pp">|</span> Identifier for a behavioural outcome. <span class="pp">|</span></span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`ex_n`</span>, <span class="in">`c_n`</span> <span class="pp">|</span> Exposed- and control-group sample sizes. <span class="pp">|</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`lnRR_var`</span> <span class="pp">|</span> Sampling variance of lnRR and the diagonal value of <span class="in">`V`</span>. <span class="pp">|</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`V`</span> <span class="pp">|</span> Sampling variance-covariance matrix for the lnRR estimates. <span class="pp">|</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`lnRR_var`</span>, <span class="in">`lnVR_var`</span>, <span class="in">`lnCVR_var`</span> <span class="pp">|</span> Sampling variances and the diagonal values of the corresponding matrices. <span class="pp">|</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`V`</span> <span class="pp">|</span> Sampling variance-covariance matrix for one effect-size type. <span class="pp">|</span></span>
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> $\rho$ <span class="pp">|</span> Working correlation for multiple or repeated outcomes that share a group. <span class="pp">|</span></span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
@@ -1249,192 +1590,236 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  dplyr,</span>
 <span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  knitr,</span>
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  metafor,</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  readr,</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  tibble</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="fu">normalizePath</span>(<span class="st">".."</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>derived_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"Data"</span>, <span class="st">"derived"</span>)</span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database from Chapter 2.</span></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>vcv_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="co"># List the variables required to construct V and its index.</span></span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>required_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>, <span class="st">"out_id"</span>,</span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_n"</span>, <span class="st">"c_n"</span>, <span class="st">"lnRR"</span>, <span class="st">"lnRR_var"</span></span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(vcv_data))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Required columns are missing from the effect-size database."</span>)</span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyDuplicated</span>(vcv_data<span class="sc">$</span>es_id)) {</span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"es_id must be unique before constructing V."</span>)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  purrr,</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  readr,</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>  tibble,</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  tidyr</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="fu">normalizePath</span>(<span class="st">".."</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>derived_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"Data"</span>, <span class="st">"derived"</span>)</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database from Chapter 2.</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>vcv_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="co"># List the variables required to construct V and its index.</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>required_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>, <span class="st">"out_id"</span>,</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_n"</span>, <span class="st">"c_n"</span>,</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnRR"</span>, <span class="st">"lnRR_var"</span>, <span class="st">"lnVR"</span>, <span class="st">"lnVR_var"</span>, <span class="st">"lnCVR"</span>, <span class="st">"lnCVR_var"</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(vcv_data))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Required columns are missing from the effect-size database."</span>)</span>
 <span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyNA</span>(vcv_data[<span class="fu">c</span>(<span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>)])) {</span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Study and group identifiers must be complete before constructing V."</span>)</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyDuplicated</span>(vcv_data<span class="sc">$</span>es_id)) {</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"es_id must be unique before constructing V."</span>)</span>
 <span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(<span class="sc">!</span><span class="fu">is.finite</span>(vcv_data<span class="sc">$</span>lnRR_var)) <span class="sc">||</span> <span class="fu">any</span>(vcv_data<span class="sc">$</span>lnRR_var <span class="sc">&lt;=</span> <span class="dv">0</span>)) {</span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"lnRR_var must contain positive finite sampling variances."</span>)</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">anyNA</span>(vcv_data[<span class="fu">c</span>(<span class="st">"study_id"</span>, <span class="st">"es_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>)])) {</span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Study and group identifiers must be complete before constructing V."</span>)</span>
 <span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(vcv_data<span class="sc">$</span>ex_n <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="sc">||</span> <span class="fu">any</span>(vcv_data<span class="sc">$</span>c_n <span class="sc">&lt;=</span> <span class="dv">0</span>)) {</span>
 <span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Group sample sizes must be positive before constructing V."</span>)</span>
 <span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a><span class="fu"># Matrix construction</span></span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>We use <span class="in">`metafor::vcalc()`</span> to construct <span class="in">`V`</span> <span class="co">[</span><span class="ot">@viechtbauer2010</span><span class="co">]</span>. We use <span class="in">`study_id`</span> as the study cluster, <span class="in">`ex_id`</span> and <span class="in">`con_id`</span> as the contrasted-group identifiers, and <span class="in">`ex_n`</span> and <span class="in">`c_n`</span> as the group weights. We supply each <span class="in">`es_id`</span> as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of $\rho = 0.5$. We assign zero sampling covariance to effect sizes that share neither group.</span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: construct-vcv</span></span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the fixed working correlation.</span></span>
-<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>working_rho <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Link each effect size to its sampling-variance column.</span></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>effect_specs <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>effect, <span class="sc">~</span>variance,</span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnRR"</span>,  <span class="st">"lnRR_var"</span>,</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnVR"</span>,  <span class="st">"lnVR_var"</span>,</span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnCVR"</span>, <span class="st">"lnCVR_var"</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="fu"># Matrix construction</span></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>We use <span class="in">`metafor::vcalc()`</span> to construct each matrix <span class="co">[</span><span class="ot">@viechtbauer2010</span><span class="co">]</span>. We use <span class="in">`study_id`</span> as the study cluster, <span class="in">`ex_id`</span> and <span class="in">`con_id`</span> as the contrasted-group identifiers, and <span class="in">`ex_n`</span> and <span class="in">`c_n`</span> as the group weights. We supply each <span class="in">`es_id`</span> as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of $\rho = 0.5$. We assign zero sampling covariance to effect sizes that share neither group.</span>
 <span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct the sampling variance-covariance matrix.</span></span>
-<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">vcalc</span>(</span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>  <span class="at">vi =</span> lnRR_var,</span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>  <span class="at">cluster =</span> study_id,</span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp1 =</span> ex_id,</span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp2 =</span> con_id,</span>
-<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>  <span class="at">w1 =</span> ex_n,</span>
-<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>  <span class="at">w2 =</span> c_n,</span>
-<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>  <span class="at">obs =</span> es_id,</span>
-<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>  <span class="at">rho =</span> working_rho,</span>
-<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>  <span class="at">checkpd =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> vcv_data</span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Label the matrix rows and columns with es_id.</span></span>
-<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(V) <span class="ot">&lt;-</span> <span class="fu">list</span>(vcv_data<span class="sc">$</span>es_id, vcv_data<span class="sc">$</span>es_id)</span>
-<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a><span class="fu"># Matrix checks</span></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>The lnRR matrix contains every effect-size row. The lnVR and lnCVR matrices contain only non-percentage outcomes because Chapter 2 does not calculate variability metrics for percentage outcomes.</span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: construct-vcv</span></span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the fixed working correlation.</span></span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>working_rho <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct one matrix and retain the matching data rows.</span></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>construct_vcv <span class="ot">&lt;-</span> <span class="cf">function</span>(data, effect, variance, <span class="at">rho =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retain rows with a complete effect size and sampling variance.</span></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.finite</span>(data[[effect]]) <span class="sc">&amp;</span> <span class="fu">is.finite</span>(data[[variance]]))</span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>  metric_data <span class="ot">&lt;-</span> data[idx, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">any</span>(metric_data[[variance]] <span class="sc">&lt;=</span> <span class="dv">0</span>)) {</span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(variance, <span class="st">" must contain positive sampling variances."</span>)</span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a>We check the diagonal, finite values, symmetry, dependency pattern, and positive definiteness of <span class="in">`V`</span> before exporting it.</span>
-<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: check-vcv</span></span>
-<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify effect-size pairs from the same study that share either group.</span></span>
-<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>same_study <span class="ot">&lt;-</span> <span class="fu">outer</span>(vcv_data<span class="sc">$</span>study_id, vcv_data<span class="sc">$</span>study_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
-<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>shared_exposed_group <span class="ot">&lt;-</span> same_study <span class="sc">&amp;</span></span>
-<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">outer</span>(vcv_data<span class="sc">$</span>ex_id, vcv_data<span class="sc">$</span>ex_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
-<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>shared_control_group <span class="ot">&lt;-</span> same_study <span class="sc">&amp;</span></span>
-<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">outer</span>(vcv_data<span class="sc">$</span>con_id, vcv_data<span class="sc">$</span>con_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
-<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>shared_group <span class="ot">&lt;-</span> shared_exposed_group <span class="sc">|</span> shared_control_group</span>
-<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(shared_group) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Construct V from the group identifiers and sampling variances.</span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">vcalc</span>(</span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>    <span class="at">vi =</span> metric_data[[variance]],</span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>    <span class="at">cluster =</span> metric_data<span class="sc">$</span>study_id,</span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>    <span class="at">grp1 =</span> metric_data<span class="sc">$</span>ex_id,</span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">grp2 =</span> metric_data<span class="sc">$</span>con_id,</span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>    <span class="at">w1 =</span> metric_data<span class="sc">$</span>ex_n,</span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>    <span class="at">w2 =</span> metric_data<span class="sc">$</span>c_n,</span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">obs =</span> metric_data<span class="sc">$</span>es_id,</span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>    <span class="at">rho =</span> rho,</span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">checkpd =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Label the rows and columns with the retained effect-size IDs.</span></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dimnames</span>(V) <span class="ot">&lt;-</span> <span class="fu">list</span>(metric_data<span class="sc">$</span>es_id, metric_data<span class="sc">$</span>es_id)</span>
 <span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify effect-size pairs with non-zero covariance.</span></span>
-<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>nonzero_covariance <span class="ot">&lt;-</span> <span class="fu">abs</span>(V) <span class="sc">&gt;</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)</span>
-<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(nonzero_covariance) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the smallest eigenvalue to check positive definiteness.</span></span>
-<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>minimum_eigenvalue <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">eigen</span>(V, <span class="at">symmetric =</span> <span class="cn">TRUE</span>, <span class="at">only.values =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>values)</span>
-<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>vcv_checks <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a>  <span class="at">check =</span> <span class="fu">c</span>(</span>
-<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Matrix rows"</span>,</span>
-<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Matrix columns"</span>,</span>
-<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Diagonal equals lnRR_var"</span>,</span>
-<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Finite matrix entries"</span>,</span>
-<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Symmetric matrix"</span>,</span>
-<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Positive-definite matrix"</span>,</span>
-<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Effect-size pairs with non-zero covariance"</span>,</span>
-<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Non-zero covariance pairs without a shared group"</span></span>
-<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(</span>
-<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">nrow</span>(V)),</span>
-<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">ncol</span>(V)),</span>
-<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">max</span>(<span class="fu">abs</span>(<span class="fu">diag</span>(V) <span class="sc">-</span> vcv_data<span class="sc">$</span>lnRR_var)) <span class="sc">&lt;</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)),</span>
-<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">all</span>(<span class="fu">is.finite</span>(V))),</span>
-<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">isSymmetric</span>(V)),</span>
-<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(minimum_eigenvalue <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
-<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">sum</span>(<span class="fu">upper.tri</span>(V) <span class="sc">&amp;</span> nonzero_covariance)),</span>
-<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.character</span>(<span class="fu">sum</span>(<span class="fu">upper.tri</span>(V) <span class="sc">&amp;</span> nonzero_covariance <span class="sc">&amp;</span> <span class="sc">!</span>shared_group))</span>
-<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>vcv_checks <span class="sc">|&gt;</span></span>
-<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Checks of the sampling variance-covariance matrix."</span>)</span>
-<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a>We display the first eight rows and columns to show the matrix structure.</span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">effect =</span> effect, <span class="at">variance =</span> variance, <span class="at">data =</span> metric_data, <span class="at">V =</span> V)</span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the same matrix construction to lnRR, lnVR, and lnCVR.</span></span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>vcv_results <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(</span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>  effect_specs<span class="sc">$</span>effect,</span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a>  effect_specs<span class="sc">$</span>variance,</span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> <span class="fu">construct_vcv</span>(vcv_data, .x, .y, <span class="at">rho =</span> working_rho)</span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(vcv_results) <span class="ot">&lt;-</span> effect_specs<span class="sc">$</span>effect</span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a><span class="fu"># Matrix checks</span></span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>We check the diagonal, finite values, symmetry, dependency pattern, and positive definiteness of each matrix before exporting it.</span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: check-vcv</span></span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>check_vcv <span class="ot">&lt;-</span> <span class="cf">function</span>(result) {</span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> result<span class="sc">$</span>data</span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> result<span class="sc">$</span>V</span>
+<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify pairs from the same study that share either group.</span></span>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a>  same_study <span class="ot">&lt;-</span> <span class="fu">outer</span>(data<span class="sc">$</span>study_id, data<span class="sc">$</span>study_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>  shared_exposed_group <span class="ot">&lt;-</span> same_study <span class="sc">&amp;</span> <span class="fu">outer</span>(data<span class="sc">$</span>ex_id, data<span class="sc">$</span>ex_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>  shared_control_group <span class="ot">&lt;-</span> same_study <span class="sc">&amp;</span> <span class="fu">outer</span>(data<span class="sc">$</span>con_id, data<span class="sc">$</span>con_id, <span class="st">`</span><span class="at">==</span><span class="st">`</span>)</span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>  shared_group <span class="ot">&lt;-</span> shared_exposed_group <span class="sc">|</span> shared_control_group</span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(shared_group) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify off-diagonal non-zero sampling covariances.</span></span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a>  nonzero_covariance <span class="ot">&lt;-</span> <span class="fu">abs</span>(V) <span class="sc">&gt;</span> <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps)</span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(nonzero_covariance) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
 <span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: display-vcv</span></span>
-<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a>V[<span class="fu">seq_len</span>(<span class="dv">8</span>), <span class="fu">seq_len</span>(<span class="dv">8</span>)] <span class="sc">|&gt;</span></span>
-<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">6</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"First eight rows and columns of V."</span>)</span>
-<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a><span class="fu"># Output files</span></span>
-<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a>We save the matrix as CSV and RDS files. We also save an index that records the effect-size order in the rows and columns of <span class="in">`V`</span>.</span>
-<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: export-vcv</span></span>
-<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the index for the rows and columns of V.</span></span>
-<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a>vcv_index <span class="ot">&lt;-</span> vcv_data <span class="sc">|&gt;</span></span>
-<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a>    <span class="at">matrix_row =</span> <span class="fu">row_number</span>(),</span>
-<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a>    study_id,</span>
-<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a>    es_id,</span>
-<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a>    ex_id,</span>
-<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a>    con_id,</span>
-<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a>    out_id,</span>
-<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a>    ex_n,</span>
-<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a>    c_n,</span>
-<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a>    lnRR,</span>
-<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>    lnRR_var</span>
-<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a>vcv_matrix_export <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(V, <span class="at">check.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(<span class="st">"es_id"</span>)</span>
-<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-191"><a href="#cb8-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the index and both matrix formats.</span></span>
-<span id="cb8-192"><a href="#cb8-192" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
-<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a>  vcv_index,</span>
-<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"PCN_vcv_index.csv"</span>),</span>
-<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="st">""</span></span>
-<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
-<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>  vcv_matrix_export,</span>
-<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"PCN_vcv_matrix.csv"</span>),</span>
-<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="st">""</span></span>
-<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(V, <span class="fu">file.path</span>(derived_dir, <span class="st">"PCN_vcv_matrix.rds"</span>))</span>
-<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">c</span>(</span>
-<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_vcv_index.csv"</span>,</span>
-<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_vcv_matrix.csv"</span>,</span>
-<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_vcv_matrix.rds"</span></span>
-<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a>  <span class="at">contents =</span> <span class="fu">c</span>(</span>
-<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Effect-size order and identifiers"</span>,</span>
-<span id="cb8-212"><a href="#cb8-212" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sampling variance-covariance matrix"</span>,</span>
-<span id="cb8-213"><a href="#cb8-213" aria-hidden="true" tabindex="-1"></a>    <span class="st">"R matrix for modelling"</span></span>
-<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Sampling variance-covariance matrix files."</span>)</span>
-<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-219"><a href="#cb8-219" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb8-220"><a href="#cb8-220" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session information</span></span>
-<span id="cb8-221"><a href="#cb8-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-224"><a href="#cb8-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-225"><a href="#cb8-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: session-information</span></span>
-<span id="cb8-226"><a href="#cb8-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-227"><a href="#cb8-227" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb8-228"><a href="#cb8-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect_size =</span> result<span class="sc">$</span>effect,</span>
+<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a>    <span class="at">k =</span> <span class="fu">nrow</span>(V),</span>
+<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a>    <span class="at">diagonal_matches =</span> <span class="fu">max</span>(<span class="fu">abs</span>(<span class="fu">diag</span>(V) <span class="sc">-</span> data[[result<span class="sc">$</span>variance]])) <span class="sc">&lt;</span></span>
+<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sqrt</span>(.Machine<span class="sc">$</span>double.eps),</span>
+<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a>    <span class="at">finite =</span> <span class="fu">all</span>(<span class="fu">is.finite</span>(V)),</span>
+<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a>    <span class="at">symmetric =</span> <span class="fu">isSymmetric</span>(V),</span>
+<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a>    <span class="at">positive_definite =</span> <span class="fu">min</span>(<span class="fu">eigen</span>(V, <span class="at">symmetric =</span> <span class="cn">TRUE</span>, <span class="at">only.values =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>values) <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a>    <span class="at">nonzero_covariance_pairs =</span> <span class="fu">sum</span>(<span class="fu">upper.tri</span>(V) <span class="sc">&amp;</span> nonzero_covariance),</span>
+<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a>    <span class="at">nonzero_pairs_without_shared_group =</span> <span class="fu">sum</span>(</span>
+<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a>      <span class="fu">upper.tri</span>(V) <span class="sc">&amp;</span> nonzero_covariance <span class="sc">&amp;</span> <span class="sc">!</span>shared_group</span>
+<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a>vcv_checks <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(vcv_results, check_vcv)</span>
+<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a>vcv_checks <span class="sc">|&gt;</span></span>
+<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Checks of the sampling variance-covariance matrix."</span>)</span>
+<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a>We display the first eight rows and columns of each matrix to show its structure.</span>
+<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: display-vcv</span></span>
+<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: asis</span></span>
+<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (result <span class="cf">in</span> vcv_results) {</span>
+<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a>  n_display <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="dv">8</span>, <span class="fu">nrow</span>(result<span class="sc">$</span>V))</span>
+<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">## "</span>, result<span class="sc">$</span>effect, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(</span>
+<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a>      <span class="fu">round</span>(result<span class="sc">$</span>V[<span class="fu">seq_len</span>(n_display), <span class="fu">seq_len</span>(n_display)], <span class="dv">6</span>),</span>
+<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption =</span> <span class="fu">paste</span>(<span class="st">"First rows and columns of the"</span>, result<span class="sc">$</span>effect, <span class="st">"matrix."</span>)</span>
+<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb8-191"><a href="#cb8-191" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb8-192"><a href="#cb8-192" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a><span class="fu"># Output files</span></span>
+<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a>We save each matrix as CSV and RDS files. We also save an index that records the effect-size order in the rows and columns of each matrix.</span>
+<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: export-vcv</span></span>
+<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a><span class="co"># Define file names for the three sets of outputs. We retain the existing</span></span>
+<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a><span class="co"># lnRR names so the overall-effect chapter remains compatible.</span></span>
+<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>vcv_files <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>effect, <span class="sc">~</span>index_file, <span class="sc">~</span>csv_file, <span class="sc">~</span>rds_file,</span>
+<span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnRR"</span>,  <span class="st">"PCN_vcv_index.csv"</span>,       <span class="st">"PCN_vcv_matrix.csv"</span>,       <span class="st">"PCN_vcv_matrix.rds"</span>,</span>
+<span id="cb8-211"><a href="#cb8-211" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnVR"</span>,  <span class="st">"PCN_lnVR_vcv_index.csv"</span>,  <span class="st">"PCN_lnVR_vcv_matrix.csv"</span>,  <span class="st">"PCN_lnVR_vcv_matrix.rds"</span>,</span>
+<span id="cb8-212"><a href="#cb8-212" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnCVR"</span>, <span class="st">"PCN_lnCVR_vcv_index.csv"</span>, <span class="st">"PCN_lnCVR_vcv_matrix.csv"</span>, <span class="st">"PCN_lnCVR_vcv_matrix.rds"</span></span>
+<span id="cb8-213"><a href="#cb8-213" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-214"><a href="#cb8-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-215"><a href="#cb8-215" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(vcv_files))) {</span>
+<span id="cb8-216"><a href="#cb8-216" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> vcv_results[[vcv_files<span class="sc">$</span>effect[i]]]</span>
+<span id="cb8-217"><a href="#cb8-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-218"><a href="#cb8-218" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Record the row order and the effect-size values used in this matrix.</span></span>
+<span id="cb8-219"><a href="#cb8-219" aria-hidden="true" tabindex="-1"></a>  vcv_index <span class="ot">&lt;-</span> result<span class="sc">$</span>data <span class="sc">|&gt;</span></span>
+<span id="cb8-220"><a href="#cb8-220" aria-hidden="true" tabindex="-1"></a>    <span class="fu">transmute</span>(</span>
+<span id="cb8-221"><a href="#cb8-221" aria-hidden="true" tabindex="-1"></a>      <span class="at">matrix_row =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb8-222"><a href="#cb8-222" aria-hidden="true" tabindex="-1"></a>      study_id,</span>
+<span id="cb8-223"><a href="#cb8-223" aria-hidden="true" tabindex="-1"></a>      es_id,</span>
+<span id="cb8-224"><a href="#cb8-224" aria-hidden="true" tabindex="-1"></a>      ex_id,</span>
+<span id="cb8-225"><a href="#cb8-225" aria-hidden="true" tabindex="-1"></a>      con_id,</span>
+<span id="cb8-226"><a href="#cb8-226" aria-hidden="true" tabindex="-1"></a>      out_id,</span>
+<span id="cb8-227"><a href="#cb8-227" aria-hidden="true" tabindex="-1"></a>      ex_n,</span>
+<span id="cb8-228"><a href="#cb8-228" aria-hidden="true" tabindex="-1"></a>      c_n,</span>
+<span id="cb8-229"><a href="#cb8-229" aria-hidden="true" tabindex="-1"></a>      <span class="at">effect_size =</span> .data[[result<span class="sc">$</span>effect]],</span>
+<span id="cb8-230"><a href="#cb8-230" aria-hidden="true" tabindex="-1"></a>      <span class="at">sampling_variance =</span> .data[[result<span class="sc">$</span>variance]]</span>
+<span id="cb8-231"><a href="#cb8-231" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-232"><a href="#cb8-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-233"><a href="#cb8-233" aria-hidden="true" tabindex="-1"></a>  vcv_matrix_export <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(result<span class="sc">$</span>V, <span class="at">check.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-234"><a href="#cb8-234" aria-hidden="true" tabindex="-1"></a>    tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(<span class="st">"es_id"</span>)</span>
+<span id="cb8-235"><a href="#cb8-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-236"><a href="#cb8-236" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
+<span id="cb8-237"><a href="#cb8-237" aria-hidden="true" tabindex="-1"></a>    vcv_index,</span>
+<span id="cb8-238"><a href="#cb8-238" aria-hidden="true" tabindex="-1"></a>    <span class="fu">file.path</span>(derived_dir, vcv_files<span class="sc">$</span>index_file[i]),</span>
+<span id="cb8-239"><a href="#cb8-239" aria-hidden="true" tabindex="-1"></a>    <span class="at">na =</span> <span class="st">""</span></span>
+<span id="cb8-240"><a href="#cb8-240" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-241"><a href="#cb8-241" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
+<span id="cb8-242"><a href="#cb8-242" aria-hidden="true" tabindex="-1"></a>    vcv_matrix_export,</span>
+<span id="cb8-243"><a href="#cb8-243" aria-hidden="true" tabindex="-1"></a>    <span class="fu">file.path</span>(derived_dir, vcv_files<span class="sc">$</span>csv_file[i]),</span>
+<span id="cb8-244"><a href="#cb8-244" aria-hidden="true" tabindex="-1"></a>    <span class="at">na =</span> <span class="st">""</span></span>
+<span id="cb8-245"><a href="#cb8-245" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-246"><a href="#cb8-246" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS</span>(result<span class="sc">$</span>V, <span class="fu">file.path</span>(derived_dir, vcv_files<span class="sc">$</span>rds_file[i]))</span>
+<span id="cb8-247"><a href="#cb8-247" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-248"><a href="#cb8-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-249"><a href="#cb8-249" aria-hidden="true" tabindex="-1"></a>vcv_files <span class="sc">|&gt;</span></span>
+<span id="cb8-250"><a href="#cb8-250" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb8-251"><a href="#cb8-251" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(index_file, csv_file, rds_file),</span>
+<span id="cb8-252"><a href="#cb8-252" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"format"</span>,</span>
+<span id="cb8-253"><a href="#cb8-253" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"file"</span></span>
+<span id="cb8-254"><a href="#cb8-254" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb8-255"><a href="#cb8-255" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">file =</span> <span class="fu">file.path</span>(<span class="st">"Data"</span>, <span class="st">"derived"</span>, file)) <span class="sc">|&gt;</span></span>
+<span id="cb8-256"><a href="#cb8-256" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(effect, format, file) <span class="sc">|&gt;</span></span>
+<span id="cb8-257"><a href="#cb8-257" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb8-258"><a href="#cb8-258" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Effect size"</span>, <span class="st">"File type"</span>, <span class="st">"File"</span>),</span>
+<span id="cb8-259"><a href="#cb8-259" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Sampling variance-covariance matrix files."</span></span>
+<span id="cb8-260"><a href="#cb8-260" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-261"><a href="#cb8-261" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-263"><a href="#cb8-263" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb8-264"><a href="#cb8-264" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session information</span></span>
+<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-268"><a href="#cb8-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-269"><a href="#cb8-269" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: session-information</span></span>
+<span id="cb8-270"><a href="#cb8-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-271"><a href="#cb8-271" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb8-272"><a href="#cb8-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-273"><a href="#cb8-273" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

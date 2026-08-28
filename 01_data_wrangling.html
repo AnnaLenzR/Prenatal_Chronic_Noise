@@ -215,13 +215,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_dependency_structure_audit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sampling variance-covariance matrix</span></a>
+ <span class="menu-text">Sampling variance-covariance matrices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_overall_effect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overall effect</span></a>
+ <span class="menu-text">Overall effects</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -234,6 +234,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./06_publication_bias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Publication bias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_crime_q.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CRIME-Q appraisal</span></a>
   </div>
 </li>
     </ul>
@@ -373,6 +379,14 @@ window.Quarto = {
 <td style="text-align: left;"><code>higher_better</code></td>
 <td style="text-align: left;">Indicates whether a higher outcome value represents better performance.</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;"><code>control_conditions</code></td>
+<td style="text-align: left;">Acoustic conditions experienced by the control animals; retained as a moderator.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>control_setting</code></td>
+<td style="text-align: left;">Physical setting where control animals were kept; retained for descriptive reporting only.</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -393,32 +407,33 @@ window.Quarto = {
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>required_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"study_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>, <span class="st">"out_id"</span>, <span class="st">"es_id"</span>,</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"comparison_structure"</span>, <span class="st">"higher_better"</span>, <span class="st">"gest_stage_ex_standardised"</span>,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"c_mean"</span>, <span class="st">"c_sd"</span>, <span class="st">"c_n"</span>, <span class="st">"c_se"</span>, <span class="st">"c_median"</span>, <span class="st">"c_q1"</span>, <span class="st">"c_q3"</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_mean"</span>, <span class="st">"ex_sd"</span>, <span class="st">"ex_n"</span>, <span class="st">"ex_se"</span>, <span class="st">"ex_median"</span>, <span class="st">"ex_q1"</span>, <span class="st">"ex_q3"</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(original))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Required columns are missing from the original extraction database."</span>)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove unnamed empty export columns.</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>empty_unnamed_columns <span class="ot">&lt;-</span> <span class="fu">names</span>(original)[</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(<span class="fu">names</span>(original), <span class="st">"^</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">.[0-9]+$"</span>) <span class="sc">&amp;</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vapply</span>(original, <span class="cf">function</span>(x) <span class="fu">all</span>(<span class="fu">is.na</span>(x)), <span class="fu">logical</span>(<span class="dv">1</span>))</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>source_for_derivation <span class="ot">&lt;-</span> original <span class="sc">|&gt;</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">any_of</span>(empty_unnamed_columns))</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"Data/PCN_data_ext_checking_v.3.csv"</span>,</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">rows =</span> <span class="fu">nrow</span>(original),</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">ncol</span>(original),</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">studies =</span> <span class="fu">n_distinct</span>(original<span class="sc">$</span>study_id),</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">effect_sizes =</span> <span class="fu">n_distinct</span>(original<span class="sc">$</span>es_id),</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">checksum =</span> original_checksum</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Original extraction database."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"control_conditions"</span>, <span class="st">"control_setting"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"c_mean"</span>, <span class="st">"c_sd"</span>, <span class="st">"c_n"</span>, <span class="st">"c_se"</span>, <span class="st">"c_median"</span>, <span class="st">"c_q1"</span>, <span class="st">"c_q3"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_mean"</span>, <span class="st">"ex_sd"</span>, <span class="st">"ex_n"</span>, <span class="st">"ex_se"</span>, <span class="st">"ex_median"</span>, <span class="st">"ex_q1"</span>, <span class="st">"ex_q3"</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(original))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Required columns are missing from the original extraction database."</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove unnamed empty export columns.</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>empty_unnamed_columns <span class="ot">&lt;-</span> <span class="fu">names</span>(original)[</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(<span class="fu">names</span>(original), <span class="st">"^</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">.[0-9]+$"</span>) <span class="sc">&amp;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vapply</span>(original, <span class="cf">function</span>(x) <span class="fu">all</span>(<span class="fu">is.na</span>(x)), <span class="fu">logical</span>(<span class="dv">1</span>))</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>source_for_derivation <span class="ot">&lt;-</span> original <span class="sc">|&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">any_of</span>(empty_unnamed_columns))</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"Data/PCN_data_ext_checking_v.3.csv"</span>,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">rows =</span> <span class="fu">nrow</span>(original),</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">ncol</span>(original),</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">studies =</span> <span class="fu">n_distinct</span>(original<span class="sc">$</span>study_id),</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">effect_sizes =</span> <span class="fu">n_distinct</span>(original<span class="sc">$</span>es_id),</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">checksum =</span> original_checksum</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Original extraction database."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Original extraction database.</caption>
@@ -444,10 +459,10 @@ window.Quarto = {
 <tr class="odd">
 <td style="text-align: left;">Data/PCN_data_ext_checking_v.3.csv</td>
 <td style="text-align: right;">207</td>
-<td style="text-align: right;">73</td>
+<td style="text-align: right;">70</td>
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">207</td>
-<td style="text-align: left;">1d6adcaf7e7433c30db572588522287d</td>
+<td style="text-align: left;">2d571deb0811a2de93417c1352ae6433</td>
 </tr>
 </tbody>
 </table>
@@ -680,36 +695,37 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">exposure_type =</span> <span class="fu">str_to_lower</span>(exposure_type),</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">exposure_type =</span> <span class="fu">recode</span>(exposure_type, <span class="st">"intermitent"</span> <span class="ot">=</span> <span class="st">"intermittent"</span>),</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise_type =</span> <span class="fu">str_to_lower</span>(noise_type),</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise_type_2 =</span> <span class="fu">str_to_lower</span>(noise_type_2),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise_frequency_range =</span> <span class="fu">str_to_lower</span>(noise_frequency_range),</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">control_conditions =</span> <span class="fu">str_to_lower</span>(control_conditions),</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">offspring_sex =</span> <span class="fu">str_to_lower</span>(offspring_sex),</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome_type =</span> <span class="fu">str_to_lower</span>(outcome_type),</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">data_type =</span> <span class="fu">str_to_lower</span>(data_type),</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">measurement_timing =</span> <span class="fu">str_to_lower</span>(measurement_timing),</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">strain =</span> <span class="fu">recode</span>(strain, <span class="st">"Wistar albino rat"</span> <span class="ot">=</span> <span class="st">"Wistar rat"</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    study_id, title, doi, publish_in,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    ex_id, con_id, out_id, es_id, shared_control,</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    sp_latin, sp_common, strain, dam_age, gest_stage_ex_standardised,</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    exposure_span_d, exposure_type, exposure_session_duration_h,</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    noise_type, noise_type_2, loudness_dB, frequency_Hz,</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    control_conditions, offspring_sex, offspring_age_d,</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    experimental_procedures, outcome_type, assay_type,</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    measurement_variable, data_type, data_units, measurement_timing,</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    data_source, data_file, c_a_id, ex_a_id, comparison,</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    comparison_structure, higher_better,</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_mean =</span> c_mean_analysis,</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_sd =</span> c_sd_analysis,</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    c_n,</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_se =</span> c_se_analysis,</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    c_mean_method, c_sd_method, c_se_method,</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_mean =</span> ex_mean_analysis,</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_sd =</span> ex_sd_analysis,</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    ex_n,</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_se =</span> ex_se_analysis,</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    ex_mean_method, ex_sd_method, ex_se_method</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">control_setting =</span> <span class="fu">str_to_lower</span>(control_setting),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">offspring_sex =</span> <span class="fu">str_to_lower</span>(offspring_sex),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome_type =</span> <span class="fu">str_to_lower</span>(outcome_type),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">data_type =</span> <span class="fu">str_to_lower</span>(data_type),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">measurement_timing =</span> <span class="fu">str_to_lower</span>(measurement_timing),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">strain =</span> <span class="fu">recode</span>(strain, <span class="st">"Wistar albino rat"</span> <span class="ot">=</span> <span class="st">"Wistar rat"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    study_id, title, doi, publish_in,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    ex_id, con_id, out_id, es_id, shared_control,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    sp_latin, sp_common, strain, dam_age, gest_stage_ex_standardised,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    exposure_span_d, exposure_type, exposure_session_duration_h,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    noise_type, noise_frequency_range, loudness_dB, frequency_Hz,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    control_conditions, control_setting, offspring_sex, offspring_age_d,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    experimental_procedures, outcome_type, assay_type,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    measurement_variable, data_type, data_units, measurement_timing,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    data_source, data_file, c_a_id, ex_a_id, comparison,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    comparison_structure, higher_better,</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_mean =</span> c_mean_analysis,</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_sd =</span> c_sd_analysis,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    c_n,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_se =</span> c_se_analysis,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    c_mean_method, c_sd_method, c_se_method,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_mean =</span> ex_mean_analysis,</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_sd =</span> ex_sd_analysis,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    ex_n,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_se =</span> ex_se_analysis,</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    ex_mean_method, ex_sd_method, ex_se_method</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="data-checks" class="level2">
 <h2 class="anchored" data-anchor-id="data-checks">Data checks</h2>
@@ -850,13 +866,13 @@ window.Quarto = {
 <td style="text-align: left;">Original extraction plus R-derived statistics</td>
 <td style="text-align: left;">Data/derived/PCN_data_ext_checking_v.3_with_derived_statistics.csv</td>
 <td style="text-align: right;">207</td>
-<td style="text-align: right;">85</td>
+<td style="text-align: right;">82</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Analysis-ready data</td>
 <td style="text-align: left;">Data/derived/PCN_analysis_ready.csv</td>
 <td style="text-align: right;">207</td>
-<td style="text-align: right;">52</td>
+<td style="text-align: right;">53</td>
 </tr>
 </tbody>
 </table>
@@ -1438,304 +1454,308 @@ Wan, Xiang, Wenqian Wang, Jiming Liu, and Tiejun Tong. 2014. <span>“Estimating
 <span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`median`</span>, <span class="in">`q1`</span>, <span class="in">`q3`</span> <span class="pp">|</span> Median, first quartile, and third quartile. <span class="pp">|</span></span>
 <span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`comparison_structure`</span> <span class="pp">|</span> Indicates an independent- or dependent-group comparison. <span class="pp">|</span></span>
 <span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`higher_better`</span> <span class="pp">|</span> Indicates whether a higher outcome value represents better performance. <span class="pp">|</span></span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: read-source-data</span></span>
-<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Record the checksum of the original file.</span></span>
-<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>original_checksum <span class="ot">&lt;-</span> <span class="fu">unname</span>(tools<span class="sc">::</span><span class="fu">md5sum</span>(original_path))</span>
-<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the original extraction database.</span></span>
-<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>original <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>  original_path,</span>
-<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>),</span>
-<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">name_repair =</span> <span class="st">"unique_quiet"</span>,</span>
-<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
-<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="co"># List the columns that the derivation requires.</span></span>
-<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a>required_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a>  <span class="st">"study_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>, <span class="st">"out_id"</span>, <span class="st">"es_id"</span>,</span>
-<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a>  <span class="st">"comparison_structure"</span>, <span class="st">"higher_better"</span>, <span class="st">"gest_stage_ex_standardised"</span>,</span>
-<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>  <span class="st">"c_mean"</span>, <span class="st">"c_sd"</span>, <span class="st">"c_n"</span>, <span class="st">"c_se"</span>, <span class="st">"c_median"</span>, <span class="st">"c_q1"</span>, <span class="st">"c_q3"</span>,</span>
-<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_mean"</span>, <span class="st">"ex_sd"</span>, <span class="st">"ex_n"</span>, <span class="st">"ex_se"</span>, <span class="st">"ex_median"</span>, <span class="st">"ex_q1"</span>, <span class="st">"ex_q3"</span></span>
-<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(original))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Required columns are missing from the original extraction database."</span>)</span>
-<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove unnamed empty export columns.</span></span>
-<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>empty_unnamed_columns <span class="ot">&lt;-</span> <span class="fu">names</span>(original)[</span>
-<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(<span class="fu">names</span>(original), <span class="st">"^</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">.[0-9]+$"</span>) <span class="sc">&amp;</span></span>
-<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vapply</span>(original, <span class="cf">function</span>(x) <span class="fu">all</span>(<span class="fu">is.na</span>(x)), <span class="fu">logical</span>(<span class="dv">1</span>))</span>
-<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>source_for_derivation <span class="ot">&lt;-</span> original <span class="sc">|&gt;</span></span>
-<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">any_of</span>(empty_unnamed_columns))</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`control_conditions`</span> <span class="pp">|</span> Acoustic conditions experienced by the control animals; retained as a moderator. <span class="pp">|</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`control_setting`</span> <span class="pp">|</span> Physical setting where control animals were kept; retained for descriptive reporting only. <span class="pp">|</span></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: read-source-data</span></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Record the checksum of the original file.</span></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>original_checksum <span class="ot">&lt;-</span> <span class="fu">unname</span>(tools<span class="sc">::</span><span class="fu">md5sum</span>(original_path))</span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the original extraction database.</span></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>original <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>  original_path,</span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>),</span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">name_repair =</span> <span class="st">"unique_quiet"</span>,</span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="co"># List the columns that the derivation requires.</span></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a>required_columns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>  <span class="st">"study_id"</span>, <span class="st">"ex_id"</span>, <span class="st">"con_id"</span>, <span class="st">"out_id"</span>, <span class="st">"es_id"</span>,</span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>  <span class="st">"comparison_structure"</span>, <span class="st">"higher_better"</span>, <span class="st">"gest_stage_ex_standardised"</span>,</span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>  <span class="st">"control_conditions"</span>, <span class="st">"control_setting"</span>,</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"c_mean"</span>, <span class="st">"c_sd"</span>, <span class="st">"c_n"</span>, <span class="st">"c_se"</span>, <span class="st">"c_median"</span>, <span class="st">"c_q1"</span>, <span class="st">"c_q3"</span>,</span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ex_mean"</span>, <span class="st">"ex_sd"</span>, <span class="st">"ex_n"</span>, <span class="st">"ex_se"</span>, <span class="st">"ex_median"</span>, <span class="st">"ex_q1"</span>, <span class="st">"ex_q3"</span></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">setdiff</span>(required_columns, <span class="fu">names</span>(original))) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Required columns are missing from the original extraction database."</span>)</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove unnamed empty export columns.</span></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>empty_unnamed_columns <span class="ot">&lt;-</span> <span class="fu">names</span>(original)[</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(<span class="fu">names</span>(original), <span class="st">"^</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">.</span><span class="sc">\\</span><span class="st">.[0-9]+$"</span>) <span class="sc">&amp;</span></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vapply</span>(original, <span class="cf">function</span>(x) <span class="fu">all</span>(<span class="fu">is.na</span>(x)), <span class="fu">logical</span>(<span class="dv">1</span>))</span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"Data/PCN_data_ext_checking_v.3.csv"</span>,</span>
-<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>  <span class="at">rows =</span> <span class="fu">nrow</span>(original),</span>
-<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">ncol</span>(original),</span>
-<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>  <span class="at">studies =</span> <span class="fu">n_distinct</span>(original<span class="sc">$</span>study_id),</span>
-<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>  <span class="at">effect_sizes =</span> <span class="fu">n_distinct</span>(original<span class="sc">$</span>es_id),</span>
-<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a>  <span class="at">checksum =</span> original_checksum</span>
-<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Original extraction database."</span>)</span>
-<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="fu"># Derivation of missing summary statistics</span></span>
-<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calculation methods</span></span>
-<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We estimate a missing mean from Q1, the median, Q3, and sample size with the Luo et al. method <span class="co">[</span><span class="ot">@luo2018</span><span class="co">]</span>.</span>
-<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We estimate a missing SD from Q1, Q3, and sample size with the Wan et al. method <span class="co">[</span><span class="ot">@wan2014</span><span class="co">]</span>.</span>
-<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>When the source reports an SE but not an SD, we calculate <span class="in">`SD = SE × sqrt(n)`</span>.</span>
-<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>When the source does not report an SE, we calculate <span class="in">`SE = SD / sqrt(n)`</span>.</span>
-<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We retain existing extracted values unchanged.</span>
-<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a>\widehat{M} =</span>
-<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>\left(0.7 + \frac{0.39}{n}\right)\frac{Q_1 + Q_3}{2}</span>
-<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\left(0.3 - \frac{0.39}{n}\right)M_d</span>
-<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>\widehat{SD} =</span>
-<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>\frac{Q_3-Q_1}</span>
-<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>{2\Phi^{-1}\left(\frac{0.75n-0.125}{n+0.25}\right)}</span>
-<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>We define one function for each published estimator and one function that completes the mean, SD, and SE for either treatment arm. The function also records the source of every analysis value.</span>
-<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary-statistic-functions</span></span>
-<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>estimate_mean_luo <span class="ot">&lt;-</span> <span class="cf">function</span>(q1, median, q3, n) {</span>
-<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>  weight <span class="ot">&lt;-</span> <span class="fl">0.7</span> <span class="sc">+</span> <span class="fl">0.39</span> <span class="sc">/</span> n</span>
-<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>  weight <span class="sc">*</span> ((q1 <span class="sc">+</span> q3) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> weight) <span class="sc">*</span> median</span>
-<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>estimate_sd_wan <span class="ot">&lt;-</span> <span class="cf">function</span>(q1, q3, n) {</span>
-<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a>  denominator <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> stats<span class="sc">::</span><span class="fu">qnorm</span>((<span class="fl">0.75</span> <span class="sc">*</span> n <span class="sc">-</span> <span class="fl">0.125</span>) <span class="sc">/</span> (n <span class="sc">+</span> <span class="fl">0.25</span>))</span>
-<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>  (q3 <span class="sc">-</span> q1) <span class="sc">/</span> denominator</span>
-<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>complete_arm_statistics <span class="ot">&lt;-</span> <span class="cf">function</span>(data, arm) {</span>
-<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_n"</span>)]]</span>
-<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>  mean_source <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_mean"</span>)]]</span>
-<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>  sd_source <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_sd"</span>)]]</span>
-<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>  se_source <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_se"</span>)]]</span>
-<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a>  median <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_median"</span>)]]</span>
-<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a>  q1 <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_q1"</span>)]]</span>
-<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a>  q3 <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_q3"</span>)]]</span>
-<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>  mean_from_iqr <span class="ot">&lt;-</span> <span class="fu">is.na</span>(mean_source) <span class="sc">&amp;</span> <span class="fu">complete.cases</span>(q1, median, q3, n)</span>
-<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>  sd_from_iqr <span class="ot">&lt;-</span> <span class="fu">is.na</span>(sd_source) <span class="sc">&amp;</span> <span class="fu">complete.cases</span>(q1, q3, n)</span>
-<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>  sd_from_se <span class="ot">&lt;-</span> <span class="fu">is.na</span>(sd_source) <span class="sc">&amp;</span> <span class="sc">!</span>sd_from_iqr <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(se_source) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n)</span>
-<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">any</span>(mean_from_iqr <span class="sc">&amp;</span> <span class="sc">!</span>(q1 <span class="sc">&lt;=</span> median <span class="sc">&amp;</span> median <span class="sc">&lt;=</span> q3))) {</span>
-<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Invalid Q1 &lt;= median &lt;= Q3 ordering in the "</span>, arm, <span class="st">" arm."</span>)</span>
-<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>  mean_analysis <span class="ot">&lt;-</span> mean_source</span>
-<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a>  mean_analysis[mean_from_iqr] <span class="ot">&lt;-</span> <span class="fu">estimate_mean_luo</span>(</span>
-<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a>    q1[mean_from_iqr], median[mean_from_iqr], q3[mean_from_iqr], n[mean_from_iqr]</span>
-<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>  sd_analysis <span class="ot">&lt;-</span> sd_source</span>
-<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>  sd_analysis[sd_from_iqr] <span class="ot">&lt;-</span> <span class="fu">estimate_sd_wan</span>(</span>
-<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a>    q1[sd_from_iqr], q3[sd_from_iqr], n[sd_from_iqr]</span>
-<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>  sd_analysis[sd_from_se] <span class="ot">&lt;-</span> se_source[sd_from_se] <span class="sc">*</span> <span class="fu">sqrt</span>(n[sd_from_se])</span>
-<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a>  se_analysis <span class="ot">&lt;-</span> se_source</span>
-<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>  se_from_sd <span class="ot">&lt;-</span> <span class="fu">is.na</span>(se_analysis) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(sd_analysis) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n)</span>
-<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>  se_analysis[se_from_sd] <span class="ot">&lt;-</span> sd_analysis[se_from_sd] <span class="sc">/</span> <span class="fu">sqrt</span>(n[se_from_sd])</span>
-<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_mean_analysis"</span>)]] <span class="ot">&lt;-</span> mean_analysis</span>
-<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_mean_method"</span>)]] <span class="ot">&lt;-</span> <span class="fu">if_else</span>(</span>
-<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a>    mean_from_iqr,</span>
-<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Luo et al. (2018): Q1, median, Q3, and n"</span>,</span>
-<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Extracted mean used unchanged"</span></span>
-<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_sd_analysis"</span>)]] <span class="ot">&lt;-</span> sd_analysis</span>
-<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_sd_method"</span>)]] <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
-<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>    sd_from_iqr <span class="sc">~</span> <span class="st">"Wan et al. (2014): Q1, Q3, and n"</span>,</span>
-<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>    sd_from_se <span class="sc">~</span> <span class="st">"SD = SE * sqrt(n)"</span>,</span>
-<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Extracted SD used unchanged"</span></span>
-<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_se_analysis"</span>)]] <span class="ot">&lt;-</span> se_analysis</span>
-<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_se_method"</span>)]] <span class="ot">&lt;-</span> <span class="fu">if_else</span>(</span>
-<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>    se_from_sd,</span>
-<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SE = SD / sqrt(n)"</span>,</span>
-<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Extracted SE used unchanged"</span></span>
-<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">anyNA</span>(mean_analysis) <span class="sc">||</span> <span class="fu">anyNA</span>(sd_analysis) <span class="sc">||</span> <span class="fu">anyNA</span>(se_analysis)) {</span>
-<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Unresolved summary statistic in the "</span>, arm, <span class="st">" arm."</span>)</span>
-<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>  data</span>
-<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>We apply the functions to the control arm (<span class="in">`c`</span>) and then to the exposed arm (<span class="in">`ex`</span>). We summarise the calculation methods by arm and statistic.</span>
-<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: calculate-summary-statistics</span></span>
-<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a>with_statistics <span class="ot">&lt;-</span> source_for_derivation <span class="sc">|&gt;</span></span>
-<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete_arm_statistics</span>(<span class="st">"c"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete_arm_statistics</span>(<span class="st">"ex"</span>)</span>
-<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a>method_counts <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Control"</span>, <span class="at">statistic =</span> <span class="st">"Mean"</span>, <span class="at">method =</span> c_mean_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
-<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Control"</span>, <span class="at">statistic =</span> <span class="st">"SD"</span>, <span class="at">method =</span> c_sd_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
-<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Control"</span>, <span class="at">statistic =</span> <span class="st">"SE"</span>, <span class="at">method =</span> c_se_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
-<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Exposed"</span>, <span class="at">statistic =</span> <span class="st">"Mean"</span>, <span class="at">method =</span> ex_mean_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
-<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Exposed"</span>, <span class="at">statistic =</span> <span class="st">"SD"</span>, <span class="at">method =</span> ex_sd_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
-<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Exposed"</span>, <span class="at">statistic =</span> <span class="st">"SE"</span>, <span class="at">method =</span> ex_se_method, <span class="at">name =</span> <span class="st">"rows"</span>)</span>
-<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a>method_counts <span class="sc">|&gt;</span></span>
-<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(arm, statistic, <span class="fu">desc</span>(rows)) <span class="sc">|&gt;</span></span>
-<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Sources of the analysis statistics."</span>)</span>
-<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-227"><a href="#cb11-227" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analysis-ready data</span></span>
-<span id="cb11-228"><a href="#cb11-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-229"><a href="#cb11-229" aria-hidden="true" tabindex="-1"></a>We create an analysis-ready database with one mean, SD, SE, and sample size for each arm. We retain <span class="in">`ex_id`</span> and <span class="in">`con_id`</span> for the sampling dependency structure and <span class="in">`comparison_structure`</span> for the lnRR calculation.</span>
-<span id="cb11-230"><a href="#cb11-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-231"><a href="#cb11-231" aria-hidden="true" tabindex="-1"></a>We also standardise character spacing and category labels before selecting the columns required for the analyses.</span>
-<span id="cb11-232"><a href="#cb11-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-235"><a href="#cb11-235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-236"><a href="#cb11-236" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create-analysis-ready-data</span></span>
-<span id="cb11-237"><a href="#cb11-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-238"><a href="#cb11-238" aria-hidden="true" tabindex="-1"></a>analysis_ready <span class="ot">&lt;-</span> with_statistics <span class="sc">|&gt;</span></span>
-<span id="cb11-239"><a href="#cb11-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb11-240"><a href="#cb11-240" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.character), str_squish),</span>
-<span id="cb11-241"><a href="#cb11-241" aria-hidden="true" tabindex="-1"></a>    <span class="at">shared_control =</span> <span class="fu">str_to_lower</span>(shared_control),</span>
-<span id="cb11-242"><a href="#cb11-242" aria-hidden="true" tabindex="-1"></a>    <span class="at">comparison_structure =</span> <span class="fu">str_to_lower</span>(comparison_structure),</span>
-<span id="cb11-243"><a href="#cb11-243" aria-hidden="true" tabindex="-1"></a>    <span class="at">higher_better =</span> <span class="fu">str_to_lower</span>(higher_better),</span>
-<span id="cb11-244"><a href="#cb11-244" aria-hidden="true" tabindex="-1"></a>    <span class="at">gest_stage_ex_standardised =</span> <span class="fu">str_to_lower</span>(gest_stage_ex_standardised),</span>
-<span id="cb11-245"><a href="#cb11-245" aria-hidden="true" tabindex="-1"></a>    <span class="at">exposure_type =</span> <span class="fu">str_to_lower</span>(exposure_type),</span>
-<span id="cb11-246"><a href="#cb11-246" aria-hidden="true" tabindex="-1"></a>    <span class="at">exposure_type =</span> <span class="fu">recode</span>(exposure_type, <span class="st">"intermitent"</span> <span class="ot">=</span> <span class="st">"intermittent"</span>),</span>
-<span id="cb11-247"><a href="#cb11-247" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise_type =</span> <span class="fu">str_to_lower</span>(noise_type),</span>
-<span id="cb11-248"><a href="#cb11-248" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise_type_2 =</span> <span class="fu">str_to_lower</span>(noise_type_2),</span>
-<span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a>    <span class="at">control_conditions =</span> <span class="fu">str_to_lower</span>(control_conditions),</span>
-<span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a>    <span class="at">offspring_sex =</span> <span class="fu">str_to_lower</span>(offspring_sex),</span>
-<span id="cb11-251"><a href="#cb11-251" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome_type =</span> <span class="fu">str_to_lower</span>(outcome_type),</span>
-<span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a>    <span class="at">data_type =</span> <span class="fu">str_to_lower</span>(data_type),</span>
-<span id="cb11-253"><a href="#cb11-253" aria-hidden="true" tabindex="-1"></a>    <span class="at">measurement_timing =</span> <span class="fu">str_to_lower</span>(measurement_timing),</span>
-<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a>    <span class="at">strain =</span> <span class="fu">recode</span>(strain, <span class="st">"Wistar albino rat"</span> <span class="ot">=</span> <span class="st">"Wistar rat"</span>)</span>
-<span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb11-256"><a href="#cb11-256" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb11-257"><a href="#cb11-257" aria-hidden="true" tabindex="-1"></a>    study_id, title, doi, publish_in,</span>
-<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a>    ex_id, con_id, out_id, es_id, shared_control,</span>
-<span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a>    sp_latin, sp_common, strain, dam_age, gest_stage_ex_standardised,</span>
-<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a>    exposure_span_d, exposure_type, exposure_session_duration_h,</span>
-<span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a>    noise_type, noise_type_2, loudness_dB, frequency_Hz,</span>
-<span id="cb11-262"><a href="#cb11-262" aria-hidden="true" tabindex="-1"></a>    control_conditions, offspring_sex, offspring_age_d,</span>
-<span id="cb11-263"><a href="#cb11-263" aria-hidden="true" tabindex="-1"></a>    experimental_procedures, outcome_type, assay_type,</span>
-<span id="cb11-264"><a href="#cb11-264" aria-hidden="true" tabindex="-1"></a>    measurement_variable, data_type, data_units, measurement_timing,</span>
-<span id="cb11-265"><a href="#cb11-265" aria-hidden="true" tabindex="-1"></a>    data_source, data_file, c_a_id, ex_a_id, comparison,</span>
-<span id="cb11-266"><a href="#cb11-266" aria-hidden="true" tabindex="-1"></a>    comparison_structure, higher_better,</span>
-<span id="cb11-267"><a href="#cb11-267" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_mean =</span> c_mean_analysis,</span>
-<span id="cb11-268"><a href="#cb11-268" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_sd =</span> c_sd_analysis,</span>
-<span id="cb11-269"><a href="#cb11-269" aria-hidden="true" tabindex="-1"></a>    c_n,</span>
-<span id="cb11-270"><a href="#cb11-270" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_se =</span> c_se_analysis,</span>
-<span id="cb11-271"><a href="#cb11-271" aria-hidden="true" tabindex="-1"></a>    c_mean_method, c_sd_method, c_se_method,</span>
-<span id="cb11-272"><a href="#cb11-272" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_mean =</span> ex_mean_analysis,</span>
-<span id="cb11-273"><a href="#cb11-273" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_sd =</span> ex_sd_analysis,</span>
-<span id="cb11-274"><a href="#cb11-274" aria-hidden="true" tabindex="-1"></a>    ex_n,</span>
-<span id="cb11-275"><a href="#cb11-275" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_se =</span> ex_se_analysis,</span>
-<span id="cb11-276"><a href="#cb11-276" aria-hidden="true" tabindex="-1"></a>    ex_mean_method, ex_sd_method, ex_se_method</span>
-<span id="cb11-277"><a href="#cb11-277" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-278"><a href="#cb11-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-279"><a href="#cb11-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-280"><a href="#cb11-280" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data checks</span></span>
-<span id="cb11-281"><a href="#cb11-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-282"><a href="#cb11-282" aria-hidden="true" tabindex="-1"></a>We check the identifiers, summary statistics, sample sizes, and coded variables before exporting the analysis-ready database. The chapter stops if any check fails.</span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>source_for_derivation <span class="ot">&lt;-</span> original <span class="sc">|&gt;</span></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">any_of</span>(empty_unnamed_columns))</span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"Data/PCN_data_ext_checking_v.3.csv"</span>,</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>  <span class="at">rows =</span> <span class="fu">nrow</span>(original),</span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">ncol</span>(original),</span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a>  <span class="at">studies =</span> <span class="fu">n_distinct</span>(original<span class="sc">$</span>study_id),</span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>  <span class="at">effect_sizes =</span> <span class="fu">n_distinct</span>(original<span class="sc">$</span>es_id),</span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>  <span class="at">checksum =</span> original_checksum</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Original extraction database."</span>)</span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="fu"># Derivation of missing summary statistics</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calculation methods</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We estimate a missing mean from Q1, the median, Q3, and sample size with the Luo et al. method <span class="co">[</span><span class="ot">@luo2018</span><span class="co">]</span>.</span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We estimate a missing SD from Q1, Q3, and sample size with the Wan et al. method <span class="co">[</span><span class="ot">@wan2014</span><span class="co">]</span>.</span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>When the source reports an SE but not an SD, we calculate <span class="in">`SD = SE × sqrt(n)`</span>.</span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>When the source does not report an SE, we calculate <span class="in">`SE = SD / sqrt(n)`</span>.</span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We retain existing extracted values unchanged.</span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>\widehat{M} =</span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a>\left(0.7 + \frac{0.39}{n}\right)\frac{Q_1 + Q_3}{2}</span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a><span class="ss">+ </span>\left(0.3 - \frac{0.39}{n}\right)M_d</span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>\widehat{SD} =</span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>\frac{Q_3-Q_1}</span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>{2\Phi^{-1}\left(\frac{0.75n-0.125}{n+0.25}\right)}</span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>We define one function for each published estimator and one function that completes the mean, SD, and SE for either treatment arm. The function also records the source of every analysis value.</span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: summary-statistic-functions</span></span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>estimate_mean_luo <span class="ot">&lt;-</span> <span class="cf">function</span>(q1, median, q3, n) {</span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a>  weight <span class="ot">&lt;-</span> <span class="fl">0.7</span> <span class="sc">+</span> <span class="fl">0.39</span> <span class="sc">/</span> n</span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>  weight <span class="sc">*</span> ((q1 <span class="sc">+</span> q3) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> weight) <span class="sc">*</span> median</span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>estimate_sd_wan <span class="ot">&lt;-</span> <span class="cf">function</span>(q1, q3, n) {</span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>  denominator <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> stats<span class="sc">::</span><span class="fu">qnorm</span>((<span class="fl">0.75</span> <span class="sc">*</span> n <span class="sc">-</span> <span class="fl">0.125</span>) <span class="sc">/</span> (n <span class="sc">+</span> <span class="fl">0.25</span>))</span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>  (q3 <span class="sc">-</span> q1) <span class="sc">/</span> denominator</span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>complete_arm_statistics <span class="ot">&lt;-</span> <span class="cf">function</span>(data, arm) {</span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_n"</span>)]]</span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a>  mean_source <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_mean"</span>)]]</span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a>  sd_source <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_sd"</span>)]]</span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a>  se_source <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_se"</span>)]]</span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>  median <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_median"</span>)]]</span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>  q1 <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_q1"</span>)]]</span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>  q3 <span class="ot">&lt;-</span> data[[<span class="fu">paste0</span>(arm, <span class="st">"_q3"</span>)]]</span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>  mean_from_iqr <span class="ot">&lt;-</span> <span class="fu">is.na</span>(mean_source) <span class="sc">&amp;</span> <span class="fu">complete.cases</span>(q1, median, q3, n)</span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>  sd_from_iqr <span class="ot">&lt;-</span> <span class="fu">is.na</span>(sd_source) <span class="sc">&amp;</span> <span class="fu">complete.cases</span>(q1, q3, n)</span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>  sd_from_se <span class="ot">&lt;-</span> <span class="fu">is.na</span>(sd_source) <span class="sc">&amp;</span> <span class="sc">!</span>sd_from_iqr <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(se_source) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n)</span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">any</span>(mean_from_iqr <span class="sc">&amp;</span> <span class="sc">!</span>(q1 <span class="sc">&lt;=</span> median <span class="sc">&amp;</span> median <span class="sc">&lt;=</span> q3))) {</span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Invalid Q1 &lt;= median &lt;= Q3 ordering in the "</span>, arm, <span class="st">" arm."</span>)</span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>  mean_analysis <span class="ot">&lt;-</span> mean_source</span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a>  mean_analysis[mean_from_iqr] <span class="ot">&lt;-</span> <span class="fu">estimate_mean_luo</span>(</span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>    q1[mean_from_iqr], median[mean_from_iqr], q3[mean_from_iqr], n[mean_from_iqr]</span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>  sd_analysis <span class="ot">&lt;-</span> sd_source</span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>  sd_analysis[sd_from_iqr] <span class="ot">&lt;-</span> <span class="fu">estimate_sd_wan</span>(</span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a>    q1[sd_from_iqr], q3[sd_from_iqr], n[sd_from_iqr]</span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>  sd_analysis[sd_from_se] <span class="ot">&lt;-</span> se_source[sd_from_se] <span class="sc">*</span> <span class="fu">sqrt</span>(n[sd_from_se])</span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a>  se_analysis <span class="ot">&lt;-</span> se_source</span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a>  se_from_sd <span class="ot">&lt;-</span> <span class="fu">is.na</span>(se_analysis) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(sd_analysis) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n)</span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>  se_analysis[se_from_sd] <span class="ot">&lt;-</span> sd_analysis[se_from_sd] <span class="sc">/</span> <span class="fu">sqrt</span>(n[se_from_sd])</span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_mean_analysis"</span>)]] <span class="ot">&lt;-</span> mean_analysis</span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_mean_method"</span>)]] <span class="ot">&lt;-</span> <span class="fu">if_else</span>(</span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>    mean_from_iqr,</span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Luo et al. (2018): Q1, median, Q3, and n"</span>,</span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Extracted mean used unchanged"</span></span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_sd_analysis"</span>)]] <span class="ot">&lt;-</span> sd_analysis</span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_sd_method"</span>)]] <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>    sd_from_iqr <span class="sc">~</span> <span class="st">"Wan et al. (2014): Q1, Q3, and n"</span>,</span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>    sd_from_se <span class="sc">~</span> <span class="st">"SD = SE * sqrt(n)"</span>,</span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Extracted SD used unchanged"</span></span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_se_analysis"</span>)]] <span class="ot">&lt;-</span> se_analysis</span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>  data[[<span class="fu">paste0</span>(arm, <span class="st">"_se_method"</span>)]] <span class="ot">&lt;-</span> <span class="fu">if_else</span>(</span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>    se_from_sd,</span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SE = SD / sqrt(n)"</span>,</span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Extracted SE used unchanged"</span></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">anyNA</span>(mean_analysis) <span class="sc">||</span> <span class="fu">anyNA</span>(sd_analysis) <span class="sc">||</span> <span class="fu">anyNA</span>(se_analysis)) {</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Unresolved summary statistic in the "</span>, arm, <span class="st">" arm."</span>)</span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>  data</span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>We apply the functions to the control arm (<span class="in">`c`</span>) and then to the exposed arm (<span class="in">`ex`</span>). We summarise the calculation methods by arm and statistic.</span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: calculate-summary-statistics</span></span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a>with_statistics <span class="ot">&lt;-</span> source_for_derivation <span class="sc">|&gt;</span></span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete_arm_statistics</span>(<span class="st">"c"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete_arm_statistics</span>(<span class="st">"ex"</span>)</span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a>method_counts <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Control"</span>, <span class="at">statistic =</span> <span class="st">"Mean"</span>, <span class="at">method =</span> c_mean_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
+<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Control"</span>, <span class="at">statistic =</span> <span class="st">"SD"</span>, <span class="at">method =</span> c_sd_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
+<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Control"</span>, <span class="at">statistic =</span> <span class="st">"SE"</span>, <span class="at">method =</span> c_se_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
+<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Exposed"</span>, <span class="at">statistic =</span> <span class="st">"Mean"</span>, <span class="at">method =</span> ex_mean_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
+<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Exposed"</span>, <span class="at">statistic =</span> <span class="st">"SD"</span>, <span class="at">method =</span> ex_sd_method, <span class="at">name =</span> <span class="st">"rows"</span>),</span>
+<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a>  with_statistics <span class="sc">|&gt;</span> <span class="fu">count</span>(<span class="at">arm =</span> <span class="st">"Exposed"</span>, <span class="at">statistic =</span> <span class="st">"SE"</span>, <span class="at">method =</span> ex_se_method, <span class="at">name =</span> <span class="st">"rows"</span>)</span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a>method_counts <span class="sc">|&gt;</span></span>
+<span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(arm, statistic, <span class="fu">desc</span>(rows)) <span class="sc">|&gt;</span></span>
+<span id="cb11-227"><a href="#cb11-227" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Sources of the analysis statistics."</span>)</span>
+<span id="cb11-228"><a href="#cb11-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-229"><a href="#cb11-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-230"><a href="#cb11-230" aria-hidden="true" tabindex="-1"></a><span class="fu"># Analysis-ready data</span></span>
+<span id="cb11-231"><a href="#cb11-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-232"><a href="#cb11-232" aria-hidden="true" tabindex="-1"></a>We create an analysis-ready database with one mean, SD, SE, and sample size for each arm. We retain <span class="in">`ex_id`</span> and <span class="in">`con_id`</span> for the sampling dependency structure and <span class="in">`comparison_structure`</span> for the lnRR calculation.</span>
+<span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-234"><a href="#cb11-234" aria-hidden="true" tabindex="-1"></a>We also standardise character spacing and category labels before selecting the columns required for the analyses.</span>
+<span id="cb11-235"><a href="#cb11-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-238"><a href="#cb11-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-239"><a href="#cb11-239" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: create-analysis-ready-data</span></span>
+<span id="cb11-240"><a href="#cb11-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-241"><a href="#cb11-241" aria-hidden="true" tabindex="-1"></a>analysis_ready <span class="ot">&lt;-</span> with_statistics <span class="sc">|&gt;</span></span>
+<span id="cb11-242"><a href="#cb11-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-243"><a href="#cb11-243" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.character), str_squish),</span>
+<span id="cb11-244"><a href="#cb11-244" aria-hidden="true" tabindex="-1"></a>    <span class="at">shared_control =</span> <span class="fu">str_to_lower</span>(shared_control),</span>
+<span id="cb11-245"><a href="#cb11-245" aria-hidden="true" tabindex="-1"></a>    <span class="at">comparison_structure =</span> <span class="fu">str_to_lower</span>(comparison_structure),</span>
+<span id="cb11-246"><a href="#cb11-246" aria-hidden="true" tabindex="-1"></a>    <span class="at">higher_better =</span> <span class="fu">str_to_lower</span>(higher_better),</span>
+<span id="cb11-247"><a href="#cb11-247" aria-hidden="true" tabindex="-1"></a>    <span class="at">gest_stage_ex_standardised =</span> <span class="fu">str_to_lower</span>(gest_stage_ex_standardised),</span>
+<span id="cb11-248"><a href="#cb11-248" aria-hidden="true" tabindex="-1"></a>    <span class="at">exposure_type =</span> <span class="fu">str_to_lower</span>(exposure_type),</span>
+<span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a>    <span class="at">exposure_type =</span> <span class="fu">recode</span>(exposure_type, <span class="st">"intermitent"</span> <span class="ot">=</span> <span class="st">"intermittent"</span>),</span>
+<span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise_type =</span> <span class="fu">str_to_lower</span>(noise_type),</span>
+<span id="cb11-251"><a href="#cb11-251" aria-hidden="true" tabindex="-1"></a>    <span class="at">noise_frequency_range =</span> <span class="fu">str_to_lower</span>(noise_frequency_range),</span>
+<span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a>    <span class="at">control_conditions =</span> <span class="fu">str_to_lower</span>(control_conditions),</span>
+<span id="cb11-253"><a href="#cb11-253" aria-hidden="true" tabindex="-1"></a>    <span class="at">control_setting =</span> <span class="fu">str_to_lower</span>(control_setting),</span>
+<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a>    <span class="at">offspring_sex =</span> <span class="fu">str_to_lower</span>(offspring_sex),</span>
+<span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a>    <span class="at">outcome_type =</span> <span class="fu">str_to_lower</span>(outcome_type),</span>
+<span id="cb11-256"><a href="#cb11-256" aria-hidden="true" tabindex="-1"></a>    <span class="at">data_type =</span> <span class="fu">str_to_lower</span>(data_type),</span>
+<span id="cb11-257"><a href="#cb11-257" aria-hidden="true" tabindex="-1"></a>    <span class="at">measurement_timing =</span> <span class="fu">str_to_lower</span>(measurement_timing),</span>
+<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a>    <span class="at">strain =</span> <span class="fu">recode</span>(strain, <span class="st">"Wistar albino rat"</span> <span class="ot">=</span> <span class="st">"Wistar rat"</span>)</span>
+<span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a>    study_id, title, doi, publish_in,</span>
+<span id="cb11-262"><a href="#cb11-262" aria-hidden="true" tabindex="-1"></a>    ex_id, con_id, out_id, es_id, shared_control,</span>
+<span id="cb11-263"><a href="#cb11-263" aria-hidden="true" tabindex="-1"></a>    sp_latin, sp_common, strain, dam_age, gest_stage_ex_standardised,</span>
+<span id="cb11-264"><a href="#cb11-264" aria-hidden="true" tabindex="-1"></a>    exposure_span_d, exposure_type, exposure_session_duration_h,</span>
+<span id="cb11-265"><a href="#cb11-265" aria-hidden="true" tabindex="-1"></a>    noise_type, noise_frequency_range, loudness_dB, frequency_Hz,</span>
+<span id="cb11-266"><a href="#cb11-266" aria-hidden="true" tabindex="-1"></a>    control_conditions, control_setting, offspring_sex, offspring_age_d,</span>
+<span id="cb11-267"><a href="#cb11-267" aria-hidden="true" tabindex="-1"></a>    experimental_procedures, outcome_type, assay_type,</span>
+<span id="cb11-268"><a href="#cb11-268" aria-hidden="true" tabindex="-1"></a>    measurement_variable, data_type, data_units, measurement_timing,</span>
+<span id="cb11-269"><a href="#cb11-269" aria-hidden="true" tabindex="-1"></a>    data_source, data_file, c_a_id, ex_a_id, comparison,</span>
+<span id="cb11-270"><a href="#cb11-270" aria-hidden="true" tabindex="-1"></a>    comparison_structure, higher_better,</span>
+<span id="cb11-271"><a href="#cb11-271" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_mean =</span> c_mean_analysis,</span>
+<span id="cb11-272"><a href="#cb11-272" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_sd =</span> c_sd_analysis,</span>
+<span id="cb11-273"><a href="#cb11-273" aria-hidden="true" tabindex="-1"></a>    c_n,</span>
+<span id="cb11-274"><a href="#cb11-274" aria-hidden="true" tabindex="-1"></a>    <span class="at">c_se =</span> c_se_analysis,</span>
+<span id="cb11-275"><a href="#cb11-275" aria-hidden="true" tabindex="-1"></a>    c_mean_method, c_sd_method, c_se_method,</span>
+<span id="cb11-276"><a href="#cb11-276" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_mean =</span> ex_mean_analysis,</span>
+<span id="cb11-277"><a href="#cb11-277" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_sd =</span> ex_sd_analysis,</span>
+<span id="cb11-278"><a href="#cb11-278" aria-hidden="true" tabindex="-1"></a>    ex_n,</span>
+<span id="cb11-279"><a href="#cb11-279" aria-hidden="true" tabindex="-1"></a>    <span class="at">ex_se =</span> ex_se_analysis,</span>
+<span id="cb11-280"><a href="#cb11-280" aria-hidden="true" tabindex="-1"></a>    ex_mean_method, ex_sd_method, ex_se_method</span>
+<span id="cb11-281"><a href="#cb11-281" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-282"><a href="#cb11-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-283"><a href="#cb11-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-286"><a href="#cb11-286" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-287"><a href="#cb11-287" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: validate-analysis-data</span></span>
-<span id="cb11-288"><a href="#cb11-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-289"><a href="#cb11-289" aria-hidden="true" tabindex="-1"></a>validation <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb11-290"><a href="#cb11-290" aria-hidden="true" tabindex="-1"></a>  <span class="at">check =</span> <span class="fu">c</span>(</span>
-<span id="cb11-291"><a href="#cb11-291" aria-hidden="true" tabindex="-1"></a>    <span class="st">"One row per es_id"</span>,</span>
-<span id="cb11-292"><a href="#cb11-292" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Study identifiers present"</span>,</span>
-<span id="cb11-293"><a href="#cb11-293" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Positive sample sizes"</span>,</span>
-<span id="cb11-294"><a href="#cb11-294" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Complete means"</span>,</span>
-<span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Complete non-negative SDs"</span>,</span>
-<span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Complete non-negative SEs"</span>,</span>
-<span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Valid higher_better values"</span>,</span>
-<span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Valid comparison_structure values"</span></span>
-<span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a>  <span class="at">failures =</span> <span class="fu">c</span>(</span>
-<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>es_id)) <span class="sc">+</span> <span class="fu">sum</span>(<span class="fu">duplicated</span>(analysis_ready<span class="sc">$</span>es_id)),</span>
-<span id="cb11-302"><a href="#cb11-302" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>study_id) <span class="sc">|</span> analysis_ready<span class="sc">$</span>study_id <span class="sc">==</span> <span class="st">""</span>),</span>
-<span id="cb11-303"><a href="#cb11-303" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>c_n) <span class="sc">|</span> <span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>ex_n) <span class="sc">|</span></span>
-<span id="cb11-304"><a href="#cb11-304" aria-hidden="true" tabindex="-1"></a>          analysis_ready<span class="sc">$</span>c_n <span class="sc">&lt;=</span> <span class="dv">0</span> <span class="sc">|</span> analysis_ready<span class="sc">$</span>ex_n <span class="sc">&lt;=</span> <span class="dv">0</span>),</span>
-<span id="cb11-305"><a href="#cb11-305" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>c_mean) <span class="sc">|</span> <span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>ex_mean)),</span>
-<span id="cb11-306"><a href="#cb11-306" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>c_sd) <span class="sc">|</span> <span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>ex_sd) <span class="sc">|</span></span>
-<span id="cb11-307"><a href="#cb11-307" aria-hidden="true" tabindex="-1"></a>          analysis_ready<span class="sc">$</span>c_sd <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> analysis_ready<span class="sc">$</span>ex_sd <span class="sc">&lt;</span> <span class="dv">0</span>),</span>
-<span id="cb11-308"><a href="#cb11-308" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>c_se) <span class="sc">|</span> <span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>ex_se) <span class="sc">|</span></span>
-<span id="cb11-309"><a href="#cb11-309" aria-hidden="true" tabindex="-1"></a>          analysis_ready<span class="sc">$</span>c_se <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> analysis_ready<span class="sc">$</span>ex_se <span class="sc">&lt;</span> <span class="dv">0</span>),</span>
-<span id="cb11-310"><a href="#cb11-310" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="sc">!</span>analysis_ready<span class="sc">$</span>higher_better <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"yes"</span>, <span class="st">"no"</span>)),</span>
-<span id="cb11-311"><a href="#cb11-311" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="sc">!</span>analysis_ready<span class="sc">$</span>comparison_structure <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"independent"</span>, <span class="st">"dependent"</span>))</span>
-<span id="cb11-312"><a href="#cb11-312" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-313"><a href="#cb11-313" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb11-314"><a href="#cb11-314" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">status =</span> <span class="fu">if_else</span>(failures <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"Pass"</span>, <span class="st">"Fail"</span>))</span>
-<span id="cb11-315"><a href="#cb11-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-316"><a href="#cb11-316" aria-hidden="true" tabindex="-1"></a>validation <span class="sc">|&gt;</span></span>
-<span id="cb11-317"><a href="#cb11-317" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Analysis-ready data checks."</span>)</span>
-<span id="cb11-318"><a href="#cb11-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-319"><a href="#cb11-319" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(validation<span class="sc">$</span>status <span class="sc">==</span> <span class="st">"Fail"</span>)) {</span>
-<span id="cb11-320"><a href="#cb11-320" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"The analysis-ready database failed validation."</span>)</span>
-<span id="cb11-321"><a href="#cb11-321" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-322"><a href="#cb11-322" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-323"><a href="#cb11-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-324"><a href="#cb11-324" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data files</span></span>
-<span id="cb11-325"><a href="#cb11-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-326"><a href="#cb11-326" aria-hidden="true" tabindex="-1"></a>We save the completed extraction database and the analysis-ready database as comma-separated files. We then compare the original checksum with its starting value to confirm that we did not overwrite the source file.</span>
+<span id="cb11-284"><a href="#cb11-284" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data checks</span></span>
+<span id="cb11-285"><a href="#cb11-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-286"><a href="#cb11-286" aria-hidden="true" tabindex="-1"></a>We check the identifiers, summary statistics, sample sizes, and coded variables before exporting the analysis-ready database. The chapter stops if any check fails.</span>
+<span id="cb11-287"><a href="#cb11-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-290"><a href="#cb11-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-291"><a href="#cb11-291" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: validate-analysis-data</span></span>
+<span id="cb11-292"><a href="#cb11-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-293"><a href="#cb11-293" aria-hidden="true" tabindex="-1"></a>validation <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb11-294"><a href="#cb11-294" aria-hidden="true" tabindex="-1"></a>  <span class="at">check =</span> <span class="fu">c</span>(</span>
+<span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a>    <span class="st">"One row per es_id"</span>,</span>
+<span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Study identifiers present"</span>,</span>
+<span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Positive sample sizes"</span>,</span>
+<span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Complete means"</span>,</span>
+<span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Complete non-negative SDs"</span>,</span>
+<span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Complete non-negative SEs"</span>,</span>
+<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Valid higher_better values"</span>,</span>
+<span id="cb11-302"><a href="#cb11-302" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Valid comparison_structure values"</span></span>
+<span id="cb11-303"><a href="#cb11-303" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb11-304"><a href="#cb11-304" aria-hidden="true" tabindex="-1"></a>  <span class="at">failures =</span> <span class="fu">c</span>(</span>
+<span id="cb11-305"><a href="#cb11-305" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>es_id)) <span class="sc">+</span> <span class="fu">sum</span>(<span class="fu">duplicated</span>(analysis_ready<span class="sc">$</span>es_id)),</span>
+<span id="cb11-306"><a href="#cb11-306" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>study_id) <span class="sc">|</span> analysis_ready<span class="sc">$</span>study_id <span class="sc">==</span> <span class="st">""</span>),</span>
+<span id="cb11-307"><a href="#cb11-307" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>c_n) <span class="sc">|</span> <span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>ex_n) <span class="sc">|</span></span>
+<span id="cb11-308"><a href="#cb11-308" aria-hidden="true" tabindex="-1"></a>          analysis_ready<span class="sc">$</span>c_n <span class="sc">&lt;=</span> <span class="dv">0</span> <span class="sc">|</span> analysis_ready<span class="sc">$</span>ex_n <span class="sc">&lt;=</span> <span class="dv">0</span>),</span>
+<span id="cb11-309"><a href="#cb11-309" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>c_mean) <span class="sc">|</span> <span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>ex_mean)),</span>
+<span id="cb11-310"><a href="#cb11-310" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>c_sd) <span class="sc">|</span> <span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>ex_sd) <span class="sc">|</span></span>
+<span id="cb11-311"><a href="#cb11-311" aria-hidden="true" tabindex="-1"></a>          analysis_ready<span class="sc">$</span>c_sd <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> analysis_ready<span class="sc">$</span>ex_sd <span class="sc">&lt;</span> <span class="dv">0</span>),</span>
+<span id="cb11-312"><a href="#cb11-312" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>c_se) <span class="sc">|</span> <span class="fu">is.na</span>(analysis_ready<span class="sc">$</span>ex_se) <span class="sc">|</span></span>
+<span id="cb11-313"><a href="#cb11-313" aria-hidden="true" tabindex="-1"></a>          analysis_ready<span class="sc">$</span>c_se <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">|</span> analysis_ready<span class="sc">$</span>ex_se <span class="sc">&lt;</span> <span class="dv">0</span>),</span>
+<span id="cb11-314"><a href="#cb11-314" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="sc">!</span>analysis_ready<span class="sc">$</span>higher_better <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"yes"</span>, <span class="st">"no"</span>)),</span>
+<span id="cb11-315"><a href="#cb11-315" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="sc">!</span>analysis_ready<span class="sc">$</span>comparison_structure <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"independent"</span>, <span class="st">"dependent"</span>))</span>
+<span id="cb11-316"><a href="#cb11-316" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-317"><a href="#cb11-317" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb11-318"><a href="#cb11-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">status =</span> <span class="fu">if_else</span>(failures <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"Pass"</span>, <span class="st">"Fail"</span>))</span>
+<span id="cb11-319"><a href="#cb11-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-320"><a href="#cb11-320" aria-hidden="true" tabindex="-1"></a>validation <span class="sc">|&gt;</span></span>
+<span id="cb11-321"><a href="#cb11-321" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Analysis-ready data checks."</span>)</span>
+<span id="cb11-322"><a href="#cb11-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-323"><a href="#cb11-323" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(validation<span class="sc">$</span>status <span class="sc">==</span> <span class="st">"Fail"</span>)) {</span>
+<span id="cb11-324"><a href="#cb11-324" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"The analysis-ready database failed validation."</span>)</span>
+<span id="cb11-325"><a href="#cb11-325" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-326"><a href="#cb11-326" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-327"><a href="#cb11-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-330"><a href="#cb11-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-331"><a href="#cb11-331" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: export-data-files</span></span>
-<span id="cb11-332"><a href="#cb11-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-333"><a href="#cb11-333" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(with_statistics, statistics_path, <span class="at">na =</span> <span class="st">""</span>)</span>
-<span id="cb11-334"><a href="#cb11-334" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(analysis_ready, analysis_path, <span class="at">na =</span> <span class="st">""</span>)</span>
-<span id="cb11-335"><a href="#cb11-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-336"><a href="#cb11-336" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">identical</span>(original_checksum, <span class="fu">unname</span>(tools<span class="sc">::</span><span class="fu">md5sum</span>(original_path)))) {</span>
-<span id="cb11-337"><a href="#cb11-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"The original extraction file changed during data preparation."</span>)</span>
-<span id="cb11-338"><a href="#cb11-338" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-328"><a href="#cb11-328" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data files</span></span>
+<span id="cb11-329"><a href="#cb11-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-330"><a href="#cb11-330" aria-hidden="true" tabindex="-1"></a>We save the completed extraction database and the analysis-ready database as comma-separated files. We then compare the original checksum with its starting value to confirm that we did not overwrite the source file.</span>
+<span id="cb11-331"><a href="#cb11-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-334"><a href="#cb11-334" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-335"><a href="#cb11-335" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: export-data-files</span></span>
+<span id="cb11-336"><a href="#cb11-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-337"><a href="#cb11-337" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(with_statistics, statistics_path, <span class="at">na =</span> <span class="st">""</span>)</span>
+<span id="cb11-338"><a href="#cb11-338" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(analysis_ready, analysis_path, <span class="at">na =</span> <span class="st">""</span>)</span>
 <span id="cb11-339"><a href="#cb11-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-340"><a href="#cb11-340" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb11-341"><a href="#cb11-341" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="fu">c</span>(</span>
-<span id="cb11-342"><a href="#cb11-342" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Original extraction plus R-derived statistics"</span>,</span>
-<span id="cb11-343"><a href="#cb11-343" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Analysis-ready data"</span></span>
-<span id="cb11-344"><a href="#cb11-344" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb11-345"><a href="#cb11-345" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">c</span>(</span>
-<span id="cb11-346"><a href="#cb11-346" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_data_ext_checking_v.3_with_derived_statistics.csv"</span>,</span>
-<span id="cb11-347"><a href="#cb11-347" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_analysis_ready.csv"</span></span>
+<span id="cb11-340"><a href="#cb11-340" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">identical</span>(original_checksum, <span class="fu">unname</span>(tools<span class="sc">::</span><span class="fu">md5sum</span>(original_path)))) {</span>
+<span id="cb11-341"><a href="#cb11-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"The original extraction file changed during data preparation."</span>)</span>
+<span id="cb11-342"><a href="#cb11-342" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-343"><a href="#cb11-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-344"><a href="#cb11-344" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb11-345"><a href="#cb11-345" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="fu">c</span>(</span>
+<span id="cb11-346"><a href="#cb11-346" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Original extraction plus R-derived statistics"</span>,</span>
+<span id="cb11-347"><a href="#cb11-347" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Analysis-ready data"</span></span>
 <span id="cb11-348"><a href="#cb11-348" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb11-349"><a href="#cb11-349" aria-hidden="true" tabindex="-1"></a>  <span class="at">rows =</span> <span class="fu">c</span>(<span class="fu">nrow</span>(with_statistics), <span class="fu">nrow</span>(analysis_ready)),</span>
-<span id="cb11-350"><a href="#cb11-350" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">c</span>(<span class="fu">ncol</span>(with_statistics), <span class="fu">ncol</span>(analysis_ready))</span>
-<span id="cb11-351"><a href="#cb11-351" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb11-352"><a href="#cb11-352" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Derived data files."</span>)</span>
-<span id="cb11-353"><a href="#cb11-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-354"><a href="#cb11-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-355"><a href="#cb11-355" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb11-356"><a href="#cb11-356" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session information</span></span>
-<span id="cb11-357"><a href="#cb11-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-360"><a href="#cb11-360" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-361"><a href="#cb11-361" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: session-information</span></span>
-<span id="cb11-362"><a href="#cb11-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-363"><a href="#cb11-363" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb11-364"><a href="#cb11-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-365"><a href="#cb11-365" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-349"><a href="#cb11-349" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">c</span>(</span>
+<span id="cb11-350"><a href="#cb11-350" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_data_ext_checking_v.3_with_derived_statistics.csv"</span>,</span>
+<span id="cb11-351"><a href="#cb11-351" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data/derived/PCN_analysis_ready.csv"</span></span>
+<span id="cb11-352"><a href="#cb11-352" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb11-353"><a href="#cb11-353" aria-hidden="true" tabindex="-1"></a>  <span class="at">rows =</span> <span class="fu">c</span>(<span class="fu">nrow</span>(with_statistics), <span class="fu">nrow</span>(analysis_ready)),</span>
+<span id="cb11-354"><a href="#cb11-354" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">c</span>(<span class="fu">ncol</span>(with_statistics), <span class="fu">ncol</span>(analysis_ready))</span>
+<span id="cb11-355"><a href="#cb11-355" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb11-356"><a href="#cb11-356" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Derived data files."</span>)</span>
+<span id="cb11-357"><a href="#cb11-357" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-358"><a href="#cb11-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-359"><a href="#cb11-359" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb11-360"><a href="#cb11-360" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session information</span></span>
+<span id="cb11-361"><a href="#cb11-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-364"><a href="#cb11-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-365"><a href="#cb11-365" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: session-information</span></span>
+<span id="cb11-366"><a href="#cb11-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-367"><a href="#cb11-367" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb11-368"><a href="#cb11-368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-369"><a href="#cb11-369" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
