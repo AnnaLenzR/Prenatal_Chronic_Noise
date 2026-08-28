@@ -184,9 +184,16 @@ category_palettes <- purrr::map2(
       category_levels <- category_levels[category_levels != missing_label]
     }
 
+    # orchaRd capitalizes the first letter of plotted moderator levels.
+    # Name the palette with those displayed labels so ggplot can match every
+    # category instead of falling back to grey. Because this palette is built
+    # once per moderator, each level keeps its colour across all three metrics.
+    plotted_levels <- category_levels
+    substr(plotted_levels, 1, 1) <- toupper(substr(plotted_levels, 1, 1))
+
     stats::setNames(
       grDevices::hcl.colors(length(category_levels), palette = "Dark 3"),
-      category_levels
+      plotted_levels
     )
   }
 )
