@@ -274,6 +274,8 @@ ggplot2::ggplot(
 ```
 
 ```{css}
+/*| echo: false */
+
 .crime-q-codebook {
   width: 100%;
   font-size: 0.93rem;
@@ -291,8 +293,10 @@ ggplot2::ggplot(
 
 .crime-q-codebook th:first-child,
 .crime-q-codebook td:first-child,
-.crime-q-codebook th:nth-child(3),
-.crime-q-codebook td:nth-child(3) {
+.crime-q-codebook th:nth-child(2),
+.crime-q-codebook td:nth-child(2),
+.crime-q-codebook th:nth-child(4),
+.crime-q-codebook td:nth-child(4) {
   white-space: nowrap;
 }
 ```

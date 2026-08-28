@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="4500" height="3300" viewBox="0 0 4500 3300" version="1.1" preserveAspectRatio="xMidYMid meet">
+  <metadata>Editable vector PRISMA flowchart for the prenatal chronic noise meta-analysis</metadata>
+  <rect x="0" y="0" width="4500" height="3300" fill="#FFFFFF" />
+  <rect x="270" y="65" width="4110" height="110" rx="38" ry="38" fill="#D9E8F6" stroke="#D9E8F6" stroke-width="1" vector-effect="non-scaling-stroke" />
+  <text x="2325.0" y="120.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="52" font-weight="700" fill="#13698B">
+    <tspan x="2325.0" dy="0">Records identified from databases and search sources</tspan>
+  </text>
+  <rect x="45" y="210" width="145" height="890" rx="65" ry="65" fill="#F7D1B0" stroke="#F7D1B0" stroke-width="1" vector-effect="non-scaling-stroke" />
+  <text x="117.5" y="655.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="39" font-weight="700" fill="#9B4A18" transform="rotate(-90 117.5 655.0)">Identification</text>
+  <rect x="45" y="1140" width="145" height="1250" rx="65" ry="65" fill="#F7D1B0" stroke="#F7D1B0" stroke-width="1" vector-effect="non-scaling-stroke" />
+  <text x="117.5" y="1765.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="39" font-weight="700" fill="#9B4A18" transform="rotate(-90 117.5 1765.0)">Screening</text>
+  <rect x="45" y="2430" width="145" height="780" rx="65" ry="65" fill="#F7D1B0" stroke="#F7D1B0" stroke-width="1" vector-effect="non-scaling-stroke" />
+  <text x="117.5" y="2820.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="39" font-weight="700" fill="#9B4A18" transform="rotate(-90 117.5 2820.0)">Included</text>
+  <rect x="280" y="230" width="940" height="205" rx="4" ry="4" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="750.0" y="310.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="40" font-weight="700" fill="#17365D">
+    <tspan x="750.0" dy="0">Scopus</tspan>
+    <tspan x="750.0" dy="45">(n = 1,404)</tspan>
+  </text>
+  <rect x="1290" y="230" width="940" height="205" rx="4" ry="4" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="1760.0" y="310.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="40" font-weight="700" fill="#17365D">
+    <tspan x="1760.0" dy="0">Web of Science</tspan>
+    <tspan x="1760.0" dy="45">(n = 1,842)</tspan>
+  </text>
+  <rect x="2300" y="230" width="940" height="205" rx="4" ry="4" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="2770.0" y="310.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="40" font-weight="700" fill="#17365D">
+    <tspan x="2770.0" dy="0">PubMed</tspan>
+    <tspan x="2770.0" dy="45">(n = 1,056)</tspan>
+  </text>
+  <rect x="3310" y="230" width="940" height="205" rx="4" ry="4" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="3780.0" y="310.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="40" font-weight="700" fill="#17365D">
+    <tspan x="3780.0" dy="0">PsycINFO</tspan>
+    <tspan x="3780.0" dy="45">(n = 408)</tspan>
+  </text>
+  <rect x="350" y="520" width="1100" height="205" rx="4" ry="4" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="900.0" y="600.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="40" font-weight="700" fill="#17365D">
+    <tspan x="900.0" dy="0">OpenAlex</tspan>
+    <tspan x="900.0" dy="45">(n = 681)</tspan>
+  </text>
+  <rect x="1700" y="520" width="1100" height="205" rx="4" ry="4" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="2250.0" y="577.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="40" font-weight="700" fill="#17365D">
+    <tspan x="2250.0" dy="0">Google Scholar</tspan>
+    <tspan x="2250.0" dy="45">supplementary search</tspan>
+    <tspan x="2250.0" dy="45">(n = 489)</tspan>
+  </text>
+  <rect x="3050" y="520" width="1100" height="205" rx="4" ry="4" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="3600.0" y="600.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="40" font-weight="700" fill="#17365D">
+    <tspan x="3600.0" dy="0">BASE</tspan>
+    <tspan x="3600.0" dy="45">(n = 9)</tspan>
+  </text>
+  <polyline points="750.0,435 750.0,475" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polyline points="1760.0,435 1760.0,475" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polyline points="2770.0,435 2770.0,475" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polyline points="3780.0,435 3780.0,475" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polyline points="750.0,475 3780.0,475" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polyline points="1550,475 1550,790" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polyline points="900.0,725 900.0,790" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polyline points="2250.0,725 2250.0,790" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polyline points="3600.0,725 3600.0,790" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polyline points="900.0,790 3600.0,790" fill="none" stroke="#13698B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <rect x="620" y="870" width="1460" height="180" rx="18" ry="18" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="1350.0" y="933.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="48" font-weight="700" fill="#17365D">
+    <tspan x="1350.0" dy="0">Records identified</tspan>
+    <tspan x="1350.0" dy="53">(n = 5,889)</tspan>
+  </text>
+  <polyline points="1550,790 1550,825 1350,825 1350,870" fill="none" stroke="#13698B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polygon points="1350,870 1333.75,845 1366.25,845" fill="#13698B" />
+  <rect x="2460" y="850" width="1800" height="240" rx="18" ry="18" fill="#EEF3F7" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="2510" y="930" font-family="Arial" font-size="38" font-weight="700" fill="#17365D">Duplicates removed before screening (n = 3,576)</text>
+  <text x="2510" y="995" font-family="Arial" font-size="38" font-weight="400" fill="#17365D">Includes duplicate BASE records</text>
+  <polyline points="2080,960 2460,960" fill="none" stroke="#13698B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polygon points="2460,960 2435,943.75 2435,976.25" fill="#13698B" />
+  <rect x="620" y="1200" width="1460" height="180" rx="18" ry="18" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="1350.0" y="1263.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="48" font-weight="700" fill="#17365D">
+    <tspan x="1350.0" dy="0">Unique records screened</tspan>
+    <tspan x="1350.0" dy="53">(n = 2,313)</tspan>
+  </text>
+  <polyline points="1350,1050 1350,1200" fill="none" stroke="#13698B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polygon points="1350,1200 1333.75,1175 1366.25,1175" fill="#13698B" />
+  <rect x="620" y="1540" width="1460" height="195" rx="18" ry="18" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="1350.0" y="1587.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="48" font-weight="700" fill="#17365D">
+    <tspan x="1350.0" dy="0">Included at title-and-</tspan>
+    <tspan x="1350.0" dy="50">abstract stage</tspan>
+    <tspan x="1350.0" dy="50">(n = 87)</tspan>
+  </text>
+  <polyline points="1350,1380 1350,1540" fill="none" stroke="#13698B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polygon points="1350,1540 1333.75,1515 1366.25,1515" fill="#13698B" />
+  <rect x="2460" y="1515" width="1800" height="245" rx="18" ry="18" fill="#EEF3F7" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="3360.0" y="1616.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="38" font-weight="400" fill="#17365D">
+    <tspan x="3360.0" dy="0">Records excluded after title-and-abstract screening</tspan>
+    <tspan x="3360.0" dy="43">(n = 2,226)</tspan>
+  </text>
+  <polyline points="2080,1638 2460,1638" fill="none" stroke="#13698B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polygon points="2460,1638 2435,1621.75 2435,1654.25" fill="#13698B" />
+  <rect x="620" y="2070" width="1460" height="190" rx="18" ry="18" fill="#FFFFFF" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="1350.0" y="2139.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="48" font-weight="700" fill="#17365D">
+    <tspan x="1350.0" dy="0">Included at full-text stage</tspan>
+    <tspan x="1350.0" dy="52">(n = 12)</tspan>
+  </text>
+  <polyline points="1350,1735 1350,2070" fill="none" stroke="#13698B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polygon points="1350,2070 1333.75,2045 1366.25,2045" fill="#13698B" />
+  <rect x="2460" y="1940" width="1800" height="450" rx="18" ry="18" fill="#EEF3F7" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="2510" y="2018" font-family="Arial" font-size="38" font-weight="700" fill="#17365D">Full-text reports excluded, with reasons (n = 75)</text>
+  <text x="2510" y="2088" font-family="Arial" font-size="34" font-weight="400" fill="#17365D">Wrong exposure (n = 60)</text>
+  <text x="2510" y="2140" font-family="Arial" font-size="34" font-weight="400" fill="#17365D">Wrong outcome (n = 4)</text>
+  <text x="2510" y="2192" font-family="Arial" font-size="34" font-weight="400" fill="#17365D">Wrong publication type (n = 4)</text>
+  <text x="2510" y="2244" font-family="Arial" font-size="34" font-weight="400" fill="#17365D">Wrong population (n = 4)</text>
+  <text x="2510" y="2296" font-family="Arial" font-size="34" font-weight="400" fill="#17365D">Foreign language (n = 2)</text>
+  <text x="2510" y="2348" font-family="Arial" font-size="34" font-weight="400" fill="#17365D">Full text not available (n = 1)</text>
+  <polyline points="2080,2165 2460,2165" fill="none" stroke="#13698B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polygon points="2460,2165 2435,2148.75 2435,2181.25" fill="#13698B" />
+  <rect x="2460" y="2500" width="1800" height="210" rx="18" ry="18" fill="#FBE2D3" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="3360.0" y="2579.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="48" font-weight="700" fill="#17365D">
+    <tspan x="3360.0" dy="0">Other sources (benchmark set)</tspan>
+    <tspan x="3360.0" dy="52">(n = 4)</tspan>
+  </text>
+  <rect x="1150" y="2920" width="1600" height="230" rx="18" ry="18" fill="#F7D1B0" stroke="#13698B" stroke-width="7" vector-effect="non-scaling-stroke" />
+  <text x="1950.0" y="2985.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="48" font-weight="700" fill="#17365D">
+    <tspan x="1950.0" dy="0">Studies included in</tspan>
+    <tspan x="1950.0" dy="50">the meta-analysis</tspan>
+    <tspan x="1950.0" dy="50">(n = 16)</tspan>
+  </text>
+  <polyline points="1350,2260 1350,2800 1750,2800 1750,2920" fill="none" stroke="#13698B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polygon points="1750,2920 1733.75,2895 1766.25,2895" fill="#13698B" />
+  <polyline points="3360,2710 3360,2800 2350,2800 2350,2920" fill="none" stroke="#13698B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+  <polygon points="2350,2920 2333.75,2895 2366.25,2895" fill="#13698B" />
+</svg>
