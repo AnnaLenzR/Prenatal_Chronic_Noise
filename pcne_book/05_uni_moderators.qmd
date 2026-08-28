@@ -47,8 +47,6 @@ project_root <- normalizePath("..", mustWork = TRUE)
 derived_dir <- file.path(project_root, "Data", "derived")
 ```
 
-# Analysis data and VCV matrices
-
 We load the effect-size database from Chapter 2 and construct a complete VCV matrix for lnRR, lnVR, and lnCVR using the same group identifiers as Chapter 3. The lnVR and lnCVR datasets exclude percentage outcomes because their effect-size values are missing by design.
 
 ```{r}
@@ -80,9 +78,9 @@ if (anyDuplicated(db$es_id)) {
 # Link each effect-size column to its sampling variance and display label.
 effect_specs <- tribble(
   ~effect, ~variance, ~label, ~axis_label,
-  "lnRR",  "lnRR_var",  "lnRR",  "lnRR (- less, + more anxiety/depression-like behaviour)",
-  "lnVR",  "lnVR_var",  "lnVR",  "lnVR (- lower, + greater absolute variability)",
-  "lnCVR", "lnCVR_var", "lnCVR", "lnCVR (- lower, + greater relative variability)"
+  "lnRR",  "lnRR_var",  "lnRR",  "lnRR",
+  "lnVR",  "lnVR_var",  "lnVR",  "lnVR",
+  "lnCVR", "lnCVR_var", "lnCVR", "lnCVR"
 )
 
 construct_metric_data <- function(data, effect, variance, rho = 0.5) {
@@ -119,7 +117,8 @@ effect_specs |>
   knitr::kable(caption = "Effect sizes available for the uni-moderator analyses.")
 ```
 
-# Moderators
+::: callout-note
+## Moderator definitions
 
 The moderator table lists every variable used in the uni-moderator analyses and its definition from the protocol codebook.
 
@@ -129,16 +128,16 @@ The moderator table lists every variable used in the uni-moderator analyses and 
 moderators <- tribble(
   ~variable,                     ~label,                             ~definition,                                                                                                                          ~kind,        ~missing_label,
   "strain",                     "Strain",                           "Strain or breed of the animal model used in the study, such as Wistar or BALB/c.",                                                    "categorical", NA_character_,
-  "gest_stage_ex_standardised", "Timing of prenatal exposure",     "Gestation stage when dams were exposed to chronic noise. The codebook records early, mid, late, or combinations of these stages.",       "categorical", NA_character_,
+  "gest_stage_ex_standardised", "Timing of prenatal exposure",     "Gestation stage when dams were exposed to chronic noise: early_mid, full_gestation, mid_late, or late.",                                  "categorical", NA_character_,
   "exposure_span_d",            "Exposure duration (days)",        "Total number of days the dam was exposed to chronic noise.",                                                                          "continuous",  NA_character_,
   "exposure_type",              "Exposure type",                   "Intermittent when noise was played for some hours per day; continuous when noise was not turned off during the total exposure duration.", "categorical", NA_character_,
-  "noise_frequency_range",      "Noise frequency range",           "Standardized acoustic frequency range of the exposure: audible, ultrasound, or unclear.",                                               "categorical", "unclear",
+  "noise_frequency_range",      "Noise frequency range",           "Standardized acoustic frequency range of the exposure: audible, ultrasound, or unclear. We treat unclear as missing rather than as a moderator level.", "categorical", "unclear",
   "control_conditions",         "Control conditions",              "Conditions under which control animals were kept during noise exposure, such as silence, ambient sound, white noise, or other.",         "categorical", NA_character_,
   "offspring_sex",              "Offspring sex",                   "Sex of the offspring investigated: male, female, mixed, or not reported.",                                                            "categorical", NA_character_,
   "outcome_type",               "Measured outcome type",           "Primary behavioural construct used to classify whether an assay measures anxiety, depression, or both.",                               "categorical", NA_character_,
   "assay_type",                 "Behavioural assay type",          "Type of assay used to measure anxiety- or depression-like behaviour, as listed in the Protocol, Appendix 2.",                            "categorical", NA_character_,
   "offspring_age_d",            "Offspring age at testing (days)", "Offspring age in days from parturition at the start of a behavioural test. Ranges use the midpoint, and ages reported after conception are converted to postnatal days.", "continuous", NA_character_,
-  "loudness_dB",                "Noise intensity: loudness in dB",  "Loudness of the noise in decibels.",                                                                                                  "continuous",  NA_character_
+  "loudness_dB",                "Noise intensity: loudness in dB",  "Loudness of the noise in decibels. We retain only unweighted dB values. We excluded values reported in dBA, which applies a human-hearing frequency weighting and is not directly comparable with unweighted dB.", "continuous", NA_character_
 )
 
 # Stop if the database does not contain one of the planned moderators.
@@ -155,18 +154,52 @@ moderators |>
   )
 ```
 
-For `noise_frequency_range`, we treat `unclear` as missing rather than as a moderator level. The `gest_stage_ex_standardised` variable uses `early_mid`, `full_gestation`, `mid_late`, and `late`. For `loudness_dB`, we retain only unweighted dB values. We exclude `barzegar_2014_hippo` because it reported dBA, which applies a human-hearing frequency weighting and is not directly comparable with unweighted dB.
+:::
 
-We retain `control_setting` to describe the physical setting where control animals were kept. We do not include it as a moderator; `control_conditions` remains the moderator for the acoustic control condition.
+::: callout-note
+## Helper functions
 
-# Model functions
+### Match category colours across plots
 
-## Prepare the moderator data
+We assign one named colour to each category in the complete database. The named colours keep a category visually consistent when the retained levels differ among lnRR, lnVR, and lnCVR.
+
+```{r}
+#| label: moderator-colour-palettes
+#| code-fold: true
+
+# Retain the categorical moderators and their missing-value labels.
+categorical_moderators <- moderators |>
+  filter(kind == "categorical")
+
+# Create one named colour palette for each categorical moderator.
+category_palettes <- purrr::map2(
+  categorical_moderators$variable,
+  categorical_moderators$missing_label,
+  function(variable, missing_label) {
+    category_levels <- sort(unique(as.character(db[[variable]])))
+    category_levels <- category_levels[!is.na(category_levels)]
+
+    # Exclude a category that the analysis treats as missing.
+    if (!is.na(missing_label)) {
+      category_levels <- category_levels[category_levels != missing_label]
+    }
+
+    stats::setNames(
+      grDevices::hcl.colors(length(category_levels), palette = "Dark 3"),
+      category_levels
+    )
+  }
+)
+names(category_palettes) <- categorical_moderators$variable
+```
+
+### Prepare the moderator data
 
 For a categorical moderator, we remove levels with $k < 5$ and subset the same rows and columns from `V`. For a continuous moderator, we retain finite values and subset `V` in the same way.
 
 ```{r}
 #| label: prepare-moderator-data
+#| code-fold: true
 
 prepare_categorical <- function(data, V, moderator, missing_label = NA_character_, min_k = 5) {
   # Start with rows that contain a recorded moderator value.
@@ -230,12 +263,13 @@ prepare_continuous <- function(data, V, moderator) {
 }
 ```
 
-## Fit one uni-moderator model
+### Fit one uni-moderator model
 
 The function below prepares one moderator, subsets the complete VCV matrix, and fits its model. For categorical moderators with at least three retained levels, it also calculates unadjusted Tukey contrasts with a separate no-intercept model.
 
 ```{r}
 #| label: fit-one-unimoderator
+#| code-fold: true
 
 fit_unimoderator <- function(
   data,
@@ -286,7 +320,16 @@ fit_unimoderator <- function(
       flip = TRUE,
       angle = 0,
       legend.pos = "top.left"
-    )
+    ) +
+      # Use the complete named palette so shared categories keep their colour.
+      ggplot2::scale_colour_manual(
+        values = category_palettes[[moderator]],
+        drop = FALSE
+      ) +
+      ggplot2::scale_fill_manual(
+        values = category_palettes[[moderator]],
+        drop = FALSE
+      )
   } else {
     NULL
   }
@@ -343,12 +386,13 @@ fit_unimoderator <- function(
 }
 ```
 
-# Fit all uni-moderator models
+### Fit all uni-moderator models
 
 We call `fit_unimoderator()` once for each combination of effect-size type and moderator. The function subsets the corresponding complete VCV matrix to match the effect sizes retained for each model.
 
 ```{r}
 #| label: fit-all-unimoderators
+#| code-fold: true
 
 # Fit every moderator separately for lnRR, lnVR, and lnCVR.
 unimoderator_results <- purrr::map(
@@ -385,10 +429,9 @@ unimoderator_results <- purrr::map(
 # Name the outer list by effect-size type.
 names(unimoderator_results) <- effect_specs$effect
 ```
+:::
 
-# Model results
-
-For each moderator, we print the lnRR, lnVR, and lnCVR model results in sequence. Each result contains the model summary and multilevel $R^2$. We use orchard plots for categorical moderators and `metafor::regplot()` for continuous moderators. For categorical moderators with three or more levels, we also print the unadjusted pairwise contrasts.
+For each moderator, we present lnRR and lnVR side by side, followed by lnCVR below. Each result contains the model summary, multilevel $R^2$, and plot. We use orchard plots for categorical moderators and `metafor::regplot()` for continuous moderators. For categorical moderators with three or more levels, we also print the unadjusted pairwise contrasts.
 
 ```{r}
 #| label: display-unimoderator-results
@@ -397,65 +440,77 @@ For each moderator, we print the lnRR, lnVR, and lnCVR model results in sequence
 #| fig-width: 8
 #| fig-height: 5
 
-# Print the same outputs for each moderator and effect-size type.
+# Print one effect-size result within the current layout column.
+print_metric_result <- function(result) {
+  cat("### ", result$effect_label, "\n\n", sep = "")
+
+  # Print the model summary.
+  cat("```\n")
+  print(summary(result$model))
+  cat("```\n\n")
+
+  # Print marginal and conditional multilevel R-squared.
+  cat("```\n")
+  print(round(result$r2, 4))
+  cat("```\n\n")
+
+  # Place each plot in a card.
+  cat("::: card\n\n")
+  if (result$kind == "categorical") {
+    print(result$plot)
+  } else {
+    # Plot the marginal regression line and its 95% confidence interval.
+    metafor::regplot(
+      result$model,
+      mod = result$variable,
+      pred = TRUE,
+      ci = TRUE,
+      pi = FALSE,
+      xlab = result$label,
+      ylab = result$effect_axis_label,
+      psize = "seinv",
+      plim = c(0.7, 2.2),
+      refline = 0
+    )
+  }
+  cat("\n\n:::\n\n")
+
+  # Print pairwise contrasts only when the function created them.
+  if (!is.null(result$contrasts)) {
+    cat("We report unadjusted Tukey contrasts between the retained levels.\n\n```\n")
+    print(result$contrasts)
+    cat("```\n\n")
+  }
+}
+
+# Use the same three-panel layout for every moderator.
 for (moderator in moderators$variable) {
   moderator_label <- moderators$label[moderators$variable == moderator]
   cat("\n\n## ", moderator_label, "\n\n", sep = "")
 
-  for (effect in effect_specs$effect) {
-    result <- unimoderator_results[[effect]][[moderator]]
-    cat("### ", result$effect_label, "\n\n", sep = "")
+  # Place lnRR and lnVR in the first row.
+  cat(":::: columns\n\n")
+  cat(":::: {.column width=\"49%\"}\n\n")
+  print_metric_result(unimoderator_results$lnRR[[moderator]])
+  cat("::::\n\n")
 
-    cat("#### Model summary\n\n```\n")
-    print(summary(result$model))
-    cat("```\n\n")
+  cat(":::: {.column width=\"2%\"}\n::::\n\n")
 
-    cat("#### Multilevel R-squared\n\n")
-    cat(
-      knitr::kable(
-        as.data.frame(t(result$r2)),
-        digits = 4,
-        caption = paste(
-          "Multilevel R-squared for",
-          moderator_label,
-          "using",
-          result$effect_label
-        )
-      ),
-      sep = "\n"
-    )
-    cat("\n\n")
+  cat(":::: {.column width=\"49%\"}\n\n")
+  print_metric_result(unimoderator_results$lnVR[[moderator]])
+  cat("::::\n\n")
+  cat("::::\n\n")
 
-    cat("#### Plot\n\n")
+  # Centre lnCVR in the second row.
+  cat(":::: columns\n\n")
+  cat(":::: {.column width=\"25%\"}\n::::\n\n")
 
-    if (result$kind == "categorical") {
-      print(result$plot)
-    } else {
-      # Plot the marginal regression line and its 95% confidence interval.
-      metafor::regplot(
-        result$model,
-        mod = result$variable,
-        pred = TRUE,
-        ci = TRUE,
-        pi = FALSE,
-        xlab = result$label,
-        ylab = result$effect_axis_label,
-        psize = "seinv",
-        plim = c(0.7, 2.2),
-        refline = 0
-      )
-    }
+  cat(":::: {.column width=\"50%\"}\n\n")
+  print_metric_result(unimoderator_results$lnCVR[[moderator]])
+  cat("::::\n\n")
 
-    cat("\n\n")
-
-    # Print pairwise contrasts only when the function created them.
-    if (!is.null(result$contrasts)) {
-      cat("#### Pairwise contrasts\n\n")
-      cat("We report unadjusted Tukey contrasts between the retained levels.\n\n```\n")
-      print(result$contrasts)
-      cat("```\n\n")
-    }
-  }
+  cat(":::: {.column width=\"25%\"}\n::::\n\n")
+  cat("::::\n\n")
 }
 ```
 

@@ -41,12 +41,12 @@ input_file <- file.path(
 )
 ```
 
-# Appraisal data
-
-We load the finalized study ratings from the `CRIME-Q_Appraisal` sheet and the adapted item definitions from the `Codebook` sheet. We remove a `.pdf` suffix from one `study_id` so the identifier matches the rest of the project. This step does not change any CRIME-Q rating or note.
+We load the finalized study ratings and adapted item definitions from the CRIME-Q workbook.
 
 ```{r}
 #| label: load-crime-q
+#| code-fold: true
+#| code-summary: "Show data-loading code"
 
 # Read the finalized study-level ratings.
 appraisal <- readxl::read_excel(
@@ -59,8 +59,7 @@ appraisal <- readxl::read_excel(
     dplyr::across(
       dplyr::everything(),
       ~ dplyr::na_if(stringr::str_squish(.x), "")
-    ),
-    study_id = stringr::str_remove(study_id, "\\.pdf$")
+    )
   )
 
 # Read the codebook table below the rating legend.
@@ -81,6 +80,9 @@ names(codebook_raw)[1:5] <- c(
   "criteria"
 )
 
+# Match the rating options recorded at the end of each question.
+rating_pattern <- "(Yes|Partly|No|Unclear|NA)(/(Yes|Partly|No|Unclear|NA))+$"
+
 # Keep the 21 scored items and omit their paired notes fields.
 codebook <- codebook_raw |>
   dplyr::mutate(
@@ -94,16 +96,26 @@ codebook <- codebook_raw |>
     !stringr::str_detect(item, "n$|_n$")
   ) |>
   dplyr::mutate(
-    item_key = stringr::str_remove_all(item, "[^[:alnum:]]")
+    item_key = stringr::str_remove_all(item, "[^[:alnum:]]"),
+    ratings = stringr::str_replace_all(
+      stringr::str_extract(question, rating_pattern),
+      "/",
+      "; "
+    ),
+    definition = stringr::str_squish(
+      stringr::str_remove(
+        question,
+        paste0("\\s*", rating_pattern)
+      )
+    )
   )
 ```
 
-# Data checks
-
-We identify the rating columns and check that they match the 21 scored items in the codebook. We also check the study identifiers, missing ratings, and recorded response values before creating the figure.
-
 ```{r}
 #| label: validate-crime-q
+#| code-fold: true
+#| code-summary: "Show validation code"
+#| results: hide
 
 # Select rating columns while excluding notes and appraisal time.
 score_columns <- names(appraisal)[
@@ -153,39 +165,37 @@ if (length(unexpected_ratings) > 0L) {
   )
 }
 
-# Report the dimensions of the finalized appraisal matrix.
-tibble::tibble(
-  studies = dplyr::n_distinct(appraisal$study_id),
-  items = length(score_columns),
-  ratings = nrow(plot_data)
-)
+if (anyNA(codebook$ratings)) {
+  stop("A CRIME-Q item does not contain a recorded rating list.")
+}
 ```
 
-# CRIME-Q item definitions
+## CRIME-Q item definitions
 
-We display the adapted item definitions and coding criteria recorded in the workbook.
+The table defines each adapted CRIME-Q item used in the figure and lists its allowed ratings.
 
 ```{r}
 #| label: crime-q-definitions
 #| results: asis
+#| code-fold: true
+#| code-summary: "Show item-table code"
 
 codebook |>
   dplyr::transmute(
     Item = item,
-    `Item name` = item_name,
     Domain = domain,
-    Question = question,
-    `Criteria and coding` = criteria
+    Definition = definition,
+    Ratings = ratings
   ) |>
   knitr::kable(
     format = "html",
-    align = c("l", "l", "l", "l", "l"),
+    align = c("l", "l", "l", "l"),
     escape = TRUE,
     table.attr = 'class="table table-striped table-hover crime-q-codebook"'
   )
 ```
 
-# Study-level ratings
+## Study-level ratings
 
 The workbook contains `r dplyr::n_distinct(appraisal$study_id)` studies and `r length(score_columns)` scored CRIME-Q items. We plot the finalized ratings below. Notes and appraisal time remain in the workbook but do not enter the figure.
 
@@ -195,6 +205,8 @@ The workbook contains `r dplyr::n_distinct(appraisal$study_id)` studies and `r l
 #| fig-height: 8
 #| out-width: "100%"
 #| fig-cap: "Final CRIME-Q ratings for each included study and adapted appraisal item."
+#| code-fold: true
+#| code-summary: "Show figure code"
 
 # Create a concise study label from the study identifier.
 study_labels <- appraisal |>
@@ -223,7 +235,7 @@ rating_colours <- c(
   "Partly" = "#EFBF04",
   "No" = "#DC143C",
   "Unclear" = "#F4B183",
-  "NA" = "#D9EAF7"
+  "NA" = "#D9D9D9"
 )
 
 # Plot one tile for every study-item rating.
@@ -285,7 +297,7 @@ ggplot2::ggplot(
 }
 ```
 
-::: callout-note
+::: {.callout-note collapse="true"}
 ## Session information
 
 ```{r}
