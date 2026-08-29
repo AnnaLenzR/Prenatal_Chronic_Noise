@@ -127,7 +127,6 @@ The moderator table lists every variable used in the uni-moderator analyses and 
 
 moderators <- tribble(
   ~variable,                     ~label,                             ~definition,                                                                                                                          ~kind,        ~missing_label,
-  "strain",                     "Strain",                           "Strain or breed of the animal model used in the study, such as Wistar or BALB/c.",                                                    "categorical", NA_character_,
   "gest_stage_ex_standardised", "Timing of prenatal exposure",     "Gestation stage when dams were exposed to chronic noise: early_mid, full_gestation, mid_late, or late.",                                  "categorical", NA_character_,
   "exposure_span_d",            "Exposure duration (days)",        "Total number of days the dam was exposed to chronic noise.",                                                                          "continuous",  NA_character_,
   "exposure_type",              "Exposure type",                   "Intermittent when noise was played for some hours per day; continuous when noise was not turned off during the total exposure duration.", "categorical", NA_character_,
