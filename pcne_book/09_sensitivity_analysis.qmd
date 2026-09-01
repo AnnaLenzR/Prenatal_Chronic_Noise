@@ -1,0 +1,308 @@
+---
+title: "Sensitivity analysis"
+---
+
+We use two sensitivity analyses to examine whether specific data-inclusion decisions influence the overall lnRR estimate. First, we exclude the four Abramova-laboratory studies together. Second, we exclude the effect sizes that required exact-zero boundary corrections.
+
+::: callout-note
+## Variable definitions
+
+| Variable | Definition |
+|:--|:--|
+| `study_id` | Identifier for the primary research paper. |
+| `es_id` | Unique identifier for each effect size. |
+| `ex_id`, `con_id` | Identifiers for the exposed and control groups used to construct `V`. |
+| `lnRR` | Log response ratio for the difference in group means. |
+| `lnRR_var` | Sampling variance of lnRR. |
+| `c_mean_continuity_corrected` | Indicates that the control-group mean required a boundary correction. |
+| `c_sd_continuity_corrected` | Indicates that the control-group SD required a boundary correction. |
+| $k$ | Number of effect sizes included in a model. |
+:::
+
+```{r}
+#| label: setup
+#| include: false
+
+pacman::p_load(
+  dplyr,
+  ggplot2,
+  knitr,
+  metafor,
+  orchaRd,
+  patchwork,
+  readr,
+  tibble
+)
+
+knitr::opts_chunk$set(comment = "#>")
+
+project_root <- normalizePath("..", mustWork = TRUE)
+derived_dir <- file.path(project_root, "Data", "derived")
+audit_dir <- file.path(project_root, "Data", "audits")
+```
+
+# Analysis data and model functions
+
+We load the effect-size database created in the **Effect size calculation**. The model functions reconstruct `V` with the variables and working correlation used in the **Sampling variance-covariance matrices**. Then, we fit the random-effects structure specified in the **Overall effects**.
+
+```{r}
+#| label: load-data-and-functions
+
+# Load the complete lnRR effect-size database.
+db <- readr::read_csv(
+  file.path(derived_dir, "db_effect_sizes.csv"),
+  show_col_types = FALSE
+)
+
+# Construct the lnRR sampling variance-covariance matrix for any subset.
+construct_lnRR_vcv <- function(data) {
+  metafor::vcalc(
+    vi = lnRR_var,
+    cluster = study_id,
+    grp1 = ex_id,
+    grp2 = con_id,
+    w1 = ex_n,
+    w2 = c_n,
+    obs = es_id,
+    rho = 0.5,
+    checkpd = TRUE,
+    data = data
+  )
+}
+
+# Reconstruct V and fit the intercept-only lnRR model for any subset.
+fit_lnRR_model <- function(data) {
+  V <- construct_lnRR_vcv(data)
+
+  metafor::rma.mv(
+    yi = lnRR,
+    V = V,
+    random = list(
+      ~ 1 | study_id,
+      ~ 1 | es_id,
+      ~ 1 | strain
+    ),
+    test = "t",
+    method = "REML",
+    sparse = TRUE,
+    data = data
+  )
+}
+
+# Fit the overall lnRR model before applying either exclusion.
+model_all <- fit_lnRR_model(db)
+```
+
+# Combined Abramova-laboratory exclusion
+
+The four Abramova-laboratory studies contribute 118 of the 207 effect sizes. When studies from one laboratory contribute a large proportion of the data, laboratory-specific methods, experimental conditions, or reporting practices may have a disproportionate influence on the overall estimate. To examine this possibility, we remove all four studies together, reconstruct `V`, and compare the refitted model with the model that includes all studies.
+
+```{r}
+#| label: exclude-abramova-laboratory
+
+# Identify and remove all studies with the Abramova study identifier.
+abramova_studies <- db |>
+  dplyr::filter(grepl("^abramova_", study_id)) |>
+  dplyr::distinct(study_id) |>
+  dplyr::pull(study_id)
+
+db_without_abramova <- db |>
+  dplyr::filter(!study_id %in% abramova_studies)
+
+# Reconstruct V and refit the lnRR model after the combined exclusion.
+model_without_abramova <- fit_lnRR_model(db_without_abramova)
+```
+
+We use the same lnRR scale in both panels. Panel A shows the original overall-effect model, and Panel B shows the model after excluding the four Abramova-laboratory studies.
+
+```{r}
+#| label: abramova-overall-effect-comparison
+#| fig-cap: "Overall lnRR before and after the combined Abramova-laboratory exclusion. Both panels use the same effect-size scale."
+#| fig-width: 12
+#| fig-height: 5.5
+
+# Set one effect-size range for both orchard plots.
+shared_effect_limits <- range(
+  c(
+    db$lnRR,
+    model_all$pi.lb,
+    model_all$pi.ub,
+    model_without_abramova$pi.lb,
+    model_without_abramova$pi.ub
+  ),
+  finite = TRUE
+)
+effect_padding <- diff(shared_effect_limits) * 0.05
+shared_effect_limits <- shared_effect_limits + c(
+  -effect_padding,
+  effect_padding
+)
+shared_effect_breaks <- pretty(shared_effect_limits, n = 5)
+
+# Draw the overall model that includes all studies.
+plot_all <- orchaRd::orchard_plot(
+  model_all,
+  group = "study_id",
+  xlab = "lnRR",
+  flip = TRUE
+) +
+  ggplot2::scale_x_discrete(labels = "Overall effect") +
+  ggplot2::scale_y_continuous(
+    limits = shared_effect_limits,
+    breaks = shared_effect_breaks
+  ) +
+  ggplot2::labs(title = "All studies")
+
+# Draw the model after excluding the Abramova-laboratory studies.
+plot_without_abramova <- orchaRd::orchard_plot(
+  model_without_abramova,
+  group = "study_id",
+  xlab = "lnRR",
+  flip = TRUE
+) +
+  ggplot2::scale_x_discrete(labels = "Overall effect") +
+  ggplot2::scale_y_continuous(
+    limits = shared_effect_limits,
+    breaks = shared_effect_breaks
+  ) +
+  ggplot2::labs(title = "Abramova-laboratory studies excluded")
+
+# Place the original and sensitivity models side by side.
+abramova_comparison_plot <-
+  (plot_all + plot_without_abramova) +
+  patchwork::plot_layout(guides = "collect") +
+  patchwork::plot_annotation(tag_levels = "A") &
+  ggplot2::theme(legend.position = "top")
+
+abramova_comparison_plot
+```
+
+```{r}
+#| label: abramova-model-comparison
+
+# Compare the numerical results shown in the two panels.
+abramova_comparison <- tibble::tibble(
+  Model = c(
+    "All studies",
+    "Abramova-laboratory studies excluded"
+  ),
+  k = c(nrow(db), nrow(db_without_abramova)),
+  Studies = c(
+    dplyr::n_distinct(db$study_id),
+    dplyr::n_distinct(db_without_abramova$study_id)
+  ),
+  Estimate = c(
+    unname(stats::coef(model_all)),
+    unname(stats::coef(model_without_abramova))
+  ),
+  `95% CI lower` = c(
+    model_all$ci.lb,
+    model_without_abramova$ci.lb
+  ),
+  `95% CI upper` = c(
+    model_all$ci.ub,
+    model_without_abramova$ci.ub
+  )
+)
+
+abramova_comparison |>
+  knitr::kable(
+    digits = 3,
+    caption = "Overall lnRR with and without the Abramova-laboratory studies."
+  )
+```
+
+# Exact-zero effect-size exclusion
+
+Two effect sizes required a boundary correction because the reported control-group summary statistics produced an exact-zero mean and SD. We identify these effect sizes, remove them, reconstruct `V`, and refit the multilevel intercept-only model.
+
+```{r}
+#| label: exact-zero-exclusion
+
+# Identify rows that received both control-group boundary corrections.
+exact_zero_ids <- db |>
+  dplyr::filter(
+    c_mean_continuity_corrected,
+    c_sd_continuity_corrected
+  ) |>
+  dplyr::pull(es_id)
+
+if (length(exact_zero_ids) == 0) {
+  stop("No exact-zero-corrected effect sizes were identified.")
+}
+
+# Retain all other effect sizes for the sensitivity model.
+db_without_exact_zero <- db |>
+  dplyr::filter(!es_id %in% exact_zero_ids)
+
+# Reconstruct V and refit the model after excluding the corrected rows.
+model_without_exact_zero <- fit_lnRR_model(db_without_exact_zero)
+```
+
+We report the identifiers of the excluded effect sizes and compare the overall lnRR estimates before and after the exclusion.
+
+```{r}
+#| label: exact-zero-comparison
+
+# List the effect sizes removed from the sensitivity model.
+tibble::tibble(`Effect size excluded` = exact_zero_ids) |>
+  knitr::kable(caption = "Effect sizes excluded from the sensitivity model.")
+
+# Create the model-comparison table.
+exact_zero_comparison <- tibble::tibble(
+  Model = c(
+    "All effect sizes",
+    "Exact-zero-corrected effect sizes excluded"
+  ),
+  k = c(nrow(db), nrow(db_without_exact_zero)),
+  Studies = c(
+    dplyr::n_distinct(db$study_id),
+    dplyr::n_distinct(db_without_exact_zero$study_id)
+  ),
+  Estimate = c(
+    unname(stats::coef(model_all)),
+    unname(stats::coef(model_without_exact_zero))
+  ),
+  `95% CI lower` = c(
+    model_all$ci.lb,
+    model_without_exact_zero$ci.lb
+  ),
+  `95% CI upper` = c(
+    model_all$ci.ub,
+    model_without_exact_zero$ci.ub
+  )
+)
+
+exact_zero_comparison |>
+  knitr::kable(
+    digits = 3,
+    caption = "Overall lnRR with and without the exact-zero-corrected effect sizes."
+  )
+```
+
+```{r}
+#| label: export-sensitivity-results
+#| include: false
+
+# Export both comparisons without replacing the earlier audit files.
+readr::write_csv(
+  abramova_comparison,
+  file.path(audit_dir, "abramova_laboratory_exclusion_lnRR_current.csv"),
+  na = ""
+)
+readr::write_csv(
+  exact_zero_comparison,
+  file.path(audit_dir, "exact_zero_exclusion_lnRR_current.csv"),
+  na = ""
+)
+```
+
+::: callout-note
+## Session information
+
+```{r}
+#| label: session-information
+
+sessionInfo()
+```
+:::

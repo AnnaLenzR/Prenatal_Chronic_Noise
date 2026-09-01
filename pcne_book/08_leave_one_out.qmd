@@ -1,0 +1,200 @@
+---
+title: "Leave-one-out analysis"
+---
+
+We use a leave-one-out analysis to examine whether the overall lnRR estimate depends on any single study. We remove one study at a time, reconstruct the sampling variance-covariance matrix (`V`), and refit the multilevel intercept-only model.
+
+::: callout-note
+## Variable definitions
+
+| Variable | Definition |
+|:--|:--|
+| `study_id` | Identifier for the primary research paper and the unit removed in each leave-one-out iteration. |
+| `es_id` | Unique identifier for each effect size. |
+| `ex_id`, `con_id` | Identifiers for the exposed and control groups used to construct `V`. |
+| `lnRR` | Log response ratio for the difference in group means. |
+| `lnRR_var` | Sampling variance of lnRR. |
+| $k$ | Number of effect sizes included in a model. |
+:::
+
+```{r}
+#| label: setup
+#| include: false
+
+pacman::p_load(
+  dplyr,
+  ggplot2,
+  knitr,
+  metafor,
+  orchaRd,
+  purrr,
+  readr,
+  tibble
+)
+
+knitr::opts_chunk$set(comment = "#>")
+
+project_root <- normalizePath("..", mustWork = TRUE)
+derived_dir <- file.path(project_root, "Data", "derived")
+audit_dir <- file.path(project_root, "Data", "audits")
+```
+
+# Analysis data and model functions
+
+We load the effect-size database created in the **Effect size calculation**. The model functions reconstruct `V` with the variables and working correlation used in the **Sampling variance-covariance matrices**. Then, we fit the random-effects structure specified in the **Overall effects**.
+
+```{r}
+#| label: load-data-and-functions
+
+# Load the lnRR effect sizes and sampling variances.
+db <- readr::read_csv(
+  file.path(derived_dir, "db_effect_sizes.csv"),
+  show_col_types = FALSE
+)
+
+# Construct the lnRR sampling variance-covariance matrix for any subset.
+construct_lnRR_vcv <- function(data) {
+  metafor::vcalc(
+    vi = lnRR_var,
+    cluster = study_id,
+    grp1 = ex_id,
+    grp2 = con_id,
+    w1 = ex_n,
+    w2 = c_n,
+    obs = es_id,
+    rho = 0.5,
+    checkpd = TRUE,
+    data = data
+  )
+}
+
+# Reconstruct V and fit the intercept-only lnRR model for any subset.
+fit_lnRR_model <- function(data) {
+  V <- construct_lnRR_vcv(data)
+
+  metafor::rma.mv(
+    yi = lnRR,
+    V = V,
+    random = list(
+      ~ 1 | study_id,
+      ~ 1 | es_id,
+      ~ 1 | strain
+    ),
+    test = "t",
+    method = "REML",
+    sparse = TRUE,
+    data = data
+  )
+}
+
+# Fit the overall model before applying any exclusions.
+overall_lnRR_model <- fit_lnRR_model(db)
+```
+
+# Study-level leave-one-out analysis
+
+Each iteration removes every effect size from one `study_id`. Because the number and arrangement of dependent effect sizes change after each exclusion, we reconstruct `V` before fitting that iteration's model.
+
+```{r}
+#| label: fit-leave-one-out-models
+
+# Fit one model for each omitted study.
+study_ids <- unique(db$study_id)
+
+loo_models <- purrr::map(
+  study_ids,
+  ~ fit_lnRR_model(dplyr::filter(db, study_id != .x))
+)
+names(loo_models) <- study_ids
+
+# Extract the estimate and intervals returned by each fitted model.
+loo_model_results <- purrr::imap(
+  loo_models,
+  function(model, omitted_study) {
+    result <- orchaRd::mod_results(model, group = "study_id")
+    model_table <- result$mod_table
+    model_data <- result$data
+    model_table$name <- omitted_study
+    model_data$moderator <- omitted_study
+    list(mod_table = model_table, data = model_data)
+  }
+)
+
+# Assemble the object used by the leave-one-out orchard plot.
+loo_results <- structure(
+  list(
+    mod_table = dplyr::bind_rows(
+      purrr::map(loo_model_results, "mod_table")
+    ),
+    data = dplyr::bind_rows(
+      purrr::map(loo_model_results, "data")
+    ),
+    orig_mod_results = orchaRd::mod_results(
+      overall_lnRR_model,
+      group = "study_id"
+    )
+  ),
+  class = c("orchard", "data.frame")
+)
+
+# Create a compact table with one row for each omitted study.
+loo_table <- loo_results$mod_table |>
+  dplyr::transmute(
+    `Study removed` = as.character(name),
+    k = nrow(db) - as.integer(table(db$study_id)[as.character(name)]),
+    `Estimate` = estimate,
+    `95% CI lower` = lowerCL,
+    `95% CI upper` = upperCL
+  )
+
+loo_table |>
+  knitr::kable(
+    digits = 3,
+    caption = "Overall lnRR after removing each study in turn."
+  )
+```
+
+The orchard plot shows the refitted overall lnRR estimate for each omitted study. The dotted reference lines show the confidence limits from the model that includes all studies [@nakagawa2023b].
+
+```{r}
+#| label: leave-one-out-orchard-plot
+#| fig-cap: "Study-level leave-one-out analysis for the overall lnRR."
+#| fig-width: 8
+#| fig-height: 8
+
+# Plot the model estimate obtained after each study exclusion.
+loo_plot <- orchaRd::orchard_leave1out(
+  leave1out = loo_results,
+  xlab = "lnRR",
+  ylab = "Study removed",
+  ci_lines_color = "grey40",
+  trunk.size = 0.3,
+  branch.size = 1.5,
+  alpha = 0.35,
+  legend.pos = "top.out"
+)
+
+loo_plot
+```
+
+```{r}
+#| label: export-leave-one-out-results
+#| include: false
+
+# Export the numerical results without replacing the earlier audit file.
+readr::write_csv(
+  loo_table,
+  file.path(audit_dir, "leave_one_out_lnRR_current.csv"),
+  na = ""
+)
+```
+
+::: callout-note
+## Session information
+
+```{r}
+#| label: session-information
+
+sessionInfo()
+```
+:::

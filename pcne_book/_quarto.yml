@@ -11,6 +11,8 @@ project:
     - 05_uni_moderators.qmd
     - 06_publication_bias.qmd
     - 07_crime_q.qmd
+    - 08_leave_one_out.qmd
+    - 09_sensitivity_analysis.qmd
 
 website:
   title: "Prenatal chronic noise exposure meta-analysis"
@@ -35,6 +37,12 @@ website:
         href: 06_publication_bias.qmd
       - text: "CRIME-Q appraisal"
         href: 07_crime_q.qmd
+      - text: "Leave-one-out analysis"
+        href: 08_leave_one_out.qmd
+      - section: "Appendix"
+        contents:
+          - text: "Sensitivity analysis"
+            href: 09_sensitivity_analysis.qmd
 
 bibliography: references.bib
 

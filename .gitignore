@@ -7,6 +7,9 @@
 ## macOS
 .DS_Store
 
+## Microsoft Office temporary lock files
+~$*.docx
+
 ## Quarto book build artifacts (also excluded inside pcne_book/.gitignore,
 ## kept here too in case a book is ever rendered from the project root)
 /pcne_book/.quarto/
