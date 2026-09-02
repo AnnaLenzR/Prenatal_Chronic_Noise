@@ -27,6 +27,9 @@ statistics_path <- file.path(
   "PCN_data_ext_checking_v.3_with_derived_statistics.csv"
 )
 analysis_path <- file.path(derived_dir, "PCN_analysis_ready.csv")
+
+# List the outcomes that we retain in the extraction record but exclude from analysis.
+excluded_outcomes <- c("out045", sprintf("out%03d", 67:75))
 ```
 
 # Source data
@@ -223,12 +226,29 @@ method_counts |>
 
 We create an analysis-ready database with one mean, SD, SE, and sample size for each arm. We retain `ex_id` and `con_id` for the sampling dependency structure and `comparison_structure` for the lnRR calculation.
 
+We retain all extracted outcomes in the original and completed-statistics databases. For the analysis-ready database, we exclude `out045` and `out067`–`out075` because the corresponding outcomes were not reported in the methods of the full-text articles.
+
+```{r}
+#| label: summarise-analysis-exclusions
+
+# Count the outcomes and effect sizes removed from the analysis-ready database.
+with_statistics |>
+  filter(out_id %in% excluded_outcomes) |>
+  summarise(
+    outcomes = n_distinct(out_id),
+    effect_sizes = n_distinct(es_id)
+  ) |>
+  knitr::kable(caption = "Outcomes excluded from the analysis-ready database.")
+```
+
 We also standardise character spacing and category labels before selecting the columns required for the analyses.
 
 ```{r}
 #| label: create-analysis-ready-data
 
 analysis_ready <- with_statistics |>
+  # Exclude outcomes that were absent from the methods of the full-text articles.
+  filter(!out_id %in% excluded_outcomes) |>
   mutate(
     across(where(is.character), str_squish),
     shared_control = str_to_lower(shared_control),

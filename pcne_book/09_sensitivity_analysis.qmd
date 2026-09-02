@@ -91,21 +91,24 @@ fit_lnRR_model <- function(data) {
 
 # Fit the overall lnRR model before applying either exclusion.
 model_all <- fit_lnRR_model(db)
-```
 
-# Combined Abramova-laboratory exclusion
-
-The four Abramova-laboratory studies contribute 118 of the 207 effect sizes. When studies from one laboratory contribute a large proportion of the data, laboratory-specific methods, experimental conditions, or reporting practices may have a disproportionate influence on the overall estimate. To examine this possibility, we remove all four studies together, reconstruct `V`, and compare the refitted model with the model that includes all studies.
-
-```{r}
-#| label: exclude-abramova-laboratory
-
-# Identify and remove all studies with the Abramova study identifier.
+# Identify the Abramova-laboratory studies and count their current effect sizes.
 abramova_studies <- db |>
   dplyr::filter(grepl("^abramova_", study_id)) |>
   dplyr::distinct(study_id) |>
   dplyr::pull(study_id)
 
+abramova_effect_sizes <- sum(db$study_id %in% abramova_studies)
+```
+
+# Combined Abramova-laboratory exclusion
+
+The `r length(abramova_studies)` Abramova-laboratory studies contribute `r abramova_effect_sizes` of the `r nrow(db)` effect sizes. When studies from one laboratory contribute a large proportion of the data, laboratory-specific methods, experimental conditions, or reporting practices may have a disproportionate influence on the overall estimate. To examine this possibility, we remove all four studies together, reconstruct `V`, and compare the refitted model with the model that includes all studies.
+
+```{r}
+#| label: exclude-abramova-laboratory
+
+# Remove all studies with the Abramova study identifier.
 db_without_abramova <- db |>
   dplyr::filter(!study_id %in% abramova_studies)
 
