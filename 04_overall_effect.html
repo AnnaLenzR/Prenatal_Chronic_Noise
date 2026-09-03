@@ -460,15 +460,15 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">lnRR</td>
-<td style="text-align: right;">207</td>
+<td style="text-align: right;">187</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">lnVR</td>
-<td style="text-align: right;">191</td>
+<td style="text-align: right;">175</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">lnCVR</td>
-<td style="text-align: right;">191</td>
+<td style="text-align: right;">175</td>
 </tr>
 </tbody>
 </table>
@@ -540,25 +540,25 @@ window.Quarto = {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(overall_lnRR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
-#&gt; Multivariate Meta-Analysis Model (k = 207; method: REML)
+#&gt; Multivariate Meta-Analysis Model (k = 187; method: REML)
 #&gt; 
 #&gt;    logLik   Deviance        AIC        BIC       AICc   
-#&gt; -149.2599   298.5197   306.5197   319.8313   306.7188   
+#&gt; -138.2299   276.4599   284.4599   297.3629   284.6809   
 #&gt; 
 #&gt; Variance Components:
 #&gt; 
 #&gt;             estim    sqrt  nlvls  fixed    factor 
 #&gt; sigma^2.1  0.0310  0.1761     16     no  study_id 
-#&gt; sigma^2.2  0.1482  0.3850    207     no     es_id 
-#&gt; sigma^2.3  0.0563  0.2373      5     no    strain 
+#&gt; sigma^2.2  0.1382  0.3718    187     no     es_id 
+#&gt; sigma^2.3  0.0466  0.2159      5     no    strain 
 #&gt; 
 #&gt; Test for Heterogeneity:
-#&gt; Q(df = 206) = 2803.5337, p-val &lt; .0001
+#&gt; Q(df = 186) = 2665.4976, p-val &lt; .0001
 #&gt; 
 #&gt; Model Results:
 #&gt; 
 #&gt; estimate      se    tval   df    pval    ci.lb   ci.ub    
-#&gt;   0.1690  0.1354  1.2477  206  0.2136  -0.0980  0.4360    
+#&gt;   0.1970  0.1275  1.5449  186  0.1241  -0.0546  0.4486    
 #&gt; 
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
@@ -569,7 +569,7 @@ window.Quarto = {
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>orchaRd<span class="sc">::</span><span class="fu">i2_ml</span>(overall_lnRR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;    I2_Total I2_study_id    I2_es_id   I2_strain 
-#&gt;    95.98543    12.63933    60.39749    22.94860</code></pre>
+#&gt;    95.75495    13.75527    61.32638    20.67331</code></pre>
 </div>
 </div>
 <div class="card">
@@ -599,25 +599,25 @@ window.Quarto = {
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(overall_lnVR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
-#&gt; Multivariate Meta-Analysis Model (k = 191; method: REML)
+#&gt; Multivariate Meta-Analysis Model (k = 175; method: REML)
 #&gt; 
 #&gt;    logLik   Deviance        AIC        BIC       AICc   
-#&gt; -141.3992   282.7984   290.7984   303.7865   291.0146   
+#&gt; -140.1033   280.2066   288.2066   300.8428   288.4433   
 #&gt; 
 #&gt; Variance Components:
 #&gt; 
 #&gt;             estim    sqrt  nlvls  fixed    factor 
-#&gt; sigma^2.1  0.0368  0.1919     14     no  study_id 
-#&gt; sigma^2.2  0.1936  0.4400    191     no     es_id 
+#&gt; sigma^2.1  0.0324  0.1800     14     no  study_id 
+#&gt; sigma^2.2  0.2195  0.4685    175     no     es_id 
 #&gt; sigma^2.3  0.0000  0.0000      5     no    strain 
 #&gt; 
 #&gt; Test for Heterogeneity:
-#&gt; Q(df = 190) = 1412.3402, p-val &lt; .0001
+#&gt; Q(df = 174) = 1314.0725, p-val &lt; .0001
 #&gt; 
 #&gt; Model Results:
 #&gt; 
 #&gt; estimate      se     tval   df    pval    ci.lb   ci.ub    
-#&gt;  -0.0416  0.0832  -0.5001  190  0.6176  -0.2057  0.1225    
+#&gt;  -0.0422  0.0831  -0.5080  174  0.6121  -0.2061  0.1217    
 #&gt; 
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
@@ -628,7 +628,7 @@ window.Quarto = {
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>orchaRd<span class="sc">::</span><span class="fu">i2_ml</span>(overall_lnVR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;     I2_Total  I2_study_id     I2_es_id    I2_strain 
-#&gt; 8.056935e+01 1.287347e+01 6.769587e+01 1.517152e-07</code></pre>
+#&gt; 8.178655e+01 1.052520e+01 7.126135e+01 1.389343e-07</code></pre>
 </div>
 </div>
 <div class="card">
@@ -661,25 +661,25 @@ window.Quarto = {
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(overall_lnCVR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
-#&gt; Multivariate Meta-Analysis Model (k = 191; method: REML)
+#&gt; Multivariate Meta-Analysis Model (k = 175; method: REML)
 #&gt; 
 #&gt;    logLik   Deviance        AIC        BIC       AICc   
-#&gt; -108.3161   216.6322   224.6322   237.6203   224.8484   
+#&gt; -104.3190   208.6380   216.6380   229.2742   216.8747   
 #&gt; 
 #&gt; Variance Components:
 #&gt; 
 #&gt;             estim    sqrt  nlvls  fixed    factor 
-#&gt; sigma^2.1  0.0079  0.0886     14     no  study_id 
-#&gt; sigma^2.2  0.0757  0.2752    191     no     es_id 
-#&gt; sigma^2.3  0.0072  0.0851      5     no    strain 
+#&gt; sigma^2.1  0.0000  0.0001     14     no  study_id 
+#&gt; sigma^2.2  0.0803  0.2833    175     no     es_id 
+#&gt; sigma^2.3  0.0000  0.0000      5     no    strain 
 #&gt; 
 #&gt; Test for Heterogeneity:
-#&gt; Q(df = 190) = 452.4956, p-val &lt; .0001
+#&gt; Q(df = 174) = 412.0300, p-val &lt; .0001
 #&gt; 
 #&gt; Model Results:
 #&gt; 
 #&gt; estimate      se    tval   df    pval    ci.lb   ci.ub    
-#&gt;   0.0732  0.0813  0.9001  190  0.3692  -0.0872  0.2336    
+#&gt;   0.0374  0.0577  0.6485  174  0.5175  -0.0765  0.1513    
 #&gt; 
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
@@ -689,8 +689,8 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate total and level-specific multilevel I-squared.</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>orchaRd<span class="sc">::</span><span class="fu">i2_ml</span>(overall_lnCVR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;    I2_Total I2_study_id    I2_es_id   I2_strain 
-#&gt;   50.274675    4.350265   41.918150    4.006259</code></pre>
+<pre><code>#&gt;     I2_Total  I2_study_id     I2_es_id    I2_strain 
+#&gt; 4.745681e+01 1.784236e-06 4.745680e+01 1.258722e-08</code></pre>
 </div>
 </div>
 <div class="card">

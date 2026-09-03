@@ -397,25 +397,25 @@ window.Quarto = {
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ma_all)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
-#&gt; Multivariate Meta-Analysis Model (k = 207; method: REML)
+#&gt; Multivariate Meta-Analysis Model (k = 187; method: REML)
 #&gt; 
 #&gt;    logLik   Deviance        AIC        BIC       AICc   
-#&gt; -149.2599   298.5197   306.5197   319.8313   306.7188   
+#&gt; -138.2299   276.4599   284.4599   297.3629   284.6809   
 #&gt; 
 #&gt; Variance Components:
 #&gt; 
 #&gt;             estim    sqrt  nlvls  fixed    factor 
 #&gt; sigma^2.1  0.0310  0.1761     16     no  study_id 
-#&gt; sigma^2.2  0.1482  0.3850    207     no     es_id 
-#&gt; sigma^2.3  0.0563  0.2373      5     no    strain 
+#&gt; sigma^2.2  0.1382  0.3718    187     no     es_id 
+#&gt; sigma^2.3  0.0466  0.2159      5     no    strain 
 #&gt; 
 #&gt; Test for Heterogeneity:
-#&gt; Q(df = 206) = 2803.5337, p-val &lt; .0001
+#&gt; Q(df = 186) = 2665.4976, p-val &lt; .0001
 #&gt; 
 #&gt; Model Results:
 #&gt; 
 #&gt; estimate      se    tval   df    pval    ci.lb   ci.ub    
-#&gt;   0.1690  0.1354  1.2477  206  0.2136  -0.0980  0.4360    
+#&gt;   0.1970  0.1275  1.5449  186  0.1241  -0.0546  0.4486    
 #&gt; 
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
@@ -477,29 +477,29 @@ window.Quarto = {
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(egger_model_full)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
-#&gt; Multivariate Meta-Analysis Model (k = 207; method: REML)
+#&gt; Multivariate Meta-Analysis Model (k = 187; method: REML)
 #&gt; 
 #&gt;    logLik   Deviance        AIC        BIC       AICc   
-#&gt; -148.3475   296.6950   306.6950   323.3100   306.9965   
+#&gt; -137.5472   275.0943   285.0943   301.1961   285.4295   
 #&gt; 
 #&gt; Variance Components:
 #&gt; 
 #&gt;             estim    sqrt  nlvls  fixed    factor 
-#&gt; sigma^2.1  0.0409  0.2022     16     no  study_id 
-#&gt; sigma^2.2  0.1473  0.3838    207     no     es_id 
-#&gt; sigma^2.3  0.0535  0.2313      5     no    strain 
+#&gt; sigma^2.1  0.0383  0.1958     16     no  study_id 
+#&gt; sigma^2.2  0.1385  0.3721    187     no     es_id 
+#&gt; sigma^2.3  0.0440  0.2097      5     no    strain 
 #&gt; 
 #&gt; Test for Residual Heterogeneity:
-#&gt; QE(df = 205) = 2483.3051, p-val &lt; .0001
+#&gt; QE(df = 185) = 2358.3128, p-val &lt; .0001
 #&gt; 
 #&gt; Test of Moderators (coefficient 2):
-#&gt; F(df1 = 1, df2 = 205) = 0.4909, p-val = 0.4843
+#&gt; F(df1 = 1, df2 = 185) = 0.0053, p-val = 0.9419
 #&gt; 
 #&gt; Model Results:
 #&gt; 
-#&gt;               estimate      se    tval   df    pval    ci.lb   ci.ub    
-#&gt; intrcpt         0.0105  0.2685  0.0392  205  0.9688  -0.5189  0.5399    
-#&gt; sqrt_inv_e_n    0.3815  0.5445  0.7007  205  0.4843  -0.6920  1.4550    
+#&gt;               estimate      se     tval   df    pval    ci.lb   ci.ub    
+#&gt; intrcpt         0.2167  0.2692   0.8049  185  0.4219  -0.3145  0.7479    
+#&gt; sqrt_inv_e_n   -0.0403  0.5520  -0.0729  185  0.9419  -1.1292  1.0487    
 #&gt; 
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
@@ -554,30 +554,30 @@ window.Quarto = {
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(year_lag_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
-#&gt; Multivariate Meta-Analysis Model (k = 207; method: REML)
+#&gt; Multivariate Meta-Analysis Model (k = 187; method: REML)
 #&gt; 
 #&gt;    logLik   Deviance        AIC        BIC       AICc   
-#&gt; -146.8778   293.7556   305.7556   325.6643   306.1820   
+#&gt; -135.5466   271.0932   283.0932   302.3828   283.5678   
 #&gt; 
 #&gt; Variance Components:
 #&gt; 
 #&gt;             estim    sqrt  nlvls  fixed    factor 
-#&gt; sigma^2.1  0.0436  0.2089     16     no  study_id 
-#&gt; sigma^2.2  0.1482  0.3849    207     no     es_id 
-#&gt; sigma^2.3  0.0414  0.2034      5     no    strain 
+#&gt; sigma^2.1  0.0387  0.1968     16     no  study_id 
+#&gt; sigma^2.2  0.1400  0.3741    187     no     es_id 
+#&gt; sigma^2.3  0.0180  0.1342      5     no    strain 
 #&gt; 
 #&gt; Test for Residual Heterogeneity:
-#&gt; QE(df = 204) = 2413.1503, p-val &lt; .0001
+#&gt; QE(df = 184) = 2265.7417, p-val &lt; .0001
 #&gt; 
 #&gt; Test of Moderators (coefficients 2:3):
-#&gt; F(df1 = 2, df2 = 204) = 0.5864, p-val = 0.5572
+#&gt; F(df1 = 2, df2 = 184) = 1.1255, p-val = 0.3267
 #&gt; 
 #&gt; Model Results:
 #&gt; 
-#&gt;               estimate      se    tval   df    pval    ci.lb   ci.ub    
-#&gt; intrcpt         0.0731  0.2750  0.2659  204  0.7905  -0.4690  0.6153    
-#&gt; year_c          0.0043  0.0053  0.8253  204  0.4102  -0.0060  0.0147    
-#&gt; sqrt_inv_e_n    0.2756  0.5639  0.4887  204  0.6256  -0.8363  1.3875    
+#&gt;               estimate      se     tval   df    pval    ci.lb   ci.ub    
+#&gt; intrcpt         0.3431  0.2612   1.3138  184  0.1906  -0.1722  0.8584    
+#&gt; year_c          0.0072  0.0048   1.4972  184  0.1360  -0.0023  0.0167    
+#&gt; sqrt_inv_e_n   -0.2738  0.5602  -0.4887  184  0.6256  -1.3791  0.8315    
 #&gt; 
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
