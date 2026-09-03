@@ -401,7 +401,7 @@ window.Quarto = {
 </section>
 <section id="combined-abramova-laboratory-exclusion" class="level1">
 <h1>Combined Abramova-laboratory exclusion</h1>
-<p>The 4 Abramova-laboratory studies contribute 98 of the 187 effect sizes. When studies from one laboratory contribute a large proportion of the data, laboratory-specific methods, experimental conditions, or reporting practices may have a disproportionate influence on the overall estimate. To examine this possibility, we remove all four studies together, reconstruct <code>V</code>, and compare the refitted model with the model that includes all studies.</p>
+<p>The 4 Abramova-laboratory studies contribute 118 of the 207 effect sizes. When studies from one laboratory contribute a large proportion of the data, laboratory-specific methods, experimental conditions, or reporting practices may have a disproportionate influence on the overall estimate. To examine this possibility, we remove all four studies together, reconstruct <code>V</code>, and compare the refitted model with the model that includes all studies.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove all studies with the Abramova study identifier.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>db_without_abramova <span class="ot">&lt;-</span> db <span class="sc">|&gt;</span></span>
@@ -530,10 +530,10 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">All studies</td>
-<td style="text-align: right;">187</td>
+<td style="text-align: right;">207</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: right;">0.197</td>
-<td style="text-align: right;">-0.055</td>
+<td style="text-align: right;">0.174</td>
+<td style="text-align: right;">-0.101</td>
 <td style="text-align: right;">0.449</td>
 </tr>
 <tr class="even">
@@ -649,18 +649,18 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">All effect sizes</td>
-<td style="text-align: right;">187</td>
+<td style="text-align: right;">207</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: right;">0.197</td>
-<td style="text-align: right;">-0.055</td>
+<td style="text-align: right;">0.174</td>
+<td style="text-align: right;">-0.101</td>
 <td style="text-align: right;">0.449</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Exact-zero-corrected effect sizes excluded</td>
-<td style="text-align: right;">185</td>
+<td style="text-align: right;">205</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: right;">0.195</td>
-<td style="text-align: right;">-0.055</td>
+<td style="text-align: right;">0.172</td>
+<td style="text-align: right;">-0.101</td>
 <td style="text-align: right;">0.445</td>
 </tr>
 </tbody>

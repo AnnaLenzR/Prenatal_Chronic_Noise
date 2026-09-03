@@ -386,7 +386,7 @@ window.Quarto = {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="fu">normalizePath</span>(<span class="st">".."</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>derived_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"Data"</span>, <span class="st">"derived"</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database from Chapter 2.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the database created in Effect size calculation.</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>vcv_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
@@ -423,7 +423,7 @@ window.Quarto = {
 <section id="matrix-construction" class="level1">
 <h1>Matrix construction</h1>
 <p>We use <code>metafor::vcalc()</code> to construct each matrix <span class="citation" data-cites="viechtbauer2010">(<a href="#ref-viechtbauer2010" role="doc-biblioref">Viechtbauer 2010</a>)</span>. We use <code>study_id</code> as the study cluster, <code>ex_id</code> and <code>con_id</code> as the contrasted-group identifiers, and <code>ex_n</code> and <code>c_n</code> as the group weights. We supply each <code>es_id</code> as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of <span class="math inline">\(\rho = 0.5\)</span>. We assign zero sampling covariance to effect sizes that share neither group.</p>
-<p>The lnRR matrix contains every effect-size row. The lnVR and lnCVR matrices contain only non-percentage outcomes because Chapter 2 does not calculate variability metrics for percentage outcomes.</p>
+<p>The lnRR matrix contains every effect-size row. The lnVR and lnCVR matrices contain only non-percentage outcomes because <strong>Effect size calculation</strong> does not calculate variability metrics for percentage outcomes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the fixed working correlation.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>working_rho <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
@@ -532,32 +532,32 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">lnRR</td>
-<td style="text-align: right;">187</td>
+<td style="text-align: right;">207</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">1284</td>
+<td style="text-align: right;">1512</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">lnVR</td>
-<td style="text-align: right;">175</td>
+<td style="text-align: right;">195</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">1262</td>
+<td style="text-align: right;">1490</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">lnCVR</td>
-<td style="text-align: right;">175</td>
+<td style="text-align: right;">195</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">1262</td>
+<td style="text-align: right;">1490</td>
 <td style="text-align: right;">0</td>
 </tr>
 </tbody>
@@ -943,7 +943,7 @@ window.Quarto = {
 <p>We save each matrix as CSV and RDS files. We also save an index that records the effect-size order in the rows and columns of each matrix.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define file names for the three sets of outputs. We retain the existing</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lnRR names so the overall-effect chapter remains compatible.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lnRR names so the Overall effects section remains compatible.</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>vcv_files <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>effect, <span class="sc">~</span>index_file, <span class="sc">~</span>csv_file, <span class="sc">~</span>rds_file,</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnRR"</span>,  <span class="st">"PCN_vcv_index.csv"</span>,       <span class="st">"PCN_vcv_matrix.csv"</span>,       <span class="st">"PCN_vcv_matrix.rds"</span>,</span>
@@ -1622,7 +1622,7 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
 <span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="fu">normalizePath</span>(<span class="st">".."</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>derived_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"Data"</span>, <span class="st">"derived"</span>)</span>
 <span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database from Chapter 2.</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the database created in Effect size calculation.</span></span>
 <span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>vcv_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
 <span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
@@ -1661,7 +1661,7 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
 <span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>We use <span class="in">`metafor::vcalc()`</span> to construct each matrix <span class="co">[</span><span class="ot">@viechtbauer2010</span><span class="co">]</span>. We use <span class="in">`study_id`</span> as the study cluster, <span class="in">`ex_id`</span> and <span class="in">`con_id`</span> as the contrasted-group identifiers, and <span class="in">`ex_n`</span> and <span class="in">`c_n`</span> as the group weights. We supply each <span class="in">`es_id`</span> as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of $\rho = 0.5$. We assign zero sampling covariance to effect sizes that share neither group.</span>
 <span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>The lnRR matrix contains every effect-size row. The lnVR and lnCVR matrices contain only non-percentage outcomes because Chapter 2 does not calculate variability metrics for percentage outcomes.</span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>The lnRR matrix contains every effect-size row. The lnVR and lnCVR matrices contain only non-percentage outcomes because **Effect size calculation** does not calculate variability metrics for percentage outcomes.</span>
 <span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: construct-vcv</span></span>
@@ -1778,7 +1778,7 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
 <span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: export-vcv</span></span>
 <span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a><span class="co"># Define file names for the three sets of outputs. We retain the existing</span></span>
-<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a><span class="co"># lnRR names so the overall-effect chapter remains compatible.</span></span>
+<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a><span class="co"># lnRR names so the Overall effects section remains compatible.</span></span>
 <span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>vcv_files <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb8-209"><a href="#cb8-209" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>effect, <span class="sc">~</span>index_file, <span class="sc">~</span>csv_file, <span class="sc">~</span>rds_file,</span>
 <span id="cb8-210"><a href="#cb8-210" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lnRR"</span>,  <span class="st">"PCN_vcv_index.csv"</span>,       <span class="st">"PCN_vcv_matrix.csv"</span>,       <span class="st">"PCN_vcv_matrix.rds"</span>,</span>

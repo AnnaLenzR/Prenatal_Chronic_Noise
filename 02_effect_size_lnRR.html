@@ -312,7 +312,7 @@ window.Quarto = {
 </header>
 
 
-<p>We load the analysis-ready database from the preceding chapter and calculate three effect sizes: the log response ratio (lnRR), log variability ratio (lnVR), and log coefficient of variation ratio (lnCVR). We also calculate the sampling variance of each effect size.</p>
+<p>We load the analysis-ready database created in <strong>Data preparation</strong> and calculate three effect sizes: the log response ratio (lnRR), log variability ratio (lnVR), and log coefficient of variation ratio (lnCVR). We also calculate the sampling variance of each effect size.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  dplyr,</span>
@@ -656,7 +656,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">187</td>
+<td style="text-align: right;">207</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0</td>
@@ -947,15 +947,15 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">lnRR</td>
-<td style="text-align: right;">187</td>
+<td style="text-align: right;">207</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">lnVR</td>
-<td style="text-align: right;">175</td>
+<td style="text-align: right;">195</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">lnCVR</td>
-<td style="text-align: right;">175</td>
+<td style="text-align: right;">195</td>
 </tr>
 </tbody>
 </table>
@@ -965,7 +965,7 @@ window.Quarto = {
 </section>
 <section id="effect-size-database" class="level1">
 <h1>Effect-size database</h1>
-<p>We add all three effect sizes and their sampling variances to the analysis data and save the result. Percentage rows retain missing values for lnVR and lnCVR. The following chapters use this file.</p>
+<p>We add all three effect sizes and their sampling variances to the analysis data and save the result. Percentage rows retain missing values for lnVR and lnCVR. The following sections use this file.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  db_effect_sizes,</span>
@@ -994,9 +994,9 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Data/derived/db_effect_sizes.csv</td>
-<td style="text-align: right;">187</td>
+<td style="text-align: right;">207</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: right;">187</td>
+<td style="text-align: right;">207</td>
 </tr>
 </tbody>
 </table>
@@ -1671,7 +1671,7 @@ Senior, Alistair M., Wolfgang Viechtbauer, and Shinichi Nakagawa. 2020. <span>â€
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Effect size calculation"</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>We load the analysis-ready database from the preceding chapter and calculate three effect sizes: the log response ratio (lnRR), log variability ratio (lnVR), and log coefficient of variation ratio (lnCVR). We also calculate the sampling variance of each effect size.</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>We load the analysis-ready database created in **Data preparation** and calculate three effect sizes: the log response ratio (lnRR), log variability ratio (lnVR), and log coefficient of variation ratio (lnCVR). We also calculate the sampling variance of each effect size.</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
@@ -2182,7 +2182,7 @@ Senior, Alistair M., Wolfgang Viechtbauer, and Shinichi Nakagawa. 2020. <span>â€
 <span id="cb15-521"><a href="#cb15-521" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-522"><a href="#cb15-522" aria-hidden="true" tabindex="-1"></a><span class="fu"># Effect-size database</span></span>
 <span id="cb15-523"><a href="#cb15-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-524"><a href="#cb15-524" aria-hidden="true" tabindex="-1"></a>We add all three effect sizes and their sampling variances to the analysis data and save the result. Percentage rows retain missing values for lnVR and lnCVR. The following chapters use this file.</span>
+<span id="cb15-524"><a href="#cb15-524" aria-hidden="true" tabindex="-1"></a>We add all three effect sizes and their sampling variances to the analysis data and save the result. Percentage rows retain missing values for lnVR and lnCVR. The following sections use this file.</span>
 <span id="cb15-525"><a href="#cb15-525" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-528"><a href="#cb15-528" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb15-529"><a href="#cb15-529" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: export-effect-sizes</span></span>

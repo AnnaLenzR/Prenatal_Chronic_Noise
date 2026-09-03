@@ -355,9 +355,9 @@ window.Quarto = {
 </div>
 </div>
 <p>Across every lnRR plot, negative values represent less anxiety- or depression-like behaviour and positive values represent more anxiety- or depression-like behaviour. For lnVR and lnCVR, negative values represent lower variability and positive values represent greater variability in the treatment group.</p>
-<p>We load the effect-size database from Chapter 2 and construct a complete VCV matrix for lnRR, lnVR, and lnCVR using the same group identifiers as Chapter 3. The lnVR and lnCVR datasets exclude percentage outcomes because their effect-size values are missing by design.</p>
+<p>We load the database created in <strong>Effect size calculation</strong> and construct a complete VCV matrix for lnRR, lnVR, and lnCVR using the same group identifiers as <strong>Sampling variance-covariance matrices</strong>. The lnVR and lnCVR datasets exclude percentage outcomes because their effect-size values are missing by design.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database created in Chapter 2.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the database created in Effect size calculation.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
@@ -432,15 +432,15 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">lnRR</td>
-<td style="text-align: right;">187</td>
+<td style="text-align: right;">207</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">lnVR</td>
-<td style="text-align: right;">175</td>
+<td style="text-align: right;">195</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">lnCVR</td>
-<td style="text-align: right;">175</td>
+<td style="text-align: right;">195</td>
 </tr>
 </tbody>
 </table>
@@ -850,42 +850,42 @@ window.Quarto = {
 <section id="lnrr" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 187; method: REML)
+Multivariate Meta-Analysis Model (k = 207; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--135.3784   270.7567   284.7567   307.2231   285.3967   
+-153.1389   306.2778   320.2778   343.4702   320.8521   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0446  0.2112     16     no  study_id 
-sigma^2.2  0.1371  0.3702    187     no     es_id 
-sigma^2.3  0.0376  0.1939      5     no    strain 
+sigma^2.1  0.0366  0.1912     16     no  study_id 
+sigma^2.2  0.1456  0.3816    207     no     es_id 
+sigma^2.3  0.0715  0.2673      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 183) = 2313.1281, p-val &lt; .0001
+QE(df = 203) = 2467.4382, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:4):
-F(df1 = 3, df2 = 183) = 0.7985, p-val = 0.4962
+F(df1 = 3, df2 = 203) = 0.7599, p-val = 0.5178
 
 Model Results:
 
                                           estimate      se     tval   df 
-intrcpt                                    -0.0905  0.2562  -0.3533  183 
-gest_stage_ex_standardisedfull_gestation    0.3449  0.2386   1.4454  183 
-gest_stage_ex_standardisedlate              0.3507  0.2597   1.3505  183 
-gest_stage_ex_standardisedmid_late          0.2568  0.2698   0.9519  183 
+intrcpt                                    -0.1432  0.2705  -0.5293  203 
+gest_stage_ex_standardisedfull_gestation    0.3263  0.2364   1.3803  203 
+gest_stage_ex_standardisedlate              0.3655  0.2586   1.4136  203 
+gest_stage_ex_standardisedmid_late          0.3266  0.2702   1.2085  203 
                                             pval    ci.lb   ci.ub    
-intrcpt                                   0.7242  -0.5960  0.4150    
-gest_stage_ex_standardisedfull_gestation  0.1501  -0.1259  0.8156    
-gest_stage_ex_standardisedlate            0.1785  -0.1617  0.8632    
-gest_stage_ex_standardisedmid_late        0.3424  -0.2755  0.7891    
+intrcpt                                   0.5972  -0.6766  0.3902    
+gest_stage_ex_standardisedfull_gestation  0.1690  -0.1398  0.7924    
+gest_stage_ex_standardisedlate            0.1590  -0.1443  0.8753    
+gest_stage_ex_standardisedmid_late        0.2283  -0.2062  0.8594    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0193         0.3869 </code></pre>
+        0.0104         0.4319 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-1.png" class="img-fluid" width="768"></p>
 </div>
@@ -902,13 +902,13 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
     sparse = TRUE)
 
 Linear Hypotheses:
-                                 Estimate Std. Error z value Pr(&gt;|z|)
-full_gestation - early_mid == 0  0.344850   0.238588   1.445    0.148
-late - early_mid == 0            0.350742   0.259718   1.350    0.177
-mid_late - early_mid == 0        0.256787   0.269776   0.952    0.341
-late - full_gestation == 0       0.005891   0.188843   0.031    0.975
-mid_late - full_gestation == 0  -0.088064   0.181804  -0.484    0.628
-mid_late - late == 0            -0.093955   0.222432  -0.422    0.673
+                                  Estimate Std. Error z value Pr(&gt;|z|)
+full_gestation - early_mid == 0  0.3263113  0.2364122   1.380    0.168
+late - early_mid == 0            0.3655114  0.2585636   1.414    0.157
+mid_late - early_mid == 0        0.3265665  0.2702285   1.208    0.227
+late - full_gestation == 0       0.0392001  0.1842273   0.213    0.831
+mid_late - full_gestation == 0   0.0002552  0.1813402   0.001    0.999
+mid_late - late == 0            -0.0389449  0.2225499  -0.175    0.861
 (Adjusted p values reported -- none method)
 </code></pre>
 </section>
@@ -918,42 +918,42 @@ mid_late - late == 0            -0.093955   0.222432  -0.422    0.673
 <section id="lnvr" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--136.7118   273.4236   287.4236   309.4152   288.1107   
+-153.3694   306.7388   320.7388   343.5047   321.3508   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0280  0.1674     14     no  study_id 
-sigma^2.2  0.2206  0.4697    175     no     es_id 
+sigma^2.1  0.0274  0.1656     14     no  study_id 
+sigma^2.2  0.2262  0.4756    195     no     es_id 
 sigma^2.3  0.0000  0.0000      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 171) = 1301.4922, p-val &lt; .0001
+QE(df = 191) = 1505.6325, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:4):
-F(df1 = 3, df2 = 171) = 0.7554, p-val = 0.5206
+F(df1 = 3, df2 = 191) = 0.7788, p-val = 0.5071
 
 Model Results:
 
                                           estimate      se     tval   df 
-intrcpt                                    -0.0513  0.3515  -0.1460  171 
-gest_stage_ex_standardisedfull_gestation    0.1074  0.3635   0.2955  171 
-gest_stage_ex_standardisedlate             -0.2579  0.4563  -0.5651  171 
-gest_stage_ex_standardisedmid_late         -0.1067  0.3786  -0.2817  171 
+intrcpt                                    -0.0529  0.3528  -0.1499  191 
+gest_stage_ex_standardisedfull_gestation    0.1114  0.3642   0.3059  191 
+gest_stage_ex_standardisedlate             -0.2569  0.4585  -0.5603  191 
+gest_stage_ex_standardisedmid_late         -0.1039  0.3798  -0.2737  191 
                                             pval    ci.lb   ci.ub    
-intrcpt                                   0.8841  -0.7451  0.6425    
-gest_stage_ex_standardisedfull_gestation  0.7679  -0.6101  0.8249    
-gest_stage_ex_standardisedlate            0.5727  -1.1586  0.6429    
-gest_stage_ex_standardisedmid_late        0.7785  -0.8540  0.6407    
+intrcpt                                   0.8810  -0.7488  0.6430    
+gest_stage_ex_standardisedfull_gestation  0.7600  -0.6069  0.8297    
+gest_stage_ex_standardisedlate            0.5759  -1.1613  0.6475    
+gest_stage_ex_standardisedmid_late        0.7846  -0.8531  0.6452    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0461         0.1536 </code></pre>
+        0.0435         0.1469 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-2.png" class="img-fluid" width="768"></p>
 </div>
@@ -971,12 +971,12 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                                 Estimate Std. Error z value Pr(&gt;|z|)
-full_gestation - early_mid == 0   0.1074     0.3635   0.296    0.768
-late - early_mid == 0            -0.2579     0.4563  -0.565    0.572
-mid_late - early_mid == 0        -0.1067     0.3786  -0.282    0.778
-late - full_gestation == 0       -0.3653     0.3400  -1.075    0.283
-mid_late - full_gestation == 0   -0.2141     0.1757  -1.219    0.223
-mid_late - late == 0              0.1512     0.3557   0.425    0.671
+full_gestation - early_mid == 0   0.1114     0.3642   0.306    0.760
+late - early_mid == 0            -0.2569     0.4585  -0.560    0.575
+mid_late - early_mid == 0        -0.1039     0.3798  -0.274    0.784
+late - full_gestation == 0       -0.3683     0.3406  -1.081    0.280
+mid_late - full_gestation == 0   -0.2153     0.1738  -1.239    0.215
+mid_late - late == 0              0.1530     0.3569   0.429    0.668
 (Adjusted p values reported -- none method)
 </code></pre>
 </section>
@@ -989,42 +989,42 @@ mid_late - late == 0              0.1512     0.3557   0.425    0.671
 <section id="lncvr" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--100.9751   201.9501   215.9501   237.9418   216.6373   
+-109.4529   218.9058   232.9058   255.6717   233.5179   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
 sigma^2.1  0.0000  0.0000     14     no  study_id 
-sigma^2.2  0.0783  0.2798    175     no     es_id 
-sigma^2.3  0.0008  0.0283      5     no    strain 
+sigma^2.2  0.0760  0.2757    195     no     es_id 
+sigma^2.3  0.0128  0.1130      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 171) = 401.2724, p-val &lt; .0001
+QE(df = 191) = 449.5551, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:4):
-F(df1 = 3, df2 = 171) = 1.1466, p-val = 0.3319
+F(df1 = 3, df2 = 191) = 1.5463, p-val = 0.2039
 
 Model Results:
 
                                           estimate      se     tval   df 
-intrcpt                                    -0.1351  0.2946  -0.4588  171 
-gest_stage_ex_standardisedfull_gestation    0.2533  0.3008   0.8420  171 
-gest_stage_ex_standardisedlate             -0.1886  0.4030  -0.4681  171 
-gest_stage_ex_standardisedmid_late          0.0961  0.3095   0.3106  171 
+intrcpt                                    -0.0680  0.3044  -0.2235  191 
+gest_stage_ex_standardisedfull_gestation    0.2556  0.3000   0.8521  191 
+gest_stage_ex_standardisedlate             -0.2518  0.4041  -0.6232  191 
+gest_stage_ex_standardisedmid_late          0.0498  0.3164   0.1575  191 
                                             pval    ci.lb   ci.ub    
-intrcpt                                   0.6470  -0.7166  0.4463    
-gest_stage_ex_standardisedfull_gestation  0.4010  -0.3405  0.8471    
-gest_stage_ex_standardisedlate            0.6403  -0.9841  0.6069    
-gest_stage_ex_standardisedmid_late        0.7565  -0.5148  0.7071    
+intrcpt                                   0.8234  -0.6684  0.5323    
+gest_stage_ex_standardisedfull_gestation  0.3952  -0.3361  0.8473    
+gest_stage_ex_standardisedlate            0.5339  -1.0489  0.5452    
+gest_stage_ex_standardisedmid_late        0.8750  -0.5743  0.6739    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.1164         0.1254 </code></pre>
+        0.1380         0.2619 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-3.png" class="img-fluid" width="768"></p>
 </div>
@@ -1042,12 +1042,12 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                                 Estimate Std. Error z value Pr(&gt;|z|)
-full_gestation - early_mid == 0  0.25330    0.30084   0.842    0.400
-late - early_mid == 0           -0.18862    0.40300  -0.468    0.640
-mid_late - early_mid == 0        0.09614    0.30950   0.311    0.756
-late - full_gestation == 0      -0.44192    0.31597  -1.399    0.162
-mid_late - full_gestation == 0  -0.15716    0.12337  -1.274    0.203
-mid_late - late == 0             0.28476    0.32403   0.879    0.380
+full_gestation - early_mid == 0  0.25560    0.29997   0.852    0.394
+late - early_mid == 0           -0.25182    0.40409  -0.623    0.533
+mid_late - early_mid == 0        0.04984    0.31641   0.158    0.875
+late - full_gestation == 0      -0.50743    0.31548  -1.608    0.108
+mid_late - full_gestation == 0  -0.20576    0.13704  -1.501    0.133
+mid_late - late == 0             0.30167    0.33021   0.914    0.361
 (Adjusted p values reported -- none method)
 </code></pre>
 </section>
@@ -1063,35 +1063,35 @@ mid_late - late == 0             0.28476    0.32403   0.879    0.380
 <section id="lnrr-1" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr-1">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 187; method: REML)
+Multivariate Meta-Analysis Model (k = 207; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--137.2100   274.4201   284.4201   300.5218   284.7552   
+-155.0567   310.1134   320.1134   336.7285   320.4149   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0447  0.2115     16     no  study_id 
-sigma^2.2  0.1379  0.3714    187     no     es_id 
-sigma^2.3  0.0278  0.1666      5     no    strain 
+sigma^2.1  0.0388  0.1969     16     no  study_id 
+sigma^2.2  0.1463  0.3825    207     no     es_id 
+sigma^2.3  0.0529  0.2301      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 185) = 2590.4219, p-val &lt; .0001
+QE(df = 205) = 2748.5813, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 185) = 0.4158, p-val = 0.5198
+F(df1 = 1, df2 = 205) = 0.0658, p-val = 0.7977
 
 Model Results:
 
                  estimate      se    tval   df    pval    ci.lb   ci.ub    
-intrcpt            0.1036  0.1974  0.5246  185  0.6005  -0.2859  0.4931    
-exposure_span_d    0.0075  0.0116  0.6448  185  0.5198  -0.0154  0.0305    
+intrcpt            0.1370  0.2089  0.6557  205  0.5128  -0.2749  0.5489    
+exposure_span_d    0.0029  0.0115  0.2566  205  0.7977  -0.0197  0.0256    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-         0.010          0.351 </code></pre>
+        0.0013         0.3861 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-4.png" class="img-fluid" width="768"></p>
 </div>
@@ -1102,35 +1102,35 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnvr-1" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr-1">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--138.3211   276.6422   286.6422   302.4086   287.0014   
+-154.9861   309.9721   319.9721   336.2856   320.2930   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0263  0.1623     14     no  study_id 
-sigma^2.2  0.2196  0.4686    175     no     es_id 
+sigma^2.1  0.0259  0.1609     14     no  study_id 
+sigma^2.2  0.2252  0.4745    195     no     es_id 
 sigma^2.3  0.0000  0.0000      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 1303.0568, p-val &lt; .0001
+QE(df = 193) = 1507.1955, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 1.6860, p-val = 0.1959
+F(df1 = 1, df2 = 193) = 1.7558, p-val = 0.1867
 
 Model Results:
 
                  estimate      se     tval   df    pval    ci.lb   ci.ub    
-intrcpt           -0.3072  0.2240  -1.3713  173  0.1721  -0.7494  0.1350    
-exposure_span_d    0.0172  0.0132   1.2984  173  0.1959  -0.0089  0.0433    
+intrcpt           -0.3078  0.2234  -1.3777  193  0.1699  -0.7485  0.1329    
+exposure_span_d    0.0173  0.0131   1.3251  193  0.1867  -0.0085  0.0431    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0407         0.1435 </code></pre>
+        0.0387         0.1378 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-5.png" class="img-fluid" width="768"></p>
 </div>
@@ -1144,35 +1144,35 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lncvr-1" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr-1">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--102.5803   205.1606   215.1606   230.9271   215.5199   
+-111.0689   222.1377   232.1377   248.4512   232.4586   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
 sigma^2.1  0.0000  0.0000     14     no  study_id 
-sigma^2.2  0.0773  0.2780    175     no     es_id 
-sigma^2.3  0.0015  0.0394      5     no    strain 
+sigma^2.2  0.0754  0.2745    195     no     es_id 
+sigma^2.3  0.0120  0.1094      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 402.4422, p-val &lt; .0001
+QE(df = 193) = 450.7722, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 2.3482, p-val = 0.1273
+F(df1 = 1, df2 = 193) = 3.5314, p-val = 0.0617
 
 Model Results:
 
                  estimate      se     tval   df    pval    ci.lb   ci.ub    
-intrcpt           -0.1880  0.1624  -1.1578  173  0.2485  -0.5086  0.1325    
-exposure_span_d    0.0147  0.0096   1.5324  173  0.1273  -0.0042  0.0337    
+intrcpt           -0.2155  0.1810  -1.1907  193  0.2352  -0.5724  0.1414    
+exposure_span_d    0.0195  0.0104   1.8792  193  0.0617  -0.0010  0.0400  . 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0888         0.1067 </code></pre>
+        0.1280         0.2475 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-6.png" class="img-fluid" width="768"></p>
 </div>
@@ -1189,38 +1189,38 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnrr-2" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr-2">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 187; method: REML)
+Multivariate Meta-Analysis Model (k = 207; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--137.1900   274.3800   284.3800   300.4818   284.7152   
+-155.0181   310.0362   320.0362   336.6513   320.3378   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0439  0.2095     16     no  study_id 
-sigma^2.2  0.1382  0.3717    187     no     es_id 
-sigma^2.3  0.0311  0.1763      5     no    strain 
+sigma^2.1  0.0397  0.1993     16     no  study_id 
+sigma^2.2  0.1462  0.3824    207     no     es_id 
+sigma^2.3  0.0533  0.2308      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 185) = 2649.2369, p-val &lt; .0001
+QE(df = 205) = 2785.4622, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 185) = 0.3318, p-val = 0.5653
+F(df1 = 1, df2 = 205) = 0.0587, p-val = 0.8089
 
 Model Results:
 
                            estimate      se     tval   df    pval    ci.lb 
-intrcpt                      0.2587  0.1509   1.7145  185  0.0881  -0.0390 
-exposure_typeintermittent   -0.0865  0.1502  -0.5760  185  0.5653  -0.3830 
+intrcpt                      0.1998  0.1634   1.2223  205  0.2230  -0.1225 
+exposure_typeintermittent   -0.0358  0.1479  -0.2422  205  0.8089  -0.3273 
                             ci.ub    
-intrcpt                    0.5564  . 
-exposure_typeintermittent  0.2099    
+intrcpt                    0.5220    
+exposure_typeintermittent  0.2557    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0087         0.3574 </code></pre>
+        0.0013         0.3895 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-7.png" class="img-fluid" width="768"></p>
 </div>
@@ -1231,38 +1231,38 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnvr-2" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr-2">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--137.8858   275.7717   285.7717   301.5381   286.1309   
+-154.5487   309.0974   319.0974   335.4108   319.4183   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0214  0.1464     14     no  study_id 
-sigma^2.2  0.2194  0.4684    175     no     es_id 
+sigma^2.1  0.0211  0.1454     14     no  study_id 
+sigma^2.2  0.2251  0.4744    195     no     es_id 
 sigma^2.3  0.0000  0.0000      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 1299.6138, p-val &lt; .0001
+QE(df = 193) = 1503.8165, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 2.7268, p-val = 0.1005
+F(df1 = 1, df2 = 193) = 2.7957, p-val = 0.0961
 
 Model Results:
 
                            estimate      se     tval   df    pval    ci.lb 
-intrcpt                      0.0951  0.1072   0.8871  173  0.3763  -0.1165 
-exposure_typeintermittent   -0.2530  0.1532  -1.6513  173  0.1005  -0.5554 
+intrcpt                      0.0948  0.1035   0.9156  193  0.3610  -0.1094 
+exposure_typeintermittent   -0.2522  0.1508  -1.6720  193  0.0961  -0.5497 
                             ci.ub    
-intrcpt                    0.3067    
-exposure_typeintermittent  0.0494    
+intrcpt                    0.2990    
+exposure_typeintermittent  0.0453  . 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0608         0.1443 </code></pre>
+         0.057          0.138 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-8.png" class="img-fluid" width="768"></p>
 </div>
@@ -1276,38 +1276,38 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lncvr-2" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr-2">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--101.4824   202.9648   212.9648   228.7313   213.3241   
+-109.8605   219.7210   229.7210   246.0344   230.0418   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
 sigma^2.1  0.0000  0.0000     14     no  study_id 
-sigma^2.2  0.0757  0.2752    175     no     es_id 
-sigma^2.3  0.0012  0.0349      5     no    strain 
+sigma^2.2  0.0743  0.2725    195     no     es_id 
+sigma^2.3  0.0092  0.0957      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 397.9203, p-val &lt; .0001
+QE(df = 193) = 445.2597, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 4.5447, p-val = 0.0344
+F(df1 = 1, df2 = 193) = 6.0644, p-val = 0.0147
 
 Model Results:
 
                            estimate      se     tval   df    pval    ci.lb 
-intrcpt                      0.1580  0.0823   1.9189  173  0.0566  -0.0045 
-exposure_typeintermittent   -0.2489  0.1167  -2.1318  173  0.0344  -0.4793 
+intrcpt                      0.2224  0.0967   2.2998  193  0.0225   0.0317 
+exposure_typeintermittent   -0.2981  0.1210  -2.4626  193  0.0147  -0.5368 
                              ci.ub    
-intrcpt                     0.3205  . 
-exposure_typeintermittent  -0.0185  * 
+intrcpt                     0.4132  * 
+exposure_typeintermittent  -0.0593  * 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.1639         0.1771 </code></pre>
+        0.1995         0.2874 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-9.png" class="img-fluid" width="768"></p>
 </div>
@@ -1324,38 +1324,38 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnrr-3" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr-3">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 181; method: REML)
+Multivariate Meta-Analysis Model (k = 201; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--135.4815   270.9629   280.9629   296.8998   281.3097   
+-153.0038   306.0077   316.0077   332.4742   316.3186   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0392  0.1979     15     no  study_id 
-sigma^2.2  0.1429  0.3781    181     no     es_id 
-sigma^2.3  0.0601  0.2451      4     no    strain 
+sigma^2.1  0.0325  0.1802     15     no  study_id 
+sigma^2.2  0.1511  0.3888    201     no     es_id 
+sigma^2.3  0.0964  0.3104      4     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 179) = 2632.9416, p-val &lt; .0001
+QE(df = 199) = 2769.0014, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 179) = 0.0224, p-val = 0.8812
+F(df1 = 1, df2 = 199) = 0.2267, p-val = 0.6345
 
 Model Results:
 
                                  estimate      se     tval   df    pval 
-intrcpt                            0.2453  0.1694   1.4481  179  0.1493 
-noise_frequency_rangeultrasound   -0.0223  0.1492  -0.1497  179  0.8812 
+intrcpt                            0.2455  0.1935   1.2691  199  0.2059 
+noise_frequency_rangeultrasound   -0.0684  0.1438  -0.4761  199  0.6345 
                                    ci.lb   ci.ub    
-intrcpt                          -0.0890  0.5797    
-noise_frequency_rangeultrasound  -0.3168  0.2722    
+intrcpt                          -0.1360  0.6270    
+noise_frequency_rangeultrasound  -0.3520  0.2151    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0005         0.4101 </code></pre>
+        0.0039         0.4623 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-10.png" class="img-fluid" width="768"></p>
 </div>
@@ -1366,38 +1366,38 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnvr-3" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr-3">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 173; method: REML)
+Multivariate Meta-Analysis Model (k = 193; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--136.0971   272.1941   282.1941   297.9024   282.5578   
+-152.7562   305.5123   315.5123   331.7737   315.8367   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0207  0.1438     13     no  study_id 
-sigma^2.2  0.2202  0.4692    173     no     es_id 
+sigma^2.1  0.0204  0.1429     13     no  study_id 
+sigma^2.2  0.2258  0.4751    193     no     es_id 
 sigma^2.3  0.0000  0.0000      4     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 171) = 1297.4180, p-val &lt; .0001
+QE(df = 191) = 1501.5935, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 171) = 2.8108, p-val = 0.0955
+F(df1 = 1, df2 = 191) = 2.8611, p-val = 0.0924
 
 Model Results:
 
                                  estimate      se     tval   df    pval 
-intrcpt                           -0.1686  0.1195  -1.4108  171  0.1601 
-noise_frequency_rangeultrasound    0.2620  0.1563   1.6765  171  0.0955 
+intrcpt                           -0.1680  0.1197  -1.4036  191  0.1620 
+noise_frequency_rangeultrasound    0.2613  0.1545   1.6915  191  0.0924 
                                    ci.lb   ci.ub    
-intrcpt                          -0.4045  0.0673    
-noise_frequency_rangeultrasound  -0.0465  0.5706  . 
+intrcpt                          -0.4042  0.0681    
+noise_frequency_rangeultrasound  -0.0434  0.5661  . 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0626         0.1432 </code></pre>
+        0.0582         0.1363 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-11.png" class="img-fluid" width="768"></p>
 </div>
@@ -1411,38 +1411,38 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lncvr-3" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr-3">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 173; method: REML)
+Multivariate Meta-Analysis Model (k = 193; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--100.6763   201.3527   211.3527   227.0610   211.7163   
+-108.9991   217.9983   227.9983   244.2596   228.3226   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
 sigma^2.1  0.0000  0.0000     13     no  study_id 
-sigma^2.2  0.0765  0.2765    173     no     es_id 
-sigma^2.3  0.0034  0.0585      4     no    strain 
+sigma^2.2  0.0748  0.2734    193     no     es_id 
+sigma^2.3  0.0125  0.1117      4     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 171) = 398.7403, p-val &lt; .0001
+QE(df = 191) = 446.4395, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 171) = 3.8251, p-val = 0.0521
+F(df1 = 1, df2 = 191) = 5.0995, p-val = 0.0251
 
 Model Results:
 
                                  estimate      se     tval   df    pval 
-intrcpt                           -0.0788  0.0966  -0.8151  171  0.4162 
-noise_frequency_rangeultrasound    0.2392  0.1223   1.9558  171  0.0521 
+intrcpt                           -0.0619  0.1124  -0.5502  191  0.5829 
+noise_frequency_rangeultrasound    0.2870  0.1271   2.2582  191  0.0251 
                                    ci.lb   ci.ub    
-intrcpt                          -0.2695  0.1120    
-noise_frequency_rangeultrasound  -0.0022  0.4806  . 
+intrcpt                          -0.2836  0.1599    
+noise_frequency_rangeultrasound   0.0363  0.5376  * 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.1438         0.1805 </code></pre>
+        0.1738         0.2919 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-12.png" class="img-fluid" width="768"></p>
 </div>
@@ -1459,40 +1459,40 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnrr-4" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr-4">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 187; method: REML)
+Multivariate Meta-Analysis Model (k = 207; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--134.3601   268.7202   280.7202   300.0098   281.1948   
+-151.9790   303.9579   315.9579   335.8666   316.3843   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0087  0.0935     16     no  study_id 
-sigma^2.2  0.1374  0.3706    187     no     es_id 
-sigma^2.3  0.0782  0.2796      5     no    strain 
+sigma^2.1  0.0063  0.0793     16     no  study_id 
+sigma^2.2  0.1461  0.3822    207     no     es_id 
+sigma^2.3  0.0942  0.3069      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 184) = 2443.7794, p-val &lt; .0001
+QE(df = 204) = 2572.8189, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:3):
-F(df1 = 2, df2 = 184) = 3.5819, p-val = 0.0298
+F(df1 = 2, df2 = 204) = 3.6526, p-val = 0.0276
 
 Model Results:
 
                            estimate      se     tval   df    pval    ci.lb 
-intrcpt                      0.1944  0.1438   1.3514  184  0.1782  -0.0894 
-control_conditionssilence   -0.5161  0.2060  -2.5052  184  0.0131  -0.9225 
-control_conditionsunclear    0.0521  0.0960   0.5424  184  0.5882  -0.1373 
+intrcpt                      0.1691  0.1533   1.1032  204  0.2712  -0.1331 
+control_conditionssilence   -0.5157  0.2057  -2.5073  204  0.0129  -0.9212 
+control_conditionsunclear    0.0601  0.0961   0.6254  204  0.5324  -0.1294 
                              ci.ub    
-intrcpt                     0.4781    
-control_conditionssilence  -0.1097  * 
-control_conditionsunclear   0.2415    
+intrcpt                     0.4714    
+control_conditionssilence  -0.1102  * 
+control_conditionsunclear   0.2496    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0556         0.4216 </code></pre>
+        0.0469         0.4353 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-13.png" class="img-fluid" width="768"></p>
 </div>
@@ -1510,9 +1510,9 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                              Estimate Std. Error z value Pr(&gt;|z|)   
-silence - ambient_sound == 0 -0.51607    0.20600  -2.505  0.01224 * 
-unclear - ambient_sound == 0  0.05207    0.09600   0.542  0.58757   
-unclear - silence == 0        0.56813    0.21335   2.663  0.00775 **
+silence - ambient_sound == 0 -0.51567    0.20567  -2.507  0.01217 * 
+unclear - ambient_sound == 0  0.06012    0.09613   0.625  0.53169   
+unclear - silence == 0        0.57579    0.21369   2.695  0.00705 **
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 (Adjusted p values reported -- none method)
@@ -1524,40 +1524,40 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnvr-4" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr-4">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--138.4867   276.9734   288.9734   307.8584   289.4825   
+-155.1782   310.3565   322.3565   341.9014   322.8105   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0379  0.1947     14     no  study_id 
-sigma^2.2  0.2206  0.4696    175     no     es_id 
+sigma^2.1  0.0376  0.1939     14     no  study_id 
+sigma^2.2  0.2261  0.4755    195     no     es_id 
 sigma^2.3  0.0000  0.0000      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 172) = 1311.5428, p-val &lt; .0001
+QE(df = 192) = 1515.6945, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:3):
-F(df1 = 2, df2 = 172) = 0.1742, p-val = 0.8403
+F(df1 = 2, df2 = 192) = 0.1797, p-val = 0.8357
 
 Model Results:
 
                            estimate      se     tval   df    pval    ci.lb 
-intrcpt                     -0.0372  0.0972  -0.3828  172  0.7023  -0.2291 
-control_conditionssilence    0.0666  0.2957   0.2252  172  0.8221  -0.5171 
-control_conditionsunclear   -0.0836  0.1625  -0.5145  172  0.6076  -0.4043 
+intrcpt                     -0.0323  0.0957  -0.3374  192  0.7362  -0.2210 
+control_conditionssilence    0.0617  0.2959   0.2084  192  0.8351  -0.5220 
+control_conditionsunclear   -0.0870  0.1629  -0.5339  192  0.5940  -0.4083 
                             ci.ub    
-intrcpt                    0.1547    
-control_conditionssilence  0.6502    
-control_conditionsunclear  0.2371    
+intrcpt                    0.1564    
+control_conditionssilence  0.6453    
+control_conditionsunclear  0.2344    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0049         0.1509 </code></pre>
+        0.0045         0.1465 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-14.png" class="img-fluid" width="768"></p>
 </div>
@@ -1575,9 +1575,9 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                              Estimate Std. Error z value Pr(&gt;|z|)
-silence - ambient_sound == 0  0.06658    0.29569   0.225    0.822
-unclear - ambient_sound == 0 -0.08359    0.16248  -0.514    0.607
-unclear - silence == 0       -0.15017    0.31977  -0.470    0.639
+silence - ambient_sound == 0  0.06167    0.29591   0.208    0.835
+unclear - ambient_sound == 0 -0.08698    0.16291  -0.534    0.593
+unclear - silence == 0       -0.14864    0.32067  -0.464    0.643
 (Adjusted p values reported -- none method)
 </code></pre>
 </section>
@@ -1590,40 +1590,40 @@ unclear - silence == 0       -0.15017    0.31977  -0.470    0.639
 <section id="lncvr-4" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr-4">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--102.2420   204.4840   216.4840   235.3690   216.9931   
+-111.2972   222.5945   234.5945   254.1395   235.0485   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0000  0.0000     14     no  study_id 
-sigma^2.2  0.0807  0.2841    175     no     es_id 
-sigma^2.3  0.0000  0.0000      5     no    strain 
+sigma^2.1  0.0000  0.0001     14     no  study_id 
+sigma^2.2  0.0801  0.2831    195     no     es_id 
+sigma^2.3  0.0053  0.0727      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 172) = 408.9467, p-val &lt; .0001
+QE(df = 192) = 459.7367, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:3):
-F(df1 = 2, df2 = 172) = 0.9198, p-val = 0.4006
+F(df1 = 2, df2 = 192) = 1.1109, p-val = 0.3314
 
 Model Results:
 
                            estimate      se     tval   df    pval    ci.lb 
-intrcpt                      0.0793  0.0655   1.2097  172  0.2281  -0.0501 
-control_conditionssilence   -0.2067  0.2741  -0.7540  172  0.4519  -0.7477 
-control_conditionsunclear   -0.1558  0.1300  -1.1990  172  0.2322  -0.4123 
+intrcpt                      0.1191  0.0768   1.5514  192  0.1224  -0.0323 
+control_conditionssilence   -0.2148  0.2749  -0.7815  192  0.4355  -0.7571 
+control_conditionsunclear   -0.1746  0.1311  -1.3323  192  0.1844  -0.4332 
                             ci.ub    
-intrcpt                    0.2086    
-control_conditionssilence  0.3344    
-control_conditionsunclear  0.1007    
+intrcpt                    0.2705    
+control_conditionssilence  0.3274    
+control_conditionsunclear  0.0839    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0574         0.0574 </code></pre>
+        0.0595         0.1178 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-15.png" class="img-fluid" width="768"></p>
 </div>
@@ -1641,9 +1641,9 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                              Estimate Std. Error z value Pr(&gt;|z|)
-silence - ambient_sound == 0 -0.20666    0.27411  -0.754    0.451
-unclear - ambient_sound == 0 -0.15582    0.12996  -1.199    0.231
-unclear - silence == 0        0.05084    0.29102   0.175    0.861
+silence - ambient_sound == 0  -0.2148     0.2749  -0.782    0.435
+unclear - ambient_sound == 0  -0.1746     0.1311  -1.332    0.183
+unclear - silence == 0         0.0402     0.2941   0.137    0.891
 (Adjusted p values reported -- none method)
 </code></pre>
 </section>
@@ -1659,36 +1659,36 @@ unclear - silence == 0        0.05084    0.29102   0.175    0.861
 <section id="lnrr-5" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr-5">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 187; method: REML)
+Multivariate Meta-Analysis Model (k = 207; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--135.8893   271.7786   283.7786   303.0682   284.2532   
+-153.5519   307.1038   319.1038   339.0125   319.5302   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0352  0.1876     16     no  study_id 
-sigma^2.2  0.1382  0.3718    187     no     es_id 
-sigma^2.3  0.0476  0.2182      5     no    strain 
+sigma^2.1  0.0304  0.1743     16     no  study_id 
+sigma^2.2  0.1462  0.3824    207     no     es_id 
+sigma^2.3  0.0729  0.2700      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 184) = 2261.8133, p-val &lt; .0001
+QE(df = 204) = 2453.8571, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:3):
-F(df1 = 2, df2 = 184) = 0.6935, p-val = 0.5011
+F(df1 = 2, df2 = 204) = 0.6640, p-val = 0.5159
 
 Model Results:
 
                     estimate      se     tval   df    pval    ci.lb   ci.ub    
-intrcpt               0.1742  0.1527   1.1408  184  0.2554  -0.1271  0.4754    
-offspring_sexmale     0.1005  0.1054   0.9539  184  0.3414  -0.1074  0.3084    
-offspring_sexmixed   -0.1017  0.2521  -0.4035  184  0.6870  -0.5992  0.3957    
+intrcpt               0.1464  0.1675   0.8745  204  0.3829  -0.1837  0.4766    
+offspring_sexmale     0.1033  0.1020   1.0128  204  0.3123  -0.0978  0.3044    
+offspring_sexmixed   -0.0726  0.2632  -0.2760  204  0.7828  -0.5916  0.4463    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0276         0.3920 </code></pre>
+        0.0190         0.4251 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-16.png" class="img-fluid" width="768"></p>
 </div>
@@ -1706,9 +1706,9 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                     Estimate Std. Error z value Pr(&gt;|z|)
-male - female == 0    0.1005     0.1054   0.954    0.340
-mixed - female == 0  -0.1017     0.2521  -0.404    0.687
-mixed - male == 0    -0.2022     0.2452  -0.825    0.410
+male - female == 0   0.10330    0.10200   1.013    0.311
+mixed - female == 0 -0.07265    0.26322  -0.276    0.783
+mixed - male == 0   -0.17595    0.25714  -0.684    0.494
 (Adjusted p values reported -- none method)
 </code></pre>
 </section>
@@ -1718,36 +1718,36 @@ mixed - male == 0    -0.2022     0.2452  -0.825    0.410
 <section id="lnvr-5" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr-5">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--138.0613   276.1225   288.1225   307.0075   288.6316   
+-154.7662   309.5325   321.5325   341.0774   321.9865   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0417  0.2041     14     no  study_id 
-sigma^2.2  0.2198  0.4688    175     no     es_id 
+sigma^2.1  0.0425  0.2062     14     no  study_id 
+sigma^2.2  0.2253  0.4747    195     no     es_id 
 sigma^2.3  0.0000  0.0000      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 172) = 1309.5103, p-val &lt; .0001
+QE(df = 192) = 1514.4091, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:3):
-F(df1 = 2, df2 = 172) = 0.1846, p-val = 0.8316
+F(df1 = 2, df2 = 192) = 0.1480, p-val = 0.8625
 
 Model Results:
 
                     estimate      se     tval   df    pval    ci.lb   ci.ub    
-intrcpt              -0.0323  0.1362  -0.2370  172  0.8130  -0.3011  0.2366    
-offspring_sexmale    -0.0574  0.1463  -0.3925  172  0.6952  -0.3462  0.2314    
-offspring_sexmixed    0.0689  0.2486   0.2773  172  0.7819  -0.4218  0.5597    
+intrcpt              -0.0366  0.1329  -0.2757  192  0.7830  -0.2987  0.2255    
+offspring_sexmale    -0.0444  0.1406  -0.3161  192  0.7523  -0.3217  0.2328    
+offspring_sexmixed    0.0733  0.2484   0.2951  192  0.7682  -0.4167  0.5633    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0093         0.1671 </code></pre>
+        0.0072         0.1648 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-17.png" class="img-fluid" width="768"></p>
 </div>
@@ -1765,9 +1765,9 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                     Estimate Std. Error z value Pr(&gt;|z|)
-male - female == 0  -0.05742    0.14632  -0.392    0.695
-mixed - female == 0  0.06894    0.24861   0.277    0.782
-mixed - male == 0    0.12636    0.23502   0.538    0.591
+male - female == 0  -0.04443    0.14058  -0.316    0.752
+mixed - female == 0  0.07332    0.24842   0.295    0.768
+mixed - male == 0    0.11775    0.23605   0.499    0.618
 (Adjusted p values reported -- none method)
 </code></pre>
 </section>
@@ -1780,36 +1780,36 @@ mixed - male == 0    0.12636    0.23502   0.538    0.591
 <section id="lncvr-5" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr-5">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--102.3254   204.6508   216.6508   235.5358   217.1599   
+-111.3308   222.6615   234.6615   254.2065   235.1156   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0000  0.0000     14     no  study_id 
-sigma^2.2  0.0797  0.2822    175     no     es_id 
-sigma^2.3  0.0000  0.0000      5     no    strain 
+sigma^2.1  0.0016  0.0396     14     no  study_id 
+sigma^2.2  0.0783  0.2799    195     no     es_id 
+sigma^2.3  0.0113  0.1063      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 172) = 406.4546, p-val &lt; .0001
+QE(df = 192) = 458.0419, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:3):
-F(df1 = 2, df2 = 172) = 0.7426, p-val = 0.4774
+F(df1 = 2, df2 = 192) = 0.6540, p-val = 0.5211
 
 Model Results:
 
                     estimate      se     tval   df    pval    ci.lb   ci.ub    
-intrcpt               0.1416  0.1040   1.3613  172  0.1752  -0.0637  0.3469    
-offspring_sexmale    -0.1390  0.1364  -1.0190  172  0.3096  -0.4083  0.1303    
-offspring_sexmixed   -0.1679  0.1525  -1.1007  172  0.2726  -0.4690  0.1332    
+intrcpt               0.1793  0.1205   1.4882  192  0.1383  -0.0583  0.4170    
+offspring_sexmale    -0.1149  0.1323  -0.8683  192  0.3863  -0.3759  0.1461    
+offspring_sexmixed   -0.1853  0.1785  -1.0384  192  0.3004  -0.5374  0.1667    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0578         0.0578 </code></pre>
+        0.0499         0.1839 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-18.png" class="img-fluid" width="768"></p>
 </div>
@@ -1827,9 +1827,9 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                     Estimate Std. Error z value Pr(&gt;|z|)
-male - female == 0  -0.13903    0.13644  -1.019    0.308
-mixed - female == 0 -0.16790    0.15254  -1.101    0.271
-mixed - male == 0   -0.02886    0.14230  -0.203    0.839
+male - female == 0  -0.11488    0.13231  -0.868    0.385
+mixed - female == 0 -0.18535    0.17849  -1.038    0.299
+mixed - male == 0   -0.07046    0.17231  -0.409    0.683
 (Adjusted p values reported -- none method)
 </code></pre>
 </section>
@@ -1845,38 +1845,38 @@ mixed - male == 0   -0.02886    0.14230  -0.203    0.839
 <section id="lnrr-6" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr-6">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 187; method: REML)
+Multivariate Meta-Analysis Model (k = 207; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--134.8100   269.6201   279.6201   295.7218   279.9553   
+-154.0405   308.0810   318.0810   334.6961   318.3825   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0346  0.1860     16     no  study_id 
-sigma^2.2  0.1313  0.3623    187     no     es_id 
-sigma^2.3  0.0436  0.2088      5     no    strain 
+sigma^2.1  0.0309  0.1759     16     no  study_id 
+sigma^2.2  0.1432  0.3784    207     no     es_id 
+sigma^2.3  0.0606  0.2463      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 185) = 2647.1923, p-val &lt; .0001
+QE(df = 205) = 2781.9659, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 185) = 6.5694, p-val = 0.0112
+F(df1 = 1, df2 = 205) = 3.4387, p-val = 0.0651
 
 Model Results:
 
-                        estimate      se     tval   df    pval    ci.lb 
-intrcpt                   0.2384  0.1271   1.8756  185  0.0623  -0.0124 
-outcome_typedepression   -0.2583  0.1008  -2.5631  185  0.0112  -0.4571 
-                          ci.ub    
-intrcpt                  0.4891  . 
-outcome_typedepression  -0.0595  * 
+                        estimate      se     tval   df    pval    ci.lb   ci.ub 
+intrcpt                   0.1997  0.1392   1.4348  205  0.1529  -0.0747  0.4742 
+outcome_typedepression   -0.1888  0.1018  -1.8544  205  0.0651  -0.3895  0.0119 
+                          
+intrcpt                   
+outcome_typedepression  . 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0380         0.3972 </code></pre>
+        0.0170         0.4004 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-19.png" class="img-fluid" width="768"></p>
 </div>
@@ -1887,29 +1887,29 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnvr-6" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr-6">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--138.3164   276.6327   286.6327   302.3992   286.9920   
+-154.9261   309.8522   319.8522   336.1656   320.1730   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0385  0.1961     14     no  study_id 
-sigma^2.2  0.2152  0.4639    175     no     es_id 
+sigma^2.1  0.0382  0.1956     14     no  study_id 
+sigma^2.2  0.2209  0.4700    195     no     es_id 
 sigma^2.3  0.0000  0.0000      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 1294.7330, p-val &lt; .0001
+QE(df = 193) = 1497.9979, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 2.8148, p-val = 0.0952
+F(df1 = 1, df2 = 193) = 3.0188, p-val = 0.0839
 
 Model Results:
 
                         estimate      se     tval   df    pval    ci.lb   ci.ub 
-intrcpt                  -0.0200  0.0877  -0.2283  173  0.8196  -0.1931  0.1531 
-outcome_typedepression   -0.2093  0.1248  -1.6777  173  0.0952  -0.4556  0.0369 
+intrcpt                  -0.0191  0.0863  -0.2209  193  0.8254  -0.1894  0.1512 
+outcome_typedepression   -0.2156  0.1241  -1.7375  193  0.0839  -0.4603  0.0291 
                           
 intrcpt                   
 outcome_typedepression  . 
@@ -1918,7 +1918,7 @@ outcome_typedepression  .
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0222         0.1705 </code></pre>
+        0.0211         0.1655 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-20.png" class="img-fluid" width="768"></p>
 </div>
@@ -1932,38 +1932,38 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lncvr-6" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr-6">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
-  logLik  Deviance       AIC       BIC      AICc   
--98.9406  197.8812  207.8812  223.6477  208.2405   
+   logLik   Deviance        AIC        BIC       AICc   
+-107.2118   214.4235   224.4235   240.7370   224.7444   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0097  0.0985     14     no  study_id 
-sigma^2.2  0.0677  0.2601    175     no     es_id 
-sigma^2.3  0.0184  0.1355      5     no    strain 
+sigma^2.1  0.0118  0.1085     14     no  study_id 
+sigma^2.2  0.0673  0.2594    195     no     es_id 
+sigma^2.3  0.0285  0.1687      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 393.3631, p-val &lt; .0001
+QE(df = 193) = 444.7787, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 12.0878, p-val = 0.0006
+F(df1 = 1, df2 = 193) = 12.9629, p-val = 0.0004
 
 Model Results:
 
                         estimate      se     tval   df    pval    ci.lb 
-intrcpt                   0.1111  0.1030   1.0779  173  0.2826  -0.0923 
-outcome_typedepression   -0.3249  0.0934  -3.4768  173  0.0006  -0.5093 
+intrcpt                   0.1281  0.1145   1.1183  193  0.2648  -0.0978 
+outcome_typedepression   -0.3275  0.0910  -3.6004  193  0.0004  -0.5070 
                           ci.ub      
-intrcpt                  0.3144      
-outcome_typedepression  -0.1405  *** 
+intrcpt                  0.3539      
+outcome_typedepression  -0.1481  *** 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.1264         0.3825 </code></pre>
+        0.1069         0.4412 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-21.png" class="img-fluid" width="768"></p>
 </div>
@@ -1980,44 +1980,44 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnrr-7" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr-7">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 184; method: REML)
+Multivariate Meta-Analysis Model (k = 204; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--130.9307   261.8615   277.8615   303.3605   278.7085   
+-148.4314   296.8627   312.8627   339.2092   313.6206   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0310  0.1761     15     no  study_id 
-sigma^2.2  0.1339  0.3659    184     no     es_id 
-sigma^2.3  0.0657  0.2563      5     no    strain 
+sigma^2.1  0.0277  0.1666     15     no  study_id 
+sigma^2.2  0.1432  0.3784    204     no     es_id 
+sigma^2.3  0.0870  0.2950      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 179) = 2566.9147, p-val &lt; .0001
+QE(df = 199) = 2748.0694, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:5):
-F(df1 = 4, df2 = 179) = 2.2715, p-val = 0.0633
+F(df1 = 4, df2 = 199) = 2.2676, p-val = 0.0633
 
 Model Results:
 
                                          estimate      se     tval   df    pval 
-intrcpt                                    0.2232  0.1548   1.4423  179  0.1510 
-assay_typeElevated T Maze (ETM)           -0.4850  0.3707  -1.3083  179  0.1925 
-assay_typeForced Swimming Test (FST)      -0.1761  0.1355  -1.3002  179  0.1952 
-assay_typeOpen Field Test (OFT)            0.0247  0.0903   0.2732  179  0.7850 
-assay_typeSucrose Preference Test (SPT)   -0.3525  0.1634  -2.1573  179  0.0323 
-                                           ci.lb    ci.ub    
-intrcpt                                  -0.0822   0.5286    
-assay_typeElevated T Maze (ETM)          -1.2166   0.2466    
-assay_typeForced Swimming Test (FST)     -0.4434   0.0912    
-assay_typeOpen Field Test (OFT)          -0.1535   0.2028    
-assay_typeSucrose Preference Test (SPT)  -0.6749  -0.0301  * 
+intrcpt                                    0.1207  0.1630   0.7407  199  0.4598 
+assay_typeElevated T Maze (ETM)           -0.4096  0.3684  -1.1120  199  0.2675 
+assay_typeForced Swimming Test (FST)      -0.0568  0.1309  -0.4343  199  0.6645 
+assay_typeOpen Field Test (OFT)            0.1466  0.0817   1.7931  199  0.0745 
+assay_typeSucrose Preference Test (SPT)   -0.2196  0.1611  -1.3628  199  0.1745 
+                                           ci.lb   ci.ub    
+intrcpt                                  -0.2007  0.4421    
+assay_typeElevated T Maze (ETM)          -1.1360  0.3168    
+assay_typeForced Swimming Test (FST)     -0.3149  0.2012    
+assay_typeOpen Field Test (OFT)          -0.0146  0.3077  . 
+assay_typeSucrose Preference Test (SPT)  -0.5373  0.0981    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0611         0.4548 </code></pre>
+        0.0567         0.4765 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-22.png" class="img-fluid" width="768"></p>
 </div>
@@ -2035,49 +2035,49 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                                                                 Estimate
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0           -0.48503
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0      -0.17611
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0            0.02467
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0   -0.35247
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0          0.30892
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0               0.50969
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0       0.13255
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0          0.20078
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0 -0.17636
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0      -0.37714
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0           -0.40961
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0      -0.05684
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0            0.14656
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0   -0.21960
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0          0.35277
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0               0.55617
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0       0.19002
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0          0.20340
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0 -0.16276
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0      -0.36616
                                                                 Std. Error
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0              0.37074
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0         0.13545
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0              0.09028
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0      0.16339
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0            0.38467
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0                 0.36794
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0         0.39474
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0            0.13034
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0    0.18614
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0         0.15721
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0              0.36836
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0         0.13086
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0              0.08174
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0      0.16113
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0            0.38389
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                 0.36638
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0         0.39471
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0            0.13347
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0    0.19157
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0         0.16189
                                                                 z value
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0            -1.308
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0       -1.300
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0             0.273
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0    -2.157
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0           0.803
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0                1.385
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0        0.336
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0           1.540
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0  -0.948
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0       -2.399
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0            -1.112
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0       -0.434
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0             1.793
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0    -1.363
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0           0.919
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                1.518
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0        0.481
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0           1.524
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0  -0.850
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0       -2.262
                                                                 Pr(&gt;|z|)  
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0             0.1908  
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0        0.1935  
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0             0.7847  
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0     0.0310 *
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0           0.4219  
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0                0.1660  
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0        0.7370  
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0           0.1235  
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0   0.3434  
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0        0.0164 *
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0             0.2661  
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0        0.6640  
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0             0.0730 .
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0     0.1729  
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0           0.3581  
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                0.1290  
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0        0.6302  
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0           0.1275  
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0   0.3956  
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0        0.0237 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 (Adjusted p values reported -- none method)
@@ -2089,44 +2089,44 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnvr-7" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr-7">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 172; method: REML)
+Multivariate Meta-Analysis Model (k = 192; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--134.7765   269.5530   285.5530   310.4970   286.4644   
+-151.2908   302.5816   318.5816   344.4305   319.3906   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0517  0.2274     13     no  study_id 
-sigma^2.2  0.2199  0.4690    172     no     es_id 
+sigma^2.1  0.0481  0.2193     13     no  study_id 
+sigma^2.2  0.2254  0.4748    192     no     es_id 
 sigma^2.3  0.0000  0.0000      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 167) = 1287.0079, p-val &lt; .0001
+QE(df = 187) = 1490.5745, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:5):
-F(df1 = 4, df2 = 167) = 0.9840, p-val = 0.4178
+F(df1 = 4, df2 = 187) = 1.0638, p-val = 0.3758
 
 Model Results:
 
                                          estimate      se     tval   df    pval 
-intrcpt                                    0.0426  0.1336   0.3189  167  0.7502 
-assay_typeElevated T Maze (ETM)            0.0304  0.3821   0.0797  167  0.9366 
-assay_typeForced Swimming Test (FST)      -0.3149  0.1675  -1.8808  167  0.0617 
-assay_typeOpen Field Test (OFT)           -0.1016  0.1183  -0.8588  167  0.3917 
-assay_typeSucrose Preference Test (SPT)   -0.1962  0.2154  -0.9109  167  0.3637 
+intrcpt                                    0.0344  0.1182   0.2912  187  0.7712 
+assay_typeElevated T Maze (ETM)            0.0387  0.3733   0.1035  187  0.9176 
+assay_typeForced Swimming Test (FST)      -0.3063  0.1601  -1.9135  187  0.0572 
+assay_typeOpen Field Test (OFT)           -0.0969  0.1020  -0.9499  187  0.3434 
+assay_typeSucrose Preference Test (SPT)   -0.1882  0.2080  -0.9046  187  0.3668 
                                            ci.lb   ci.ub    
-intrcpt                                  -0.2212  0.3065    
-assay_typeElevated T Maze (ETM)          -0.7240  0.7849    
-assay_typeForced Swimming Test (FST)     -0.6455  0.0157  . 
-assay_typeOpen Field Test (OFT)          -0.3352  0.1320    
-assay_typeSucrose Preference Test (SPT)  -0.6215  0.2291    
+intrcpt                                  -0.1987  0.2675    
+assay_typeElevated T Maze (ETM)          -0.6979  0.7752    
+assay_typeForced Swimming Test (FST)     -0.6221  0.0095  . 
+assay_typeOpen Field Test (OFT)          -0.2982  0.1044    
+assay_typeSucrose Preference Test (SPT)  -0.5985  0.2222    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0302         0.2149 </code></pre>
+        0.0287         0.1995 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-23.png" class="img-fluid" width="768"></p>
 </div>
@@ -2144,49 +2144,49 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                                                                 Estimate
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0            0.03045
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0      -0.31495
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0           -0.10161
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0   -0.19620
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0         -0.34540
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0              -0.13206
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0      -0.22665
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0          0.21334
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0  0.11875
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0      -0.09459
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0            0.03866
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0      -0.30632
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0           -0.09691
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0   -0.18816
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0         -0.34498
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0              -0.13556
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0      -0.22682
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0          0.20941
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0  0.11816
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0      -0.09125
                                                                 Std. Error
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0              0.38212
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0         0.16745
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0              0.11831
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0      0.21540
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0            0.39555
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0                 0.37294
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0         0.41815
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0            0.16006
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0    0.24141
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0         0.20619
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0              0.37335
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0         0.16008
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0              0.10202
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0      0.20800
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0            0.39193
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                 0.36878
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0         0.41536
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0            0.16086
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0    0.24340
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0         0.20822
                                                                 z value
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0             0.080
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0       -1.881
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0            -0.859
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0    -0.911
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0          -0.873
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0               -0.354
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0       -0.542
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0           1.333
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0   0.492
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0       -0.459
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0             0.104
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0       -1.913
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0            -0.950
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0    -0.905
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0          -0.880
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0               -0.368
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0       -0.546
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0           1.302
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0   0.485
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0       -0.438
                                                                 Pr(&gt;|z|)  
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0              0.936  
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0         0.060 .
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0              0.390  
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0      0.362  
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0            0.383  
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0                 0.723  
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0         0.588  
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0            0.183  
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0    0.623  
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0         0.646  
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0             0.9175  
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0        0.0557 .
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0             0.3422  
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0     0.3657  
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0           0.3788  
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                0.7132  
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0        0.5850  
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0           0.1930  
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0   0.6273  
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0        0.6612  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 (Adjusted p values reported -- none method)
@@ -2201,44 +2201,44 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lncvr-7" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr-7">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 172; method: REML)
+Multivariate Meta-Analysis Model (k = 192; method: REML)
 
-  logLik  Deviance       AIC       BIC      AICc   
--93.5085  187.0170  203.0170  227.9610  203.9284   
+   logLik   Deviance        AIC        BIC       AICc   
+-101.3664   202.7329   218.7329   244.5817   219.5419   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0145  0.1205     13     no  study_id 
-sigma^2.2  0.0613  0.2476    172     no     es_id 
-sigma^2.3  0.0424  0.2058      5     no    strain 
+sigma^2.1  0.0165  0.1283     13     no  study_id 
+sigma^2.2  0.0605  0.2459    192     no     es_id 
+sigma^2.3  0.0654  0.2558      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 167) = 376.7454, p-val &lt; .0001
+QE(df = 187) = 431.3515, p-val &lt; .0001
 
 Test of Moderators (coefficients 2:5):
-F(df1 = 4, df2 = 167) = 5.0689, p-val = 0.0007
+F(df1 = 4, df2 = 187) = 5.4647, p-val = 0.0003
 
 Model Results:
 
                                          estimate      se     tval   df    pval 
-intrcpt                                    0.0438  0.1466   0.2991  167  0.7652 
-assay_typeElevated T Maze (ETM)           -0.0176  0.3816  -0.0460  167  0.9634 
-assay_typeForced Swimming Test (FST)      -0.4125  0.1270  -3.2487  167  0.0014 
-assay_typeOpen Field Test (OFT)            0.1282  0.0840   1.5269  167  0.1287 
-assay_typeSucrose Preference Test (SPT)   -0.0621  0.1426  -0.4357  167  0.6636 
-                                           ci.lb    ci.ub     
-intrcpt                                  -0.2455   0.3332     
-assay_typeElevated T Maze (ETM)          -0.7709   0.7358     
-assay_typeForced Swimming Test (FST)     -0.6631  -0.1618  ** 
-assay_typeOpen Field Test (OFT)          -0.0376   0.2939     
-assay_typeSucrose Preference Test (SPT)  -0.3435   0.2193     
+intrcpt                                    0.0722  0.1571   0.4598  187  0.6462 
+assay_typeElevated T Maze (ETM)           -0.0110  0.3829  -0.0286  187  0.9772 
+assay_typeForced Swimming Test (FST)      -0.4340  0.1180  -3.6775  187  0.0003 
+assay_typeOpen Field Test (OFT)            0.1269  0.0738   1.7191  187  0.0873 
+assay_typeSucrose Preference Test (SPT)   -0.0716  0.1350  -0.5304  187  0.5965 
+                                           ci.lb    ci.ub      
+intrcpt                                  -0.2376   0.3821      
+assay_typeElevated T Maze (ETM)          -0.7663   0.7444      
+assay_typeForced Swimming Test (FST)     -0.6669  -0.2012  *** 
+assay_typeOpen Field Test (OFT)          -0.0187   0.2725    . 
+assay_typeSucrose Preference Test (SPT)  -0.3379   0.1947      
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.1986         0.5843 </code></pre>
+        0.1659         0.6457 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-24.png" class="img-fluid" width="768"></p>
 </div>
@@ -2256,49 +2256,49 @@ Fit: metafor::rma.mv(yi = model_data[[yi]], V = V_subset, mods = reformulate(mod
 
 Linear Hypotheses:
                                                                 Estimate
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0           -0.01756
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0      -0.41248
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0            0.12819
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0   -0.06211
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0         -0.39492
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0               0.14575
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0      -0.04455
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0          0.54067
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0  0.35036
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0      -0.19031
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0           -0.01096
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0      -0.43404
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0            0.12689
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0   -0.07161
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0         -0.42308
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0               0.13785
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0      -0.06065
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0          0.56093
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0  0.36243
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0      -0.19850
                                                                 Std. Error
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0              0.38157
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0         0.12697
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0              0.08395
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0      0.14255
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0            0.39205
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0                 0.37679
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0         0.39591
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0            0.12162
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0    0.16613
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0         0.13560
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0              0.38290
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0         0.11802
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0              0.07381
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0      0.13500
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0            0.39479
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                 0.37960
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0         0.39848
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0            0.12143
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0    0.16564
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0         0.13516
                                                                 z value
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0            -0.046
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0       -3.249
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0             1.527
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0    -0.436
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0          -1.007
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0                0.387
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0       -0.113
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0           4.446
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0   2.109
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0       -1.403
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0            -0.029
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0       -3.677
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0             1.719
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0    -0.530
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0          -1.072
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0                0.363
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0       -0.152
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0           4.619
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0   2.188
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0       -1.469
                                                                 Pr(&gt;|z|)    
-Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0            0.96330    
-Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0       0.00116 ** 
-Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0            0.12678    
-Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0    0.66304    
-Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0          0.31379    
-Open Field Test (OFT) - Elevated T Maze (ETM) == 0               0.69888    
-Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0       0.91040    
-Open Field Test (OFT) - Forced Swimming Test (FST) == 0         8.76e-06 ***
-Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0  0.03494 *  
-Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0       0.16048    
+Elevated T Maze (ETM) - Elevated Plus Maze (EPM) == 0           0.977172    
+Forced Swimming Test (FST) - Elevated Plus Maze (EPM) == 0      0.000236 ***
+Open Field Test (OFT) - Elevated Plus Maze (EPM) == 0           0.085604 .  
+Sucrose Preference Test (SPT) - Elevated Plus Maze (EPM) == 0   0.595839    
+Forced Swimming Test (FST) - Elevated T Maze (ETM) == 0         0.283872    
+Open Field Test (OFT) - Elevated T Maze (ETM) == 0              0.716503    
+Sucrose Preference Test (SPT) - Elevated T Maze (ETM) == 0      0.879030    
+Open Field Test (OFT) - Forced Swimming Test (FST) == 0         3.85e-06 ***
+Sucrose Preference Test (SPT) - Forced Swimming Test (FST) == 0 0.028661 *  
+Sucrose Preference Test (SPT) - Open Field Test (OFT) == 0      0.141939    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 (Adjusted p values reported -- none method)
@@ -2316,35 +2316,35 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnrr-8" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr-8">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 187; method: REML)
+Multivariate Meta-Analysis Model (k = 207; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--136.7722   273.5443   283.5443   299.6461   283.8795   
+-154.2306   308.4612   318.4612   335.0763   318.7627   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0364  0.1908     16     no  study_id 
-sigma^2.2  0.1358  0.3685    187     no     es_id 
-sigma^2.3  0.0614  0.2477      5     no    strain 
+sigma^2.1  0.0330  0.1816     16     no  study_id 
+sigma^2.2  0.1444  0.3800    207     no     es_id 
+sigma^2.3  0.0745  0.2730      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 185) = 2559.1349, p-val &lt; .0001
+QE(df = 205) = 2735.0321, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 185) = 1.2165, p-val = 0.2715
+F(df1 = 1, df2 = 205) = 1.5486, p-val = 0.2148
 
 Model Results:
 
                  estimate      se     tval   df    pval    ci.lb   ci.ub    
-intrcpt            0.3680  0.2102   1.7508  185  0.0816  -0.0467  0.7826  . 
-offspring_age_d   -0.0033  0.0030  -1.1029  185  0.2715  -0.0091  0.0026    
+intrcpt            0.3691  0.2161   1.7084  205  0.0891  -0.0569  0.7952  . 
+offspring_age_d   -0.0037  0.0029  -1.2444  205  0.2148  -0.0095  0.0021    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0263         0.4338 </code></pre>
+        0.0329         0.4456 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-25.png" class="img-fluid" width="768"></p>
 </div>
@@ -2355,35 +2355,35 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnvr-8" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr-8">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--139.0622   278.1244   288.1244   303.8908   288.4837   
+-155.7759   311.5518   321.5518   337.8652   321.8726   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0488  0.2208     14     no  study_id 
-sigma^2.2  0.2179  0.4668    175     no     es_id 
+sigma^2.1  0.0444  0.2108     14     no  study_id 
+sigma^2.2  0.2245  0.4738    195     no     es_id 
 sigma^2.3  0.0000  0.0000      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 1314.0598, p-val &lt; .0001
+QE(df = 193) = 1518.1892, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 0.1889, p-val = 0.6644
+F(df1 = 1, df2 = 193) = 0.0269, p-val = 0.8700
 
 Model Results:
 
                  estimate      se     tval   df    pval    ci.lb   ci.ub    
-intrcpt            0.0261  0.2105   0.1239  173  0.9015  -0.3894  0.4416    
-offspring_age_d   -0.0015  0.0034  -0.4346  173  0.6644  -0.0082  0.0053    
+intrcpt           -0.0191  0.2049  -0.0933  193  0.9257  -0.4233  0.3851    
+offspring_age_d   -0.0005  0.0033  -0.1639  193  0.8700  -0.0070  0.0060    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0051         0.1870 </code></pre>
+        0.0007         0.1658 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-26.png" class="img-fluid" width="768"></p>
 </div>
@@ -2397,35 +2397,35 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lncvr-8" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr-8">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--102.8618   205.7237   215.7237   231.4901   216.0829   
+-111.1685   222.3370   232.3370   248.6504   232.6578   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.1098  0.3314     14     no  study_id 
-sigma^2.2  0.0644  0.2537    175     no     es_id 
-sigma^2.3  0.0446  0.2112      5     no    strain 
+sigma^2.1  0.1401  0.3744     14     no  study_id 
+sigma^2.2  0.0632  0.2514    195     no     es_id 
+sigma^2.3  0.0727  0.2697      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 412.0257, p-val &lt; .0001
+QE(df = 193) = 463.1832, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 8.0386, p-val = 0.0051
+F(df1 = 1, df2 = 193) = 9.1576, p-val = 0.0028
 
 Model Results:
 
                  estimate      se     tval   df    pval    ci.lb    ci.ub     
-intrcpt            0.6103  0.2644   2.3085  173  0.0222   0.0885   1.1322   * 
-offspring_age_d   -0.0107  0.0038  -2.8352  173  0.0051  -0.0182  -0.0033  ** 
+intrcpt            0.6963  0.2902   2.3996  193  0.0174   0.1240   1.2687   * 
+offspring_age_d   -0.0121  0.0040  -3.0261  193  0.0028  -0.0199  -0.0042  ** 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.2453         0.7779 </code></pre>
+        0.2560         0.8296 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-27.png" class="img-fluid" width="768"></p>
 </div>
@@ -2442,35 +2442,35 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnrr-9" class="level3">
 <h3 class="anchored" data-anchor-id="lnrr-9">lnRR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 181; method: REML)
+Multivariate Meta-Analysis Model (k = 201; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--136.4362   272.8724   282.8724   298.8093   283.2192   
+-154.0626   308.1252   318.1252   334.5917   318.4360   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0464  0.2153     15     no  study_id 
-sigma^2.2  0.1442  0.3798    181     no     es_id 
-sigma^2.3  0.0385  0.1963      5     no    strain 
+sigma^2.1  0.0405  0.2013     15     no  study_id 
+sigma^2.2  0.1525  0.3905    201     no     es_id 
+sigma^2.3  0.0588  0.2425      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 179) = 2614.8642, p-val &lt; .0001
+QE(df = 199) = 2737.2681, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 179) = 0.0415, p-val = 0.8388
+F(df1 = 1, df2 = 199) = 0.0030, p-val = 0.9565
 
 Model Results:
 
-             estimate      se     tval   df    pval    ci.lb   ci.ub    
-intrcpt        0.2516  0.2449   1.0274  179  0.3056  -0.2316  0.7348    
-loudness_dB   -0.0006  0.0028  -0.2038  179  0.8388  -0.0061  0.0050    
+             estimate      se    tval   df    pval    ci.lb   ci.ub    
+intrcpt        0.1721  0.2463  0.6988  199  0.4855  -0.3136  0.6578    
+loudness_dB    0.0001  0.0027  0.0546  199  0.9565  -0.0053  0.0056    
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0006         0.3709 </code></pre>
+        0.0000         0.3944 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-28.png" class="img-fluid" width="768"></p>
 </div>
@@ -2481,35 +2481,35 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lnvr-9" class="level3">
 <h3 class="anchored" data-anchor-id="lnvr-9">lnVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--136.8788   273.7576   283.7576   299.5240   284.1168   
+-153.5578   307.1155   317.1155   333.4290   317.4364   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
-sigma^2.1  0.0022  0.0472     14     no  study_id 
-sigma^2.2  0.2208  0.4699    175     no     es_id 
+sigma^2.1  0.0028  0.0525     14     no  study_id 
+sigma^2.2  0.2264  0.4758    195     no     es_id 
 sigma^2.3  0.0000  0.0000      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 1294.1500, p-val &lt; .0001
+QE(df = 193) = 1498.3486, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 6.7935, p-val = 0.0099
+F(df1 = 1, df2 = 193) = 6.6630, p-val = 0.0106
 
 Model Results:
 
-             estimate      se     tval   df    pval    ci.lb    ci.ub     
-intrcpt        0.5024  0.1979   2.5390  173  0.0120   0.1118   0.8929   * 
-loudness_dB   -0.0074  0.0028  -2.6064  173  0.0099  -0.0130  -0.0018  ** 
+             estimate      se     tval   df    pval    ci.lb    ci.ub    
+intrcpt        0.4912  0.1943   2.5277  193  0.0123   0.1079   0.8745  * 
+loudness_dB   -0.0073  0.0028  -2.5813  193  0.0106  -0.0128  -0.0017  * 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.0964         0.1054 </code></pre>
+        0.0867         0.0976 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-29.png" class="img-fluid" width="768"></p>
 </div>
@@ -2523,35 +2523,35 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <section id="lncvr-9" class="level3">
 <h3 class="anchored" data-anchor-id="lncvr-9">lnCVR</h3>
 <pre><code>
-Multivariate Meta-Analysis Model (k = 175; method: REML)
+Multivariate Meta-Analysis Model (k = 195; method: REML)
 
    logLik   Deviance        AIC        BIC       AICc   
--101.3503   202.7007   212.7007   228.4671   213.0600   
+-110.0439   220.0878   230.0878   246.4012   230.4087   
 
 Variance Components:
 
             estim    sqrt  nlvls  fixed    factor 
 sigma^2.1  0.0000  0.0000     14     no  study_id 
-sigma^2.2  0.0750  0.2739    175     no     es_id 
-sigma^2.3  0.0000  0.0000      5     no    strain 
+sigma^2.2  0.0744  0.2727    195     no     es_id 
+sigma^2.3  0.0053  0.0730      5     no    strain 
 
 Test for Residual Heterogeneity:
-QE(df = 173) = 396.2344, p-val &lt; .0001
+QE(df = 193) = 444.1094, p-val &lt; .0001
 
 Test of Moderators (coefficient 2):
-F(df1 = 1, df2 = 173) = 4.8521, p-val = 0.0289
+F(df1 = 1, df2 = 193) = 6.0068, p-val = 0.0151
 
 Model Results:
 
-             estimate      se     tval   df    pval    ci.lb    ci.ub    
-intrcpt        0.4221  0.1832   2.3035  173  0.0224   0.0604   0.7837  * 
-loudness_dB   -0.0057  0.0026  -2.2028  173  0.0289  -0.0109  -0.0006  * 
+             estimate      se     tval   df    pval    ci.lb    ci.ub     
+intrcpt        0.4970  0.1850   2.6863  193  0.0079   0.1321   0.8620  ** 
+loudness_dB   -0.0063  0.0026  -2.4509  193  0.0151  -0.0114  -0.0012   * 
 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </code></pre>
 <pre><code>   R2_marginal R2_conditional 
-        0.1615         0.1615 </code></pre>
+        0.1721         0.2275 </code></pre>
 <div class="card">
 <p><img src="05_uni_moderators_files/figure-html/display-unimoderator-results-30.png" class="img-fluid" width="768"></p>
 </div>
@@ -3130,17 +3130,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <span id="cb81-44"><a href="#cb81-44" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">dplyr.summarise.inform =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb81-45"><a href="#cb81-45" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">comment =</span> <span class="st">"#&gt;"</span>)</span>
 <span id="cb81-46"><a href="#cb81-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-47"><a href="#cb81-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the project folders used in this chapter.</span></span>
+<span id="cb81-47"><a href="#cb81-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the project folders used in this section.</span></span>
 <span id="cb81-48"><a href="#cb81-48" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="fu">normalizePath</span>(<span class="st">".."</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb81-49"><a href="#cb81-49" aria-hidden="true" tabindex="-1"></a>derived_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"Data"</span>, <span class="st">"derived"</span>)</span>
 <span id="cb81-50"><a href="#cb81-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb81-51"><a href="#cb81-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-52"><a href="#cb81-52" aria-hidden="true" tabindex="-1"></a>We load the effect-size database from Chapter 2 and construct a complete VCV matrix for lnRR, lnVR, and lnCVR using the same group identifiers as Chapter 3. The lnVR and lnCVR datasets exclude percentage outcomes because their effect-size values are missing by design.</span>
+<span id="cb81-52"><a href="#cb81-52" aria-hidden="true" tabindex="-1"></a>We load the database created in **Effect size calculation** and construct a complete VCV matrix for lnRR, lnVR, and lnCVR using the same group identifiers as **Sampling variance-covariance matrices**. The lnVR and lnCVR datasets exclude percentage outcomes because their effect-size values are missing by design.</span>
 <span id="cb81-53"><a href="#cb81-53" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb81-56"><a href="#cb81-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb81-57"><a href="#cb81-57" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-effect-size-data</span></span>
 <span id="cb81-58"><a href="#cb81-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-59"><a href="#cb81-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database created in Chapter 2.</span></span>
+<span id="cb81-59"><a href="#cb81-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the database created in Effect size calculation.</span></span>
 <span id="cb81-60"><a href="#cb81-60" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb81-61"><a href="#cb81-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
 <span id="cb81-62"><a href="#cb81-62" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>

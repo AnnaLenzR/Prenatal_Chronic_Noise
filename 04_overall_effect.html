@@ -308,10 +308,10 @@ window.Quarto = {
 <li>the absolute variability (lnVR),</li>
 <li>the relative variability (lnCVR).</li>
 </ul>
-<p>Because studies can contribute multiple dependent outcomes, we use <code>metafor::rma.mv()</code> with the sampling variance-covariance matrices constructed in the preceding chapter.</p>
+<p>Because studies can contribute multiple dependent outcomes, we use <code>metafor::rma.mv()</code> with the sampling variance-covariance matrices constructed in <strong>Sampling variance-covariance matrices</strong>.</p>
 <section id="variance-covariance-matrices-shared-group-dependence" class="level1">
 <h1>Variance-covariance matrices (shared-group dependence)</h1>
-<p>We load the effect-size database and the matching sampling variance-covariance matrix (<code>V</code>) for each effect-size type. Chapter 3 uses <code>metafor::vcalc()</code> to represent dependence from shared prenatal-noise and control groups. It uses a working correlation of <span class="math inline">\(\rho = 0.5\)</span> for multiple or repeated outcomes that share a group. Each matrix index records the effect-size order in the rows and columns of <code>V</code>.</p>
+<p>We load the effect-size database and the matching sampling variance-covariance matrix (<code>V</code>) for each effect-size type. <strong>Sampling variance-covariance matrices</strong> uses <code>metafor::vcalc()</code> to represent dependence from shared prenatal-noise and control groups. It uses a working correlation of <span class="math inline">\(\rho = 0.5\)</span> for multiple or repeated outcomes that share a group. Each matrix index records the effect-size order in the rows and columns of <code>V</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -376,7 +376,7 @@ window.Quarto = {
 </div>
 <p><strong>Direction conventions:</strong> lnRR values below zero represent less anxiety- or depression-like behaviour, while values above zero represent more. For lnVR and lnCVR, values below zero represent lower variability and values above zero represent greater variability in the prenatal-noise group.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database created in Chapter 2.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the database created in Effect size calculation.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
@@ -391,7 +391,7 @@ window.Quarto = {
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>load_metric_input <span class="ot">&lt;-</span> <span class="cf">function</span>(effect, variance, matrix_file, index_file) {</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Load the matrix and its row-order index from Chapter 3.</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Load the matrix and its row-order index from Sampling variance-covariance matrices.</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(derived_dir, matrix_file))</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  index <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">file.path</span>(derived_dir, index_file),</span>
@@ -460,15 +460,15 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">lnRR</td>
-<td style="text-align: right;">187</td>
+<td style="text-align: right;">207</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">lnVR</td>
-<td style="text-align: right;">175</td>
+<td style="text-align: right;">195</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">lnCVR</td>
-<td style="text-align: right;">175</td>
+<td style="text-align: right;">195</td>
 </tr>
 </tbody>
 </table>
@@ -540,25 +540,25 @@ window.Quarto = {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(overall_lnRR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
-#&gt; Multivariate Meta-Analysis Model (k = 187; method: REML)
+#&gt; Multivariate Meta-Analysis Model (k = 207; method: REML)
 #&gt; 
 #&gt;    logLik   Deviance        AIC        BIC       AICc   
-#&gt; -138.2299   276.4599   284.4599   297.3629   284.6809   
+#&gt; -155.9565   311.9130   319.9130   333.2245   320.1120   
 #&gt; 
 #&gt; Variance Components:
 #&gt; 
 #&gt;             estim    sqrt  nlvls  fixed    factor 
-#&gt; sigma^2.1  0.0310  0.1761     16     no  study_id 
-#&gt; sigma^2.2  0.1382  0.3718    187     no     es_id 
-#&gt; sigma^2.3  0.0466  0.2159      5     no    strain 
+#&gt; sigma^2.1  0.0278  0.1666     16     no  study_id 
+#&gt; sigma^2.2  0.1466  0.3828    207     no     es_id 
+#&gt; sigma^2.3  0.0634  0.2518      5     no    strain 
 #&gt; 
 #&gt; Test for Heterogeneity:
-#&gt; Q(df = 186) = 2665.4976, p-val &lt; .0001
+#&gt; Q(df = 206) = 2791.2615, p-val &lt; .0001
 #&gt; 
 #&gt; Model Results:
 #&gt; 
 #&gt; estimate      se    tval   df    pval    ci.lb   ci.ub    
-#&gt;   0.1970  0.1275  1.5449  186  0.1241  -0.0546  0.4486    
+#&gt;   0.1738  0.1395  1.2458  206  0.2142  -0.1012  0.4488    
 #&gt; 
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
@@ -569,7 +569,7 @@ window.Quarto = {
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>orchaRd<span class="sc">::</span><span class="fu">i2_ml</span>(overall_lnRR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;    I2_Total I2_study_id    I2_es_id   I2_strain 
-#&gt;    95.75495    13.75527    61.32638    20.67331</code></pre>
+#&gt;    96.01124    11.21154    59.18824    25.61147</code></pre>
 </div>
 </div>
 <div class="card">
@@ -599,25 +599,25 @@ window.Quarto = {
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(overall_lnVR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
-#&gt; Multivariate Meta-Analysis Model (k = 175; method: REML)
+#&gt; Multivariate Meta-Analysis Model (k = 195; method: REML)
 #&gt; 
 #&gt;    logLik   Deviance        AIC        BIC       AICc   
-#&gt; -140.1033   280.2066   288.2066   300.8428   288.4433   
+#&gt; -156.8192   313.6383   321.6383   334.7097   321.8500   
 #&gt; 
 #&gt; Variance Components:
 #&gt; 
 #&gt;             estim    sqrt  nlvls  fixed    factor 
-#&gt; sigma^2.1  0.0324  0.1800     14     no  study_id 
-#&gt; sigma^2.2  0.2195  0.4685    175     no     es_id 
+#&gt; sigma^2.1  0.0323  0.1796     14     no  study_id 
+#&gt; sigma^2.2  0.2251  0.4744    195     no     es_id 
 #&gt; sigma^2.3  0.0000  0.0000      5     no    strain 
 #&gt; 
 #&gt; Test for Heterogeneity:
-#&gt; Q(df = 174) = 1314.0725, p-val &lt; .0001
+#&gt; Q(df = 194) = 1518.3258, p-val &lt; .0001
 #&gt; 
 #&gt; Model Results:
 #&gt; 
 #&gt; estimate      se     tval   df    pval    ci.lb   ci.ub    
-#&gt;  -0.0422  0.0831  -0.5080  174  0.6121  -0.2061  0.1217    
+#&gt;  -0.0381  0.0820  -0.4638  194  0.6433  -0.1998  0.1237    
 #&gt; 
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
@@ -628,7 +628,7 @@ window.Quarto = {
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>orchaRd<span class="sc">::</span><span class="fu">i2_ml</span>(overall_lnVR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;     I2_Total  I2_study_id     I2_es_id    I2_strain 
-#&gt; 8.178655e+01 1.052520e+01 7.126135e+01 1.389343e-07</code></pre>
+#&gt; 8.207766e+01 1.029212e+01 7.178554e+01 1.379599e-07</code></pre>
 </div>
 </div>
 <div class="card">
@@ -661,25 +661,25 @@ window.Quarto = {
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(overall_lnCVR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 
-#&gt; Multivariate Meta-Analysis Model (k = 175; method: REML)
+#&gt; Multivariate Meta-Analysis Model (k = 195; method: REML)
 #&gt; 
 #&gt;    logLik   Deviance        AIC        BIC       AICc   
-#&gt; -104.3190   208.6380   216.6380   229.2742   216.8747   
+#&gt; -113.4509   226.9017   234.9017   247.9731   235.1133   
 #&gt; 
 #&gt; Variance Components:
 #&gt; 
 #&gt;             estim    sqrt  nlvls  fixed    factor 
-#&gt; sigma^2.1  0.0000  0.0001     14     no  study_id 
-#&gt; sigma^2.2  0.0803  0.2833    175     no     es_id 
-#&gt; sigma^2.3  0.0000  0.0000      5     no    strain 
+#&gt; sigma^2.1  0.0080  0.0896     14     no  study_id 
+#&gt; sigma^2.2  0.0772  0.2778    195     no     es_id 
+#&gt; sigma^2.3  0.0082  0.0908      5     no    strain 
 #&gt; 
 #&gt; Test for Heterogeneity:
-#&gt; Q(df = 174) = 412.0300, p-val &lt; .0001
+#&gt; Q(df = 194) = 464.4784, p-val &lt; .0001
 #&gt; 
 #&gt; Model Results:
 #&gt; 
 #&gt; estimate      se    tval   df    pval    ci.lb   ci.ub    
-#&gt;   0.0374  0.0577  0.6485  174  0.5175  -0.0765  0.1513    
+#&gt;   0.0693  0.0834  0.8307  194  0.4071  -0.0952  0.2338    
 #&gt; 
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
@@ -689,8 +689,8 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate total and level-specific multilevel I-squared.</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>orchaRd<span class="sc">::</span><span class="fu">i2_ml</span>(overall_lnCVR_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;     I2_Total  I2_study_id     I2_es_id    I2_strain 
-#&gt; 4.745681e+01 1.784236e-06 4.745680e+01 1.258722e-08</code></pre>
+<pre><code>#&gt;    I2_Total I2_study_id    I2_es_id   I2_strain 
+#&gt;   50.616373    4.350500   41.802167    4.463706</code></pre>
 </div>
 </div>
 <div class="card">
@@ -1254,7 +1254,7 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the absolute variability (lnVR),</span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the relative variability (lnCVR).</span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>Because studies can contribute multiple dependent outcomes, we use <span class="in">`metafor::rma.mv()`</span> with the sampling variance-covariance matrices constructed in the preceding chapter.</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>Because studies can contribute multiple dependent outcomes, we use <span class="in">`metafor::rma.mv()`</span> with the sampling variance-covariance matrices constructed in **Sampling variance-covariance matrices**.</span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
@@ -1274,14 +1274,14 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
 <span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep the rendered output concise and use a consistent code-output prefix.</span></span>
 <span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">comment =</span> <span class="st">"#&gt;"</span>)</span>
 <span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the project folders used in this chapter.</span></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the project folders used in this section.</span></span>
 <span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="fu">normalizePath</span>(<span class="st">".."</span>, <span class="at">mustWork =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>derived_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"Data"</span>, <span class="st">"derived"</span>)</span>
 <span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a><span class="fu"># Variance-covariance matrices (shared-group dependence)</span></span>
 <span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>We load the effect-size database and the matching sampling variance-covariance matrix (<span class="in">`V`</span>) for each effect-size type. Chapter 3 uses <span class="in">`metafor::vcalc()`</span> to represent dependence from shared prenatal-noise and control groups. It uses a working correlation of $\rho = 0.5$ for multiple or repeated outcomes that share a group. Each matrix index records the effect-size order in the rows and columns of <span class="in">`V`</span>.</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>We load the effect-size database and the matching sampling variance-covariance matrix (<span class="in">`V`</span>) for each effect-size type. **Sampling variance-covariance matrices** uses <span class="in">`metafor::vcalc()`</span> to represent dependence from shared prenatal-noise and control groups. It uses a working correlation of $\rho = 0.5$ for multiple or repeated outcomes that share a group. Each matrix index records the effect-size order in the rows and columns of <span class="in">`V`</span>.</span>
 <span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
 <span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variable definitions</span></span>
@@ -1304,7 +1304,7 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
 <span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-model-data</span></span>
 <span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the effect-size database created in Chapter 2.</span></span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the database created in Effect size calculation.</span></span>
 <span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(derived_dir, <span class="st">"db_effect_sizes.csv"</span>),</span>
 <span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
@@ -1319,7 +1319,7 @@ Viechtbauer, Wolfgang. 2010. <span>“Conducting Meta-Analyses in <span>R</span>
 <span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>load_metric_input <span class="ot">&lt;-</span> <span class="cf">function</span>(effect, variance, matrix_file, index_file) {</span>
-<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Load the matrix and its row-order index from Chapter 3.</span></span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Load the matrix and its row-order index from Sampling variance-covariance matrices.</span></span>
 <span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(derived_dir, matrix_file))</span>
 <span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a>  index <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>    <span class="fu">file.path</span>(derived_dir, index_file),</span>
