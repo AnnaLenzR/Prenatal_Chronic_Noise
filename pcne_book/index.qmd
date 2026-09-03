@@ -39,5 +39,5 @@ It includes:
 ::: card
 # Reproducibility
 
-We run all data preparation and analyses in R through Quarto. We read the original extraction file without overwriting it. Each chapter creates the data or model object required by the following chapter.
+We run all data preparation and analyses in R through Quarto. We read the original extraction file without overwriting it. Each section creates the data or model object required by the following section.
 :::

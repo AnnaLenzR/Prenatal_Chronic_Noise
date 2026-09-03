@@ -1,5 +1,0 @@
-"decision_id","scope","decision","status","decision_date","analysis_implication"
-"B2-01","Uygur es001-es003","Independent CON and PSN arms; three outcomes share both groups and one DWT session; not repeated measures.","Approved","2026-08-13","Cluster within study and DWT test; identify shared control and experimental animals."
-"B2-02","Hassanvand es010-es012","Independent Control and Exp arms; three outcomes share both groups and one OFT session; not repeated measures.","Approved","2026-08-13","Cluster within study and OFT test; identify shared control and experimental animals."
-"B2-03","Hadizadeh es019-es020","Independent CON and ST arms; OAE and OAT share both groups and one EPM session; not repeated measures.","Approved","2026-08-13","Cluster within study and EPM test; identify shared control and experimental animals."
-"B2-04","Hadizadeh es019-es020","Correct id_notes to state that behavioral testing used male offspring only.","Approved","2026-08-13","Metadata correction only; reported numerical results are unchanged."

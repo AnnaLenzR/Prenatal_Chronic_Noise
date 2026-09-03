@@ -8,7 +8,7 @@ After estimating effect sizes, we fit three multilevel, intercept-only meta-anal
 - the absolute variability (lnVR),
 - the relative variability (lnCVR).
 
-Because studies can contribute multiple dependent outcomes, we use `metafor::rma.mv()` with the sampling variance-covariance matrices constructed in the preceding chapter.
+Because studies can contribute multiple dependent outcomes, we use `metafor::rma.mv()` with the sampling variance-covariance matrices constructed in **Sampling variance-covariance matrices**.
 
 ```{r}
 #| label: setup
@@ -28,14 +28,14 @@ pacman::p_load(
 # Keep the rendered output concise and use a consistent code-output prefix.
 knitr::opts_chunk$set(comment = "#>")
 
-# Define the project folders used in this chapter.
+# Define the project folders used in this section.
 project_root <- normalizePath("..", mustWork = TRUE)
 derived_dir <- file.path(project_root, "Data", "derived")
 ```
 
 # Variance-covariance matrices (shared-group dependence)
 
-We load the effect-size database and the matching sampling variance-covariance matrix (`V`) for each effect-size type. Chapter 3 uses `metafor::vcalc()` to represent dependence from shared prenatal-noise and control groups. It uses a working correlation of $\rho = 0.5$ for multiple or repeated outcomes that share a group. Each matrix index records the effect-size order in the rows and columns of `V`.
+We load the effect-size database and the matching sampling variance-covariance matrix (`V`) for each effect-size type. **Sampling variance-covariance matrices** uses `metafor::vcalc()` to represent dependence from shared prenatal-noise and control groups. It uses a working correlation of $\rho = 0.5$ for multiple or repeated outcomes that share a group. Each matrix index records the effect-size order in the rows and columns of `V`.
 
 ::: callout-note
 ## Variable definitions
@@ -58,7 +58,7 @@ We load the effect-size database and the matching sampling variance-covariance m
 ```{r}
 #| label: load-model-data
 
-# Load the effect-size database created in Chapter 2.
+# Load the database created in Effect size calculation.
 db <- readr::read_csv(
   file.path(derived_dir, "db_effect_sizes.csv"),
   show_col_types = FALSE
@@ -73,7 +73,7 @@ metric_specs <- tribble(
 )
 
 load_metric_input <- function(effect, variance, matrix_file, index_file) {
-  # Load the matrix and its row-order index from Chapter 3.
+  # Load the matrix and its row-order index from Sampling variance-covariance matrices.
   V <- readRDS(file.path(derived_dir, matrix_file))
   index <- readr::read_csv(
     file.path(derived_dir, index_file),

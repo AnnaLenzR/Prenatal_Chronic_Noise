@@ -2,7 +2,7 @@
 title: "Effect size calculation"
 ---
 
-We load the analysis-ready database from the preceding chapter and calculate three effect sizes: the log response ratio (lnRR), log variability ratio (lnVR), and log coefficient of variation ratio (lnCVR). We also calculate the sampling variance of each effect size.
+We load the analysis-ready database created in **Data preparation** and calculate three effect sizes: the log response ratio (lnRR), log variability ratio (lnVR), and log coefficient of variation ratio (lnCVR). We also calculate the sampling variance of each effect size.
 
 ```{r}
 #| label: setup
@@ -513,7 +513,7 @@ db_effect_sizes |>
 
 # Effect-size database
 
-We add all three effect sizes and their sampling variances to the analysis data and save the result. Percentage rows retain missing values for lnVR and lnCVR. The following chapters use this file.
+We add all three effect sizes and their sampling variances to the analysis data and save the result. Percentage rows retain missing values for lnVR and lnCVR. The following sections use this file.
 
 ```{r}
 #| label: export-effect-sizes

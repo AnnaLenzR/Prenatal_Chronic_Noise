@@ -38,7 +38,7 @@ derived_dir <- file.path(project_root, "Data", "derived")
 
 # Analysis data and overall model
 
-We load the effect-size database and reconstruct the complete VCV matrix with the same `metafor::vcalc()` specification used in Chapter 3. We then fit the intercept-only model that provides the centre line for the funnel plot.
+We load the effect-size database and reconstruct the complete VCV matrix with the same `metafor::vcalc()` specification used in **Sampling variance-covariance matrices**. We then fit the intercept-only model that provides the centre line for the funnel plot.
 
 ```{r}
 #| label: overall-model

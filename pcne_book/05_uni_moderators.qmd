@@ -42,17 +42,17 @@ pacman::p_load(
 options(dplyr.summarise.inform = FALSE)
 knitr::opts_chunk$set(comment = "#>")
 
-# Define the project folders used in this chapter.
+# Define the project folders used in this section.
 project_root <- normalizePath("..", mustWork = TRUE)
 derived_dir <- file.path(project_root, "Data", "derived")
 ```
 
-We load the effect-size database from Chapter 2 and construct a complete VCV matrix for lnRR, lnVR, and lnCVR using the same group identifiers as Chapter 3. The lnVR and lnCVR datasets exclude percentage outcomes because their effect-size values are missing by design.
+We load the database created in **Effect size calculation** and construct a complete VCV matrix for lnRR, lnVR, and lnCVR using the same group identifiers as **Sampling variance-covariance matrices**. The lnVR and lnCVR datasets exclude percentage outcomes because their effect-size values are missing by design.
 
 ```{r}
 #| label: load-effect-size-data
 
-# Load the effect-size database created in Chapter 2.
+# Load the database created in Effect size calculation.
 db <- readr::read_csv(
   file.path(derived_dir, "db_effect_sizes.csv"),
   show_col_types = FALSE

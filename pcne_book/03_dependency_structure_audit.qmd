@@ -38,7 +38,7 @@ pacman::p_load(
 project_root <- normalizePath("..", mustWork = TRUE)
 derived_dir <- file.path(project_root, "Data", "derived")
 
-# Load the effect-size database from Chapter 2.
+# Load the database created in Effect size calculation.
 vcv_data <- readr::read_csv(
   file.path(derived_dir, "db_effect_sizes.csv"),
   show_col_types = FALSE
@@ -77,7 +77,7 @@ effect_specs <- tibble::tribble(
 
 We use `metafor::vcalc()` to construct each matrix [@viechtbauer2010]. We use `study_id` as the study cluster, `ex_id` and `con_id` as the contrasted-group identifiers, and `ex_n` and `c_n` as the group weights. We supply each `es_id` as a distinct observation. For multiple or repeated outcomes that share an exposed or control group, we use a working correlation of $\rho = 0.5$. We assign zero sampling covariance to effect sizes that share neither group.
 
-The lnRR matrix contains every effect-size row. The lnVR and lnCVR matrices contain only non-percentage outcomes because Chapter 2 does not calculate variability metrics for percentage outcomes.
+The lnRR matrix contains every effect-size row. The lnVR and lnCVR matrices contain only non-percentage outcomes because **Effect size calculation** does not calculate variability metrics for percentage outcomes.
 
 ```{r}
 #| label: construct-vcv
@@ -194,7 +194,7 @@ We save each matrix as CSV and RDS files. We also save an index that records the
 #| label: export-vcv
 
 # Define file names for the three sets of outputs. We retain the existing
-# lnRR names so the overall-effect chapter remains compatible.
+# lnRR names so the Overall effects section remains compatible.
 vcv_files <- tribble(
   ~effect, ~index_file, ~csv_file, ~rds_file,
   "lnRR",  "PCN_vcv_index.csv",       "PCN_vcv_matrix.csv",       "PCN_vcv_matrix.rds",

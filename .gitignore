@@ -1,8 +1,11 @@
 ## R / RStudio
 .Rproj.user
 .Rhistory
-.RData
+.RData*
 .Ruserdata
+
+## Superseded project files retained locally only
+/archive/
 
 ## macOS
 .DS_Store
